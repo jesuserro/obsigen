@@ -1,0 +1,1 @@
+[[<% moment(jeiSelectedDate.clone().subtract(1, 'days')).format("YYYYMMDD") %>]] | [[<% moment(jeiSelectedDate).format("MMDD") %>]] | [[<% moment(jeiSelectedDate.clone().add(1, 'days')).format("YYYYMMDD") %>]] 
