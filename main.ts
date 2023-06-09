@@ -5,9 +5,7 @@ import { SampleModal } from './src/SampleModal';
 
 import SampleSettingTab from './src/SampleSettingTab';
 
-interface MyPluginSettings {
-	mySetting: string;
-}
+import { MyPluginSettings } from './src/interface/MyPluginSettings';
 
 const DEFAULT_SETTINGS: MyPluginSettings = {
 	mySetting: 'default'
@@ -22,7 +20,7 @@ export default class MyPlugin extends Plugin {
 		// This creates an icon in the left ribbon.
 		const ribbonIconEl = this.addRibbonIcon('dice', 'Sample Plugin', (evt: MouseEvent) => {
 			// Called when the user clicks the icon.
-			new Notice('This is a notice!');
+			new Notice('This is a notice 74!');
 		});
 		// Perform additional things with the ribbon
 		ribbonIconEl.addClass('my-plugin-ribbon-class');
