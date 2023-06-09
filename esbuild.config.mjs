@@ -1,6 +1,7 @@
-import esbuild from "esbuild";
-import process from "process";
 import builtins from "builtin-modules";
+import esbuild from "esbuild";
+import { copyFileSync } from "fs";
+import process from "process";
 
 const banner =
 `/*
@@ -10,6 +11,8 @@ if you want to view the source, please visit the github repository of this plugi
 `;
 
 const prod = (process.argv[2] === "production");
+
+const pluginFolderPath = "/mnt/c/Users/Jesús/Documents/vault/.obsidian/plugins/obsidian-note-generator";
 
 const context = await esbuild.context({
 	banner: {
@@ -37,8 +40,13 @@ const context = await esbuild.context({
 	logLevel: "info",
 	sourcemap: prod ? false : "inline",
 	treeShaking: true,
-	outfile: "main.js",
+	outfile: pluginFolderPath+"/main.js",
 });
+
+// Copy manifest.json and styles.css
+copyFileSync("manifest.json", pluginFolderPath+"/manifest.json");
+copyFileSync("styles.css", pluginFolderPath+"/styles.css");
+
 
 if (prod) {
 	await context.rebuild();
