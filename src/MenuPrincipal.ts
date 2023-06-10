@@ -1,8 +1,14 @@
-import { Menu, Notice } from 'obsidian';
+import { App, Menu, Notice } from 'obsidian';
+import { NoteGenerator } from './NoteGenerator';
 
 export class MenuPrincipal extends Menu {
-	constructor() {
+	
+  app: App;
+  
+  constructor(app: App) {
 		super();
+
+    this.app = app;
 
     this.addItem((item) =>
       item
@@ -19,8 +25,9 @@ export class MenuPrincipal extends Menu {
     );
 	}
 
-  onClickAniversario() {
+  async onClickAniversario() {
     new Notice("Creando Aniversario");
+    await new NoteGenerator(this.app).createEmptyNote();
   }
 
   onClickNotaDelDia() {

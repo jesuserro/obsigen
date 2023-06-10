@@ -15,13 +15,10 @@ export default class MyPlugin extends Plugin {
 	async onload() {
 		await this.loadSettings();
 
-		// This creates an icon in the left ribbon.
 		const ribbonIconEl = this.addRibbonIcon('church', 'Generador de Notass', (evt: MouseEvent) => {
-			const menu = new MenuPrincipal();
+			const menu = new MenuPrincipal(this.app);
       menu.showAtMouseEvent(evt);
 		});
-		
-		// Perform additional things with the ribbon
 		ribbonIconEl.addClass('my-plugin-ribbon-class');
 
 		// This adds a status bar item to the bottom of the app. Does not work on mobile apps.
