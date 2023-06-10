@@ -1,4 +1,4 @@
-import { Editor, MarkdownView, Notice, Plugin } from 'obsidian';
+import { Editor, MarkdownView, Menu, Notice, Plugin } from 'obsidian';
 import { SampleModal } from './src/SampleModal';
 import SampleSettingTab from './src/SampleSettingTab';
 import { MyPluginSettings } from './src/interface/MyPluginSettings';
@@ -15,9 +15,29 @@ export default class MyPlugin extends Plugin {
 		await this.loadSettings();
 
 		// This creates an icon in the left ribbon.
-		const ribbonIconEl = this.addRibbonIcon('dice', 'Sample Plugin', (evt: MouseEvent) => {
-			// Called when the user clicks the icon.
-			new Notice('This is a Notice!');
+		const ribbonIconEl = this.addRibbonIcon('church', 'Generador de Notas', (evt: MouseEvent) => {
+			
+			const menu = new Menu();
+
+      menu.addItem((item) =>
+        item
+          .setTitle("Aniversario")
+          .setIcon("cake")
+          .onClick(() => {
+            new Notice("Creando Aniversario");
+          })
+      );
+
+      menu.addItem((item) =>
+        item
+          .setTitle("Nota de hoy")
+          .setIcon("calendar")
+          .onClick(() => {
+            new Notice("Creando nota del día");
+          })
+      );
+
+      menu.showAtMouseEvent(evt);
 		});
 		// Perform additional things with the ribbon
 		ribbonIconEl.addClass('my-plugin-ribbon-class');
