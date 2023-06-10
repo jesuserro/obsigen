@@ -8,20 +8,24 @@ export class MenuPrincipal extends Menu {
       item
         .setTitle("Aniversario")
         .setIcon("cake")
-        .onClick(() => {
-          new Notice("Creando Aniversarioo");
-        })
+        .onClick(() => this.onClickAniversario())
     );
 
     this.addItem((item) =>
       item
         .setTitle("Nota de hoy")
         .setIcon("calendar")
-        .onClick(() => {
-          new Notice("Creando nota del día");
-        })
+        .onClick(() => this.onClickNotaDelDia())
     );
 	}
+
+  onClickAniversario() {
+    new Notice("Creando Aniversario");
+  }
+
+  onClickNotaDelDia() {
+    new Notice("Creando Nota del Día");
+  }
 
 	onOpen() {
 		
