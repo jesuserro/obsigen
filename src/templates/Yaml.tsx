@@ -5,11 +5,11 @@ export function Yaml({ data }: { data: iYaml }) {
   // Function body remains unchanged
   return (
     <>
-      ---
-      title: {data.title}
-      aliases:
-      {data.aliases.map((alias) => `- ${alias}`).join('\n')}
-      date: {data.date.toISOString()}
+      ---{"\n"}
+      title: {data.title}{"\n"}
+      aliases:{"\n"}
+      {data.aliases.map((alias) => `- ${alias}`).join('\n')}{"\n"}
+      date: {data.date.toISOString()}{"\n"}
       --- 
     </>
   );
