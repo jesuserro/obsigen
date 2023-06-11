@@ -1,6 +1,8 @@
 import { App, TFile } from 'obsidian';
-import * as ReactDOMServer from 'react-dom/server';
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { YamlTemplate } from './templates/YamlTemplate.jsx';
+
 
 export class NoteGenerator {
   app: App;
@@ -13,10 +15,10 @@ export class NoteGenerator {
     const timestamp = Date.now();
     const newFileName = `Note_${timestamp}.md`;
 
-    const yamlContent = ReactDOMServer.renderToStaticMarkup(
-      YamlTemplate({ data })
+    const yamlContent = renderToStaticMarkup(
+      createElement(YamlTemplate, { data })
     );
-
+    
     const templateContent = `# ${data.title}\nAa`;
 
     const fileData = `${yamlContent}\n${templateContent}`;
