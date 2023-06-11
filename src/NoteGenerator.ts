@@ -1,10 +1,6 @@
-
-
-  import { renderToStaticMarkup } from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 import { iYaml } from './interface/Yaml';
 import { Yaml } from './templates/Yaml';
-
-
 
 class NoteGenerator {
   app: any;
@@ -17,11 +13,14 @@ class NoteGenerator {
     const timestamp = Date.now();
     const newFileName = `Note_${timestamp}.md`;
 
-    const yamlContent = renderToStaticMarkup(Yaml({ data }));
+    const yamlContent = renderToString(Yaml({ data }));
+
+    // Sanitize the yamlContent
+    const sanitizedYamlContent = yamlContent.replace(/<!-- -->/g, '');
 
     const templateContent = `# ${data.title}\nAa`;
 
-    const fileData = `${yamlContent}\n${templateContent}`;
+    const fileData = `${sanitizedYamlContent}\n${templateContent}`;
 
     const newFile: any = await this.app.vault.create(newFileName, fileData);
 
