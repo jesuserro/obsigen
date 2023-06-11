@@ -1,5 +1,5 @@
 
-export function YamlTemplate({ data }) {
+export function Yaml({ data }) {
   return (
 `---
 title: ${data.title}
