@@ -27,7 +27,12 @@ export class MenuPrincipal extends Menu {
 
   async onClickAniversario() {
     new Notice("Creando Aniversario");
-    await new NoteGenerator(this.app).createEmptyNote();
+    const data = {
+      title: 'Patata',
+      aliases: ['alias1', 'alias2'],
+      date: new Date()
+    };
+    await new NoteGenerator(this.app).createNote(data);
   }
 
   onClickNotaDelDia() {

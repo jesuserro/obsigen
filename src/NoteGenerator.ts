@@ -1,4 +1,8 @@
+import * as ReactDOMServer from 'react-dom/server';
+
+
 import { App, TFile } from 'obsidian';
+import { YamlTemplate } from './templates/YamlTemplate.jsx';
 
 export class NoteGenerator {
   app: App;
@@ -7,12 +11,24 @@ export class NoteGenerator {
     this.app = app;
   }
 
-  async createEmptyNote() {
-    
+  async createNote(data) {
     const timestamp = Date.now();
     const newFileName = `Note_${timestamp}.md`;
-    const fileData = `# ${newFileName}\n\nThis is a new empty note created by the Note Generator plugin.`;
-    const newFile: TFile = await this.app.vault.create(newFileName, fileData); // Await the result
+
+
+    // Render the YamlTemplate component to a string
+    const yamlContent = ReactDOMServer.renderToStaticMarkup(
+      YamlTemplate({ data })
+    );
+    // const yamlContent2 = yaml.safeLoad(yamlContent);
+    
+
+    const templateContent = `# ${data.title}\n`;
+
+    // Combine the YAML content and template content
+    const fileData = `\n${yamlContent}\n${templateContent}`;
+
+    const newFile: TFile = await this.app.vault.create(newFileName, fileData);
 
     this.app.workspace.openLinkText(newFile.path, '', false);
   }
