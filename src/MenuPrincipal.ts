@@ -1,5 +1,6 @@
 import { App, Menu, Notice } from 'obsidian';
 import { NoteGenerator } from './NoteGenerator';
+import { iYaml } from './interface/Yaml';
 
 export class MenuPrincipal extends Menu {
 	
@@ -27,7 +28,7 @@ export class MenuPrincipal extends Menu {
 
   async onClickAniversario() {
     new Notice("Creando Aniversario");
-    const data = {
+    const data: iYaml = {
       title: 'Patata',
       aliases: ['alias1', 'alias2'],
       date: new Date()
