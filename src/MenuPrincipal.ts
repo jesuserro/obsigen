@@ -32,6 +32,7 @@ export class MenuPrincipal extends Menu {
     new Notice("Creando Aniversario");
     
     await new NoteGenerator(this.app).createNote(this.data);
+    // await new NoteGenerator(this.app).createNoteFromYamlFile(this.data);
   }
 
   onClickNotaDelDia() {

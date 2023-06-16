@@ -17,7 +17,7 @@ const DATA: iYaml = {
 	updated: new Date(),
 	url: 'https://example.com/note',
 	author: 'Paco López',
-	people: 'Jane Smith',
+	people: 'Jane Smithers',
 	parent: ['parent1', 'parent2'],
 	tags: ['tag1', 'tag2'],
 	locations: ['location1', 'location2'],
