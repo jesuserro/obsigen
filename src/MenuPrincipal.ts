@@ -29,9 +29,19 @@ export class MenuPrincipal extends Menu {
   async onClickAniversario() {
     new Notice("Creando Aniversario");
     const data: iYaml = {
-      title: 'Patata',
       aliases: ['alias1', 'alias2'],
-      date: new Date()
+      title: 'Note Title',
+      date: new Date(),
+      creation: new Date(),
+      updated: new Date(),
+      url: 'https://example.com/note',
+      author: 'John Doe',
+      people: 'Jane Smith',
+      parent: ['parent1', 'parent2'],
+      tags: ['tag1', 'tag2'],
+      locations: ['location1', 'location2'],
+      rating: 7,
+      emotion: 8,
     };
     await new NoteGenerator(this.app).createNote(data);
   }

@@ -1,5 +1,15 @@
 export interface iYaml {
-  title: string;
   aliases: string[];
-  date: Date;  
-}
+  title: string;
+  date: Date;
+  creation: Date; 
+  updated: Date;
+  url: string;
+  author: string; 
+  people: string;
+  parent: string[];
+  tags: string[];
+  locations: string[];
+  rating: number;
+  emotion: number;
+} 
