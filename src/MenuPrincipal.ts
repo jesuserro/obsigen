@@ -5,11 +5,13 @@ import { iYaml } from './interface/Yaml';
 export class MenuPrincipal extends Menu {
 	
   app: App;
+  data: iYaml;
   
-  constructor(app: App) {
+  constructor(app: App, data: iYaml) {
 		super();
 
     this.app = app;
+    this.data = data;
 
     this.addItem((item) =>
       item
@@ -28,22 +30,8 @@ export class MenuPrincipal extends Menu {
 
   async onClickAniversario() {
     new Notice("Creando Aniversario");
-    const data: iYaml = {
-      aliases: ['alias1', 'alias2'],
-      title: 'Note Title',
-      date: new Date(),
-      creation: new Date(),
-      updated: new Date(),
-      url: 'https://example.com/note',
-      author: 'John Doe',
-      people: 'Jane Smith',
-      parent: ['parent1', 'parent2'],
-      tags: ['tag1', 'tag2'],
-      locations: ['location1', 'location2'],
-      rating: 7,
-      emotion: 8,
-    };
-    await new NoteGenerator(this.app).createNote(data);
+    
+    await new NoteGenerator(this.app).createNote(this.data);
   }
 
   onClickNotaDelDia() {

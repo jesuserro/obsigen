@@ -3,6 +3,7 @@ import { MenuPrincipal } from 'src/MenuPrincipal';
 import { SampleModal } from 'src/SampleModal';
 import SampleSettingTab from 'src/SampleSettingTab';
 import { MyPluginSettings } from 'src/interface/MyPluginSettings';
+import { iYaml } from 'src/interface/Yaml';
 
 const DEFAULT_SETTINGS: MyPluginSettings = {
 	mySetting: 'default'
@@ -16,7 +17,22 @@ export default class MyPlugin extends Plugin {
 		await this.loadSettings();
 
 		const ribbonIconEl = this.addRibbonIcon('church', 'Generador de Notass', (evt: MouseEvent) => {
-			const menu = new MenuPrincipal(this.app);
+			const data: iYaml = {
+				aliases: ['alias1', 'alias2'],
+				title: 'Note Title 2',
+				date: new Date(),
+				creation: new Date(),
+				updated: new Date(),
+				url: 'https://example.com/note',
+				author: 'John Doe',
+				people: 'Jane Smith',
+				parent: ['parent1', 'parent2'],
+				tags: ['tag1', 'tag2'],
+				locations: ['location1', 'location2'],
+				rating: 7,
+				emotion: 8,
+			};
+			const menu = new MenuPrincipal(this.app, data);
       menu.showAtMouseEvent(evt);
 		});
 		ribbonIconEl.addClass('my-plugin-ribbon-class');
