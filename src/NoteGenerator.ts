@@ -15,19 +15,18 @@ class NoteGenerator {
   }
 
   async createNote(data: iYaml) {
-    const yamlContent = renderToString(Yaml({ data }));
-    const sanitizedYamlContent = yamlContent.replace(/<!-- -->/g, '');
-    const templateContent = `# ${data.title}\nAa`;
-    const content = `${sanitizedYamlContent}\n${templateContent}`;
+    let yaml = renderToString(Yaml({ data }));
+    yaml = yaml.replace(/<!-- -->/g, '');
+    const title = `# ${data.title}\nAa`;
+    const content = `${yaml}\n${title}`;
 
     await this.createNoteInVault(content);
   }
 
   async createNoteFromYamlFile(data: iYaml) {
-    // Read the template file
+    
     const template = fs.readFileSync('./templates/template.yaml', 'utf8');
 
-    // Replace the placeholders with actual values
     let content = template
       .replace('{{title}}', data.title)
       .replace('{{aliases}}', data.aliases.join(', '))
@@ -46,7 +45,6 @@ class NoteGenerator {
       await this.createNoteInVault(content);
   }
 
-  // Make another function to create the file from a YAML file
   async createNoteInVault(content: string) {
     const timestamp = Date.now();
     const newFileName = `Note_${timestamp}.md`;
