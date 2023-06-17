@@ -16,8 +16,12 @@ export function Yaml({ data }: { data: iYaml }) {
 }
 
 function renderPropertyValue(key: string, value: any) {
-  if (key === "aliases" || key === "tags") {
+  if (value instanceof Date) {
+    const formattedDate = value.toISOString().replace(/T/, ' ').replace(/\..+/, '');
+    return formattedDate;
+  } else if (Array.isArray(value)) {
     return `[${value.join(", ")}]`;
   }
   return value.toString();
 }
+
