@@ -29,7 +29,6 @@ export class PromptModal extends Modal {
   }
 
   onClose(): void {
-    this.contentEl.empty();
     if (!this.submitted) {
       this.reject(new TemplaterError("Cancelled prompt"));
     }

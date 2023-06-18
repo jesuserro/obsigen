@@ -22,7 +22,7 @@ export class MenuPrincipal extends Menu {
       icon: "calendar-plus",
       onClick: async () => {
         new Notice(`Creando ${this.menuItems[0].title}`);
-        const promptModal = new PromptModal("Momento", "Tu título", false);
+        const promptModal = new PromptModal("Momento", "", false);
         await promptModal.openModal();
         const title = promptModal.getValue();
         await new Momento(this.app).createNote(title, `Momentico ${title}`);
