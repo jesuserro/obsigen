@@ -18,14 +18,14 @@ export class MenuPrincipal extends Menu {
     this.menuItems = [];
 
     this.addMenuItem({
-      title: "Momento",
+      title: "Momentazo",
       icon: "calendar-plus",
       onClick: async () => {
         new Notice(`Creando ${this.menuItems[0].title}`);
-        const promptModal = new PromptModal("Momento", "", false);
+        const promptModal = new PromptModal("Momentazo", "", false);
         await promptModal.openModal();
         const title = promptModal.getValue();
-        await new Momento(this.app).createNote(title, `Momentico ${title}`);
+        await new Momento(this.app).createNote(title, `Momentazo ${title}`);
       }
     });
 
