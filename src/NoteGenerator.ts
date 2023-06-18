@@ -1,56 +1,52 @@
-import fs from 'fs';
 import { renderToString } from 'react-dom/server';
 import { iYaml } from './interface/Yaml';
 import { Yaml } from './templates/Yaml';
 
 class NoteGenerator {
   app: any;
+  yaml: string;
+  title: string;
+  content: string;
+  fileName: string;
 
-  constructor(app: any) {
+  constructor(app: any, data: iYaml) {
     this.app = app;
+
+    let yaml = renderToString(Yaml({ data }));
+    this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
   getHelloWorld() {
     return 'Hello, World!';
   }
 
-  async createNote(data: iYaml) {
-    let yaml = renderToString(Yaml({ data }));
-    yaml = yaml.replace(/<!-- -->/g, '');
-    const title = `# ${data.title}\nAa`;
-    const content = `${yaml}\n${title}`;
-
-    await this.createNoteInVault(content);
-  }
-
-  async createNoteFromYamlFile(data: iYaml) {
+  async createNote(title: string, content: string) {
     
-    const template = fs.readFileSync('./templates/template.yaml', 'utf8');
-
-    let content = template
-      .replace('{{title}}', data.title)
-      .replace('{{aliases}}', data.aliases.join(', '))
-      .replace('{{date}}', data.date.toISOString())
-      .replace('{{creation}}', data.creation.toISOString())
-      .replace('{{updated}}', data.updated.toISOString())
-      .replace('{{url}}', data.url)
-      .replace('{{author}}', data.author)
-      .replace('{{people}}', data.people)
-      .replace('{{parent}}', data.parent.join(', '))
-      .replace('{{tags}}', data.tags.join(', '))
-      .replace('{{locations}}', data.locations.join(', '))
-      .replace('{{rating}}', data.rating.toString())
-      .replace('{{emotion}}', data.emotion.toString());
-
-      await this.createNoteInVault(content);
+    this.title = title;
+    this.content = content;
+    this.setFileName(this.title);
+    this.prepareContent();
+    await this.createNoteInVault();
   }
 
-  async createNoteInVault(content: string) {
-    const timestamp = Date.now();
-    const newFileName = `Note_${timestamp}.md`;
-
-    const newFile: any = await this.app.vault.create(newFileName, content);
+  async createNoteInVault() {
+    const newFile: any = await this.app.vault.create(this.fileName, this.content);
     this.app.workspace.openLinkText(newFile.path, '', false);
+  }
+
+  setFileName(title: string) {
+    const timestamp = Date.now();
+    // Sanitize title to remove spaces and special characters
+    title = title.replace(/[^a-zA-Z0-9]/g, '_');
+    this.fileName = `${title}_${timestamp}.md`;
+  }
+
+  getFileName() {
+    return this.fileName;
+  }
+
+  prepareContent(): void {
+    this.content = `${this.yaml}\n# ${this.title}\n${this.content}`;
   }
 
 }

@@ -31,7 +31,7 @@ export class MenuPrincipal extends Menu {
   async onClickAniversario() {
     new Notice("Creando Aniversario");
     
-    await new NoteGenerator(this.app).createNote(this.data);
+    await new NoteGenerator(this.app, this.data).createNote("Patata", "Lorem Ipsum");
     // await new NoteGenerator(this.app).createNoteFromYamlFile(this.data);
   }
 
