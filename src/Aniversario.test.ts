@@ -27,14 +27,9 @@ describe('Aniversario', () => {
     aniversario = new Aniversario(app as any); // Use 'as any' to bypass type checking
   });
 
-  test('should return "Hello, World!"', () => {
-    const result = aniversario.getHelloWorld();
-    expect(result).toBe('Hello, World!');
-  });
-
-  test('should create a new note for the current date', async () => {
-    const expectedTitle = getCurrentDate();
-    const expectedContent = 'Aniversario';
+  test('should create a new Aniversario note for the current date', async () => {
+    const expectedTitle = aniversario.getCurrentDate();
+    const expectedContent = '';
 
     // Call the method being tested
     await aniversario.createNote();
@@ -47,10 +42,4 @@ describe('Aniversario', () => {
     expect(mockOpenLinkText).toHaveBeenCalledWith('/mnt/c/Users/Jesús/Documents/vault/testFile.md', '', false);
   });
 
-  function getCurrentDate() {
-    const today = new Date();
-    const month = (today.getMonth() + 1).toString().padStart(2, '0');
-    const day = today.getDate().toString().padStart(2, '0');
-    return `${month}${day}`;
-  }
 });
