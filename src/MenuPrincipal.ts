@@ -1,6 +1,7 @@
 import { App, Menu, Notice } from 'obsidian';
 import { Aniversario } from './Aniversario';
 import { Momento } from './Momento';
+import { PromptModal } from './lib/Templater/PromptModal';
 
 interface MenuItem {
   title: string;
@@ -21,7 +22,10 @@ export class MenuPrincipal extends Menu {
       icon: "calendar-plus",
       onClick: async () => {
         new Notice(`Creando ${this.menuItems[0].title}`);
-        await new Momento(this.app).createNote("Momento X", "Momentico Lorem ipsum X");
+        const promptModal = new PromptModal("Momento", "Tu título", false);
+        await promptModal.openModal();
+        const title = promptModal.getValue();
+        await new Momento(this.app).createNote(title, `Momentico ${title}`);
       }
     });
 

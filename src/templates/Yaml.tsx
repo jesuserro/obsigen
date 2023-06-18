@@ -21,7 +21,10 @@ function renderPropertyValue(key: string, value: any) {
     return formattedDate;
   } else if (Array.isArray(value)) {
     return `[${value.join(", ")}]`;
+  } else if (value !== undefined) {
+    return value.toString();
   }
-  return value.toString();
+  return '';
 }
+
 
