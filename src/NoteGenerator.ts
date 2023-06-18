@@ -1,6 +1,6 @@
 import { App } from 'obsidian';
 import { renderToString } from 'react-dom/server';
-import { DATA_YAML } from './interface/Yaml';
+import { DATA_YAML_DEFAULT } from './interface/Yaml';
 import { Yaml } from './templates/Yaml';
 
 class NoteGenerator {
@@ -49,7 +49,7 @@ class NoteGenerator {
   }
 
   setYaml(): void {
-    const data = { ...DATA_YAML, title: this.title };
+    const data = { ...DATA_YAML_DEFAULT, title: this.title };
     let yaml = renderToString(Yaml({data}));
     this.yaml = yaml.replace(/<!-- -->/g, '');
   }
