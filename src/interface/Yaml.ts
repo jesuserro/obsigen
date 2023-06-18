@@ -4,7 +4,7 @@ export interface iYaml {
   date: Date;
   creation: Date; 
   updated: Date;
-  url: string;
+  urls: string[];
   author: string[]; 
   people: string[];
   parent: string[];
@@ -21,7 +21,7 @@ export const DATA_YAML_DEFAULT: iYaml = {
 	date: new Date(),
 	creation: new Date(),
 	updated: new Date(),
-	url: '',
+	urls: [],
 	author: [],
 	people: [],
 	parent: [],
@@ -38,7 +38,7 @@ export const DATA_YAML_SAMPLE: iYaml = {
 	date: new Date(),
 	creation: new Date(),
 	updated: new Date(),
-	url: 'https://example.com/note',
+	urls: ['https://example.com/note'],
 	author: ['Paco López'],
 	people: ['Jane Smithers'],
 	parent: ['parent1', 'parent2'],
