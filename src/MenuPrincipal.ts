@@ -1,43 +1,57 @@
 import { App, Menu, Notice } from 'obsidian';
 import { NoteGenerator } from './NoteGenerator';
 
+interface MenuItem {
+  title: string;
+  icon: string;
+  action: () => void;
+}
+
 export class MenuPrincipal extends Menu {
-	
   app: App;
-  
+  menuItems: MenuItem[];
+
   constructor(app: App) {
-		super();
-
+    super();
     this.app = app;
+    this.menuItems = [];
 
-    this.addItem((item) =>
-      item
-        .setTitle("Test")
-        .setIcon("test-tube-2")
-        .onClick(() => this.onClickTest())
-    );
+    this.addMenuItem({
+      title: "Test",
+      icon: "test-tube-2",
+      action: () => this.onClickTest()
+    });
 
-    this.addItem((item) =>
-      item
-        .setTitle("Aniversario")
-        .setIcon("cake")
-        .onClick(() => this.onClickAniversario())
-    );
+    this.addSeparator();
 
-    this.addItem((item) =>
-      item
-        .setTitle("Nota de hoy")
-        .setIcon("calendar")
-        .onClick(() => this.onClickNotaDelDia())
-    );
+    this.addMenuItem({
+      title: "Aniversario",
+      icon: "cake",
+      action: () => this.onClickAniversario()
+    });
 
-    this.addItem((item) =>
-      item
-        .setTitle("Simple Mass")
-        .setIcon("church")
-        .onClick(() => this.onClickSimpleMass())
+    this.addMenuItem({
+      title: "Nota de hoy",
+      icon: "calendar",
+      action: () => this.onClickNotaDelDia()
+    });
+
+    this.addMenuItem({
+      title: "Simple Mass",
+      icon: "church",
+      action: () => this.onClickSimpleMass()
+    });
+  }
+
+  addMenuItem(item: MenuItem) {
+    this.menuItems.push(item);
+    this.addItem((menu) =>
+      menu
+        .setTitle(item.title)
+        .setIcon(item.icon)
+        .onClick(() => item.action())
     );
-	}
+  }
 
   async onClickTest() {
     new Notice("Creando Test");
@@ -56,11 +70,7 @@ export class MenuPrincipal extends Menu {
     new Notice("Creando Misa sencilla");
   }
 
-	onOpen() {
-		
-	}
+  onOpen() {}
 
-	onClose() {
-		
-	}
+  onClose() {}
 }
