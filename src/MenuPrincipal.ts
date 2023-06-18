@@ -4,7 +4,6 @@ import { NoteGenerator } from './NoteGenerator';
 interface MenuItem {
   title: string;
   icon: string;
-  action: () => void;
 }
 
 export class MenuPrincipal extends Menu {
@@ -19,55 +18,47 @@ export class MenuPrincipal extends Menu {
     this.addMenuItem({
       title: "Test",
       icon: "test-tube-2",
-      action: () => this.onClickTest()
+      onClick: async () => {
+        new Notice(`Creando ${this.menuItems[0].title}`);
+        await new NoteGenerator(this.app).createNote("Test", "Lorem ipsum dolor sit amet.");
+      }
     });
 
-    this.addSeparator();
+    this.addSeparator(); // Add separator after the first menu item
 
     this.addMenuItem({
       title: "Aniversario",
       icon: "cake",
-      action: () => this.onClickAniversario()
+      onClick: () => {
+        new Notice(`Creando ${this.menuItems[1].title}`);
+      }
     });
 
     this.addMenuItem({
       title: "Nota de hoy",
       icon: "calendar",
-      action: () => this.onClickNotaDelDia()
+      onClick: () => {
+        new Notice(`Creando ${this.menuItems[2].title}`);
+      }
     });
 
     this.addMenuItem({
       title: "Simple Mass",
       icon: "church",
-      action: () => this.onClickSimpleMass()
+      onClick: () => {
+        new Notice(`Creando ${this.menuItems[3].title}`);
+      }
     });
   }
 
-  addMenuItem(item: MenuItem) {
+  addMenuItem(item: MenuItem & { onClick: () => void }) {
     this.menuItems.push(item);
     this.addItem((menu) =>
       menu
         .setTitle(item.title)
         .setIcon(item.icon)
-        .onClick(() => item.action())
+        .onClick(() => item.onClick())
     );
-  }
-
-  async onClickTest() {
-    new Notice("Creando Test");
-    await new NoteGenerator(this.app).createNote("Test", "Lorem ipsum dolor sit amet.");
-  }
-
-  onClickAniversario() {
-    new Notice("Creando Aniversario");
-  }
-
-  onClickNotaDelDia() {
-    new Notice("Creando Nota del Día");
-  }
-
-  onClickSimpleMass() {
-    new Notice("Creando Misa sencilla");
   }
 
   onOpen() {}

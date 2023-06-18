@@ -1,6 +1,6 @@
 export interface iYaml {
-  aliases: string[];
   title: string;
+  aliases: string[];
   date: Date;
   creation: Date; 
   updated: Date;
@@ -16,8 +16,8 @@ export interface iYaml {
 } 
 
 export const DATA_YAML_DEFAULT: iYaml = {
-	aliases: [],
 	title: '',
+  aliases: [],
 	date: new Date(),
 	creation: new Date(),
 	updated: new Date(),
@@ -33,8 +33,8 @@ export const DATA_YAML_DEFAULT: iYaml = {
 };
 
 export const DATA_YAML_SAMPLE: iYaml = {
-	aliases: ['alias1', 'alias2'],
 	title: 'Note Title',
+  aliases: ['alias1', 'alias2'],
 	date: new Date(),
 	creation: new Date(),
 	updated: new Date(),
