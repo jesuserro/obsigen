@@ -13,6 +13,9 @@ export default class MyPlugin extends Plugin {
 	settings: MyPluginSettings;
 
 	async onload() {
+
+		console.log('Loading Jesus\'s NoteGenerator plugin');
+		
 		await this.loadSettings();
 
 		const ribbonIconEl = this.addRibbonIcon('brain', 'Generador de Notass', (evt: MouseEvent) => {
