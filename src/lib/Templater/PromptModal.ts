@@ -1,4 +1,4 @@
-import { ButtonComponent, Modal, Platform, TextAreaComponent, TextComponent } from "obsidian";
+import { ButtonComponent, Modal, Notice, Platform, TextAreaComponent, TextComponent } from "obsidian";
 
 class TemplaterError extends Error {
   constructor(msg: string, public console_msg?: string) {
@@ -30,7 +30,9 @@ export class PromptModal extends Modal {
 
   onClose(): void {
     if (!this.submitted) {
-      this.reject(new TemplaterError("Cancelled prompt"));
+      // this.reject(new TemplaterError("Cancelled prompt"));
+      new Notice("Cancelled prompt");
+      return;
     }
   }
 
