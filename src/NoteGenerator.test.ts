@@ -1,28 +1,13 @@
 // import { App } from 'obsidian';
 import { NoteGenerator } from './NoteGenerator';
+import { DATA_YAML } from './interface/Yaml';
 
 describe('NoteGenerator', () => {
   let noteGenerator: NoteGenerator;
 
   beforeEach(() => {
     // Prepare test data
-    const data = {
-      aliases: ['alias1', 'alias2'],
-      title: 'Note Title',
-      date: new Date(),
-      creation: new Date(),
-      updated: new Date(),
-      url: 'https://example.com/note',
-      author: 'John Doe',
-      people: 'Jane Smith',
-      parent: ['parent1', 'parent2'],
-      tags: ['tag1', 'tag2'],
-      locations: ['location1', 'location2'],
-      rating: 7,
-      emotion: 8,
-    };
-    // const app = new App();
-    noteGenerator = new NoteGenerator({}, data);
+    noteGenerator = new NoteGenerator({}, DATA_YAML);
   });
 
   test('should return "Hello, World!"', () => {
