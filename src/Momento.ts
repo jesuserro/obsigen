@@ -1,12 +1,9 @@
-
-
 import { App } from 'obsidian';
 import { NoteGenerator } from './NoteGenerator';
 
 export class Momento extends NoteGenerator {
   constructor(app: App) {
     super(app);
-    this.title = `${this.getCurrentDate()}_Momento`;
   }
 
   getCurrentDate() {
