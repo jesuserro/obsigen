@@ -1,7 +1,7 @@
 import { App, Menu, Notice } from 'obsidian';
 import { Aniversario } from './Aniversario';
 import { Momento } from './Momento';
-import { PromptModal } from './lib/Templater/PromptModal';
+import { PromptModal } from './PromptModal';
 
 interface MenuItem {
   title: string;
