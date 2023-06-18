@@ -1,5 +1,5 @@
 import { renderToString } from 'react-dom/server';
-import { iYaml } from './interface/Yaml';
+import { DATA_YAML } from './interface/Yaml';
 import { Yaml } from './templates/Yaml';
 
 class NoteGenerator {
@@ -9,11 +9,8 @@ class NoteGenerator {
   content: string;
   fileName: string;
 
-  constructor(app: any, data: iYaml) {
+  constructor(app: any) {
     this.app = app;
-
-    let yaml = renderToString(Yaml({ data }));
-    this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
   getHelloWorld() {
@@ -24,7 +21,8 @@ class NoteGenerator {
     
     this.title = title;
     this.content = content;
-    this.setFileName(this.title);
+    this.setFileName();
+    this.setYaml();
     this.prepareContent();
     await this.createNoteInVault();
   }
@@ -34,10 +32,10 @@ class NoteGenerator {
     this.app.workspace.openLinkText(newFile.path, '', false);
   }
 
-  setFileName(title: string) {
+  setFileName() {
     const timestamp = Date.now();
     // Sanitize title to remove spaces and special characters
-    title = title.replace(/[^a-zA-Z0-9]/g, '_');
+    const title = this.title.replace(/[^a-zA-Z0-9]/g, '_');
     this.fileName = `${title}_${timestamp}.md`;
   }
 
@@ -47,6 +45,12 @@ class NoteGenerator {
 
   prepareContent(): void {
     this.content = `${this.yaml}\n# ${this.title}\n${this.content}`;
+  }
+
+  setYaml(): void {
+    const data = { ...DATA_YAML, title: this.title };
+    let yaml = renderToString(Yaml({data}));
+    this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
 }

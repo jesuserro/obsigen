@@ -1,6 +1,5 @@
 import { App, Menu, Notice } from 'obsidian';
 import { NoteGenerator } from './NoteGenerator';
-import { DATA_YAML } from './interface/Yaml';
 
 export class MenuPrincipal extends Menu {
 	
@@ -29,7 +28,7 @@ export class MenuPrincipal extends Menu {
   async onClickAniversario() {
     new Notice("Creando Aniversario");
     
-    await new NoteGenerator(this.app, DATA_YAML).createNote("Patata", "Lorem Ipsum");
+    await new NoteGenerator(this.app).createNote("Patata", "Lorem Ipsum");
     // await new NoteGenerator(this.app).createNoteFromYamlFile(this.data);
   }
 

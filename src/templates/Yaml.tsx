@@ -1,7 +1,7 @@
 import React from 'react';
 import { iYaml } from '../interface/Yaml';
 
-export function Yaml( data: iYaml ) {
+export function Yaml({ data }: { data: iYaml }) {
   return (
     <>
       ---{"\n"}

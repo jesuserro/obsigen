@@ -1,13 +1,12 @@
 // import { App } from 'obsidian';
 import { NoteGenerator } from './NoteGenerator';
-import { DATA_YAML } from './interface/Yaml';
 
 describe('NoteGenerator', () => {
   let noteGenerator: NoteGenerator;
 
   beforeEach(() => {
     // Prepare test data
-    noteGenerator = new NoteGenerator({}, DATA_YAML);
+    noteGenerator = new NoteGenerator({});
   });
 
   test('should return "Hello, World!"', () => {
