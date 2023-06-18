@@ -34,12 +34,11 @@ class NoteGenerator {
   }
 
   setFileName() {
-    const timestamp = Date.now();
-    // Sanitize title to remove spaces and special characters
-    const title = this.title.replace(/[^a-zA-Z0-9]/g, '_');
-    this.fileName = `${title}_${timestamp}.md`;
+    const timestamp = new Date().toISOString().replace(/[-:.TZ]/g, '').slice(0, 12); // Format: YYYYMMDDHHmm
+    const sanitizedTitle = this.title.replace(/[^a-zA-Z0-9]/g, '_');
+    this.fileName = `${timestamp}_${sanitizedTitle}.md`;
   }
-
+  
   getFileName() {
     return this.fileName;
   }
