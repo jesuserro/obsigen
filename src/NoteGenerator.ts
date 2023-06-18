@@ -22,7 +22,7 @@ export class NoteGenerator {
     
     this.title = title;
     this.content = content;
-    this.setFileName();
+    this.setFileName(title);
     this.setYaml();
     this.prepareContent();
     await this.createNoteInVault();
@@ -33,10 +33,9 @@ export class NoteGenerator {
     this.app.workspace.openLinkText(newFile.path, '', false);
   }
 
-  setFileName() {
-    const timestamp = new Date().toISOString().replace(/[-:.TZ]/g, '').slice(0, 12); // Format: YYYYMMDDHHmm
-    const sanitizedTitle = this.title.replace(/[^a-zA-Z0-9]/g, '_');
-    this.fileName = `${timestamp}_${sanitizedTitle}.md`;
+  setFileName(name: string) {
+    const sanitizedName = name.replace(/[^a-zA-Z0-9]/g, '_');
+    this.fileName = `${sanitizedName}.md`;
   }
   
   getFileName() {

@@ -19,7 +19,7 @@ export class Aniversario extends NoteGenerator {
   }
 
   setFileName() {
-    this.fileName = `${this.getCurrentDate()}.md`;
+    super.setFileName(this.getCurrentDate());
   }
 }
 

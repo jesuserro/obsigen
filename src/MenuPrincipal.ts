@@ -1,6 +1,6 @@
 import { App, Menu, Notice } from 'obsidian';
 import { Aniversario } from './Aniversario';
-import { NoteGenerator } from './NoteGenerator';
+import { Momento } from './Momento';
 
 interface MenuItem {
   title: string;
@@ -17,11 +17,11 @@ export class MenuPrincipal extends Menu {
     this.menuItems = [];
 
     this.addMenuItem({
-      title: "Test",
-      icon: "test-tube-2",
+      title: "Momento",
+      icon: "calendar-plus",
       onClick: async () => {
         new Notice(`Creando ${this.menuItems[0].title}`);
-        await new NoteGenerator(this.app).createNote("Test", "Lorem ipsum dolor sit amet.");
+        await new Momento(this.app).createNote("Momento X", "Momentico Lorem ipsum X");
       }
     });
 
