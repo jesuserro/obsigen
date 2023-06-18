@@ -1,15 +1,16 @@
+import { App } from 'obsidian';
 import { renderToString } from 'react-dom/server';
 import { DATA_YAML } from './interface/Yaml';
 import { Yaml } from './templates/Yaml';
 
 class NoteGenerator {
-  app: any;
+  app: App;
   yaml: string;
   title: string;
   content: string;
   fileName: string;
 
-  constructor(app: any) {
+  constructor(app: App) {
     this.app = app;
   }
 
