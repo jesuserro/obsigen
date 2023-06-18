@@ -30,7 +30,6 @@ export class PromptModal extends Modal {
 
   onClose(): void {
     if (!this.submitted) {
-      // this.reject(new TemplaterError("Cancelled prompt"));
       new Notice("Cancelled prompt");
       return;
     }
@@ -85,6 +84,10 @@ export class PromptModal extends Modal {
   private resolveAndClose(evt: Event | KeyboardEvent) {
     this.submitted = true;
     evt.preventDefault();
+    if (this.value.trim() === "") {
+      new Notice("Please enter a valid string.");
+      return;
+    }
     this.resolve(this.value);
     this.close();
   }
