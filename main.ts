@@ -15,7 +15,7 @@ export default class MyPlugin extends Plugin {
 	async onload() {
 		await this.loadSettings();
 
-		const ribbonIconEl = this.addRibbonIcon('church', 'Generador de Notass', (evt: MouseEvent) => {
+		const ribbonIconEl = this.addRibbonIcon('brain', 'Generador de Notass', (evt: MouseEvent) => {
 			const menu = new MenuPrincipal(this.app);
       menu.showAtMouseEvent(evt);
 		});

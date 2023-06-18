@@ -12,6 +12,13 @@ export class MenuPrincipal extends Menu {
 
     this.addItem((item) =>
       item
+        .setTitle("Test")
+        .setIcon("test-tube-2")
+        .onClick(() => this.onClickTest())
+    );
+
+    this.addItem((item) =>
+      item
         .setTitle("Aniversario")
         .setIcon("cake")
         .onClick(() => this.onClickAniversario())
@@ -23,17 +30,30 @@ export class MenuPrincipal extends Menu {
         .setIcon("calendar")
         .onClick(() => this.onClickNotaDelDia())
     );
+
+    this.addItem((item) =>
+      item
+        .setTitle("Simple Mass")
+        .setIcon("church")
+        .onClick(() => this.onClickSimpleMass())
+    );
 	}
 
-  async onClickAniversario() {
+  async onClickTest() {
+    new Notice("Creando Test");
+    await new NoteGenerator(this.app).createNote("Test", "Lorem ipsum dolor sit amet.");
+  }
+
+  onClickAniversario() {
     new Notice("Creando Aniversario");
-    
-    await new NoteGenerator(this.app).createNote("Patata", "Lorem Ipsum");
-    // await new NoteGenerator(this.app).createNoteFromYamlFile(this.data);
   }
 
   onClickNotaDelDia() {
     new Notice("Creando Nota del Día");
+  }
+
+  onClickSimpleMass() {
+    new Notice("Creando Misa sencilla");
   }
 
 	onOpen() {
