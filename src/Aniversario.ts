@@ -4,16 +4,12 @@ import { NoteGenerator } from './NoteGenerator';
 export class Aniversario extends NoteGenerator {
   constructor(app: App) {
     super(app);
-    const today = new Date();
-    const month = (today.getMonth() + 1).toString().padStart(2, '0');
-    const day = today.getDate().toString().padStart(2, '0');
-    this.title = `${month}${day}`;
+    this.title = this.getCurrentDate();
   }
 
   async createNote() {
-    const content = 'Aniversario';
     this.title = this.getCurrentDate();
-    this.content = content;
+    this.content = '';
     this.setFileName();
     this.setYaml();
     this.prepareContent();
@@ -25,6 +21,10 @@ export class Aniversario extends NoteGenerator {
     const month = (today.getMonth() + 1).toString().padStart(2, '0');
     const day = today.getDate().toString().padStart(2, '0');
     return `${month}${day}`;
+  }
+
+  setFileName() {
+    this.fileName = `${this.getCurrentDate()}.md`;
   }
 }
 
