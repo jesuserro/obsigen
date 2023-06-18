@@ -1,4 +1,5 @@
 import { App, Menu, Notice } from 'obsidian';
+import { Aniversario } from './Aniversario';
 import { NoteGenerator } from './NoteGenerator';
 
 interface MenuItem {
@@ -31,6 +32,7 @@ export class MenuPrincipal extends Menu {
       icon: "cake",
       onClick: () => {
         new Notice(`Creando ${this.menuItems[1].title}`);
+        new Aniversario(this.app).createNote("Test", "Lorem ipsum dolor sit amet.");
       }
     });
 

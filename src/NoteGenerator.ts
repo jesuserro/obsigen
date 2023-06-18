@@ -3,7 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { DATA_YAML_DEFAULT } from './interface/Yaml';
 import { Yaml } from './templates/Yaml';
 
-class NoteGenerator {
+export class NoteGenerator {
   app: App;
   yaml: string;
   title: string;
@@ -54,5 +54,3 @@ class NoteGenerator {
   }
 
 }
-
-export { NoteGenerator };
