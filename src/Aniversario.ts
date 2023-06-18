@@ -8,12 +8,7 @@ export class Aniversario extends NoteGenerator {
   }
 
   async createNote() {
-    this.title = this.getCurrentDate();
-    this.content = '';
-    this.setFileName();
-    this.setYaml();
-    this.prepareContent();
-    await this.createNoteInVault();
+    await super.createNote(this.getCurrentDate(), this.content);
   }
 
   getCurrentDate() {
