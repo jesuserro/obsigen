@@ -24,7 +24,7 @@ export class MenuPrincipal extends Menu {
       }
     });
 
-    this.addSeparator(); // Add separator after the first menu item
+    this.addSeparator(); 
 
     this.addMenuItem({
       title: "Aniversario",
