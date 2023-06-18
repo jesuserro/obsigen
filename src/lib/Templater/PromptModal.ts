@@ -84,13 +84,62 @@ export class PromptModal extends Modal {
   private resolveAndClose(evt: Event | KeyboardEvent) {
     this.submitted = true;
     evt.preventDefault();
-    if (this.value.trim() === "") {
-      new Notice("Please enter a valid string.");
+  
+    const value = this.value.trim();
+
+    if (value === "") {
+      new Notice("Please enter a not empty string.");
       return;
     }
+  
+    // Validation 1: Check if the value is an URL
+    if (this.isURL(value)) {
+      new Notice("Please enter a not url string.");
+      return;
+    }
+  
+    // Validation 2: Check if the value contains numbers
+    if (this.hasNumbers(value)) {
+      new Notice("All numbers are not permitted.");
+      return;
+    }
+  
+    // Validation 3: Check if the value contains only special characters
+    if (this.isSpecialCharsOnly(value)) {
+      new Notice("Special chars not allowed.");
+      return;
+    }
+  
+    // Validation passed, resolve the value
     this.resolve(this.value);
     this.close();
   }
+  
+  private isURL(value: string): boolean {
+    // Regular expression to match URLs
+    const urlRegex = /^(https?:\/\/)?[\w.-]+\.[a-zA-Z]{2,}(\/\S*)?$/;
+    return urlRegex.test(value);
+  }
+  
+  private hasNumbers(value: string): boolean {
+    // Regular expression to match strings with only numbers
+    const numbersOnlyRegex = /^\d+$/;
+  
+    // Check if the value contains only numbers
+    if (numbersOnlyRegex.test(value)) {
+      return true;
+    }
+  
+    return false;
+  }
+  
+  
+  private isSpecialCharsOnly(value: string): boolean {
+    // Regular expression to match strings with only special characters
+    const specialCharsRegex = /^[\W_]+$/;
+    return specialCharsRegex.test(value);
+  }
+  
 
   openModal(): Promise<string> {
     return new Promise<string>((resolve, reject) => {
