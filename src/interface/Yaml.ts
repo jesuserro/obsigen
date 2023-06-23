@@ -5,6 +5,8 @@ export interface iYaml {
   creation: Date; 
   updated: Date;
   urls: string[];
+	icon: string;
+	image: string;
   author: string[]; 
   people: string[];
   parent: string[];
@@ -22,6 +24,8 @@ export const DATA_YAML_DEFAULT: iYaml = {
 	creation: new Date(),
 	updated: new Date(),
 	urls: [],
+	icon: '',
+	image: '',
 	author: [],
 	people: [],
 	parent: [],
@@ -38,6 +42,8 @@ export const DATA_YAML_SAMPLE: iYaml = {
 	date: new Date(),
 	creation: new Date(),
 	updated: new Date(),
+	icon: '',
+	image: '',
 	urls: ['https://example.com/note'],
 	author: ['Paco López'],
 	people: ['Jane Smithers'],
