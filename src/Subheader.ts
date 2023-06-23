@@ -6,7 +6,15 @@ export class Subheader {
   }
 
   getContent(): string {
-    return `📅\n📍\n👥\n🔗\n🏷️`;
+    const currentDate = new Date().toLocaleDateString("es-ES", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    });
+
+    return `📅 ${currentDate}\n📍\n👥\n🔗\n🏷️\n📝\n🗂️\n📎\n🟢`;
   }
 }
+
 
