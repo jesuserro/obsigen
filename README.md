@@ -2,6 +2,10 @@
 
 Just another customized Digital Garden based on Obsidian. (<https://obsidian.md>).
 
+ObsiGen — aka "Obsidian Note Generator" — is a plugin designed to enhance your note-taking experience within the Obsidian platform. With this plugin, you can create various types of notes, including daily notes, anniversary notes, memorable moments, and even capture content from platforms like Twitter and YouTube.
+
+## Features
+
 This project uses Typescript to provide type checking and documentation.
 The repo depends on the latest plugin API (obsidian.d.ts) in Typescript Definition format, which contains TSDoc comments describing what it does.
 
