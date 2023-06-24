@@ -1,8 +1,8 @@
 import { Editor, MarkdownView, Plugin } from 'obsidian';
-import { MenuPrincipal } from 'src/MenuPrincipal';
-import { SampleModal } from 'src/SampleModal';
-import SampleSettingTab from 'src/SampleSettingTab';
-import { MyPluginSettings } from 'src/interface/MyPluginSettings';
+import { MenuPrincipal } from 'src/adapters/Obsidian/MenuPrincipal';
+import { SampleModal } from 'src/adapters/Obsidian/SampleModal';
+import SampleSettingTab from 'src/adapters/Obsidian/SampleSettingTab';
+import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 
 const DEFAULT_SETTINGS: MyPluginSettings = {
 	mySetting: 'default'

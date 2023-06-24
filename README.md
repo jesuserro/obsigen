@@ -1,6 +1,6 @@
-# Obsidian Sample Plugin
+# Obsigen
 
-This is a sample plugin for Obsidian (<https://obsidian.md>).
+Just another customized Digital Garden based on Obsidian. (<https://obsidian.md>).
 
 This project uses Typescript to provide type checking and documentation.
 The repo depends on the latest plugin API (obsidian.d.ts) in Typescript Definition format, which contains TSDoc comments describing what it does.
@@ -77,6 +77,59 @@ Quick starting guide for new plugin devs:
   - eslint will then create a report with suggestions for code improvement by file and line number.
 - If your source code is in a folder, such as `src`, you can use eslint with this command to analyze all files in that folder:
   - `eslint .\src\`
+
+## Folder Structure
+Following the DDD principles, the project is divided into three layers: core, adapters and shared.
+```
+obsigen
+├─ .babelrc
+├─ .editorconfig
+├─ .eslintignore
+├─ .eslintrc
+├─ .gitignore
+├─ .npmrc
+├─ README.md
+├─ babel.config.js
+├─ esbuild.config.mjs
+├─ jest.config.js
+├─ main.ts
+├─ manifest.json
+├─ package-lock.json
+├─ package.json
+├─ src
+│  ├─ adapters
+│  │  └─ Obsidian
+│  │     ├─ MenuPrincipal.ts
+│  │     ├─ PromptModal.ts
+│  │     ├─ SampleModal.ts
+│  │     └─ SampleSettingTab.ts
+│  └─ core
+│     ├─ notes
+│     │  ├─ NoteGenerator.test.ts
+│     │  ├─ NoteGenerator.ts
+│     │  ├─ aniversario
+│     │  │  ├─ Aniversario.test.ts
+│     │  │  └─ Aniversario.ts
+│     │  └─ momento
+│     │     └─ Momento.ts
+│     └─ shared
+│        ├─ Subheader.ts
+│        ├─ interface
+│        │  ├─ MyPluginSettings.ts
+│        │  └─ Yaml.ts
+│        └─ templates
+│           └─ Yaml.tsx
+├─ styles.css
+├─ tsconfig.json
+├─ var
+│  ├─ NoteGenerator.ts
+│  ├─ NoteGeneratorAllInOne.ts
+│  ├─ NoteGeneratorCaller.ts
+│  └─ template.yaml
+├─ version-bump.mjs
+└─ versions.json
+
+```
 
 ## Funding URL
 

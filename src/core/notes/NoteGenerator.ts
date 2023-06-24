@@ -1,8 +1,8 @@
 import { App } from 'obsidian';
 import { renderToString } from 'react-dom/server';
-import { Subheader } from './Subheader';
-import { DATA_YAML_DEFAULT } from './interface/Yaml';
-import { Yaml } from './templates/Yaml';
+import { Subheader } from './../shared/Subheader';
+import { DATA_YAML_DEFAULT } from './../shared/interface/Yaml';
+import { Yaml } from './../shared/templates/Yaml';
 
 export class NoteGenerator {
   app: App;

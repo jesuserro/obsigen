@@ -1,5 +1,5 @@
 import { App } from 'obsidian';
-import { NoteGenerator } from './NoteGenerator';
+import { NoteGenerator } from '../NoteGenerator';
 
 export class Aniversario extends NoteGenerator {
   constructor(app: App) {

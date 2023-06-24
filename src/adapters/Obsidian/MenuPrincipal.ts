@@ -1,6 +1,6 @@
 import { App, Menu, Notice } from 'obsidian';
-import { Aniversario } from './Aniversario';
-import { Momento } from './Momento';
+import { Aniversario } from '../../core/notes/aniversario/Aniversario';
+import { Momento } from '../../core/notes/momento/Momento';
 import { PromptModal } from './PromptModal';
 
 interface MenuItem {
