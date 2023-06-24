@@ -14,7 +14,7 @@ export default class MyPlugin extends Plugin {
 
 	async onload() {
 
-		console.log('Loading Jesus\'s NoteGenerator plugin');
+		console.log('Loading Obsigen plugin');
 		
 		await this.loadSettings();
 

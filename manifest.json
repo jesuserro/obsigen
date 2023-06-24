@@ -1,9 +1,9 @@
 {
-	"id": "obsidian-note-generator",
-	"name": "Jesus' Note Generator",
-	"version": "1.0.0",
+	"id": "obsigen",
+	"name": "Obsigen",
+	"version": "0.0.1",
 	"minAppVersion": "0.15.0",
-	"description": "This is my personal customization of my vault according to my needs.",
+	"description": "Just another customized digital garden.",
 	"author": "Jesús Erro",
 	"authorUrl": "https://www.linkedin.com/in/jesuserro/",
 	"fundingUrl": "https://obsidian.md/pricing",
