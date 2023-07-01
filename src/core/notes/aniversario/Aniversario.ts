@@ -20,6 +20,7 @@ export class Aniversario extends NoteGenerator {
     super(app);
     this.setYaml();
     this.subheader = new AniversarioSubheader('').getContent();
+    this.subheader = `${this.subheader}\n${this.getAniversarioCrumbs()}`;
   }
 
   getCurrentDate() {
@@ -60,6 +61,22 @@ export class Aniversario extends NoteGenerator {
 
   getBody() {  
     return `## Santoral\n\n## Evangelio\n\n## Cumpleaños\n\n## Eventos\n\n## Meteo\n\n## Agro\n\n## Aniversarios\n### ![[${this.getCurrentDateLong()}]]`;
+  }
+
+  getAniversarioCrumbs() {
+    const now = new Date();
+    const yesterday = new Date(now.setDate(now.getDate() - 1));
+    const tomorrow = new Date(now.setDate(now.getDate() + 2));
+    const yesterdayDate = this.formatDate(yesterday, '');
+    const todayDate = this.formatDate(new Date(), '');
+    const tomorrowDate = this.formatDate(tomorrow, '');
+    return `[[${yesterdayDate}]] | ${todayDate} | [[${tomorrowDate}]]`;
+  }
+
+  formatDate(date: Date, separator: string) {
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${month}${separator}${day}`;
   }
 }
 

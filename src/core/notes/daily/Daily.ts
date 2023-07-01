@@ -19,7 +19,7 @@ export class Daily extends NoteGenerator {
     super(app);
     this.setYaml();
     this.subheader = new DailySubheader('').getContent();
-    this.subheader = `${this.subheader}\n${this.dailyCrumbs()}`;
+    this.subheader = `${this.subheader}\n${this.getDailyCrumbs()}`;
   }
 
   getTitle() {
@@ -77,7 +77,7 @@ export class Daily extends NoteGenerator {
     return `\`\`\` dataview\nTABLE date, rating FROM "/" WHERE contains(date,"${this.getCurrentDateDashed()}") AND file.name != this.file.name SORT date\n\`\`\``;
   }
 
-  dailyCrumbs() {
+  getDailyCrumbs() {
     const now = new Date();
     const yesterday = new Date(now.setDate(now.getDate() - 1));
     const tomorrow = new Date(now.setDate(now.getDate() + 2));
