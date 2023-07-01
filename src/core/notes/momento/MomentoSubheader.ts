@@ -1,4 +1,4 @@
-export class Subheader {
+export class MomentoSubheader {
   content: string;
 
   constructor(content: string) {
