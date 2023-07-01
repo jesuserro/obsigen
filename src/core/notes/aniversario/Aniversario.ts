@@ -1,5 +1,5 @@
 import { App } from 'obsidian';
-import { NoteGenerator } from '../NoteGenerator';
+import { NoteGenerator } from './../NoteGenerator';
 
 import { renderToString } from 'react-dom/server';
 import { DATA_YAML_DEFAULT } from './../../shared/interface/iYaml';
@@ -14,14 +14,27 @@ export class Aniversario extends NoteGenerator {
   title: string;
   subheader: string;
   content: string;
-
+  fileName: string;
+  
   constructor(app: App) {
     super(app);
-    this.title = this.getTitle();
     this.setYaml();
     this.subheader = new AniversarioSubheader('').getContent();
-    this.content = this.getContent();
-    this.setContent();
+  }
+
+  getCurrentDate() {
+    const now = new Date();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    return `${month}${day}`;
+  }
+
+  getCurrentDateLong() {
+    const now = new Date();
+    const year = now.getFullYear().toString();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    return `${year}${month}${day}`;
   }
 
   setYaml(): void {
@@ -31,30 +44,29 @@ export class Aniversario extends NoteGenerator {
   }
 
   async createNote() {
-    await super.createNote(this.title, this.content);
+    this.title = this.getCurrentDate();
+    this.fileName = this.getFilename();
+    this.setContent();
+    await super.createNote(this.fileName, this.content);
   }
 
   setContent(): void {
-    this.content = `${this.yaml}\n# ${this.title}\n${this.subheader}\n\n${this.content}`;
+    this.content = `${this.yaml}\n# ${this.title}\n${this.subheader}\n\n${this.getBody()}`;
   }
 
-  getTitle() {
-    const today = new Date();
-    const month = (today.getMonth() + 1).toString().padStart(2, '0');
-    const day = today.getDate().toString().padStart(2, '0');
-    return `${month}${day}`;
+  getFilename() {
+    return `${this.getCurrentDate()}`;
   }
 
-  getCurrentDate() {
-    const today = new Date();
-    const year = today.getFullYear().toString();
-    const month = (today.getMonth() + 1).toString().padStart(2, '0');
-    const day = today.getDate().toString().padStart(2, '0');
-    return `${year}${month}${day}`;
-  }
-
-  getContent() {  
-    return `## Santoral\n\n## Evangelio\n\n## Cumpleaños\n\n## Eventos\n\n## Meteo\n\n## Agro\n\n## Aniversarios\n### ![[${this.getCurrentDate()}]]`;
+  getBody() {  
+    return `## Santoral\n\n## Evangelio\n\n## Cumpleaños\n\n## Eventos\n\n## Meteo\n\n## Agro\n\n## Aniversarios\n### ![[${this.getCurrentDateLong()}]]`;
   }
 }
+
+
+
+
+
+
+
 

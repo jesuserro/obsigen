@@ -3,9 +3,10 @@ import { App } from 'obsidian';
 
 export class NoteGenerator {
   app: App;
-  title: string;
-  content: string;
+
   fileName: string;
+  content: string;
+  
 
   constructor(app: App) {
     this.app = app;
@@ -15,11 +16,9 @@ export class NoteGenerator {
     return 'Hello, World!';
   }
 
-  async createNote(title: string, content: string) {
-    
-    this.title = title;
+  async createNote(fileName: string, content: string) {
     this.content = content;
-    this.setFileName(title);
+    this.setFileName(fileName);
     await this.createNoteInVault();
   }
 
@@ -28,13 +27,8 @@ export class NoteGenerator {
     this.app.workspace.openLinkText(newFile.path, '', false);
   }
 
-  setFileName(name: string) {
-    const sanitizedName = name.replace(/[^a-zA-Z0-9]/g, '_');
-    this.fileName = `${sanitizedName}.md`;
-  }
-  
-  getFileName() {
-    return this.fileName;
+  setFileName(fileName: string) {
+    this.fileName = `${fileName}.md`;
   }
 
 }
