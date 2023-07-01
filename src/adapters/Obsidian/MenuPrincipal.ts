@@ -1,5 +1,6 @@
 import { App, Menu, Notice } from 'obsidian';
 import { Aniversario } from '../../core/notes/aniversario/Aniversario';
+import { Daily } from '../../core/notes/daily/Daily';
 import { Momento } from '../../core/notes/momento/Momento';
 import { PromptModal } from './PromptModal';
 
@@ -45,6 +46,7 @@ export class MenuPrincipal extends Menu {
       icon: "calendar",
       onClick: () => {
         new Notice(`Creando ${this.menuItems[2].title}`);
+        new Daily(this.app).createNote();
       }
     });
 
