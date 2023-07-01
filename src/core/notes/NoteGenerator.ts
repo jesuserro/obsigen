@@ -1,14 +1,9 @@
 import { App } from 'obsidian';
-import { renderToString } from 'react-dom/server';
-import { Subheader } from './../shared/Subheader';
-import { DATA_YAML_DEFAULT } from './../shared/interface/Yaml';
-import { Yaml } from './../shared/templates/Yaml';
+
 
 export class NoteGenerator {
   app: App;
-  yaml: string;
   title: string;
-  subheader: string;
   content: string;
   fileName: string;
 
@@ -24,10 +19,7 @@ export class NoteGenerator {
     
     this.title = title;
     this.content = content;
-    this.subheader = this.getSubheader();
     this.setFileName(title);
-    this.setYaml();
-    this.prepareContent();
     await this.createNoteInVault();
   }
 
@@ -43,21 +35,6 @@ export class NoteGenerator {
   
   getFileName() {
     return this.fileName;
-  }
-
-  prepareContent(): void {
-    this.content = `${this.yaml}\n# ${this.title}\n${this.subheader}\n${this.content}`;
-  }
-
-  setYaml(): void {
-    const data = { ...DATA_YAML_DEFAULT, title: this.title };
-    let yaml = renderToString(Yaml({data}));
-    this.yaml = yaml.replace(/<!-- -->/g, '');
-  }
-
-  getSubheader(): string {
-    const subheader = new Subheader('');
-    return subheader.getContent();
   }
 
 }

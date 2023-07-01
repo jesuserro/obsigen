@@ -16,5 +16,3 @@ export class Subheader {
     return `📅 ${currentDate}\n📍\n👥\n🔗\n🏷️\n📝\n🗂️\n📎\n🟢`;
   }
 }
-
-
