@@ -24,6 +24,61 @@ This sample plugin demonstrates some of the basic functionality the plugin API c
 - Registers a global click event and output 'click' to the console.
 - Registers a global interval which logs 'setInterval' to the console.
 
+## Folder Structure
+Following the DDD principles, the project is divided into three layers: core, adapters and shared.
+```
+obsigen
+├─ .babelrc
+├─ .editorconfig
+├─ .eslintignore
+├─ .eslintrc
+├─ .gitignore
+├─ .npmrc
+├─ README.md
+├─ babel.config.js
+├─ esbuild.config.mjs
+├─ jest.config.js
+├─ main.ts
+├─ manifest.json
+├─ package-lock.json
+├─ package.json
+├─ src
+│  ├─ adapters
+│  │  └─ Obsidian
+│  │     ├─ MenuPrincipal.ts
+│  │     ├─ PromptModal.ts
+│  │     ├─ SampleModal.ts
+│  │     └─ SampleSettingTab.ts
+│  └─ core
+│     ├─ notes
+│     │  ├─ NoteGenerator.test.ts
+│     │  ├─ NoteGenerator.ts
+│     │  ├─ aniversario
+│     │  │  ├─ Aniversario.test.ts
+│     │  │  ├─ Aniversario.ts
+│     │  │  ├─ AniversarioSubheader.ts
+│     │  │  └─ AniversarioYaml.tsx
+│     │  └─ momento
+│     │     ├─ Momento.ts
+│     │     ├─ MomentoSubheader.ts
+│     │     └─ MomentoYaml.tsx
+│     └─ shared
+│        ├─ interface
+│        │  ├─ MyPluginSettings.ts
+│        │  └─ iYaml.ts
+│        └─ templates
+│           └─ Yaml.tsx
+├─ styles.css
+├─ tsconfig.json
+├─ var
+│  ├─ NoteGenerator.ts
+│  ├─ NoteGeneratorAllInOne.ts
+│  ├─ NoteGeneratorCaller.ts
+│  └─ template.yaml
+├─ version-bump.mjs
+└─ versions.json
+```
+
 ## Commands
 
 ``` shell
@@ -87,59 +142,6 @@ Quick starting guide for new plugin devs:
 - If your source code is in a folder, such as `src`, you can use eslint with this command to analyze all files in that folder:
   - `eslint .\src\`
 
-## Folder Structure
-Following the DDD principles, the project is divided into three layers: core, adapters and shared.
-```
-obsigen
-├─ .babelrc
-├─ .editorconfig
-├─ .eslintignore
-├─ .eslintrc
-├─ .gitignore
-├─ .npmrc
-├─ README.md
-├─ babel.config.js
-├─ esbuild.config.mjs
-├─ jest.config.js
-├─ main.ts
-├─ manifest.json
-├─ package-lock.json
-├─ package.json
-├─ src
-│  ├─ adapters
-│  │  └─ Obsidian
-│  │     ├─ MenuPrincipal.ts
-│  │     ├─ PromptModal.ts
-│  │     ├─ SampleModal.ts
-│  │     └─ SampleSettingTab.ts
-│  └─ core
-│     ├─ notes
-│     │  ├─ NoteGenerator.test.ts
-│     │  ├─ NoteGenerator.ts
-│     │  ├─ aniversario
-│     │  │  ├─ Aniversario.test.ts
-│     │  │  └─ Aniversario.ts
-│     │  └─ momento
-│     │     └─ Momento.ts
-│     └─ shared
-│        ├─ Subheader.ts
-│        ├─ interface
-│        │  ├─ MyPluginSettings.ts
-│        │  └─ Yaml.ts
-│        └─ templates
-│           └─ Yaml.tsx
-├─ styles.css
-├─ tsconfig.json
-├─ var
-│  ├─ NoteGenerator.ts
-│  ├─ NoteGeneratorAllInOne.ts
-│  ├─ NoteGeneratorCaller.ts
-│  └─ template.yaml
-├─ version-bump.mjs
-└─ versions.json
-
-```
-
 ## API Documentation
 
 See <https://github.com/obsidianmd/obsidian-api>
@@ -147,3 +149,4 @@ See <https://github.com/obsidianmd/obsidian-api>
 ## Funding
 
 [![Buy Me a Coffee](https://img.shields.io/badge/-Buy%20Me%20a%20Coffee-orange?style=flat&logo=buy-me-a-coffee&logoColor=white)](https://www.buymeacoffee.com/jesuserro)
+
