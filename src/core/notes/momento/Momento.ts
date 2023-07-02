@@ -15,11 +15,10 @@ export class Momento extends NoteGenerator {
   subheader: string;
   content: string;
   fileName: string;
+  callout: string;
   
   constructor(app: App) {
     super(app);
-    this.setYaml();
-    this.subheader = new MomentoSubheader('').getContent();
   }
 
   getCurrentDate() {
@@ -40,16 +39,20 @@ export class Momento extends NoteGenerator {
 
   async createNote(title: string, content: string) {
     this.title = this.getTitle(title);
+    this.setYaml();
+    this.subheader = new MomentoSubheader('').getContent();
     this.fileName = this.getFilename(title);
+    this.callout = this.getCallout();
     this.setContent(content);
     await super.createNote(this.fileName, this.content);
   }
 
   setContent(content: string): void {
-    this.content = `${this.yaml}\n# ${this.title}\n${this.subheader}\n\n${content}`;
+    this.content = `${this.yaml}\n${this.callout}\n# ${this.title}\n${this.subheader}\n\n${content}`;
   }
 
   getTitle(title: string) {
+    title = title.charAt(0).toUpperCase() + title.slice(1);
     return `${title}`;
   }
 
@@ -59,6 +62,10 @@ export class Momento extends NoteGenerator {
 
   getContent() {  
     return ``;
+  }
+
+  getCallout() {  
+    return `%%\n[[Erro Iribarren Jesús|mismemorias]], [[Momentazos]]\n%%`;
   }
 }
 

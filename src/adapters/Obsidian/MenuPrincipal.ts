@@ -26,7 +26,7 @@ export class MenuPrincipal extends Menu {
         const promptModal = new PromptModal("Momentazo", "", false);
         await promptModal.openModal();
         const title = promptModal.getValue();
-        await new Momento(this.app).createNote(title, `Momentazo ${title}`);
+        await new Momento(this.app).createNote(title, ``);
       }
     });
 

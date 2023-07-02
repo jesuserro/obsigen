@@ -18,9 +18,6 @@ export class Aniversario extends NoteGenerator {
   
   constructor(app: App) {
     super(app);
-    this.setYaml();
-    this.subheader = new AniversarioSubheader('').getContent();
-    this.subheader = `${this.subheader}\n${this.getAniversarioCrumbs()}`;
   }
 
   getCurrentDate() {
@@ -46,13 +43,16 @@ export class Aniversario extends NoteGenerator {
 
   async createNote() {
     this.title = this.getCurrentDate();
+    this.setYaml();
+    this.subheader = new AniversarioSubheader('').getContent();
+    this.subheader = `${this.subheader}\n${this.getAniversarioCrumbs()}`;
     this.fileName = this.getFilename();
     this.setContent();
     await super.createNote(this.fileName, this.content);
   }
 
   setContent(): void {
-    this.content = `${this.yaml}\n# ${this.title}\n${this.subheader}\n\n${this.getBody()}`;
+    this.content = `${this.yaml}\n# ${this.title}\n${this.subheader}\n${this.getBody()}`;
   }
 
   getFilename() {

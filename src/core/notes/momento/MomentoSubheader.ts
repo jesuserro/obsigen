@@ -13,6 +13,6 @@ export class MomentoSubheader {
       year: "numeric"
     });
 
-    return `📅 ${currentDate}\n📍\n👥\n🗂️\n🔗\n🏷️\n🟢`;
+    return `📅 ${currentDate}\n📍\n👥`;
   }
 }

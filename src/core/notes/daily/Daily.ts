@@ -17,9 +17,6 @@ export class Daily extends NoteGenerator {
 
   constructor(app: App) {
     super(app);
-    this.setYaml();
-    this.subheader = new DailySubheader('').getContent();
-    this.subheader = `${this.subheader}\n${this.getDailyCrumbs()}`;
   }
 
   getTitle() {
@@ -49,20 +46,23 @@ export class Daily extends NoteGenerator {
   }
 
   setYaml(): void {
-    const data = { ...DATA_YAML_DEFAULT, title: this.title };
+    const data = { ...DATA_YAML_DEFAULT, title: this.getCurrentDateDashed() };
     let yaml = renderToString(DailyYaml({ data }));
     this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
   async createNote() {
     this.title = this.getTitle();
+    this.setYaml();
+    this.subheader = new DailySubheader('').getContent();
+    this.subheader = `${this.subheader}\n${this.getDailyCrumbs()}`;
     this.fileName = this.getFilename();
     this.setContent();
     await super.createNote(this.fileName, this.content);
   }
 
   setContent(): void {
-    this.content = `${this.yaml}\n# ${this.title}\n${this.subheader}\n\n${this.getBody()}`;
+    this.content = `${this.yaml}\n# ${this.title}\n${this.subheader}\n${this.getBody()}`;
   }
 
   getFilename() {
@@ -70,7 +70,7 @@ export class Daily extends NoteGenerator {
   }
 
   getBody() {
-    return `## Resumen\n\n## Notas del día\n${this.getDataview()}\n\n## Tareas\n- [ ]`;
+    return `## Resumen\n\n## Notas del día\n${this.getDataview()}\n## Tareas\n- [ ] \n`;
   }
 
   getDataview() {
