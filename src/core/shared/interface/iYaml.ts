@@ -13,8 +13,8 @@ export interface iYaml {
   children: string[];
   tags: string[];
   locations: string[];
-  rating: number;
-  emotion: number;
+  rating: number | "";
+  emotion: number | "";
 } 
 
 export const DATA_YAML_DEFAULT: iYaml = {
@@ -32,8 +32,8 @@ export const DATA_YAML_DEFAULT: iYaml = {
 	children: [],
 	tags: [],
 	locations: [],
-	rating: 5,
-	emotion: 5
+	rating: '',
+	emotion: ''
 };
 
 export const DATA_YAML_SAMPLE: iYaml = {
@@ -51,6 +51,6 @@ export const DATA_YAML_SAMPLE: iYaml = {
 	children: ['child1', 'child2'],
 	tags: ['tag1', 'tag2'],
 	locations: ['location1', 'location2'],
-	rating: 7,
-	emotion: 8
+	rating: 0,
+	emotion: 10
 };
