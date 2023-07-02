@@ -48,7 +48,9 @@ export class Aniversario extends NoteGenerator {
     this.subheader = `${this.subheader}\n${this.getAniversarioCrumbs()}`;
     this.fileName = this.getFilename();
     this.setContent();
-    await super.createNote(this.fileName, this.content);
+    const now = new Date();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    await super.createNote(this.fileName, this.content, `100 Calendar/Aniversaries/${month}`);
   }
 
   setContent(): void {

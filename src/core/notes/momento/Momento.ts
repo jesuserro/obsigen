@@ -41,10 +41,10 @@ export class Momento extends NoteGenerator {
     this.title = this.getTitle(title);
     this.setYaml();
     this.subheader = new MomentoSubheader('').getContent();
-    this.fileName = this.getFilename(title);
+    this.fileName = this.getFilename(this.title);
     this.callout = this.getCallout();
     this.setContent(content);
-    await super.createNote(this.fileName, this.content);
+    await super.createNote(this.fileName, this.content, `100 Calendar/Moments`);
   }
 
   setContent(content: string): void {

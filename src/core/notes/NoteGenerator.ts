@@ -1,4 +1,4 @@
-import { App } from 'obsidian';
+import { App, TFile } from 'obsidian';
 
 
 export class NoteGenerator {
@@ -16,14 +16,19 @@ export class NoteGenerator {
     return 'Hello, World!';
   }
 
-  async createNote(fileName: string, content: string) {
+  async createNote(fileName: string, content: string, folder?: string) {
     this.content = content;
     this.setFileName(fileName);
-    await this.createNoteInVault();
+    await this.createNoteInVault(folder);
   }
 
-  async createNoteInVault() {
-    const newFile: any = await this.app.vault.create(this.fileName, this.content);
+  async createNoteInVault(folder?: string) {
+    let separator = '/';
+    if (!folder) {
+      folder = '';
+      separator = '';
+    }
+    const newFile: TFile = await this.app.vault.create(`${folder}${separator}${this.fileName}`, this.content);
     this.app.workspace.openLinkText(newFile.path, '', false);
   }
 

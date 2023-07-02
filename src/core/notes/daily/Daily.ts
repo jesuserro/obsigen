@@ -58,7 +58,9 @@ export class Daily extends NoteGenerator {
     this.subheader = `${this.subheader}\n${this.getDailyCrumbs()}`;
     this.fileName = this.getFilename();
     this.setContent();
-    await super.createNote(this.fileName, this.content);
+    const now = new Date();
+    const year = now.getFullYear().toString();
+    await super.createNote(this.fileName, this.content, `100 Calendar/Daily/${year}`);
   }
 
   setContent(): void {
