@@ -7,7 +7,7 @@ export interface iYaml {
   urls: string[];
 	icon: string;
 	image: string;
-  author: string[]; 
+  authors: string[]; 
   people: string[];
   parent: string[];
   children: string[];
@@ -26,7 +26,7 @@ export const DATA_YAML_DEFAULT: iYaml = {
 	urls: [],
 	icon: '',
 	image: '',
-	author: [],
+	authors: [],
 	people: [],
 	parent: [],
 	children: [],
@@ -45,7 +45,7 @@ export const DATA_YAML_SAMPLE: iYaml = {
 	icon: '',
 	image: '',
 	urls: ['https://example.com/note'],
-	author: ['Paco López'],
+	authors: ['Paco López'],
 	people: ['Jane Smithers'],
 	parent: ['parent1', 'parent2'],
 	children: ['child1', 'child2'],
