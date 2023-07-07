@@ -21,7 +21,7 @@ export class Momento extends NoteGenerator {
     super(app);
   }
 
-  getCurrentDate() {
+  getCurrentDateTime() {
     const now = new Date();
     const year = now.getFullYear().toString();
     const month = (now.getMonth() + 1).toString().padStart(2, '0');
@@ -29,6 +29,16 @@ export class Momento extends NoteGenerator {
     const hour = now.getHours().toString().padStart(2, '0');
     const minute = now.getMinutes().toString().padStart(2, '0');
     return `${year}${month}${day}${hour}${minute}`;
+  }
+
+  getCurrentDate() {
+    const now = new Date();
+    const year = now.getFullYear().toString();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    const hour = now.getHours().toString().padStart(2, '0');
+    const minute = now.getMinutes().toString().padStart(2, '0');
+    return `${year}${month}${day}`;
   }
 
   setYaml(): void {
@@ -57,7 +67,7 @@ export class Momento extends NoteGenerator {
   }
 
   getFilename(title: string) {
-    return `${this.getCurrentDate()} ${title}`;
+    return `${this.getCurrentDateTime()} ${title}`;
   }
 
   getContent() {  
@@ -65,7 +75,7 @@ export class Momento extends NoteGenerator {
   }
 
   getCallout() {  
-    return `%%\n[[Erro Iribarren Jesús|mismemorias]], [[Momentazos]]\n%%`;
+    return `%%\n[[${this.getCurrentDate()}]], [[Tareas]], [[Erro Iribarren Jesús|mismemorias]], [[Momentazos]]\n%%`;
   }
 }
 
