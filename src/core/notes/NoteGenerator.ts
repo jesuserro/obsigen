@@ -1,4 +1,4 @@
-import { App, TFile } from 'obsidian';
+import { App } from 'obsidian';
 
 
 export class NoteGenerator {
@@ -28,8 +28,13 @@ export class NoteGenerator {
       folder = '';
       separator = '';
     }
-    const newFile: TFile = await this.app.vault.create(`${folder}${separator}${this.fileName}`, this.content);
-    this.app.workspace.openLinkText(newFile.path, '', false);
+
+    const path = `${folder}${separator}${this.fileName}`;
+    let fileRef = this.app.vault.getAbstractFileByPath(path);
+    if (!fileRef) {
+      fileRef = await this.app.vault.create(path, this.content);
+    }
+    this.app.workspace.openLinkText(fileRef.path, '', false);
   }
 
   setFileName(fileName: string) {

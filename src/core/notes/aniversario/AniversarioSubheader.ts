@@ -6,7 +6,7 @@ export class AniversarioSubheader {
   }
 
   getContent(): string {
-    return `%%\n[[aniversarios]], [[Erro Iribarren Jesús|mismemorias]]\n%%`;
+    return `%%\n[[Tareas]], [[aniversarios]], [[Erro Iribarren Jesús|mismemorias]]\n%%`;
   }
 }
 
