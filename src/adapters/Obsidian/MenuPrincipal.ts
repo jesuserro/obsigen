@@ -1,5 +1,7 @@
 import { App, Menu, Notice } from 'obsidian';
 import { Aniversario } from '../../core/notes/aniversario/Aniversario';
+import { CaptureUrl } from '../../core/notes/captureUrl/CaptureUrl';
+import { CaptureUrlModal } from '../../core/notes/captureUrl/CaptureUrlModal';
 import { Daily } from '../../core/notes/daily/Daily';
 import { Momento } from '../../core/notes/momento/Momento';
 import { PromptModal } from './PromptModal';
@@ -19,25 +21,28 @@ export class MenuPrincipal extends Menu {
     this.menuItems = [];
 
     this.addMenuItem({
-      title: "Momentazo",
-      icon: "calendar-plus",
+      title: "Capture URL",
+      icon: "link",
       onClick: async () => {
-        new Notice(`Creando ${this.menuItems[0].title}`);
-        const promptModal = new PromptModal("Momentazo", "", false);
+        new Notice(`Creating ${this.menuItems[0].title}`);
+        const promptModal = new CaptureUrlModal("Capturar Url", "", "");
         await promptModal.openModal();
-        const title = promptModal.getValue();
-        await new Momento(this.app).createNote(title, ``);
+        const { title, url } = promptModal.getFormValues();
+        await new CaptureUrl(this.app).createNote(title, url);
       }
     });
 
     this.addSeparator(); 
 
     this.addMenuItem({
-      title: "Aniversario",
-      icon: "cake",
-      onClick: () => {
+      title: "Momentazo",
+      icon: "calendar-plus",
+      onClick: async () => {
         new Notice(`Creando ${this.menuItems[1].title}`);
-        new Aniversario(this.app).createNote();
+        const promptModal = new PromptModal("Momentazo", "", false);
+        await promptModal.openModal();
+        const title = promptModal.getValue();
+        await new Momento(this.app).createNote(title, ``);
       }
     });
 
@@ -51,12 +56,14 @@ export class MenuPrincipal extends Menu {
     });
 
     this.addMenuItem({
-      title: "Simple Mass",
-      icon: "church",
+      title: "Aniversario",
+      icon: "cake",
       onClick: () => {
         new Notice(`Creando ${this.menuItems[3].title}`);
+        new Aniversario(this.app).createNote();
       }
     });
+    
   }
 
   addMenuItem(item: MenuItem & { onClick: () => void }) {

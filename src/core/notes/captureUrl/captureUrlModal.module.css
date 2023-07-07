@@ -1,0 +1,25 @@
+/* captureUrlModal.module.css */
+
+.modalContainer {
+  /* CSS properties for the modal container */
+  border: 1px solid #f00;
+}
+
+.formTitle {
+  /* CSS properties for the form title */
+  color:blue; 
+}
+
+.formField {
+  /* CSS properties for the form fields */
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.submitButton {
+  /* CSS properties for the submit button */
+}
+
+
+
