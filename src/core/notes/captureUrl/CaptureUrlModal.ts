@@ -1,5 +1,4 @@
 import { ButtonComponent, Modal, Notice, TextAreaComponent, TextComponent } from "obsidian";
-import "./captureUrlModal.module.css";
 
 class TemplaterError extends Error {
   constructor(msg: string, public console_msg?: string) {
@@ -36,39 +35,35 @@ export class CaptureUrlModal extends Modal {
 
   createForm(): void {
     const div = this.contentEl.createDiv();
-    div.addClass("modalContainer");
-  
+    div.addClass("p-4");
+
     // Title label and textfield
-    const titleDiv = div.createDiv();
-    titleDiv.addClass("formField");
+    const titleDiv = div.createDiv("mb-4");
     const titleLabel = titleDiv.createEl("label");
     titleLabel.setText("Title");
     const titleField = new TextComponent(titleDiv);
-    titleField.inputEl.addClass("templater-prompt-input");
+    titleField.inputEl.addClass("border border-gray-300 p-2 rounded");
     titleField.setPlaceholder("Type title here");
     titleField.setValue(this.title);
     titleField.onChange((value) => (this.title = value));
-  
+
     // URL label and textarea
-    const urlDiv = div.createDiv();
-    urlDiv.addClass("formField");
+    const urlDiv = div.createDiv("mb-4");
     const urlLabel = urlDiv.createEl("label");
     urlLabel.setText("URL");
     const urlTextarea = new TextAreaComponent(urlDiv);
-    urlTextarea.inputEl.addClass("templater-prompt-input");
+    urlTextarea.inputEl.addClass("border border-gray-300 p-2 rounded");
     urlTextarea.setPlaceholder("Type URL here");
     urlTextarea.setValue(this.url);
     urlTextarea.onChange((value) => (this.url = value));
-  
-    const buttonDiv = this.contentEl.createDiv();
-    buttonDiv.addClass("submitButton");
+
+    const buttonDiv = this.contentEl.createDiv("flex justify-end");
     const submitButton = new ButtonComponent(buttonDiv);
-    submitButton.buttonEl.addClass("mod-cta");
+    submitButton.buttonEl.addClass("bg-blue-500 text-white px-4 py-2 rounded");
     submitButton.setButtonText("Submit").onClick((evt: Event) => {
       this.resolveAndClose(evt);
     });
   }
-  
 
   private resolveAndClose(evt: Event) {
     this.submitted = true;
@@ -77,31 +72,9 @@ export class CaptureUrlModal extends Modal {
     const title = this.title.trim();
     const url = this.url.trim();
 
-    if (title === "") {
-      new Notice("Please enter a non-empty title.");
-      return;
-    }
-
-    if (url === "") {
-      new Notice("Please enter a non-empty URL.");
-      return;
-    }
-
-    // Validation 1: Check if the value is a valid URL
-    if (!this.isURL(url)) {
-      new Notice("Please enter a valid URL.");
-      return;
-    }
-
-    // Validation 2: Check if the title contains numbers
-    if (this.hasNumbers(title)) {
-      new Notice("Numbers are not permitted in the title.");
-      return;
-    }
-
-    // Validation 3: Check if the title contains only special characters
-    if (this.isSpecialCharsOnly(title)) {
-      new Notice("Special characters are not allowed in the title.");
+    const validationError = this.validateForm(title, url);
+    if (validationError) {
+      new Notice(validationError);
       return;
     }
 
@@ -110,22 +83,34 @@ export class CaptureUrlModal extends Modal {
     this.close();
   }
 
-  private isURL(value: string): boolean {
-    // Regular expression to match URLs
+  private validateForm(title: string, url: string): string | null {
+    if (title === "") {
+      return "Please enter a non-empty title.";
+    }
+
+    if (url === "") {
+      return "Please enter a non-empty URL.";
+    }
+
+    // Validation 1: Check if the value is a valid URL
     const urlRegex = /^(https?:\/\/)?[\w.-]+\.[a-zA-Z]{2,}(\/\S*)?$/;
-    return urlRegex.test(value);
-  }
+    if (!urlRegex.test(url)) {
+      return "Please enter a valid URL.";
+    }
 
-  private hasNumbers(value: string): boolean {
-    // Regular expression to match strings with only numbers
+    // Validation 2: Check if the title contains numbers
     const numbersOnlyRegex = /^\d+$/;
-    return numbersOnlyRegex.test(value);
-  }
+    if (numbersOnlyRegex.test(title)) {
+      return "Numbers are not permitted in the title.";
+    }
 
-  private isSpecialCharsOnly(value: string): boolean {
-    // Regular expression to match strings with only special characters
+    // Validation 3: Check if the title contains only special characters
     const specialCharsRegex = /^[\W_]+$/;
-    return specialCharsRegex.test(value);
+    if (specialCharsRegex.test(title)) {
+      return "Special characters are not allowed in the title.";
+    }
+
+    return null; // No validation errors
   }
 
   openModal(): Promise<{ title: string; url: string }> {
