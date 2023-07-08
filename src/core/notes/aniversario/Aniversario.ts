@@ -54,7 +54,7 @@ export class Aniversario extends NoteGenerator {
   }
 
   setContent(): void {
-    this.content = `${this.yaml}\n# ${this.title}\n${this.subheader}\n${this.getBody()}`;
+    this.content = `${this.yaml}\n# ${this.title}\n${this.subheader}\n\n${this.getBody()}\n`;
   }
 
   getFilename() {
