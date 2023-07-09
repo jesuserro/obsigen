@@ -6,7 +6,7 @@ export class DailySubheader {
   }
 
   getContent(): string {
-    return `%%\n[[Tareas]], [[Erro Iribarren Jesús|mismemorias]], [[Notas Diarias]]\n%%`;
+    return `%%\n[[Erro Iribarren Jesús|mismemorias]], [[Notas Diarias]]\n%%`;
   }
 }
 

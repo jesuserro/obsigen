@@ -70,7 +70,7 @@ export class Momento extends NoteGenerator {
   }
 
   getCallout() {  
-    return `%%\n[[${this.getCurrentDate()}]], [[Tareas]], [[Erro Iribarren Jesús|mismemorias]], [[Momentazos]]\n%%`;
+    return `%%\n[[${this.getCurrentDate()}]], [[Erro Iribarren Jesús|mismemorias]], [[Momentazos]]\n%%`;
   }
 }
 

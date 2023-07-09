@@ -86,7 +86,7 @@ export class CaptureUrl extends NoteGenerator {
   
 
   getCallout() {  
-    return `%%\n[[${this.getCurrentDate()}]], [[Tareas]]\n%%`;
+    return `%%\n[[${this.getCurrentDate()}]]\n%%`;
   }
 }
 
