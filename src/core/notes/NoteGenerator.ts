@@ -1,4 +1,4 @@
-import { App } from 'obsidian';
+import { App, Notice } from 'obsidian';
 
 
 export class NoteGenerator {
@@ -31,9 +31,12 @@ export class NoteGenerator {
 
     const path = `${folder}${separator}${this.fileName}`;
     let fileRef = this.app.vault.getAbstractFileByPath(path);
+    let msg = `Abriendo ${this.fileName}`;
     if (!fileRef) {
       fileRef = await this.app.vault.create(path, this.content);
+      msg = `Creando ${this.fileName}`;
     }
+    new Notice(msg);
     this.app.workspace.openLinkText(fileRef.path, '', false);
   }
 

@@ -1,4 +1,4 @@
-import { App, Menu, Notice } from 'obsidian';
+import { App, Menu } from 'obsidian';
 import { Aniversario } from '../../core/notes/aniversario/Aniversario';
 import { CaptureUrl } from '../../core/notes/captureUrl/CaptureUrl';
 import { CaptureUrlModal } from '../../core/notes/captureUrl/CaptureUrlModal';
@@ -24,7 +24,6 @@ export class MenuPrincipal extends Menu {
       title: "Capture URL",
       icon: "link",
       onClick: async () => {
-        new Notice(`Creating ${this.menuItems[0].title}`);
         const promptModal = new CaptureUrlModal("Capturar Url", "", "");
         await promptModal.openModal();
         const { title, url } = promptModal.getFormValues();
@@ -38,7 +37,6 @@ export class MenuPrincipal extends Menu {
       title: "Momentazo",
       icon: "calendar-plus",
       onClick: async () => {
-        new Notice(`Creando ${this.menuItems[1].title}`);
         const promptModal = new PromptModal("Momentazo", "", false);
         await promptModal.openModal();
         const title = promptModal.getValue();
@@ -50,7 +48,6 @@ export class MenuPrincipal extends Menu {
       title: "Nota de hoy",
       icon: "calendar",
       onClick: () => {
-        new Notice(`Creando ${this.menuItems[2].title}`);
         new Daily(this.app).createNote();
       }
     });
@@ -59,7 +56,6 @@ export class MenuPrincipal extends Menu {
       title: "Aniversario",
       icon: "cake",
       onClick: () => {
-        new Notice(`Creando ${this.menuItems[3].title}`);
         new Aniversario(this.app).createNote();
       }
     });
