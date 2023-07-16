@@ -53,7 +53,7 @@ export class CaptureUrl extends NoteGenerator {
   }
 
   setContent(url: string): void {
-    this.content = `${this.yaml}\n${this.callout}\n# ${this.title}\n${this.subheader}\n\n${this.getContent(url)}`;
+    this.content = `${this.yaml}\n${this.callout}\n# ${this.title}\n${this.subheader}\n\n${this.getContent(url)}\n\n`;
   }
 
   getTitle(title: string) {
@@ -67,26 +67,26 @@ export class CaptureUrl extends NoteGenerator {
 
   getContent(url: string) {  
     
+    url = this.filterParamsFromUrl(url);
+    return `[${this.title}](${url})`;
+  }
+
+  filterParamsFromUrl(url: string): string {
+
     const twitterRegexp = new RegExp('https?:\\/\\/(?:mobile\\.)?twitter\\.com\\/.*');
     const youtubeRegexp = new RegExp('https?:\\/\\/(?:www\\.)?(?:youtube\\.com\\/.*|youtu\\.be\\/.*|.*\\.youtube\\.com\\/.*shorts)');
 
     if (twitterRegexp.test(url) || youtubeRegexp.test(url)) {
-      url = this.removeParamsFromUrl(url);
-    }
-    return `[${this.title}](${url})`;
-  }
 
-  removeParamsFromUrl(url: string): string {
-
-    let sanitizedURL = url.split("?")[0];
-  
-    if (url.includes('?t=')) {
-      sanitizedURL = url;
     }
-      
+
+    let sanitizedURL = url;
+    const tParamRegexp = new RegExp('t=\\d+'); // t=1234567890 is valid
+    if (!tParamRegexp.test(url)) {
+      sanitizedURL = sanitizedURL.split("?")[0];
+    }
     return sanitizedURL.trim();
   }
-  
 
   getCallout() {  
     return `%%\n[[${this.getCurrentDate()}]]\n%%`;
