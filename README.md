@@ -53,11 +53,26 @@ obsigen
 │     ├─ notes
 │     │  ├─ NoteGenerator.test.ts
 │     │  ├─ NoteGenerator.ts
+│     │  ├─ __mocks__
+│     │  │  └─ obsidian.ts
 │     │  ├─ aniversario
 │     │  │  ├─ Aniversario.test.ts
 │     │  │  ├─ Aniversario.ts
 │     │  │  ├─ AniversarioSubheader.ts
 │     │  │  └─ AniversarioYaml.tsx
+│     │  ├─ biblia
+│     │  │  └─ versiculo
+│     │  ├─ captureUrl
+│     │  │  ├─ CaptureUrl.test.ts
+│     │  │  ├─ CaptureUrl.ts
+│     │  │  ├─ CaptureUrlModal.ts
+│     │  │  ├─ CaptureUrlSubheader.ts
+│     │  │  ├─ CaptureUrlYaml.tsx
+│     │  │  └─ captureUrlModal.module.css
+│     │  ├─ daily
+│     │  │  ├─ Daily.ts
+│     │  │  ├─ DailySubheader.ts
+│     │  │  └─ DailyYaml.tsx
 │     │  └─ momento
 │     │     ├─ Momento.ts
 │     │     ├─ MomentoSubheader.ts
@@ -71,6 +86,7 @@ obsigen
 ├─ styles.css
 ├─ tsconfig.json
 ├─ var
+│  ├─ MonthView.ts
 │  ├─ NoteGenerator.ts
 │  ├─ NoteGeneratorAllInOne.ts
 │  ├─ NoteGeneratorCaller.ts
@@ -149,4 +165,3 @@ See <https://github.com/obsidianmd/obsidian-api>
 ## Funding
 
 [![Buy Me a Coffee](https://img.shields.io/badge/-Buy%20Me%20a%20Coffee-orange?style=flat&logo=buy-me-a-coffee&logoColor=white)](https://www.buymeacoffee.com/jesuserro)
-
