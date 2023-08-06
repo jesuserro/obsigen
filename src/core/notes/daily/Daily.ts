@@ -72,7 +72,7 @@ export class Daily extends NoteGenerator {
   }
 
   getBody() {
-    return `## Resumen\n\n## Notas del día\n${this.getDataview()}\n## Tareas\n- [ ] \n`;
+    return `## Resumen\n\n## Notas del día\n${this.getDataview()}\n`;
   }
 
   getDataview() {

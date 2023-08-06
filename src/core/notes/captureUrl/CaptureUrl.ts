@@ -68,18 +68,16 @@ export class CaptureUrl extends NoteGenerator {
   getContent(url: string) {  
     
     url = this.filterParamsFromUrl(url);
-    return `[${this.title}](${url})`;
-  }
-
-  filterParamsFromUrl(url: string): string {
-
     const twitterRegexp = new RegExp('https?:\\/\\/(?:mobile\\.)?twitter\\.com\\/.*');
     const youtubeRegexp = new RegExp('https?:\\/\\/(?:www\\.)?(?:youtube\\.com\\/.*|youtu\\.be\\/.*|.*\\.youtube\\.com\\/.*shorts)');
 
     if (twitterRegexp.test(url) || youtubeRegexp.test(url)) {
-
+      return `![${this.title}](${url})`;
     }
+    return `[${this.title}](${url})`;
+  }
 
+  filterParamsFromUrl(url: string): string {
     let sanitizedURL = url;
     const tParamRegexp = new RegExp('t=\\d+'); // t=1234567890 is valid
     if (!tParamRegexp.test(url)) {
