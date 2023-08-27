@@ -1,5 +1,6 @@
 import { App, Menu } from 'obsidian';
 import { Aniversario } from '../../core/notes/aniversario/Aniversario';
+import { Calendar } from '../../core/notes/calendar/Calendar';
 import { CaptureUrl } from '../../core/notes/captureUrl/CaptureUrl';
 import { CaptureUrlModal } from '../../core/notes/captureUrl/CaptureUrlModal';
 import { Daily } from '../../core/notes/daily/Daily';
@@ -57,6 +58,16 @@ export class MenuPrincipal extends Menu {
       icon: "cake",
       onClick: () => {
         new Aniversario(this.app).createNote();
+      }
+    });
+
+    this.addSeparator();
+
+    this.addMenuItem({
+      title: "Calendar",
+      icon: "calendar-days",
+      onClick: () => {
+        new Calendar(this.app); 
       }
     });
     
