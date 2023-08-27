@@ -38,7 +38,6 @@ export class Calendar extends NoteGenerator {
         const daysInFirstWeek = 7 - firstDayOfWeek; // Days to be left blank in the first week
 
         const weeks = Math.ceil((daysInMonth - daysInFirstWeek) / 7) + 1; // Add 1 for the first week
-
         const table = document.createElement('table');
         table.className = 'calendar-table';
 
@@ -62,7 +61,20 @@ export class Calendar extends NoteGenerator {
                     // Leave the cell empty in the first week if it's before the first day
                     dayCell.textContent = '';
                 } else if (dayCounter <= daysInMonth) {
-                    dayCell.textContent = dayCounter.toString();
+                    // Create a div for the day number
+                    const dayNumber = document.createElement('div');
+                    dayNumber.className = 'day-number';
+                    dayNumber.textContent = dayCounter.toString();
+
+                    // Create an input for the event
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.value = 'Event';
+
+                    // Add the day number and input to the cell
+                    dayCell.appendChild(dayNumber);
+                    dayCell.appendChild(input);
+
                     dayCounter++;
                 }
                 weekRow.appendChild(dayCell);
