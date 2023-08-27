@@ -2,7 +2,6 @@ import { App } from 'obsidian';
 import { NoteGenerator } from '../NoteGenerator';
 
 export class Calendar extends NoteGenerator {
-    
     constructor(app: App) {
         super(app);
         this.app = app;
@@ -33,18 +32,14 @@ export class Calendar extends NoteGenerator {
         container.appendChild(title);
 
         const daysInMonth = this.getDaysInCurrentMonth();
-    
         const firstDayOfWeek = this.getFirstDayOfWeek(currentDate);
-        const daysInFirstWeek = 7 - firstDayOfWeek; // Days to be left blank in the first week
 
-        const weeks = Math.ceil((daysInMonth - daysInFirstWeek) / 7) + 1; // Add 1 for the first week
         const table = document.createElement('table');
         table.className = 'calendar-table';
 
         const headerRow = document.createElement('tr');
-        for (let i = 0; i < 7; i++) {
-            const dayIndex = (i + firstDayOfWeek) % 7;
-            const dayName = this.getDayName(dayIndex);
+        for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
+            const dayName = this.getDayName(dayOfWeek);
             const headerCell = document.createElement('th');
             headerCell.textContent = dayName;
             headerRow.appendChild(headerCell);
@@ -52,26 +47,22 @@ export class Calendar extends NoteGenerator {
         table.appendChild(headerRow);
 
         let dayCounter = 1;
+        const weeks = Math.ceil((daysInMonth + firstDayOfWeek) / 7);
         for (let week = 0; week < weeks; week++) {
             const weekRow = document.createElement('tr');
             for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
-                const dayIndex = (dayOfWeek + firstDayOfWeek) % 7;
                 const dayCell = document.createElement('td');
                 if (week === 0 && dayOfWeek < firstDayOfWeek) {
-                    // Leave the cell empty in the first week if it's before the first day
                     dayCell.textContent = '';
                 } else if (dayCounter <= daysInMonth) {
-                    // Create a div for the day number
                     const dayNumber = document.createElement('div');
                     dayNumber.className = 'day-number';
                     dayNumber.textContent = dayCounter.toString();
 
-                    // Create an input for the event
                     const input = document.createElement('input');
                     input.type = 'text';
                     input.value = 'Event';
 
-                    // Add the day number and input to the cell
                     dayCell.appendChild(dayNumber);
                     dayCell.appendChild(input);
 
@@ -86,27 +77,25 @@ export class Calendar extends NoteGenerator {
         return container;
     }
 
-    getDaysInCurrentMonth() {
-        // Calculate the number of days in the current month
-        const currentDate = new Date();
-        const currentMonth = currentDate.getMonth();
-        const currentYear = currentDate.getFullYear();
-        return new Date(currentYear, currentMonth + 1, 0).getDate();
-    }
-
     getFirstDayOfWeek(date: Date): number {
         const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
         let dayOfWeek = firstDayOfMonth.getDay(); // 0 for Sunday, 1 for Monday, and so on
 
         // Adjust to consider Monday as the first day of the week
-        dayOfWeek = (dayOfWeek + 6) % 7; // Convert Sunday (0) to 6 (Saturday), shift other days back
+        dayOfWeek = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
 
         return dayOfWeek;
     }
 
-
     getDayName(dayOfWeek: number): string {
         const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
         return days[dayOfWeek];
+    }
+
+    getDaysInCurrentMonth() {
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth();
+        const currentYear = currentDate.getFullYear();
+        return new Date(currentYear, currentMonth + 1, 0).getDate();
     }
 }
