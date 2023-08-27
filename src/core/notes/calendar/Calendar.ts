@@ -27,10 +27,23 @@ export class Calendar extends NoteGenerator {
         const daysInMonth = this.getDaysInCurrentMonth();
 
         for (let day = 1; day <= daysInMonth; day++) {
-            const daySquare = document.createElement('div');
-            daySquare.className = 'day-square';
-            daySquare.textContent = day.toString();
-            container.appendChild(daySquare);
+            const dayInput = document.createElement('input');
+            dayInput.className = 'day-square-input';
+            dayInput.type = 'text';
+            dayInput.value = day.toString();
+            
+            dayInput.addEventListener('focus', () => {
+                // Handle styling when the input is focused
+                dayInput.classList.add('focused');
+            });
+
+            dayInput.addEventListener('blur', () => {
+                // Handle styling when the input loses focus
+                dayInput.classList.remove('focused');
+                // Update the value in your data structure or perform necessary actions
+            });
+
+            container.appendChild(dayInput);
         }
 
         return container;
