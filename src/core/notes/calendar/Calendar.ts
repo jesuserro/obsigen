@@ -24,11 +24,23 @@ export class Calendar extends NoteGenerator {
         const container = document.createElement('div');
         container.className = 'calendar-container';
 
-        const helloDiv = document.createElement('div');
-        helloDiv.textContent = 'Hello World';
-        container.appendChild(helloDiv);
+        const daysInMonth = this.getDaysInCurrentMonth();
+
+        for (let day = 1; day <= daysInMonth; day++) {
+            const daySquare = document.createElement('div');
+            daySquare.className = 'day-square';
+            daySquare.textContent = day.toString();
+            container.appendChild(daySquare);
+        }
 
         return container;
     }
-}
 
+    getDaysInCurrentMonth() {
+        // Calculate the number of days in the current month
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth();
+        const currentYear = currentDate.getFullYear();
+        return new Date(currentYear, currentMonth + 1, 0).getDate();
+    }
+}
