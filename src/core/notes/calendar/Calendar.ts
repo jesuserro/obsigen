@@ -24,28 +24,53 @@ export class Calendar extends NoteGenerator {
         const container = document.createElement('div');
         container.className = 'calendar-container';
 
+        const currentDate = new Date();
+        const currentMonth = currentDate.toLocaleString('default', { month: 'long' });
+        const currentYear = currentDate.getFullYear();
+
+        const title = document.createElement('h1');
+        title.textContent = `${currentMonth} ${currentYear}`;
+        container.appendChild(title);
+
         const daysInMonth = this.getDaysInCurrentMonth();
+    
+        const firstDayOfWeek = this.getFirstDayOfWeek(currentDate);
+        const daysInFirstWeek = 7 - firstDayOfWeek; // Days to be left blank in the first week
 
-        for (let day = 1; day <= daysInMonth; day++) {
-            const dayInput = document.createElement('input');
-            dayInput.className = 'day-square-input';
-            dayInput.type = 'text';
-            dayInput.value = day.toString();
-            
-            dayInput.addEventListener('focus', () => {
-                // Handle styling when the input is focused
-                dayInput.classList.add('focused');
-            });
+        const weeks = Math.ceil((daysInMonth - daysInFirstWeek) / 7) + 1; // Add 1 for the first week
 
-            dayInput.addEventListener('blur', () => {
-                // Handle styling when the input loses focus
-                dayInput.classList.remove('focused');
-                // Update the value in your data structure or perform necessary actions
-            });
+        const table = document.createElement('table');
+        table.className = 'calendar-table';
 
-            container.appendChild(dayInput);
+        const headerRow = document.createElement('tr');
+        for (let i = 0; i < 7; i++) {
+            const dayIndex = (i + firstDayOfWeek) % 7;
+            const dayName = this.getDayName(dayIndex);
+            const headerCell = document.createElement('th');
+            headerCell.textContent = dayName;
+            headerRow.appendChild(headerCell);
+        }
+        table.appendChild(headerRow);
+
+        let dayCounter = 1;
+        for (let week = 0; week < weeks; week++) {
+            const weekRow = document.createElement('tr');
+            for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
+                const dayIndex = (dayOfWeek + firstDayOfWeek) % 7;
+                const dayCell = document.createElement('td');
+                if (week === 0 && dayOfWeek < firstDayOfWeek) {
+                    // Leave the cell empty in the first week if it's before the first day
+                    dayCell.textContent = '';
+                } else if (dayCounter <= daysInMonth) {
+                    dayCell.textContent = dayCounter.toString();
+                    dayCounter++;
+                }
+                weekRow.appendChild(dayCell);
+            }
+            table.appendChild(weekRow);
         }
 
+        container.appendChild(table);
         return container;
     }
 
@@ -55,5 +80,21 @@ export class Calendar extends NoteGenerator {
         const currentMonth = currentDate.getMonth();
         const currentYear = currentDate.getFullYear();
         return new Date(currentYear, currentMonth + 1, 0).getDate();
+    }
+
+    getFirstDayOfWeek(date: Date): number {
+        const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+        let dayOfWeek = firstDayOfMonth.getDay(); // 0 for Sunday, 1 for Monday, and so on
+
+        // Adjust to consider Monday as the first day of the week
+        dayOfWeek = (dayOfWeek + 6) % 7; // Convert Sunday (0) to 6 (Saturday), shift other days back
+
+        return dayOfWeek;
+    }
+
+
+    getDayName(dayOfWeek: number): string {
+        const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+        return days[dayOfWeek];
     }
 }
