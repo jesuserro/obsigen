@@ -60,10 +60,38 @@ export class Calendar extends NoteGenerator {
                     const dayDate = this.getDateString(currentDate.getFullYear(), currentDate.getMonth(), dayCounter);
                     dayNumber.innerHTML = `<a href="100 Calendar/Daily/2023/${dayDate}.md">${dayCounter}</a><br />[${dayCounter}](${dayDate})`; // Use the file-path attribute
 
+                    // Create the icon container
+                    const iconContainer = document.createElement('div');
+                    iconContainer.setAttribute('width', '24');
+                    iconContainer.setAttribute('height', '24');
+                    iconContainer.className = 'clickable-icon side-dock-ribbon-action my-plugin-ribbon-class';
+                    iconContainer.setAttribute('class', 'clickable-icon side-dock-ribbon-action my-plugin-ribbon-class');
+                    iconContainer.setAttribute('aria-label', 'Icon');
+                    iconContainer.setAttribute('data-tooltip-position', 'top');
+                    iconContainer.setAttribute('data-tooltip-delay', '300');
+
+                    // Create the SVG icon
+                    const customIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                    customIcon.setAttribute('width', '24');
+                    customIcon.setAttribute('height', '24');
+                    customIcon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+                    customIcon.setAttribute('viewBox', '0 0 24 24');
+                    customIcon.setAttribute('fill', 'none');
+                    customIcon.setAttribute('stroke', 'currentColor');
+                    customIcon.setAttribute('stroke-width', '2');
+                    customIcon.setAttribute('stroke-linecap', 'round');
+                    customIcon.setAttribute('stroke-linejoin', 'round');
+                    customIcon.setAttribute('class', 'svg-icon lucide-calendar');
+
+                    // Append the SVG icon to the container
+                    iconContainer.appendChild(customIcon);
+                    dayCell.appendChild(iconContainer);
+
+                    
+
                     const input = document.createElement('input');
                     input.type = 'text';
                     input.value = 'Event';
-
                     dayCell.appendChild(dayNumber);
                     dayCell.appendChild(input);
 
