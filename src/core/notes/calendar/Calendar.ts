@@ -57,7 +57,8 @@ export class Calendar extends NoteGenerator {
                 } else if (dayCounter <= daysInMonth) {
                     const dayNumber = document.createElement('div');
                     dayNumber.className = 'day-number';
-                    dayNumber.textContent = dayCounter.toString();
+                    const dayDate = this.getDateString(currentDate.getFullYear(), currentDate.getMonth(), dayCounter);
+                    dayNumber.innerHTML = `<a href="100 Calendar/Daily/2023/${dayDate}.md">${dayCounter}</a><br />[${dayCounter}](${dayDate})`; // Use the file-path attribute
 
                     const input = document.createElement('input');
                     input.type = 'text';
@@ -97,5 +98,11 @@ export class Calendar extends NoteGenerator {
         const currentMonth = currentDate.getMonth();
         const currentYear = currentDate.getFullYear();
         return new Date(currentYear, currentMonth + 1, 0).getDate();
+    }
+
+    getDateString(year: number, month: number, day: number): string {
+        const monthStr = (month + 1).toString().padStart(2, '0'); // Month is 0-based
+        const dayStr = day.toString().padStart(2, '0');
+        return `${year}${monthStr}${dayStr}`;
     }
 }
