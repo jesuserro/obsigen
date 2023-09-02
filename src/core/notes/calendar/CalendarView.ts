@@ -13,6 +13,10 @@ export class CalendarView extends ItemView {
         return 'Month Calendar';
     }
 
+    getIcon(): string {
+        return 'calendar-days';
+    }
+
     async onOpen() {
         this.contentEl.empty();
         this.calendarEl = this.createCalendarView();
