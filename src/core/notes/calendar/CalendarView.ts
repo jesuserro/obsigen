@@ -105,6 +105,14 @@ export class CalendarView extends ItemView {
         } else {
             dayNumber.textContent = dayCounter.toString();
         }
+
+        const img = document.createElement('img');
+        img.width = 24;
+        img.height = 24;
+        img.src = this.getEventoIcon();
+
+        dayNumber.appendChild(img);
+
         return dayNumber;
     }
 
@@ -135,6 +143,21 @@ export class CalendarView extends ItemView {
         const monthStr = (month + 1).toString().padStart(2, '0');
         const dayStr = day.toString().padStart(2, '0');
         return `${year}${monthStr}${dayStr}`;
+    }
+
+    getEventoIcon(): string {
+        // const imagePath = '100 Calendar/Moments/Anexos/Screenshot_20230315-220809_YouTube.jpg';
+        // img.src = `100 Calendar/Moments/Anexos/Screenshot_20230315-220809_YouTube.jpg`;
+        // img.src = `obsidian://open?vault=vault&file=100%20Calendar%2FMoments%2FAnexos%2FScreenshot_20230315-220809_YouTube.jpg`;
+        // img.src = `obsidian://advanced-uri?vault=vault&filepath=100%2520Calendar%252FMoments%252FAnexos%252FScreenshot_20230315-220809_YouTube.jpg`;
+        // img.src = `obsidian://open?vault=vault&file=${encodeURIComponent(imagePath)}`;
+        // img.src = `file://${encodeURIComponent(imagePath)}`;
+        // img.src = `app://${encodeURIComponent(imagePath)}`;
+        // img.src = `https://img.freepik.com/vector-gratis/jesucristo-personaje-religioso_24877-57385.jpg?w=1380&t=st=1693669773~exp=1693670373~hmac=6c4415e6bbc9fac841f7a5fc7c2c768597f2ab1e732f077fcd90e26fa2c93fa1`;
+
+        const imagePath = 'app://cb5a1194c7e6339aaab1c58424db47460ca5/C:/Users/Jes%C3%BAs/Documents/vault/100%20Calendar/Moments/Anexos/Screenshot_20230315-220809_YouTube.jpg?1683893072886';
+
+        return imagePath;  
     }
 
     getNotasDeHoy() {
