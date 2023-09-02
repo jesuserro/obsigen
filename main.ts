@@ -2,6 +2,7 @@ import { Editor, MarkdownView, Plugin } from 'obsidian';
 import { MenuPrincipal } from 'src/adapters/Obsidian/MenuPrincipal';
 import { SampleModal } from 'src/adapters/Obsidian/SampleModal';
 import SampleSettingTab from 'src/adapters/Obsidian/SampleSettingTab';
+import { CALENDAR_VIEW_TYPE, CalendarView } from 'src/core/notes/calendar/CalendarView';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 
 const DEFAULT_SETTINGS: MyPluginSettings = {
@@ -15,6 +16,9 @@ export default class MyPlugin extends Plugin {
 	async onload() {
 
 		console.log('Loading Obsigen plugin');
+
+		// Register your ItemView
+		this.registerView(CALENDAR_VIEW_TYPE, (leaf) => new CalendarView(leaf));
 		
 		await this.loadSettings();
 
