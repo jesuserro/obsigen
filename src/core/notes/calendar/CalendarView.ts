@@ -22,6 +22,7 @@ export class CalendarView extends ItemView {
 
         contentEl.empty(); // Clear existing content if any
 
+        /*
         const today = new Date().toISOString().slice(0, 10);
         const files = this.app.vault.getMarkdownFiles();
         // const files = this.app.vault.getFiles();
@@ -32,7 +33,6 @@ export class CalendarView extends ItemView {
             return cache?.frontmatter?.date?.toString()?.includes(today);
         });
         // console.log("Hoola", notasDeHoy);
-
         // Foreach notasDeHoy, add name and link to contentEl
         notasDeHoy.forEach(file => {
             const cache = this.app.metadataCache.getFileCache(file);
@@ -44,6 +44,7 @@ export class CalendarView extends ItemView {
             // Add a separator
             contentEl.appendChild(document.createElement('br'));
         });
+        */
 
 
         this.calendarEl = this.createCalendarView();
@@ -88,6 +89,7 @@ export class CalendarView extends ItemView {
         }
         table.appendChild(headerRow);
 
+        const files = this.app.vault.getMarkdownFiles();
         let dayCounter = 1;
         const weeks = Math.ceil((daysInMonth + firstDayOfWeek) / 7);
         for (let week = 0; week < weeks; week++) {
@@ -100,10 +102,26 @@ export class CalendarView extends ItemView {
                     const dayNumber = document.createElement('div');
                     dayNumber.className = 'day-number';
                     const dayDate = this.getDateString(currentDate.getFullYear(), currentDate.getMonth(), dayCounter);
-                    dayNumber.innerHTML = `<a href="100 Calendar/Daily/2023/${dayDate}.md">${dayCounter}</a>`; // Use the file-path attribute
-
+        
+                    // Find the note with the corresponding path
+                    const note = files.find(file => file.path === `100 Calendar/Daily/${currentYear}/${dayDate}.md`);
+                    
+                    if (note) {
+                        // If the note exists, create a link to it
+                        const noteLink = document.createElement('a');
+                        noteLink.href = `obsidian://open?vault=${encodeURIComponent(this.app.vault.getName())}&file=${encodeURIComponent(note.path)}`;
+                        noteLink.textContent = dayCounter.toString();
+                        noteLink.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            this.app.workspace.openLinkText(note.path, '', true);
+                        });
+                        dayNumber.appendChild(noteLink);
+                    } else {
+                        // If the note doesn't exist, just print the day number
+                        dayNumber.textContent = dayCounter.toString();
+                    }
+        
                     dayCell.appendChild(dayNumber);
-
                     dayCounter++;
                 }
                 weekRow.appendChild(dayCell);
