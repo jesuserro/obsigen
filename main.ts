@@ -83,7 +83,7 @@ export default class MyPlugin extends Plugin {
 	}
 
 	onunload() {
-
+		// this.app.workspace.detachLeavesOfType(CALENDAR_VIEW_TYPE);
 	}
 
 	async loadSettings() {

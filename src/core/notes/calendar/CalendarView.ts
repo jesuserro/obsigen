@@ -3,6 +3,8 @@ import { ItemView } from 'obsidian';
 export const CALENDAR_VIEW_TYPE = 'calendar-view';
 
 export class CalendarView extends ItemView {
+
+    calendarEl: HTMLElement;
     
     getViewType(): string {
         return CALENDAR_VIEW_TYPE; // Set a unique identifier for your ItemView
@@ -18,8 +20,33 @@ export class CalendarView extends ItemView {
         // contentEl.createEl("h1", { text: "Calendar View" });
         // contentEl.setText('Calendar View 2 [[20230901]]');
 
-        const calendarView = this.createCalendarView();
+        contentEl.empty(); // Clear existing content if any
 
+        const today = new Date().toISOString().slice(0, 10);
+        const files = this.app.vault.getMarkdownFiles();
+        // const files = this.app.vault.getFiles();
+        const notasDeHoy = files.filter(file => {
+            const cache = this.app.metadataCache.getFileCache(file);
+            // Get todays date in format YYYY-MM-DD
+            
+            return cache?.frontmatter?.date?.toString()?.includes(today);
+        });
+        // console.log("Hoola", notasDeHoy);
+
+        // Foreach notasDeHoy, add name and link to contentEl
+        notasDeHoy.forEach(file => {
+            const cache = this.app.metadataCache.getFileCache(file);
+            const title = cache?.frontmatter?.title;
+            const link = document.createElement('a');
+            link.href = file.path;
+            link.innerText = title;
+            contentEl.appendChild(link);
+            // Add a separator
+            contentEl.appendChild(document.createElement('br'));
+        });
+
+
+        this.calendarEl = this.createCalendarView();
         /*
         const newLeaf = this.app.workspace.getLeaf();
         if (newLeaf) {
@@ -29,7 +56,9 @@ export class CalendarView extends ItemView {
         }
         */
 
-        contentEl.appendChild(calendarView);
+    //    new Setting(contentEl).setName('Calendar View').setDesc('This is a calendar view').addText(text => { text.setPlaceholder('Placeholder text').setValue('Initial value') });
+
+        contentEl.appendChild(this.calendarEl);
     }
 
     createCalendarView() {
