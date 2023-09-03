@@ -16,4 +16,16 @@ If your plugin does not need CSS, delete this file.
   height: 25px;
 }
 
+/* Add this CSS to your stylesheet or style tag */
+table.calendar-table {
+  border-collapse: collapse; /* Collapse borders to prevent double borders */
+  width: 100%; /* Optional: Set the width of the table */
+}
+table.calendar-table th,
+table.calendar-table td {
+  border: 1px solid grey; /* Add a 1px solid grey border to all table headers and data cells */
+  padding: 4px; /* Optional: Add some padding to improve spacing */
+  text-align: center; /* Optional: Center-align content in cells */
+}
+
 
