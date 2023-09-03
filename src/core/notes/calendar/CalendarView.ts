@@ -1,5 +1,5 @@
 import { ItemView, TFile } from 'obsidian';
-
+import { church_icon } from './../../../assets/church.js';
 export const CALENDAR_VIEW_TYPE = 'calendar-view';
 
 export class CalendarView extends ItemView {
@@ -106,12 +106,13 @@ export class CalendarView extends ItemView {
             dayNumber.textContent = dayCounter.toString();
         }
 
+        
+        // Create an <img> element
         const img = document.createElement('img');
-        img.width = 24;
-        img.height = 24;
-        img.src = this.getEventoIcon();
-
+        img.setAttribute('class', 'custom-icon');
+        img.src = church_icon;
         dayNumber.appendChild(img);
+
 
         return dayNumber;
     }
@@ -155,7 +156,10 @@ export class CalendarView extends ItemView {
         // img.src = `app://${encodeURIComponent(imagePath)}`;
         // img.src = `https://img.freepik.com/vector-gratis/jesucristo-personaje-religioso_24877-57385.jpg?w=1380&t=st=1693669773~exp=1693670373~hmac=6c4415e6bbc9fac841f7a5fc7c2c768597f2ab1e732f077fcd90e26fa2c93fa1`;
 
-        const imagePath = 'app://cb5a1194c7e6339aaab1c58424db47460ca5/C:/Users/Jes%C3%BAs/Documents/vault/100%20Calendar/Moments/Anexos/Screenshot_20230315-220809_YouTube.jpg?1683893072886';
+        let imagePath = 'vault/100 Calendar/Icons/church.svg';
+
+        imagePath = `file://${encodeURIComponent(imagePath)}`;
+
 
         return imagePath;  
     }

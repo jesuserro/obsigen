@@ -9,3 +9,11 @@ If your plugin does not need CSS, delete this file.
 .my-plugin-ribbon-class{
   color: greenyellow;
 }
+
+.custom-icon {
+  /* border: 1px solid skyblue; */
+  width: 25px;
+  height: 25px;
+}
+
+

@@ -50,9 +50,17 @@ const context = await esbuild.context({
       assets: [
         { from: 'manifest.json', to: `${outputDir}/manifest.json` },
         { from: 'styles.css', to: `${outputDir}/styles.css` }
+        // Use url-loader for SVG files
+        // ,{ from: 'src/assets/*.svg', to: `${outputDir}/src/assets` }
       ]
     })
   ]
+  ,loader: {
+    '.svg': 'file'
+  },
+  // ,loader: {
+  //   '.jpg': 'file'
+  // },
 });
 
 if (prod) {
