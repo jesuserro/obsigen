@@ -2,6 +2,11 @@ import { ItemView, TFile } from 'obsidian';
 import { church_icon } from './../../../assets/church.js';
 export const CALENDAR_VIEW_TYPE = 'calendar-view';
 
+import { renderToString } from 'react-dom/server';
+import CalendarTitle from './CalendarTitle';
+
+
+
 export class CalendarView extends ItemView {
     calendarEl: HTMLElement;
 
@@ -30,9 +35,14 @@ export class CalendarView extends ItemView {
         const currentDate = new Date();
         const currentMonth = currentDate.toLocaleString('default', { month: 'long' });
         const currentYear = currentDate.getFullYear();
-
         container.appendChild(this.createTitle(currentMonth, currentYear));
-
+        
+        const patata = renderToString(CalendarTitle());
+        const title = document.createElement('h2');
+        title.textContent = patata;
+        container.appendChild(title);
+        // ReactDOM.render(<CalendarTitle />, container);
+        
         const table = document.createElement('table');
         table.className = 'calendar-table';
         table.appendChild(this.createHeaderRow());
