@@ -37,11 +37,8 @@ export class CalendarView extends ItemView {
         const currentYear = currentDate.getFullYear();
         container.appendChild(this.createTitle(currentMonth, currentYear));
         
-        const patata = renderToString(CalendarTitle());
-        const title = document.createElement('h2');
-        title.textContent = patata;
-        container.appendChild(title);
-        // ReactDOM.render(<CalendarTitle />, container);
+        const htmlTitle = renderToString(CalendarTitle());
+        container.innerHTML = htmlTitle;
         
         const table = document.createElement('table');
         table.className = 'calendar-table';

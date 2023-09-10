@@ -2,13 +2,8 @@
 import React from 'react';
 
 function CalendarTitle() {
-  // Component logic here
   return (
-    <>
-      <React.Fragment>
-        patata
-      </React.Fragment>
-    </>
+    <h2>patata!</h2>
   );
 };
 
