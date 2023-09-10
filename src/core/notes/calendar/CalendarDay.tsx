@@ -4,14 +4,13 @@ import { church_icon } from './../../../assets/church.js';
 
 interface CalendarDayProps {
   dayCounter: number;
-  hasNote: boolean;
+  hasNote: string | false;
 }
 
 function CalendarDay({ dayCounter, hasNote }: CalendarDayProps) {
   return (
     <div className="day-number">
-      {hasNote ? <a href={`your_note_link_here`}>{dayCounter}</a> : dayCounter}
-      <img className="custom-icon" src={church_icon} alt="Icon" />
+      {hasNote ? <div><a href={hasNote}>{dayCounter}</a><img className="custom-icon" src={church_icon} alt="Icon" /></div> : dayCounter}
     </div>
   );
 }

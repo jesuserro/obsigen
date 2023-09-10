@@ -35,16 +35,17 @@ export class CalendarView extends ItemView {
 
         const currentDate = new Date();
         const currentYear = currentDate.getFullYear();
+
+        const files = this.app.vault.getMarkdownFiles();
         
         const htmlTitle = renderToString(CalendarTitle());
-        const htmlMonth = renderToString(CalendarMonth());
+        const htmlMonth = renderToString(CalendarMonth(files));
         container.innerHTML = htmlTitle + '<br />' + htmlMonth;
         
         const table = document.createElement('table');
         table.className = 'calendar-table';
         table.appendChild(this.createHeaderRow());
 
-        const files = this.app.vault.getMarkdownFiles();
         const { daysInMonth, firstDayOfWeek } = this.getDateInfo(currentDate);
         
         const daysGrid = this.createDaysGrid(files, daysInMonth, firstDayOfWeek, currentYear, currentDate);

@@ -1,7 +1,8 @@
+import { TFile } from 'obsidian';
 import React from 'react';
 import CalendarDay from './CalendarDay';
 
-function CalendarMonth() {
+function CalendarMonth(files: TFile[]) {
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth();
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
@@ -26,7 +27,7 @@ function CalendarMonth() {
         const isWithinMonth = dayIndex >= 1 && dayIndex <= numDaysInMonth;
 
         // Check if a note exists for this day (replace this with your logic)
-        const hasNote = checkIfNoteExistsForDay(dayIndex);
+        const hasNote = checkIfNoteExistsForDay(dayIndex, files);
 
         cells.push(
           <td key={dayOfWeek} className={isWithinMonth ? 'within-month' : 'outside-month'}>
@@ -37,6 +38,7 @@ function CalendarMonth() {
             )}
           </td>
         );
+        
       }
 
       daysGrid.push(<tr key={row}>{cells}</tr>);
@@ -63,26 +65,20 @@ function CalendarMonth() {
   );
 }
 
-
-function checkIfNoteExistsForDay(dayIndex: number): boolean {
-  const files = this.app.vault.getMarkdownFiles();
-
+function checkIfNoteExistsForDay(dayIndex: number, files: TFile[]): string | false {
   const year = new Date().getFullYear();
-  const month = new Date().getMonth();
+  const month = new Date().getMonth() + 1;
 
-  // Construct the path to the note file
-  const dayDate = `${year}-${String(month).padStart(2, '0')}-${String(dayIndex).padStart(2, '0')}`;
+  const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}`;
   const notePath = `100 Calendar/Daily/${year}/${dayDate}.md`;
 
-  // const note = files.find(file => file.path === `100 Calendar/Daily/${currentYear}/${dayDate}.md`);
+  const note = files.find(file => file.path === notePath);
 
-  const noteExists = files.find(file => file.path === `100 Calendar/Daily/${year}/${dayDate}.md`);
+  if (note?.path) {
+    return note.path;
+  }
 
-  // Check if a file with the notePath exists in your files array
-  // const noteExists = files.some(file => file.path === notePath);
-
-  return noteExists;
+  return false;
 }
-
 
 export default CalendarMonth;
