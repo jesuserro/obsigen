@@ -8,9 +8,23 @@ interface CalendarDayProps {
 }
 
 function CalendarDay({ dayCounter, hasNote }: CalendarDayProps) {
+  let notePath = '';
+  if (hasNote) {
+    // Replace this with your Obsidian vault name
+    const vaultName = encodeURIComponent('YourVaultName');
+    notePath = `obsidian://open?file=${encodeURIComponent(hasNote)}`;
+  }
+
   return (
     <div className="day-number">
-      {hasNote ? <div><a href={hasNote}>{dayCounter}</a><img className="custom-icon" src={church_icon} alt="Icon" /></div> : dayCounter}
+      {hasNote ? (
+        <div>
+          <a href={notePath}>{dayCounter}</a>
+          <img className="custom-icon" src={church_icon} alt="Icon" />
+        </div>
+      ) : (
+        dayCounter
+      )}
     </div>
   );
 }
