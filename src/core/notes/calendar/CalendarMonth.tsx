@@ -1,4 +1,5 @@
 import React from 'react';
+import CalendarDay from './CalendarDay';
 
 function CalendarMonth() {
   const currentYear = new Date().getFullYear();
@@ -24,9 +25,16 @@ function CalendarMonth() {
         const dayIndex = row * 7 + dayOfWeek + 1 - dayOffset;
         const isWithinMonth = dayIndex >= 1 && dayIndex <= numDaysInMonth;
 
+        // Check if a note exists for this day (replace this with your logic)
+        const hasNote = checkIfNoteExistsForDay(dayIndex);
+
         cells.push(
           <td key={dayOfWeek} className={isWithinMonth ? 'within-month' : 'outside-month'}>
-            {isWithinMonth ? dayIndex : ''}
+            {dayIndex > 0 && dayIndex <= numDaysInMonth ? (
+              <CalendarDay dayCounter={dayIndex} hasNote={hasNote} />
+            ) : (
+              <span className="empty-day">{''}</span>
+            )}
           </td>
         );
       }
@@ -54,5 +62,27 @@ function CalendarMonth() {
     </table>
   );
 }
+
+
+function checkIfNoteExistsForDay(dayIndex: number): boolean {
+  const files = this.app.vault.getMarkdownFiles();
+
+  const year = new Date().getFullYear();
+  const month = new Date().getMonth();
+
+  // Construct the path to the note file
+  const dayDate = `${year}-${String(month).padStart(2, '0')}-${String(dayIndex).padStart(2, '0')}`;
+  const notePath = `100 Calendar/Daily/${year}/${dayDate}.md`;
+
+  // const note = files.find(file => file.path === `100 Calendar/Daily/${currentYear}/${dayDate}.md`);
+
+  const noteExists = files.find(file => file.path === `100 Calendar/Daily/${year}/${dayDate}.md`);
+
+  // Check if a file with the notePath exists in your files array
+  // const noteExists = files.some(file => file.path === notePath);
+
+  return noteExists;
+}
+
 
 export default CalendarMonth;
