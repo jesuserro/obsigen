@@ -34,6 +34,7 @@ export class CalendarView extends ItemView {
         
         const htmlTitle = renderToString(CalendarTitle());
         const htmlMonth = renderToString(CalendarMonth(files));
+        // const htmlMonth = <CalendarMonth files={files} />;
         container.innerHTML = htmlTitle + htmlMonth;
         
         return container;

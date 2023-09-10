@@ -2,67 +2,51 @@ import { TFile } from 'obsidian';
 import React from 'react';
 import CalendarDay from './CalendarDay';
 
-function CalendarMonth(files: TFile[]) {
-  const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().getMonth();
-  const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
-  const lastDayOfMonth = new Date(currentYear, currentMonth + 1, 0);
-  const numDaysInMonth = lastDayOfMonth.getDate();
-  const firstDayOfWeek = firstDayOfMonth.getDay(); // 0 for Sunday, 1 for Monday, etc.
 
-  // Calculate the difference in starting days between Sunday (0) and Monday (1)
-  const dayOffset = firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1;
 
-  // Calculate the number of rows needed for the calendar
-  const numRows = Math.ceil((numDaysInMonth + dayOffset) / 7);
+function getFirstDayOfMonth(year: number, month: number): Date {
+  return new Date(year, month, 1);
+}
 
-  const createDaysGrid = () => {
-    const daysGrid = [];
+function getLastDayOfMonth(year: number, month: number): Date {
+  return new Date(year, month + 1, 0);
+}
 
-    for (let row = 0; row < numRows; row++) {
-      const cells = [];
+function getDayOffset(dayOfWeek: number): number {
+  return dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+}
 
-      for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
-        const dayIndex = row * 7 + dayOfWeek + 1 - dayOffset;
-        const isWithinMonth = dayIndex >= 1 && dayIndex <= numDaysInMonth;
+function calculateNumRows(numDaysInMonth: number, dayOffset: number): number {
+  return Math.ceil((numDaysInMonth + dayOffset) / 7);
+}
 
-        // Check if a note exists for this day (replace this with your logic)
-        const hasNote = checkIfNoteExistsForDay(dayIndex, files);
+function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: number, files: TFile[]): JSX.Element[] {
+  const daysGrid = [];
 
-        cells.push(
-          <td key={dayOfWeek} className={isWithinMonth ? 'within-month' : 'outside-month'}>
-            {dayIndex > 0 && dayIndex <= numDaysInMonth ? (
-              <CalendarDay dayCounter={dayIndex} hasNote={hasNote} />
-            ) : (
-              <span className="empty-day">{''}</span>
-            )}
-          </td>
-        );
-        
-      }
+  for (let row = 0; row < numRows; row++) {
+    const cells = [];
 
-      daysGrid.push(<tr key={row}>{cells}</tr>);
+    for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
+      const dayIndex = row * 7 + dayOfWeek + 1 - dayOffset;
+      const isWithinMonth = dayIndex >= 1 && dayIndex <= numDaysInMonth;
+
+      const hasNote = checkIfNoteExistsForDay(dayIndex, files);
+
+      cells.push(
+        <td key={dayOfWeek} className={isWithinMonth ? 'within-month' : 'outside-month'}>
+          {dayIndex > 0 && dayIndex <= numDaysInMonth ? (
+            <CalendarDay dayCounter={dayIndex} hasNote={hasNote} />
+          ) : (
+            <span className="empty-day">{''}</span>
+          )}
+        </td>
+      );
     }
 
-    return <tbody>{daysGrid}</tbody>;
-  };
+    daysGrid.push(<tr key={row}>{cells}</tr>);
+  }
 
-  return (
-    <table className="calendar-table">
-      <thead>
-        <tr>
-          <th>Mon</th>
-          <th>Tue</th>
-          <th>Wed</th>
-          <th>Thu</th>
-          <th>Fri</th>
-          <th>Sat</th>
-          <th>Sun</th>
-        </tr>
-      </thead>
-      {createDaysGrid()}
-    </table>
-  );
+  return daysGrid;
 }
 
 function checkIfNoteExistsForDay(dayIndex: number, files: TFile[]): string | false {
@@ -79,6 +63,36 @@ function checkIfNoteExistsForDay(dayIndex: number, files: TFile[]): string | fal
   }
 
   return false;
+}
+
+function CalendarMonth(files: TFile[] ) {
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth();
+  const firstDayOfMonth = getFirstDayOfMonth(currentYear, currentMonth);
+  const lastDayOfMonth = getLastDayOfMonth(currentYear, currentMonth);
+  const numDaysInMonth = lastDayOfMonth.getDate();
+  const firstDayOfWeek = firstDayOfMonth.getDay(); // 0 for Sunday, 1 for Monday, etc.
+  const dayOffset = getDayOffset(firstDayOfWeek);
+  const numRows = calculateNumRows(numDaysInMonth, dayOffset);
+
+  const daysGrid = createDaysGrid(numRows, numDaysInMonth, dayOffset, files);
+
+  return (
+    <table className="calendar-table">
+      <thead>
+        <tr>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+          <th>Sun</th>
+        </tr>
+      </thead>
+      <tbody>{daysGrid}</tbody>
+    </table>
+  );
 }
 
 export default CalendarMonth;
