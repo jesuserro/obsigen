@@ -1,60 +1,58 @@
 import React from 'react';
 
-// Function to generate the dynamic title
-function generateTitle() {
+// Function to create the calendar grid
+function createDaysGrid() {
+  const daysGrid = [];
+
   const currentDate = new Date();
-  const year = currentDate.toLocaleDateString('en-US', { year: 'numeric' });
-  const month = currentDate.toLocaleDateString('en-US', { month: 'long' });
-  return `${month} ${year}`;
-}
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
+  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+  const firstDayOfWeek = new Date(currentYear, currentMonth, 1).getDay();
 
-// Function to build the calendar table rows and cells
-function buildCalendarRowsAndCells() {
-  const calendarRows = [];
+  // Calculate the number of rows needed for the calendar
+  const numRows = Math.ceil((daysInMonth + firstDayOfWeek) / 7);
 
-  // Logic to generate calendar rows and cells goes here
-  // You can use nested loops to generate rows and cells
+  for (let row = 0; row < numRows; row++) {
+    const cells = [];
 
-  for (let i = 0; i < 6; i++) {
-    const calendarCells = [];
+    for (let day = 0; day < 7; day++) {
+      const dayIndex = row * 7 + day + 1 - firstDayOfWeek;
 
-    for (let j = 0; j < 7; j++) {
-      // Generate your <td> elements here
-      const cell = <td key={`cell-${i}-${j}`}>Day</td>;
-      calendarCells.push(cell);
+      if (dayIndex >= 1 && dayIndex <= daysInMonth) {
+        // Create a cell for each day in the month
+        cells.push(<td key={dayIndex}>{dayIndex}</td>);
+      } else {
+        // Create empty cells for days outside the current month
+        cells.push(<td key={`empty-${row}-${day}`}></td>);
+      }
     }
 
-    // Generate the <tr> element with calendar cells
-    const row = <tr key={`row-${i}`}>{calendarCells}</tr>;
-    calendarRows.push(row);
+    // Create a row with the cells
+    daysGrid.push(<tr key={row}>{cells}</tr>);
   }
 
-  return calendarRows;
+  return (
+      <tbody>{daysGrid}</tbody>
+  );
 }
 
-// Function for the UI
 function CalendarMonth() {
-  const title = generateTitle(); // Get the dynamic title
-  const calendarRows = buildCalendarRowsAndCells(); // Get the calendar rows and cells
-
   return (
-    <div className="calendar-title">
-      <h2>{title}</h2>
-      <table className="calendar-table">
-        <thead>
-          <tr>
-            <th>Sun</th>
-            <th>Mon</th>
-            <th>Tue</th>
-            <th>Wed</th>
-            <th>Thu</th>
-            <th>Fri</th>
-            <th>Sat</th>
-          </tr>
-        </thead>
-        <tbody>{calendarRows}</tbody>
-      </table>
-    </div>
+    <table className="calendar-table">
+      <thead>
+        <tr>
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
+      </thead>
+      <tbody>{createDaysGrid()}</tbody>
+    </table>
   );
 }
 
