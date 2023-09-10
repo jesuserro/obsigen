@@ -33,7 +33,6 @@ export class CalendarView extends ItemView {
         container.className = 'calendar-container';
 
         const currentDate = new Date();
-        const currentMonth = currentDate.toLocaleString('default', { month: 'long' });
         const currentYear = currentDate.getFullYear();
         
         const htmlTitle = renderToString(CalendarTitle());
@@ -51,12 +50,6 @@ export class CalendarView extends ItemView {
 
         container.appendChild(table);
         return container;
-    }
-
-    createTitle(month: string, year: number): HTMLElement {
-        const title = document.createElement('h1');
-        title.textContent = `${month} ${year}`;
-        return title;
     }
 
     createHeaderRow(): HTMLElement {
