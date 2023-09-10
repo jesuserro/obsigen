@@ -3,6 +3,7 @@ import { church_icon } from './../../../assets/church.js';
 export const CALENDAR_VIEW_TYPE = 'calendar-view';
 
 import { renderToString } from 'react-dom/server';
+import CalendarMonth from './CalendarMonth';
 import CalendarTitle from './CalendarTitle';
 
 
@@ -37,6 +38,9 @@ export class CalendarView extends ItemView {
         
         const htmlTitle = renderToString(CalendarTitle());
         container.innerHTML = htmlTitle;
+
+        const htmlMonth = renderToString(CalendarMonth());
+        container.innerHTML = htmlMonth;
         
         const table = document.createElement('table');
         table.className = 'calendar-table';
