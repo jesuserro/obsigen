@@ -35,7 +35,6 @@ export class CalendarView extends ItemView {
         const currentDate = new Date();
         const currentMonth = currentDate.toLocaleString('default', { month: 'long' });
         const currentYear = currentDate.getFullYear();
-        container.appendChild(this.createTitle(currentMonth, currentYear));
         
         const htmlTitle = renderToString(CalendarTitle());
         container.innerHTML = htmlTitle;
