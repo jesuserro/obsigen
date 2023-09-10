@@ -5,8 +5,6 @@ import { renderToString } from 'react-dom/server';
 import CalendarMonth from './CalendarMonth';
 import CalendarTitle from './CalendarTitle';
 
-
-
 export class CalendarView extends ItemView {
     calendarEl: HTMLElement;
 
@@ -36,7 +34,7 @@ export class CalendarView extends ItemView {
         
         const htmlTitle = renderToString(CalendarTitle());
         const htmlMonth = renderToString(CalendarMonth(files));
-        container.innerHTML = htmlTitle + '<br />' + htmlMonth;
+        container.innerHTML = htmlTitle + htmlMonth;
         
         return container;
     }

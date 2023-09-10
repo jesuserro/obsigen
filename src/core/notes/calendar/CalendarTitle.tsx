@@ -7,15 +7,14 @@ function generateTitle() {
   const locale = 'es-ES';
   const year = currentDate.toLocaleDateString(locale, { year: 'numeric' });
   const month = currentDate.toLocaleDateString(locale, { month: 'long' });
-  return `${month} ${year}`;
+  const monthCapitalized = month.charAt(0).toUpperCase() + month.slice(1);
+  return `${monthCapitalized} ${year}`;
 }
 
 function CalendarTitle() {
   const title = generateTitle(); // Get the dynamic title
   return (
-    <div className="calendar-title">
-      <h2>{title}</h2>
-    </div>
+    <h2>{title}</h2>
   );
 }
 
