@@ -1,7 +1,6 @@
 import builtins from "builtin-modules";
 import esbuild from "esbuild";
 import { copy } from 'esbuild-plugin-copy';
-import sassPlugin from 'esbuild-plugin-sass';
 import glob from 'glob';
 import process from "process";
 
@@ -52,10 +51,6 @@ const context = await esbuild.context({
         // Use url-loader for SVG files
         // ,{ from: 'src/assets/*.svg', to: `${outputDir}/src/assets` }
       ]
-    }),
-    sassPlugin({
-      include: 'styles.css',
-      out: `${outputDir}/styles.css`,
     })
   ],
   loader: {
