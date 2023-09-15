@@ -48,13 +48,11 @@ const context = await esbuild.context({
     copy({
       assets: [
         { from: 'manifest.json', to: `${outputDir}/manifest.json` },
-        // Use url-loader for SVG files
-        // ,{ from: 'src/assets/*.svg', to: `${outputDir}/src/assets` }
       ]
     })
   ],
   loader: {
-    '.svg': 'file'
+    '.svg': 'file',
   },
 });
 
