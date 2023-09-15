@@ -29,3 +29,22 @@ table.calendar-table td {
 }
 
 
+/* Add this CSS to your stylesheets */
+.day-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.day-number {
+  font-weight: bold;
+}
+
+.calendar-icons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+

@@ -1,6 +1,5 @@
-// CalendarDay.tsx
 import React from 'react';
-import { church_icon } from './../../../assets/church.js';
+import { FaCalendarDay } from 'react-icons/fa';
 
 interface CalendarDayProps {
   dayCounter: number;
@@ -10,20 +9,24 @@ interface CalendarDayProps {
 function CalendarDay({ dayCounter, hasNote }: CalendarDayProps) {
   let notePath = '';
   if (hasNote) {
-    // Replace this with your Obsidian vault name
-    const vaultName = encodeURIComponent('YourVaultName');
     notePath = `obsidian://open?file=${encodeURIComponent(hasNote)}`;
   }
 
   return (
-    <div className="day-number">
+    <div className="day-container">
       {hasNote ? (
-        <div>
-          <a href={notePath}>{dayCounter}</a>
-          <img className="custom-icon" src={church_icon} alt="Icon" />
-        </div>
+        <a href={notePath}>
+          <div className="day-number">{dayCounter}</div>
+        </a>
       ) : (
-        dayCounter
+        <div className="day-number">{dayCounter}</div>
+      )}
+      {hasNote && (
+        <div className="calendar-icons">
+          {[...Array(6)].map((_, index) => (
+            <FaCalendarDay key={index} size={12} />
+          ))}
+        </div>
       )}
     </div>
   );
