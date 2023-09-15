@@ -35,7 +35,7 @@ function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: numb
       cells.push(
         <td key={dayOfWeek} className={isWithinMonth ? 'within-month' : 'outside-month'}>
           {dayIndex > 0 && dayIndex <= numDaysInMonth ? (
-            <CalendarDay dayCounter={dayIndex} hasNote={hasNote} />
+            <CalendarDay dayCounter={dayIndex} hasNote={hasNote} dayNotes={getDayNotes(dayIndex, files)} />
           ) : (
             <span className="empty-day">{''}</span>
           )}
@@ -47,6 +47,17 @@ function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: numb
   }
 
   return daysGrid;
+}
+
+// Create a function to get all notes for a specific day
+function getDayNotes(dayIndex: number, files: TFile[]): TFile[] {
+  const year = new Date().getFullYear();
+  const month = new Date().getMonth() + 1;
+
+  const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}`;
+  const notePath = `100 Calendar/Daily/${year}/${dayDate}.md`;
+
+  return files.filter(file => file.path === notePath);
 }
 
 function checkIfNoteExistsForDay(dayIndex: number, files: TFile[]): string | false {
