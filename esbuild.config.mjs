@@ -1,6 +1,7 @@
 import builtins from "builtin-modules";
 import esbuild from "esbuild";
 import { copy } from 'esbuild-plugin-copy';
+import sassPlugin from 'esbuild-plugin-sass';
 import glob from 'glob';
 import process from "process";
 
@@ -16,12 +17,11 @@ const outputDir = "/mnt/c/Users/Jesús/Documents/vault/.obsidian/plugins/obsigen
 
 const entryPoints = glob.sync("src/**/*.*");
 
-
 const context = await esbuild.context({
   banner: {
     js: banner,
   },
-  entryPoints: [...entryPoints, "main.ts", "styles.css"],
+  entryPoints: [...entryPoints, "main.ts"],
   bundle: true,
   external: [
     "obsidian",
@@ -49,18 +49,18 @@ const context = await esbuild.context({
     copy({
       assets: [
         { from: 'manifest.json', to: `${outputDir}/manifest.json` },
-        { from: 'styles.css', to: `${outputDir}/styles.css` }
         // Use url-loader for SVG files
         // ,{ from: 'src/assets/*.svg', to: `${outputDir}/src/assets` }
       ]
+    }),
+    sassPlugin({
+      include: 'styles.css',
+      out: `${outputDir}/styles.css`,
     })
-  ]
-  ,loader: {
+  ],
+  loader: {
     '.svg': 'file'
   },
-  // ,loader: {
-  //   '.jpg': 'file'
-  // },
 });
 
 if (prod) {
