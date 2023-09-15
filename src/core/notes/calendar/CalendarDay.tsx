@@ -24,12 +24,18 @@ function CalendarDay({ dayCounter, hasNote }: CalendarDayProps) {
       {hasNote && (
         <div className="calendar-icons">
           {[...Array(6)].map((_, index) => (
-            <FaCalendarDay key={index} size={12} />
+            <FaCalendarDay key={index} size={12} style={{ color: getRandomColor() }} />
           ))}
         </div>
       )}
     </div>
   );
+}
+
+
+function getRandomColor() {
+  // Generate a random color in hexadecimal format
+  return '#' + Math.floor(Math.random()*16777215).toString(16);
 }
 
 export default CalendarDay;
