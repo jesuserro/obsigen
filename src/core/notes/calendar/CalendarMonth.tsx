@@ -55,7 +55,6 @@ function getDayNotes(dayIndex: number, files: TFile[]): TFile[] {
   const month = new Date().getMonth() + 1;
 
   const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}`;
-  const notePath = `100 Calendar/Daily/${year}/${dayDate}.md`;
 
   return files.filter((file) => file.path.includes(dayDate));
 }
