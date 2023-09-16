@@ -9,6 +9,67 @@ ObsiGen — aka "Obsidian Note Generator" — is a BETA plugin designed to enhan
 
 In the near future, I'm planning to introduce a monthly calendar view that will display all your events using descriptive icons. This calendar-like overview will provide a visual representation of your notes, offering a comprehensive and intuitive way to navigate and explore your daily events.
 
+## Folder Structure
+Following the DDD principles, the project is divided into three layers: core, adapters and shared.
+```
+📦src
+ ┣ 📂adapters
+ ┃ ┗ 📂Obsidian
+ ┃ ┃ ┣ 📜MenuPrincipal.ts
+ ┃ ┃ ┣ 📜PromptModal.ts
+ ┃ ┃ ┣ 📜SampleModal.ts
+ ┃ ┃ ┗ 📜SampleSettingTab.ts
+ ┣ 📂assets
+ ┃ ┗ 📜church.js
+ ┣ 📂core
+ ┃ ┣ 📂notes
+ ┃ ┃ ┣ 📂__mocks__
+ ┃ ┃ ┃ ┗ 📜obsidian.ts
+ ┃ ┃ ┣ 📂aniversario
+ ┃ ┃ ┃ ┣ 📜Aniversario.test.ts
+ ┃ ┃ ┃ ┣ 📜Aniversario.ts
+ ┃ ┃ ┃ ┣ 📜AniversarioSubheader.ts
+ ┃ ┃ ┃ ┗ 📜AniversarioYaml.tsx
+ ┃ ┃ ┣ 📂biblia
+ ┃ ┃ ┃ ┗ 📂versiculo
+ ┃ ┃ ┣ 📂calendar
+ ┃ ┃ ┃ ┣ 📜Calendar.ts
+ ┃ ┃ ┃ ┣ 📜CalendarDay.tsx
+ ┃ ┃ ┃ ┣ 📜CalendarMonth.tsx
+ ┃ ┃ ┃ ┣ 📜CalendarTitle.tsx
+ ┃ ┃ ┃ ┗ 📜CalendarView.ts
+ ┃ ┃ ┣ 📂captureUrl
+ ┃ ┃ ┃ ┣ 📜CaptureUrl.test.ts
+ ┃ ┃ ┃ ┣ 📜CaptureUrl.ts
+ ┃ ┃ ┃ ┣ 📜CaptureUrlModal.ts
+ ┃ ┃ ┃ ┣ 📜CaptureUrlSubheader.ts
+ ┃ ┃ ┃ ┣ 📜CaptureUrlYaml.tsx
+ ┃ ┃ ┃ ┗ 📜captureUrlModal.module.css
+ ┃ ┃ ┣ 📂daily
+ ┃ ┃ ┃ ┣ 📜Daily.ts
+ ┃ ┃ ┃ ┣ 📜DailySubheader.ts
+ ┃ ┃ ┃ ┗ 📜DailyYaml.tsx
+ ┃ ┃ ┣ 📂momento
+ ┃ ┃ ┃ ┣ 📜Momento.ts
+ ┃ ┃ ┃ ┣ 📜MomentoSubheader.ts
+ ┃ ┃ ┃ ┗ 📜MomentoYaml.tsx
+ ┃ ┃ ┣ 📜NoteGenerator.test.ts
+ ┃ ┃ ┗ 📜NoteGenerator.ts
+ ┃ ┗ 📂shared
+ ┃ ┃ ┣ 📂interface
+ ┃ ┃ ┃ ┣ 📜MyPluginSettings.ts
+ ┃ ┃ ┃ ┗ 📜iYaml.ts
+ ┃ ┃ ┗ 📂templates
+ ┃ ┃ ┃ ┗ 📜Yaml.tsx
+ ┗ 📜styles.scss
+ ┗ 📜main.ts
+ ┗ 📜manifest.json
+ ┗ 📜esbuild.config.mjs
+ ┗ 📜package.json
+ ┗ 📜tsconfig.json
+ ┗ 📜versions.json
+```
+
 ## Features
 
 This project uses Typescript to provide type checking and documentation.
@@ -23,77 +84,6 @@ This sample plugin demonstrates some of the basic functionality the plugin API c
 - Adds a plugin setting tab to the settings page.
 - Registers a global click event and output 'click' to the console.
 - Registers a global interval which logs 'setInterval' to the console.
-
-## Folder Structure
-Following the DDD principles, the project is divided into three layers: core, adapters and shared.
-```
-obsigen
-├─ .babelrc
-├─ .editorconfig
-├─ .eslintignore
-├─ .eslintrc
-├─ .gitignore
-├─ .npmrc
-├─ README.md
-├─ babel.config.js
-├─ esbuild.config.mjs
-├─ jest.config.js
-├─ main.ts
-├─ manifest.json
-├─ package-lock.json
-├─ package.json
-├─ src
-│  ├─ adapters
-│  │  └─ Obsidian
-│  │     ├─ MenuPrincipal.ts
-│  │     ├─ PromptModal.ts
-│  │     ├─ SampleModal.ts
-│  │     └─ SampleSettingTab.ts
-│  └─ core
-│     ├─ notes
-│     │  ├─ NoteGenerator.test.ts
-│     │  ├─ NoteGenerator.ts
-│     │  ├─ __mocks__
-│     │  │  └─ obsidian.ts
-│     │  ├─ aniversario
-│     │  │  ├─ Aniversario.test.ts
-│     │  │  ├─ Aniversario.ts
-│     │  │  ├─ AniversarioSubheader.ts
-│     │  │  └─ AniversarioYaml.tsx
-│     │  ├─ biblia
-│     │  │  └─ versiculo
-│     │  ├─ captureUrl
-│     │  │  ├─ CaptureUrl.test.ts
-│     │  │  ├─ CaptureUrl.ts
-│     │  │  ├─ CaptureUrlModal.ts
-│     │  │  ├─ CaptureUrlSubheader.ts
-│     │  │  ├─ CaptureUrlYaml.tsx
-│     │  │  └─ captureUrlModal.module.css
-│     │  ├─ daily
-│     │  │  ├─ Daily.ts
-│     │  │  ├─ DailySubheader.ts
-│     │  │  └─ DailyYaml.tsx
-│     │  └─ momento
-│     │     ├─ Momento.ts
-│     │     ├─ MomentoSubheader.ts
-│     │     └─ MomentoYaml.tsx
-│     └─ shared
-│        ├─ interface
-│        │  ├─ MyPluginSettings.ts
-│        │  └─ iYaml.ts
-│        └─ templates
-│           └─ Yaml.tsx
-├─ styles.css
-├─ tsconfig.json
-├─ var
-│  ├─ MonthView.ts
-│  ├─ NoteGenerator.ts
-│  ├─ NoteGeneratorAllInOne.ts
-│  ├─ NoteGeneratorCaller.ts
-│  └─ template.yaml
-├─ version-bump.mjs
-└─ versions.json
-```
 
 ## Commands
 
