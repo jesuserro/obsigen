@@ -1,6 +1,6 @@
 import { TFile } from 'obsidian';
 import React from 'react';
-import { FaQuestionCircle } from 'react-icons/fa';
+import { FaCalendarDay, FaQuestionCircle } from 'react-icons/fa';
 
 interface CalendarDayProps {
   dayCounter: number;
@@ -8,14 +8,28 @@ interface CalendarDayProps {
   dayNotes: TFile[] | false;
 }
 
-function getCalendarIcon (index: number, note: TFile) {
+function getCalendarIcon (note: TFile, index: number) {
+
+  if(note.path.includes('Anna')) {
+    return (
+      <FaCalendarDay key={index} size={12} style={{ color: '#FFD700' }} /> 
+    )
+  }
+
+  return (
+    <FaQuestionCircle key={index} size={12} style={{ color: '#A9A9A9' }} /> 
+  );
+}
+
+function getCalendarEvent (index: number, note: TFile) {
+  const boundGetCalendarIcon = getCalendarIcon.bind(this);
   return (
       <a
         key={index}
         href={`obsidian://open?file=${encodeURIComponent(note.path)}`}
         title={getFileName(note.path)}
       >
-        <FaQuestionCircle key={index} size={12} style={{ color: '#C0C0C0' }} />
+        {boundGetCalendarIcon(note, index)}
         <span className="icon-description">{getFileName(note.path)}</span>
       </a>
   );
@@ -28,7 +42,7 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps) {
     notePath = `obsidian://open?file=${encodeURIComponent(hasNote)}`;
   }
   
-  const boundGetCalendarIcon = getCalendarIcon.bind(this);
+  const boundGetCalendarEvent = getCalendarEvent.bind(this);
 
   return (
     <div className="day-container">
@@ -43,7 +57,7 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps) {
           </a>
           <div className="calendar-icons">
             {dayNotes.map((note, index) => (
-              boundGetCalendarIcon(index, note)
+              boundGetCalendarEvent(index, note)
             ))}
           </div>
         </>
@@ -52,7 +66,7 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps) {
           <div className="day-number">{dayCounter}</div>
           <div className="calendar-icons">
             {dayNotes.map((note, index) => (
-              boundGetCalendarIcon(index, note)
+              boundGetCalendarEvent(index, note)
             ))}
           </div>
         </>
