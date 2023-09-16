@@ -1,6 +1,6 @@
 import { TFile } from 'obsidian';
 import React from 'react';
-import { FaCalendarDay, FaQuestionCircle } from 'react-icons/fa';
+import { CalendarIcon } from './CalendarIcon';
 
 interface CalendarDayProps {
   dayCounter: number;
@@ -8,30 +8,17 @@ interface CalendarDayProps {
   dayNotes: TFile[] | false;
 }
 
-function getCalendarIcon (note: TFile, index: number) {
-
-  if(note.path.includes('Anna')) {
-    return (
-      <FaCalendarDay key={index} size={12} style={{ color: '#FFD700' }} /> 
-    )
-  }
-
+function getCalendarEvent(index: number, note: TFile) {
+  const icon = CalendarIcon.getIcon(note);
   return (
-    <FaQuestionCircle key={index} size={12} style={{ color: '#A9A9A9' }} /> 
-  );
-}
-
-function getCalendarEvent (index: number, note: TFile) {
-  const boundGetCalendarIcon = getCalendarIcon.bind(this);
-  return (
-      <a
-        key={index}
-        href={`obsidian://open?file=${encodeURIComponent(note.path)}`}
-        title={getFileName(note.path)}
-      >
-        {boundGetCalendarIcon(note, index)}
-        <span className="icon-description">{getFileName(note.path)}</span>
-      </a>
+    <a
+      key={index}
+      href={`obsidian://open?file=${encodeURIComponent(note.path)}`}
+      title={getFileName(note.path)}
+    >
+      {icon}
+      <span className="icon-description">{getFileName(note.path)}</span>
+    </a>
   );
 }
 
