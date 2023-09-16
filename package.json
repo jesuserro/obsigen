@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "concurrently \"npm run dev-ts\" \"npm run dev-sass\" \"npm run sasscp\"",
 		"dev-ts": "node esbuild.config.mjs --bundle --watch",
-		"dev-sass": "sass --watch --no-source-map --style compressed src/styles.scss styles.css",
+		"dev-sass": "sass --watch --no-source-map --style compressed src/styles.scss:styles.css",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
 		"version": "node version-bump.mjs && git add manifest.json versions.json",
 		"test": "jest",

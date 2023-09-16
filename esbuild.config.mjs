@@ -15,8 +15,8 @@ if you want to view the source, please visit the GitHub repository of this plugi
 const prod = (process.argv[2] === "production");
 const outputDir = "/mnt/c/Users/Jesús/Documents/vault/.obsidian/plugins/obsigen";
 
-const entryPoints = glob.sync("src/**/*.*");
-// const entryPoints = glob.sync("src/**/*.*").filter((file) => file !== "src/styles.scss");
+// const entryPoints = glob.sync("src/**/*.*");
+const entryPoints = glob.sync("src/**/*.*").filter((file) => file !== "src/styles.scss");
 
 const context = await esbuild.context({
   banner: {
