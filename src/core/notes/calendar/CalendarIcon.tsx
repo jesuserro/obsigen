@@ -8,7 +8,7 @@ export class CalendarIcon {
   static getIcon(note: TFile): React.ReactNode {
     const path = note.path;
 
-    if (path.includes('Anna')) {
+    if (path.includes('Anna') || path.includes("Nieves")) {
       return <AiFillHeart size={12} style={{ color: '#FF69B4' }} />;
     } else if (path.match(/\/(\d{8})\.md$/)) {
       return <FaCalendarDay size={12} style={{ color: '#8B4513' }} />;
