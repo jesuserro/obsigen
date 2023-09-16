@@ -8,11 +8,27 @@ interface CalendarDayProps {
   dayNotes: TFile[] | false;
 }
 
+function getCalendarIcon (index: number, note: TFile) {
+  return (
+      <a
+        key={index}
+        href={`obsidian://open?file=${encodeURIComponent(note.path)}`}
+        title={getFileName(note.path)}
+      >
+        <FaQuestionCircle key={index} size={12} style={{ color: '#C0C0C0' }} />
+        <span className="icon-description">{getFileName(note.path)}</span>
+      </a>
+  );
+}
+
+
 function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps) {
   let notePath = '';
   if (hasNote) {
     notePath = `obsidian://open?file=${encodeURIComponent(hasNote)}`;
   }
+  
+  const boundGetCalendarIcon = getCalendarIcon.bind(this);
 
   return (
     <div className="day-container">
@@ -27,14 +43,7 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps) {
           </a>
           <div className="calendar-icons">
             {dayNotes.map((note, index) => (
-              <a
-                key={index}
-                href={`obsidian://open?file=${encodeURIComponent(note.path)}`}
-                title={getFileName(note.path)}
-              >
-                <FaQuestionCircle key={index} size={12} style={{ color: '#C0C0C0' }} />
-                <span className="icon-description">{getFileName(note.path)}</span>
-              </a>
+              boundGetCalendarIcon(index, note)
             ))}
           </div>
         </>
@@ -43,14 +52,7 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps) {
           <div className="day-number">{dayCounter}</div>
           <div className="calendar-icons">
             {dayNotes.map((note, index) => (
-              <a
-                key={index}
-                href={`obsidian://open?file=${encodeURIComponent(note.path)}`}
-                title={getFileName(note.path)}
-              >
-                <FaQuestionCircle key={index} size={12} style={{ color: '#C0C0C0' }} />
-                <span className="icon-description">{getFileName(note.path)}</span>
-              </a>
+              boundGetCalendarIcon(index, note)
             ))}
           </div>
         </>
