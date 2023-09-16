@@ -84,19 +84,7 @@ This sample plugin demonstrates some of the basic functionality the plugin API c
 - Adds a plugin setting tab to the settings page.
 - Registers a global click event and output 'click' to the console.
 - Registers a global interval which logs 'setInterval' to the console.
-
-## Commands
-
-``` shell
--- install dependencies Rollup for compile plugin
-npm install rollup rollup-plugin-typescript2 @rollup/plugin-node-resolve
-npm install rollup-plugin-copy
-
-npx rollup -c
-```
 ## Manually installing the plugin
-
 - Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/obsigen/`.
 ## Funding
-
 [![Buy Me a Coffee](https://img.shields.io/badge/-Buy%20Me%20a%20Coffee-orange?style=flat&logo=buy-me-a-coffee&logoColor=white)](https://www.buymeacoffee.com/jesuserro)
