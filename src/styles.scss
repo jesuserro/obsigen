@@ -1,5 +1,5 @@
 .my-plugin-ribbon-class {
-  color: red;
+  color: yellow;
 }
 
 .custom-icon {
@@ -35,5 +35,28 @@ table.calendar-table td {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2px;
+  }
+}
+
+/* CSS para dispositivos móviles */
+@media (max-width: 767px) {
+  .day-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .icon-description {
+    margin-left: 10px; /* Espacio entre el ícono y la descripción */
+    font-size: 12px; /* Tamaño del texto de la descripción */
+    color: #555; /* Color del texto de la descripción (puedes personalizarlo) */
+    display: inline; /* Mostrar la descripción en dispositivos móviles */
+  }
+}
+
+/* CSS para dispositivos de escritorio (ocultar la descripción) */
+@media (min-width: 768px) {
+  .icon-description {
+    display: none; /* Ocultar la descripción en dispositivos de escritorio */
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { iYaml } from '../interface/Yaml';
+import { iYaml } from './../interface/iYaml';
 
 export function Yaml({ data }: { data: iYaml }) {
   return (
