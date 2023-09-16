@@ -1,1 +1,34 @@
-.my-plugin-ribbon-class{color:green}.custom-icon{width:25px;height:25px}table.calendar-table{border-collapse:collapse;width:100%}table.calendar-table th{border:1px solid gray;padding:4px;text-align:center;font-weight:bold}table.calendar-table td{border:1px solid gray;padding:4px;text-align:center}.day-container{display:flex;flex-direction:column;align-items:center;text-align:center}.day-container .calendar-icons{display:grid;grid-template-columns:repeat(3, 1fr);gap:2px}
+.my-plugin-ribbon-class{color:green}
+
+.custom-icon{width:25px;height:25px}
+
+table.calendar-table{border-collapse:collapse;width:100%}
+table.calendar-table th{border:1px solid gray;padding:4px;text-align:center;font-weight:bold}
+table.calendar-table td{border:1px solid gray;padding:4px;text-align:center}
+
+.day-container{display:flex;flex-direction:column;align-items:center;text-align:center}
+.day-container .calendar-icons{display:grid;grid-template-columns:repeat(3, 1fr);gap:2px}
+
+
+/* CSS para dispositivos móviles */
+@media (max-width: 767px) {
+  .day-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .icon-description {
+    margin-left: 10px; /* Espacio entre el ícono y la descripción */
+    font-size: 12px; /* Tamaño del texto de la descripción */
+    color: #555; /* Color del texto de la descripción (puedes personalizarlo) */
+    display: inline; /* Mostrar la descripción en dispositivos móviles */
+  }
+}
+
+/* CSS para dispositivos de escritorio (ocultar la descripción) */
+@media (min-width: 768px) {
+  .icon-description {
+    display: none; /* Ocultar la descripción en dispositivos de escritorio */
+  }
+}

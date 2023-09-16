@@ -33,6 +33,7 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps) {
                 title={getFileName(note.path)}
               >
                 <FaCalendarDay key={index} size={12} style={{ color: getRandomColor() }} />
+                <span className="icon-description">{getFileName(note.path)}</span>
               </a>
             ))}
           </div>
@@ -48,6 +49,7 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps) {
                 title={getFileName(note.path)}
               >
                 <FaCalendarDay key={index} size={12} style={{ color: getRandomColor() }} />
+                <span className="icon-description">{getFileName(note.path)}</span>
               </a>
             ))}
           </div>
