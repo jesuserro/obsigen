@@ -1,3 +1,4 @@
+import { TFile } from 'obsidian';
 import React from 'react';
 import { AiFillHeart } from 'react-icons/ai';
 import { FaCalendarDay, FaQuestionCircle } from 'react-icons/fa';
