@@ -55,8 +55,6 @@ table.calendar-table td {
 }
 
 /* CSS para dispositivos de escritorio (ocultar la descripción) */
-@media (min-width: 768px) {
-  .icon-description {
-    display: none; /* Ocultar la descripción en dispositivos de escritorio */
-  }
+.icon-description {
+  display: none; /* Ocultar la descripción en dispositivos de escritorio */
 }
