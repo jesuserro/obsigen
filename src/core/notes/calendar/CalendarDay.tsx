@@ -1,6 +1,6 @@
 import { TFile } from 'obsidian';
 import React from 'react';
-import { FaCalendarDay } from 'react-icons/fa';
+import { FaQuestionCircle } from 'react-icons/fa';
 
 interface CalendarDayProps {
   dayCounter: number;
@@ -32,7 +32,7 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps) {
                 href={`obsidian://open?file=${encodeURIComponent(note.path)}`}
                 title={getFileName(note.path)}
               >
-                <FaCalendarDay key={index} size={12} style={{ color: getRandomColor() }} />
+                <FaQuestionCircle key={index} size={12} style={{ color: '#C0C0C0' }} />
                 <span className="icon-description">{getFileName(note.path)}</span>
               </a>
             ))}
@@ -48,7 +48,7 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps) {
                 href={`obsidian://open?file=${encodeURIComponent(note.path)}`}
                 title={getFileName(note.path)}
               >
-                <FaCalendarDay key={index} size={12} style={{ color: getRandomColor() }} />
+                <FaQuestionCircle key={index} size={12} style={{ color: '#C0C0C0' }} />
                 <span className="icon-description">{getFileName(note.path)}</span>
               </a>
             ))}
