@@ -7,7 +7,7 @@ import { GiChurch } from 'react-icons/gi';
 export class CalendarIcon {
   static getIcon(note: TFile): React.ReactNode {
     const path = note.path;
-
+    // console.log(path);
     if (path.includes('Anna') || path.includes("Nieves")) {
       return <AiFillHeart size={12} style={{ color: '#FF69B4' }} />;
     } else if (path.match(/\/(\d{8})\.md$/)) {

@@ -56,7 +56,7 @@ function getDayNotes(dayIndex: number, files: TFile[]): TFile[] {
 
   const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}`;
 
-  return files.filter((file) => file.path.includes(dayDate));
+  return files.filter((file) => file.path.includes(dayDate) && !file.path.contains('/Daily'));
 }
 
 function checkIfNoteExistsForDay(dayIndex: number, files: TFile[]): string | false {
