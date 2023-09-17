@@ -19,7 +19,6 @@ function CalendarYear(files: TFile[], app: App) {
 
   return (
     <div>
-      <h2>{new Date().getFullYear()}</h2>
       {monthsGrid}
     </div>
   );
