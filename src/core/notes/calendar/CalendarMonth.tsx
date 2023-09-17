@@ -56,7 +56,7 @@ function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: numb
 
 // Create a function to get all notes for a specific day
 function getDayNotes(dayIndex: number, files: TFile[], year: number, month: number): TFile[] {
-  
+  month = month + 1;
   const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}`;
   const anniversaries = `/Aniversaries/${String(month).padStart(2, '0')}/${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}`;
   
