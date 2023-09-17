@@ -4,7 +4,7 @@ import { AiFillHeart } from 'react-icons/ai';
 import { BsFillCloudRainHeavyFill, BsSnow3, BsWordpress } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
 import { FaBirthdayCake, FaCross, FaGlobe, FaMoneyBillWave, FaPodcast, FaQuestionCircle } from 'react-icons/fa';
-import { GiChurch, GiCommercialAirplane, GiPumpkinMask, GiSandsOfTime, GiThermometerCold } from 'react-icons/gi';
+import { GiChurch, GiCommercialAirplane, GiPumpkinMask, GiSandsOfTime, GiThermometerCold, GiTombstone } from 'react-icons/gi';
 import { IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdLocalHospital, MdPeople, MdRestaurant } from 'react-icons/md';
 import { PiNotePencilBold } from 'react-icons/pi';
@@ -92,7 +92,7 @@ export class CalendarIcon {
         return <MdDirectionsRun size={size} style={{ color: '#FF8C00' }} />;
       }
       if (tags.includes('funeral')) {
-        return <FaCross size={size} style={{ color: '#000000' }} />;
+        return <GiTombstone size={size} style={{ color: '#74757a' }} />;
       }
       if (tags.includes('doctor')) {
         return <MdLocalHospital size={size} style={{ color: '#FF0000' }} />;

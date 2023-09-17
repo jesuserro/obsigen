@@ -2,26 +2,14 @@ import { App, TFile } from 'obsidian';
 import React from 'react';
 import CalendarMonth from './CalendarMonth';
 
-function createMonthsGrid(files: TFile[], app: App): JSX.Element[] {
-  const monthsGrid = [];
-
-  for (let month = 0; month < 12; month++) {
-    monthsGrid.push(
-      <CalendarMonth key={month.toString().padStart(2, '0')} year={new Date().getFullYear()} month={month} app={app} files={files} />
-    );
-  }
-
-  return monthsGrid;
-}
-
 function CalendarYear(files: TFile[], app: App) {
-  const monthsGrid = createMonthsGrid(files, app);
+  const currentYear = new Date().getFullYear();
 
-  return (
-    <div>
-      {monthsGrid}
-    </div>
-  );
+  const monthsGrid = Array.from({ length: 12 }, (_, month) => (
+    <CalendarMonth key={String(month).padStart(2, '0')} year={currentYear} month={month} app={app} files={files} />
+  ));
+
+  return <div>{monthsGrid}</div>;
 }
 
 export default CalendarYear;
