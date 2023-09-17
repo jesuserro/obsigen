@@ -1,7 +1,7 @@
 import { App, TFile } from 'obsidian';
 import React from 'react';
 import { AiFillHeart } from 'react-icons/ai';
-import { BsSnow3 } from 'react-icons/bs';
+import { BsSnow3, BsWordpress } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
 import { FaBirthdayCake, FaCross, FaGlobe, FaMoneyBillWave, FaPodcast, FaQuestionCircle } from 'react-icons/fa';
 import { GiChurch, GiCommercialAirplane, GiPumpkinMask, GiSandsOfTime, GiThermometerCold } from 'react-icons/gi';
@@ -47,7 +47,7 @@ export class CalendarIcon {
         return <SiTwitter size={size} style={{ color: '#1DA1F2' }} />;
       }
       if (tags.includes('blogpost')) {
-        return <IoIosPaper size={size} style={{ color: '#FFA500' }} />;
+        return <BsWordpress size={size} style={{ color: '#117ac9' }} />;
       }
       if (tags.includes('agriculture')) {
         return <IoMdBasket size={size} style={{ color: '#008000' }} />;
