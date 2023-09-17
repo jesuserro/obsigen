@@ -13,7 +13,7 @@ export class CalendarIcon {
     if (path.includes('Anna') || path.includes("Nieves")) {
       return <AiFillHeart size={size} style={{ color: '#FF69B4' }} />;
     } else if (path.includes('TO -')) {
-      return <GiChurch size={size} style={{ color: '#800080' }} />;
+      return <GiChurch size={size} style={{ color: '#ad6df2' }} />;
     } else if (path.includes('/Aniversaries')) {
       return <FaBirthdayCake size={size} style={{ color: '#9e5010' }} />;
     } else if (path.includes('/Moments')) {
