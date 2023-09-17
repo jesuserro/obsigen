@@ -3,7 +3,8 @@
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jesuserro/obsigen?style=for-the-badge&sort=semver)](https://github.com/jesuserro/obsigen/releases)
 [![GitHub issues](https://img.shields.io/github/issues/jesuserro/obsigen?style=for-the-badge)](https://github.com/jesuserro/obsigen/issues)
 
-View your notes in a year calendar through icons.
+Displaying your Obsidian notes in a year calendar view through icons. 
+Use the yaml frontmatter to add the date and icon to your notes. The plugin will read the yaml and display the notes in the calendar view. The icon is defined on "tag" property.
 
 ## Folder Structure
 Following the DDD principles, the project is divided into three layers: core, adapters and shared.
@@ -67,21 +68,6 @@ Following the DDD principles, the project is divided into three layers: core, ad
  ┗ 📜tsconfig.json
  ┗ 📜versions.json
 ```
-
-## Features
-
-This project uses Typescript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in Typescript Definition format, which contains TSDoc comments describing what it does.
-
-**Note:** The Obsidian API is still in early alpha and is subject to change at any time!
-
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open Sample Modal" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
 ## Installing the plugin
 - Clone the plugin into your vault `VaultFolder/.obsidian/plugins/`.
 ## Funding
