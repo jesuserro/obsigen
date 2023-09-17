@@ -1,9 +1,9 @@
 {
 	"id": "obsigen",
 	"name": "Obsigen",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"minAppVersion": "0.15.0",
-	"description": "Just another customized digital garden.",
+	"description": "View your notes in Calendar.",
 	"author": "Jesús Erro",
 	"authorUrl": "https://buymeacoffee.com/jesuserro",
 	"fundingUrl": "https://buymeacoffee.com/jesuserro",
