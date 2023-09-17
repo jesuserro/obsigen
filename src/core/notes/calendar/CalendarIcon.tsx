@@ -1,8 +1,8 @@
 import { TFile } from 'obsidian';
 import React from 'react';
 import { AiFillHeart } from 'react-icons/ai';
-import { FaGlobe, FaQuestionCircle, FaRegClock } from 'react-icons/fa';
-import { GiChurch } from 'react-icons/gi';
+import { FaGlobe, FaQuestionCircle } from 'react-icons/fa';
+import { GiChurch, GiSandsOfTime } from 'react-icons/gi';
 
 export class CalendarIcon {
   static getIcon(note: TFile): React.ReactNode {
@@ -15,7 +15,7 @@ export class CalendarIcon {
     } else if (path.includes('TO -')) {
       return <GiChurch size={size} style={{ color: '#800080' }} />;
     } else if (path.includes('/Moments')) {
-      return <FaRegClock size={size} style={{ color: '#FFFF99' }} />;
+      return <GiSandsOfTime size={size} style={{ color: '#FFFF99' }} />;
     } else if (path.includes('/Captures')) {
       return <FaGlobe size={size} style={{ color: '#1877F2' }} />;
     } else {
