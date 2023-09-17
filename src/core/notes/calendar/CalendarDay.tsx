@@ -1,15 +1,16 @@
-import { TFile } from 'obsidian';
+import { App, TFile } from 'obsidian';
 import React from 'react';
 import { CalendarIcon } from './CalendarIcon';
 
 interface CalendarDayProps {
+  app:App;
   dayCounter: number;
   hasNote: string | false;
   dayNotes: TFile[] | false;
 }
 
-function getCalendarEvent(index: number, note: TFile) {
-  const icon = CalendarIcon.getIcon(note);
+function getCalendarEvent(index: number, note: TFile, app:App) {
+  const icon = CalendarIcon.getIcon(note, app);
   return (
     <a
       key={index}
@@ -23,7 +24,7 @@ function getCalendarEvent(index: number, note: TFile) {
 }
 
 
-function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps) {
+function CalendarDay({ app, dayCounter, hasNote, dayNotes }: CalendarDayProps) {
   let notePath = '';
   if (hasNote) {
     notePath = `obsidian://open?file=${encodeURIComponent(hasNote)}`;
@@ -44,7 +45,7 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps) {
           </a>
           <div className="calendar-icons">
             {dayNotes.map((note, index) => (
-              boundGetCalendarEvent(index, note)
+              boundGetCalendarEvent(index, note, this.app)
             ))}
           </div>
         </>
@@ -53,7 +54,7 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps) {
           <div className="day-number">{dayCounter}</div>
           <div className="calendar-icons">
             {dayNotes.map((note, index) => (
-              boundGetCalendarEvent(index, note)
+              boundGetCalendarEvent(index, note, this.app)
             ))}
           </div>
         </>

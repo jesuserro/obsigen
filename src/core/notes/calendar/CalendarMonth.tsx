@@ -1,4 +1,4 @@
-import { TFile } from 'obsidian';
+import { App, TFile } from 'obsidian';
 import React from 'react';
 import CalendarDay from './CalendarDay';
 
@@ -20,7 +20,7 @@ function calculateNumRows(numDaysInMonth: number, dayOffset: number): number {
   return Math.ceil((numDaysInMonth + dayOffset) / 7);
 }
 
-function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: number, files: TFile[]): JSX.Element[] {
+function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: number, files: TFile[], app:App): JSX.Element[] {
   const daysGrid = [];
 
   for (let row = 0; row < numRows; row++) {
@@ -35,7 +35,7 @@ function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: numb
       cells.push(
         <td key={dayOfWeek} className={isWithinMonth ? 'within-month' : 'outside-month'}>
           {dayIndex > 0 && dayIndex <= numDaysInMonth ? (
-            <CalendarDay dayCounter={dayIndex} hasNote={hasNote} dayNotes={getDayNotes(dayIndex, files)} />
+            <CalendarDay app={app} dayCounter={dayIndex} hasNote={hasNote} dayNotes={getDayNotes(dayIndex, files)} />
           ) : (
             <span className="empty-day">{''}</span>
           )}
@@ -75,7 +75,7 @@ function checkIfNoteExistsForDay(dayIndex: number, files: TFile[]): string | fal
   return false;
 }
 
-function CalendarMonth(files: TFile[] ) {
+function CalendarMonth(files: TFile[], app:App ) {
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth();
   const firstDayOfMonth = getFirstDayOfMonth(currentYear, currentMonth);
@@ -85,7 +85,7 @@ function CalendarMonth(files: TFile[] ) {
   const dayOffset = getDayOffset(firstDayOfWeek);
   const numRows = calculateNumRows(numDaysInMonth, dayOffset);
 
-  const daysGrid = createDaysGrid(numRows, numDaysInMonth, dayOffset, files);
+  const daysGrid = createDaysGrid(numRows, numDaysInMonth, dayOffset, files, app);
 
   let monthNameAndYear = `${firstDayOfMonth.toLocaleString('default', { month: 'long' })} ${currentYear}`;
   monthNameAndYear = monthNameAndYear.charAt(0).toUpperCase() + monthNameAndYear.slice(1);

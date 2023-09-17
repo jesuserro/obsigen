@@ -31,7 +31,7 @@ export class CalendarView extends ItemView {
         container.className = 'calendar-container';
         const files = this.app.vault.getMarkdownFiles();
         const htmlTitle = renderToString(CalendarTitle());
-        const htmlMonth = renderToString(CalendarMonth(files));
+        const htmlMonth = renderToString(CalendarMonth(files, this.app));
         container.innerHTML = htmlMonth;
         
         return container;
