@@ -35,7 +35,7 @@ function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: numb
       const dayIndex = row * 7 + dayOfWeek + 1 - dayOffset;
       const isWithinMonth = dayIndex >= 1 && dayIndex <= numDaysInMonth;
 
-      const hasNote = checkIfNoteExistsForDay(dayIndex, files);
+      const hasNote = checkIfNoteExistsForDay(dayIndex, files, year, month);
 
       cells.push(
         <td key={dayOfWeek} className={isWithinMonth ? 'within-month' : 'outside-month'}>
@@ -63,9 +63,9 @@ function getDayNotes(dayIndex: number, files: TFile[], year: number, month: numb
   return files.filter((file) => file.path.includes(dayDate) && !file.path.contains('/Daily') || file.path.includes(anniversaries));
 }
 
-function checkIfNoteExistsForDay(dayIndex: number, files: TFile[]): string | false {
-  const year = new Date().getFullYear();
-  const month = new Date().getMonth() + 1;
+function checkIfNoteExistsForDay(dayIndex: number, files: TFile[], year: number, month:number): string | false {
+  
+  month = month + 1;
 
   const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}`;
   const notePath = `100 Calendar/Daily/${year}/${dayDate}.md`;
