@@ -110,7 +110,7 @@ export class CalendarIcon {
         return <MdFavorite size={size} style={{ color: '#FF1493' }} />;
       }
       if (tags.includes('friends')) {
-        return <MdGroup size={size} style={{ color: '#800080' }} />;
+        return <MdGroup size={size} style={{ color: '#c4be3d' }} />;
       }
       if (tags.includes('whatsapp')) {
         return <SiWhatsapp size={size} style={{ color: '#25d366' }} />;
