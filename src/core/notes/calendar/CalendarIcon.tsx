@@ -1,8 +1,10 @@
 import { App, TFile } from 'obsidian';
 import React from 'react';
 import { AiFillHeart } from 'react-icons/ai';
-import { FaBirthdayCake, FaGlobe, FaQuestionCircle } from 'react-icons/fa'; // Import the FaSun icon for weather
+import { BsSnow3 } from 'react-icons/bs';
+import { FaBirthdayCake, FaCross, FaGlobe, FaQuestionCircle } from 'react-icons/fa';
 import { GiChurch, GiSandsOfTime, GiThermometerCold } from 'react-icons/gi';
+import { PiNotePencilBold } from 'react-icons/pi';
 
 export class CalendarIcon {
   static getIcon(note: TFile, app: App): React.ReactNode {
@@ -10,9 +12,19 @@ export class CalendarIcon {
     const size = 14;
 
     const tags = app.metadataCache.getFileCache(note)?.frontmatter?.tags;
+    
     if (tags) {
-      if(tags.includes('weather')){
-        return <GiThermometerCold size={size} style={{ color: '#6dc8f2' }} />; 
+      if (tags.includes('weather')) {
+        return <GiThermometerCold size={size} style={{ color: '#6dc8f2' }} />;
+      }
+      if (tags.includes('catholic')) {
+        return <FaCross size={size} style={{ color: '#ad6df2' }} />;
+      }
+      if (tags.includes('snow')) {
+        return <BsSnow3 size={size} style={{ color: '#6dc8f2' }} />;
+      }
+      if (tags.includes('writing')) {
+        return <PiNotePencilBold size={size} style={{ color: '#fcaa62' }} />;
       }
     }
 
