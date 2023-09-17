@@ -87,21 +87,27 @@ function CalendarMonth(files: TFile[] ) {
 
   const daysGrid = createDaysGrid(numRows, numDaysInMonth, dayOffset, files);
 
+  let monthNameAndYear = `${firstDayOfMonth.toLocaleString('default', { month: 'long' })} ${currentYear}`;
+  monthNameAndYear = monthNameAndYear.charAt(0).toUpperCase() + monthNameAndYear.slice(1);
+
   return (
-    <table className="calendar-table">
-      <thead>
-        <tr>
-          <th>Mon</th>
-          <th>Tue</th>
-          <th>Wed</th>
-          <th>Thu</th>
-          <th>Fri</th>
-          <th>Sat</th>
-          <th>Sun</th>
-        </tr>
-      </thead>
-      <tbody>{daysGrid}</tbody>
-    </table>
+    <div>
+      <h2>{monthNameAndYear}</h2>
+      <table className="calendar-table">
+        <thead>
+          <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+          </tr>
+        </thead>
+        <tbody>{daysGrid}</tbody>
+      </table>
+    </div>
   );
 }
 

@@ -29,13 +29,10 @@ export class CalendarView extends ItemView {
     createCalendarView() {
         const container = document.createElement('div');
         container.className = 'calendar-container';
-
         const files = this.app.vault.getMarkdownFiles();
-        
         const htmlTitle = renderToString(CalendarTitle());
         const htmlMonth = renderToString(CalendarMonth(files));
-        // const htmlMonth = <CalendarMonth files={files} />;
-        container.innerHTML = htmlTitle + htmlMonth;
+        container.innerHTML = htmlMonth;
         
         return container;
     }
