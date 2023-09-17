@@ -1,7 +1,7 @@
 import { TFile } from 'obsidian';
 import React from 'react';
 import { AiFillHeart } from 'react-icons/ai';
-import { FaGlobe, FaQuestionCircle } from 'react-icons/fa';
+import { FaBirthdayCake, FaGlobe, FaQuestionCircle } from 'react-icons/fa';
 import { GiChurch, GiSandsOfTime } from 'react-icons/gi';
 
 export class CalendarIcon {
@@ -14,6 +14,8 @@ export class CalendarIcon {
       return <AiFillHeart size={size} style={{ color: '#FF69B4' }} />;
     } else if (path.includes('TO -')) {
       return <GiChurch size={size} style={{ color: '#800080' }} />;
+    } else if (path.includes('/Aniversaries')) {
+      return <FaBirthdayCake size={size} style={{ color: '#9e5010' }} />;
     } else if (path.includes('/Moments')) {
       return <GiSandsOfTime size={size} style={{ color: '#FFFF99' }} />;
     } else if (path.includes('/Captures')) {
