@@ -77,7 +77,7 @@ export class CalendarIcon {
         return <SiSpotify size={size} style={{ color: '#1DB954' }} />;
       }
       if (tags.includes('music')) {
-        return <IoMdMusicalNotes size={size} style={{ color: '#FFD700' }} />;
+        return <IoMdMusicalNotes size={size} style={{ color: '#798aed' }} />;
       }
       if (tags.includes('podcast')) {
         return <FaPodcast size={size} style={{ color: '#1DB954' }} />;
