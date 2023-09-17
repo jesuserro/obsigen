@@ -23,7 +23,7 @@ export class CalendarIcon {
         return <TbZzz size={size} style={{ color: '#3876f2' }} />;
       }
       if (tags.includes('travel')) {
-        return <GiCommercialAirplane size={size} style={{ color: '#fc6f03' }} />;
+        return <GiCommercialAirplane size={size} style={{ color: '#1199c2' }} />;
       }
       if (tags.includes('finances')) {
         return <FaMoneyBillWave size={size} style={{ color: '#069d3e' }} />;
@@ -53,7 +53,7 @@ export class CalendarIcon {
         return <IoMdBasket size={size} style={{ color: '#008000' }} />;
       }
       if (tags.includes('pill')) {
-        return <CiPill size={size} style={{ color: '#05f01c' }} />;
+        return <CiPill size={size} style={{ color: '#c2a411' }} />;
       }
       if (tags.includes('pumpkin')) {
         return <GiPumpkinMask size={size} style={{ color: '#fc6203' }} />;
