@@ -3,7 +3,7 @@ import React from 'react';
 import { AiFillHeart } from 'react-icons/ai';
 import { BsFillCloudRainHeavyFill, BsSnow3, BsWordpress } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaBirthdayCake, FaCross, FaGlobe, FaMoneyBillWave, FaPodcast, FaQuestionCircle } from 'react-icons/fa';
+import { FaBirthdayCake, FaCarSide, FaCross, FaGlobe, FaMoneyBillWave, FaPodcast, FaQuestionCircle } from 'react-icons/fa';
 import { GiChurch, GiCommercialAirplane, GiPumpkinMask, GiSandsOfTime, GiThermometerCold, GiTombstone } from 'react-icons/gi';
 import { IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdLocalHospital, MdPeople, MdRestaurant } from 'react-icons/md';
@@ -35,7 +35,7 @@ export class CalendarIcon {
       pumpkin: ({ size }) => <GiPumpkinMask size={size} style={{ color: '#fc6203' }} />,
       sick: ({ size }) => <GiThermometerCold size={size} style={{ color: '#FF0000' }} />,
       euro: ({ size }) => <IoIosPaper size={size} style={{ color: '#008000' }} />,
-      car: ({ size }) => <IoMdBasket size={size} style={{ color: '#0000FF' }} />,
+      car: ({ size }) => <FaCarSide size={size} style={{ color: '#FF0000' }} />,
       confession: ({ size }) => <FaCross size={size} style={{ color: '#ad6df2' }} />,
       buy: ({ size }) => <IoMdBasket size={size} style={{ color: '#008000' }} />,
       spotify: ({ size }) => <SiSpotify size={size} style={{ color: '#1DB954' }} />,
