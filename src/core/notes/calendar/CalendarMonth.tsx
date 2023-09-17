@@ -25,7 +25,7 @@ function calculateNumRows(numDaysInMonth: number, dayOffset: number): number {
   return Math.ceil((numDaysInMonth + dayOffset) / 7);
 }
 
-function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: number, files: TFile[], app:App): JSX.Element[] {
+function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: number, files: TFile[], app:App, year: number, month:number): JSX.Element[] {
   const daysGrid = [];
 
   for (let row = 0; row < numRows; row++) {
@@ -40,7 +40,7 @@ function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: numb
       cells.push(
         <td key={dayOfWeek} className={isWithinMonth ? 'within-month' : 'outside-month'}>
           {dayIndex > 0 && dayIndex <= numDaysInMonth ? (
-            <CalendarDay app={app} dayCounter={dayIndex} hasNote={hasNote} dayNotes={getDayNotes(dayIndex, files)} />
+            <CalendarDay app={app} dayCounter={dayIndex} hasNote={hasNote} dayNotes={getDayNotes(dayIndex, files, year, month)} />
           ) : (
             <span className="empty-day">{''}</span>
           )}
@@ -55,9 +55,8 @@ function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: numb
 }
 
 // Create a function to get all notes for a specific day
-function getDayNotes(dayIndex: number, files: TFile[]): TFile[] {
-  const year = new Date().getFullYear();
-  const month = new Date().getMonth() + 1;
+function getDayNotes(dayIndex: number, files: TFile[], year: number, month: number): TFile[] {
+  
   const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}`;
   const anniversaries = `/Aniversaries/${String(month).padStart(2, '0')}/${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}`;
   
@@ -88,7 +87,7 @@ function CalendarMonth({app, year, month, files }: CalendarMonthProps) {
   const dayOffset = getDayOffset(firstDayOfWeek);
   const numRows = calculateNumRows(numDaysInMonth, dayOffset);
 
-  const daysGrid = createDaysGrid(numRows, numDaysInMonth, dayOffset, files, app);
+  const daysGrid = createDaysGrid(numRows, numDaysInMonth, dayOffset, files, app, year, month);
 
   let monthNameAndYear = `${firstDayOfMonth.toLocaleString('default', { month: 'long' })} ${year}`;
   monthNameAndYear = monthNameAndYear.charAt(0).toUpperCase() + monthNameAndYear.slice(1);
