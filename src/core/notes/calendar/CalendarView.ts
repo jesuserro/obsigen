@@ -2,8 +2,8 @@ import { ItemView } from 'obsidian';
 export const CALENDAR_VIEW_TYPE = 'calendar-view';
 
 import { renderToString } from 'react-dom/server';
-import CalendarMonth from './CalendarMonth';
 import CalendarTitle from './CalendarTitle';
+import CalendarYear from './CalendarYear';
 
 export class CalendarView extends ItemView {
     calendarEl: HTMLElement;
@@ -31,8 +31,8 @@ export class CalendarView extends ItemView {
         container.className = 'calendar-container';
         const files = this.app.vault.getMarkdownFiles();
         const htmlTitle = renderToString(CalendarTitle());
-        const htmlMonth = renderToString(CalendarMonth(files, this.app));
-        container.innerHTML = htmlMonth;
+        const htmlYear = renderToString(CalendarYear(files, this.app));
+        container.innerHTML = htmlYear;
         
         return container;
     }

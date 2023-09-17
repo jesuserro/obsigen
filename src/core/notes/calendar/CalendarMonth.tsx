@@ -2,7 +2,12 @@ import { App, TFile } from 'obsidian';
 import React from 'react';
 import CalendarDay from './CalendarDay';
 
-
+interface CalendarMonthProps {
+  app:App;
+  year: number;
+  month: number;
+  files: TFile[];
+}
 
 function getFirstDayOfMonth(year: number, month: number): Date {
   return new Date(year, month, 1);
@@ -75,11 +80,9 @@ function checkIfNoteExistsForDay(dayIndex: number, files: TFile[]): string | fal
   return false;
 }
 
-function CalendarMonth(files: TFile[], app:App ) {
-  const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().getMonth();
-  const firstDayOfMonth = getFirstDayOfMonth(currentYear, currentMonth);
-  const lastDayOfMonth = getLastDayOfMonth(currentYear, currentMonth);
+function CalendarMonth({app, year, month, files }: CalendarMonthProps) {
+  const firstDayOfMonth = getFirstDayOfMonth(year, month);
+  const lastDayOfMonth = getLastDayOfMonth(year, month);
   const numDaysInMonth = lastDayOfMonth.getDate();
   const firstDayOfWeek = firstDayOfMonth.getDay(); // 0 for Sunday, 1 for Monday, etc.
   const dayOffset = getDayOffset(firstDayOfWeek);
@@ -87,7 +90,7 @@ function CalendarMonth(files: TFile[], app:App ) {
 
   const daysGrid = createDaysGrid(numRows, numDaysInMonth, dayOffset, files, app);
 
-  let monthNameAndYear = `${firstDayOfMonth.toLocaleString('default', { month: 'long' })} ${currentYear}`;
+  let monthNameAndYear = `${firstDayOfMonth.toLocaleString('default', { month: 'long' })} ${year}`;
   monthNameAndYear = monthNameAndYear.charAt(0).toUpperCase() + monthNameAndYear.slice(1);
 
   return (
