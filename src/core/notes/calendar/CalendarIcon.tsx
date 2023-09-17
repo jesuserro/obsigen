@@ -1,5 +1,7 @@
 import { App, TFile } from 'obsidian';
 import React from 'react';
+
+// Importa los iconos que necesitas de react-icons
 import { AiFillHeart } from 'react-icons/ai';
 import { BsFillCloudRainHeavyFill, BsSnow3, BsWordpress } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
@@ -11,115 +13,66 @@ import { PiNotePencilBold } from 'react-icons/pi';
 import { SiSpotify, SiTwitter, SiWhatsapp, SiYoutube } from 'react-icons/si';
 import { TbZzz } from 'react-icons/tb';
 
+interface IconProps {
+  size: number;
+  color: string;
+}
+
+interface IconMap {
+  [key: string]: (props: IconProps) => React.ReactNode;
+}
+
+const iconMap: IconMap = {
+  rain: ({ size, color }) => <BsFillCloudRainHeavyFill size={size} style={{ color }} />,
+  dream: ({ size, color }) => <TbZzz size={size} style={{ color }} />,
+  travel: ({ size, color }) => <GiCommercialAirplane size={size} style={{ color }} />,
+  finances: ({ size, color }) => <FaMoneyBillWave size={size} style={{ color }} />,
+  weather: ({ size, color }) => <GiThermometerCold size={size} style={{ color }} />,
+  catholic: ({ size, color }) => <FaCross size={size} style={{ color }} />,
+  snow: ({ size, color }) => <BsSnow3 size={size} style={{ color }} />,
+  writing: ({ size, color }) => <PiNotePencilBold size={size} style={{ color }} />,
+  youtube: ({ size, color }) => <SiYoutube size={size} style={{ color }} />,
+  twitter: ({ size, color }) => <SiTwitter size={size} style={{ color }} />,
+  blogpost: ({ size, color }) => <BsWordpress size={size} style={{ color }} />,
+  agriculture: ({ size, color }) => <IoMdBasket size={size} style={{ color }} />,
+  pill: ({ size, color }) => <CiPill size={size} style={{ color }} />,
+  pumpkin: ({ size, color }) => <GiPumpkinMask size={size} style={{ color }} />,
+  sick: ({ size, color }) => <GiThermometerCold size={size} style={{ color }} />,
+  euro: ({ size, color }) => <IoIosPaper size={size} style={{ color }} />,
+  car: ({ size, color }) => <IoMdBasket size={size} style={{ color }} />,
+  confession: ({ size, color }) => <FaCross size={size} style={{ color }} />,
+  buy: ({ size, color }) => <IoMdBasket size={size} style={{ color }} />,
+  spotify: ({ size, color }) => <SiSpotify size={size} style={{ color }} />,
+  music: ({ size, color }) => <IoMdMusicalNotes size={size} style={{ color }} />,
+  podcast: ({ size, color }) => <FaPodcast size={size} style={{ color }} />,
+  family: ({ size, color }) => <MdGroup size={size} style={{ color }} />,
+  sport: ({ size, color }) => <MdDirectionsRun size={size} style={{ color }} />,
+  funeral: ({ size, color }) => <GiTombstone size={size} style={{ color }} />,
+  doctor: ({ size, color }) => <MdLocalHospital size={size} style={{ color }} />,
+  gastronomy: ({ size, color }) => <MdRestaurant size={size} style={{ color }} />,
+  beer: ({ size, color }) => <MdLocalBar size={size} style={{ color }} />,
+  repairs: ({ size, color }) => <MdBuild size={size} style={{ color }} />,
+  people: ({ size, color }) => <MdPeople size={size} style={{ color }} />,
+  inlove: ({ size, color }) => <MdFavorite size={size} style={{ color }} />,
+  friends: ({ size, color }) => <MdGroup size={size} style={{ color }} />,
+  whatsapp: ({ size, color }) => <SiWhatsapp size={size} style={{ color }} />,
+};
+
 export class CalendarIcon {
   static getIcon(note: TFile, app: App): React.ReactNode {
-    const path = note.path;
+    const tags = app.metadataCache.getFileCache(note)?.frontmatter?.tags;
     const size = 14;
 
-    const tags = app.metadataCache.getFileCache(note)?.frontmatter?.tags;
-    
     if (tags) {
-      if (tags.includes('rain')) {
-        return <BsFillCloudRainHeavyFill size={size} style={{ color: '#6dc8f2' }} />;
-      }
-      if (tags.includes('dream')) {
-        return <TbZzz size={size} style={{ color: '#3876f2' }} />;
-      }
-      if (tags.includes('travel')) {
-        return <GiCommercialAirplane size={size} style={{ color: '#1199c2' }} />;
-      }
-      if (tags.includes('finances')) {
-        return <FaMoneyBillWave size={size} style={{ color: '#069d3e' }} />;
-      }
-      if (tags.includes('weather')) {
-        return <GiThermometerCold size={size} style={{ color: '#6dc8f2' }} />;
-      }
-      if (tags.includes('catholic')) {
-        return <FaCross size={size} style={{ color: '#ad6df2' }} />;
-      }
-      if (tags.includes('snow')) {
-        return <BsSnow3 size={size} style={{ color: '#6dc8f2' }} />;
-      }
-      if (tags.includes('writing')) {
-        return <PiNotePencilBold size={size} style={{ color: '#fcaa62' }} />;
-      }
-      if (tags.includes('youtube')) {
-        return <SiYoutube size={size} style={{ color: '#FF0000' }} />;
-      }
-      if (tags.includes('twitter')) {
-        return <SiTwitter size={size} style={{ color: '#1DA1F2' }} />;
-      }
-      if (tags.includes('blogpost')) {
-        return <BsWordpress size={size} style={{ color: '#117ac9' }} />;
-      }
-      if (tags.includes('agriculture')) {
-        return <IoMdBasket size={size} style={{ color: '#008000' }} />;
-      }
-      if (tags.includes('pill')) {
-        return <CiPill size={size} style={{ color: '#c2a411' }} />;
-      }
-      if (tags.includes('pumpkin')) {
-        return <GiPumpkinMask size={size} style={{ color: '#fc6203' }} />;
-      }
-      if (tags.includes('sick')) {
-        return <GiThermometerCold size={size} style={{ color: '#FF0000' }} />;
-      }
-      if (tags.includes('euro')) {
-        return <IoIosPaper size={size} style={{ color: '#008000' }} />;
-      }
-      if (tags.includes('car')) {
-        return <IoMdBasket size={size} style={{ color: '#0000FF' }} />;
-      }
-      if (tags.includes('confession')) {
-        return <FaCross size={size} style={{ color: '#ad6df2' }} />;
-      }
-      if (tags.includes('buy')) {
-        return <IoMdBasket size={size} style={{ color: '#008000' }} />;
-      }
-      if (tags.includes('spotify')) {
-        return <SiSpotify size={size} style={{ color: '#1DB954' }} />;
-      }
-      if (tags.includes('music')) {
-        return <IoMdMusicalNotes size={size} style={{ color: '#798aed' }} />;
-      }
-      if (tags.includes('podcast')) {
-        return <FaPodcast size={size} style={{ color: '#1DB954' }} />;
-      }
-      if (tags.includes('family')) {
-        return <MdGroup size={size} style={{ color: '#800080' }} />;
-      }
-      if (tags.includes('sport')) {
-        return <MdDirectionsRun size={size} style={{ color: '#FF8C00' }} />;
-      }
-      if (tags.includes('funeral')) {
-        return <GiTombstone size={size} style={{ color: '#74757a' }} />;
-      }
-      if (tags.includes('doctor')) {
-        return <MdLocalHospital size={size} style={{ color: '#FF0000' }} />;
-      }
-      if (tags.includes('gastronomy')) {
-        return <MdRestaurant size={size} style={{ color: '#FFD700' }} />;
-      }
-      if (tags.includes('beer')) {
-        return <MdLocalBar size={size} style={{ color: '#FF4500' }} />;
-      }
-      if (tags.includes('repairs')) {
-        return <MdBuild size={size} style={{ color: '#A9A9A9' }} />;
-      }
-      if (tags.includes('people')) {
-        return <MdPeople size={size} style={{ color: '#FFD700' }} />;
-      }
-      if (tags.includes('inlove')) {
-        return <MdFavorite size={size} style={{ color: '#FF1493' }} />;
-      }
-      if (tags.includes('friends')) {
-        return <MdGroup size={size} style={{ color: '#c4be3d' }} />;
-      }
-      if (tags.includes('whatsapp')) {
-        return <SiWhatsapp size={size} style={{ color: '#25d366' }} />;
+      for (const tag of tags) {
+        const iconFunc = iconMap[tag];
+        if (iconFunc) {
+          return iconFunc({ size, color: getTagColor(tag) });
+        }
       }
     }
 
+    const path = note.path;
     if (path.includes('Anna') || path.includes("Nieves")) {
       return <AiFillHeart size={size} style={{ color: '#FF69B4' }} />;
     } else if (path.includes('TO -')) {
@@ -133,5 +86,78 @@ export class CalendarIcon {
     } else {
       return <FaQuestionCircle size={size} style={{ color: '#A9A9A9' }} />;
     }
+  }
+}
+
+function getTagColor(tag: string): string {
+  switch (tag) {
+    case 'rain':
+      return '#6dc8f2';
+    case 'dream':
+      return '#3876f2';
+    case 'travel':
+      return '#1199c2';
+    case 'finances':
+      return '#069d3e';
+    case 'weather':
+      return '#6dc8f2';
+    case 'catholic':
+      return '#ad6df2';
+    case 'snow':
+      return '#6dc8f2';
+    case 'writing':
+      return '#fcaa62';
+    case 'youtube':
+      return '#FF0000';
+    case 'twitter':
+      return '#1DA1F2';
+    case 'blogpost':
+      return '#117ac9';
+    case 'agriculture':
+      return '#008000';
+    case 'pill':
+      return '#c2a411';
+    case 'pumpkin':
+      return '#fc6203';
+    case 'sick':
+      return '#FF0000';
+    case 'euro':
+      return '#008000';
+    case 'car':
+      return '#0000FF';
+    case 'confession':
+      return '#ad6df2';
+    case 'buy':
+      return '#008000';
+    case 'spotify':
+      return '#1DB954';
+    case 'music':
+      return '#798aed';
+    case 'podcast':
+      return '#1DB954';
+    case 'family':
+      return '#800080';
+    case 'sport':
+      return '#FF8C00';
+    case 'funeral':
+      return '#74757a';
+    case 'doctor':
+      return '#FF0000';
+    case 'gastronomy':
+      return '#FFD700';
+    case 'beer':
+      return '#FF4500';
+    case 'repairs':
+      return '#A9A9A9';
+    case 'people':
+      return '#FFD700';
+    case 'inlove':
+      return '#FF1493';
+    case 'friends':
+      return '#c4be3d';
+    case 'whatsapp':
+      return '#25d366';
+    default:
+      return '#A9A9A9';
   }
 }
