@@ -1,7 +1,7 @@
 import { App, TFile } from 'obsidian';
 import React from 'react';
 import { AiFillHeart } from 'react-icons/ai';
-import { BsSnow3, BsWordpress } from 'react-icons/bs';
+import { BsFillCloudRainHeavyFill, BsSnow3, BsWordpress } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
 import { FaBirthdayCake, FaCross, FaGlobe, FaMoneyBillWave, FaPodcast, FaQuestionCircle } from 'react-icons/fa';
 import { GiChurch, GiCommercialAirplane, GiPumpkinMask, GiSandsOfTime, GiThermometerCold } from 'react-icons/gi';
@@ -19,6 +19,9 @@ export class CalendarIcon {
     const tags = app.metadataCache.getFileCache(note)?.frontmatter?.tags;
     
     if (tags) {
+      if (tags.includes('rain')) {
+        return <BsFillCloudRainHeavyFill size={size} style={{ color: '#6dc8f2' }} />;
+      }
       if (tags.includes('dream')) {
         return <TbZzz size={size} style={{ color: '#3876f2' }} />;
       }
