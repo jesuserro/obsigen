@@ -3,11 +3,7 @@
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jesuserro/obsigen?style=for-the-badge&sort=semver)](https://github.com/jesuserro/obsigen/releases)
 [![GitHub issues](https://img.shields.io/github/issues/jesuserro/obsigen?style=for-the-badge)](https://github.com/jesuserro/obsigen/issues)
 
-Just another customized Digital Garden based on Obsidian. (<https://obsidian.md>).
-
-ObsiGen — aka "Obsidian Note Generator" — is a BETA plugin designed to enhance your note-taking experience within the Obsidian platform. With this plugin, you can create various types of notes, including daily notes, anniversary notes, memorable moments, and even capture content from platforms like Twitter and YouTube.
-
-In the near future, I'm planning to introduce a monthly calendar view that will display all your events using descriptive icons. This calendar-like overview will provide a visual representation of your notes, offering a comprehensive and intuitive way to navigate and explore your daily events.
+View your notes in a year calendar through icons.
 
 ## Folder Structure
 Following the DDD principles, the project is divided into three layers: core, adapters and shared.
@@ -35,9 +31,11 @@ Following the DDD principles, the project is divided into three layers: core, ad
  ┃ ┃ ┣ 📂calendar
  ┃ ┃ ┃ ┣ 📜Calendar.ts
  ┃ ┃ ┃ ┣ 📜CalendarDay.tsx
+ ┃ ┃ ┃ ┣ 📜CalendarIcon.tsx
  ┃ ┃ ┃ ┣ 📜CalendarMonth.tsx
  ┃ ┃ ┃ ┣ 📜CalendarTitle.tsx
- ┃ ┃ ┃ ┗ 📜CalendarView.ts
+ ┃ ┃ ┃ ┣ 📜CalendarView.ts
+ ┃ ┃ ┃ ┗ 📜CalendarYear.tsx
  ┃ ┃ ┣ 📂captureUrl
  ┃ ┃ ┃ ┣ 📜CaptureUrl.test.ts
  ┃ ┃ ┃ ┣ 📜CaptureUrl.ts
