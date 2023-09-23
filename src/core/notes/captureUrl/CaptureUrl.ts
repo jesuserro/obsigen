@@ -37,8 +37,8 @@ export class CaptureUrl extends NoteGenerator {
   }
 
   setYaml(url: string): void {
-    url = ` "${url}" `;
-    const link = ` "[[${this.getCurrentDate()}]]" `;
+    url = `"${url}"`;
+    const link = `"[[${this.getCurrentDate()}]]"`;
     const data = {
       ...DATA_YAML_DEFAULT,
       title: this.title,
