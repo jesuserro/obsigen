@@ -15,8 +15,6 @@ export function Yaml({ data }: { data: iYaml }) {
   );
 }
 
-// ...
-
 function renderPropertyValue(key: string, value: any) {
   if (value instanceof Date) {
     // Ajusta la fecha al huso horario de España/Madrid (GMT+2)
@@ -42,6 +40,3 @@ function renderPropertyValue(key: string, value: any) {
   }
   return '';
 }
-
-
-
