@@ -5,8 +5,6 @@ import { renderToString } from 'react-dom/server';
 import { DATA_YAML_DEFAULT } from './../../shared/interface/iYaml';
 import { Yaml } from './../../shared/templates/Yaml';
 
-import { MomentoSubheader } from './MomentoSubheader';
-
 export class Momento extends NoteGenerator {
 
   app: App;
@@ -37,23 +35,27 @@ export class Momento extends NoteGenerator {
   }
 
   setYaml(): void {
-    const data = { ...DATA_YAML_DEFAULT, title: this.title };
-    let yaml = renderToString(Yaml({data}));
+    const link = `"[[${this.getCurrentDate()}]]"`;
+    const data = {
+      ...DATA_YAML_DEFAULT,
+      title: this.title,
+      links: [...DATA_YAML_DEFAULT.links, link] 
+    };
+    let yaml = renderToString(Yaml({ data }));
+    yaml = yaml.replace(/&quot;/g, '"');
     this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
   async createNote(title: string, content: string) {
     this.title = this.getTitle(title);
     this.setYaml();
-    this.subheader = new MomentoSubheader('').getContent();
     this.fileName = this.getFilename(this.title);
-    this.callout = this.getCallout();
     this.setContent(content);
     await super.createNote(this.fileName, this.content, `100 Calendar/Moments`);
   }
 
   setContent(content: string): void {
-    this.content = `${this.yaml}\n${this.callout}\n# ${this.title}\n${this.subheader}\n\n${content}`;
+    this.content = `${this.yaml}\n# ${this.title}\n${content}`;
   }
 
   getTitle(title: string) {
@@ -67,10 +69,6 @@ export class Momento extends NoteGenerator {
 
   getContent() {  
     return ``;
-  }
-
-  getCallout() {  
-    return `%%\n[[${this.getCurrentDate()}]], [[Erro Iribarren Jesús|mismemorias]], [[Momentazos]]\n%%`;
   }
 }
 
