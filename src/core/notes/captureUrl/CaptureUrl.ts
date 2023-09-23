@@ -34,6 +34,7 @@ export class CaptureUrl extends NoteGenerator {
   }
 
   setYaml(url: string): void {
+    url = this.filterParamsFromUrl(url);
     url = `"${url}"`;
     const link = `"[[${this.getCurrentDate()}]]"`;
     const data = {
