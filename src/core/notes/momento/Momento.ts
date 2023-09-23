@@ -3,7 +3,7 @@ import { NoteGenerator } from './../NoteGenerator';
 
 import { renderToString } from 'react-dom/server';
 import { DATA_YAML_DEFAULT } from './../../shared/interface/iYaml';
-import { MomentoYaml } from './MomentoYaml';
+import { Yaml } from './../../shared/templates/Yaml';
 
 import { MomentoSubheader } from './MomentoSubheader';
 
@@ -38,7 +38,7 @@ export class Momento extends NoteGenerator {
 
   setYaml(): void {
     const data = { ...DATA_YAML_DEFAULT, title: this.title };
-    let yaml = renderToString(MomentoYaml({data}));
+    let yaml = renderToString(Yaml({data}));
     this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 

@@ -1,56 +1,62 @@
 export interface iYaml {
-  title: string;
-  aliases: string[];
-  date: Date;
-  creation: Date; 
-  updated: Date;
-  urls: string[];
-	icon: string;
-	image: string;
-  authors: string[]; 
-  people: string[];
-  parent: string[];
-  children: string[];
-  tags: string[];
-  locations: string[];
-  rating: number | "";
-  emotion: number | "";
+	title: string,
+	aliases: string[],
+	date: Date,
+	creation: Date, 
+	updated: Date,
+	links: string[],
+	urls: string[],
+	authors: string[],
+	tags: string[],
+	publish: boolean,
+	permalink: string, 
+	description: string,
+	image: string,
+	cover: string,
+	cssclasses: string[],
+	rating: number,
+	emotion: number,
+	favorite: boolean
 } 
 
 export const DATA_YAML_DEFAULT: iYaml = {
 	title: '',
-  aliases: [],
+	aliases: [],
 	date: new Date(),
-	creation: new Date(),
+	creation: new Date(), 
 	updated: new Date(),
+	links: [],
 	urls: [],
-	icon: '',
-	image: '',
 	authors: [],
-	people: [],
-	parent: [],
-	children: [],
 	tags: [],
-	locations: [],
-	rating: '',
-	emotion: ''
+	publish: false,
+	permalink: '', 
+	description: '',
+	image: '',
+	cover: '',
+	cssclasses: [],
+	rating: 0,
+	emotion: 0,
+	favorite: false
 };
 
 export const DATA_YAML_SAMPLE: iYaml = {
-	title: 'Note Title',
-  aliases: ['alias1', 'alias2'],
+	title: 'Sample note',
+	aliases: [],
 	date: new Date(),
-	creation: new Date(),
+	creation: new Date(), 
 	updated: new Date(),
-	icon: '',
+	links: [],
+	urls: [],
+	authors: [],
+	tags: ['status/open'],
+	publish: false,
+	permalink: '', 
+	description: 'Lorem ipsum dolor sit amet.',
 	image: '',
-	urls: ['https://example.com/note'],
-	authors: ['Paco López'],
-	people: ['Jane Smithers'],
-	parent: ['parent1', 'parent2'],
-	children: ['child1', 'child2'],
-	tags: ['tag1', 'tag2'],
-	locations: ['location1', 'location2'],
-	rating: 0,
-	emotion: 10
+	cover: '',
+	cssclasses: [],
+	rating: 5,
+	emotion: 5,
+	favorite: false
 };
