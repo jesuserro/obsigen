@@ -5,8 +5,6 @@ import { renderToString } from 'react-dom/server';
 import { DATA_YAML_DEFAULT } from './../../shared/interface/iYaml';
 import { Yaml } from './../../shared/templates/Yaml';
 
-import { AniversarioSubheader } from './AniversarioSubheader';
-
 export class Aniversario extends NoteGenerator {
 
   app: App;
@@ -37,16 +35,21 @@ export class Aniversario extends NoteGenerator {
   }
 
   setYaml(): void {
-    const data = { ...DATA_YAML_DEFAULT, title: this.title };
-    let yaml = renderToString(Yaml({data}));
+    const title = `"${this.getCurrentDate()}"`;
+    const links = `${this.getAniversarioCrumbs()}`;
+    const data = {
+      ...DATA_YAML_DEFAULT,
+      title: title,
+      links: [...DATA_YAML_DEFAULT.links, links] 
+    };
+    let yaml = renderToString(Yaml({ data }));
+    yaml = yaml.replace(/&quot;/g, '"');
     this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
   async createNote() {
     this.title = this.getCurrentDate();
     this.setYaml();
-    this.subheader = new AniversarioSubheader('').getContent();
-    this.subheader = `${this.subheader}\n${this.getAniversarioCrumbs()}`;
     this.fileName = this.getFilename();
     this.setContent();
     const now = new Date();
@@ -55,7 +58,7 @@ export class Aniversario extends NoteGenerator {
   }
 
   setContent(): void {
-    this.content = `${this.yaml}\n# ${this.title}\n${this.subheader}\n\n${this.getBody()}\n`;
+    this.content = `${this.yaml}\n# ${this.title}\n${this.getBody()}\n`;
   }
 
   getFilename() {
@@ -71,9 +74,8 @@ export class Aniversario extends NoteGenerator {
     const yesterday = new Date(now.setDate(now.getDate() - 1));
     const tomorrow = new Date(now.setDate(now.getDate() + 2));
     const yesterdayDate = this.formatDate(yesterday, '');
-    const todayDate = this.formatDate(new Date(), '');
     const tomorrowDate = this.formatDate(tomorrow, '');
-    return `[[${yesterdayDate}]] | ${todayDate} | [[${tomorrowDate}]]`;
+    return `"[[${yesterdayDate}]]", "[[${tomorrowDate}]]"`;
   }
 
   formatDate(date: Date, separator: string) {
