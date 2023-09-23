@@ -2,8 +2,8 @@ import { App } from 'obsidian';
 import { NoteGenerator } from '../NoteGenerator';
 
 import { renderToString } from 'react-dom/server';
-import { DATA_YAML_DEFAULT } from '../../shared/interface/iYaml';
-import { DailyYaml } from './DailyYaml';
+import { DATA_YAML_DEFAULT } from './../../shared/interface/iYaml';
+import { Yaml } from './../../shared/templates/Yaml';
 
 import { DailySubheader } from './DailySubheader';
 
@@ -47,7 +47,7 @@ export class Daily extends NoteGenerator {
 
   setYaml(): void {
     const data = { ...DATA_YAML_DEFAULT, title: this.getCurrentDateDashed() };
-    let yaml = renderToString(DailyYaml({ data }));
+    let yaml = renderToString(Yaml({ data }));
     this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 

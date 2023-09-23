@@ -3,7 +3,7 @@ import { NoteGenerator } from './../NoteGenerator';
 
 import { renderToString } from 'react-dom/server';
 import { DATA_YAML_DEFAULT } from './../../shared/interface/iYaml';
-import { AniversarioYaml } from './AniversarioYaml';
+import { Yaml } from './../../shared/templates/Yaml';
 
 import { AniversarioSubheader } from './AniversarioSubheader';
 
@@ -15,6 +15,7 @@ export class Aniversario extends NoteGenerator {
   subheader: string;
   content: string;
   fileName: string;
+  
   
   constructor(app: App) {
     super(app);
@@ -37,7 +38,7 @@ export class Aniversario extends NoteGenerator {
 
   setYaml(): void {
     const data = { ...DATA_YAML_DEFAULT, title: this.title };
-    let yaml = renderToString(AniversarioYaml({data}));
+    let yaml = renderToString(Yaml({data}));
     this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
