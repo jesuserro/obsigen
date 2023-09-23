@@ -17,20 +17,15 @@ export function Yaml({ data }: { data: iYaml }) {
 
 function renderPropertyValue(key: string, value: any) {
   if (value instanceof Date) {
-    // Ajusta la fecha al huso horario de España/Madrid (GMT+2)
-    const madridTimezoneOffset = 0; // 0 horas * 60 minutos/hora
-    const localTime = new Date(value.getTime() + madridTimezoneOffset * 60 * 1000);
+    const year = value.getFullYear().toString();
+    const month = (value.getMonth() + 1).toString().padStart(2, '0');
+    const day = value.getDate().toString().padStart(2, '0');
+    const hour = value.getHours().toString().padStart(2, '0');
+    const minutes = value.getMinutes().toString().padStart(2, '0');
+    const seconds = value.getSeconds().toString().padStart(2, '0');
 
     // Formatea la fecha como una cadena legible
-    const formattedDate = `${localTime.getFullYear()}-${(localTime.getMonth() + 1)
-      .toString()
-      .padStart(2, '0')}-${localTime.getDate().toString().padStart(2, '0')} ${localTime
-      .getHours()
-      .toString()
-      .padStart(2, '0')}:${localTime.getMinutes().toString().padStart(2, '0')}:${localTime
-      .getSeconds()
-      .toString()
-      .padStart(2, '0')}`;
+    const formattedDate = `${year}-${month}-${day} ${hour}:${minutes}:${seconds}`;
 
     return formattedDate;
   } else if (Array.isArray(value)) {
@@ -38,5 +33,6 @@ function renderPropertyValue(key: string, value: any) {
   } else if (value !== undefined) {
     return value.toString();
   }
-  return '';
+  return ''; 
+  
 }
