@@ -37,12 +37,16 @@ export class CaptureUrl extends NoteGenerator {
   }
 
   setYaml(url: string): void {
+    url = ` "${url}" `;
+    const link = ` "[[${this.getCurrentDate()}]]" `;
     const data = {
       ...DATA_YAML_DEFAULT,
       title: this.title,
-      urls: [...DATA_YAML_DEFAULT.urls, url.replace(/"/g, '""')], 
+      links: [...DATA_YAML_DEFAULT.links, link], 
+      urls: [...DATA_YAML_DEFAULT.urls, url], 
     };
     let yaml = renderToString(Yaml({ data }));
+    yaml = yaml.replace(/&quot;/g, '"');
     this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
@@ -57,7 +61,7 @@ export class CaptureUrl extends NoteGenerator {
   }
 
   setContent(url: string): void {
-    this.content = `${this.yaml}\n${this.callout}\n# ${this.title}\n${this.subheader}\n\n${this.getContent(url)}\n\n`;
+    this.content = `${this.yaml}\n# ${this.title}\n${this.getContent(url)}\n\n`;
   }
 
   getTitle(title: string) {
