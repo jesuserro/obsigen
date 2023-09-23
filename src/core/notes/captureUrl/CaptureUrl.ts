@@ -5,17 +5,14 @@ import { renderToString } from 'react-dom/server';
 import { DATA_YAML_DEFAULT } from './../../shared/interface/iYaml';
 import { Yaml } from './../../shared/templates/Yaml';
 
-import { CaptureUrlSubheader } from './CaptureUrlSubheader';
-
 export class CaptureUrl extends NoteGenerator {
 
   app: App;
   yaml: string;
   title: string;
-  subheader: string;
   content: string;
   fileName: string;
-  callout: string;
+
   
   constructor(app: App) {
     super(app);
@@ -53,15 +50,13 @@ export class CaptureUrl extends NoteGenerator {
   async createNote(title: string, url: string) {
     this.title = this.getTitle(title);
     this.setYaml(url);
-    this.subheader = new CaptureUrlSubheader('').getContent();
     this.fileName = this.getFilename(this.title);
-    this.callout = this.getCallout();
     this.setContent(url);
     await super.createNote(this.fileName, this.content, `000 Inbox/Captures`);
   }
 
   setContent(url: string): void {
-    this.content = `${this.yaml}\n# ${this.title}\n${this.getContent(url)}\n\n`;
+    this.content = `${this.yaml}\n# ${this.title}\n${this.getContent(url)}\n`;
   }
 
   getTitle(title: string) {
@@ -92,10 +87,6 @@ export class CaptureUrl extends NoteGenerator {
       sanitizedURL = sanitizedURL.split("?")[0];
     }
     return sanitizedURL.trim();
-  }
-
-  getCallout() {  
-    return `%%\n[[${this.getCurrentDate()}]]\n%%`;
   }
 }
 
