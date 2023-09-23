@@ -36,15 +36,19 @@ export class CaptureUrl extends NoteGenerator {
     return `${year}${month}${day}`;
   }
 
-  setYaml(): void {
-    const data = { ...DATA_YAML_DEFAULT, title: this.title };
-    let yaml = renderToString(Yaml({data}));
+  setYaml(url: string): void {
+    const data = {
+      ...DATA_YAML_DEFAULT,
+      title: this.title,
+      urls: [...DATA_YAML_DEFAULT.urls, url.replace(/"/g, '""')], 
+    };
+    let yaml = renderToString(Yaml({ data }));
     this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
   async createNote(title: string, url: string) {
     this.title = this.getTitle(title);
-    this.setYaml();
+    this.setYaml(url);
     this.subheader = new CaptureUrlSubheader('').getContent();
     this.fileName = this.getFilename(this.title);
     this.callout = this.getCallout();
