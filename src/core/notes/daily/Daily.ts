@@ -5,7 +5,6 @@ import { renderToString } from 'react-dom/server';
 import { DATA_YAML_DEFAULT } from './../../shared/interface/iYaml';
 import { Yaml } from './../../shared/templates/Yaml';
 
-import { DailySubheader } from './DailySubheader';
 
 export class Daily extends NoteGenerator {
   app: App;
@@ -46,15 +45,21 @@ export class Daily extends NoteGenerator {
   }
 
   setYaml(): void {
-    const data = { ...DATA_YAML_DEFAULT, title: this.getCurrentDateDashed() };
+    const title = `"${this.getCurrentDate()}"`;
+    const links = `${this.getDailyCrumbs()}`;
+    const data = {
+      ...DATA_YAML_DEFAULT,
+      title: title,
+      links: [...DATA_YAML_DEFAULT.links, links] 
+    };
     let yaml = renderToString(Yaml({ data }));
+    yaml = yaml.replace(/&quot;/g, '"');
     this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
   async createNote() {
     this.title = this.getTitle();
     this.setYaml();
-    this.subheader = new DailySubheader('').getContent();
     this.subheader = `${this.subheader}\n${this.getDailyCrumbs()}`;
     this.fileName = this.getFilename();
     this.setContent();
@@ -64,7 +69,7 @@ export class Daily extends NoteGenerator {
   }
 
   setContent(): void {
-    this.content = `${this.yaml}\n# ${this.title}\n${this.subheader}\n${this.getBody()}`;
+    this.content = `${this.yaml}\n# ${this.title}\n${this.getBody()}`;
   }
 
   getFilename() {
@@ -72,7 +77,7 @@ export class Daily extends NoteGenerator {
   }
 
   getBody() {
-    return `## Resumen\n\n## Notas del día\n${this.getDataview()}\n`;
+    return `## Notas del día\n${this.getDataview()}\n`;
   }
 
   getDataview() {
@@ -85,6 +90,6 @@ export class Daily extends NoteGenerator {
     const tomorrow = new Date(now.setDate(now.getDate() + 2));
     const yesterdayDate = this.formatDate(yesterday, '');
     const tomorrowDate = this.formatDate(tomorrow, '');
-    return `[[${yesterdayDate}]] | [[${this.getCurrentDate().substring(4)}]] | [[${tomorrowDate}]]`;
+    return `"[[${yesterdayDate}]]", "[[${this.getCurrentDate().substring(4)}]]", "[[${tomorrowDate}]]"`;
   }
 }
