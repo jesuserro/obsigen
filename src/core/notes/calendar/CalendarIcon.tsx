@@ -16,7 +16,7 @@ export class CalendarIcon {
     const path = note.path;
     const size = 14;
 
-    const tags = app.metadataCache.getFileCache(note)?.frontmatter?.tags;
+    const cssClasses = app.metadataCache.getFileCache(note)?.frontmatter?.cssClasses;
 
     const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
       rain: ({ size }) => <BsFillCloudRainHeavyFill size={size} style={{ color: '#6dc8f2' }} />,
@@ -54,13 +54,13 @@ export class CalendarIcon {
       whatsapp: ({ size }) => <SiWhatsapp size={size} style={{ color: '#25d366' }} />,
     };
 
-    if (tags) {
-      const tagIcons = tags
-        .filter((tag: string) => iconMap.hasOwnProperty(tag))
-        .map((tag: string) => iconMap[tag]({ size }));
+    if (cssClasses) {
+      const cssClassIcons = cssClasses
+        .filter((cssclass: string) => iconMap.hasOwnProperty(cssclass))
+        .map((cssclass: string) => iconMap[cssclass]({ size }));
 
-      if (tagIcons.length > 0) {
-        return tagIcons[0]; // Devuelve el primer icono coincidente
+      if (cssClassIcons.length > 0) {
+        return cssClassIcons[0]; // Devuelve el primer icono coincidente
       }
     }
 
