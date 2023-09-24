@@ -1,9 +1,11 @@
 import { ItemView } from 'obsidian';
 export const CALENDAR_VIEW_TYPE = 'calendar-view';
 
-import { renderToString } from 'react-dom/server';
-import CalendarTitle from './CalendarTitle';
 import CalendarYear from './CalendarYear';
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { AppContext } from "./../../shared/appContext";
 
 export class CalendarView extends ItemView {
     calendarEl: HTMLElement;
@@ -21,19 +23,14 @@ export class CalendarView extends ItemView {
     }
 
     async onOpen() {
-        this.contentEl.empty();
-        this.calendarEl = this.createCalendarView();
-        this.contentEl.appendChild(this.calendarEl);
+        const reactComponent = React.createElement(AppContext.Provider, { value: this.app }, React.createElement(CalendarYear));
+        ReactDOM.createRoot(this.contentEl as HTMLElement).render(reactComponent);
+        this.contentEl.id = CALENDAR_VIEW_TYPE;
     }
 
-    createCalendarView() {
-        const container = document.createElement('div');
-        container.className = 'calendar-container';
-        const files = this.app.vault.getMarkdownFiles();
-        const htmlTitle = renderToString(CalendarTitle());
-        const htmlYear = renderToString(CalendarYear(files, this.app));
-        container.innerHTML = htmlYear;
-        
-        return container;
-    }
 }
+
+
+
+
+
