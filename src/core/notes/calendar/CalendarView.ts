@@ -1,5 +1,6 @@
 import { ItemView, WorkspaceLeaf } from 'obsidian';
 export const CALENDAR_VIEW_TYPE = 'obsigen-calendar-view';
+export const CONTAINER_ID = "obsigen-calendar-container";
 
 import CalendarYear from './CalendarYear';
 
@@ -29,6 +30,6 @@ export class CalendarView extends ItemView {
     async onOpen() {
         const reactComponent = React.createElement(AppContext.Provider, { value: this.app }, React.createElement(CalendarYear));
         ReactDOM.createRoot(this.contentEl as HTMLElement).render(reactComponent);
-        this.contentEl.id = this.getViewType();
+        this.contentEl.id = CONTAINER_ID;
     }
 }
