@@ -1,12 +1,11 @@
 import { App, TFile } from 'obsidian';
 import React from 'react';
+import { useApp } from '../../hooks/useApp';
 import CalendarDay from './CalendarDay';
 
 interface CalendarMonthProps {
-  app:App;
   year: number;
   month: number;
-  files: TFile[];
 }
 
 function getFirstDayOfMonth(year: number, month: number): Date {
@@ -79,13 +78,15 @@ function checkIfNoteExistsForDay(dayIndex: number, files: TFile[], year: number,
   return false;
 }
 
-function CalendarMonth({app, year, month, files }: CalendarMonthProps) {
+function CalendarMonth({year, month }: CalendarMonthProps) {
   const firstDayOfMonth = getFirstDayOfMonth(year, month);
   const lastDayOfMonth = getLastDayOfMonth(year, month);
   const numDaysInMonth = lastDayOfMonth.getDate();
   const firstDayOfWeek = firstDayOfMonth.getDay(); // 0 for Sunday, 1 for Monday, etc.
   const dayOffset = getDayOffset(firstDayOfWeek);
   const numRows = calculateNumRows(numDaysInMonth, dayOffset);
+  const app = useApp() as App;
+  const files = app?.vault.getMarkdownFiles() || [];
 
   const daysGrid = createDaysGrid(numRows, numDaysInMonth, dayOffset, files, app, year, month);
 
