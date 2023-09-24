@@ -26,8 +26,8 @@ export class CalendarView extends ItemView {
         const reactComponent = React.createElement(AppContext.Provider, { value: this.app }, React.createElement(CalendarYear));
         ReactDOM.createRoot(this.contentEl as HTMLElement).render(reactComponent);
     }
-
 }
+
 
 
 

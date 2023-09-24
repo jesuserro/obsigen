@@ -76,3 +76,4 @@ function getFileName(path: string): string {
 }
 
 export default CalendarDay;
+
