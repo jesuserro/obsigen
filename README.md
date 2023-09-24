@@ -24,14 +24,14 @@ Following the DDD principles, the project is divided into three layers: core, ad
  ┣ 📂assets
  ┃ ┗ 📜church.js
  ┣ 📂core
+ ┃ ┣ 📂hooks
+ ┃ ┃ ┗ 📜useApp.ts
  ┃ ┣ 📂notes
  ┃ ┃ ┣ 📂__mocks__
  ┃ ┃ ┃ ┗ 📜obsidian.ts
  ┃ ┃ ┣ 📂aniversario
  ┃ ┃ ┃ ┣ 📜Aniversario.test.ts
- ┃ ┃ ┃ ┣ 📜Aniversario.ts
- ┃ ┃ ┃ ┣ 📜AniversarioSubheader.ts
- ┃ ┃ ┃ ┗ 📜AniversarioYaml.tsx
+ ┃ ┃ ┃ ┗ 📜Aniversario.ts
  ┃ ┃ ┣ 📂biblia
  ┃ ┃ ┃ ┗ 📂versiculo
  ┃ ┃ ┣ 📂calendar
@@ -46,25 +46,20 @@ Following the DDD principles, the project is divided into three layers: core, ad
  ┃ ┃ ┃ ┣ 📜CaptureUrl.test.ts
  ┃ ┃ ┃ ┣ 📜CaptureUrl.ts
  ┃ ┃ ┃ ┣ 📜CaptureUrlModal.ts
- ┃ ┃ ┃ ┣ 📜CaptureUrlSubheader.ts
- ┃ ┃ ┃ ┣ 📜CaptureUrlYaml.tsx
  ┃ ┃ ┃ ┗ 📜captureUrlModal.module.css
  ┃ ┃ ┣ 📂daily
- ┃ ┃ ┃ ┣ 📜Daily.ts
- ┃ ┃ ┃ ┣ 📜DailySubheader.ts
- ┃ ┃ ┃ ┗ 📜DailyYaml.tsx
+ ┃ ┃ ┃ ┗ 📜Daily.ts
  ┃ ┃ ┣ 📂momento
- ┃ ┃ ┃ ┣ 📜Momento.ts
- ┃ ┃ ┃ ┣ 📜MomentoSubheader.ts
- ┃ ┃ ┃ ┗ 📜MomentoYaml.tsx
+ ┃ ┃ ┃ ┗ 📜Momento.ts
  ┃ ┃ ┣ 📜NoteGenerator.test.ts
  ┃ ┃ ┗ 📜NoteGenerator.ts
  ┃ ┗ 📂shared
  ┃ ┃ ┣ 📂interface
  ┃ ┃ ┃ ┣ 📜MyPluginSettings.ts
  ┃ ┃ ┃ ┗ 📜iYaml.ts
- ┃ ┃ ┗ 📂templates
+ ┃ ┃ ┣ 📂templates
  ┃ ┃ ┃ ┗ 📜Yaml.tsx
+ ┃ ┃ ┗ 📜appContext.ts
  ┗ 📜styles.scss
  ┗ 📜main.ts
  ┗ 📜manifest.json
