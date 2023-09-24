@@ -9,7 +9,7 @@ interface CalendarDayProps {
 }
 
 function getCalendarEvent(index: number, note: TFile) {
-  const icon = CalendarIcon.getIcon(note, app);
+  const icon = CalendarIcon.getIcon(note);
   return (
     <a
       key={index}
