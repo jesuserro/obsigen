@@ -50,6 +50,7 @@ export class CaptureUrl extends NoteGenerator {
 
   async createNote(title: string, url: string) {
     this.title = this.getTitle(title);
+    url = this.filterParamsFromUrl(url);
     this.setYaml(url);
     this.fileName = this.getFilename(this.title);
     this.setContent(url);
