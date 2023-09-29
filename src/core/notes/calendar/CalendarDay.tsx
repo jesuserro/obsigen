@@ -66,11 +66,6 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps): JSX.E
   );
 }
 
-function getRandomColor() {
-  // Generate a random color in hexadecimal format
-  return '#' + Math.floor(Math.random() * 16777215).toString(16);
-}
-
 function getFileName(path: string): string {
   // Extract the file name from the path
   const parts = path.split('/');
