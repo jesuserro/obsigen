@@ -23,7 +23,7 @@ function getCalendarEvent(index: number, note: TFile) {
 }
 
 
-function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps) {
+function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps): JSX.Element {
   let notePath = '';
   if (hasNote) {
     notePath = `obsidian://open?file=${encodeURIComponent(hasNote)}`;
@@ -32,35 +32,37 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps) {
   const boundGetCalendarEvent = getCalendarEvent.bind(this);
 
   return (
-    <div className="day-container">
-      {hasNote && !dayNotes ? (
-        <a href={notePath} title={getFileName(hasNote)}>
-          <div className="day-number">{dayCounter}</div>
-        </a>
-      ) : hasNote && dayNotes ? (
-        <>
+    <>
+      <div className="day-container">
+        {hasNote && !dayNotes ? (
           <a href={notePath} title={getFileName(hasNote)}>
             <div className="day-number">{dayCounter}</div>
           </a>
-          <div className="calendar-icons">
-            {dayNotes.map((note, index) => (
-              boundGetCalendarEvent(index, note)
-            ))}
-          </div>
-        </>
-      ) : dayNotes ? (
-        <>
+        ) : hasNote && dayNotes ? (
+          <>
+            <a href={notePath} title={getFileName(hasNote)}>
+              <div className="day-number">{dayCounter}</div>
+            </a>
+            <div className="calendar-icons">
+              {dayNotes.map((note, index) => (
+                boundGetCalendarEvent(index, note)
+              ))}
+            </div>
+          </>
+        ) : dayNotes ? (
+          <>
+            <div className="day-number">{dayCounter}</div>
+            <div className="calendar-icons">
+              {dayNotes.map((note, index) => (
+                boundGetCalendarEvent(index, note)
+              ))}
+            </div>
+          </>
+        ) : (
           <div className="day-number">{dayCounter}</div>
-          <div className="calendar-icons">
-            {dayNotes.map((note, index) => (
-              boundGetCalendarEvent(index, note)
-            ))}
-          </div>
-        </>
-      ) : (
-        <div className="day-number">{dayCounter}</div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 }
 
