@@ -6,10 +6,11 @@ import CalendarYear from './CalendarYear';
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { AppContext } from "./../../shared/appContext";
+import { AppContext } from './../../shared/appContext';
+
 
 export class CalendarView extends ItemView {
-    calendarEl: HTMLElement;
+    private reactComponent: React.ReactElement;
 
     constructor(leaf: WorkspaceLeaf) {
         super(leaf);
@@ -28,8 +29,11 @@ export class CalendarView extends ItemView {
     }
 
     async onOpen() {
-        const reactComponent = React.createElement(AppContext.Provider, { value: this.app }, React.createElement(CalendarYear));
-        ReactDOM.createRoot(this.contentEl as HTMLElement).render(reactComponent);
-        this.contentEl.id = CONTAINER_ID;
+        this.reactComponent = React.createElement(AppContext.Provider, { value: this.app }, React.createElement(CalendarYear));
+        ReactDOM.createRoot(this.contentEl as HTMLElement).render(this.reactComponent);
+        // this.contentEl.id = CONTAINER_ID;
+
+        
     }
+
 }
