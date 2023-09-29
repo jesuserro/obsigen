@@ -80,7 +80,7 @@ function checkIfNoteExistsForDay(dayIndex: number, files: TFile[], year: number,
   return false;
 }
 
-function CalendarMonth({year, month }: CalendarMonthProps) {
+function CalendarMonth({year, month}: CalendarMonthProps): JSX.Element {
   const firstDayOfMonth = getFirstDayOfMonth(year, month);
   const lastDayOfMonth = getLastDayOfMonth(year, month);
   const numDaysInMonth = lastDayOfMonth.getDate();
