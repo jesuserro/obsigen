@@ -4,13 +4,13 @@
 	"description": "Just another customized digital garden.",
 	"main": "main.js",
 	"scripts": {
-		"dev": "concurrently \"npm run dev-ts\" \"npm run dev-sass\"",
+		"dev": "concurrently \"npm run dev-ts\" \"npm run dev-sass\" \"npm run sasscp\"",
 		"dev-ts": "node esbuild.config.mjs --bundle --watch",
-		"dev-sass": "sass --watch --no-source-map --style compressed src/styles.scss:/mnt/c/Users/Jesús/Documents/vault/.obsidian/plugins/obsigen/styles.css",
+		"dev-sass": "sass --watch --no-source-map --style compressed src/styles.scss:src/styles.css",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
 		"version": "node version-bump.mjs && git add manifest.json versions.json",
 		"test": "jest",
-		"sasscp": "cp styles.css /mnt/c/Users/Jesús/Documents/vault/.obsidian/plugins/obsigen/styles.css"
+		"sasscp": "cp src/styles.css /mnt/c/Users/Jesús/Documents/vault/.obsidian/plugins/obsigen/styles.css"
 	},
 	"keywords": [],
 	"author": "",
