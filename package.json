@@ -1,6 +1,6 @@
 {
 	"name": "obsigen",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Just another customized digital garden.",
 	"main": "main.js",
 	"scripts": {
