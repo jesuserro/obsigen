@@ -34,7 +34,6 @@ export class CaptureUrl extends NoteGenerator {
   }
 
   setYaml(url: string): void {
-    url = this.filterParamsFromUrl(url);
     url = `"${url}"`;
     const link = `"[[${this.getCurrentDate()}]]"`;
     const data = {
@@ -50,6 +49,7 @@ export class CaptureUrl extends NoteGenerator {
 
   async createNote(title: string, url: string) {
     this.title = this.getTitle(title);
+    url = this.filterParamsFromUrl(url);
     this.setYaml(url);
     this.fileName = this.getFilename(this.title);
     this.setContent(url);
@@ -82,13 +82,32 @@ export class CaptureUrl extends NoteGenerator {
   }
 
   filterParamsFromUrl(url: string): string {
-    let sanitizedURL = url;
-    const tParamRegexp = new RegExp('t=\\d+'); // t=1234567890 is valid
-    if (!tParamRegexp.test(url)) {
-      sanitizedURL = sanitizedURL.split("?")[0];
+    const urlParts = url.split('?'); // Dividir la URL en partes antes y después del signo de interrogación
+    if (urlParts.length === 2) {
+      const queryParams = urlParts[1].split('&'); // Dividir los parámetros de consulta
+      let numericTParamFound = false;
+  
+      // Verificar cada parámetro de consulta
+      for (let i = 0; i < queryParams.length; i++) {
+        const param = queryParams[i];
+        const paramNameValue = param.split('=');
+        if (paramNameValue[0] === 't' && !isNaN(Number(paramNameValue[1]))) {
+          // El parámetro "t" es numérico, mantenerlo y la URL
+          numericTParamFound = true;
+          break;
+        }
+      }
+  
+      // Si se encontró un parámetro "t" numérico, mantener la URL completa
+      if (numericTParamFound) {
+        return url;
+      }
     }
-    return sanitizedURL.trim();
-  }
+  
+    // Si no se encontró un parámetro "t" numérico o no había parámetros de consulta, eliminar todos los parámetros
+    return urlParts[0];
+  } // Salida: "https://example.com/page"
+
 }
 
 
