@@ -2,7 +2,6 @@ import builtins from "builtin-modules";
 import esbuild from "esbuild";
 import { copy } from 'esbuild-plugin-copy';
 import { sassPlugin } from 'esbuild-sass-plugin';
-import glob from 'glob';
 import process from "process";
 
 const banner =
@@ -16,13 +15,13 @@ const prod = (process.argv[2] === "production");
 const outputDir = "/mnt/c/Users/Jesús/Documents/vault/.obsidian/plugins/obsigen";
 
 // scss compilados ya desde package.json, lo sacamos de esbuild
-const entryPoints = glob.sync("src/**/*.*").filter((file) => file !== "src/styles.scss");
+// const entryPoints = glob.sync("src/**/*.*").filter((file) => file !== "src/styles.scss");
 
 const context = await esbuild.context({
   banner: {
     js: banner,
   },
-  entryPoints: [...entryPoints, "main.ts", "styles.css"],
+  entryPoints: ["src/main.ts"],
   bundle: true,
   external: [
     "obsidian",
@@ -45,12 +44,13 @@ const context = await esbuild.context({
   logLevel: "info",
   sourcemap: prod ? false : "inline",
   treeShaking: true,
-  outdir: `${outputDir}`,
+  outfile: `${outputDir}/main.js`,
+  // outdir: `${outputDir}`,
   plugins: [
     copy({
       assets: [
-        { from: 'manifest.json', to: `${outputDir}/manifest.json` },
-        // { from: 'styles.css', to: `${outputDir}/styles.css` },
+        { from: 'manifest.json', to: `${outputDir}/manifest.json` }, // Copiamos manifest.json a la carpeta de salida
+        { from: 'styles.css', to: `${outputDir}/styles.css` }, // Copiamos styles.css a la carpeta de salida
       ],
     }),
     sassPlugin()
