@@ -10,13 +10,14 @@ import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdLocalHospi
 import { PiNotePencilBold } from 'react-icons/pi';
 import { SiSpotify, SiTwitter, SiWhatsapp, SiYoutube } from 'react-icons/si';
 import { TbZzz } from 'react-icons/tb';
-import { useApp } from '../../hooks/useApp';
+import { AppContext } from './../../shared/appContext';
 
 export class CalendarIcon {
   static getIcon(note: TFile): React.ReactNode {
     const path = note.path;
     const size = 14;
-    const app = useApp();
+    // const app = useApp();
+    const app = React.useContext(AppContext);
 
     const cssClasses = app?.metadataCache.getFileCache(note)?.frontmatter?.cssClasses;
 

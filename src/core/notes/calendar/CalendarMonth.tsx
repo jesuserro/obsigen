@@ -1,6 +1,6 @@
-import { App, TFile } from 'obsidian';
+import { TFile } from 'obsidian';
 import React from 'react';
-import { useApp } from '../../hooks/useApp';
+import { AppContext } from './../../shared/appContext';
 import CalendarDay from './CalendarDay';
 
 interface CalendarMonthProps {
@@ -25,7 +25,8 @@ function calculateNumRows(numDaysInMonth: number, dayOffset: number): number {
 }
 
 function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: number, year: number, month:number): JSX.Element[] {
-  const app = useApp() as App;
+  // const app = useApp() as App;
+  const app = React.useContext(AppContext);
   const files = app?.vault.getMarkdownFiles() || [];
   const daysGrid = [];
 
