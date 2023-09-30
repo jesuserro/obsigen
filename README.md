@@ -14,58 +14,77 @@ Use the yaml frontmatter to add the date and icon to your notes. The plugin will
 ## Folder Structure
 Following the DDD principles, the project is divided into three layers: core, adapters and shared.
 ```
-📦src
- ┣ 📂adapters
- ┃ ┗ 📂Obsidian
- ┃ ┃ ┣ 📜MenuPrincipal.ts
- ┃ ┃ ┣ 📜PromptModal.ts
- ┃ ┃ ┣ 📜SampleModal.ts
- ┃ ┃ ┗ 📜SampleSettingTab.ts
- ┣ 📂assets
- ┃ ┗ 📜church.js
- ┣ 📂core
- ┃ ┣ 📂hooks
- ┃ ┃ ┗ 📜useApp.ts
- ┃ ┣ 📂notes
- ┃ ┃ ┣ 📂__mocks__
- ┃ ┃ ┃ ┗ 📜obsidian.ts
- ┃ ┃ ┣ 📂aniversario
- ┃ ┃ ┃ ┣ 📜Aniversario.test.ts
- ┃ ┃ ┃ ┗ 📜Aniversario.ts
- ┃ ┃ ┣ 📂biblia
- ┃ ┃ ┃ ┗ 📂versiculo
- ┃ ┃ ┣ 📂calendar
- ┃ ┃ ┃ ┣ 📜Calendar.ts
- ┃ ┃ ┃ ┣ 📜CalendarDay.tsx
- ┃ ┃ ┃ ┣ 📜CalendarIcon.tsx
- ┃ ┃ ┃ ┣ 📜CalendarMonth.tsx
- ┃ ┃ ┃ ┣ 📜CalendarTitle.tsx
- ┃ ┃ ┃ ┣ 📜CalendarView.ts
- ┃ ┃ ┃ ┗ 📜CalendarYear.tsx
- ┃ ┃ ┣ 📂captureUrl
- ┃ ┃ ┃ ┣ 📜CaptureUrl.test.ts
- ┃ ┃ ┃ ┣ 📜CaptureUrl.ts
- ┃ ┃ ┃ ┣ 📜CaptureUrlModal.ts
- ┃ ┃ ┃ ┗ 📜captureUrlModal.module.css
- ┃ ┃ ┣ 📂daily
- ┃ ┃ ┃ ┗ 📜Daily.ts
- ┃ ┃ ┣ 📂momento
- ┃ ┃ ┃ ┗ 📜Momento.ts
- ┃ ┃ ┣ 📜NoteGenerator.test.ts
- ┃ ┃ ┗ 📜NoteGenerator.ts
- ┃ ┗ 📂shared
- ┃ ┃ ┣ 📂interface
- ┃ ┃ ┃ ┣ 📜MyPluginSettings.ts
- ┃ ┃ ┃ ┗ 📜iYaml.ts
- ┃ ┃ ┣ 📂templates
- ┃ ┃ ┃ ┗ 📜Yaml.tsx
- ┃ ┃ ┗ 📜appContext.ts
- ┗ 📜styles.scss
- ┗ 📜main.ts
- ┗ 📜manifest.json
- ┗ 📜esbuild.config.mjs
- ┗ 📜package.json
- ┗ 📜tsconfig.json
+📦obsigen
+ ┣ 📂src
+ ┃ ┣ 📂adapters
+ ┃ ┃ ┗ 📂Obsidian
+ ┃ ┃ ┃ ┣ 📜MenuPrincipal.ts
+ ┃ ┃ ┃ ┣ 📜PromptModal.ts
+ ┃ ┃ ┃ ┣ 📜SampleModal.ts
+ ┃ ┃ ┃ ┗ 📜SampleSettingTab.ts
+ ┃ ┣ 📂assets
+ ┃ ┃ ┗ 📜church.js
+ ┃ ┣ 📂core
+ ┃ ┃ ┣ 📂hooks
+ ┃ ┃ ┃ ┗ 📜useApp.ts
+ ┃ ┃ ┣ 📂notes
+ ┃ ┃ ┃ ┣ 📂__mocks__
+ ┃ ┃ ┃ ┃ ┗ 📜obsidian.ts
+ ┃ ┃ ┃ ┣ 📂aniversario
+ ┃ ┃ ┃ ┃ ┣ 📜Aniversario.test.ts
+ ┃ ┃ ┃ ┃ ┗ 📜Aniversario.ts
+ ┃ ┃ ┃ ┣ 📂biblia
+ ┃ ┃ ┃ ┃ ┗ 📂versiculo
+ ┃ ┃ ┃ ┣ 📂calendar
+ ┃ ┃ ┃ ┃ ┣ 📜Calendar.ts
+ ┃ ┃ ┃ ┃ ┣ 📜CalendarDay.tsx
+ ┃ ┃ ┃ ┃ ┣ 📜CalendarIcon.tsx
+ ┃ ┃ ┃ ┃ ┣ 📜CalendarMonth.tsx
+ ┃ ┃ ┃ ┃ ┣ 📜CalendarTitle.tsx
+ ┃ ┃ ┃ ┃ ┣ 📜CalendarView.ts
+ ┃ ┃ ┃ ┃ ┗ 📜CalendarYear.tsx
+ ┃ ┃ ┃ ┣ 📂captureUrl
+ ┃ ┃ ┃ ┃ ┣ 📜CaptureUrl.test.ts
+ ┃ ┃ ┃ ┃ ┣ 📜CaptureUrl.ts
+ ┃ ┃ ┃ ┃ ┣ 📜CaptureUrlModal.ts
+ ┃ ┃ ┃ ┃ ┗ 📜captureUrlModal.module.css
+ ┃ ┃ ┃ ┣ 📂daily
+ ┃ ┃ ┃ ┃ ┗ 📜Daily.ts
+ ┃ ┃ ┃ ┣ 📂momento
+ ┃ ┃ ┃ ┃ ┗ 📜Momento.ts
+ ┃ ┃ ┃ ┣ 📜NoteGenerator.test.ts
+ ┃ ┃ ┃ ┗ 📜NoteGenerator.ts
+ ┃ ┃ ┗ 📂shared
+ ┃ ┃ ┃ ┣ 📂interface
+ ┃ ┃ ┃ ┃ ┣ 📜MyPluginSettings.ts
+ ┃ ┃ ┃ ┃ ┗ 📜iYaml.ts
+ ┃ ┃ ┃ ┣ 📂templates
+ ┃ ┃ ┃ ┃ ┗ 📜Yaml.tsx
+ ┃ ┃ ┃ ┗ 📜appContext.ts
+ ┃ ┣ 📜main.ts
+ ┃ ┣ 📜styles.css
+ ┃ ┗ 📜styles.scss
+ ┣ 📂var
+ ┃ ┣ 📜MonthView.ts
+ ┃ ┣ 📜NoteGenerator.ts
+ ┃ ┣ 📜NoteGeneratorAllInOne.ts
+ ┃ ┣ 📜NoteGeneratorCaller.ts
+ ┃ ┗ 📜template.yaml
+ ┣ 📜.babelrc
+ ┣ 📜.editorconfig
+ ┣ 📜.eslintignore
+ ┣ 📜.eslintrc
+ ┣ 📜.gitignore
+ ┣ 📜.npmrc
+ ┣ 📜README.md
+ ┣ 📜babel.config.js
+ ┣ 📜esbuild.config.mjs
+ ┣ 📜jest.config.js
+ ┣ 📜manifest.json
+ ┣ 📜package-lock.json
+ ┣ 📜package.json
+ ┣ 📜tsconfig.json
+ ┣ 📜version-bump.mjs
  ┗ 📜versions.json
 ```
 ## Installing the plugin
