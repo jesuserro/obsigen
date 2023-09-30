@@ -1,4 +1,4 @@
-import { App, TFile } from 'obsidian';
+import { TFile } from 'obsidian';
 import React from 'react';
 import { AiFillHeart } from 'react-icons/ai';
 import { BsFillCloudRainHeavyFill, BsSnow3, BsWordpress } from 'react-icons/bs';
@@ -10,13 +10,15 @@ import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdLocalHospi
 import { PiNotePencilBold } from 'react-icons/pi';
 import { SiSpotify, SiTwitter, SiWhatsapp, SiYoutube } from 'react-icons/si';
 import { TbZzz } from 'react-icons/tb';
+import { useApp } from './../../hooks/useApp';
 
 export class CalendarIcon {
-  static getIcon(note: TFile, app: App): React.ReactNode {
+  static getIcon(note: TFile): React.ReactNode {
     const path = note.path;
     const size = 14;
+    const app = useApp();
 
-    const cssClasses = app.metadataCache.getFileCache(note)?.frontmatter?.cssClasses;
+    const cssClasses = app?.metadataCache.getFileCache(note)?.frontmatter?.cssClasses;
 
     const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
       rain: ({ size }) => <BsFillCloudRainHeavyFill size={size} style={{ color: '#6dc8f2' }} />,

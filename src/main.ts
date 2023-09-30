@@ -1,4 +1,4 @@
-import { Editor, MarkdownView, Plugin } from 'obsidian';
+import { Editor, MarkdownView, Plugin, WorkspaceLeaf } from 'obsidian';
 import { MenuPrincipal } from 'src/adapters/Obsidian/MenuPrincipal';
 import { SampleModal } from 'src/adapters/Obsidian/SampleModal';
 import SampleSettingTab from 'src/adapters/Obsidian/SampleSettingTab';
@@ -12,13 +12,18 @@ const DEFAULT_SETTINGS: MyPluginSettings = {
 
 export default class MyPlugin extends Plugin {
 	settings: MyPluginSettings;
+	private view: CalendarView;
 
 	async onload() {
 
 		console.log('Loading Obsigen plugin');
 
 		// Register your ItemView
-		this.registerView(CALENDAR_VIEW_TYPE, (leaf) => new CalendarView(leaf));
+		// this.registerView(CALENDAR_VIEW_TYPE, (leaf) => new CalendarView(leaf));
+		this.registerView(
+			CALENDAR_VIEW_TYPE,
+			(leaf: WorkspaceLeaf) => (this.view = new CalendarView(leaf))
+	);
 		
 		await this.loadSettings();
 
@@ -93,5 +98,14 @@ export default class MyPlugin extends Plugin {
 	async saveSettings() {
 		await this.saveData(this.settings);
 	}
+
+	onLayoutReady(): void {
+		if (this.app.workspace.getLeavesOfType(CALENDAR_VIEW_TYPE).length) {
+				return;
+		}
+		this.app.workspace.getRightLeaf(false).setViewState({
+				type: CALENDAR_VIEW_TYPE,
+		});
+}
 }
 

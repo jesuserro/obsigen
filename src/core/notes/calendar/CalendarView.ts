@@ -1,12 +1,20 @@
-import { ItemView } from 'obsidian';
-export const CALENDAR_VIEW_TYPE = 'calendar-view';
+import { ItemView, WorkspaceLeaf } from 'obsidian';
+export const CALENDAR_VIEW_TYPE = 'obsigen-calendar-view';
+export const CONTAINER_ID = "obsigen-calendar-container";
 
-import { renderToString } from 'react-dom/server';
-import CalendarTitle from './CalendarTitle';
 import CalendarYear from './CalendarYear';
 
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { AppContext } from './../../shared/appContext';
+
+
 export class CalendarView extends ItemView {
-    calendarEl: HTMLElement;
+    private reactComponent: React.ReactElement;
+
+    constructor(leaf: WorkspaceLeaf) {
+        super(leaf);
+    }
 
     getViewType(): string {
         return CALENDAR_VIEW_TYPE;
@@ -21,19 +29,11 @@ export class CalendarView extends ItemView {
     }
 
     async onOpen() {
-        this.contentEl.empty();
-        this.calendarEl = this.createCalendarView();
-        this.contentEl.appendChild(this.calendarEl);
+        this.reactComponent = React.createElement(AppContext.Provider, { value: this.app }, React.createElement(CalendarYear));
+        ReactDOM.createRoot(this.contentEl as HTMLElement).render(this.reactComponent);
+        // this.contentEl.id = CONTAINER_ID;
+
+        
     }
 
-    createCalendarView() {
-        const container = document.createElement('div');
-        container.className = 'calendar-container';
-        const files = this.app.vault.getMarkdownFiles();
-        const htmlTitle = renderToString(CalendarTitle());
-        const htmlYear = renderToString(CalendarYear(files, this.app));
-        container.innerHTML = htmlYear;
-        
-        return container;
-    }
 }

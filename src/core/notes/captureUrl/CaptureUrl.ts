@@ -34,6 +34,7 @@ export class CaptureUrl extends NoteGenerator {
   }
 
   setYaml(url: string): void {
+    url = this.filterParamsFromUrl(url);
     url = `"${url}"`;
     const link = `"[[${this.getCurrentDate()}]]"`;
     const data = {
@@ -107,7 +108,7 @@ export class CaptureUrl extends NoteGenerator {
     // Si no se encontró un parámetro "t" numérico o no había parámetros de consulta, eliminar todos los parámetros
     return urlParts[0];
   } // Salida: "https://example.com/page"
-
+  
 }
 
 
