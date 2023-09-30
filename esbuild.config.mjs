@@ -50,7 +50,7 @@ const context = await esbuild.context({
     copy({
       assets: [
         { from: 'manifest.json', to: `${outputDir}/manifest.json` }, // Copiamos manifest.json a la carpeta de salida
-        { from: 'styles.css', to: `${outputDir}/styles.css` }, // Copiamos styles.css a la carpeta de salida
+        // { from: 'styles.css', to: `${outputDir}/styles.css` }, // Copiamos styles.css a la carpeta de salida
       ],
     }),
     sassPlugin()
