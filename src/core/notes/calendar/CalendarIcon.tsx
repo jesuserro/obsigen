@@ -7,6 +7,7 @@ import { BsFillCloudRainHeavyFill, BsFillPersonFill, BsSnow3, BsWordpress } from
 import { CiPill } from 'react-icons/ci';
 import { FaBirthdayCake, FaBook, FaBookReader, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaGithub, FaGlobe, FaHiking, FaInstagram, FaLinkedin, FaLungsVirus, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaRss, FaStar, FaTelegram, FaTemperatureHigh, FaVenus, FaYoutube } from 'react-icons/fa';
 import { GiChurch, GiCommercialAirplane, GiKneeling, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSparkSpirit, GiThermometerCold, GiTombstone, GiWheat } from 'react-icons/gi';
+import { ImWoman } from 'react-icons/im';
 import { IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdLocalHospital, MdPeople, MdRestaurant } from 'react-icons/md';
 import { PiNotePencilBold } from 'react-icons/pi';
@@ -46,7 +47,7 @@ export class CalendarIcon {
       gastronomy: ({ size }) => <MdRestaurant size={size} style={{ color: '#FFD700' }} />,
       github: ({ size }) => <FaGithub size={size} style={{ color: '#fff' }} />, 
       hiking: ({ size }) => <FaHiking size={size} style={{ color: '#008000' }} />, 
-      inlove: ({ size }) => <MdFavorite size={size} style={{ color: '#FF1493' }} />,
+      inlove: ({ size }) => <MdFavorite size={size} style={{ color: '#f542ef' }} />,
       inspiration: ({ size }) => <GiSparkSpirit size={size} style={{ color: '#f7c34a' }} />,
       instagram: ({ size }) => <FaInstagram size={size} style={{ color: '#E4405F' }} />, 
       kindle: ({ size }) => <FaBookReader size={size} style={{ color: '#FFA500' }} />, 
@@ -65,6 +66,7 @@ export class CalendarIcon {
       repairs: ({ size }) => <MdBuild size={size} style={{ color: '#A9A9A9' }} />,
       rosary: ({ size }) => <GiPrayerBeads size={size} style={{ color: '#ad6df2' }} />,
       rss: ({ size }) => <FaRss size={size} style={{ color: '#FFA500' }} />, 
+      sex: ({ size }) => <FaVenus size={size} style={{ color: '#f542ef' }} />,
       sick: ({ size }) => <GiThermometerCold size={size} style={{ color: '#f74a4a' }} />,
       snow: ({ size }) => <BsSnow3 size={size} style={{ color: '#6dc8f2' }} />,
       sport: ({ size }) => <MdDirectionsRun size={size} style={{ color: '#008000' }} />, 
@@ -73,8 +75,8 @@ export class CalendarIcon {
       travel: ({ size }) => <GiCommercialAirplane size={size} style={{ color: '#1199c2' }} />,
       twitter: ({ size }) => <SiTwitter size={size} style={{ color: '#1DA1F2' }} />,
       weather: ({ size }) => <GiThermometerCold size={size} style={{ color: '#6dc8f2' }} />,
-      whatsapp: ({ size }) => <SiWhatsapp size={size} style={{ color: '#25d366' }} />,
-      woman: ({ size }) => <FaVenus size={size} style={{ color: 'pink' }} />, 
+      whatsapp: ({ size }) => <SiWhatsapp size={size} style={{ color: '#25d366' }} />, 
+      woman: ({ size }) => <ImWoman size={size} style={{ color: '#f542ef' }} />, 
       writing: ({ size }) => <PiNotePencilBold size={size} style={{ color: '#fcaa62' }} />,
       youtube: ({ size }) => <FaYoutube size={size} style={{ color: '#f74a4a' }} />
     };
@@ -90,7 +92,7 @@ export class CalendarIcon {
     }
 
     if (path.includes('Anna') || path.includes("Nieves")) {
-      return <AiFillHeart size={size} style={{ color: '#FF69B4' }} />;
+      return <AiFillHeart size={size} style={{ color: '#f542ef' }} />;
     } else if (path.includes(' TO ')) {
       return <GiChurch size={size} style={{ color: '#ad6df2' }} />;
     } else if (path.includes('/Aniversaries')) {
