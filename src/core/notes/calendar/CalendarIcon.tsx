@@ -50,7 +50,7 @@ export class CalendarIcon {
       health: ({ size }) => <FaStaffSnake size={size} style={{ color: '#47ff6c' }} />, 
       hiking: ({ size }) => <FaHiking size={size} style={{ color: '#008000' }} />, 
       inlove: ({ size }) => <MdFavorite size={size} style={{ color: '#f542ef' }} />,
-      inspiration: ({ size }) => <GiSparkSpirit size={size} style={{ color: '#f7c34a' }} />,
+      inspiration: ({ size }) => <GiSparkSpirit size={size} style={{ color: '#f2a83f' }} />,
       instagram: ({ size }) => <FaInstagram size={size} style={{ color: '#E4405F' }} />, 
       kindle: ({ size }) => <FaBookReader size={size} style={{ color: '#FFA500' }} />, 
       linkedin: ({ size }) => <FaLinkedin size={size} style={{ color: '#0077B5' }} />, 
