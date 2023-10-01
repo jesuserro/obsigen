@@ -1,5 +1,4 @@
 import { TFile } from 'obsidian';
-import React from 'react';
 import { CalendarIcon } from './CalendarIcon';
 
 interface CalendarDayProps {
@@ -35,9 +34,11 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps): JSX.E
     <>
       <div className="day-container">
         {hasNote && !dayNotes ? (
-          <a href={notePath} title={getFileName(hasNote)}>
-            <div className="day-number">{dayCounter}</div>
-          </a>
+          <>
+            <a href={notePath} title={getFileName(hasNote)}>
+              <div className="day-number">{dayCounter}</div>
+            </a>
+          </>
         ) : hasNote && dayNotes ? (
           <>
             <a href={notePath} title={getFileName(hasNote)}>
@@ -59,7 +60,9 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps): JSX.E
             </div>
           </>
         ) : (
-          <div className="day-number">{dayCounter}</div>
+          <>
+            <div className="day-number">{dayCounter}</div>
+          </>
         )}
       </div>
     </>
