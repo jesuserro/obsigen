@@ -91,9 +91,15 @@ Following the DDD principles, the project is divided into three layers: core, ad
 - Clone the plugin into your vault `VaultFolder/.obsidian/plugins/`.
 ## Links
 - [Use React in your plugin](https://docs.obsidian.md/Plugins/Getting+started/Use+React+in+your+plugin)
+### Icons
+- [Obsidian Icons](https://docs.obsidian.md/Plugins/User+interface/Icons)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [Lucide](https://lucide.dev/icons/)
+- [Hexadecimal Color Picker](https://www.google.com/search?q=hexadecimal+color+picker)
 ## Inspired by
 - [Obsidian Full Calendar](https://github.com/davish/obsidian-full-calendar)
 - [Full Calendar](https://github.com/fullcalendar/fullcalendar)
+- [Full Calendar Demos](https://fullcalendar.io/demos)
 - [ODIN - Obsidian Driven Information Network](https://github.com/memgraph/odin)
 ## Funding
 [![Buy Me a Coffee](https://img.shields.io/badge/-Buy%20Me%20a%20Coffee-orange?style=flat&logo=buy-me-a-coffee&logoColor=white)](https://www.buymeacoffee.com/jesuserro)
