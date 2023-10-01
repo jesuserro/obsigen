@@ -18,7 +18,7 @@ export class CalendarIcon {
     const size = 14;
     const app = useApp();
 
-    const cssClasses = app?.metadataCache.getFileCache(note)?.frontmatter?.cssClasses;
+    const cssClasses = app?.metadataCache.getFileCache(note)?.frontmatter?.cssclasses;
 
     const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
       rain: ({ size }) => <BsFillCloudRainHeavyFill size={size} style={{ color: '#6dc8f2' }} />,
