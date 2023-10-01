@@ -6,6 +6,7 @@ import { AiFillHeart } from 'react-icons/ai';
 import { BsFillCloudRainHeavyFill, BsFillPersonFill, BsSnow3, BsWordpress } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
 import { FaBirthdayCake, FaBook, FaBookReader, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaGithub, FaGlobe, FaHiking, FaInstagram, FaLinkedin, FaLungsVirus, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaRss, FaStar, FaTelegram, FaTemperatureHigh, FaVenus, FaYoutube } from 'react-icons/fa';
+import { FaStaffSnake } from 'react-icons/fa6';
 import { GiChurch, GiCommercialAirplane, GiKneeling, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSparkSpirit, GiThermometerCold, GiTombstone, GiWheat } from 'react-icons/gi';
 import { ImWoman } from 'react-icons/im';
 import { IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
@@ -46,6 +47,7 @@ export class CalendarIcon {
       funeral: ({ size }) => <GiTombstone size={size} style={{ color: '#74757a' }} />,
       gastronomy: ({ size }) => <MdRestaurant size={size} style={{ color: '#FFD700' }} />,
       github: ({ size }) => <FaGithub size={size} style={{ color: '#fff' }} />, 
+      health: ({ size }) => <FaStaffSnake size={size} style={{ color: '#47ff6c' }} />, 
       hiking: ({ size }) => <FaHiking size={size} style={{ color: '#008000' }} />, 
       inlove: ({ size }) => <MdFavorite size={size} style={{ color: '#f542ef' }} />,
       inspiration: ({ size }) => <GiSparkSpirit size={size} style={{ color: '#f7c34a' }} />,
