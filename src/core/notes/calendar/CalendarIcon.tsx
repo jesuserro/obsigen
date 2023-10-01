@@ -5,8 +5,8 @@ import { useApp } from './../../hooks/useApp';
 import { AiFillHeart } from 'react-icons/ai';
 import { BsFillCloudRainHeavyFill, BsFillPersonFill, BsSnow3, BsWordpress } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaBirthdayCake, FaBook, FaBookReader, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaGithub, FaGlobe, FaHiking, FaInstagram, FaLinkedin, FaLungsVirus, FaMoneyBillWave, FaPhone, FaPodcast, FaQuestionCircle, FaRss, FaStar, FaTelegram, FaTemperatureHigh, FaVenus, FaYoutube } from 'react-icons/fa';
-import { GiChurch, GiCommercialAirplane, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSparkSpirit, GiThermometerCold, GiTombstone, GiWheat } from 'react-icons/gi';
+import { FaBirthdayCake, FaBook, FaBookReader, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaGithub, FaGlobe, FaHiking, FaInstagram, FaLinkedin, FaLungsVirus, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaRss, FaStar, FaTelegram, FaTemperatureHigh, FaVenus, FaYoutube } from 'react-icons/fa';
+import { GiChurch, GiCommercialAirplane, GiKneeling, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSparkSpirit, GiThermometerCold, GiTombstone, GiWheat } from 'react-icons/gi';
 import { IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdLocalHospital, MdPeople, MdRestaurant } from 'react-icons/md';
 import { PiNotePencilBold } from 'react-icons/pi';
@@ -32,7 +32,7 @@ export class CalendarIcon {
       car: ({ size }) => <FaCarSide size={size} style={{ color: '#800080' }} />, 
       catholic: ({ size }) => <FaCross size={size} style={{ color: '#ad6df2' }} />,
       chess: ({ size }) => <FaChess size={size} style={{ color: '#fff' }} />, 
-      confession: ({ size }) => <FaCross size={size} style={{ color: '#ad6df2' }} />,
+      confession: ({ size }) => <GiKneeling size={size} style={{ color: '#ad6df2' }} />,
       cough: ({ size }) => <FaLungsVirus size={size} style={{ color: '#FFA500' }} />, 
       doctor: ({ size }) => <MdLocalHospital size={size} style={{ color: '#f74a4a' }} />,
       dream: ({ size }) => <TbZzz size={size} style={{ color: '#3876f2' }} />,
@@ -58,11 +58,12 @@ export class CalendarIcon {
       phone: ({ size }) => <FaPhone size={size} style={{ color: '#fff' }} />, 
       pill: ({ size }) => <CiPill size={size} style={{ color: '#c2a411' }} />,
       podcast: ({ size }) => <FaPodcast size={size} style={{ color: '#1DB954' }} />,
-      prayer: ({ size }) => <GiPrayerBeads size={size} style={{ color: '#866df7' }} />,
+      prayer: ({ size }) => <FaPrayingHands size={size} style={{ color: '#ad6df2' }} />,
       programming: ({ size }) => <FaCode size={size} style={{ color: '#FFA500' }} />, 
       pumpkin: ({ size }) => <GiPumpkinMask size={size} style={{ color: '#fc6203' }} />,
       rain: ({ size }) => <BsFillCloudRainHeavyFill size={size} style={{ color: '#6dc8f2' }} />,
       repairs: ({ size }) => <MdBuild size={size} style={{ color: '#A9A9A9' }} />,
+      rosary: ({ size }) => <GiPrayerBeads size={size} style={{ color: '#ad6df2' }} />,
       rss: ({ size }) => <FaRss size={size} style={{ color: '#FFA500' }} />, 
       sick: ({ size }) => <GiThermometerCold size={size} style={{ color: '#f74a4a' }} />,
       snow: ({ size }) => <BsSnow3 size={size} style={{ color: '#6dc8f2' }} />,
