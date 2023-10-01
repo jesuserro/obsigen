@@ -3,7 +3,7 @@ import React from 'react';
 import { AiFillHeart } from 'react-icons/ai';
 import { BsFillCloudRainHeavyFill, BsSnow3, BsWordpress } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaBirthdayCake, FaCarSide, FaCross, FaGlobe, FaMoneyBillWave, FaPodcast, FaQuestionCircle } from 'react-icons/fa';
+import { FaBirthdayCake, FaCarSide, FaCross, FaGlobe, FaLinkedin, FaMoneyBillWave, FaPodcast, FaQuestionCircle } from 'react-icons/fa';
 import { GiChurch, GiCommercialAirplane, GiPumpkinMask, GiSandsOfTime, GiThermometerCold, GiTombstone } from 'react-icons/gi';
 import { IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdLocalHospital, MdPeople, MdRestaurant } from 'react-icons/md';
@@ -21,6 +21,7 @@ export class CalendarIcon {
     const cssClasses = app?.metadataCache.getFileCache(note)?.frontmatter?.cssclasses;
 
     const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
+      linkedin: ({ size }) => <FaLinkedin size={size} style={{ color: '#0077B5' }} />,
       rain: ({ size }) => <BsFillCloudRainHeavyFill size={size} style={{ color: '#6dc8f2' }} />,
       dream: ({ size }) => <TbZzz size={size} style={{ color: '#3876f2' }} />,
       travel: ({ size }) => <GiCommercialAirplane size={size} style={{ color: '#1199c2' }} />,
