@@ -77,6 +77,12 @@ export class CaptureUrl extends NoteGenerator {
     const youtubeRegexp = new RegExp('https?:\\/\\/(?:www\\.)?(?:youtube\\.com\\/.*|youtu\\.be\\/.*|.*\\.youtube\\.com\\/.*shorts)');
 
     if (twitterRegexp.test(url) || youtubeRegexp.test(url)) {
+      if (youtubeRegexp.test(url)) {
+        // Eliminar parámetros "si" de la URL
+        url = url.replace(/(\?|\&)si=[^&]*$/, "");
+        // Reemplazar "/shorts/" por "/embed/"
+        url = url.replace("/shorts/", "/embed/");
+      }
       return `![${this.title}](${url})`;
     }
     return `[${this.title}](${url})`;
