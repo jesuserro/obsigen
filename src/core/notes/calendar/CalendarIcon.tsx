@@ -3,16 +3,16 @@ import React from 'react';
 import { useApp } from './../../hooks/useApp';
 
 import { AiFillHeart } from 'react-icons/ai';
-import { BsFillCloudRainHeavyFill, BsFillPersonFill, BsSnow3, BsWordpress } from 'react-icons/bs';
+import { BsFillCloudRainHeavyFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaBirthdayCake, FaBook, FaBookReader, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaGithub, FaGlobe, FaHiking, FaInstagram, FaLinkedin, FaLungsVirus, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaRss, FaStar, FaTelegram, FaTemperatureHigh, FaVenus, FaYoutube } from 'react-icons/fa';
+import { FaAmazon, FaBirthdayCake, FaBook, FaBookReader, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaGithub, FaGlobe, FaHiking, FaInstagram, FaLinkedin, FaLungsVirus, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaStar, FaTelegram, FaTemperatureHigh, FaVenus, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaStaffSnake } from 'react-icons/fa6';
-import { GiChurch, GiCommercialAirplane, GiKneeling, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSparkSpirit, GiThermometerCold, GiTombstone, GiWheat } from 'react-icons/gi';
+import { GiChurch, GiCommercialAirplane, GiKneeling, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSparkSpirit, GiThermometerCold, GiTombstone, GiWheat } from 'react-icons/gi';
 import { ImWoman } from 'react-icons/im';
 import { IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdLocalHospital, MdPeople, MdRestaurant } from 'react-icons/md';
-import { PiNotePencilBold } from 'react-icons/pi';
-import { SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
+import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold } from 'react-icons/pi';
+import { SiTinder as IconoTinder, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { TbZzz } from 'react-icons/tb';
 
 export class CalendarIcon {
@@ -26,7 +26,9 @@ export class CalendarIcon {
     const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
       agriculture: ({ size }) => <IoMdBasket size={size} style={{ color: '#8B4513' }} />, 
       agro: ({ size }) => <GiWheat size={size} style={{ color: '#8B4513' }} />, 
+      amazon: ({ size }) => <FaAmazon size={size} style={{ color: '#FF9900' }} />,
       beer: ({ size }) => <MdLocalBar size={size} style={{ color: '#FF4500' }} />,
+      bible: ({ size }) => <IconoBible size={size} style={{ color: '#8A2BE2' }} />,
       bills: ({ size }) => <FaFileInvoiceDollar size={size} style={{ color: '#f74a4a' }} />, 
       blogpost: ({ size }) => <BsWordpress size={size} style={{ color: '#117ac9' }} />,
       book: ({ size }) => <FaBook size={size} style={{ color: '#fff' }} />, 
@@ -34,6 +36,7 @@ export class CalendarIcon {
       car: ({ size }) => <FaCarSide size={size} style={{ color: '#800080' }} />, 
       catholic: ({ size }) => <FaCross size={size} style={{ color: '#ad6df2' }} />,
       chess: ({ size }) => <FaChess size={size} style={{ color: '#fff' }} />, 
+      cinema: ({ size }) => <IconoCinema size={size} style={{ color: '#FFA500' }} />,
       confession: ({ size }) => <GiKneeling size={size} style={{ color: '#ad6df2' }} />,
       cough: ({ size }) => <FaLungsVirus size={size} style={{ color: '#FFA500' }} />, 
       doctor: ({ size }) => <MdLocalHospital size={size} style={{ color: '#f74a4a' }} />,
@@ -56,14 +59,19 @@ export class CalendarIcon {
       linkedin: ({ size }) => <FaLinkedin size={size} style={{ color: '#0077B5' }} />, 
       mass: ({ size }) => <GiChurch size={size} style={{ color: '#ad6df2' }} />,
       music: ({ size }) => <IoMdMusicalNotes size={size} style={{ color: '#798aed' }} />,
+      payroll: ({ size }) => <IconoPayroll size={size} style={{ color: '#FFD700' }} />,
       people: ({ size }) => <MdPeople size={size} style={{ color: '#FFD700' }} />,
+      perspective: ({ size }) => <GiPerspectiveDiceThree size={size} style={{ color: '#FFA500' }} />,
       person: ({ size }) => <BsFillPersonFill size={size} style={{ color: '#add8e6' }} />,
       phone: ({ size }) => <FaPhone size={size} style={{ color: '#fff' }} />, 
       pill: ({ size }) => <CiPill size={size} style={{ color: '#c2a411' }} />,
-      podcast: ({ size }) => <FaPodcast size={size} style={{ color: '#1DB954' }} />,
+      plentyoffish: ({ size }) => <IconoPlentyoffish size={size} style={{ color: '#FF69B4' }} />,
+      podcast: ({ size }) => <FaPodcast size={size} style={{ color: '#fc7f03' }} />,
       prayer: ({ size }) => <FaPrayingHands size={size} style={{ color: '#ad6df2' }} />,
+      price: ({ size }) => <IconoPrice size={size} style={{ color: '#fc0303' }} />,
       programming: ({ size }) => <FaCode size={size} style={{ color: '#FFA500' }} />, 
       pumpkin: ({ size }) => <GiPumpkinMask size={size} style={{ color: '#fc6203' }} />,
+      quote: ({ size }) => <FaQuoteLeft size={size} style={{ color: '#FFD700' }} />,
       rain: ({ size }) => <BsFillCloudRainHeavyFill size={size} style={{ color: '#6dc8f2' }} />,
       repairs: ({ size }) => <MdBuild size={size} style={{ color: '#A9A9A9' }} />,
       rosary: ({ size }) => <GiPrayerBeads size={size} style={{ color: '#ad6df2' }} />,
@@ -74,6 +82,7 @@ export class CalendarIcon {
       sport: ({ size }) => <MdDirectionsRun size={size} style={{ color: '#008000' }} />, 
       spotify: ({ size }) => <SiSpotify size={size} style={{ color: '#1DB954' }} />,
       telegram: ({ size }) => <FaTelegram size={size} style={{ color: '#0088CC' }} />, 
+      tinder: ({ size }) => <IconoTinder size={size} style={{ color: '#FE3C72' }} />,
       travel: ({ size }) => <GiCommercialAirplane size={size} style={{ color: '#1199c2' }} />,
       twitter: ({ size }) => <SiTwitter size={size} style={{ color: '#1DA1F2' }} />,
       weather: ({ size }) => <GiThermometerCold size={size} style={{ color: '#6dc8f2' }} />,
