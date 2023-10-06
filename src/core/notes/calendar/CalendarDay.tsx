@@ -48,37 +48,33 @@ function CalendarDay({ dayCounter, hasNote, anniversaryNote, dayNotes }: Calenda
               <div className="day-number">{dayCounter}</div>
             </a>
             {anniversaryNote && (
-              <div className="anniversary-note">{boundGetCalendarEvent('obs', anniversaryNote)}</div>
+              <div className="anniversary-note">{boundGetCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
             )}
           </>
         ) : hasNote && dayNotes ? (
           <>
-            <div className="day-container">
-              <div className="day-header">
-                {anniversaryNote && (
-                  <div className="anniversary-note">{boundGetCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
-                )}
-                <a href={notePath} title={getFileName(hasNote)}>
-                  <div className="day-number">{dayCounter}</div>
-                </a>
-              </div>
-              {dayNotes && dayNotes.length > 0 && (
-                <div className="calendar-icons">
-                  {dayNotes.map((note, index) => (
-                    <div key={generateEventIndex(note)}>
-                      {boundGetCalendarEvent(generateEventIndex(note), note)}
-                    </div>
-                  ))}
-                </div>
+            <div className="day-header">
+              {anniversaryNote && (
+                <div className="anniversary-note">{boundGetCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
               )}
+              <a href={notePath} title={getFileName(hasNote)}>
+                <div className="day-number">{dayCounter}</div>
+              </a>
+            </div>
+            <div className="calendar-icons">
+              {dayNotes.map((note, index) => (
+                boundGetCalendarEvent(index, note)
+              ))}
             </div>
           </>
         ) : dayNotes ? (
           <>
-            <div className="day-number">{dayCounter}</div>
-            {anniversaryNote && (
-              <div className="anniversary-note">{boundGetCalendarEvent('obs', anniversaryNote)}</div>
-            )}
+            <div className="day-header">
+              {anniversaryNote && (
+                <div className="anniversary-note">{boundGetCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
+              )}
+              <div className="day-number">{dayCounter}</div>
+            </div>
             <div className="calendar-icons">
               {dayNotes.map((note, index) => (
                 boundGetCalendarEvent(index, note)
@@ -89,7 +85,7 @@ function CalendarDay({ dayCounter, hasNote, anniversaryNote, dayNotes }: Calenda
           <>
             <div className="day-number">{dayCounter}</div>
             {anniversaryNote && (
-              <div className="anniversary-note">{boundGetCalendarEvent('obs', anniversaryNote)}</div>
+              <div className="anniversary-note">{boundGetCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
             )}
           </>
         )}
