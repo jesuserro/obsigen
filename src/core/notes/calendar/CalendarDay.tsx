@@ -4,6 +4,7 @@ import { CalendarIcon } from './CalendarIcon';
 interface CalendarDayProps {
   dayCounter: number;
   hasNote: string | false;
+  anniversaryNote: TFile | undefined; // Nueva prop para la nota de aniversario
   dayNotes: TFile[] | false;
 }
 
@@ -22,13 +23,21 @@ function getCalendarEvent(index: number, note: TFile) {
 }
 
 
-function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps): JSX.Element {
+function CalendarDay({ dayCounter, hasNote, anniversaryNote, dayNotes }: CalendarDayProps): JSX.Element {
   let notePath = '';
   if (hasNote) {
     notePath = `obsidian://open?file=${encodeURIComponent(hasNote)}`;
   }
   
   const boundGetCalendarEvent = getCalendarEvent.bind(this);
+
+  const generateEventIndex = (note: TFile): number => {
+    // Generamos un índice único para cada evento basado en su ruta
+    const hash = note.path.split('').reduce((acc, char) => {
+      return acc + char.charCodeAt(0);
+    }, 0);
+    return hash;
+  };
 
   return (
     <>
@@ -38,21 +47,38 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps): JSX.E
             <a href={notePath} title={getFileName(hasNote)}>
               <div className="day-number">{dayCounter}</div>
             </a>
+            {anniversaryNote && (
+              <div className="anniversary-note">{boundGetCalendarEvent('obs', anniversaryNote)}</div>
+            )}
           </>
         ) : hasNote && dayNotes ? (
           <>
-            <a href={notePath} title={getFileName(hasNote)}>
-              <div className="day-number">{dayCounter}</div>
-            </a>
-            <div className="calendar-icons">
-              {dayNotes.map((note, index) => (
-                boundGetCalendarEvent(index, note)
-              ))}
+            <div className="day-container">
+              <div className="day-header">
+                {anniversaryNote && (
+                  <div className="anniversary-note">{boundGetCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
+                )}
+                <a href={notePath} title={getFileName(hasNote)}>
+                  <div className="day-number">{dayCounter}</div>
+                </a>
+              </div>
+              {dayNotes && dayNotes.length > 0 && (
+                <div className="calendar-icons">
+                  {dayNotes.map((note, index) => (
+                    <div key={generateEventIndex(note)}>
+                      {boundGetCalendarEvent(generateEventIndex(note), note)}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </>
         ) : dayNotes ? (
           <>
             <div className="day-number">{dayCounter}</div>
+            {anniversaryNote && (
+              <div className="anniversary-note">{boundGetCalendarEvent('obs', anniversaryNote)}</div>
+            )}
             <div className="calendar-icons">
               {dayNotes.map((note, index) => (
                 boundGetCalendarEvent(index, note)
@@ -62,6 +88,9 @@ function CalendarDay({ dayCounter, hasNote, dayNotes }: CalendarDayProps): JSX.E
         ) : (
           <>
             <div className="day-number">{dayCounter}</div>
+            {anniversaryNote && (
+              <div className="anniversary-note">{boundGetCalendarEvent('obs', anniversaryNote)}</div>
+            )}
           </>
         )}
       </div>

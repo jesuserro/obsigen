@@ -58,3 +58,8 @@ table.calendar-table td {
 .icon-description {
   display: none; /* Ocultar la descripción en dispositivos de escritorio */
 }
+
+.day-header {
+  display: flex; /* Hace que los elementos se coloquen horizontalmente */
+  align-items: center; /* Alinea verticalmente los elementos al centro */
+}

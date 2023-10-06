@@ -36,11 +36,17 @@ function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: numb
       const isWithinMonth = dayIndex >= 1 && dayIndex <= numDaysInMonth;
 
       const hasNote = getDailyNote(dayIndex, files, year, month);
+      const anniversaryNote = getAnniversaryNote(dayIndex, files, year, month);
 
       cells.push(
         <td key={dayOfWeek} className={isWithinMonth ? 'within-month' : 'outside-month'}>
           {dayIndex > 0 && dayIndex <= numDaysInMonth ? (
-            <CalendarDay dayCounter={dayIndex} hasNote={hasNote} dayNotes={getDayNotes(dayIndex, files, year, month)} />
+            <CalendarDay
+              dayCounter={dayIndex}
+              hasNote={hasNote}
+              anniversaryNote={anniversaryNote} // Pasamos la nota de aniversario al componente CalendarDay
+              dayNotes={getDayNotes(dayIndex, files, year, month)}
+            />
           ) : (
             <span className="empty-day">{''}</span>
           )}
@@ -54,13 +60,29 @@ function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: numb
   return daysGrid;
 }
 
-// Create a function to get all notes for a specific day
+// Modificamos getDayNotes para excluir la nota de aniversario
 function getDayNotes(dayIndex: number, files: TFile[], year: number, month: number): TFile[] {
   month = month + 1;
   const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}`;
-  const anniversaries = `/Aniversaries/${String(month).padStart(2, '0')}/${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}`;
-  
-  return files.filter((file) => file.path.includes(dayDate) && !file.path.contains('/Daily') || file.path.includes(anniversaries));
+  const dayNotes = files.filter((file) => file.path.includes(dayDate) && !file.path.includes('/Daily'));
+  const anniversaryNote = getAnniversaryNote(dayIndex, files, year, month);
+
+  // Excluimos la nota de aniversario si existe
+  if (anniversaryNote) {
+    const index = dayNotes.findIndex(note => note.path === anniversaryNote.path);
+    if (index !== -1) {
+      dayNotes.splice(index, 1);
+    }
+  }
+
+  return dayNotes;
+}
+
+// Nueva función para obtener la nota de aniversario
+function getAnniversaryNote(dayIndex: number, files: TFile[], year: number, month: number): TFile | undefined {
+  month = month + 1;
+  const anniversaryPath = `/Aniversaries/${String(month).padStart(2, '0')}/${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}.md`;
+  return files.find(file => file.path.includes(anniversaryPath));
 }
 
 function getDailyNote(dayIndex: number, files: TFile[], year: number, month:number): string | false {
