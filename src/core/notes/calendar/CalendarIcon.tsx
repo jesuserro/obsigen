@@ -24,7 +24,7 @@ export class CalendarIcon {
     const cssClasses = app?.metadataCache.getFileCache(note)?.frontmatter?.cssclasses;
 
     const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
-      agenda2030: ({ size }) => <GiTargetArrows size={size} style={{ color: '#FFA500' }} />,
+      agenda2030: ({ size }) => <GiTargetArrows size={size} style={{ color: '#069d3e' }} />,
       agriculture: ({ size }) => <IoMdBasket size={size} style={{ color: '#8B4513' }} />, 
       agro: ({ size }) => <GiWheat size={size} style={{ color: '#8B4513' }} />, 
       amazon: ({ size }) => <FaAmazon size={size} style={{ color: '#FF9900' }} />,
@@ -62,7 +62,7 @@ export class CalendarIcon {
       inlove: ({ size }) => <MdFavorite size={size} style={{ color: '#f542ef' }} />,
       inspiration: ({ size }) => <GiSparkSpirit size={size} style={{ color: '#f2a83f' }} />,
       instagram: ({ size }) => <FaInstagram size={size} style={{ color: '#E4405F' }} />, 
-      italy: ({ size }) => <GiItalia size={size} style={{ color: '#FF6347' }} />,
+      italy: ({ size }) => <GiItalia size={size} style={{ color: '#47ff6c' }} />,
       kindle: ({ size }) => <FaBookReader size={size} style={{ color: '#FFA500' }} />, 
       linkedin: ({ size }) => <FaLinkedin size={size} style={{ color: '#0077B5' }} />, 
       mass: ({ size }) => <GiChurch size={size} style={{ color: '#ad6df2' }} />,
