@@ -1,0 +1,17 @@
+table.calendar-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.calendar-table th {
+  border: 1px solid grey;
+  padding: 4px;
+  text-align: center;
+  font-weight: bold; /* Bold font for table headers */
+}
+
+table.calendar-table td {
+  border: 1px solid grey;
+  padding: 4px;
+  text-align: center;
+}

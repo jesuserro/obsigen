@@ -1,0 +1,40 @@
+.day-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  .calendar-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+}
+
+/* CSS para dispositivos móviles */
+@media (max-width: 767px) {
+  .day-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .icon-description {
+    margin-left: 10px; /* Espacio entre el ícono y la descripción */
+    font-size: 12px; /* Tamaño del texto de la descripción */
+    color: #555; /* Color del texto de la descripción (puedes personalizarlo) */
+    display: inline; /* Mostrar la descripción en dispositivos móviles */
+  }
+}
+
+.day-header {
+  display: flex; /* Hace que los elementos se coloquen horizontalmente */
+  align-items: center; /* Alinea verticalmente los elementos al centro */
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+}
+
+/* CSS para dispositivos de escritorio (ocultar la descripción) */
+.icon-description {
+  display: none; /* Ocultar la descripción en dispositivos de escritorio */
+}
