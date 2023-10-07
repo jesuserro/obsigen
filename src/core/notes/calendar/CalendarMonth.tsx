@@ -67,16 +67,18 @@ function getDayNotes(dayIndex: number, files: TFile[], year: number, month: numb
   const app = useApp() as App;
 
   const dayNotes: TFile[] = files.filter((file) => {
-    if (file.path.includes('/Daily')) {
+  
+    const path = file.path;
+
+    if (path.includes('/Daily')) {
       return false; // Excluye notas con '/Daily' en el path
     }
 
-    if (file.path.includes(`${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}.md`)) {
+    if (path.includes(`${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}.md`)) {
       return false; // Excluye notas aniversario (formato MMDD.md)
     }
-
-    const eventDate = app.metadataCache.getFileCache(file)?.frontmatter?.date;
     
+    const eventDate = app.metadataCache.getFileCache(file)?.frontmatter?.date;
     if (typeof eventDate === 'string' && eventDate.includes(dayDateDashed)) {
       return true; // Incluye notas del día con YAML `date` coincidente
     }
