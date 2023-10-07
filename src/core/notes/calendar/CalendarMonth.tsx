@@ -61,35 +61,29 @@ function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: numb
 }
 
 function getDayNotes(dayIndex: number, files: TFile[], year: number, month: number): TFile[] {
-  
   month = month + 1;
-  
+  const dayDateDashed = `${year}-${String(month).padStart(2, '0')}-${String(dayIndex).padStart(2, '0')}`;
+
   const app = useApp() as App;
+  const metadataCache = app.metadataCache;
 
   const dayNotes: TFile[] = files.filter((file) => {
-  
     const path = file.path;
 
-    if (path.includes('/Daily')) {
-      return false; // Excluye notas con '/Daily' en el path
+    if (path.includes('/Daily') || path.includes('/Aniversaries/')) {
+      return false; // Excluye notas con '/Daily' en el path o '/Aniversaries/'
     }
 
-    if (path.includes('/Aniversaries/')) {
-      return false; // Excluye notas aniversario (formato MMDD.md)
-    }
-    
-    const dayDateDashed = `${year}-${String(month).padStart(2, '0')}-${String(dayIndex).padStart(2, '0')}`;
-    const eventDate = app.metadataCache.getFileCache(file)?.frontmatter?.date;
+    const eventDate = metadataCache.getFileCache(file)?.frontmatter?.date;
     if (typeof eventDate === 'string' && eventDate.includes(dayDateDashed)) {
       return true; // Incluye notas del día con YAML `date` coincidente
     }
-    
+
     return false; // Excluye otras notas
   });
 
   return dayNotes;
 }
-
 
 // Nueva función para obtener la nota de aniversario
 function getAnniversaryNote(dayIndex: number, files: TFile[], year: number, month: number): TFile | undefined {
