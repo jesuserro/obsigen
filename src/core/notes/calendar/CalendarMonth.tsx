@@ -62,20 +62,31 @@ function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: numb
 
 // Modificamos getDayNotes para excluir la nota de aniversario
 function getDayNotes(dayIndex: number, files: TFile[], year: number, month: number): TFile[] {
+  
   month = month + 1;
-  const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}`;
-  const dayNotes = files.filter((file) => file.path.includes(dayDate) && !file.path.includes('/Daily'));
-  const anniversaryNote = getAnniversaryNote(dayIndex, files, year, month);
+  
+  // Primer filtro: excluye notas cuyo path incluya "/Daily"
+  let dayNotes = files.filter((file) => !file.path.includes('/Daily'));
 
-  // Excluimos la nota de aniversario si existe
-  if (anniversaryNote) {
-    const index = dayNotes.findIndex(note => note.path === anniversaryNote.path);
-    if (index !== -1) {
-      dayNotes.splice(index, 1);
+  // Segundo filtro: excluye notas cuyo path incluya el formato MMDD.md, por ejemplo "1002.md"
+  dayNotes = dayNotes.filter((file) => !file.path.includes(`${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}.md`));
+
+  // Tercer filtro: incluye notas del día cuyo YAML `date` incluya la fecha del día
+  const dayDateDashed = `${year}-${String(month).padStart(2, '0')}-${String(dayIndex).padStart(2, '0')}`;
+
+  let dayNotes2: TFile[] = dayNotes.filter((file) => {
+    
+    const eventDate = useApp()?.metadataCache.getFileCache(file)?.frontmatter?.date;
+
+    // Comprobamos si eventDate es una cadena de texto y si el archivo es del día o si su YAML `date` incluye la fecha del día
+    if (typeof eventDate === 'string' && eventDate.includes(dayDateDashed)) {
+      // Si el evento tiene una fecha y coincide con la fecha del día, lo incluimos en el resultado
+      return true;
     }
-  }
+    return false; // Excluimos este archivo
+  });
 
-  return dayNotes;
+  return dayNotes2;
 }
 
 // Nueva función para obtener la nota de aniversario
