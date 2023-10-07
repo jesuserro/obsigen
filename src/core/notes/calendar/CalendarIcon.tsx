@@ -5,10 +5,10 @@ import { useApp } from './../../hooks/useApp';
 import { AiFillHeart } from 'react-icons/ai';
 import { BsFillCloudRainHeavyFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaBrain, FaCalendarAlt, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGlobe, FaGoodreads, FaHiking, FaInstagram, FaLinkedin, FaLungsVirus, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSadCry, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaBrain, FaCalendarAlt, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGlobe, FaGoodreads, FaHiking, FaInstagram, FaLinkedin, FaLungsVirus, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaStaffSnake } from 'react-icons/fa6';
 import { GiChurch, GiCommercialAirplane, GiItalia, GiKneeling, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiTargetArrows, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
-import { ImWoman } from 'react-icons/im';
+import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdLocalHospital, MdOutlineSportsGymnastics, MdPeople, MdRestaurant } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold } from 'react-icons/pi';
@@ -88,7 +88,7 @@ export class CalendarIcon {
       repairs: ({ size }) => <MdBuild size={size} style={{ color: '#A9A9A9' }} />,
       rosary: ({ size }) => <GiPrayerBeads size={size} style={{ color: '#ad6df2' }} />,
       rss: ({ size }) => <FaRss size={size} style={{ color: '#FFA500' }} />, 
-      sadness: ({ size }) => <FaSadCry size={size} style={{ color: '#FFC83D' }} />,
+      sadness: ({ size }) => <ImSad2 size={size} style={{ color: '#FFC83D' }} />,
       sex: ({ size }) => <FaVenus size={size} style={{ color: '#f542ef' }} />,
       sick: ({ size }) => <GiThermometerCold size={size} style={{ color: '#f74a4a' }} />,
       snow: ({ size }) => <BsSnow3 size={size} style={{ color: '#6dc8f2' }} />,
@@ -97,6 +97,7 @@ export class CalendarIcon {
       spotify: ({ size }) => <SiSpotify size={size} style={{ color: '#1DB954' }} />,
       telegram: ({ size }) => <FaTelegram size={size} style={{ color: '#0088CC' }} />, 
       tinder: ({ size }) => <IconoTinder size={size} style={{ color: '#FE3C72' }} />,
+      tired: ({ size }) => <FaTired size={size} style={{ color: '#FFC83D' }} />,
       travel: ({ size }) => <GiCommercialAirplane size={size} style={{ color: '#1199c2' }} />,
       tree: ({ size }) => <FaTree size={size} style={{ color: '#228B22' }} />,
       twitter: ({ size }) => <SiTwitter size={size} style={{ color: '#1DA1F2' }} />,
