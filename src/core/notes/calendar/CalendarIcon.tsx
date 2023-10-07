@@ -10,7 +10,7 @@ import { FaBasketball, FaStaffSnake } from 'react-icons/fa6';
 import { GiChurch, GiCommercialAirplane, GiItalia, GiKneeling, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiTargetArrows, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { ImWoman } from 'react-icons/im';
 import { IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
-import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdLocalHospital, MdPeople, MdRestaurant } from 'react-icons/md';
+import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdLocalHospital, MdOutlineSportsGymnastics, MdPeople, MdRestaurant } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold } from 'react-icons/pi';
 import { SiTinder as IconoTinder, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { TbZzz } from 'react-icons/tb';
@@ -56,6 +56,7 @@ export class CalendarIcon {
       gastronomy: ({ size }) => <MdRestaurant size={size} style={{ color: '#FFD700' }} />,
       github: ({ size }) => <FaGithub size={size} style={{ color: '#fff' }} />, 
       goodreads: ({ size }) => <FaGoodreads size={size} style={{ color: '#FFD700' }} />,
+      gym: ({ size }) => <MdOutlineSportsGymnastics size={size} style={{ color: '#47ff6c' }} />,
       happiness: ({ size }) => <FaSmile size={size} style={{ color: '#FFD700' }} />,
       health: ({ size }) => <FaStaffSnake size={size} style={{ color: '#47ff6c' }} />, 
       hiking: ({ size }) => <FaHiking size={size} style={{ color: '#008000' }} />, 
