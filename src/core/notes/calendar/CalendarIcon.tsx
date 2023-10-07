@@ -24,7 +24,7 @@ export class CalendarIcon {
     const cssClasses = app?.metadataCache.getFileCache(note)?.frontmatter?.cssclasses;
 
     const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
-      agenda2030: ({ size }) => <GiTargetArrows size={size} style={{ color: '#069d3e' }} />,
+      agenda2030: ({ size }) => <GiTargetArrows size={size} style={{ color: '#fc0303' }} />,
       agriculture: ({ size }) => <IoMdBasket size={size} style={{ color: '#8B4513' }} />, 
       agro: ({ size }) => <GiWheat size={size} style={{ color: '#8B4513' }} />, 
       amazon: ({ size }) => <FaAmazon size={size} style={{ color: '#FF9900' }} />,
