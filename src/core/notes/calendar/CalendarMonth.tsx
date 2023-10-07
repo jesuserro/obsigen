@@ -60,34 +60,31 @@ function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: numb
   return daysGrid;
 }
 
-// Modificamos getDayNotes para excluir la nota de aniversario
 function getDayNotes(dayIndex: number, files: TFile[], year: number, month: number): TFile[] {
-  
   month = month + 1;
-  
-  // Primer filtro: excluye notas cuyo path incluya "/Daily"
-  let dayNotes = files.filter((file) => !file.path.includes('/Daily'));
-
-  // Segundo filtro: excluye notas cuyo path incluya el formato MMDD.md, por ejemplo "1002.md"
-  dayNotes = dayNotes.filter((file) => !file.path.includes(`${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}.md`));
-
-  // Tercer filtro: incluye notas del día cuyo YAML `date` incluya la fecha del día
   const dayDateDashed = `${year}-${String(month).padStart(2, '0')}-${String(dayIndex).padStart(2, '0')}`;
-
-  let dayNotes2: TFile[] = dayNotes.filter((file) => {
-    
-    const eventDate = useApp()?.metadataCache.getFileCache(file)?.frontmatter?.date;
-
-    // Comprobamos si eventDate es una cadena de texto y si el archivo es del día o si su YAML `date` incluye la fecha del día
-    if (typeof eventDate === 'string' && eventDate.includes(dayDateDashed)) {
-      // Si el evento tiene una fecha y coincide con la fecha del día, lo incluimos en el resultado
-      return true;
+  
+  const dayNotes: TFile[] = files.filter((file) => {
+    if (file.path.includes('/Daily')) {
+      return false; // Excluye notas con '/Daily' en el path
     }
-    return false; // Excluimos este archivo
+
+    if (file.path.includes(`${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}.md`)) {
+      return false; // Excluye notas aniversario (formato MMDD.md)
+    }
+
+    const eventDate = useApp()?.metadataCache.getFileCache(file)?.frontmatter?.date;
+    
+    if (typeof eventDate === 'string' && eventDate.includes(dayDateDashed)) {
+      return true; // Incluye notas del día con YAML `date` coincidente
+    }
+    
+    return false; // Excluye otras notas
   });
 
-  return dayNotes2;
+  return dayNotes;
 }
+
 
 // Nueva función para obtener la nota de aniversario
 function getAnniversaryNote(dayIndex: number, files: TFile[], year: number, month: number): TFile | undefined {
