@@ -123,6 +123,10 @@ export class CalendarIcon {
       return <AiFillHeart size={size} style={{ color: '#f542ef' }} />;
     } else if (path.includes('/Misas/')) {
       return <GiChurch size={size} style={{ color: '#ad6df2' }} />;
+    } else if (path.includes('/Biblia/')) {
+      return <IconoBible size={size} style={{ color: '#8A2BE2' }} />;
+    } else if (path.includes('/Gente/')) {
+      return <BsFillPersonFill size={size} style={{ color: '#add8e6' }} />;
     } else if (path.includes('/Aniversaries/')) {
       return <FaBirthdayCake size={size} style={{ color: '#78B7D0' }} />;
     } else if (path.includes('/Moments/')) {
