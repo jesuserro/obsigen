@@ -5,12 +5,12 @@ import { useApp } from './../../hooks/useApp';
 import { AiFillHeart } from 'react-icons/ai';
 import { BsFillCloudRainHeavyFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaBrain, FaCalendarAlt, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGlobe, FaGoodreads, FaHiking, FaInstagram, FaKey, FaLinkedin, FaLungsVirus, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCalendarAlt, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGlobe, FaGoodreads, FaHiking, FaInstagram, FaKey, FaLinkedin, FaLungsVirus, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaStaffSnake } from 'react-icons/fa6';
 import { GiChurch, GiCommercialAirplane, GiItalia, GiKneeling, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiTargetArrows, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
-import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdLocalHospital, MdOutlineSportsGymnastics, MdPeople, MdRestaurant } from 'react-icons/md';
+import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdLocalHospital, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold } from 'react-icons/pi';
 import { SiTinder as IconoTinder, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { TbZzz } from 'react-icons/tb';
@@ -80,7 +80,7 @@ export class CalendarIcon {
       prayer: ({ size }) => <FaPrayingHands size={size} style={{ color: '#ad6df2' }} />,
       price: ({ size }) => <IconoPrice size={size} style={{ color: '#fc0303' }} />,
       programming: ({ size }) => <FaCode size={size} style={{ color: '#FFA500' }} />, 
-      psychology: ({ size }) => <FaBrain size={size} style={{ color: '#FF69B4' }} />,
+      psychology: ({ size }) => <MdPsychology size={size} style={{ color: '#1ff2c1' }} />,
       pumpkin: ({ size }) => <GiPumpkinMask size={size} style={{ color: '#fc6203' }} />,
       quote: ({ size }) => <FaQuoteLeft size={size} style={{ color: '#FFD700' }} />,
       rain: ({ size }) => <BsFillCloudRainHeavyFill size={size} style={{ color: '#6dc8f2' }} />,
