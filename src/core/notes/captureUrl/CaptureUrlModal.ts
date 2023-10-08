@@ -34,37 +34,36 @@ export class CaptureUrlModal extends Modal {
   }
 
   createForm(): void {
-    const div = this.contentEl.createDiv("p-4");
-
+    const div = this.contentEl.createDiv("form-container"); // Clase de contenedor
+  
     // Title label and textfield
-    const titleDiv = div.createDiv("mb-4");
-    titleDiv.setAttribute("style", "width: 100%");
-    const titleLabel = titleDiv.createEl("label");
+    const titleDiv = div.createDiv("form-element");
+    const titleLabel = titleDiv.createEl("label", { cls: "form-label" }); // Clase de etiqueta
     titleLabel.setText("Title");
     const titleField = new TextComponent(titleDiv);
-    titleField.inputEl.addClass("border", "border-gray-300", "p-2", "rounded", "w-full");
+    titleField.inputEl.addClass("form-input"); // Clase de entrada
     titleField.setPlaceholder("Type title here");
     titleField.setValue(this.title);
     titleField.onChange((value) => (this.title = value));
-
+  
     // URL label and textarea
-    const urlDiv = div.createDiv("mb-4");
-    urlDiv.setAttribute("style", "width: 100%");
-    const urlLabel = urlDiv.createEl("label");
+    const urlDiv = div.createDiv("form-element");
+    const urlLabel = urlDiv.createEl("label", { cls: "form-label" }); // Clase de etiqueta
     urlLabel.setText("URL");
     const urlTextarea = new TextAreaComponent(urlDiv);
-    urlTextarea.inputEl.addClass("border", "border-gray-300", "p-2", "rounded", "w-full");
+    urlTextarea.inputEl.addClass("form-input"); // Clase de entrada
     urlTextarea.setPlaceholder("Type URL here");
     urlTextarea.setValue(this.url);
     urlTextarea.onChange((value) => (this.url = value));
-
-    const buttonDiv = this.contentEl.createDiv("flex justify-end");
+  
+    const buttonDiv = this.contentEl.createDiv("form-button-container");
     const submitButton = new ButtonComponent(buttonDiv);
-    submitButton.buttonEl.addClass("bg-blue-500", "text-white", "px-4", "py-2", "rounded");
+    submitButton.buttonEl.addClass("form-submit-button"); // Clase de botón
     submitButton.setButtonText("Submit").onClick((evt: Event) => {
       this.resolveAndClose(evt);
     });
   }
+  
 
   private resolveAndClose(evt: Event) {
     this.submitted = true;
