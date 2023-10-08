@@ -5,7 +5,7 @@ import { useApp } from './../../hooks/useApp';
 import { AiFillHeart } from 'react-icons/ai';
 import { BsFillCloudRainHeavyFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaBrain, FaCalendarAlt, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGlobe, FaGoodreads, FaHiking, FaInstagram, FaLinkedin, FaLungsVirus, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaBrain, FaCalendarAlt, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGlobe, FaGoodreads, FaHiking, FaInstagram, FaKey, FaLinkedin, FaLungsVirus, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaStaffSnake } from 'react-icons/fa6';
 import { GiChurch, GiCommercialAirplane, GiItalia, GiKneeling, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiTargetArrows, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { ImSad2, ImWoman } from 'react-icons/im';
@@ -125,8 +125,10 @@ export class CalendarIcon {
       return <GiChurch size={size} style={{ color: '#ad6df2' }} />;
     } else if (path.includes('/Biblia/')) {
       return <IconoBible size={size} style={{ color: '#8A2BE2' }} />;
-    } else if (path.includes('/Gente/')) {
+    } else if (path.includes('500 Gente/')) {
       return <BsFillPersonFill size={size} style={{ color: '#add8e6' }} />;
+    } else if (path.includes('200 Content Maps/')) {
+      return <FaKey size={size} style={{ color: '#fc7f03' }} />;
     } else if (path.includes('/Aniversaries/')) {
       return <FaBirthdayCake size={size} style={{ color: '#78B7D0' }} />;
     } else if (path.includes('/Moments/')) {
