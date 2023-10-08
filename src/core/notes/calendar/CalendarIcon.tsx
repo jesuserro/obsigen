@@ -11,7 +11,7 @@ import { GiChurch, GiCommercialAirplane, GiItalia, GiKneeling, GiPerspectiveDice
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdLocalHospital, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant } from 'react-icons/md';
-import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold } from 'react-icons/pi';
+import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold } from 'react-icons/pi';
 import { SiTinder as IconoTinder, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { TbZzz } from 'react-icons/tb';
 
@@ -69,6 +69,12 @@ export class CalendarIcon {
       mass: ({ size }) => <GiChurch size={size} style={{ color: '#ad6df2' }} />,
       meeting: ({ size }) => <FaCalendarAlt size={size} style={{ color: '#87CEEB' }} />,
       music: ({ size }) => <IoMdMusicalNotes size={size} style={{ color: '#798aed' }} />,
+      num0: ({ size }) => <PiNumberCircleZeroBold size={size} style={{ color: '#fff' }} />,
+      num3: ({ size }) => <PiNumberCircleThreeBold size={size} style={{ color: '#fff' }} />,
+      num6: ({ size }) => <PiNumberCircleSixBold size={size} style={{ color: '#fff' }} />,
+      num7: ({ size }) => <PiNumberCircleSevenBold size={size} style={{ color: '#fff' }} />,
+      num8: ({ size }) => <PiNumberCircleEightBold size={size} style={{ color: '#fff' }} />,
+      num9: ({ size }) => <PiNumberCircleNineBold size={size} style={{ color: '#fff' }} />,
       payroll: ({ size }) => <IconoPayroll size={size} style={{ color: '#FFD700' }} />,
       people: ({ size }) => <MdPeople size={size} style={{ color: '#FFD700' }} />,
       perspective: ({ size }) => <GiPerspectiveDiceThree size={size} style={{ color: '#FFA500' }} />,
