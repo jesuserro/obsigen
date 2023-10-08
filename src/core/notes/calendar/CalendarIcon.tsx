@@ -121,13 +121,13 @@ export class CalendarIcon {
 
     if (path.includes('Anna') || path.includes("Nieves")) {
       return <AiFillHeart size={size} style={{ color: '#f542ef' }} />;
-    } else if (path.includes(' TO ')) {
+    } else if (path.includes('/Misas/')) {
       return <GiChurch size={size} style={{ color: '#ad6df2' }} />;
-    } else if (path.includes('/Aniversaries')) {
+    } else if (path.includes('/Aniversaries/')) {
       return <FaBirthdayCake size={size} style={{ color: '#78B7D0' }} />;
-    } else if (path.includes('/Moments')) {
+    } else if (path.includes('/Moments/')) {
       return <GiSandsOfTime size={size} style={{ color: '#FFFF99' }} />;
-    } else if (path.includes('/Captures')) {
+    } else if (path.includes('/Captures/')) {
       return <FaGlobe size={size} style={{ color: '#1877F2' }} />;
     } else {
       return <FaQuestionCircle size={size} style={{ color: '#A9A9A9' }} />;
