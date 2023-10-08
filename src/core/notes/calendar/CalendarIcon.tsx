@@ -125,6 +125,8 @@ export class CalendarIcon {
       return <GiChurch size={size} style={{ color: '#ad6df2' }} />;
     } else if (path.includes('/Biblia/')) {
       return <IconoBible size={size} style={{ color: '#8A2BE2' }} />;
+    } else if (path.includes('500 Gente/Chicas/')) {
+      return <ImWoman size={size} style={{ color: '#f542ef' }} />;
     } else if (path.includes('500 Gente/')) {
       return <BsFillPersonFill size={size} style={{ color: '#add8e6' }} />;
     } else if (path.includes('200 Content Maps/')) {
