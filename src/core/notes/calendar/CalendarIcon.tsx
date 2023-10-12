@@ -3,14 +3,16 @@ import React from 'react';
 import { useApp } from './../../hooks/useApp';
 
 import { BiLogoGmail } from 'react-icons/bi';
-import { BsFillCloudRainHeavyFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
+import { BsFillCalendar2WeekFill, BsFillCloudRainHeavyFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCalendarAlt, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGoodreads, FaHiking, FaInstagram, FaKey, FaLinkedin, FaLungsVirus, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
-import { FaBasketball, FaStaffSnake } from 'react-icons/fa6';
-import { GiChurch, GiCommercialAirplane, GiItalia, GiKneeling, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiTargetArrows, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
+import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGoodreads, FaHiking, FaInstagram, FaKey, FaLinkedin, FaLungsVirus, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaBasketball, FaPeopleGroup, FaStaffSnake, FaUserDoctor } from 'react-icons/fa6';
+import { GiChurch, GiCommercialAirplane, GiHammerSickle, GiItalia, GiKneeling, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
+import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
-import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdLocalHospital, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant } from 'react-icons/md';
+import { IoHardwareChipOutline } from 'react-icons/io5';
+import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold } from 'react-icons/pi';
 import { SiTinder as IconoTinder, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { TbZzz } from 'react-icons/tb';
@@ -24,9 +26,9 @@ export class CalendarIcon {
     const cssClasses = app?.metadataCache.getFileCache(note)?.frontmatter?.cssclasses;
 
     const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
-      agenda2030: ({ size }) => <GiTargetArrows size={size} style={{ color: '#fc0303' }} />,
-      agriculture: ({ size }) => <IoMdBasket size={size} style={{ color: '#47ff6c' }} />, 
-      agro: ({ size }) => <GiWheat size={size} style={{ color: '#47ff6c' }} />, 
+      agenda2030: ({ size }) => <GiHammerSickle size={size} style={{ color: '#fc0303' }} />,
+      agriculture: ({ size }) => <IoMdBasket size={size} style={{ color: '#8d4925' }} />, 
+      agro: ({ size }) => <GiWheat size={size} style={{ color: '#8d4925' }} />, 
       amazon: ({ size }) => <FaAmazon size={size} style={{ color: '#FF9900' }} />,
       aws: ({ size }) => <FaAws size={size} style={{ color: '#1E90FF' }} />,
       basketball: ({ size }) => <FaBasketball size={size} style={{ color: '#87CEEB' }} />,
@@ -38,13 +40,15 @@ export class CalendarIcon {
       book: ({ size }) => <FaBook size={size} style={{ color: '#FFD700' }} />, 
       bookmark: ({ size }) => <FaBookmark size={size} style={{ color: '#199ef7' }} />,
       buy: ({ size }) => <IoMdBasket size={size} style={{ color: '#008000' }} />,
+      calendar: ({ size }) => <BsFillCalendar2WeekFill size={size} style={{ color: '#78B7D0' }} />, 
       car: ({ size }) => <FaCarSide size={size} style={{ color: '#800080' }} />, 
       catholic: ({ size }) => <FaCross size={size} style={{ color: '#ad6df2' }} />,
       chess: ({ size }) => <FaChess size={size} style={{ color: '#fff' }} />, 
       cinema: ({ size }) => <IconoCinema size={size} style={{ color: '#FFA500' }} />,
+      communism: ({ size }) => <GiHammerSickle size={size} style={{ color: '#fc0303' }} />,
       confession: ({ size }) => <GiKneeling size={size} style={{ color: '#ad6df2' }} />,
       cough: ({ size }) => <FaLungsVirus size={size} style={{ color: '#FFA500' }} />, 
-      doctor: ({ size }) => <MdLocalHospital size={size} style={{ color: '#f74a4a' }} />,
+      doctor: ({ size }) => <FaUserDoctor size={size} style={{ color: '#008000' }} />,
       dream: ({ size }) => <TbZzz size={size} style={{ color: '#3876f2' }} />,
       elections: ({ size }) => <FaVoteYea size={size} style={{ color: '#FFA500' }} />,
       email: ({ size }) => <BiLogoGmail size={size} style={{ color: '#f74a4a' }} />,
@@ -52,7 +56,7 @@ export class CalendarIcon {
       family: ({ size }) => <MdGroup size={size} style={{ color: '#FFD700' }} />, 
       favorite: ({ size }) => <FaStar size={size} style={{ color: '#FFD700' }} />, 
       fever: ({ size }) => <FaTemperatureHigh size={size} style={{ color: '#FFA500' }} />, 
-      finances: ({ size }) => <FaMoneyBillWave size={size} style={{ color: '#069d3e' }} />,
+      finances: ({ size }) => <FaMoneyBillWave size={size} style={{ color: '#fc0303' }} />,
       friends: ({ size }) => <MdGroup size={size} style={{ color: '#c4be3d' }} />,
       funeral: ({ size }) => <GiTombstone size={size} style={{ color: '#74757a' }} />,
       gastronomy: ({ size }) => <MdRestaurant size={size} style={{ color: '#FFD700' }} />,
@@ -60,7 +64,8 @@ export class CalendarIcon {
       goodreads: ({ size }) => <FaGoodreads size={size} style={{ color: '#FFD700' }} />,
       gym: ({ size }) => <MdOutlineSportsGymnastics size={size} style={{ color: '#47ff6c' }} />,
       happiness: ({ size }) => <FaSmile size={size} style={{ color: '#FFC83D' }} />,
-      health: ({ size }) => <FaStaffSnake size={size} style={{ color: '#47ff6c' }} />, 
+      hardware: ({ size }) => <IoHardwareChipOutline size={size} style={{ color: '#fc7f03' }} />,
+      health: ({ size }) => <FaStaffSnake size={size} style={{ color: '#008000' }} />, 
       hiking: ({ size }) => <FaHiking size={size} style={{ color: '#008000' }} />, 
       inlove: ({ size }) => <MdFavorite size={size} style={{ color: '#f542ef' }} />,
       inspiration: ({ size }) => <GiSparkSpirit size={size} style={{ color: '#f2a83f' }} />,
@@ -71,7 +76,7 @@ export class CalendarIcon {
       linkedin: ({ size }) => <FaLinkedin size={size} style={{ color: '#0077B5' }} />, 
       marker: ({ size }) => <FaMapMarkerAlt size={size} style={{ color: '#8d4925' }} />,
       mass: ({ size }) => <GiChurch size={size} style={{ color: '#ad6df2' }} />,
-      meeting: ({ size }) => <FaCalendarAlt size={size} style={{ color: '#87CEEB' }} />,
+      meeting: ({ size }) => <FaPeopleGroup size={size} style={{ color: '#199ef7' }} />,
       music: ({ size }) => <IoMdMusicalNotes size={size} style={{ color: '#798aed' }} />,
       num0: ({ size }) => <PiNumberCircleZeroBold size={size} style={{ color: '#fff' }} />,
       num3: ({ size }) => <PiNumberCircleThreeBold size={size} style={{ color: '#fff' }} />,
@@ -97,15 +102,16 @@ export class CalendarIcon {
       rain: ({ size }) => <BsFillCloudRainHeavyFill size={size} style={{ color: '#6dc8f2' }} />,
       realmadrid: ({ size }) => <FaFutbol size={size} style={{ color: '#FFD700' }} />,
       repairs: ({ size }) => <MdBuild size={size} style={{ color: '#A9A9A9' }} />,
-      rosary: ({ size }) => <GiPrayerBeads size={size} style={{ color: '#ad6df2' }} />,
+      rosary: ({ size }) => <GiPrayerBeads size={size} style={{ color: '#FFD700' }} />,
       rss: ({ size }) => <FaRss size={size} style={{ color: '#FFA500' }} />, 
       sadness: ({ size }) => <ImSad2 size={size} style={{ color: '#FFC83D' }} />,
       sex: ({ size }) => <FaVenus size={size} style={{ color: '#f542ef' }} />,
-      sick: ({ size }) => <GiThermometerCold size={size} style={{ color: '#f74a4a' }} />,
+      sick: ({ size }) => <MdSick size={size} style={{ color: '#f74a4a' }} />,
       snow: ({ size }) => <BsSnow3 size={size} style={{ color: '#6dc8f2' }} />,
       soccer: ({ size }) => <GiSoccerBall size={size} style={{ color: '#FFA500' }} />,
       sport: ({ size }) => <MdDirectionsRun size={size} style={{ color: '#008000' }} />, 
       spotify: ({ size }) => <SiSpotify size={size} style={{ color: '#1DB954' }} />,
+      tax: ({ size }) => <HiReceiptTax size={size} style={{ color: '#fc0303' }} />, 
       telegram: ({ size }) => <FaTelegram size={size} style={{ color: '#0088CC' }} />, 
       tinder: ({ size }) => <IconoTinder size={size} style={{ color: '#FE3C72' }} />,
       tired: ({ size }) => <FaTired size={size} style={{ color: '#FFC83D' }} />,
