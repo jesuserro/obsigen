@@ -4,11 +4,8 @@
   border-radius: 0.25rem;
   padding: 1rem;
   margin-bottom: 1rem;
-}
-
-/* Legend styles for the Date fieldset */
-.form-legend {
-  font-weight: bold;
+  display: flex;
+  justify-content: space-between; /* Alinea horizontalmente los elementos */
 }
 
 /* Container styles */
@@ -20,8 +17,7 @@
 /* Label styles */
 .form-label {
   font-weight: bold;
-  margin-bottom: 1rem;
-  display: block;
+  display: none; /* Oculta los labels de los DropdownComponentes */
 }
 
 /* Input styles */

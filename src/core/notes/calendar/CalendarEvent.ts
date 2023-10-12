@@ -63,25 +63,17 @@ export class CalendarEvent extends Modal {
   
     // Fieldset for year, month, and day dropdowns
     const dateFieldset = div.createEl("fieldset", { cls: "date-fieldset" });
-    const dateLegend = dateFieldset.createEl("legend", { cls: "form-legend" });
-    dateLegend.setText("Date");
   
     // Create Dropdown for selecting the year
     const yearDiv = dateFieldset.createDiv("form-element");
-    const yearLabel = yearDiv.createEl("label", { cls: "form-label" });
-    yearLabel.setText("Year");
     this.yearDropdown = new DropdownComponent(yearDiv);
   
     // Create Dropdown for selecting the month
     const monthDiv = dateFieldset.createDiv("form-element");
-    const monthLabel = monthDiv.createEl("label", { cls: "form-label" });
-    monthLabel.setText("Month");
     this.monthDropdown = new DropdownComponent(monthDiv);
   
     // Create Dropdown for selecting the day
     const dayDiv = dateFieldset.createDiv("form-element");
-    const dayLabel = dayDiv.createEl("label", { cls: "form-label" });
-    dayLabel.setText("Day");
     this.dayDropdown = new DropdownComponent(dayDiv);
   
     this.initializeDropdowns();
@@ -112,7 +104,7 @@ export class CalendarEvent extends Modal {
     submitButton.setButtonText("Submit").onClick((evt: Event) => {
       this.resolveAndClose(evt);
     });
-  }  
+  }   
 
   private initializeDropdowns() {
     // Configura los DropdownComponent para año, mes y día
