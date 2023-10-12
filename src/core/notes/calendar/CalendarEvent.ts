@@ -29,7 +29,6 @@ export class CalendarEvent extends Modal {
     this.startDate = "";
     this.endDate = "";
     this.selectedIcon = "default-icon"; // Default icon value
-    this.title = "Nuevo evento";
     
     this.year = year;
     this.month = month;
@@ -37,7 +36,7 @@ export class CalendarEvent extends Modal {
   }
   
   onOpen(): void {
-    this.titleEl.setText(this.title);
+    this.titleEl.setText("Nuevo Evento");
     this.createForm();
   }
   
