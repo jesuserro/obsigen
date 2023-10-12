@@ -82,7 +82,7 @@ export class CalendarIcon {
   }
 }
 
-const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
+export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
   add: ({ size }) => <MdOutlineAddCircle size={size} className="green" />,
   agenda2030: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
   agriculture: ({ size }) => <IoMdBasket size={size} className="brown" />, 

@@ -1,5 +1,5 @@
 import { ButtonComponent, DropdownComponent, Modal, Notice, TextAreaComponent, TextComponent } from "obsidian";
-
+import { CalendarIcon, iconMap } from "./CalendarIcon";
 
 export class CalendarEvent extends Modal {
   private resolve!: (value: FormValues) => void;
@@ -20,6 +20,7 @@ export class CalendarEvent extends Modal {
   private yearDropdown: DropdownComponent;
   private monthDropdown: DropdownComponent;
   private dayDropdown: DropdownComponent;
+  private iconDropdown: DropdownComponent;
   
   constructor(year:number, month:number, day:number) {
     super(app);
@@ -81,10 +82,19 @@ export class CalendarEvent extends Modal {
     const iconDiv = div.createDiv("form-element");
     const iconLabel = iconDiv.createEl("label", { cls: "form-label" });
     iconLabel.setText("Icon");
-    const iconDropdown = new DropdownComponent(iconDiv);
-    iconDropdown.addOption("default-icon", "Default Icon"); // Replace with actual icon options
-    iconDropdown.setValue(this.selectedIcon);
-    iconDropdown.onChange((value) => (this.selectedIcon = value));
+    this.iconDropdown = new DropdownComponent(iconDiv);
+
+    // Carga los iconos desde CalendarIcon y añádelos al DropdownComponent
+    const calendarIcon = new CalendarIcon();
+    // const iconMap = CalendarIcon.getIcon(); // Asume que tienes un método getIconMap en CalendarIcon
+
+    // Agrega los iconos al DropdownComponent
+    for (const iconName in iconMap) {
+      this.iconDropdown.addOption(iconName, iconName);
+    }
+
+    this.iconDropdown.setValue(this.selectedIcon);
+    this.iconDropdown.onChange((value) => (this.selectedIcon = value));
   
     // Description label and textarea
     const descriptionDiv = div.createDiv("form-element");
