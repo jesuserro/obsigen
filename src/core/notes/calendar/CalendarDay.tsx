@@ -1,9 +1,6 @@
 import { Notice, TFile } from 'obsidian';
 import { CalendarIcon } from './CalendarIcon';
 
-
-
-
 interface CalendarDayProps {
   year: number;
   month: number;
