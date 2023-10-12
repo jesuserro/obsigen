@@ -2,6 +2,7 @@ import { TFile } from 'obsidian';
 import React from 'react';
 import { useApp } from './../../hooks/useApp';
 
+import { BiLogoGmail } from 'react-icons/bi';
 import { BsFillCloudRainHeavyFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCalendarAlt, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGoodreads, FaHiking, FaInstagram, FaKey, FaLinkedin, FaLungsVirus, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
@@ -46,6 +47,7 @@ export class CalendarIcon {
       doctor: ({ size }) => <MdLocalHospital size={size} style={{ color: '#f74a4a' }} />,
       dream: ({ size }) => <TbZzz size={size} style={{ color: '#3876f2' }} />,
       elections: ({ size }) => <FaVoteYea size={size} style={{ color: '#FFA500' }} />,
+      email: ({ size }) => <BiLogoGmail size={size} style={{ color: '#f74a4a' }} />,
       euro: ({ size }) => <IoIosPaper size={size} style={{ color: '#008000' }} />,
       family: ({ size }) => <MdGroup size={size} style={{ color: '#FFD700' }} />, 
       favorite: ({ size }) => <FaStar size={size} style={{ color: '#FFD700' }} />, 
