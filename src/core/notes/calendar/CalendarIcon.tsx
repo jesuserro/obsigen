@@ -35,7 +35,7 @@ export class CalendarIcon {
       bills: ({ size }) => <FaFileInvoiceDollar size={size} style={{ color: '#f74a4a' }} />, 
       birthday: ({ size }) => <FaBirthdayCake size={size} style={{ color: '#78B7D0' }} />, 
       blogpost: ({ size }) => <BsWordpress size={size} style={{ color: '#117ac9' }} />,
-      book: ({ size }) => <FaBook size={size} style={{ color: '#fff' }} />, 
+      book: ({ size }) => <FaBook size={size} style={{ color: '#FFD700' }} />, 
       bookmark: ({ size }) => <FaBookmark size={size} style={{ color: '#199ef7' }} />,
       buy: ({ size }) => <IoMdBasket size={size} style={{ color: '#008000' }} />,
       car: ({ size }) => <FaCarSide size={size} style={{ color: '#800080' }} />, 
