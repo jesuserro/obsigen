@@ -5,6 +5,8 @@ import { CalendarIcon } from './CalendarIcon';
 
 
 interface CalendarDayProps {
+  year: number;
+  month: number;
   dayCounter: number;
   hasNote: string | false;
   anniversaryNote: TFile | undefined; // Nueva prop para la nota de aniversario
@@ -38,7 +40,7 @@ function getCalendarButton(index: number) {
 }
 
 
-function CalendarDay({ dayCounter, hasNote, anniversaryNote, dayNotes }: CalendarDayProps): JSX.Element {
+function CalendarDay({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes }: CalendarDayProps): JSX.Element {
   let notePath = '';
   if (hasNote) {
     notePath = `obsidian://open?file=${encodeURIComponent(hasNote)}`;
@@ -47,18 +49,13 @@ function CalendarDay({ dayCounter, hasNote, anniversaryNote, dayNotes }: Calenda
   const boundGetCalendarEvent = getCalendarEvent.bind(this);
   const boundGetCalendarButton = getCalendarButton.bind(this);
 
+  // Generamos un índice único para cada evento basado en su ruta
   const generateEventIndex = (note: TFile): number => {
-    // Generamos un índice único para cada evento basado en su ruta
     const hash = note.path.split('').reduce((acc, char) => {
       return acc + char.charCodeAt(0);
     }, 0);
     return hash;
   };
-
-  const handleAddEvent = () => {
-    new Notice("Hello World!");
-  };
-  const iconComponent = CalendarIcon.getIcon("key", 14);
 
   return (
     <>
@@ -81,7 +78,7 @@ function CalendarDay({ dayCounter, hasNote, anniversaryNote, dayNotes }: Calenda
               <a href={notePath} title={getFileName(hasNote)}>
                 <div className="day-number">{dayCounter}</div>
               </a>
-              {boundGetCalendarButton(`obs-add-"${dayCounter}"`)}
+              {boundGetCalendarButton(`obs-add-"${dayCounter}-${month}-${year}"`)}
             </div>
             <div className="calendar-icons">
               {dayNotes.map((note, index) => (

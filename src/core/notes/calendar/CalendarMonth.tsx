@@ -42,6 +42,8 @@ function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: numb
         <td key={dayOfWeek} className={isWithinMonth ? 'within-month' : 'outside-month'}>
           {dayIndex > 0 && dayIndex <= numDaysInMonth ? (
             <CalendarDay
+              year = {year}
+              month = {month + 1}
               dayCounter={dayIndex}
               hasNote={hasNote}
               anniversaryNote={anniversaryNote} // Pasamos la nota de aniversario al componente CalendarDay
