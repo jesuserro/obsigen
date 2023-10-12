@@ -1,4 +1,6 @@
 import { Notice, TFile } from 'obsidian';
+import { PromptModal } from './../../../adapters/Obsidian/PromptModal';
+import { Momento } from './../momento/Momento';
 import { CalendarIcon } from './CalendarIcon';
 
 interface CalendarDayProps {
@@ -29,8 +31,16 @@ function getCalendarButton(year: number, month: number, dayCounter: number) {
   const handleAddEvent = () => {
     new Notice(`Hi ${dayCounter}-${month}-${year}`);
   };
+
+  const x = async () => {
+    const promptModal = new PromptModal("Momentazo", "", false);
+    await promptModal.openModal();
+    const title = promptModal.getValue();
+    await new Momento(this.app).createNote(title, ``);
+  }
+
   return (
-    <div onClick={handleAddEvent}>
+    <div onClick={x}>
       {icon}
     </div>
   );
