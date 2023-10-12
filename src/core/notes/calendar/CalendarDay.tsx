@@ -32,7 +32,7 @@ function getCalendarButton(year: number, month: number, dayCounter: number) {
     new Notice(`Hi ${dayCounter}-${month}-${year}`);
   };
 
-  const x = async () => {
+  const newEvent = async () => {
     const promptModal = new PromptModal("Momentazo", "", false);
     await promptModal.openModal();
     const title = promptModal.getValue();
@@ -40,7 +40,7 @@ function getCalendarButton(year: number, month: number, dayCounter: number) {
   }
 
   return (
-    <div onClick={x}>
+    <div onClick={newEvent}>
       {icon}
     </div>
   );
