@@ -2,10 +2,9 @@ import { TFile } from 'obsidian';
 import React from 'react';
 import { useApp } from './../../hooks/useApp';
 
-import { AiFillHeart } from 'react-icons/ai';
 import { BsFillCloudRainHeavyFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCalendarAlt, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGlobe, FaGoodreads, FaHiking, FaInstagram, FaKey, FaLinkedin, FaLungsVirus, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCalendarAlt, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGoodreads, FaHiking, FaInstagram, FaKey, FaLinkedin, FaLungsVirus, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaStaffSnake } from 'react-icons/fa6';
 import { GiChurch, GiCommercialAirplane, GiItalia, GiKneeling, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiTargetArrows, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { ImSad2, ImWoman } from 'react-icons/im';
@@ -33,9 +32,10 @@ export class CalendarIcon {
       beer: ({ size }) => <MdLocalBar size={size} style={{ color: '#FF4500' }} />,
       bible: ({ size }) => <IconoBible size={size} style={{ color: '#8A2BE2' }} />,
       bills: ({ size }) => <FaFileInvoiceDollar size={size} style={{ color: '#f74a4a' }} />, 
+      birthday: ({ size }) => <FaBirthdayCake size={size} style={{ color: '#78B7D0' }} />, 
       blogpost: ({ size }) => <BsWordpress size={size} style={{ color: '#117ac9' }} />,
       book: ({ size }) => <FaBook size={size} style={{ color: '#fff' }} />, 
-      bookmark: ({ size }) => <FaBookmark size={size} style={{ color: '#FF69B4' }} />,
+      bookmark: ({ size }) => <FaBookmark size={size} style={{ color: '#199ef7' }} />,
       buy: ({ size }) => <IoMdBasket size={size} style={{ color: '#008000' }} />,
       car: ({ size }) => <FaCarSide size={size} style={{ color: '#800080' }} />, 
       catholic: ({ size }) => <FaCross size={size} style={{ color: '#ad6df2' }} />,
@@ -64,6 +64,7 @@ export class CalendarIcon {
       inspiration: ({ size }) => <GiSparkSpirit size={size} style={{ color: '#f2a83f' }} />,
       instagram: ({ size }) => <FaInstagram size={size} style={{ color: '#E4405F' }} />, 
       italy: ({ size }) => <GiItalia size={size} style={{ color: '#47ff6c' }} />,
+      key: ({ size }) => <FaKey size={size} style={{ color: '#fc7f03' }} />, 
       kindle: ({ size }) => <FaBookReader size={size} style={{ color: '#FFA500' }} />, 
       linkedin: ({ size }) => <FaLinkedin size={size} style={{ color: '#0077B5' }} />, 
       marker: ({ size }) => <FaMapMarkerAlt size={size} style={{ color: '#8d4925' }} />,
@@ -89,6 +90,7 @@ export class CalendarIcon {
       programming: ({ size }) => <FaCode size={size} style={{ color: '#FFA500' }} />, 
       psychology: ({ size }) => <MdPsychology size={size} style={{ color: '#1ff2c1' }} />,
       pumpkin: ({ size }) => <GiPumpkinMask size={size} style={{ color: '#fc6203' }} />,
+      question: ({ size }) => <FaQuestionCircle size={size} style={{ color: '#A9A9A9' }} />,
       quote: ({ size }) => <FaQuoteLeft size={size} style={{ color: '#FFD700' }} />,
       rain: ({ size }) => <BsFillCloudRainHeavyFill size={size} style={{ color: '#6dc8f2' }} />,
       realmadrid: ({ size }) => <FaFutbol size={size} style={{ color: '#FFD700' }} />,
@@ -109,6 +111,7 @@ export class CalendarIcon {
       tree: ({ size }) => <FaTree size={size} style={{ color: '#228B22' }} />,
       twitter: ({ size }) => <SiTwitter size={size} style={{ color: '#1DA1F2' }} />,
       village: ({ size }) => <GiVillage size={size} style={{ color: '#47ff6c' }} />,
+      watchsand: ({ size }) => <GiSandsOfTime size={size} style={{ color: '#FFFF99' }} />,
       weather: ({ size }) => <GiThermometerCold size={size} style={{ color: '#6dc8f2' }} />,
       whatsapp: ({ size }) => <SiWhatsapp size={size} style={{ color: '#25d366' }} />, 
       woman: ({ size }) => <ImWoman size={size} style={{ color: '#f542ef' }} />, 
@@ -127,27 +130,35 @@ export class CalendarIcon {
     }
 
     if (path.includes('Anna') || path.includes("Nieves")) {
-      return <AiFillHeart size={size} style={{ color: '#f542ef' }} />;
+      return iconMap['inlove']({ size });
     } else if (path.includes('/Misas/')) {
-      return <GiChurch size={size} style={{ color: '#ad6df2' }} />;
+      return iconMap['mass']({ size });
     } else if (path.includes('/Biblia/')) {
-      return <IconoBible size={size} style={{ color: '#8A2BE2' }} />;
+      return iconMap['bible']({ size });
+    } else if (path.includes('005 Synch/Readwise/Books/')) {
+      return iconMap['book']({ size });
+    } else if (path.includes('005 Synch/Readwise/Tweets/')) {
+      return iconMap['twitter']({ size });
+    } else if (path.includes('005 Synch/Readwise/Podcasts/')) {
+      return iconMap['podcast']({ size });
+    } else if (path.includes('005 Synch/Readwise/Articles/')) {
+      return iconMap['blogpost']({ size });
     } else if (path.includes('500 Gente/Chicas/')) {
-      return <ImWoman size={size} style={{ color: '#f542ef' }} />;
+      return iconMap['woman']({ size });
     } else if (path.includes('500 Gente/')) {
-      return <BsFillPersonFill size={size} style={{ color: '#add8e6' }} />;
+      return iconMap['person']({ size });
     } else if (path.includes('300 Geo/')) {
-      return <FaMapMarkerAlt size={size} style={{ color: '#fc7f03' }} />;
+      return iconMap['marker']({ size });
     } else if (path.includes('200 Content Maps/')) {
-      return <FaKey size={size} style={{ color: '#fc7f03' }} />;
+      return iconMap['key']({ size });
     } else if (path.includes('/Aniversaries/')) {
-      return <FaBirthdayCake size={size} style={{ color: '#78B7D0' }} />;
+      return iconMap['birthday']({ size });
     } else if (path.includes('/Moments/')) {
-      return <GiSandsOfTime size={size} style={{ color: '#FFFF99' }} />;
+      return iconMap['watchsand']({ size });
     } else if (path.includes('/Captures/')) {
-      return <FaGlobe size={size} style={{ color: '#1877F2' }} />;
+      return iconMap['blogpost']({ size });
     } else {
-      return <FaQuestionCircle size={size} style={{ color: '#A9A9A9' }} />;
+      return iconMap['question']({ size });
     }
   }
 }
