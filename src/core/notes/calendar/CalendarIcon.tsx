@@ -143,6 +143,10 @@ export class CalendarIcon {
       return iconMap['podcast']({ size });
     } else if (path.includes('005 Synch/Readwise/Articles/')) {
       return iconMap['blogpost']({ size });
+    } else if (path.includes('005 Synch/goodsidian/')) {
+      return iconMap['goodreads']({ size });
+    } else if (path.includes('005 Synch/Kindtocs/')) {
+      return iconMap['kindle']({ size });
     } else if (path.includes('500 Gente/Chicas/')) {
       return iconMap['woman']({ size });
     } else if (path.includes('500 Gente/')) {
