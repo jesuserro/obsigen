@@ -50,7 +50,7 @@ export class CalendarEvent extends Modal {
   
   createForm(): void {
     const div = this.contentEl.createDiv("form-container");
-    
+  
     // Title label and textfield
     const titleDiv = div.createDiv("form-element");
     const titleLabel = titleDiv.createEl("label", { cls: "form-label" });
@@ -60,7 +60,41 @@ export class CalendarEvent extends Modal {
     titleField.setPlaceholder("Type title here");
     titleField.setValue(this.title);
     titleField.onChange((value) => (this.title = value));
-    
+  
+    // Fieldset for year, month, and day dropdowns
+    const dateFieldset = div.createEl("fieldset", { cls: "date-fieldset" });
+    const dateLegend = dateFieldset.createEl("legend", { cls: "form-legend" });
+    dateLegend.setText("Date");
+  
+    // Create Dropdown for selecting the year
+    const yearDiv = dateFieldset.createDiv("form-element");
+    const yearLabel = yearDiv.createEl("label", { cls: "form-label" });
+    yearLabel.setText("Year");
+    this.yearDropdown = new DropdownComponent(yearDiv);
+  
+    // Create Dropdown for selecting the month
+    const monthDiv = dateFieldset.createDiv("form-element");
+    const monthLabel = monthDiv.createEl("label", { cls: "form-label" });
+    monthLabel.setText("Month");
+    this.monthDropdown = new DropdownComponent(monthDiv);
+  
+    // Create Dropdown for selecting the day
+    const dayDiv = dateFieldset.createDiv("form-element");
+    const dayLabel = dayDiv.createEl("label", { cls: "form-label" });
+    dayLabel.setText("Day");
+    this.dayDropdown = new DropdownComponent(dayDiv);
+  
+    this.initializeDropdowns();
+  
+    // Icon Selector label and dropdown
+    const iconDiv = div.createDiv("form-element");
+    const iconLabel = iconDiv.createEl("label", { cls: "form-label" });
+    iconLabel.setText("Icon");
+    const iconDropdown = new DropdownComponent(iconDiv);
+    iconDropdown.addOption("default-icon", "Default Icon"); // Replace with actual icon options
+    iconDropdown.setValue(this.selectedIcon);
+    iconDropdown.onChange((value) => (this.selectedIcon = value));
+  
     // Description label and textarea
     const descriptionDiv = div.createDiv("form-element");
     const descriptionLabel = descriptionDiv.createEl("label", { cls: "form-label" });
@@ -70,49 +104,15 @@ export class CalendarEvent extends Modal {
     descriptionTextarea.setPlaceholder("Type description here");
     descriptionTextarea.setValue(this.description);
     descriptionTextarea.onChange((value) => (this.description = value));
-    
-    // Start Date label
-    // Crear Dropdown para seleccionar el año
-    const yearDiv = div.createDiv("form-element");
-    const yearLabel = yearDiv.createEl("label", { cls: "form-label" });
-    yearLabel.setText("Year");
-    this.yearDropdown = new DropdownComponent(yearDiv);
-
-    // Crear Dropdown para seleccionar el mes
-    const monthDiv = div.createDiv("form-element");
-    const monthLabel = monthDiv.createEl("label", { cls: "form-label" });
-    monthLabel.setText("Month");
-    this.monthDropdown = new DropdownComponent(monthDiv);
-
-    // Crear Dropdown para seleccionar el día
-    const dayDiv = div.createDiv("form-element");
-    const dayLabel = dayDiv.createEl("label", { cls: "form-label" });
-    dayLabel.setText("Day");
-    this.dayDropdown = new DropdownComponent(dayDiv);
-
-    this.initializeDropdowns();
-
-    
-    // End Date label and textfield (you can use a date picker component if available)
-    // ... (add end date field)
-    
-    // Icon Selector label and dropdown (you can use an icon picker component if available)
-    const iconDiv = div.createDiv("form-element");
-    const iconLabel = iconDiv.createEl("label", { cls: "form-label" });
-    iconLabel.setText("Icon");
-    const iconDropdown = new DropdownComponent(iconDiv);
-    iconDropdown.addOption("default-icon", "Default Icon"); // Replace with actual icon options
-    // iconDropdown.inputEl.addClass("form-input");
-    iconDropdown.setValue(this.selectedIcon);
-    iconDropdown.onChange((value) => (this.selectedIcon = value));
-    
-    const buttonDiv = this.contentEl.createDiv("form-button-container");
+  
+    // Submit button aligned to the right horizontally
+    const buttonDiv = div.createDiv("form-button-container");
     const submitButton = new ButtonComponent(buttonDiv);
     submitButton.buttonEl.addClass("form-submit-button");
     submitButton.setButtonText("Submit").onClick((evt: Event) => {
       this.resolveAndClose(evt);
     });
-  }
+  }  
 
   private initializeDropdowns() {
     // Configura los DropdownComponent para año, mes y día
