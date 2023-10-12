@@ -142,7 +142,7 @@ export class CalendarIcon {
     } else if (path.includes('005 Synch/Readwise/Podcasts/')) {
       return iconMap['podcast']({ size });
     } else if (path.includes('005 Synch/Readwise/Articles/')) {
-      return iconMap['blogpost']({ size });
+      return iconMap['bookmark']({ size });
     } else if (path.includes('005 Synch/goodsidian/')) {
       return iconMap['goodreads']({ size });
     } else if (path.includes('005 Synch/Kindtocs/')) {
