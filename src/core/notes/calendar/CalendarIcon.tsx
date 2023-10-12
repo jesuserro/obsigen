@@ -5,7 +5,7 @@ import { useApp } from './../../hooks/useApp';
 import { AiFillHeart } from 'react-icons/ai';
 import { BsFillCloudRainHeavyFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCalendarAlt, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGlobe, FaGoodreads, FaHiking, FaInstagram, FaKey, FaLinkedin, FaLungsVirus, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCalendarAlt, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGlobe, FaGoodreads, FaHiking, FaInstagram, FaKey, FaLinkedin, FaLungsVirus, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaStaffSnake } from 'react-icons/fa6';
 import { GiChurch, GiCommercialAirplane, GiItalia, GiKneeling, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiTargetArrows, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { ImSad2, ImWoman } from 'react-icons/im';
@@ -66,6 +66,7 @@ export class CalendarIcon {
       italy: ({ size }) => <GiItalia size={size} style={{ color: '#47ff6c' }} />,
       kindle: ({ size }) => <FaBookReader size={size} style={{ color: '#FFA500' }} />, 
       linkedin: ({ size }) => <FaLinkedin size={size} style={{ color: '#0077B5' }} />, 
+      marker: ({ size }) => <FaMapMarkerAlt size={size} style={{ color: '#8d4925' }} />,
       mass: ({ size }) => <GiChurch size={size} style={{ color: '#ad6df2' }} />,
       meeting: ({ size }) => <FaCalendarAlt size={size} style={{ color: '#87CEEB' }} />,
       music: ({ size }) => <IoMdMusicalNotes size={size} style={{ color: '#798aed' }} />,
@@ -135,6 +136,8 @@ export class CalendarIcon {
       return <ImWoman size={size} style={{ color: '#f542ef' }} />;
     } else if (path.includes('500 Gente/')) {
       return <BsFillPersonFill size={size} style={{ color: '#add8e6' }} />;
+    } else if (path.includes('300 Geo/')) {
+      return <FaMapMarkerAlt size={size} style={{ color: '#fc7f03' }} />;
     } else if (path.includes('200 Content Maps/')) {
       return <FaKey size={size} style={{ color: '#fc7f03' }} />;
     } else if (path.includes('/Aniversaries/')) {
