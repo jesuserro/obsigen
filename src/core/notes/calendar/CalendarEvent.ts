@@ -34,8 +34,6 @@ export class CalendarEvent extends Modal {
     this.year = year;
     this.month = month;
     this.day = day;
-
-    
   }
   
   onOpen(): void {
@@ -63,9 +61,6 @@ export class CalendarEvent extends Modal {
     titleField.setValue(this.title);
     titleField.onChange((value) => (this.title = value));
     
-    // URL label and textarea (similar to the existing form)
-    // ... (add URL field)
-    
     // Description label and textarea
     const descriptionDiv = div.createDiv("form-element");
     const descriptionLabel = descriptionDiv.createEl("label", { cls: "form-label" });
@@ -76,8 +71,7 @@ export class CalendarEvent extends Modal {
     descriptionTextarea.setValue(this.description);
     descriptionTextarea.onChange((value) => (this.description = value));
     
-    // Start Date label and textfield (you can use a date picker component if available)
-    // ... (add start date field)
+    // Start Date label
     // Crear Dropdown para seleccionar el año
     const yearDiv = div.createDiv("form-element");
     const yearLabel = yearDiv.createEl("label", { cls: "form-label" });
