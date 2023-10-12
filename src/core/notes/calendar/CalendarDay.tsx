@@ -33,7 +33,7 @@ function getCalendarButton(year: number, month: number, dayCounter: number) {
   };
 
   const newEvent = async () => {
-    const calendarEvent = new CalendarEvent("Nuevo Evento");
+    const calendarEvent = new CalendarEvent(year, month, dayCounter);
     await calendarEvent.openModal();
     const values = calendarEvent.getFormValues();
     await new Momento(this.app).createNote(values.title, ``);

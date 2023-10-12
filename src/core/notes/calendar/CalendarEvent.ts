@@ -6,14 +6,22 @@ export class CalendarEvent extends Modal {
   private reject!: (reason?: TemplaterError) => void;
   private submitted = false;
   
+  private year:number;
+  private month:number;
+  private day:number;
   private title: string;
   private url: string;
   private description: string;
   private startDate: string;
   private endDate: string;
   private selectedIcon: string;
+
+  // Nuevos campos de selección para año, mes y día
+  private yearDropdown: DropdownComponent;
+  private monthDropdown: DropdownComponent;
+  private dayDropdown: DropdownComponent;
   
-  constructor(private promptText: string) {
+  constructor(year:number, month:number, day:number) {
     super(app);
     this.title = "";
     this.url = "";
@@ -21,10 +29,17 @@ export class CalendarEvent extends Modal {
     this.startDate = "";
     this.endDate = "";
     this.selectedIcon = "default-icon"; // Default icon value
+    this.title = "Nuevo evento";
+    
+    this.year = year;
+    this.month = month;
+    this.day = day;
+
+    
   }
   
   onOpen(): void {
-    this.titleEl.setText(this.promptText);
+    this.titleEl.setText(this.title);
     this.createForm();
   }
   
@@ -63,6 +78,26 @@ export class CalendarEvent extends Modal {
     
     // Start Date label and textfield (you can use a date picker component if available)
     // ... (add start date field)
+    // Crear Dropdown para seleccionar el año
+    const yearDiv = div.createDiv("form-element");
+    const yearLabel = yearDiv.createEl("label", { cls: "form-label" });
+    yearLabel.setText("Year");
+    this.yearDropdown = new DropdownComponent(yearDiv);
+
+    // Crear Dropdown para seleccionar el mes
+    const monthDiv = div.createDiv("form-element");
+    const monthLabel = monthDiv.createEl("label", { cls: "form-label" });
+    monthLabel.setText("Month");
+    this.monthDropdown = new DropdownComponent(monthDiv);
+
+    // Crear Dropdown para seleccionar el día
+    const dayDiv = div.createDiv("form-element");
+    const dayLabel = dayDiv.createEl("label", { cls: "form-label" });
+    dayLabel.setText("Day");
+    this.dayDropdown = new DropdownComponent(dayDiv);
+
+    this.initializeDropdowns();
+
     
     // End Date label and textfield (you can use a date picker component if available)
     // ... (add end date field)
@@ -84,26 +119,52 @@ export class CalendarEvent extends Modal {
       this.resolveAndClose(evt);
     });
   }
+
+  private initializeDropdowns() {
+    // Configura los DropdownComponent para año, mes y día
+    const currentYear = new Date().getFullYear();
+    for (let i = 1974; i <= 2050; i++) {
+      this.yearDropdown.addOption(i.toString(), i.toString());
+    }
+    for (let i = 1; i <= 12; i++) {
+      this.monthDropdown.addOption(i.toString(), i.toString());
+    }
+    for (let i = 1; i <= 31; i++) {
+      this.dayDropdown.addOption(i.toString(), i.toString());
+    }
+
+    // Establece los valores iniciales de los DropdownComponent
+    this.yearDropdown.setValue(this.year.toString());
+    this.monthDropdown.setValue(this.month.toString());
+    this.dayDropdown.setValue(this.day.toString());
+  }
   
   private resolveAndClose(evt: Event) {
     this.submitted = true;
     evt.preventDefault();
-    
+
+    // Formatea startDate en el formato "YYYY-MM-DD"
+    const selectedYear = this.yearDropdown.getValue();
+    const selectedMonth = this.monthDropdown.getValue();
+    const selectedDay = this.dayDropdown.getValue();
+
+    this.startDate = `${selectedYear}-${selectedMonth.padStart(2, '0')}-${selectedDay.padStart(2, '0')}`;
+
     const formValues: FormValues = {
       title: this.title.trim(),
       url: this.url.trim(),
       description: this.description.trim(),
-      startDate: this.startDate.trim(),
+      startDate: this.startDate,
       endDate: this.endDate.trim(),
       selectedIcon: this.selectedIcon,
     };
-    
+
     const validationError = this.validateForm(formValues);
     if (validationError) {
       new Notice(validationError);
       return;
     }
-    
+
     // Validation passed, resolve the values
     this.resolve(formValues);
     this.close();
