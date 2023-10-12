@@ -31,6 +31,10 @@
 /* Marrones */
 .brown {
   color: #8B4513; 
+
+  &.goodreads {
+    color: #553F28;
+  }
 }
 
 /* Naranjas */
@@ -52,10 +56,6 @@
 
   &.intense {
     color: #FFA500;
-  }
-
-  &.realmadrid {
-    color: #FFD700;
   }
 }
 
@@ -82,6 +82,14 @@
 
   &.chesscom {
     color: #273036;
+  }
+
+  &.kindle {
+    color: #212E38;
+  }
+
+  &.linkedin {
+    color: #0077B5;
   }
 
   &.telegram {
@@ -121,6 +129,10 @@
   color: #fff;
 
   &.github {
+    color: #fff;
+  }
+
+  &.realmadrid {
     color: #fff;
   }
 }
