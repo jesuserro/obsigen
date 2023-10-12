@@ -12,120 +12,27 @@ import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
 import { IoHardwareChipOutline } from 'react-icons/io5';
-import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
+import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold } from 'react-icons/pi';
 import { SiTinder as IconoTinder, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { TbZzz } from 'react-icons/tb';
 
 export class CalendarIcon {
-  static getIcon(note: TFile): React.ReactNode {
+  
+  static getIcon(key: string, size: number): React.ReactNode | null {
+    if (iconMap[key]) {
+      return iconMap[key]({ size });
+    }
+
+    // Si la clave no se encuentra en el iconMap, puedes devolver nulo o un valor predeterminado.
+    return null;
+  }
+
+  static getIconByNote(note: TFile, size: number): React.ReactNode {
     const path = note.path;
-    const size = 14;
     const app = useApp();
 
     const cssClasses = app?.metadataCache.getFileCache(note)?.frontmatter?.cssclasses;
-
-    const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
-      agenda2030: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
-      agriculture: ({ size }) => <IoMdBasket size={size} className="brown" />, 
-      agro: ({ size }) => <GiWheat size={size} className="brown" />, 
-      amazon: ({ size }) => <FaAmazon size={size} className="orange amazon" />,
-      aws: ({ size }) => <FaAws size={size} className="orange aws" />,
-      basketball: ({ size }) => <FaBasketball size={size} className="orange" />,
-      beer: ({ size }) => <MdLocalBar size={size} className="yellow" />,
-      bible: ({ size }) => <IconoBible size={size} className="pink purple" />,
-      bills: ({ size }) => <FaFileInvoiceDollar size={size} className="red" />, 
-      birthday: ({ size }) => <FaBirthdayCake size={size} className="blue ui" />, 
-      blogpost: ({ size }) => <BsWordpress size={size} className="blue wordpress" />,
-      book: ({ size }) => <FaBook size={size} className="blue kindle" />, 
-      bookmark: ({ size }) => <FaBookmark size={size} className="blue cobalt" />,
-      buy: ({ size }) => <IoMdBasket size={size} className="red" />,
-      calendar: ({ size }) => <BsFillCalendar2WeekFill size={size} className="blue ui" />, 
-      car: ({ size }) => <FaCarSide size={size} className="red c3" />, 
-      catholic: ({ size }) => <FaCross size={size} className="pink purple" />,
-      chess: ({ size }) => <FaChess size={size} className="blue chesscom" />, 
-      cinema: ({ size }) => <IconoCinema size={size} className="white" />,
-      communism: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
-      confession: ({ size }) => <GiKneeling size={size} className="pink purple" />,
-      cough: ({ size }) => <FaHeadSideCough size={size} className="yellow emoji" />, 
-      doctor: ({ size }) => <FaUserDoctor size={size} className="green" />,
-      dream: ({ size }) => <TbZzz size={size} className="blue cobalt" />,
-      elections: ({ size }) => <FaVoteYea size={size} className="orange" />,
-      email: ({ size }) => <BiLogoGmail size={size} className="red" />,
-      euro: ({ size }) => <IoIosPaper size={size} className="yellow" />,
-      family: ({ size }) => <MdGroup size={size} className="yellow" />, 
-      favorite: ({ size }) => <FaStar size={size} className="yellow" />, 
-      fever: ({ size }) => <FaTemperatureHigh size={size} className="yellow emoji" />, 
-      finances: ({ size }) => <FaMoneyBillWave size={size} className="red" />,
-      friends: ({ size }) => <MdGroup size={size} className="yellow" />,
-      funeral: ({ size }) => <GiTombstone size={size} className="grey" />,
-      gastronomy: ({ size }) => <MdRestaurant size={size} style={{ color: '#FFD700' }} />,
-      github: ({ size }) => <FaGithub size={size} style={{ color: '#fff' }} />, 
-      goodreads: ({ size }) => <FaGoodreads size={size} className="brown goodreads" />,
-      gym: ({ size }) => <MdOutlineSportsGymnastics size={size} className="green" />,
-      happiness: ({ size }) => <FaSmile size={size} className="yellow" />,
-      hardware: ({ size }) => <IoHardwareChipOutline size={size} className="orange" />,
-      health: ({ size }) => <FaStaffSnake size={size} className="green" />, 
-      hiking: ({ size }) => <FaHiking size={size} className="green" />, 
-      inlove: ({ size }) => <MdFavorite size={size} className="pink" />,
-      inspiration: ({ size }) => <GiSparkSpirit size={size} style={{ color: '#f2a83f' }} />,
-      instagram: ({ size }) => <FaInstagram size={size} className="pink instagram" />, 
-      italy: ({ size }) => <GiItalia size={size} className="green" />,
-      key: ({ size }) => <FaKey size={size} className="yellow" />, 
-      kindle: ({ size }) => <FaBookReader size={size} className="blue kindle" />, 
-      linkedin: ({ size }) => <FaLinkedin size={size} className="blue linkedin" />, 
-      marker: ({ size }) => <FaMapMarkerAlt size={size} className="brown" />,
-      mass: ({ size }) => <GiChurch size={size} className="pink purple" />,
-      meeting: ({ size }) => <FaPeopleGroup size={size} className="orange" />,
-      music: ({ size }) => <IoMdMusicalNotes size={size} className="indigo" />,
-      num0: ({ size }) => <PiNumberCircleZeroBold size={size} style={{ color: '#fff' }} />,
-      num3: ({ size }) => <PiNumberCircleThreeBold size={size} style={{ color: '#fff' }} />,
-      num6: ({ size }) => <PiNumberCircleSixBold size={size} style={{ color: '#fff' }} />,
-      num7: ({ size }) => <PiNumberCircleSevenBold size={size} style={{ color: '#fff' }} />,
-      num8: ({ size }) => <PiNumberCircleEightBold size={size} style={{ color: '#fff' }} />,
-      num9: ({ size }) => <PiNumberCircleNineBold size={size} style={{ color: '#fff' }} />,
-      payroll: ({ size }) => <IconoPayroll size={size} className="yellow" />,
-      people: ({ size }) => <MdPeople size={size} className="grey" />,
-      perspective: ({ size }) => <GiPerspectiveDiceThree size={size} className="yellow" />,
-      person: ({ size }) => <BsFillPersonFill size={size} className="grey" />,
-      phone: ({ size }) => <FaPhone size={size} className="white" />, 
-      pill: ({ size }) => <CiPill size={size} className="yellow" />,
-      plentyoffish: ({ size }) => <IconoPlentyoffish size={size} className="pink" />,
-      podcast: ({ size }) => <FaPodcast size={size} className="orange" />,
-      prayer: ({ size }) => <FaPrayingHands size={size} className="pink purple" />,
-      price: ({ size }) => <IconoPrice size={size} className="red" />,
-      programming: ({ size }) => <FaCode size={size} className="orange" />, 
-      psychology: ({ size }) => <MdPsychology size={size} className="green" />,
-      pumpkin: ({ size }) => <GiPumpkinMask size={size} className="orange" />,
-      question: ({ size }) => <FaQuestionCircle size={size} className="orange" />,
-      quote: ({ size }) => <FaQuoteLeft size={size} className="yellow" />,
-      rain: ({ size }) => <BsFillCloudRainHeavyFill size={size} className="blue sky" />,
-      realmadrid: ({ size }) => <FaFutbol size={size} className="white" />,
-      repairs: ({ size }) => <MdBuild size={size} className="orange" />,
-      rosary: ({ size }) => <GiPrayerBeads size={size} className="pink purple" />,
-      rss: ({ size }) => <FaRss size={size} className="orange" />, 
-      sadness: ({ size }) => <ImSad2 size={size} className="yellow emoji" />,
-      sex: ({ size }) => <FaVenus size={size} className="pink" />,
-      sick: ({ size }) => <MdSick size={size} className="yellow emoji" />,
-      snow: ({ size }) => <BsSnow3 size={size} className="white" />,
-      soccer: ({ size }) => <GiSoccerBall size={size} className="green" />,
-      sport: ({ size }) => <MdDirectionsRun size={size} className="green" />, 
-      spotify: ({ size }) => <SiSpotify size={size} className="green spotify" />,
-      tax: ({ size }) => <HiReceiptTax size={size} style={{ color: '#fc0303' }} />, 
-      telegram: ({ size }) => <FaTelegram size={size} className="blue telegram" />, 
-      tinder: ({ size }) => <IconoTinder size={size} style={{ color: '#FE3C72' }} />,
-      tired: ({ size }) => <FaTired size={size} style={{ color: '#FFC83D' }} />,
-      travel: ({ size }) => <GiCommercialAirplane size={size} style={{ color: '#1199c2' }} />,
-      tree: ({ size }) => <FaTree size={size} style={{ color: '#228B22' }} />,
-      twitter: ({ size }) => <SiTwitter size={size} className="blue twitter" />,
-      village: ({ size }) => <GiVillage size={size} style={{ color: '#47ff6c' }} />,
-      watchsand: ({ size }) => <GiSandsOfTime size={size} style={{ color: '#FFFF99' }} />,
-      weather: ({ size }) => <GiThermometerCold size={size} style={{ color: '#6dc8f2' }} />,
-      whatsapp: ({ size }) => <SiWhatsapp size={size} className="green whatsapp" />, 
-      woman: ({ size }) => <ImWoman size={size} className="pink" />, 
-      writing: ({ size }) => <PiNotePencilBold size={size} style={{ color: '#fcaa62' }} />,
-      youtube: ({ size }) => <FaYoutube size={size} className="red youtube" />
-    };
 
     if (cssClasses) {
       const cssClassIcons = cssClasses
@@ -133,7 +40,7 @@ export class CalendarIcon {
         .map((cssclass: string) => iconMap[cssclass]({ size }));
 
       if (cssClassIcons.length > 0) {
-        return cssClassIcons[0]; 
+        return cssClassIcons[0];
       }
     }
 
@@ -174,3 +81,106 @@ export class CalendarIcon {
     }
   }
 }
+
+const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
+  add: ({ size }) => <MdOutlineAddCircle size={size} className="green" />,
+  agenda2030: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
+  agriculture: ({ size }) => <IoMdBasket size={size} className="brown" />, 
+  agro: ({ size }) => <GiWheat size={size} className="brown" />, 
+  amazon: ({ size }) => <FaAmazon size={size} className="orange amazon" />,
+  aws: ({ size }) => <FaAws size={size} className="orange aws" />,
+  basketball: ({ size }) => <FaBasketball size={size} className="orange" />,
+  beer: ({ size }) => <MdLocalBar size={size} className="yellow" />,
+  bible: ({ size }) => <IconoBible size={size} className="pink purple" />,
+  bills: ({ size }) => <FaFileInvoiceDollar size={size} className="red" />, 
+  birthday: ({ size }) => <FaBirthdayCake size={size} className="blue ui" />, 
+  blogpost: ({ size }) => <BsWordpress size={size} className="blue wordpress" />,
+  book: ({ size }) => <FaBook size={size} className="blue kindle" />, 
+  bookmark: ({ size }) => <FaBookmark size={size} className="blue cobalt" />,
+  buy: ({ size }) => <IoMdBasket size={size} className="red" />,
+  calendar: ({ size }) => <BsFillCalendar2WeekFill size={size} className="blue ui" />, 
+  car: ({ size }) => <FaCarSide size={size} className="red c3" />, 
+  catholic: ({ size }) => <FaCross size={size} className="pink purple" />,
+  chess: ({ size }) => <FaChess size={size} className="blue chesscom" />, 
+  cinema: ({ size }) => <IconoCinema size={size} className="white" />,
+  communism: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
+  confession: ({ size }) => <GiKneeling size={size} className="pink purple" />,
+  cough: ({ size }) => <FaHeadSideCough size={size} className="yellow emoji" />, 
+  doctor: ({ size }) => <FaUserDoctor size={size} className="green" />,
+  dream: ({ size }) => <TbZzz size={size} className="blue cobalt" />,
+  elections: ({ size }) => <FaVoteYea size={size} className="orange" />,
+  email: ({ size }) => <BiLogoGmail size={size} className="red" />,
+  euro: ({ size }) => <IoIosPaper size={size} className="yellow" />,
+  family: ({ size }) => <MdGroup size={size} className="yellow" />, 
+  favorite: ({ size }) => <FaStar size={size} className="yellow" />, 
+  fever: ({ size }) => <FaTemperatureHigh size={size} className="yellow emoji" />, 
+  finances: ({ size }) => <FaMoneyBillWave size={size} className="red" />,
+  friends: ({ size }) => <MdGroup size={size} className="yellow" />,
+  funeral: ({ size }) => <GiTombstone size={size} className="grey" />,
+  gastronomy: ({ size }) => <MdRestaurant size={size} style={{ color: '#FFD700' }} />,
+  github: ({ size }) => <FaGithub size={size} style={{ color: '#fff' }} />, 
+  goodreads: ({ size }) => <FaGoodreads size={size} className="brown goodreads" />,
+  gym: ({ size }) => <MdOutlineSportsGymnastics size={size} className="green" />,
+  happiness: ({ size }) => <FaSmile size={size} className="yellow" />,
+  hardware: ({ size }) => <IoHardwareChipOutline size={size} className="orange" />,
+  health: ({ size }) => <FaStaffSnake size={size} className="green" />, 
+  hiking: ({ size }) => <FaHiking size={size} className="green" />, 
+  inlove: ({ size }) => <MdFavorite size={size} className="pink" />,
+  inspiration: ({ size }) => <GiSparkSpirit size={size} style={{ color: '#f2a83f' }} />,
+  instagram: ({ size }) => <FaInstagram size={size} className="pink instagram" />, 
+  italy: ({ size }) => <GiItalia size={size} className="green" />,
+  key: ({ size }) => <FaKey size={size} className="yellow" />, 
+  kindle: ({ size }) => <FaBookReader size={size} className="blue kindle" />, 
+  linkedin: ({ size }) => <FaLinkedin size={size} className="blue linkedin" />, 
+  marker: ({ size }) => <FaMapMarkerAlt size={size} className="brown" />,
+  mass: ({ size }) => <GiChurch size={size} className="pink purple" />,
+  meeting: ({ size }) => <FaPeopleGroup size={size} className="orange" />,
+  music: ({ size }) => <IoMdMusicalNotes size={size} className="indigo" />,
+  num0: ({ size }) => <PiNumberCircleZeroBold size={size} style={{ color: '#fff' }} />,
+  num3: ({ size }) => <PiNumberCircleThreeBold size={size} style={{ color: '#fff' }} />,
+  num6: ({ size }) => <PiNumberCircleSixBold size={size} style={{ color: '#fff' }} />,
+  num7: ({ size }) => <PiNumberCircleSevenBold size={size} style={{ color: '#fff' }} />,
+  num8: ({ size }) => <PiNumberCircleEightBold size={size} style={{ color: '#fff' }} />,
+  num9: ({ size }) => <PiNumberCircleNineBold size={size} style={{ color: '#fff' }} />,
+  payroll: ({ size }) => <IconoPayroll size={size} className="yellow" />,
+  people: ({ size }) => <MdPeople size={size} className="grey" />,
+  perspective: ({ size }) => <GiPerspectiveDiceThree size={size} className="yellow" />,
+  person: ({ size }) => <BsFillPersonFill size={size} className="grey" />,
+  phone: ({ size }) => <FaPhone size={size} className="white" />, 
+  pill: ({ size }) => <CiPill size={size} className="yellow" />,
+  plentyoffish: ({ size }) => <IconoPlentyoffish size={size} className="pink" />,
+  podcast: ({ size }) => <FaPodcast size={size} className="orange" />,
+  prayer: ({ size }) => <FaPrayingHands size={size} className="pink purple" />,
+  price: ({ size }) => <IconoPrice size={size} className="red" />,
+  programming: ({ size }) => <FaCode size={size} className="orange" />, 
+  psychology: ({ size }) => <MdPsychology size={size} className="green" />,
+  pumpkin: ({ size }) => <GiPumpkinMask size={size} className="orange" />,
+  question: ({ size }) => <FaQuestionCircle size={size} className="orange" />,
+  quote: ({ size }) => <FaQuoteLeft size={size} className="yellow" />,
+  rain: ({ size }) => <BsFillCloudRainHeavyFill size={size} className="blue sky" />,
+  realmadrid: ({ size }) => <FaFutbol size={size} className="white" />,
+  repairs: ({ size }) => <MdBuild size={size} className="orange" />,
+  rosary: ({ size }) => <GiPrayerBeads size={size} className="pink purple" />,
+  rss: ({ size }) => <FaRss size={size} className="orange" />, 
+  sadness: ({ size }) => <ImSad2 size={size} className="yellow emoji" />,
+  sex: ({ size }) => <FaVenus size={size} className="pink" />,
+  sick: ({ size }) => <MdSick size={size} className="yellow emoji" />,
+  snow: ({ size }) => <BsSnow3 size={size} className="white" />,
+  soccer: ({ size }) => <GiSoccerBall size={size} className="green" />,
+  sport: ({ size }) => <MdDirectionsRun size={size} className="green" />, 
+  spotify: ({ size }) => <SiSpotify size={size} className="green spotify" />,
+  tax: ({ size }) => <HiReceiptTax size={size} style={{ color: '#fc0303' }} />, 
+  telegram: ({ size }) => <FaTelegram size={size} className="blue telegram" />, 
+  tinder: ({ size }) => <IconoTinder size={size} style={{ color: '#FE3C72' }} />,
+  tired: ({ size }) => <FaTired size={size} style={{ color: '#FFC83D' }} />,
+  travel: ({ size }) => <GiCommercialAirplane size={size} style={{ color: '#1199c2' }} />,
+  tree: ({ size }) => <FaTree size={size} style={{ color: '#228B22' }} />,
+  twitter: ({ size }) => <SiTwitter size={size} className="blue twitter" />,
+  village: ({ size }) => <GiVillage size={size} style={{ color: '#47ff6c' }} />,
+  watchsand: ({ size }) => <GiSandsOfTime size={size} style={{ color: '#FFFF99' }} />,
+  weather: ({ size }) => <GiThermometerCold size={size} style={{ color: '#6dc8f2' }} />,
+  whatsapp: ({ size }) => <SiWhatsapp size={size} className="green whatsapp" />, 
+  woman: ({ size }) => <ImWoman size={size} className="pink" />, 
+  writing: ({ size }) => <PiNotePencilBold size={size} style={{ color: '#fcaa62' }} />,
+  youtube: ({ size }) => <FaYoutube size={size} className="red youtube" />
+};

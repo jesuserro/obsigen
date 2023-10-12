@@ -38,3 +38,16 @@
 .icon-description {
   display: none; /* Ocultar la descripción en dispositivos de escritorio */
 }
+
+/* BUTTON */
+.buttonx {
+  width: 14px;
+  height: 14px;
+  background-color: #0077B5; /* Color de fondo del botón */
+  border: none;
+  border-radius: 4px; /* Borde redondeado para hacerlo cuadrado */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
