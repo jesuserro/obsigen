@@ -46,7 +46,7 @@ function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: numb
               month = {month + 1}
               dayCounter={dayIndex}
               hasNote={hasNote}
-              anniversaryNote={anniversaryNote} // Pasamos la nota de aniversario al componente CalendarDay
+              anniversaryNote={anniversaryNote} 
               dayNotes={getDayNotes(dayIndex, files, year, month)}
             />
           ) : (

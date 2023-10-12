@@ -65,6 +65,7 @@ function CalendarDay({ year, month, dayCounter, hasNote, anniversaryNote, dayNot
             <a href={notePath} title={getFileName(hasNote)}>
               <div className="day-number">{dayCounter}</div>
             </a>
+            {boundGetCalendarButton(`obs-add-"${dayCounter}-${month}-${year}"`)}
             {anniversaryNote && (
               <div className="anniversary-note">{boundGetCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
             )}
@@ -93,6 +94,7 @@ function CalendarDay({ year, month, dayCounter, hasNote, anniversaryNote, dayNot
                 <div className="anniversary-note">{boundGetCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
               )}
               <div className="day-number">{dayCounter}</div>
+              {boundGetCalendarButton(`obs-add-"${dayCounter}-${month}-${year}"`)}
             </div>
             <div className="calendar-icons">
               {dayNotes.map((note, index) => (
@@ -106,6 +108,7 @@ function CalendarDay({ year, month, dayCounter, hasNote, anniversaryNote, dayNot
             {anniversaryNote && (
               <div className="anniversary-note">{boundGetCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
             )}
+            {boundGetCalendarButton(`obs-add-"${dayCounter}-${month}-${year}"`)}
           </>
         )}
       </div>
