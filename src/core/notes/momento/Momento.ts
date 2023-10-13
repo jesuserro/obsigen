@@ -14,10 +14,16 @@ export class Momento extends NoteGenerator {
   content: string;
   fileName: string;
   callout: string;
-  
-  constructor(app: App) {
+  startDate: string | null;
+  icon: string | null;
+  description: string;
+
+  constructor(app: App, startDate: string | null = null, icon: string | null = null) {
     super(app);
+    this.startDate = startDate;
+    this.icon = icon;
   }
+  
 
   getCurrentDateTime() {
     const now = new Date();
@@ -34,27 +40,36 @@ export class Momento extends NoteGenerator {
     return `${year}${month}${day}`;
   }
 
-  setYaml(): void {
+  setYaml() {
     const link = `"[[${this.getCurrentDate()}]]"`;
     const data = {
       ...DATA_YAML_DEFAULT,
       title: this.title,
-      links: [...DATA_YAML_DEFAULT.links, link] 
+      links: [...DATA_YAML_DEFAULT.links, link],
     };
+    if (this.startDate) {
+      data.date = new Date(this.startDate);
+    }
+    if (this.icon) {
+      data.cssclasses.push(this.icon);
+    }
     let yaml = renderToString(Yaml({ data }));
     yaml = yaml.replace(/&quot;/g, '"');
     this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
-  async createNote(title: string, content: string) {
+  async createNote(title: string, content: string, startDate?: string, icon?: string, description?: string) {
     this.title = this.getTitle(title);
+    this.startDate = startDate || null;
+    this.icon = icon || null;
+    this.description = description || '';
     this.setYaml();
     this.fileName = this.getFilename(this.title);
     this.setContent(content);
     await super.createNote(this.fileName, this.content, `100 Calendar/Moments`);
   }
 
-  setContent(content: string): void {
+  setContent(content: string) {
     this.content = `${this.yaml}\n# ${this.title}\n${content}`;
   }
 
@@ -64,18 +79,24 @@ export class Momento extends NoteGenerator {
   }
 
   getFilename(title: string) {
-    return `${this.getCurrentDateTime()} ${title}`;
+    const now = new Date();
+    const year = now.getFullYear().toString();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    const hour = now.getHours().toString().padStart(2, '0');
+    const minute = now.getMinutes().toString().padStart(2, '0');
+    
+    let datePart = this.startDate || this.getCurrentDateTime();
+    if (this.startDate) {
+      const [startYear, startMonth, startDay] = this.startDate.split('-');
+      return `${startYear}${startMonth.padStart(2, '0')}${startDay.padStart(2, '0')}${hour}${minute} ${title}`;
+    }
+  
+    return `${datePart} ${title}`;
   }
-
-  getContent() {  
+  
+  
+  getContent() {
     return ``;
   }
 }
-
-
-
-
-
-
-
-
