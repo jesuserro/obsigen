@@ -1,5 +1,4 @@
 import { App, Notice } from 'obsidian';
-// import { CALENDAR_VIEW_TYPE } from './../notes/calendar/CalendarView';
 
 export class NoteGenerator {
   app: App;
@@ -40,18 +39,28 @@ export class NoteGenerator {
     this.app.workspace.openLinkText(fileRef.path, '', false);
 
     // Reload the Calendar View leaf
-    const leaf = this.app.workspace.getRightLeaf(true);
+    // const leaf = this.app.workspace.getRightLeaf(true);
     // this.app.workspace.revealLeaf(leaf);
+
     // this.app.workspace.getLeavesOfType(CALENDAR_VIEW_TYPE).forEach((leaf) => {
       // if (leaf.view instanceof CalendarView) {
         // Access your view instance.
         // leaf.view.load();
       // }
     // });
+
     // const leaf = this.app.workspace.getLeavesOfType(CALENDAR_VIEW_TYPE).first();
     // leaf.view.load();
-    leaf.view.load()
+    // this.app.workspace.trigger('calendar:refresh');
 
+    // Listen to file changes so we can update markers accordingly
+    // this.app.vault.on('delete', (file) => {
+    //     new Notice(`File ${file.path} deleted`);
+    // });
+
+    // this.app.metadataCache.on('changed', (file) => {
+    //     new Notice(`File ${file.path} changed`);
+    // });
 
     // this.app.workspace.trigger('calendar:refresh');
   }
