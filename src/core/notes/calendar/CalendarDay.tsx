@@ -1,7 +1,9 @@
-import { Notice, TFile } from 'obsidian';
+import { App, TFile } from 'obsidian';
+import { useApp } from 'src/core/hooks/useApp';
 import { Momento } from './../momento/Momento';
 import { CalendarEvent } from './CalendarEvent';
 import { CalendarIcon } from './CalendarIcon';
+
 
 interface CalendarDayProps {
   year: number;
@@ -28,15 +30,12 @@ function getCalendarEvent(index: number, note: TFile) {
 
 function getCalendarButton(year: number, month: number, dayCounter: number) {
   const icon = CalendarIcon.getIcon("add", 14);
-  const handleAddEvent = () => {
-    new Notice(`Hi ${dayCounter}-${month}-${year}`);
-  };
-
+  const app = useApp() as App;
   const newEvent = async () => {
     const calendarEvent = new CalendarEvent(year, month, dayCounter);
     await calendarEvent.openModal();
     const values = calendarEvent.getFormValues();
-    await new Momento(this.app).createNote(values.title, values.description, values.startDate, values.selectedIcon);
+    await new Momento(app).createNote(values.title, values.description, values.startDate, values.selectedIcon);
 
   }
 

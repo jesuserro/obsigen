@@ -67,14 +67,12 @@ function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: numb
 function isNoteRelatedToDay(note: TFile, year: number, month: number, dayCounter: number): boolean {
   // Construye la ruta esperada para la nota del día actual
   const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayCounter).padStart(2, '0')}`;
-  const notePath = `100 Calendar/Daily/${year}/${dayDate}.md`;
-
-  // Compara la ruta de la nota con la ruta esperada
-  return note.path === notePath;
+  return note.path.contains(`/${dayDate}`);
 }
 
-function createDayState(year: number, month: number, day: number, cssclasses: []) {
+function createDayState(file: TFile, year: number, month: number, day: number, cssclasses: []) {
   return {
+    file,
     year,
     month,
     day,
@@ -91,19 +89,19 @@ function getDayNotes(dayIndex: number, year: number, month: number): TFile[] {
   const metadataCache = app.metadataCache;
   const files = app?.vault.getMarkdownFiles() || [];
 
-  const [dayStates, setDayStates] = useState<({ year: number; month: number; day: number; cssclasses: [] })[]>([]);
+  const [dayStates, setDayStates] = useState<({ file:TFile, year: number; month: number; day: number; cssclasses: [] })[]>([]);
 
   useEffect(() => {
     const handleNoteChange = (file: TFile) => {
       if (isNoteRelatedToDay(file, year, month, dayIndex)) {
-        // console.log(file.path, year, month, dayIndex);
         const cssclasses = metadataCache.getFileCache(file)?.frontmatter?.cssclasses || [];
-        const state = createDayState(year, month, dayIndex, cssclasses || []);
+        const state = createDayState(file, year, month, dayIndex, cssclasses || []);
         const dayStateIndex = dayStates.findIndex((dayState) =>
           isDayState(dayState) && // Comprobar si es un objeto de estado
           dayState.year === state.year &&
           dayState.month === state.month &&
-          dayState.day === state.day
+          dayState.day === state.day &&
+          dayState.cssclasses === state.cssclasses
         );
 
         if (dayStateIndex === -1) {
