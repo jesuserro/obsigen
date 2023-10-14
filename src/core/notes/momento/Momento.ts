@@ -10,6 +10,8 @@ export class Momento extends NoteGenerator {
   app: App;
   yaml: string;
   title: string;
+  filePrefix: string;
+  date: Date;
   subheader: string;
   content: string;
   fileName: string;
@@ -17,23 +19,29 @@ export class Momento extends NoteGenerator {
   startDate: string | null;
   icon: string | null;
   description: string;
+  year: number;
+  month: number;
+  day: number;
 
   constructor(app: App, startDate: string | null = null, icon: string | null = null) {
     super(app);
     this.startDate = startDate;
     this.icon = icon;
+    this.date = new Date();
+    this.year = this.date.getFullYear();
+    this.month = this.date.getMonth() + 1;
+    this.day = this.date.getDate();
   }
-  
 
-  getCurrentDateTime() {
-    const now = new Date();
+  getCurrentTime() {
+    const now = this.date;
     const hour = now.getHours().toString().padStart(2, '0');
     const minute = now.getMinutes().toString().padStart(2, '0');
-    return `${this.getCurrentDate()}${hour}${minute}`;
+    return `${hour}${minute}`;
   }
 
   getCurrentDate() {
-    const now = new Date();
+    const now = this.date;
     const year = now.getFullYear().toString();
     const month = (now.getMonth() + 1).toString().padStart(2, '0');
     const day = now.getDate().toString().padStart(2, '0');
@@ -45,11 +53,10 @@ export class Momento extends NoteGenerator {
     const data = {
       ...DATA_YAML_DEFAULT,
       title: this.title,
+      date: this.date,
       links: [...DATA_YAML_DEFAULT.links, link],
     };
-    if (this.startDate) {
-      data.date = new Date(this.startDate);
-    }
+    
     if (this.icon) {
       data.cssclasses.push(this.icon);
     }
@@ -61,6 +68,12 @@ export class Momento extends NoteGenerator {
   async createNote(title: string, content: string, startDate?: string, icon?: string, description?: string) {
     this.title = this.getTitle(title);
     this.startDate = startDate || null;
+    if (this.startDate) {
+      this.date = new Date(this.startDate);
+      this.year = this.date.getFullYear();
+      this.month = this.date.getMonth();
+      this.day = this.date.getDate();
+    }
     this.icon = icon || null;
     this.description = description || '';
     this.setYaml();
@@ -79,22 +92,13 @@ export class Momento extends NoteGenerator {
   }
 
   getFilename(title: string) {
-    const now = new Date();
-    const year = now.getFullYear().toString();
-    const month = (now.getMonth() + 1).toString().padStart(2, '0');
-    const day = now.getDate().toString().padStart(2, '0');
-    const hour = now.getHours().toString().padStart(2, '0');
-    const minute = now.getMinutes().toString().padStart(2, '0');
-    
-    let datePart = this.startDate || this.getCurrentDateTime();
-    if (this.startDate) {
-      const [startYear, startMonth, startDay] = this.startDate.split('-');
-      return `${startYear}${startMonth.padStart(2, '0')}${startDay.padStart(2, '0')}${hour}${minute} ${title}`;
-    }
-  
-    return `${datePart} ${title}`;
+    return `${this.getFilePrefix()} ${title}`;
   }
-  
+
+  getFilePrefix() {
+    
+    return `${this.getCurrentDate()}${this.getCurrentTime()}`;
+  }
   
   getContent() {
     return ``;
