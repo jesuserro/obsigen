@@ -1,4 +1,5 @@
 import { App, TFile } from 'obsidian';
+import { useEffect, useState } from 'react';
 import { useApp } from './../../hooks/useApp';
 import CalendarDay from './CalendarDay';
 
@@ -62,21 +63,79 @@ function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: numb
   return daysGrid;
 }
 
+// STATE fns
+function isNoteRelatedToDay(note: TFile, year: number, month: number, dayCounter: number): boolean {
+  // Construye la ruta esperada para la nota del día actual
+  const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayCounter).padStart(2, '0')}`;
+  const notePath = `100 Calendar/Daily/${year}/${dayDate}.md`;
+
+  // Compara la ruta de la nota con la ruta esperada
+  return note.path === notePath;
+}
+
+function createDayState(year: number, month: number, day: number, cssclasses: []) {
+  return {
+    year,
+    month,
+    day,
+    cssclasses: cssclasses || [],
+  };
+}
+
 function getDayNotes(dayIndex: number, files: TFile[], year: number, month: number): TFile[] {
   month = month + 1;
-  const dayDateDashed = `${year}-${String(month).padStart(2, '0')}-${String(dayIndex).padStart(2, '0')}`;
+  // const dayDateDashed = `${year}-${String(month).padStart(2,'0')}-${String(dayIndex).padStart(2, '0')`;
 
   const app = useApp() as App;
   const metadataCache = app.metadataCache;
 
-  const dayNotes: TFile[] = files.filter((file) => {
-    const path = file.path;
+  const [dayStates, setDayStates] = useState<TFile[]>([]); // Estado para el array de elementos dayNotes
 
+  useEffect(() => {
+    // Función que maneja los cambios en las notas
+    const handleNoteChange = (file: TFile) => {
+      // Verificar si la nota cambiada está relacionada con un día en el mes actual
+      // Puedes hacer esto comprobando la fecha de la nota y comparándola con el mes y año actual.
+      // Si es relevante, actualiza el estado del día correspondiente.
+      if (isNoteRelatedToDay(file, year, month, dayIndex)) {
+        // Actualiza el estado del día correspondiente
+        const state = createDayState(year, month, dayIndex, file.frontmatter?.cssclasses || []);
+        // Encuentra el índice del día correspondiente en el estado actual
+        const dayStateIndex = dayStates.findIndex((dayState) =>
+          dayState.year === state.year &&
+          dayState.month === state.month &&
+          dayState.day === state.day
+        );
+
+        // Si el día no existe en el estado, agrégalo. Si existe, actualiza el estado.
+        if (dayStateIndex === -1) {
+          setDayStates((prevStates) => [...prevStates, state]);
+        } else {
+          setDayStates((prevStates) => [
+            ...prevStates.slice(0, dayStateIndex),
+            state,
+            ...prevStates.slice(dayStateIndex + 1),
+          ]);
+        }
+      }
+    };
+
+    // Suscribirse al evento 'changed'
+    metadataCache.on('changed', handleNoteChange);
+
+    // Asegúrate de desuscribirte cuando el componente se desmonte
+    return () => {
+      metadataCache.off('changed', handleNoteChange);
+    };
+  }, [year, month, dayIndex, dayStates]);
+
+  const dayNotes = files.filter((file) => {
+    const path = file.path;
     if (path.includes('/Daily') || path.includes('/Aniversaries/')) {
       return false; // Excluye notas con '/Daily' en el path o '/Aniversaries/'
     }
 
-    const eventDate = metadataCache.getFileCache(file)?.frontmatter?.date;
+    const eventDate = file.frontmatter?.date;
     if (typeof eventDate === 'string' && eventDate.includes(dayDateDashed)) {
       return true; // Incluye notas del día con YAML `date` coincidente
     }
@@ -84,8 +143,21 @@ function getDayNotes(dayIndex: number, files: TFile[], year: number, month: numb
     return false; // Excluye otras notas
   });
 
-  return dayNotes;
+  return dayNotes.map((file) => {
+    // Encuentra el estado correspondiente en el array de estados
+    const dayState = dayStates.find((state) =>
+      state.year === year &&
+      state.month === month &&
+      state.day === dayIndex
+    );
+
+    return {
+      ...file,
+      dayState: dayState,
+    };
+  });
 }
+
 
 // Nueva función para obtener la nota de aniversario
 function getAnniversaryNote(dayIndex: number, files: TFile[], year: number, month: number): TFile | undefined {
