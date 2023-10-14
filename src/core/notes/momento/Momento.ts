@@ -22,6 +22,8 @@ export class Momento extends NoteGenerator {
   year: number;
   month: number;
   day: number;
+  hour: number;
+  minute: number;
 
   constructor(app: App, startDate: string | null = null, icon: string | null = null) {
     super(app);
@@ -31,6 +33,8 @@ export class Momento extends NoteGenerator {
     this.year = this.date.getFullYear();
     this.month = this.date.getMonth() + 1;
     this.day = this.date.getDate();
+    this.hour = this.date.getHours();
+    this.minute = this.date.getMinutes();
   }
 
   getCurrentTime() {

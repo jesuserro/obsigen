@@ -21,6 +21,8 @@ export class CalendarEvent extends Modal {
   private monthDropdown: DropdownComponent;
   private dayDropdown: DropdownComponent;
   private iconDropdown: DropdownComponent;
+  private hourDropdown: DropdownComponent;
+  private minuteDropdown: DropdownComponent;
   
   constructor(year:number, month:number, day:number) {
     super(app);
@@ -75,6 +77,12 @@ export class CalendarEvent extends Modal {
     // Create Dropdown for selecting the day
     const dayDiv = dateFieldset.createDiv("form-element");
     this.dayDropdown = new DropdownComponent(dayDiv);
+
+    const hourDiv = dateFieldset.createDiv("form-element");
+    this.hourDropdown = new DropdownComponent(hourDiv);
+
+    const minuteDiv = dateFieldset.createDiv("form-element");
+    this.minuteDropdown = new DropdownComponent(minuteDiv);
   
     this.initializeDropdowns();
   
@@ -127,11 +135,28 @@ export class CalendarEvent extends Modal {
     for (let i = 1; i <= 31; i++) {
       this.dayDropdown.addOption(i.toString(), i.toString());
     }
+    for (let i = 0; i <= 24; i++) {
+      this.hourDropdown.addOption(i.toString(), i.toString());
+    }
+    for (let i = 0; i <= 60; i += 5) {
+      this.minuteDropdown.addOption(i.toString(), i.toString());
+    }
 
     // Establece los valores iniciales de los DropdownComponent
     this.yearDropdown.setValue(this.year.toString());
     this.monthDropdown.setValue(this.month.toString());
     this.dayDropdown.setValue(this.day.toString());
+    
+    this.initializeTimeDropdowns();
+  }
+
+  private initializeTimeDropdowns() {
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMinute = Math.floor(now.getMinutes() / 5) * 5; // Round down to the nearest 5 minutes
+  
+    this.hourDropdown.setValue(currentHour.toString());
+    this.minuteDropdown.setValue(currentMinute.toString());
   }
   
   private resolveAndClose(evt: Event) {
@@ -142,8 +167,13 @@ export class CalendarEvent extends Modal {
     const selectedYear = this.yearDropdown.getValue();
     const selectedMonth = this.monthDropdown.getValue();
     const selectedDay = this.dayDropdown.getValue();
+    const selectedHour = this.hourDropdown.getValue();
+    const selectedMinute = this.minuteDropdown.getValue();
 
-    this.startDate = `${selectedYear}-${selectedMonth.padStart(2, '0')}-${selectedDay.padStart(2, '0')}`;
+    // Format the time as HH:MM
+    const selectedTime = `${selectedHour.padStart(2, '0')}:${selectedMinute.padStart(2, '0')}`;
+    
+    this.startDate = `${selectedYear}-${selectedMonth.padStart(2, '0')}-${selectedDay.padStart(2, '0')} ${selectedTime}`;
 
     const formValues: FormValues = {
       title: this.title.trim(),
