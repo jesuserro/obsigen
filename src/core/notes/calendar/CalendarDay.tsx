@@ -28,11 +28,12 @@ function getCalendarEvent(index: number, note: TFile) {
   );
 }
 
-function getCalendarButton(year: number, month: number, dayCounter: number) {
+function getCalendarButton(calendarEvent: CalendarEvent, app: App) {
+  
   const icon = CalendarIcon.getIcon("add", 14);
-  const app = useApp() as App;
+  
   const newEvent = async () => {
-    const calendarEvent = new CalendarEvent(year, month, dayCounter);
+    
     await calendarEvent.openModal();
     const values = calendarEvent.getFormValues();
     await new Momento(app).createNote(values.title, values.description, values.startDate, values.selectedIcon);
@@ -48,11 +49,10 @@ function getCalendarButton(year: number, month: number, dayCounter: number) {
 
 
 function CalendarDay({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes }: CalendarDayProps): JSX.Element {
-  let notePath = '';
-  if (hasNote) {
-    notePath = `obsidian://open?file=${encodeURIComponent(hasNote)}`;
-  }
-  
+
+  const app = useApp() as App;
+  const calendarEvent = new CalendarEvent(app, year, month, dayCounter);
+
   // Generamos un índice único para cada evento basado en su ruta
   const generateEventIndex = (note: TFile): number => {
     const hash = note.path.split('').reduce((acc, char) => {
@@ -61,6 +61,18 @@ function CalendarDay({ year, month, dayCounter, hasNote, anniversaryNote, dayNot
     return hash;
   };
 
+
+  const btn = getCalendarButton(calendarEvent, app);
+  let anniversary = null;
+  if (anniversaryNote) {
+    anniversary = getCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote);
+  }
+
+  let notePath = '';
+  if (hasNote) {
+    notePath = `obsidian://open?file=${encodeURIComponent(hasNote)}`;
+  }
+  
   return (
     <>
       <div className="day-container">
@@ -69,21 +81,21 @@ function CalendarDay({ year, month, dayCounter, hasNote, anniversaryNote, dayNot
             <a href={notePath} title={getFileName(hasNote)}>
               <div className="day-number">{dayCounter}</div>
             </a>
-            {getCalendarButton(year, month, dayCounter)}
+            {btn}
             {anniversaryNote && (
-              <div className="anniversary-note">{getCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
+              <div className="anniversary-note">{anniversary}</div>
             )}
           </>
         ) : hasNote && dayNotes ? (
           <>
             <div className="day-header">
               {anniversaryNote && (
-                <div className="anniversary-note">{getCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
+                <div className="anniversary-note">{anniversary}</div>
               )}
               <a href={notePath} title={getFileName(hasNote)}>
                 <div className="day-number">{dayCounter}</div>
               </a>
-              {getCalendarButton(year, month, dayCounter)}
+              {btn}
             </div>
             <div className="calendar-icons">
               {dayNotes.map((note, index) => (
@@ -95,10 +107,10 @@ function CalendarDay({ year, month, dayCounter, hasNote, anniversaryNote, dayNot
           <>
             <div className="day-header">
               {anniversaryNote && (
-                <div className="anniversary-note">{getCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
+                <div className="anniversary-note">{anniversary}</div>
               )}
               <div className="day-number">{dayCounter}</div>
-              {getCalendarButton(year, month, dayCounter)}
+              {btn}
             </div>
             <div className="calendar-icons">
               {dayNotes.map((note, index) => (
@@ -110,9 +122,9 @@ function CalendarDay({ year, month, dayCounter, hasNote, anniversaryNote, dayNot
           <>
             <div className="day-number">{dayCounter}</div>
             {anniversaryNote && (
-              <div className="anniversary-note">{getCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
+              <div className="anniversary-note">{anniversary}</div>
             )}
-            {getCalendarButton(year, month, dayCounter)}
+            {btn}
           </>
         )}
       </div>

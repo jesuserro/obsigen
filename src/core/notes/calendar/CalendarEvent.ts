@@ -1,4 +1,4 @@
-import { ButtonComponent, DropdownComponent, Modal, Notice, TextAreaComponent, TextComponent } from "obsidian";
+import { App, ButtonComponent, DropdownComponent, Modal, Notice, TextAreaComponent, TextComponent } from "obsidian";
 import { CalendarIcon, iconMap } from "./CalendarIcon";
 
 export class CalendarEvent extends Modal {
@@ -24,7 +24,7 @@ export class CalendarEvent extends Modal {
   private hourDropdown: DropdownComponent;
   private minuteDropdown: DropdownComponent;
   
-  constructor(year:number, month:number, day:number) {
+  constructor(app: App, year:number, month:number, day:number) {
     super(app);
     this.title = "";
     this.url = "";
