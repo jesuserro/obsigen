@@ -72,6 +72,13 @@ function CalendarDay({ year, month, dayCounter, hasNote, anniversaryNote, dayNot
   if (hasNote) {
     notePath = `obsidian://open?file=${encodeURIComponent(hasNote)}`;
   }
+
+  let notesOfTheDay = null;
+  if(dayNotes){
+    notesOfTheDay = dayNotes.map((note, index) => (
+      getCalendarEvent(index, note)
+    ));
+  }
   
   return (
     <>
@@ -98,9 +105,7 @@ function CalendarDay({ year, month, dayCounter, hasNote, anniversaryNote, dayNot
               {btn}
             </div>
             <div className="calendar-icons">
-              {dayNotes.map((note, index) => (
-                getCalendarEvent(index, note)
-              ))}
+              {notesOfTheDay}
             </div>
           </>
         ) : dayNotes ? (
@@ -113,9 +118,7 @@ function CalendarDay({ year, month, dayCounter, hasNote, anniversaryNote, dayNot
               {btn}
             </div>
             <div className="calendar-icons">
-              {dayNotes.map((note, index) => (
-                getCalendarEvent(index, note)
-              ))}
+              {notesOfTheDay}
             </div>
           </>
         ) : (
