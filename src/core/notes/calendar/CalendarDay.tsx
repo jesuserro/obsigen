@@ -49,89 +49,50 @@ function getCalendarButton(calendarEvent: CalendarEvent, app: App) {
 
 
 function CalendarDay({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes }: CalendarDayProps): JSX.Element {
-
   const app = useApp() as App;
   const calendarEvent = new CalendarEvent(app, year, month, dayCounter);
 
   // Generamos un índice único para cada evento basado en su ruta
   const generateEventIndex = (note: TFile): number => {
-    const hash = note.path.split('').reduce((acc, char) => {
-      return acc + char.charCodeAt(0);
-    }, 0);
+    const hash = note.path.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
     return hash;
   };
 
-
   const btn = getCalendarButton(calendarEvent, app);
-  let anniversary = null;
-  if (anniversaryNote) {
-    anniversary = getCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote);
-  }
+  const notePath = hasNote ? `obsidian://open?file=${encodeURIComponent(hasNote)}` : '';
+  const anniversary = anniversaryNote ? getCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote) : null;
+  const notesOfTheDay = dayNotes ? dayNotes.map((note, index) => getCalendarEvent(index, note)) : null;
 
-  let notePath = '';
-  if (hasNote) {
-    notePath = `obsidian://open?file=${encodeURIComponent(hasNote)}`;
-  }
-
-  let notesOfTheDay = null;
-  if(dayNotes){
-    notesOfTheDay = dayNotes.map((note, index) => (
-      getCalendarEvent(index, note)
-    ));
-  }
-  
   return (
-    <>
-      <div className="day-container">
-        {hasNote && !dayNotes ? (
-          <>
-            <a href={notePath} title={getFileName(hasNote)}>
-              <div className="day-number">{dayCounter}</div>
-            </a>
-            {btn}
-            {anniversaryNote && (
-              <div className="anniversary-note">{anniversary}</div>
-            )}
-          </>
-        ) : hasNote && dayNotes ? (
-          <>
-            <div className="day-header">
-              {anniversaryNote && (
-                <div className="anniversary-note">{anniversary}</div>
-              )}
-              <a href={notePath} title={getFileName(hasNote)}>
-                <div className="day-number">{dayCounter}</div>
-              </a>
-              {btn}
-            </div>
-            <div className="calendar-icons">
-              {notesOfTheDay}
-            </div>
-          </>
-        ) : dayNotes ? (
-          <>
-            <div className="day-header">
-              {anniversaryNote && (
-                <div className="anniversary-note">{anniversary}</div>
-              )}
-              <div className="day-number">{dayCounter}</div>
-              {btn}
-            </div>
-            <div className="calendar-icons">
-              {notesOfTheDay}
-            </div>
-          </>
-        ) : (
-          <>
+    <div className="day-container">
+      {hasNote && !dayNotes && (
+        <>
+          <a href={notePath} title={getFileName(hasNote)}>
             <div className="day-number">{dayCounter}</div>
-            {anniversaryNote && (
-              <div className="anniversary-note">{anniversary}</div>
-            )}
-            {btn}
-          </>
-        )}
-      </div>
-    </>
+          </a>
+          {btn}
+          {anniversaryNote && (
+            <div className="anniversary-note">{anniversary}</div>
+          )}
+        </>
+      )}
+      {(hasNote && dayNotes) || dayNotes ? (
+        <div className="day-header">
+          {anniversaryNote && (
+            <div className="anniversary-note">{anniversary}</div>
+          )}
+          <a href={hasNote ? notePath : ''} title={hasNote ? getFileName(hasNote) : ''}>
+            <div className="day-number">{dayCounter}</div>
+          </a>
+          {btn}
+        </div>
+      ) : null}
+      {notesOfTheDay && (
+        <div className="calendar-icons">
+          {notesOfTheDay}
+        </div>
+      )}
+    </div>
   );
 }
 
