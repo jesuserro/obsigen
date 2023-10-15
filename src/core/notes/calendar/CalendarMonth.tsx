@@ -116,6 +116,15 @@ function getDayNotes(dayIndex: number, year: number, month: number): TFile[] {
       }
     };
 
+    app.vault.on("delete", (file) => {
+        if (!(file instanceof TFile)) return;
+        
+        if (isNoteRelatedToDay(file, year, month, dayIndex)) {
+            // Llama a handleNoteChange para manejar la eliminación del archivo
+            handleNoteChange(file);
+        }
+    })
+    
     metadataCache.on('changed', handleNoteChange);
 
     return () => {
