@@ -47,8 +47,8 @@ function getCalendarButton(calendarEvent: CalendarEvent, app: App) {
   );
 }
 
-
 function CalendarDay({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes }: CalendarDayProps): JSX.Element {
+
   const app = useApp() as App;
   const calendarEvent = new CalendarEvent(app, year, month, dayCounter);
 
@@ -64,35 +64,57 @@ function CalendarDay({ year, month, dayCounter, hasNote, anniversaryNote, dayNot
   const notesOfTheDay = dayNotes ? dayNotes.map((note, index) => getCalendarEvent(index, note)) : null;
 
   return (
-    <div className="day-container">
-      {hasNote && !dayNotes && (
-        <>
-          <a href={notePath} title={getFileName(hasNote)}>
+    <>
+      <div className="day-container">
+        {hasNote && !dayNotes ? (
+          <>
+            <a href={notePath} title={getFileName(hasNote)}>
+              <div className="day-number">{dayCounter}</div>
+            </a>
+            {btn}
+            {anniversaryNote && (
+              <div className="anniversary-note">{anniversary}</div>
+            )}
+          </>
+        ) : hasNote && dayNotes ? (
+          <>
+            <div className="day-header">
+              {anniversaryNote && (
+                <div className="anniversary-note">{anniversary}</div>
+              )}
+              <a href={notePath} title={getFileName(hasNote)}>
+                <div className="day-number">{dayCounter}</div>
+              </a>
+              {btn}
+            </div>
+            <div className="calendar-icons">
+              {notesOfTheDay}
+            </div>
+          </>
+        ) : dayNotes ? (
+          <>
+            <div className="day-header">
+              {anniversaryNote && (
+                <div className="anniversary-note">{anniversary}</div>
+              )}
+              <div className="day-number">{dayCounter}</div>
+              {btn}
+            </div>
+            <div className="calendar-icons">
+              {notesOfTheDay}
+            </div>
+          </>
+        ) : (
+          <>
             <div className="day-number">{dayCounter}</div>
-          </a>
-          {btn}
-          {anniversaryNote && (
-            <div className="anniversary-note">{anniversary}</div>
-          )}
-        </>
-      )}
-      {(hasNote && dayNotes) || dayNotes ? (
-        <div className="day-header">
-          {anniversaryNote && (
-            <div className="anniversary-note">{anniversary}</div>
-          )}
-          <a href={hasNote ? notePath : ''} title={hasNote ? getFileName(hasNote) : ''}>
-            <div className="day-number">{dayCounter}</div>
-          </a>
-          {btn}
-        </div>
-      ) : null}
-      {notesOfTheDay && (
-        <div className="calendar-icons">
-          {notesOfTheDay}
-        </div>
-      )}
-    </div>
+            {anniversaryNote && (
+              <div className="anniversary-note">{anniversary}</div>
+            )}
+            {btn}
+          </>
+        )}
+      </div>
+    </>
   );
 }
 
