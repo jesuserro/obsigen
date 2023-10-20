@@ -2,7 +2,7 @@ import { ItemView, WorkspaceLeaf } from 'obsidian';
 export const CALENDAR_VIEW_TYPE = 'obsigen-calendar-view';
 export const CONTAINER_ID = "obsigen-calendar-container";
 
-import { CalendarEvent } from './CalendarEvent';
+import { CalendarEvent, FormValues } from './CalendarEvent';
 import CalendarYear from './CalendarYear';
 
 import React from "react";
@@ -34,9 +34,9 @@ export class CalendarView extends ItemView {
     async onOpen() {
         const handleAddEvent = async () => {
             await new CalendarEvent(this.app, this.today.getFullYear(), this.today.getMonth() + 1, this.today.getDate()).openModal()
-            .then((values) => {
+            .then((values: FormValues) => {
                 // Manejar los valores del evento si es necesario
-                console.log(values);
+                // console.log(values);
             })
             .catch((error) => {
                 // Manejar el error si es necesario
