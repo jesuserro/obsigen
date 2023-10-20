@@ -1,7 +1,7 @@
 import { App, TFile } from 'obsidian';
 import { useApp } from 'src/core/hooks/useApp';
 import { Momento } from './../momento/Momento';
-import { CalendarEvent } from './CalendarEvent';
+import { CalendarEvent, FormValues } from './CalendarEvent';
 import { CalendarIcon } from './CalendarIcon';
 
 interface CalendarDayProps {
@@ -52,7 +52,7 @@ const getCalendarButton = (app: App, year: number, month: number, dayCounter: nu
   
   const fnEventForm = async () => {
     await new CalendarEvent(app, year, month, dayCounter).openModal()
-    .then((values) => {
+    .then((values: FormValues) => {
       new Momento(app).createNote(values.title, values.description, values.startDate, values.selectedIcon);
     })
     .catch((error) => {

@@ -1,6 +1,16 @@
 import { App, ButtonComponent, DropdownComponent, Modal, Notice, TextAreaComponent, TextComponent } from "obsidian";
 import { CalendarIcon, iconMap } from "./CalendarIcon";
 
+
+export interface FormValues {
+  title: string;
+  url: string;
+  description: string;
+  startDate: string;
+  endDate: string;
+  selectedIcon: string;
+}
+
 export class CalendarEvent extends Modal {
   private resolve!: (value: FormValues) => void;
   private reject!: (reason?: TemplaterError) => void;
@@ -226,15 +236,6 @@ export class CalendarEvent extends Modal {
   getFormValues(): { title: string; url: string, description: string, startDate: string, endDate: string, selectedIcon: string } {
     return { title: this.title, url: this.url, description: this.description, startDate: this.startDate, endDate: this.endDate, selectedIcon: this.selectedIcon };
   }
-}
-
-interface FormValues {
-  title: string;
-  url: string;
-  description: string;
-  startDate: string;
-  endDate: string;
-  selectedIcon: string;
 }
 
 class TemplaterError extends Error {
