@@ -49,16 +49,22 @@ const getCalendarEvent = (index: number, note: TFile) => {
 };
 
 const getCalendarButton = (app: App, year: number, month: number, dayCounter: number) => {
-  const icon = CalendarIcon.getIcon("add", 14);
-  const form = new CalendarEvent(app, year, month, dayCounter);
-  const fnEvent = async () => {
-    await form.openModal();
-    const values = form.getFormValues();
-    await new Momento(app).createNote(values.title, values.description, values.startDate, values.selectedIcon);
+  
+  const fnEventForm = async () => {
+    await new CalendarEvent(app, year, month, dayCounter).openModal()
+    .then((values) => {
+      new Momento(app).createNote(values.title, values.description, values.startDate, values.selectedIcon);
+    })
+    .catch((error) => {
+      // Manejar el error si es necesario
+      console.log(error);
+    });
   };
 
+  const icon = CalendarIcon.getIcon("add", 14);
+
   return (
-    <div onClick={fnEvent}>
+    <div onClick={fnEventForm}>
       {icon}
     </div>
   );
