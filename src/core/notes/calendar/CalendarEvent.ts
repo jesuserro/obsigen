@@ -36,11 +36,20 @@ export class CalendarEvent extends Modal {
     this.year = year;
     this.month = month;
     this.day = day;
+
+    this.createForm();
   }
   
   onOpen(): void {
     this.titleEl.setText("Nuevo Evento");
-    this.createForm();
+
+    // Restablece los valores de los campos a sus valores iniciales
+    this.title = "";
+    this.url = "";
+    this.description = "";
+    this.startDate = "";
+    this.endDate = "";
+    this.selectedIcon = "default-icon"; // Restablece el valor del icono
   }
   
   onClose(): void {
