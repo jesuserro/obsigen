@@ -48,8 +48,10 @@ const getCalendarEvent = (index: number, note: TFile) => {
   );
 };
 
-const getCalendarButton = (app: App, year: number, month: number, dayCounter: number) => {
+const CalendarDay = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes }: CalendarDayProps) => {
+  const app = useApp() as App;
   
+
   const fnEventForm = async () => {
     await new CalendarEvent(app, year, month, dayCounter).openModal()
     .then((values: FormValues) => {
@@ -63,16 +65,13 @@ const getCalendarButton = (app: App, year: number, month: number, dayCounter: nu
 
   const icon = CalendarIcon.getIcon("add", 14);
 
-  return (
+  const btn = (
     <div onClick={fnEventForm}>
       {icon}
     </div>
   );
-};
 
-const CalendarDay = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes }: CalendarDayProps) => {
-  const app = useApp() as App;
-  const btn = getCalendarButton(app, year, month, dayCounter);
+
   const notePath = hasNote ? `obsidian://open?file=${encodeURIComponent(hasNote)}` : '';
   const anniversary = anniversaryNote ? getCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote) : null;
   const notesOfTheDay = dayNotes ? dayNotes.map((note, index) => getCalendarEvent(generateEventIndex(note), note)) : null;
