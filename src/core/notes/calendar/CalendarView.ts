@@ -32,6 +32,7 @@ export class CalendarView extends ItemView {
     }
 
     async onOpen() {
+        
         const handleAddEvent = async () => {
             await new CalendarEvent(this.app, this.today.getFullYear(), this.today.getMonth() + 1, this.today.getDate()).openModal()
             .then((values: FormValues) => {
@@ -48,7 +49,12 @@ export class CalendarView extends ItemView {
         const button = React.createElement('button', { onClick: handleAddEvent }, 'Add Event');
 
         // Modificar la salida global en el createRoot
-        this.reactComponent = React.createElement(AppContext.Provider, { value: this.app }, button, React.createElement(CalendarYear));
+        this.reactComponent = React.createElement(
+            AppContext.Provider, { value: this.app }, 
+            button, 
+            React.createElement(CalendarYear)
+        );
+
         ReactDOM.createRoot(this.contentEl as HTMLElement).render(this.reactComponent);
     }
 
