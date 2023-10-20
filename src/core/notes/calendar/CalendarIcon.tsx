@@ -7,7 +7,7 @@ import { BsFillCalendar2WeekFill, BsFillCloudRainHeavyFill, BsFillPersonFill, Bs
 import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaPeopleGroup, FaStaffSnake, FaUserDoctor } from 'react-icons/fa6';
-import { GiChurch, GiCommercialAirplane, GiHammerSickle, GiItalia, GiKneeling, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
+import { GiAncientRuins, GiChurch, GiCommercialAirplane, GiHammerSickle, GiItalia, GiKneeling, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
@@ -88,6 +88,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   agriculture: ({ size }) => <IoMdBasket size={size} className="brown" />, 
   agro: ({ size }) => <GiWheat size={size} className="brown" />, 
   amazon: ({ size }) => <FaAmazon size={size} className="orange amazon" />,
+  archeology: ({ size }) => <GiAncientRuins size={size} className="grey" />,
   aws: ({ size }) => <FaAws size={size} className="orange aws" />,
   basketball: ({ size }) => <FaBasketball size={size} className="orange" />,
   beer: ({ size }) => <MdLocalBar size={size} className="yellow" />,
