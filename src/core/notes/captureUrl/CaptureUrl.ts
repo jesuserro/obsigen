@@ -1,21 +1,22 @@
 import { App } from 'obsidian';
-import { NoteGenerator } from '../NoteGenerator';
-
 import { renderToString } from 'react-dom/server';
+import { NoteGenerator } from '../NoteGenerator';
 import { DATA_YAML_DEFAULT } from './../../shared/interface/iYaml';
 import { Yaml } from './../../shared/templates/Yaml';
 
-export class CaptureUrl extends NoteGenerator {
+export class CaptureUrl {
 
   app: App;
   yaml: string;
   title: string;
   content: string;
   fileName: string;
+  noteGenerator: NoteGenerator;
 
   
   constructor(app: App) {
-    super(app);
+    this.app = app;
+    this.noteGenerator = new NoteGenerator(this.app);
   }
 
   getCurrentDateTime() {
@@ -54,7 +55,7 @@ export class CaptureUrl extends NoteGenerator {
     this.setYaml(url);
     this.fileName = this.getFilename(this.title);
     this.setContent(url);
-    await super.createNote(this.fileName, this.content, `000 Inbox/Captures`);
+    await this.noteGenerator.createNote(this.fileName, this.content, `000 Inbox/Captures`);
   }
 
   setContent(url: string): void {

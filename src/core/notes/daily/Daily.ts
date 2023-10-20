@@ -6,8 +6,10 @@ import { DATA_YAML_DEFAULT } from './../../shared/interface/iYaml';
 import { Yaml } from './../../shared/templates/Yaml';
 
 
-export class Daily extends NoteGenerator {
+export class Daily {
   app: App;
+  noteGenerator: NoteGenerator;
+
   yaml: string;
   title: string;
   subheader: string;
@@ -15,7 +17,8 @@ export class Daily extends NoteGenerator {
   fileName: string;
 
   constructor(app: App) {
-    super(app);
+    this.app = app;
+    this.noteGenerator = new NoteGenerator(this.app);
   }
 
   getTitle() {
@@ -65,7 +68,7 @@ export class Daily extends NoteGenerator {
     this.setContent();
     const now = new Date();
     const year = now.getFullYear().toString();
-    await super.createNote(this.fileName, this.content, `100 Calendar/Daily/${year}`);
+    await this.noteGenerator.createNote(this.fileName, this.content, `100 Calendar/Daily/${year}`);
   }
 
   setContent(): void {

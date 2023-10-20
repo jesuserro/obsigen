@@ -5,18 +5,20 @@ import { renderToString } from 'react-dom/server';
 import { DATA_YAML_DEFAULT } from './../../shared/interface/iYaml';
 import { Yaml } from './../../shared/templates/Yaml';
 
-export class Aniversario extends NoteGenerator {
+export class Aniversario {
 
   app: App;
+  noteGenerator: NoteGenerator;
+  
   yaml: string;
   title: string;
   subheader: string;
   content: string;
   fileName: string;
   
-  
   constructor(app: App) {
-    super(app);
+    this.app = app;
+    this.noteGenerator = new NoteGenerator(this.app);
   }
 
   getCurrentDate() {
@@ -54,7 +56,7 @@ export class Aniversario extends NoteGenerator {
     this.setContent();
     const now = new Date();
     const month = (now.getMonth() + 1).toString().padStart(2, '0');
-    await super.createNote(this.fileName, this.content, `100 Calendar/Aniversaries/${month}`);
+    await this.noteGenerator.createNote(this.fileName, this.content, `100 Calendar/Aniversaries/${month}`);
   }
 
   setContent(): void {
