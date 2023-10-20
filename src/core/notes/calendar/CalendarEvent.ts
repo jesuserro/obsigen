@@ -1,4 +1,5 @@
 import { App, ButtonComponent, DropdownComponent, Modal, Notice, TextAreaComponent, TextComponent } from "obsidian";
+import { Momento } from "./../../notes/momento/Momento";
 import { CalendarIcon, iconMap } from "./CalendarIcon";
 
 
@@ -141,7 +142,7 @@ export class CalendarEvent extends Modal {
     const submitButton = new ButtonComponent(buttonDiv);
     submitButton.buttonEl.addClass("form-submit-button");
     submitButton.setButtonText("Submit").onClick((evt: Event) => {
-      this.resolveAndClose(evt);
+      this.onSubmit(evt);
     });
   }   
 
@@ -180,42 +181,6 @@ export class CalendarEvent extends Modal {
     this.minuteDropdown.setValue(currentMinute.toString());
   }
   
-  private resolveAndClose(evt: Event) {
-    this.submitted = true;
-    evt.preventDefault();
-
-    // Formatea startDate en el formato "YYYY-MM-DD"
-    const selectedYear = this.yearDropdown.getValue();
-    const selectedMonth = this.monthDropdown.getValue();
-    const selectedDay = this.dayDropdown.getValue();
-    const selectedHour = this.hourDropdown.getValue();
-    const selectedMinute = this.minuteDropdown.getValue();
-
-    // Format the time as HH:MM
-    const selectedTime = `${selectedHour.padStart(2, '0')}:${selectedMinute.padStart(2, '0')}`;
-    
-    this.startDate = `${selectedYear}-${selectedMonth.padStart(2, '0')}-${selectedDay.padStart(2, '0')} ${selectedTime}`;
-
-    const formValues: FormValues = {
-      title: this.title.trim(),
-      url: this.url.trim(),
-      description: this.description.trim(),
-      startDate: this.startDate,
-      endDate: this.endDate.trim(),
-      selectedIcon: this.selectedIcon,
-    };
-
-    const validationError = this.validateForm(formValues);
-    if (validationError) {
-      new Notice(validationError);
-      return;
-    }
-
-    // Validation passed, resolve the values
-    this.resolve(formValues);
-    this.close();
-  }
-  
   private validateForm(formValues: FormValues): string | null {
     // Implement your validation logic here for the new fields
     // Example: Check if the start date is before the end date, validate URL, etc.
@@ -235,6 +200,48 @@ export class CalendarEvent extends Modal {
 
   getFormValues(): { title: string; url: string, description: string, startDate: string, endDate: string, selectedIcon: string } {
     return { title: this.title, url: this.url, description: this.description, startDate: this.startDate, endDate: this.endDate, selectedIcon: this.selectedIcon };
+  }
+
+  // Agrega un método para manejar la acción cuando se presiona el botón "Submit"
+  private onSubmit(evt: Event) {
+    this.submitted = true;
+    evt.preventDefault();
+
+    // Recoge los valores del formulario
+    const selectedYear = this.yearDropdown.getValue();
+    const selectedMonth = this.monthDropdown.getValue();
+    const selectedDay = this.dayDropdown.getValue();
+    const selectedHour = this.hourDropdown.getValue();
+    const selectedMinute = this.minuteDropdown.getValue();
+
+    const selectedTime = `${selectedHour.padStart(2, '0')}:${selectedMinute.padStart(2, '0')}`;
+    
+    const startDate = `${selectedYear}-${selectedMonth.padStart(2, '0')}-${selectedDay.padStart(2, '0')} ${selectedTime}`;
+
+    const formValues: FormValues = {
+      title: this.title.trim(),
+      url: this.url.trim(),
+      description: this.description.trim(),
+      startDate: startDate,
+      endDate: this.endDate.trim(),
+      selectedIcon: this.selectedIcon,
+    };
+
+    // Validar los valores del formulario aquí, si es necesario
+    const validationError = this.validateForm(formValues);
+    if (validationError) {
+      new Notice(validationError);
+      return;
+    }
+
+    // Validation passed, resolve the values
+    this.resolve(formValues);
+  
+    // Llamar a Momento con los valores del formulario y la variable "app"
+    new Momento(this.app).createNote(formValues.title, formValues.description, formValues.startDate, formValues.selectedIcon);
+
+    // Cerrar el modal
+    this.close();
   }
 }
 
