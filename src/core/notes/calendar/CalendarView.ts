@@ -2,6 +2,7 @@ import { ItemView, WorkspaceLeaf } from 'obsidian';
 export const CALENDAR_VIEW_TYPE = 'obsigen-calendar-view';
 export const CONTAINER_ID = "obsigen-calendar-container";
 
+import { CalendarEvent } from './CalendarEvent';
 import CalendarYear from './CalendarYear';
 
 import React from "react";
@@ -11,9 +12,11 @@ import { AppContext } from './../../shared/appContext';
 
 export class CalendarView extends ItemView {
     private reactComponent: React.ReactElement;
+    private today: Date;
 
     constructor(leaf: WorkspaceLeaf) {
         super(leaf);
+        this.today = new Date();
     }
 
     getViewType(): string {
@@ -29,9 +32,24 @@ export class CalendarView extends ItemView {
     }
 
     async onOpen() {
-        this.reactComponent = React.createElement(AppContext.Provider, { value: this.app }, React.createElement(CalendarYear));
+        const handleAddEvent = async () => {
+            await new CalendarEvent(this.app, this.today.getFullYear(), this.today.getMonth() + 1, this.today.getDate()).openModal()
+            .then((values) => {
+                // Manejar los valores del evento si es necesario
+                console.log(values);
+            })
+            .catch((error) => {
+                // Manejar el error si es necesario
+                console.error(error);
+            });
+        };
+
+        // Crear el botón y agregar el evento onClick
+        const button = React.createElement('button', { onClick: handleAddEvent }, 'Add Event');
+
+        // Modificar la salida global en el createRoot
+        this.reactComponent = React.createElement(AppContext.Provider, { value: this.app }, button, React.createElement(CalendarYear));
         ReactDOM.createRoot(this.contentEl as HTMLElement).render(this.reactComponent);
-        // this.contentEl.id = CONTAINER_ID;
     }
 
 }
