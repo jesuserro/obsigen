@@ -134,7 +134,6 @@ export class CalendarEvent extends Modal {
 
   private initializeDropdowns() {
     // Configura los DropdownComponent para año, mes y día
-    const currentYear = new Date().getFullYear();
     for (let i = 1974; i <= 2050; i++) {
       this.yearDropdown.addOption(i.toString(), i.toString());
     }
