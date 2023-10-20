@@ -17,6 +17,8 @@ export class CalendarEvent extends Modal {
   private selectedIcon: string;
 
   // Nuevos campos de selección para año, mes y día
+  private titleField: TextComponent;
+  private descriptionTextarea: TextAreaComponent;
   private yearDropdown: DropdownComponent;
   private monthDropdown: DropdownComponent;
   private dayDropdown: DropdownComponent;
@@ -26,12 +28,6 @@ export class CalendarEvent extends Modal {
   
   constructor(app: App, year:number, month:number, day:number) {
     super(app);
-    this.title = "";
-    this.url = "";
-    this.description = "";
-    this.startDate = "";
-    this.endDate = "";
-    this.selectedIcon = "default-icon"; // Default icon value
     
     this.year = year;
     this.month = month;
@@ -43,13 +39,8 @@ export class CalendarEvent extends Modal {
   onOpen(): void {
     this.titleEl.setText("Nuevo Evento");
 
-    // Restablece los valores de los campos a sus valores iniciales
-    this.title = "";
-    this.url = "";
-    this.description = "";
-    this.startDate = "";
-    this.endDate = "";
-    this.selectedIcon = "default-icon"; // Restablece el valor del icono
+    this.resetValues();
+
   }
   
   onClose(): void {
@@ -57,6 +48,19 @@ export class CalendarEvent extends Modal {
       new Notice("Cancelled prompt");
       return;
     }
+  }
+
+  resetValues() {
+    this.title = "";
+    this.url = "";
+    this.description = "";
+    this.startDate = "";
+    this.endDate = "";
+    this.selectedIcon = "default-icon"; // Restablece el valor del icono
+
+    this.titleField.setValue(this.title);
+    this.descriptionTextarea.setValue(this.description);
+    this.iconDropdown.setValue(this.selectedIcon);
   }
   
   createForm(): void {
@@ -66,11 +70,11 @@ export class CalendarEvent extends Modal {
     const titleDiv = div.createDiv("form-element");
     const titleLabel = titleDiv.createEl("label", { cls: "form-label" });
     titleLabel.setText("Title");
-    const titleField = new TextComponent(titleDiv);
-    titleField.inputEl.addClass("form-input");
-    titleField.setPlaceholder("Type title here");
-    titleField.setValue(this.title);
-    titleField.onChange((value) => (this.title = value));
+    this.titleField = new TextComponent(titleDiv);
+    this.titleField.inputEl.addClass("form-input");
+    this.titleField.setPlaceholder("Type title here");
+    this.titleField.setValue(this.title);
+    this.titleField.onChange((value) => (this.title = value));
   
     // Fieldset for year, month, and day dropdowns
     const dateFieldset = div.createEl("fieldset", { cls: "date-fieldset" });
@@ -117,11 +121,11 @@ export class CalendarEvent extends Modal {
     const descriptionDiv = div.createDiv("form-element");
     const descriptionLabel = descriptionDiv.createEl("label", { cls: "form-label" });
     descriptionLabel.setText("Description");
-    const descriptionTextarea = new TextAreaComponent(descriptionDiv);
-    descriptionTextarea.inputEl.addClass("form-input");
-    descriptionTextarea.setPlaceholder("Type description here");
-    descriptionTextarea.setValue(this.description);
-    descriptionTextarea.onChange((value) => (this.description = value));
+    this.descriptionTextarea = new TextAreaComponent(descriptionDiv);
+    this.descriptionTextarea.inputEl.addClass("form-input");
+    this.descriptionTextarea.setPlaceholder("Type description here");
+    this.descriptionTextarea.setValue(this.description);
+    this.descriptionTextarea.onChange((value) => (this.description = value));
   
     // Submit button aligned to the right horizontally
     const buttonDiv = div.createDiv("form-button-container");
