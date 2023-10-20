@@ -6,6 +6,7 @@ import CalendarDay from './CalendarDay';
 interface CalendarMonthProps {
   year: number;
   month: number;
+  files: TFile[];
 }
 
 function getFirstDayOfMonth(year: number, month: number): Date {
@@ -24,9 +25,8 @@ function calculateNumRows(numDaysInMonth: number, dayOffset: number): number {
   return Math.ceil((numDaysInMonth + dayOffset) / 7);
 }
 
-function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: number, year: number, month:number): JSX.Element[] {
-  const app = useApp() as App;
-  const files = app?.vault.getMarkdownFiles() || [];
+function createDaysGrid(numRows: number, numDaysInMonth: number, dayOffset: number, year: number, month:number, files: TFile[]): JSX.Element[] {
+  
   const daysGrid = [];
 
   for (let row = 0; row < numRows; row++) {
@@ -195,14 +195,16 @@ function getDailyNote(dayIndex: number, files: TFile[], year: number, month:numb
   return false;
 }
 
-function CalendarMonth({year, month}: CalendarMonthProps): JSX.Element {
+function CalendarMonth({ year, month, files }: CalendarMonthProps): JSX.Element {
+  
   const firstDayOfMonth = getFirstDayOfMonth(year, month);
   const lastDayOfMonth = getLastDayOfMonth(year, month);
   const numDaysInMonth = lastDayOfMonth.getDate();
   const firstDayOfWeek = firstDayOfMonth.getDay(); // 0 for Sunday, 1 for Monday, etc.
   const dayOffset = getDayOffset(firstDayOfWeek);
   const numRows = calculateNumRows(numDaysInMonth, dayOffset);
-  const daysGrid = createDaysGrid(numRows, numDaysInMonth, dayOffset, year, month);
+
+  const daysGrid = createDaysGrid(numRows, numDaysInMonth, dayOffset, year, month, files);
 
   let monthNameAndYear = `${firstDayOfMonth.toLocaleString('default', { month: 'long' })} ${year}`;
   monthNameAndYear = monthNameAndYear.charAt(0).toUpperCase() + monthNameAndYear.slice(1);
