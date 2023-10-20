@@ -231,6 +231,8 @@ export class CalendarEvent extends Modal {
     const validationError = this.validateForm(formValues);
     if (validationError) {
       new Notice(validationError);
+      this.submitted = false;
+      this.close();
       return;
     }
 
