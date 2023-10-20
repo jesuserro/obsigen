@@ -40,7 +40,6 @@ export class CalendarEvent extends Modal {
     this.titleEl.setText("Nuevo Evento");
 
     this.resetValues();
-
   }
   
   onClose(): void {
@@ -56,7 +55,7 @@ export class CalendarEvent extends Modal {
     this.description = "";
     this.startDate = "";
     this.endDate = "";
-    this.selectedIcon = "default-icon"; // Restablece el valor del icono
+    this.selectedIcon = "default-icon"; 
 
     this.titleField.setValue(this.title);
     this.descriptionTextarea.setValue(this.description);
