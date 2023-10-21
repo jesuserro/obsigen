@@ -66,7 +66,7 @@ function createDaysGrid(app:App, metadataCache: MetadataCache, files: TFile[], n
 function isNoteRelatedToDay(note: TFile, year: number, month: number, dayCounter: number): boolean {
   // Construye la ruta esperada para la nota del día actual
   const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayCounter).padStart(2, '0')}`;
-  return note.path.contains(`/${dayDate}`);
+  return note.path.includes(`/${dayDate}`);
 }
 
 function createDayState(file: TFile, year: number, month: number, day: number, cssclasses: []) {
@@ -193,11 +193,19 @@ function CalendarMonth({ year, month }: CalendarMonthProps): JSX.Element {
   const metadataCache = app.metadataCache;
   const files = app?.vault.getMarkdownFiles();
   month = month + 1;
+  
+
   const monthStr = month < 10 ? '0' + month : month.toString();
   const filteredFiles = files.filter((file) => {
-    return file.path.contains(`/${year}${monthStr}`);
+    const eventDate = metadataCache.getFileCache(file)?.frontmatter?.date;
+    if (typeof eventDate === 'string' && eventDate.includes(monthStr)) {
+      return true;
+    }
   });
   // console.log(month, filteredFiles.length);
+
+  
+
 
   month = month -1;
 
