@@ -193,7 +193,6 @@ function CalendarMonth({ year, month }: CalendarMonthProps): JSX.Element {
   const metadataCache = app.metadataCache;
   const files = app?.vault.getMarkdownFiles();
   month = month + 1;
-  
 
   const monthStr = month < 10 ? '0' + month : month.toString();
   const filteredFiles = files.filter((file) => {
@@ -201,11 +200,9 @@ function CalendarMonth({ year, month }: CalendarMonthProps): JSX.Element {
     if (typeof eventDate === 'string' && eventDate.includes(monthStr)) {
       return true;
     }
+    return false;
   });
   // console.log(month, filteredFiles.length);
-
-  
-
 
   month = month -1;
 
