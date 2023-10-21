@@ -6,7 +6,6 @@ import CalendarDay from './CalendarDay';
 interface CalendarMonthProps {
   year: number;
   month: number;
-  files: TFile[];
 }
 
 function getFirstDayOfMonth(year: number, month: number): Date {
@@ -193,11 +192,10 @@ function getDailyNote(dayIndex: number, files: TFile[], year: number, month:numb
   return false;
 }
 
-function CalendarMonth({ year, month, files }: CalendarMonthProps): JSX.Element {
+function CalendarMonth({ year, month }: CalendarMonthProps): JSX.Element {
   const app = useApp() as App;
   const metadataCache = app.metadataCache;
-
-  files = app?.vault.getMarkdownFiles() || [];
+  const files = app?.vault.getMarkdownFiles() || [];
 
   const firstDayOfMonth = getFirstDayOfMonth(year, month);
   const lastDayOfMonth = getLastDayOfMonth(year, month);
