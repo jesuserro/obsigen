@@ -13,7 +13,7 @@ function getFirstDayOfMonth(year: number, month: number): Date {
 }
 
 function getLastDayOfMonth(year: number, month: number): Date {
-  return new Date(year, month + 1, 0);
+  return new Date(year, month, 0);
 }
 
 function getDayOffset(dayOfWeek: number): number {
@@ -43,7 +43,7 @@ function createDaysGrid(app:App, metadataCache: MetadataCache, files: TFile[], n
           {dayIndex > 0 && dayIndex <= numDaysInMonth ? (
             <CalendarDay
               year = {year}
-              month = {month + 1}
+              month = {month}
               dayCounter={dayIndex}
               hasNote={hasNote}
               anniversaryNote={anniversaryNote} 
@@ -80,8 +80,7 @@ function createDayState(file: TFile, year: number, month: number, day: number, c
 }
 
 function getDayNotes(app: App, metadataCache: MetadataCache, files: TFile[], dayIndex: number, year: number, month: number): TFile[] {
-  month = month + 1;
-
+  
   const dayDateDashed = `${year}-${String(month).padStart(2, '0')}-${String(dayIndex).padStart(2, '0')}`;
   
   // const files = app?.vault.getMarkdownFiles() || [];
@@ -117,8 +116,8 @@ function getDayNotes(app: App, metadataCache: MetadataCache, files: TFile[], day
         if (!(file instanceof TFile)) return;
         
         if (isNoteRelatedToDay(file, year, month, dayIndex)) {
-            // Llama a handleNoteChange para manejar la eliminación del archivo
-            handleNoteChange(file);
+          // Llama a handleNoteChange para manejar la eliminación del archivo
+          handleNoteChange(file);
         }
     })
     
@@ -171,15 +170,12 @@ function isDayState(obj: TFile | { year: number; month: number; day: number; css
 
 // Nueva función para obtener la nota de aniversario
 function getAnniversaryNote(dayIndex: number, files: TFile[], year: number, month: number): TFile | undefined {
-  month = month + 1;
   const anniversaryPath = `/Aniversaries/${String(month).padStart(2, '0')}/${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}.md`;
   return files.find(file => file.path.includes(anniversaryPath));
 }
 
 function getDailyNote(dayIndex: number, files: TFile[], year: number, month:number): string | false {
   
-  month = month + 1;
-
   const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}`;
   const notePath = `100 Calendar/Daily/${year}/${dayDate}.md`;
 
@@ -195,7 +191,15 @@ function getDailyNote(dayIndex: number, files: TFile[], year: number, month:numb
 function CalendarMonth({ year, month }: CalendarMonthProps): JSX.Element {
   const app = useApp() as App;
   const metadataCache = app.metadataCache;
-  const files = app?.vault.getMarkdownFiles() || [];
+  const files = app?.vault.getMarkdownFiles();
+  month = month + 1;
+  const monthStr = month < 10 ? '0' + month : month.toString();
+  const filteredFiles = files.filter((file) => {
+    return file.path.contains(`/${year}${monthStr}`);
+  });
+  // console.log(month, filteredFiles.length);
+
+  month = month -1;
 
   const firstDayOfMonth = getFirstDayOfMonth(year, month);
   const lastDayOfMonth = getLastDayOfMonth(year, month);
@@ -204,7 +208,7 @@ function CalendarMonth({ year, month }: CalendarMonthProps): JSX.Element {
   const dayOffset = getDayOffset(firstDayOfWeek);
   const numRows = calculateNumRows(numDaysInMonth, dayOffset);
 
-  const daysGrid = createDaysGrid(app, metadataCache, files, numRows, numDaysInMonth, dayOffset, year, month);
+  const daysGrid = createDaysGrid(app, metadataCache, filteredFiles, numRows, numDaysInMonth, dayOffset, year, month +1 );
 
   let monthNameAndYear = `${firstDayOfMonth.toLocaleString('default', { month: 'long' })} ${year}`;
   monthNameAndYear = monthNameAndYear.charAt(0).toUpperCase() + monthNameAndYear.slice(1);
