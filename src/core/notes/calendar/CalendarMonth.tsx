@@ -202,7 +202,6 @@ function CalendarMonth({ year, month }: CalendarMonthProps): JSX.Element {
     if (typeof eventDate === 'string' && eventDate.includes(dateStr)) {
       return true;
     }
-    return false;
   });
   // console.log(month, filteredFiles.length);
 
