@@ -1,4 +1,4 @@
-import { App, TFile } from 'obsidian';
+import { App, MetadataCache, TFile } from 'obsidian';
 import { useEffect, useState } from 'react';
 import { useApp } from './../../hooks/useApp';
 import CalendarDay from './CalendarDay';
@@ -25,7 +25,7 @@ function calculateNumRows(numDaysInMonth: number, dayOffset: number): number {
   return Math.ceil((numDaysInMonth + dayOffset) / 7);
 }
 
-function createDaysGrid(app:App, numRows: number, numDaysInMonth: number, dayOffset: number, year: number, month:number, files: TFile[]): JSX.Element[] {
+function createDaysGrid(app:App, metadataCache: MetadataCache, numRows: number, numDaysInMonth: number, dayOffset: number, year: number, month:number, files: TFile[]): JSX.Element[] {
   
   const daysGrid = [];
 
@@ -48,7 +48,7 @@ function createDaysGrid(app:App, numRows: number, numDaysInMonth: number, dayOff
               dayCounter={dayIndex}
               hasNote={hasNote}
               anniversaryNote={anniversaryNote} 
-              dayNotes={getDayNotes(app, dayIndex, year, month)}
+              dayNotes={getDayNotes(app, metadataCache, dayIndex, year, month)}
             />
           ) : (
             <span className="empty-day">{''}</span>
@@ -80,13 +80,11 @@ function createDayState(file: TFile, year: number, month: number, day: number, c
   };
 }
 
-function getDayNotes(app: App, dayIndex: number, year: number, month: number): TFile[] {
+function getDayNotes(app: App, metadataCache: MetadataCache, dayIndex: number, year: number, month: number): TFile[] {
   month = month + 1;
 
   const dayDateDashed = `${year}-${String(month).padStart(2, '0')}-${String(dayIndex).padStart(2, '0')}`;
   
-  // const app = useApp() as App;
-  const metadataCache = app.metadataCache;
   const files = app?.vault.getMarkdownFiles() || [];
 
   const [dayStates, setDayStates] = useState<({ file:TFile, year: number; month: number; day: number; cssclasses: [] })[]>([]);
@@ -197,6 +195,7 @@ function getDailyNote(dayIndex: number, files: TFile[], year: number, month:numb
 
 function CalendarMonth({ year, month, files }: CalendarMonthProps): JSX.Element {
   const app = useApp() as App;
+  const metadataCache = app.metadataCache;
 
   const firstDayOfMonth = getFirstDayOfMonth(year, month);
   const lastDayOfMonth = getLastDayOfMonth(year, month);
@@ -205,7 +204,7 @@ function CalendarMonth({ year, month, files }: CalendarMonthProps): JSX.Element 
   const dayOffset = getDayOffset(firstDayOfWeek);
   const numRows = calculateNumRows(numDaysInMonth, dayOffset);
 
-  const daysGrid = createDaysGrid(app, numRows, numDaysInMonth, dayOffset, year, month, files);
+  const daysGrid = createDaysGrid(app, metadataCache, numRows, numDaysInMonth, dayOffset, year, month, files);
 
   let monthNameAndYear = `${firstDayOfMonth.toLocaleString('default', { month: 'long' })} ${year}`;
   monthNameAndYear = monthNameAndYear.charAt(0).toUpperCase() + monthNameAndYear.slice(1);
