@@ -8,7 +8,9 @@ pngFiles.forEach((file) => {
   if (file.endsWith('.png')) {
     const data = fs.readFileSync(`src/assets/icons/${file}`, 'base64');
     const dataUrl = `data:image/png;base64,${data}`;
-    privateDataUrls[file] = dataUrl;
+    // Elimina la extensión .png de la clave en el objeto privateDataUrls
+    const key = file.replace('.png', '');
+    privateDataUrls[key] = dataUrl;
   }
 });
 
@@ -16,4 +18,3 @@ pngFiles.forEach((file) => {
 fs.writeFileSync('src/assets/icons/dataurls.json', JSON.stringify(privateDataUrls));
 
 export default privateDataUrls;
-

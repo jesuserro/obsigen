@@ -1,11 +1,13 @@
+
 interface AchelmProps {
   size: number;
   className?: string;
 }
 
-function Achelm({ size, className }: AchelmProps) {
+import dataUrls from './../../assets/icons/dataurls.json'; // Importa el archivo JSON
 
-  const dataUrl = require('./../../assets/icons/dataurls.json')['Achelm.png'];
+function Achelm({ size, className }: AchelmProps) {
+  const dataUrl = dataUrls['Achelm']; // Accede al dato del archivo JSON
 
   return (
     <img
@@ -19,3 +21,4 @@ function Achelm({ size, className }: AchelmProps) {
 }
 
 export default Achelm;
+
