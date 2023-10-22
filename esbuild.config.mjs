@@ -44,8 +44,8 @@ const context = await esbuild.context({
   logLevel: "info",
   sourcemap: prod ? false : "inline",
   treeShaking: true,
-  outfile: `${outputDir}/main.js`,
-  // outdir: `${outputDir}`,
+  // outfile: `${outputDir}/main.js`,
+  outdir: `${outputDir}`,
   plugins: [
     copy({
       assets: [

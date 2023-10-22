@@ -23,4 +23,5 @@ data.json
 
 .history
 
+src/assets/icons/dataurls.json
 src/assets/icons/*.png

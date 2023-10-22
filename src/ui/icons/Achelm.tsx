@@ -1,4 +1,3 @@
-
 interface AchelmProps {
   size: number;
   className?: string;
@@ -6,11 +5,11 @@ interface AchelmProps {
 
 function Achelm({ size, className }: AchelmProps) {
 
-  const src = require('./../../assets/icons/Achelm.png');
+  const dataUrl = require('./../../assets/icons/dataurls.json')['Achelm.png'];
 
   return (
     <img
-      src={src}
+      src={dataUrl}
       alt="Achelm"
       width={size}
       height={size}
