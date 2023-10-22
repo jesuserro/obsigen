@@ -17,6 +17,8 @@ import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircle
 import { SiTinder as IconoTinder, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { TbZzz } from 'react-icons/tb';
 
+import Achelm from './../../../ui/icons/Achelm';
+
 export class CalendarIcon {
   
   static getIcon(key: string, size: number): React.ReactNode | null {
@@ -83,6 +85,7 @@ export class CalendarIcon {
 }
 
 export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
+  achelm: ({ size }) => <Achelm size={size} className="pink" />,
   add: ({ size }) => <MdOutlineAddCircle size={size} className="green" />,
   agenda2030: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
   agriculture: ({ size }) => <IoMdBasket size={size} className="brown" />, 

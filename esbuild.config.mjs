@@ -51,13 +51,14 @@ const context = await esbuild.context({
       assets: [
         { from: 'manifest.json', to: `${outputDir}/manifest.json` }, // Copiamos manifest.json a la carpeta de salida
         { from: 'src/styles.css', to: `${outputDir}/styles.css` }, // Copiamos styles.css a la carpeta de salida
-        { from: 'src/assets/icons', to: `${outputDir}/icons` },
+        { from: 'src/assets/icons', to: `${outputDir}/assets/icons` },
       ],
     }),
     sassPlugin()
   ],
   loader: {
     '.svg': 'file',
+    '.png': 'dataurl'
     // '.scss': sass()
   },
 });
