@@ -1,4 +1,4 @@
-import dataUrls from './../../assets/icons/dataurls.json';
+import dataUrls from '../../assets/icons/dataurls';
 
 interface AchelmProps {
   size: number;
@@ -6,6 +6,8 @@ interface AchelmProps {
 }
 
 function Achelm({ size, className }: AchelmProps) {
+  
+  // const dataUrls = require('./../../assets/icons/dataurls');
   const dataUrl = dataUrls['Achelm']; 
 
   return (
@@ -18,6 +20,7 @@ function Achelm({ size, className }: AchelmProps) {
     />
   );
 }
+
 
 export default Achelm;
 
