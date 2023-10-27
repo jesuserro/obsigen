@@ -199,11 +199,14 @@ function CalendarMonth({ year, month }: CalendarMonthProps): JSX.Element {
 
   const filteredFiles = files.filter((file) => {
     const eventDate = metadataCache.getFileCache(file)?.frontmatter?.date;
-    if (typeof eventDate === 'string' && eventDate.includes(dateStr)) {
+    
+    const anniversaryPath = `/Aniversaries/${String(month).padStart(2, '0')}`;
+    
+    if (typeof eventDate === 'string' && (eventDate.includes(dateStr)) || file.path.includes(anniversaryPath)) {
       return true;
     }
   });
-  // console.log(month, filteredFiles.length);
+  console.log(month, filteredFiles.length);
 
   month = month -1;
 
