@@ -206,7 +206,7 @@ function CalendarMonth({ year, month }: CalendarMonthProps): JSX.Element {
       return true;
     }
   });
-  console.log(month, filteredFiles.length);
+  // console.log(month, filteredFiles.length);
 
   month = month -1;
 
