@@ -47,12 +47,14 @@ export class CalendarView extends ItemView {
 
         // Crear el botón y agregar el evento onClick
         const button = React.createElement('button', { onClick: handleAddEvent }, 'Add Event');
-
+        
+        const currentYear = new Date().getFullYear();
+        
         // Modificar la salida global en el createRoot
         this.reactComponent = React.createElement(
             AppContext.Provider, { value: this.app }, 
             button, 
-            React.createElement(CalendarYear)
+            React.createElement(CalendarYear, { year: currentYear })
         );
 
         ReactDOM.createRoot(this.contentEl as HTMLElement).render(this.reactComponent);
