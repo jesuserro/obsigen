@@ -208,16 +208,14 @@ function CalendarMonth({ year, month }: CalendarMonthProps): JSX.Element {
   });
   // console.log(month, filteredFiles.length);
 
-  month = month -1;
-
-  const firstDayOfMonth = getFirstDayOfMonth(year, month);
-  const lastDayOfMonth = getLastDayOfMonth(year, month);
+  const firstDayOfMonth = getFirstDayOfMonth(year, month - 1);
+  const lastDayOfMonth = getLastDayOfMonth(year, month - 1);
   const numDaysInMonth = lastDayOfMonth.getDate();
   const firstDayOfWeek = firstDayOfMonth.getDay(); // 0 for Sunday, 1 for Monday, etc.
   const dayOffset = getDayOffset(firstDayOfWeek);
   const numRows = calculateNumRows(numDaysInMonth, dayOffset);
 
-  const daysGrid = createDaysGrid(app, metadataCache, filteredFiles, numRows, numDaysInMonth, dayOffset, year, month +1 );
+  const daysGrid = createDaysGrid(app, metadataCache, filteredFiles, numRows, numDaysInMonth, dayOffset, year, month );
 
   let monthNameAndYear = `${firstDayOfMonth.toLocaleString('default', { month: 'long' })} ${year}`;
   monthNameAndYear = monthNameAndYear.charAt(0).toUpperCase() + monthNameAndYear.slice(1);
