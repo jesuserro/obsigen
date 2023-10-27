@@ -8,15 +8,21 @@ import CalendarYear from './CalendarYear';
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { AppContext } from './../../shared/appContext';
-
+import YearSelect from './YearSelect';
 
 export class CalendarView extends ItemView {
     private reactComponent: React.ReactElement;
     private today: Date;
+    private currentYear: number;
+    private selectElement: HTMLSelectElement; 
+    private root: ReactDOM.Root;
 
     constructor(leaf: WorkspaceLeaf) {
         super(leaf);
         this.today = new Date();
+        this.currentYear = this.today.getFullYear();
+        // Inicializa this.root con createRoot en el contenedor adecuado
+        this.root = ReactDOM.createRoot(this.contentEl as HTMLElement);
     }
 
     getViewType(): string {
@@ -44,20 +50,31 @@ export class CalendarView extends ItemView {
                 console.error(error);
             });
         };
-
-        // Crear el botón y agregar el evento onClick
         const button = React.createElement('button', { onClick: handleAddEvent }, 'Add Event');
         
-        const currentYear = new Date().getFullYear();
-        
+
+        const handleYearChange = (selectedYear: number) => {
+            this.currentYear = selectedYear; // Actualizar el año seleccionado
+            
+            this.reactComponent = React.createElement(
+                AppContext.Provider, { value: this.app }, 
+                button, 
+                React.createElement('div', null, React.createElement(YearSelect, { currentYear: this.currentYear, onChange: handleYearChange })),
+                React.createElement(CalendarYear, { year: this.currentYear })
+            );
+            // Renderizar el contenido principal utilizando this.root.render
+            this.root.render(this.reactComponent);
+        };
+    
         // Modificar la salida global en el createRoot
         this.reactComponent = React.createElement(
             AppContext.Provider, { value: this.app }, 
             button, 
-            React.createElement(CalendarYear, { year: currentYear })
+            React.createElement('div', null, React.createElement(YearSelect, { currentYear: this.currentYear, onChange: handleYearChange })),
+            React.createElement(CalendarYear, { year: this.currentYear })
         );
-
-        ReactDOM.createRoot(this.contentEl as HTMLElement).render(this.reactComponent);
+        // Renderizar el contenido principal utilizando this.root.render
+        this.root.render(this.reactComponent);
     }
 
 }
