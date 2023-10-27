@@ -36,7 +36,7 @@ function createDaysGrid(app:App, metadataCache: MetadataCache, files: TFile[], n
       const isWithinMonth = dayIndex >= 1 && dayIndex <= numDaysInMonth;
 
       const hasNote = getDailyNote(dayIndex, files, year, month);
-      const anniversaryNote = getAnniversaryNote(dayIndex, files, year, month);
+      const anniversaryNote = getAnniversaryNote(dayIndex, files, month);
 
       cells.push(
         <td key={dayOfWeek} className={isWithinMonth ? 'within-month' : 'outside-month'}>
@@ -169,7 +169,7 @@ function isDayState(obj: TFile | { year: number; month: number; day: number; css
 }
 
 // Nueva función para obtener la nota de aniversario
-function getAnniversaryNote(dayIndex: number, files: TFile[], year: number, month: number): TFile | undefined {
+function getAnniversaryNote(dayIndex: number, files: TFile[], month: number): TFile | undefined {
   const anniversaryPath = `/Aniversaries/${String(month).padStart(2, '0')}/${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}.md`;
   return files.find(file => file.path.includes(anniversaryPath));
 }
