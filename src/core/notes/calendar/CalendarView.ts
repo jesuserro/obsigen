@@ -45,13 +45,11 @@ export class CalendarView extends ItemView {
     this.reactComponent = React.createElement(
       AppContext.Provider,
       { value: this.app },
-      React.createElement('div', { className: 'header-container' }, // Agrega un div para el encabezado
       React.createElement(CalendarHeader, {
         currentYear: this.currentYear,
         onAddEvent: this.handleAddEvent,
         onYearChange: this.handleYearChange,
       }),
-    ),
       React.createElement(CalendarYear, { year: this.currentYear })
     );
     this.root.render(this.reactComponent);

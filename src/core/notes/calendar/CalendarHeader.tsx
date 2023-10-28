@@ -13,10 +13,12 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
   onYearChange,
 }) => {
   return (
-    <div className="header-container">
-      <button onClick={onAddEvent}>Add Event</button>
-      <YearSelect currentYear={currentYear} onChange={onYearChange} />
-    </div>
+    <>
+      <div className="header-container">
+        <button onClick={onAddEvent}>Add Event</button>
+        <YearSelect currentYear={currentYear} onChange={onYearChange} />
+      </div>
+    </>
   );
 };
 
