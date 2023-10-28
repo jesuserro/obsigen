@@ -8,8 +8,10 @@ function CalendarYear({ year }: CalendarYearProps): JSX.Element {
   
   const monthsGrid = Array.from({ length: 12 }, (_, month) => {
     month = month + 1;
+    const monthKey = `${year}-${(month).toString().padStart(2, '0')}`;
+    
     return (
-      <CalendarMonth key={String(month).padStart(2, '0')} year={year} month={month} />
+      <CalendarMonth key={monthKey} year={year} month={month} />
     );
   });
 
