@@ -6,7 +6,7 @@ interface YearSelectProps {
 }
 
 function YearSelect({ currentYear, onChange }: YearSelectProps): JSX.Element {
-  const years = Array.from({ length: 2026 - 1974 }, (_, index) => 1974 + index);
+  const years = Array.from({ length: 2026 - 1974 }, (_, index) => 2025 - index + 1); 
 
   const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedYear = parseInt(event.target.value, 10);
