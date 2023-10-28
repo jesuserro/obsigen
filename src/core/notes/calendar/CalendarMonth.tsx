@@ -39,7 +39,7 @@ function createDaysGrid(app:App, metadataCache: MetadataCache, files: TFile[], n
       const anniversaryNote = getAnniversaryNote(dayIndex, files, month);
 
       cells.push(
-        <td key={dayOfWeek} className={isWithinMonth ? 'within-month' : 'outside-month'}>
+        <td key={`cell-${year}-${month}-${row}-${dayOfWeek}`} className={isWithinMonth ? 'within-month' : 'outside-month'}>
           {dayIndex > 0 && dayIndex <= numDaysInMonth ? (
             <CalendarDay
               key={`${year}-${String(month).padStart(2, '0')}-${String(dayIndex).padStart(2, '0')}`}
@@ -57,7 +57,7 @@ function createDaysGrid(app:App, metadataCache: MetadataCache, files: TFile[], n
       );
     }
 
-    daysGrid.push(<tr key={row}>{cells}</tr>);
+    daysGrid.push(<tr key={`row-${year}-${month}-${row}`}>{cells}</tr>);
   }
 
   return daysGrid;
