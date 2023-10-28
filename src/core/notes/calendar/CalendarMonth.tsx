@@ -82,8 +82,6 @@ function createDayState(file: TFile, year: number, month: number, day: number, c
 function getDayNotes(app: App, metadataCache: MetadataCache, files: TFile[], dayIndex: number, year: number, month: number): TFile[] {
   
   const dayDateDashed = `${year}-${String(month).padStart(2, '0')}-${String(dayIndex).padStart(2, '0')}`;
-  
-  // const files = app?.vault.getMarkdownFiles() || [];
 
   const [dayStates, setDayStates] = useState<({ file:TFile, year: number; month: number; day: number; cssclasses: [] })[]>([]);
 
