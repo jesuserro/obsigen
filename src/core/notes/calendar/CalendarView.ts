@@ -3,8 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { AppContext } from './../../shared/appContext';
 import { CalendarEvent, FormValues } from './CalendarEvent';
+import CalendarHeader from './CalendarHeader';
 import CalendarYear from './CalendarYear';
-import YearSelect from './YearSelect';
 
 export const CALENDAR_VIEW_TYPE = 'obsigen-calendar-view';
 export const CONTAINER_ID = 'obsigen-calendar-container';
@@ -45,8 +45,13 @@ export class CalendarView extends ItemView {
     this.reactComponent = React.createElement(
       AppContext.Provider,
       { value: this.app },
-      React.createElement('button', { onClick: this.handleAddEvent }, 'Add Event'),
-      React.createElement(YearSelect, { currentYear: this.currentYear, onChange: this.handleYearChange }),
+      React.createElement('div', { className: 'header-container' }, // Agrega un div para el encabezado
+      React.createElement(CalendarHeader, {
+        currentYear: this.currentYear,
+        onAddEvent: this.handleAddEvent,
+        onYearChange: this.handleYearChange,
+      }),
+    ),
       React.createElement(CalendarYear, { year: this.currentYear })
     );
     this.root.render(this.reactComponent);
