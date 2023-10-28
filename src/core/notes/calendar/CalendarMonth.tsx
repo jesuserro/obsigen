@@ -192,7 +192,6 @@ function CalendarMonth({ year, month }: CalendarMonthProps): JSX.Element {
   const app = useApp() as App;
   const metadataCache = app.metadataCache;
   const files = app?.vault.getMarkdownFiles();
-  month = month + 1;
 
   const monthStr = month < 10 ? '0' + month : month.toString();
   const dateStr = `${year}-${monthStr}`;
