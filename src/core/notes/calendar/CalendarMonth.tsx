@@ -206,14 +206,15 @@ function CalendarMonth({ year, month }: CalendarMonthProps): JSX.Element {
       return true;
     }
   });
-  // console.log(month, filteredFiles.length);
-
+  
   const firstDayOfMonth = getFirstDayOfMonth(year, month - 1);
-  const lastDayOfMonth = getLastDayOfMonth(year, month - 1);
+  const lastDayOfMonth = getLastDayOfMonth(year, month);
   const numDaysInMonth = lastDayOfMonth.getDate();
   const firstDayOfWeek = firstDayOfMonth.getDay(); // 0 for Sunday, 1 for Monday, etc.
   const dayOffset = getDayOffset(firstDayOfWeek);
   const numRows = calculateNumRows(numDaysInMonth, dayOffset);
+
+  // console.log(month, firstDayOfMonth, lastDayOfMonth, numDaysInMonth, filteredFiles.length);
 
   const daysGrid = createDaysGrid(app, metadataCache, filteredFiles, numRows, numDaysInMonth, dayOffset, year, month );
 
