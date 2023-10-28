@@ -14,13 +14,15 @@ function YearSelect({ currentYear, onChange }: YearSelectProps): JSX.Element {
   };
 
   return (
-    <select value={currentYear} onChange={handleYearChange}>
-      {years.map((year) => (
-        <option key={year} value={year}>
-          {year}
-        </option>
-      ))}
-    </select>
+    <>
+      <select value={currentYear} onChange={handleYearChange}>
+        {years.map((year) => (
+          <option key={year} value={year}>
+            {year}
+          </option>
+        ))}
+      </select>
+    </>
   );
 }
 
