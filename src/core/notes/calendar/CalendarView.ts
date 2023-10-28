@@ -41,11 +41,11 @@ export class CalendarView extends ItemView {
   };
 
   private renderComponent() {
-    const button = React.createElement('button', { onClick: this.handleAddEvent }, 'Add Event');
+    
     this.reactComponent = React.createElement(
       AppContext.Provider,
       { value: this.app },
-      button,
+      React.createElement('button', { onClick: this.handleAddEvent }, 'Add Event'),
       React.createElement('div', null, React.createElement(YearSelect, { currentYear: this.currentYear, onChange: this.handleYearChange })),
       React.createElement(CalendarYear, { year: this.currentYear })
     );
