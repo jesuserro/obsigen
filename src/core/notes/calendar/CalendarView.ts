@@ -50,7 +50,7 @@ export class CalendarView extends ItemView {
         onAddEvent: this.handleAddEvent,
         onYearChange: this.handleYearChange,
       }),
-      React.createElement(CalendarYear, { year: this.currentYear })
+      React.createElement(CalendarYear, { key: this.currentYear, year: this.currentYear })
     );
     this.root.render(this.reactComponent);
   }
