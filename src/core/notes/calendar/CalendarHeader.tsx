@@ -1,5 +1,5 @@
 import React from 'react';
-import YearSelect from './YearSelect';
+import CalendarYearSelect from './CalendarYearSelect';
 
 interface CalendarHeaderProps {
   currentYear: number;
@@ -16,7 +16,7 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
     <>
       <div className="header-container">
         <button onClick={onAddEvent}>Add Event</button>
-        <YearSelect currentYear={currentYear} onChange={onYearChange} />
+        <CalendarYearSelect currentYear={currentYear} onChange={onYearChange} />
       </div>
     </>
   );

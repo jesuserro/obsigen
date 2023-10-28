@@ -1,11 +1,11 @@
 import React from 'react';
 
-interface YearSelectProps {
+interface CalendarYearSelectProps {
   currentYear: number;
   onChange: (year: number) => void;
 }
 
-function YearSelect({ currentYear, onChange }: YearSelectProps): JSX.Element {
+function CalendarYearSelect({ currentYear, onChange }: CalendarYearSelectProps): JSX.Element {
   const years = Array.from({ length: 2026 - 1974 }, (_, index) => 2025 - index + 1); 
 
   const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -26,4 +26,4 @@ function YearSelect({ currentYear, onChange }: YearSelectProps): JSX.Element {
   );
 }
 
-export default YearSelect;
+export default CalendarYearSelect;
