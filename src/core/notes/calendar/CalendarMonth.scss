@@ -15,3 +15,14 @@ table.calendar-table td {
   padding: 4px;
   text-align: center;
 }
+
+/* Asigna scroll-snap-align a cada mes */
+.obs-month {
+  scroll-snap-align: start; /* Alinea el inicio del mes con la posición de desplazamiento */
+}
+
+.obs-current-month {
+  /* Estilos específicos para el mes actual */
+  background-color: rgba(255, 204, 0, 0.1); /* Fondo amarillo con 20% de opacidad */
+  scroll-snap-align: center;
+}

@@ -1,5 +1,5 @@
 import { App, MetadataCache, TFile } from 'obsidian';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useApp } from './../../hooks/useApp';
 import CalendarDay from './CalendarDay';
 
@@ -215,12 +215,28 @@ function CalendarMonth({ year, month }: CalendarMonthProps): JSX.Element {
 
   const daysGrid = createDaysGrid(app, metadataCache, filteredFiles, numRows, numDaysInMonth, dayOffset, year, month );
 
-  let monthNameAndYear = `${firstDayOfMonth.toLocaleString('default', { month: 'long' })} ${year}`;
-  monthNameAndYear = monthNameAndYear.charAt(0).toUpperCase() + monthNameAndYear.slice(1);
+  const monthName = `${firstDayOfMonth.toLocaleString('default', { month: 'long' })}`;
+  const monthNameFirstCase = monthName.charAt(0).toUpperCase() + monthName.slice(1);
+  const monthNameAndYear = `${monthNameFirstCase} ${year}`;
 
+  const today = new Date();
+  const currentMonth = today.getMonth() + 1;
+  let cssCurrentMonth = '';
+  if (currentMonth === month) {
+    cssCurrentMonth = 'obs-current-month';
+  }
+
+  const monthRef = useRef<HTMLDivElement | null>(null); // Crea una referencia
+
+  useEffect(() => {
+    if (cssCurrentMonth === 'obs-current-month' && monthRef.current) {
+      monthRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [cssCurrentMonth]);
+  
   return (
     <>
-      <div>
+      <div ref={monthRef} className={`obs-month ${cssCurrentMonth}`}>
         <h2>{monthNameAndYear}</h2>
         <table className="calendar-table">
           <thead>

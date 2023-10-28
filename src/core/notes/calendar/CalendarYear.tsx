@@ -17,7 +17,7 @@ function CalendarYear({ year }: CalendarYearProps): JSX.Element {
 
   return (
     <>
-      <div>{monthsGrid}</div>
+      <div className='months-container'>{monthsGrid}</div>
     </>
   );
 
