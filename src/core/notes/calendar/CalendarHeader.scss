@@ -1,0 +1,9 @@
+.header-container {
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.7); /* Fondo transparente y gris oscuro */
+  padding: 10px; /* Ajusta el espaciado según tus preferencias */
+  display: flex;
+  justify-content: space-between; /* Alinea los elementos horizontalmente */
+  align-items: center; /* Alinea los elementos verticalmente */
+}
