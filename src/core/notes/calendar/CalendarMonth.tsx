@@ -42,6 +42,7 @@ function createDaysGrid(app:App, metadataCache: MetadataCache, files: TFile[], n
         <td key={dayOfWeek} className={isWithinMonth ? 'within-month' : 'outside-month'}>
           {dayIndex > 0 && dayIndex <= numDaysInMonth ? (
             <CalendarDay
+              key={`${year}-${String(month).padStart(2, '0')}-${String(dayIndex).padStart(2, '0')}`}
               year = {year}
               month = {month}
               dayCounter={dayIndex}
