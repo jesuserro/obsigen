@@ -34,7 +34,7 @@ const generateEventIndex = (note: TFile): number => {
 };
 
 const getCalendarEvent = (index: number, note: TFile) => {
-  const icon = CalendarIcon.getIconByNote(note, 20);
+  const icon = CalendarIcon.getIconByNote(note, 18);
   return (
     <a
       key={index}
@@ -54,7 +54,7 @@ const CalendarDay = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNot
     await new CalendarEvent(app, year, month, dayCounter).openModal();
   };
 
-  const icon = CalendarIcon.getIcon("add", 20);
+  const icon = CalendarIcon.getIcon("add", 18);
 
   const btn = (
     <div onClick={fnEventForm}>
