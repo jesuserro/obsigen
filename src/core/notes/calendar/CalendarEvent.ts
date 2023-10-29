@@ -1,5 +1,16 @@
-import { ButtonComponent, DropdownComponent, Modal, Notice, TextAreaComponent, TextComponent } from "obsidian";
+import { App, ButtonComponent, DropdownComponent, Modal, Notice, TextAreaComponent, TextComponent } from "obsidian";
+import { Momento } from "./../../notes/momento/Momento";
 import { CalendarIcon, iconMap } from "./CalendarIcon";
+
+
+export interface FormValues {
+  title: string;
+  url: string;
+  description: string;
+  startDate: string;
+  endDate: string;
+  selectedIcon: string;
+}
 
 export class CalendarEvent extends Modal {
   private resolve!: (value: FormValues) => void;
@@ -17,6 +28,8 @@ export class CalendarEvent extends Modal {
   private selectedIcon: string;
 
   // Nuevos campos de selección para año, mes y día
+  private titleField: TextComponent;
+  private descriptionTextarea: TextAreaComponent;
   private yearDropdown: DropdownComponent;
   private monthDropdown: DropdownComponent;
   private dayDropdown: DropdownComponent;
@@ -24,23 +37,20 @@ export class CalendarEvent extends Modal {
   private hourDropdown: DropdownComponent;
   private minuteDropdown: DropdownComponent;
   
-  constructor(year:number, month:number, day:number) {
+  constructor(app: App, year:number, month:number, day:number) {
     super(app);
-    this.title = "";
-    this.url = "";
-    this.description = "";
-    this.startDate = "";
-    this.endDate = "";
-    this.selectedIcon = "default-icon"; // Default icon value
     
     this.year = year;
     this.month = month;
     this.day = day;
+
+    this.createForm();
   }
   
   onOpen(): void {
     this.titleEl.setText("Nuevo Evento");
-    this.createForm();
+
+    this.resetValues();
   }
   
   onClose(): void {
@@ -48,6 +58,19 @@ export class CalendarEvent extends Modal {
       new Notice("Cancelled prompt");
       return;
     }
+  }
+
+  resetValues() {
+    this.title = "";
+    this.url = "";
+    this.description = "";
+    this.startDate = "";
+    this.endDate = "";
+    this.selectedIcon = "default-icon"; 
+
+    this.titleField.setValue(this.title);
+    this.descriptionTextarea.setValue(this.description);
+    this.iconDropdown.setValue(this.selectedIcon);
   }
   
   createForm(): void {
@@ -57,11 +80,11 @@ export class CalendarEvent extends Modal {
     const titleDiv = div.createDiv("form-element");
     const titleLabel = titleDiv.createEl("label", { cls: "form-label" });
     titleLabel.setText("Title");
-    const titleField = new TextComponent(titleDiv);
-    titleField.inputEl.addClass("form-input");
-    titleField.setPlaceholder("Type title here");
-    titleField.setValue(this.title);
-    titleField.onChange((value) => (this.title = value));
+    this.titleField = new TextComponent(titleDiv);
+    this.titleField.inputEl.addClass("form-input");
+    this.titleField.setPlaceholder("Type title here");
+    this.titleField.setValue(this.title);
+    this.titleField.onChange((value) => (this.title = value));
   
     // Fieldset for year, month, and day dropdowns
     const dateFieldset = div.createEl("fieldset", { cls: "date-fieldset" });
@@ -108,24 +131,23 @@ export class CalendarEvent extends Modal {
     const descriptionDiv = div.createDiv("form-element");
     const descriptionLabel = descriptionDiv.createEl("label", { cls: "form-label" });
     descriptionLabel.setText("Description");
-    const descriptionTextarea = new TextAreaComponent(descriptionDiv);
-    descriptionTextarea.inputEl.addClass("form-input");
-    descriptionTextarea.setPlaceholder("Type description here");
-    descriptionTextarea.setValue(this.description);
-    descriptionTextarea.onChange((value) => (this.description = value));
+    this.descriptionTextarea = new TextAreaComponent(descriptionDiv);
+    this.descriptionTextarea.inputEl.addClass("form-input");
+    this.descriptionTextarea.setPlaceholder("Type description here");
+    this.descriptionTextarea.setValue(this.description);
+    this.descriptionTextarea.onChange((value) => (this.description = value));
   
     // Submit button aligned to the right horizontally
     const buttonDiv = div.createDiv("form-button-container");
     const submitButton = new ButtonComponent(buttonDiv);
     submitButton.buttonEl.addClass("form-submit-button");
     submitButton.setButtonText("Submit").onClick((evt: Event) => {
-      this.resolveAndClose(evt);
+      this.onSubmit(evt);
     });
   }   
 
   private initializeDropdowns() {
     // Configura los DropdownComponent para año, mes y día
-    const currentYear = new Date().getFullYear();
     for (let i = 1974; i <= 2050; i++) {
       this.yearDropdown.addOption(i.toString(), i.toString());
     }
@@ -159,42 +181,6 @@ export class CalendarEvent extends Modal {
     this.minuteDropdown.setValue(currentMinute.toString());
   }
   
-  private resolveAndClose(evt: Event) {
-    this.submitted = true;
-    evt.preventDefault();
-
-    // Formatea startDate en el formato "YYYY-MM-DD"
-    const selectedYear = this.yearDropdown.getValue();
-    const selectedMonth = this.monthDropdown.getValue();
-    const selectedDay = this.dayDropdown.getValue();
-    const selectedHour = this.hourDropdown.getValue();
-    const selectedMinute = this.minuteDropdown.getValue();
-
-    // Format the time as HH:MM
-    const selectedTime = `${selectedHour.padStart(2, '0')}:${selectedMinute.padStart(2, '0')}`;
-    
-    this.startDate = `${selectedYear}-${selectedMonth.padStart(2, '0')}-${selectedDay.padStart(2, '0')} ${selectedTime}`;
-
-    const formValues: FormValues = {
-      title: this.title.trim(),
-      url: this.url.trim(),
-      description: this.description.trim(),
-      startDate: this.startDate,
-      endDate: this.endDate.trim(),
-      selectedIcon: this.selectedIcon,
-    };
-
-    const validationError = this.validateForm(formValues);
-    if (validationError) {
-      new Notice(validationError);
-      return;
-    }
-
-    // Validation passed, resolve the values
-    this.resolve(formValues);
-    this.close();
-  }
-  
   private validateForm(formValues: FormValues): string | null {
     // Implement your validation logic here for the new fields
     // Example: Check if the start date is before the end date, validate URL, etc.
@@ -215,15 +201,50 @@ export class CalendarEvent extends Modal {
   getFormValues(): { title: string; url: string, description: string, startDate: string, endDate: string, selectedIcon: string } {
     return { title: this.title, url: this.url, description: this.description, startDate: this.startDate, endDate: this.endDate, selectedIcon: this.selectedIcon };
   }
-}
 
-interface FormValues {
-  title: string;
-  url: string;
-  description: string;
-  startDate: string;
-  endDate: string;
-  selectedIcon: string;
+  // Agrega un método para manejar la acción cuando se presiona el botón "Submit"
+  private onSubmit(evt: Event) {
+    this.submitted = true;
+    evt.preventDefault();
+
+    // Recoge los valores del formulario
+    const selectedYear = this.yearDropdown.getValue();
+    const selectedMonth = this.monthDropdown.getValue();
+    const selectedDay = this.dayDropdown.getValue();
+    const selectedHour = this.hourDropdown.getValue();
+    const selectedMinute = this.minuteDropdown.getValue();
+
+    const selectedTime = `${selectedHour.padStart(2, '0')}:${selectedMinute.padStart(2, '0')}`;
+    
+    const startDate = `${selectedYear}-${selectedMonth.padStart(2, '0')}-${selectedDay.padStart(2, '0')} ${selectedTime}`;
+
+    const formValues: FormValues = {
+      title: this.title.trim(),
+      url: this.url.trim(),
+      description: this.description.trim(),
+      startDate: startDate,
+      endDate: this.endDate.trim(),
+      selectedIcon: this.selectedIcon,
+    };
+
+    // Validar los valores del formulario aquí, si es necesario
+    const validationError = this.validateForm(formValues);
+    if (validationError) {
+      new Notice(validationError);
+      this.submitted = false;
+      this.close();
+      return;
+    }
+
+    // Validation passed, resolve the values
+    this.resolve(formValues);
+  
+    // Llamar a Momento con los valores del formulario y la variable "app"
+    new Momento(this.app).createNote(formValues.title, formValues.description, formValues.startDate, formValues.selectedIcon);
+
+    // Cerrar el modal
+    this.close();
+  }
 }
 
 class TemplaterError extends Error {

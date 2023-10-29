@@ -1,5 +1,5 @@
-import { Notice, TFile } from 'obsidian';
-import { Momento } from './../momento/Momento';
+import { App, TFile } from 'obsidian';
+import { useApp } from 'src/core/hooks/useApp';
 import { CalendarEvent } from './CalendarEvent';
 import { CalendarIcon } from './CalendarIcon';
 
@@ -8,12 +8,33 @@ interface CalendarDayProps {
   month: number;
   dayCounter: number;
   hasNote: string | false;
-  anniversaryNote: TFile | undefined; // Nueva prop para la nota de aniversario
+  anniversaryNote: TFile | undefined;
   dayNotes: TFile[] | false;
 }
 
-function getCalendarEvent(index: number, note: TFile) {
-  const icon = CalendarIcon.getIconByNote(note, 14);
+const getFileName = (path: string) => {
+  const parts = path.split('/');
+  return parts[parts.length - 1];
+};
+
+const hashCode = (str: string) => {
+  let hash = 0;
+  if (str.length === 0) return hash;
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = (hash << 5) - hash + char;
+  }
+
+  return hash;
+};
+
+const generateEventIndex = (note: TFile): number => {
+  return hashCode(note.path);
+};
+
+const getCalendarEvent = (index: number, note: TFile) => {
+  const icon = CalendarIcon.getIconByNote(note, 18);
   return (
     <a
       key={index}
@@ -24,110 +45,79 @@ function getCalendarEvent(index: number, note: TFile) {
       <span className="icon-description">{getFileName(note.path)}</span>
     </a>
   );
-}
+};
 
-function getCalendarButton(year: number, month: number, dayCounter: number) {
-  const icon = CalendarIcon.getIcon("add", 14);
-  const handleAddEvent = () => {
-    new Notice(`Hi ${dayCounter}-${month}-${year}`);
+const CalendarDay = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes }: CalendarDayProps) => {
+  const app = useApp() as App;
+  
+  const fnEventForm = async () => {
+    await new CalendarEvent(app, year, month, dayCounter).openModal();
   };
 
-  const newEvent = async () => {
-    const calendarEvent = new CalendarEvent(year, month, dayCounter);
-    await calendarEvent.openModal();
-    const values = calendarEvent.getFormValues();
-    await new Momento(this.app).createNote(values.title, values.description, values.startDate, values.selectedIcon);
+  const icon = CalendarIcon.getIcon("add", 18);
 
-  }
-
-  return (
-    <div onClick={newEvent}>
+  const btn = (
+    <div onClick={fnEventForm}>
       {icon}
     </div>
   );
-}
 
 
-function CalendarDay({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes }: CalendarDayProps): JSX.Element {
-  let notePath = '';
-  if (hasNote) {
-    notePath = `obsidian://open?file=${encodeURIComponent(hasNote)}`;
-  }
-  
-  const boundGetCalendarEvent = getCalendarEvent.bind(this);
-  const boundGetCalendarButton = getCalendarButton.bind(this);
-
-  // Generamos un índice único para cada evento basado en su ruta
-  const generateEventIndex = (note: TFile): number => {
-    const hash = note.path.split('').reduce((acc, char) => {
-      return acc + char.charCodeAt(0);
-    }, 0);
-    return hash;
-  };
+  const notePath = hasNote ? `obsidian://open?file=${encodeURIComponent(hasNote)}` : '';
+  const anniversary = anniversaryNote ? getCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote) : null;
+  const notesOfTheDay = dayNotes ? dayNotes.map((note, index) => getCalendarEvent(generateEventIndex(note), note)) : null;
 
   return (
-    <>
-      <div className="day-container">
-        {hasNote && !dayNotes ? (
-          <>
+    <div className="day-container">
+      {hasNote && !dayNotes ? (
+        <>
+          <a href={notePath} title={getFileName(hasNote)}>
+            <div className="day-number">{dayCounter}</div>
+          </a>
+          {btn}
+          {anniversaryNote && (
+            <div className="anniversary-note">{anniversary}</div>
+          )}
+        </>
+      ) : hasNote && dayNotes ? (
+        <>
+          <div className="day-header">
+            {anniversaryNote && (
+              <div className="anniversary-note">{anniversary}</div>
+            )}
             <a href={notePath} title={getFileName(hasNote)}>
               <div className="day-number">{dayCounter}</div>
             </a>
-            {boundGetCalendarButton(year, month, dayCounter)}
+            {btn}
+          </div>
+          <div className="calendar-icons">
+            {notesOfTheDay}
+          </div>
+        </>
+      ) : dayNotes ? (
+        <>
+          <div className="day-header">
             {anniversaryNote && (
-              <div className="anniversary-note">{boundGetCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
+              <div className="anniversary-note">{anniversary}</div>
             )}
-          </>
-        ) : hasNote && dayNotes ? (
-          <>
-            <div className="day-header">
-              {anniversaryNote && (
-                <div className="anniversary-note">{boundGetCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
-              )}
-              <a href={notePath} title={getFileName(hasNote)}>
-                <div className="day-number">{dayCounter}</div>
-              </a>
-              {boundGetCalendarButton(year, month, dayCounter)}
-            </div>
-            <div className="calendar-icons">
-              {dayNotes.map((note, index) => (
-                boundGetCalendarEvent(index, note)
-              ))}
-            </div>
-          </>
-        ) : dayNotes ? (
-          <>
-            <div className="day-header">
-              {anniversaryNote && (
-                <div className="anniversary-note">{boundGetCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
-              )}
-              <div className="day-number">{dayCounter}</div>
-              {boundGetCalendarButton(year, month, dayCounter)}
-            </div>
-            <div className="calendar-icons">
-              {dayNotes.map((note, index) => (
-                boundGetCalendarEvent(index, note)
-              ))}
-            </div>
-          </>
-        ) : (
-          <>
             <div className="day-number">{dayCounter}</div>
-            {anniversaryNote && (
-              <div className="anniversary-note">{boundGetCalendarEvent(generateEventIndex(anniversaryNote), anniversaryNote)}</div>
-            )}
-            {boundGetCalendarButton(year, month, dayCounter)}
-          </>
-        )}
-      </div>
-    </>
+            {btn}
+          </div>
+          <div className="calendar-icons">
+            {notesOfTheDay}
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="day-number">{dayCounter}</div>
+          {anniversaryNote && (
+            <div className="anniversary-note">{anniversary}</div>
+          )}
+          {btn}
+        </>
+      )}
+    </div>
   );
-}
-
-function getFileName(path: string): string {
-  // Extract the file name from the path
-  const parts = path.split('/');
-  return parts[parts.length - 1];
-}
+};
 
 export default CalendarDay;

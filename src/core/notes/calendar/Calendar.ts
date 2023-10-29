@@ -1,11 +1,13 @@
 import { App } from 'obsidian';
-import { NoteGenerator } from '../NoteGenerator';
 import { CALENDAR_VIEW_TYPE } from './CalendarView';
 
-export class Calendar extends NoteGenerator {
+export class Calendar {
+    app: App;
+
     constructor(app: App) {
-        super(app);
+
         this.app = app;
+
         this.addCalendarView();
     }
 

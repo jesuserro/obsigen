@@ -15,55 +15,64 @@ Use the yaml frontmatter to add the date and icon to your notes. The plugin will
 Following the DDD principles, the project is divided into three layers: core, adapters and shared.
 ```
 📦obsigen
- ┣ 📂src
- ┃ ┣ 📂adapters
- ┃ ┃ ┗ 📂Obsidian
- ┃ ┃ ┃ ┣ 📜MenuPrincipal.ts
- ┃ ┃ ┃ ┣ 📜PromptModal.ts
- ┃ ┃ ┃ ┣ 📜SampleModal.ts
- ┃ ┃ ┃ ┗ 📜SampleSettingTab.ts
- ┃ ┣ 📂assets
- ┃ ┃ ┗ 📜church.js
- ┃ ┣ 📂core
- ┃ ┃ ┣ 📂hooks
- ┃ ┃ ┃ ┗ 📜useApp.ts
- ┃ ┃ ┣ 📂notes
- ┃ ┃ ┃ ┣ 📂__mocks__
- ┃ ┃ ┃ ┃ ┗ 📜obsidian.ts
- ┃ ┃ ┃ ┣ 📂aniversario
- ┃ ┃ ┃ ┃ ┣ 📜Aniversario.test.ts
- ┃ ┃ ┃ ┃ ┗ 📜Aniversario.ts
- ┃ ┃ ┃ ┣ 📂biblia
- ┃ ┃ ┃ ┃ ┗ 📂versiculo
- ┃ ┃ ┃ ┣ 📂calendar
- ┃ ┃ ┃ ┃ ┣ 📜Calendar.ts
- ┃ ┃ ┃ ┃ ┣ 📜CalendarDay.tsx
- ┃ ┃ ┃ ┃ ┣ 📜CalendarIcon.tsx
- ┃ ┃ ┃ ┃ ┣ 📜CalendarMonth.tsx
- ┃ ┃ ┃ ┃ ┣ 📜CalendarTitle.tsx
- ┃ ┃ ┃ ┃ ┣ 📜CalendarView.ts
- ┃ ┃ ┃ ┃ ┗ 📜CalendarYear.tsx
- ┃ ┃ ┃ ┣ 📂captureUrl
- ┃ ┃ ┃ ┃ ┣ 📜CaptureUrl.test.ts
- ┃ ┃ ┃ ┃ ┣ 📜CaptureUrl.ts
- ┃ ┃ ┃ ┃ ┣ 📜CaptureUrlModal.ts
- ┃ ┃ ┃ ┃ ┗ 📜captureUrlModal.module.css
- ┃ ┃ ┃ ┣ 📂daily
- ┃ ┃ ┃ ┃ ┗ 📜Daily.ts
- ┃ ┃ ┃ ┣ 📂momento
- ┃ ┃ ┃ ┃ ┗ 📜Momento.ts
- ┃ ┃ ┃ ┣ 📜NoteGenerator.test.ts
- ┃ ┃ ┃ ┗ 📜NoteGenerator.ts
- ┃ ┃ ┗ 📂shared
- ┃ ┃ ┃ ┣ 📂interface
- ┃ ┃ ┃ ┃ ┣ 📜MyPluginSettings.ts
- ┃ ┃ ┃ ┃ ┗ 📜iYaml.ts
- ┃ ┃ ┃ ┣ 📂templates
- ┃ ┃ ┃ ┃ ┗ 📜Yaml.tsx
- ┃ ┃ ┃ ┗ 📜appContext.ts
- ┃ ┣ 📜main.ts
- ┃ ┣ 📜styles.css
- ┃ ┗ 📜styles.scss
+ ┣📦src
+ ┣ 📂adapters
+ ┃ ┗ 📂Obsidian
+ ┃ ┃ ┣ 📜MenuPrincipal.ts
+ ┃ ┃ ┣ 📜PromptModal.ts
+ ┃ ┃ ┣ 📜SampleModal.ts
+ ┃ ┃ ┗ 📜SampleSettingTab.ts
+ ┣ 📂assets
+ ┃ ┗ 📜church.js
+ ┣ 📂core
+ ┃ ┣ 📂hooks
+ ┃ ┃ ┗ 📜useApp.ts
+ ┃ ┣ 📂notes
+ ┃ ┃ ┣ 📂__mocks__
+ ┃ ┃ ┃ ┗ 📜obsidian.ts
+ ┃ ┃ ┣ 📂aniversario
+ ┃ ┃ ┃ ┣ 📜Aniversario.test.ts
+ ┃ ┃ ┃ ┗ 📜Aniversario.ts
+ ┃ ┃ ┣ 📂biblia
+ ┃ ┃ ┃ ┗ 📂versiculo
+ ┃ ┃ ┣ 📂calendar
+ ┃ ┃ ┃ ┣ 📜Calendar.ts
+ ┃ ┃ ┃ ┣ 📜CalendarDay.scss
+ ┃ ┃ ┃ ┣ 📜CalendarDay.tsx
+ ┃ ┃ ┃ ┣ 📜CalendarEvent.scss
+ ┃ ┃ ┃ ┣ 📜CalendarEvent.ts
+ ┃ ┃ ┃ ┣ 📜CalendarIcon.scss
+ ┃ ┃ ┃ ┣ 📜CalendarIcon.tsx
+ ┃ ┃ ┃ ┣ 📜CalendarMonth.scss
+ ┃ ┃ ┃ ┣ 📜CalendarMonth.tsx
+ ┃ ┃ ┃ ┣ 📜CalendarTitle.tsx
+ ┃ ┃ ┃ ┣ 📜CalendarView.ts
+ ┃ ┃ ┃ ┣ 📜CalendarYear.scss
+ ┃ ┃ ┃ ┣ 📜CalendarYear.tsx
+ ┃ ┃ ┃ ┗ 📜calendar.scss
+ ┃ ┃ ┣ 📂captureUrl
+ ┃ ┃ ┃ ┣ 📜CaptureUrl.test.ts
+ ┃ ┃ ┃ ┣ 📜CaptureUrl.ts
+ ┃ ┃ ┃ ┣ 📜CaptureUrlModal.scss
+ ┃ ┃ ┃ ┗ 📜CaptureUrlModal.ts
+ ┃ ┃ ┣ 📂daily
+ ┃ ┃ ┃ ┗ 📜Daily.ts
+ ┃ ┃ ┣ 📂momento
+ ┃ ┃ ┃ ┗ 📜Momento.ts
+ ┃ ┃ ┣ 📜NoteGenerator.test.ts
+ ┃ ┃ ┗ 📜NoteGenerator.ts
+ ┃ ┗ 📂shared
+ ┃ ┃ ┣ 📂interface
+ ┃ ┃ ┃ ┣ 📜MyPluginSettings.ts
+ ┃ ┃ ┃ ┗ 📜iYaml.ts
+ ┃ ┃ ┣ 📂templates
+ ┃ ┃ ┃ ┗ 📜Yaml.tsx
+ ┃ ┃ ┗ 📜appContext.ts
+ ┣ 📂ui
+ ┃ ┗ 📜common.scss
+ ┣ 📜main.ts
+ ┣ 📜styles.css
+ ┗ 📜styles.scss
  ┣ 📂var
  ┃ ┣ 📜MonthView.ts
  ┃ ┣ 📜NoteGenerator.ts

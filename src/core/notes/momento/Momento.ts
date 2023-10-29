@@ -1,13 +1,14 @@
 import { App } from 'obsidian';
-import { NoteGenerator } from './../NoteGenerator';
-
 import { renderToString } from 'react-dom/server';
 import { DATA_YAML_DEFAULT } from './../../shared/interface/iYaml';
 import { Yaml } from './../../shared/templates/Yaml';
+import { NoteGenerator } from './../NoteGenerator';
 
-export class Momento extends NoteGenerator {
+export class Momento {
 
   app: App;
+  noteGenerator: NoteGenerator;
+
   yaml: string;
   title: string;
   filePrefix: string;
@@ -26,7 +27,8 @@ export class Momento extends NoteGenerator {
   minute: number;
 
   constructor(app: App, startDate: string | null = null, icon: string | null = null) {
-    super(app);
+    this.app = app;
+    this.noteGenerator = new NoteGenerator(this.app);
     this.startDate = startDate;
     this.icon = icon;
     this.date = new Date();
@@ -83,7 +85,7 @@ export class Momento extends NoteGenerator {
     this.setYaml();
     this.fileName = this.getFilename(this.title);
     this.setContent(content);
-    await super.createNote(this.fileName, this.content, `100 Calendar/Moments`);
+    await this.noteGenerator.createNote(this.fileName, this.content, `100 Calendar/Moments`);
   }
 
   setContent(content: string) {

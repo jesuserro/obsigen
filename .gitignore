@@ -22,3 +22,6 @@ data.json
 .DS_Store
 
 .history
+
+src/assets/icons/dataurls.ts
+src/assets/icons/*.png

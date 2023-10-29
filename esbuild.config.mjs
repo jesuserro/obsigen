@@ -16,6 +16,7 @@ const outputDir = "/mnt/c/Users/Jesús/Documents/vault/.obsidian/plugins/obsigen
 
 // scss compilados ya desde package.json, lo sacamos de esbuild
 // const entryPoints = glob.sync("src/**/*.*").filter((file) => file !== "src/styles.scss");
+// const entryPoints = glob.sync("src/assets/icons/dataurls.ts");
 
 const context = await esbuild.context({
   banner: {
@@ -37,6 +38,9 @@ const context = await esbuild.context({
     "@lezer/common",
     "@lezer/highlight",
     "@lezer/lr",
+    // 'src/assets/icons/dataurls.json', // Excluye el archivo dataurls.json
+    './src/assets/icons/*.png', // Excluye archivos .png
+    // 'src/createPrivateIcons.mjs',   // Excluye el archivo
     ...builtins
   ],
   format: "cjs",
@@ -57,6 +61,8 @@ const context = await esbuild.context({
   ],
   loader: {
     '.svg': 'file',
+    // '.png': 'dataurl',
+    // '.json': 'file', // Agrega esta línea para excluir archivos .json de la compilación
     // '.scss': sass()
   },
 });

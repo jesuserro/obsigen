@@ -1,15 +1,23 @@
 import CalendarMonth from './CalendarMonth';
 
-function CalendarYear(): JSX.Element {
-  const currentYear = new Date().getFullYear();
+interface CalendarYearProps {
+  year: number;
+}
 
-  const monthsGrid = Array.from({ length: 12 }, (_, month) => (
-    <CalendarMonth key={String(month).padStart(2, '0')} year={currentYear} month={month} />
-  ));
+function CalendarYear({ year }: CalendarYearProps): JSX.Element {
+  
+  const monthsGrid = Array.from({ length: 12 }, (_, month) => {
+    month = month + 1;
+    const monthKey = `${year}-${(month).toString().padStart(2, '0')}`;
+    
+    return (
+      <CalendarMonth key={monthKey} year={year} month={month} />
+    );
+  });
 
   return (
     <>
-      <div>{monthsGrid}</div>
+      <div className='months-container'>{monthsGrid}</div>
     </>
   );
 
