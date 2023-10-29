@@ -3,14 +3,14 @@ import React from 'react';
 import { useApp } from './../../hooks/useApp';
 
 import { BiLogoGmail } from 'react-icons/bi';
-import { BsFillCalendar2WeekFill, BsFillCloudRainHeavyFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
+import { BsFillCalendar2WeekFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaPeopleGroup, FaStaffSnake, FaUserDoctor } from 'react-icons/fa6';
-import { GiAncientRuins, GiChurch, GiCommercialAirplane, GiHammerSickle, GiKneeling, GiPalmTree, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
+import { GiAncientRuins, GiChurch, GiCommercialAirplane, GiGluttony, GiHammerSickle, GiKneeling, GiPalmTree, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
-import { IoIosBeer, IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
+import { IoIosBeer, IoIosPaper, IoMdBasket, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
 import { IoHardwareChipOutline } from 'react-icons/io5';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold } from 'react-icons/pi';
@@ -126,11 +126,13 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   funeral: ({ size }) => <GiTombstone size={size} className="grey" />,
   gastronomy: ({ size }) => <MdRestaurant size={size} style={{ color: '#FFD700' }} />,
   github: ({ size }) => <FaGithub size={size} style={{ color: '#fff' }} />, 
+  gluttony: ({ size }) => <GiGluttony size={size} className='yellow emoji' />, 
   goodreads: ({ size }) => <FaGoodreads size={size} className="brown goodreads" />,
   gym: ({ size }) => <MdOutlineSportsGymnastics size={size} className="green" />,
   happiness: ({ size }) => <FaSmile size={size} className="yellow" />,
   hardware: ({ size }) => <IoHardwareChipOutline size={size} className="orange" />,
   health: ({ size }) => <FaStaffSnake size={size} className="green" />, 
+  heartbreak: ({ size }) => <BsFillHeartbreakFill size={size} className="red" />, 
   hiking: ({ size }) => <FaHiking size={size} className="green" />, 
   holiday: ({ size }) => <GiPalmTree size={size} className="green" />, 
   israel: ({ size }) => <Flag country='IL' size={size} className="" />,
@@ -181,6 +183,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   spain: ({ size }) => <Flag country='ES' size={size} className="" />,
   sport: ({ size }) => <MdDirectionsRun size={size} className="green" />, 
   spotify: ({ size }) => <SiSpotify size={size} className="green spotify" />,
+  sunny: ({ size }) => <IoMdSunny size={size} className="yellow" />,
   tax: ({ size }) => <HiReceiptTax size={size} style={{ color: '#fc0303' }} />, 
   telegram: ({ size }) => <FaTelegram size={size} className="blue telegram" />, 
   tinder: ({ size }) => <IconoTinder size={size} style={{ color: '#FE3C72' }} />,
