@@ -7,7 +7,7 @@ import { BsFillCalendar2WeekFill, BsFillCloudRainHeavyFill, BsFillPersonFill, Bs
 import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaPeopleGroup, FaStaffSnake, FaUserDoctor } from 'react-icons/fa6';
-import { GiAncientRuins, GiChurch, GiCommercialAirplane, GiHammerSickle, GiItalia, GiKneeling, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
+import { GiAncientRuins, GiChurch, GiCommercialAirplane, GiHammerSickle, GiKneeling, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
@@ -16,6 +16,9 @@ import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdOutlineAdd
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold } from 'react-icons/pi';
 import { SiTinder as IconoTinder, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { TbZzz } from 'react-icons/tb';
+
+import Flag from 'react-flagkit';
+
 
 import Achelm from './../../../ui/icons/Achelm';
 
@@ -129,10 +132,11 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   hardware: ({ size }) => <IoHardwareChipOutline size={size} className="orange" />,
   health: ({ size }) => <FaStaffSnake size={size} className="green" />, 
   hiking: ({ size }) => <FaHiking size={size} className="green" />, 
+  israel: ({ size }) => <Flag country='IL' size={size} className="" />,
   inlove: ({ size }) => <MdFavorite size={size} className="pink" />,
   inspiration: ({ size }) => <GiSparkSpirit size={size} style={{ color: '#f2a83f' }} />,
   instagram: ({ size }) => <FaInstagram size={size} className="pink instagram" />, 
-  italy: ({ size }) => <GiItalia size={size} className="green" />,
+  italy: ({ size }) => <Flag country='IT' size={size} className="" />,
   key: ({ size }) => <FaKey size={size} className="yellow" />, 
   kindle: ({ size }) => <FaBookReader size={size} className="blue kindle" />, 
   linkedin: ({ size }) => <FaLinkedin size={size} className="blue linkedin" />, 
@@ -154,6 +158,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   pill: ({ size }) => <CiPill size={size} className="yellow" />,
   plentyoffish: ({ size }) => <IconoPlentyoffish size={size} className="pink" />,
   podcast: ({ size }) => <FaPodcast size={size} className="orange" />,
+  poland: ({ size }) => <Flag country='PL' size={size} className="" />,
   prayer: ({ size }) => <FaPrayingHands size={size} className="pink purple" />,
   price: ({ size }) => <IconoPrice size={size} className="red" />,
   programming: ({ size }) => <FaCode size={size} className="orange" />, 
@@ -166,11 +171,13 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   repairs: ({ size }) => <MdBuild size={size} className="orange" />,
   rosary: ({ size }) => <GiPrayerBeads size={size} className="pink purple" />,
   rss: ({ size }) => <FaRss size={size} className="orange" />, 
+  russia: ({ size }) => <Flag country='RU' size={size} className="orange" />, 
   sadness: ({ size }) => <ImSad2 size={size} className="yellow emoji" />,
   sex: ({ size }) => <FaVenus size={size} className="pink" />,
   sick: ({ size }) => <MdSick size={size} className="yellow emoji" />,
   snow: ({ size }) => <BsSnow3 size={size} className="white" />,
   soccer: ({ size }) => <GiSoccerBall size={size} className="green" />,
+  spain: ({ size }) => <Flag country='ES' size={size} className="" />,
   sport: ({ size }) => <MdDirectionsRun size={size} className="green" />, 
   spotify: ({ size }) => <SiSpotify size={size} className="green spotify" />,
   tax: ({ size }) => <HiReceiptTax size={size} style={{ color: '#fc0303' }} />, 

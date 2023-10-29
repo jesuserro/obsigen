@@ -12,7 +12,7 @@
 		"test": "jest",
 		"sasscp": "cp src/styles.css /mnt/c/Users/Jesús/Documents/vault/.obsidian/plugins/obsigen/styles.css",
 		"iconos": "node src/createPrivateIcons.mjs"
-	},	
+	},
 	"keywords": [],
 	"author": "",
 	"license": "MIT",
@@ -43,6 +43,7 @@
 		"js-yaml": "^4.1.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"react-flagkit": "^2.0.4",
 		"react-icons": "^4.11.0"
 	}
 }
