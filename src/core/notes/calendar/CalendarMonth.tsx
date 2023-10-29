@@ -49,6 +49,7 @@ function createDaysGrid(app:App, metadataCache: MetadataCache, files: TFile[], n
               hasNote={hasNote}
               anniversaryNote={anniversaryNote} 
               dayNotes={getDayNotes(app, metadataCache, files, dayIndex, year, month)}
+              app={app}
             />
           ) : (
             <span className="empty-day">{''}</span>
