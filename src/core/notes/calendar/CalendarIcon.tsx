@@ -6,8 +6,8 @@ import { BiLogoGmail } from 'react-icons/bi';
 import { BsFillCalendar2WeekFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
-import { FaBasketball, FaPeopleGroup, FaStaffSnake, FaUserDoctor } from 'react-icons/fa6';
-import { GiAncientRuins, GiChurch, GiCommercialAirplane, GiGluttony, GiHammerSickle, GiKneeling, GiPalmTree, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
+import { FaBasketball, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
+import { GiAncientRuins, GiChurch, GiCommercialAirplane, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoIosPaper, IoMdBasket, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
@@ -131,7 +131,9 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   gym: ({ size }) => <MdOutlineSportsGymnastics size={size} className="green" />,
   happiness: ({ size }) => <FaSmile size={size} className="yellow" />,
   hardware: ({ size }) => <IoHardwareChipOutline size={size} className="orange" />,
-  health: ({ size }) => <FaStaffSnake size={size} className="green" />, 
+  health: ({ size }) => <GiHealthNormal size={size} className="yellow emoji" />, 
+  health_ok: ({ size }) => <GiHealthIncrease size={size} className="green" />, 
+  health_ko: ({ size }) => <GiHealthDecrease size={size} className="red" />, 
   heartbreak: ({ size }) => <BsFillHeartbreakFill size={size} className="red" />, 
   hiking: ({ size }) => <FaHiking size={size} className="green" />, 
   holiday: ({ size }) => <GiPalmTree size={size} className="green" />, 
