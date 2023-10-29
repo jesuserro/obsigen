@@ -1,5 +1,4 @@
 import { App, TFile } from 'obsidian';
-import { useApp } from 'src/core/hooks/useApp';
 import { CalendarEvent } from './CalendarEvent';
 import { CalendarIcon } from './CalendarIcon';
 
@@ -10,6 +9,7 @@ interface CalendarDayProps {
   hasNote: string | false;
   anniversaryNote: TFile | undefined;
   dayNotes: TFile[] | false;
+  app: App
 }
 
 const getFileName = (path: string) => {
@@ -47,8 +47,7 @@ const getCalendarEvent = (index: number, note: TFile) => {
   );
 };
 
-const CalendarDay = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes }: CalendarDayProps) => {
-  const app = useApp() as App;
+const CalendarDay = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes, app }: CalendarDayProps) => {
   
   const fnEventForm = async () => {
     await new CalendarEvent(app, year, month, dayCounter).openModal();
