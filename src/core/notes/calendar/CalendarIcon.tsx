@@ -7,12 +7,12 @@ import { BsFillCalendar2WeekFill, BsFillCloudRainHeavyFill, BsFillPersonFill, Bs
 import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaPeopleGroup, FaStaffSnake, FaUserDoctor } from 'react-icons/fa6';
-import { GiAncientRuins, GiChurch, GiCommercialAirplane, GiHammerSickle, GiKneeling, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
+import { GiAncientRuins, GiChurch, GiCommercialAirplane, GiHammerSickle, GiKneeling, GiPalmTree, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
-import { IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
+import { IoIosBeer, IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
 import { IoHardwareChipOutline } from 'react-icons/io5';
-import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdLocalBar, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
+import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold } from 'react-icons/pi';
 import { SiTinder as IconoTinder, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { TbZzz } from 'react-icons/tb';
@@ -97,7 +97,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   archeology: ({ size }) => <GiAncientRuins size={size} className="grey" />,
   aws: ({ size }) => <FaAws size={size} className="orange aws" />,
   basketball: ({ size }) => <FaBasketball size={size} className="orange" />,
-  beer: ({ size }) => <MdLocalBar size={size} className="yellow" />,
+  beer: ({ size }) => <IoIosBeer size={size} className="yellow" />,
   bible: ({ size }) => <IconoBible size={size} className="pink purple" />,
   bills: ({ size }) => <FaFileInvoiceDollar size={size} className="red" />, 
   birthday: ({ size }) => <FaBirthdayCake size={size} className="blue ui" />, 
@@ -132,6 +132,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   hardware: ({ size }) => <IoHardwareChipOutline size={size} className="orange" />,
   health: ({ size }) => <FaStaffSnake size={size} className="green" />, 
   hiking: ({ size }) => <FaHiking size={size} className="green" />, 
+  holiday: ({ size }) => <GiPalmTree size={size} className="green" />, 
   israel: ({ size }) => <Flag country='IL' size={size} className="" />,
   inlove: ({ size }) => <MdFavorite size={size} className="pink" />,
   inspiration: ({ size }) => <GiSparkSpirit size={size} style={{ color: '#f2a83f' }} />,
