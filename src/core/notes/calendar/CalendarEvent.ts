@@ -1,6 +1,6 @@
 import { App, ButtonComponent, DropdownComponent, Modal, Notice, TextAreaComponent, TextComponent } from "obsidian";
 import { Momento } from "./../../notes/momento/Momento";
-import { CalendarIcon, iconMap } from "./CalendarIcon";
+import { iconMap } from "./CalendarIcon";
 
 
 export interface FormValues {
@@ -114,10 +114,6 @@ export class CalendarEvent extends Modal {
     const iconLabel = iconDiv.createEl("label", { cls: "form-label" });
     iconLabel.setText("Icon");
     this.iconDropdown = new DropdownComponent(iconDiv);
-
-    // Carga los iconos desde CalendarIcon y añádelos al DropdownComponent
-    const calendarIcon = new CalendarIcon();
-    // const iconMap = CalendarIcon.getIcon(); // Asume que tienes un método getIconMap en CalendarIcon
 
     // Agrega los iconos al DropdownComponent
     for (const iconName in iconMap) {
