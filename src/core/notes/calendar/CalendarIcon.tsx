@@ -15,7 +15,7 @@ import { IoHardwareChipOutline } from 'react-icons/io5';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold } from 'react-icons/pi';
 import { SiTinder as IconoTinder, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
-import { TbZzz } from 'react-icons/tb';
+import { TbPills, TbZzz } from 'react-icons/tb';
 
 import Flag from 'react-flagkit';
 
@@ -132,8 +132,8 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   happiness: ({ size }) => <FaSmile size={size} className="yellow" />,
   hardware: ({ size }) => <IoHardwareChipOutline size={size} className="orange" />,
   health: ({ size }) => <GiHealthNormal size={size} className="yellow emoji" />, 
-  health_ok: ({ size }) => <GiHealthIncrease size={size} className="green" />, 
-  health_ko: ({ size }) => <GiHealthDecrease size={size} className="red" />, 
+  healthok: ({ size }) => <GiHealthIncrease size={size} className="green" />, 
+  healthko: ({ size }) => <GiHealthDecrease size={size} className="red" />, 
   heartbreak: ({ size }) => <BsFillHeartbreakFill size={size} className="red" />, 
   hiking: ({ size }) => <FaHiking size={size} className="green" />, 
   holiday: ({ size }) => <GiPalmTree size={size} className="green" />, 
@@ -186,6 +186,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   sport: ({ size }) => <MdDirectionsRun size={size} className="green" />, 
   spotify: ({ size }) => <SiSpotify size={size} className="green spotify" />,
   sunny: ({ size }) => <IoMdSunny size={size} className="yellow" />,
+  supplement: ({ size }) => <TbPills size={size} className="yellow" />,
   tax: ({ size }) => <HiReceiptTax size={size} style={{ color: '#fc0303' }} />, 
   telegram: ({ size }) => <FaTelegram size={size} className="blue telegram" />, 
   tinder: ({ size }) => <IconoTinder size={size} style={{ color: '#FE3C72' }} />,
