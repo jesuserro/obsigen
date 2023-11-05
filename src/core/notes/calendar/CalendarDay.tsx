@@ -1,4 +1,4 @@
-import { App, TFile } from 'obsidian';
+import { App, MetadataCache, TFile } from 'obsidian';
 import { CalendarEvent } from './CalendarEvent';
 import { CalendarIcon } from './CalendarIcon';
 
@@ -33,12 +33,15 @@ const generateEventIndex = (note: TFile): number => {
   return hashCode(note.path);
 };
 
-const getCalendarEvent = (year: number, month: number, dayCounter: number, index: number, note: TFile) => {
+const getCalendarEvent = (year: number, month: number, dayCounter: number, index: number, note: TFile, metadataCache: MetadataCache) => {
 
   const mykey = `${year}-${month}-${dayCounter}${index}`;
   const icon = CalendarIcon.getIconByNote(note, 18);
 
-  const isHoliday = false;
+  const yaml = metadataCache.getFileCache(note)?.frontmatter;
+  const cssClasses = yaml?.cssclasses || [];
+  const isHoliday = cssClasses.includes("holiday");
+
   const dayContainerClasses = `day-container ${isHoliday ? 'holiday' : ''}`;
  
   return (
@@ -71,8 +74,8 @@ const CalendarDay = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNot
 
 
   const notePath = hasNote ? `obsidian://open?file=${encodeURIComponent(hasNote)}` : '';
-  const anniversary = anniversaryNote ? getCalendarEvent(year, month, dayCounter, generateEventIndex(anniversaryNote), anniversaryNote) : null;
-  const notesOfTheDay = dayNotes ? dayNotes.map((note, index) => getCalendarEvent(year, month, dayCounter, generateEventIndex(note), note)) : null;
+  const anniversary = anniversaryNote ? getCalendarEvent(year, month, dayCounter, generateEventIndex(anniversaryNote), anniversaryNote, app.metadataCache) : null;
+  const notesOfTheDay = dayNotes ? dayNotes.map((note, index) => getCalendarEvent(year, month, dayCounter, generateEventIndex(note), note, app.metadataCache)) : null;
 
   return (
     <div className="day-container">
