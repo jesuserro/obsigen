@@ -38,6 +38,17 @@ function createDaysGrid(app:App, metadataCache: MetadataCache, files: TFile[], n
       const hasNote = getDailyNote(dayIndex, files, year, month);
       const anniversaryNote = getAnniversaryNote(dayIndex, files, month);
 
+      const dayNotes = getDayNotes(app, metadataCache, files, dayIndex, year, month);
+      // Order dayNotes by date
+      dayNotes.sort((a, b) => {
+        const aDate = metadataCache.getFileCache(a)?.frontmatter?.date;
+        const bDate = metadataCache.getFileCache(b)?.frontmatter?.date;
+        if (aDate && bDate) {
+          return aDate.localeCompare(bDate);
+        }
+        return 0;
+      });
+
       cells.push(
         <td key={`cell-${year}-${String(month).padStart(2, '0')}-${row}-${dayOfWeek}`} className={isWithinMonth ? 'within-month' : 'outside-month'}>
           {dayIndex > 0 && dayIndex <= numDaysInMonth ? (
@@ -48,7 +59,7 @@ function createDaysGrid(app:App, metadataCache: MetadataCache, files: TFile[], n
               dayCounter={dayIndex}
               hasNote={hasNote}
               anniversaryNote={anniversaryNote} 
-              dayNotes={getDayNotes(app, metadataCache, files, dayIndex, year, month)}
+              dayNotes={dayNotes}
               app={app}
             />
           ) : (

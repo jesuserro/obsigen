@@ -33,6 +33,15 @@ export class CalendarIcon {
     return null;
   }
 
+  static getIconByCssClass(cssClass: string, size: number): React.ReactNode | null {
+    if (iconMap.hasOwnProperty(cssClass)) {
+      return iconMap[cssClass]({ size });
+    }
+
+    // Si la clave no se encuentra en el iconMap, puedes devolver nulo o un valor predeterminado.
+    return null;
+  }
+
   static getIconByNote(note: TFile, size: number): React.ReactNode {
     const path = note.path;
     const app = useApp();
