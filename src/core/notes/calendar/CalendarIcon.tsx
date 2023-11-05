@@ -5,7 +5,7 @@ import { useApp } from './../../hooks/useApp';
 import { BiLogoGmail } from 'react-icons/bi';
 import { BsFillCalendar2WeekFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
 import { GiAncientRuins, GiChurch, GiCommercialAirplane, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
@@ -180,6 +180,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   sadness: ({ size }) => <ImSad2 size={size} className="yellow emoji" />,
   sex: ({ size }) => <FaVenus size={size} className="pink" />,
   sick: ({ size }) => <MdSick size={size} className="yellow emoji" />,
+  skype: ({ size }) => <FaSkype size={size} style={{ color: '#00AFF0' }} />,
   snow: ({ size }) => <BsSnow3 size={size} className="white" />,
   soccer: ({ size }) => <GiSoccerBall size={size} className="green" />,
   spain: ({ size }) => <Flag country='ES' size={size} className="" />,
