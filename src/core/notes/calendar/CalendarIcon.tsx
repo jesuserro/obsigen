@@ -3,11 +3,11 @@ import React from 'react';
 import { useApp } from './../../hooks/useApp';
 
 import { BiLogoGmail } from 'react-icons/bi';
-import { BsFillCalendar2WeekFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
+import { BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCcVisa, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
-import { GiAncientRuins, GiChurch, GiCommercialAirplane, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
+import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoIosPaper, IoMdBasket, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
@@ -96,6 +96,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   amazon: ({ size }) => <FaAmazon size={size} className="orange amazon" />,
   archeology: ({ size }) => <GiAncientRuins size={size} className="grey" />,
   aws: ({ size }) => <FaAws size={size} className="orange aws" />,
+  bank: ({ size }) => <GiBank size={size} className="red" />,
   basketball: ({ size }) => <FaBasketball size={size} className="orange" />,
   beer: ({ size }) => <IoIosBeer size={size} className="yellow" />,
   bible: ({ size }) => <IconoBible size={size} className="pink purple" />,
@@ -156,6 +157,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   num7: ({ size }) => <PiNumberCircleSevenBold size={size} style={{ color: '#fff' }} />,
   num8: ({ size }) => <PiNumberCircleEightBold size={size} style={{ color: '#fff' }} />,
   num9: ({ size }) => <PiNumberCircleNineBold size={size} style={{ color: '#fff' }} />,
+  ok: ({ size }) => <BsFillCheckCircleFill size={size} className="green" />,
   payroll: ({ size }) => <IconoPayroll size={size} className="yellow" />,
   peace: ({ size }) => <GiPeaceDove size={size} className="white" />,
   people: ({ size }) => <MdPeople size={size} className="grey" />,
@@ -180,6 +182,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   rss: ({ size }) => <FaRss size={size} className="orange" />, 
   russia: ({ size }) => <Flag country='RU' size={size} className="orange" />, 
   sadness: ({ size }) => <ImSad2 size={size} className="yellow emoji" />,
+  saving: ({ size }) => <FaPiggyBank size={size} className="green" />,
   sex: ({ size }) => <FaVenus size={size} className="pink" />,
   sick: ({ size }) => <MdSick size={size} className="yellow emoji" />,
   skype: ({ size }) => <FaSkype size={size} style={{ color: '#00AFF0' }} />,
