@@ -5,7 +5,7 @@ import { useApp } from './../../hooks/useApp';
 import { BiLogoGmail } from 'react-icons/bi';
 import { BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGitSquare, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCcVisa, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
 import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
@@ -126,6 +126,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   friends: ({ size }) => <MdGroup size={size} className="yellow" />,
   funeral: ({ size }) => <GiTombstone size={size} className="grey" />,
   gastronomy: ({ size }) => <MdRestaurant size={size} style={{ color: '#FFD700' }} />,
+  git: ({ size }) => <FaGitSquare size={size} className='orange' />, 
   github: ({ size }) => <FaGithub size={size} style={{ color: '#fff' }} />, 
   gluttony: ({ size }) => <GiGluttony size={size} className='yellow emoji' />, 
   goodreads: ({ size }) => <FaGoodreads size={size} className="brown goodreads" />,
