@@ -11,6 +11,16 @@
   }
 }
 
+.day-container {
+  // Estilo predeterminado para .day-container
+
+  &:has(.holiday) {
+    // Estilo aplicado si .day-container contiene un hijo con la clase 'holiday'
+    background-color: rgba(255, 255, 0, 0.2); // Amarillo suave con 20% de opacidad
+  }
+
+}
+
 /* CSS para dispositivos móviles */
 @media (max-width: 767px) {
   .day-container {
