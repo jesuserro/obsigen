@@ -1,4 +1,5 @@
 .day-container {
+  // Estilo predeterminado para .day-container
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,10 +10,6 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 2px;
   }
-}
-
-.day-container {
-  // Estilo predeterminado para .day-container
 
   &:has(.holiday) {
     // Estilo aplicado si .day-container contiene un hijo con la clase 'holiday'
