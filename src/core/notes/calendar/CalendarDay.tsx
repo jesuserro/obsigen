@@ -42,7 +42,7 @@ const getCalendarEvent = (year: number, month: number, dayCounter: number, index
   const cssClasses = yaml?.cssclasses || [];
   const isHoliday = cssClasses.includes("holiday");
 
-  const dayContainerClasses = `day-container ${isHoliday ? 'holiday' : ''}`;
+  const dayContainerClasses = `day-event-container ${isHoliday ? 'holiday' : ''}`;
  
   return (
     <div key={mykey} className={dayContainerClasses}>
