@@ -41,22 +41,23 @@ export function CalendarIconPicker({
     <div className="calendar-icon-picker">
       <label className="form-label">Icon Picker</label>
 
-      {/* New input for searching icons */}
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={handleSearchChange}
-        placeholder="Search for an icon"
-        className="form-input"
-      />
+      <div className="horizontal-container">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={handleSearchChange}
+          placeholder="Search for an icon"
+          className="form-input"
+        />
 
-      <select value={value} onChange={handleIconChange} className="form-select">
-        {Object.keys(icons).map((iconName) => (
-          <option key={iconName} value={iconName}>
-            {iconName}
-          </option>
-        ))}
-      </select>
+        <select value={value} onChange={handleIconChange} className="form-select">
+          {Object.keys(icons).map((iconName) => (
+            <option key={iconName} value={iconName}>
+              {iconName}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 }

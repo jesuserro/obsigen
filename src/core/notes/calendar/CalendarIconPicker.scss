@@ -1,0 +1,28 @@
+.calendar-icon-picker {
+  display: flex;
+  flex-direction: column;
+
+  .form-label {
+    margin-bottom: 8px;
+  }
+
+  .form-input,
+  .form-select {
+    width: 100%;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+  }
+
+  .horizontal-container {
+    display: flex;
+
+    input[type="text"] {
+      flex: 1;
+      margin-right: 8px; 
+    }
+
+    select {
+      flex: 1;
+    }
+  }
+}

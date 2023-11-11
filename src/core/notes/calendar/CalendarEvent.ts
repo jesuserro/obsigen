@@ -112,7 +112,7 @@ export class CalendarEvent extends Modal {
     this.initializeDropdowns();
   
     // Icon Selector label and dropdown
-    const iconDiv = div.createDiv("form-element");
+    const iconDiv = div.createDiv();
     const iconLabel = iconDiv.createEl("label", { cls: "form-label" });
     iconLabel.setText("Icon");
     this.iconDropdown = React.createElement(CalendarIconPicker, { 
