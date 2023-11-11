@@ -115,9 +115,11 @@ export class CalendarEvent extends Modal {
     const iconDiv = div.createDiv("form-element");
     const iconLabel = iconDiv.createEl("label", { cls: "form-label" });
     iconLabel.setText("Icon");
-    this.iconDropdown = React.createElement(CalendarIconPicker, { selectedIcon: 'default-icon',
+    this.iconDropdown = React.createElement(CalendarIconPicker, { 
+      selectedIcon: 'default-icon',
       onChange: ((value) => (this.selectedIcon = value)),
-      icons: iconMap});
+      icons: iconMap
+    });
     const root = ReactDOM.createRoot(iconDiv);
     root.render(this.iconDropdown);
   
