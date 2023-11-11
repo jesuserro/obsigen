@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export interface CalendarIconPickerProps {
   selectedIcon: string;
@@ -12,22 +12,45 @@ export function CalendarIconPicker({
   icons,
 }: CalendarIconPickerProps): JSX.Element {
   const [value, setValue] = useState(selectedIcon);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    // Update the selected icon based on the search term
+    const matchingIcon = Object.keys(icons).find((iconName) =>
+      iconName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    if (matchingIcon) {
+      setValue(matchingIcon);
+      onChange(matchingIcon);
+    }
+  }, [searchTerm, icons, onChange]);
 
   const handleIconChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = e.target.value;
-    onChange(selectedValue);
     setValue(selectedValue);
+    onChange(selectedValue);
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchText = e.target.value;
+    setSearchTerm(searchText);
   };
 
   return (
     <div className="calendar-icon-picker">
       <label className="form-label">Icon Picker</label>
 
-      <select
-        value={value}
-        onChange={handleIconChange}
-        className="form-select"
-      >
+      {/* New input for searching icons */}
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={handleSearchChange}
+        placeholder="Search for an icon"
+        className="form-input"
+      />
+
+      <select value={value} onChange={handleIconChange} className="form-select">
         {Object.keys(icons).map((iconName) => (
           <option key={iconName} value={iconName}>
             {iconName}
