@@ -1,7 +1,9 @@
 import { App, ButtonComponent, DropdownComponent, Modal, Notice, TextAreaComponent, TextComponent } from "obsidian";
+import React from "react";
+import ReactDOM from "react-dom/client";
 import { Momento } from "./../../notes/momento/Momento";
 import { iconMap } from "./CalendarIcon";
-
+import { CalendarIconPicker } from "./CalendarIconPicker";
 
 export interface FormValues {
   title: string;
@@ -33,7 +35,7 @@ export class CalendarEvent extends Modal {
   private yearDropdown: DropdownComponent;
   private monthDropdown: DropdownComponent;
   private dayDropdown: DropdownComponent;
-  private iconDropdown: DropdownComponent;
+  private iconDropdown: JSX.Element;
   private hourDropdown: DropdownComponent;
   private minuteDropdown: DropdownComponent;
   
@@ -70,7 +72,7 @@ export class CalendarEvent extends Modal {
 
     this.titleField.setValue(this.title);
     this.descriptionTextarea.setValue(this.description);
-    this.iconDropdown.setValue(this.selectedIcon);
+    // this.iconDropdown.setValue(this.selectedIcon);
   }
   
   createForm(): void {
@@ -113,15 +115,11 @@ export class CalendarEvent extends Modal {
     const iconDiv = div.createDiv("form-element");
     const iconLabel = iconDiv.createEl("label", { cls: "form-label" });
     iconLabel.setText("Icon");
-    this.iconDropdown = new DropdownComponent(iconDiv);
-
-    // Agrega los iconos al DropdownComponent
-    for (const iconName in iconMap) {
-      this.iconDropdown.addOption(iconName, iconName);
-    }
-
-    this.iconDropdown.setValue(this.selectedIcon);
-    this.iconDropdown.onChange((value) => (this.selectedIcon = value));
+    this.iconDropdown = React.createElement(CalendarIconPicker, { selectedIcon: 'default-icon',
+      onChange: ((value) => (this.selectedIcon = value)),
+      icons: iconMap});
+    const root = ReactDOM.createRoot(iconDiv);
+    root.render(this.iconDropdown);
   
     // Description label and textarea
     const descriptionDiv = div.createDiv("form-element");
