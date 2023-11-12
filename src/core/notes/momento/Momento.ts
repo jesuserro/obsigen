@@ -26,6 +26,7 @@ export class Momento {
   hour: number;
   minute: number;
   locations: string;
+  urls: string;
 
   constructor(app: App) {
     this.app = app;
@@ -39,6 +40,7 @@ export class Momento {
     this.hour = this.date.getHours();
     this.minute = this.date.getMinutes();
     this.locations = "";
+    this.urls = "";
   }
 
   getCurrentTime() {
@@ -59,12 +61,14 @@ export class Momento {
   setYaml() {
     const link = `"[[${this.getCurrentDate()}]]"`;
     const locations = `"[[${this.locations}]]"`;
+    const urls = `"[[${this.urls}]]"`;
     const data = {
       ...DATA_YAML_DEFAULT,
       title: this.title,
       date: this.date,
       links: [...DATA_YAML_DEFAULT.links, link],
       locations: [...DATA_YAML_DEFAULT.locations, locations],
+      urls: [...DATA_YAML_DEFAULT.urls, urls],
     };
     
     if (this.icon) {
@@ -75,7 +79,7 @@ export class Momento {
     this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
-  async createNote(title: string, content: string, startDate?: string, icon?: string, description?: string, locations?: string, url:string = '') {
+  async createNote(title: string, content: string, startDate?: string, icon?: string, description?: string, locations?: string, urls:string = '') {
     this.title = this.getTitle(title);
     this.startDate = startDate || null;
     if (this.startDate) {
@@ -87,6 +91,7 @@ export class Momento {
     this.icon = icon || null;
     this.description = description || '';
     this.locations = locations || '';
+    this.urls = urls || '';
     this.setYaml();
     this.fileName = this.getFilename(this.title);
     this.setContent(content);

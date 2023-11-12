@@ -7,7 +7,7 @@ import { CalendarIconPicker } from "./CalendarIconPicker";
 
 export interface FormValues {
   title: string;
-  url: string;
+  urls: string;
   description: string;
   startDate: string;
   endDate: string;
@@ -24,7 +24,7 @@ export class CalendarEvent extends Modal {
   private month:number;
   private day:number;
   private title: string;
-  private url: string;
+  private urls: string;
   private description: string;
   private startDate: string;
   private endDate: string;
@@ -41,6 +41,7 @@ export class CalendarEvent extends Modal {
   private hourDropdown: DropdownComponent;
   private minuteDropdown: DropdownComponent;
   private locationField: TextComponent;
+  private urlField: TextComponent;
   
   constructor(app: App, year:number, month:number, day:number) {
     super(app);
@@ -67,7 +68,7 @@ export class CalendarEvent extends Modal {
 
   resetValues() {
     this.title = "";
-    this.url = "";
+    this.urls = "";
     this.description = "";
     this.startDate = "";
     this.endDate = "";
@@ -78,6 +79,7 @@ export class CalendarEvent extends Modal {
     this.descriptionTextarea.setValue(this.description);
     // this.iconDropdown.setValue(this.selectedIcon);
     this.locationField.setValue(this.locations);
+    this.urlField.setValue(this.urls);
   }
   
   createForm(): void {
@@ -137,6 +139,16 @@ export class CalendarEvent extends Modal {
     this.locationField.setPlaceholder("location");
     this.locationField.setValue(this.locations);
     this.locationField.onChange((value) => (this.locations = value));
+
+    // url label and textfield
+    const urlDiv = div.createDiv("form-element");
+    const urlLabel = urlDiv.createEl("label", { cls: "form-label" });
+    urlLabel.setText("Urls");
+    this.urlField = new TextComponent(urlDiv);
+    this.urlField.inputEl.addClass("form-input");
+    this.urlField.setPlaceholder("urls");
+    this.urlField.setValue(this.urls);
+    this.urlField.onChange((value) => (this.urls = value));
 
     // Description label and textarea
     const descriptionDiv = div.createDiv("form-element");
@@ -209,10 +221,10 @@ export class CalendarEvent extends Modal {
     });
   }
 
-  getFormValues(): { title: string; url: string, description: string, startDate: string, endDate: string, selectedIcon: string, locations: string } {
+  getFormValues(): { title: string; urls: string, description: string, startDate: string, endDate: string, selectedIcon: string, locations: string } {
     return { 
       title: this.title, 
-      url: this.url, 
+      urls: this.urls, 
       description: this.description, 
       startDate: this.startDate, 
       endDate: this.endDate, 
@@ -238,10 +250,11 @@ export class CalendarEvent extends Modal {
     const startDate = `${selectedYear}-${selectedMonth.padStart(2, '0')}-${selectedDay.padStart(2, '0')} ${selectedTime}`;
 
     this.locations = this.locationField.getValue();
+    this.urls = this.urlField.getValue();
 
     const formValues: FormValues = {
       title: this.title.trim(),
-      url: this.url.trim(),
+      urls: this.urls.trim(),
       description: this.description.trim(),
       startDate: startDate,
       endDate: this.endDate.trim(),
@@ -269,7 +282,7 @@ export class CalendarEvent extends Modal {
       formValues.selectedIcon, 
       "description",
       formValues.locations,
-      "url"
+      formValues.urls
     );
 
     // Cerrar el modal
