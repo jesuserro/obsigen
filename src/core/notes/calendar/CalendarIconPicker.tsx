@@ -46,7 +46,7 @@ export function CalendarIconPicker({
           type="text"
           value={searchTerm}
           onChange={handleSearchChange}
-          placeholder="Search for an icon"
+          placeholder="Search icon"
           className="form-input"
         />
 

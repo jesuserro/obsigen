@@ -57,7 +57,6 @@ const getCalendarEvent = (year: number, month: number, dayCounter: number, index
   );
 };
 
-
 const CalendarDay = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes, app }: CalendarDayProps) => {
   
   const fnEventForm = async () => {
@@ -71,7 +70,6 @@ const CalendarDay = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNot
       {icon}
     </div>
   );
-
 
   const notePath = hasNote ? `obsidian://open?file=${encodeURIComponent(hasNote)}` : '';
   const anniversary = anniversaryNote ? getCalendarEvent(year, month, dayCounter, generateEventIndex(anniversaryNote), anniversaryNote, app.metadataCache) : null;

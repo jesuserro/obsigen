@@ -25,18 +25,20 @@ export class Momento {
   day: number;
   hour: number;
   minute: number;
+  locations: string;
 
-  constructor(app: App, startDate: string | null = null, icon: string | null = null) {
+  constructor(app: App) {
     this.app = app;
     this.noteGenerator = new NoteGenerator(this.app);
-    this.startDate = startDate;
-    this.icon = icon;
+    this.startDate = "";
+    this.icon = "";
     this.date = new Date();
     this.year = this.date.getFullYear();
     this.month = this.date.getMonth() + 1;
     this.day = this.date.getDate();
     this.hour = this.date.getHours();
     this.minute = this.date.getMinutes();
+    this.locations = "";
   }
 
   getCurrentTime() {
@@ -56,11 +58,13 @@ export class Momento {
 
   setYaml() {
     const link = `"[[${this.getCurrentDate()}]]"`;
+    const locations = `"[[${this.locations}]]"`;
     const data = {
       ...DATA_YAML_DEFAULT,
       title: this.title,
       date: this.date,
       links: [...DATA_YAML_DEFAULT.links, link],
+      locations: [...DATA_YAML_DEFAULT.locations, locations],
     };
     
     if (this.icon) {
@@ -71,7 +75,7 @@ export class Momento {
     this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
-  async createNote(title: string, content: string, startDate?: string, icon?: string, description?: string) {
+  async createNote(title: string, content: string, startDate?: string, icon?: string, description?: string, locations?: string, url:string = '') {
     this.title = this.getTitle(title);
     this.startDate = startDate || null;
     if (this.startDate) {
@@ -82,6 +86,7 @@ export class Momento {
     }
     this.icon = icon || null;
     this.description = description || '';
+    this.locations = locations || '';
     this.setYaml();
     this.fileName = this.getFilename(this.title);
     this.setContent(content);
