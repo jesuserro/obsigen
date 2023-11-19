@@ -1,4 +1,4 @@
-import { App, ButtonComponent, DropdownComponent, Modal, Notice, TextAreaComponent, TextComponent } from "obsidian";
+import { App, ButtonComponent, DropdownComponent, Modal, Notice, SearchComponent, TextAreaComponent, TextComponent, TFile } from "obsidian";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Momento } from "./../../notes/momento/Momento";
@@ -40,7 +40,7 @@ export class CalendarEvent extends Modal {
   private iconDropdown: JSX.Element;
   private hourDropdown: DropdownComponent;
   private minuteDropdown: DropdownComponent;
-  private locationField: TextComponent;
+  private locationField: SearchComponent;
   private urlField: TextComponent;
   
   constructor(app: App, year:number, month:number, day:number) {
@@ -134,11 +134,24 @@ export class CalendarEvent extends Modal {
     const locationDiv = div.createDiv("form-element");
     const locationLabel = locationDiv.createEl("label", { cls: "form-label" });
     locationLabel.setText("Location");
-    this.locationField = new TextComponent(locationDiv);
+    this.locationField = new SearchComponent(locationDiv);
     this.locationField.inputEl.addClass("form-input");
     this.locationField.setPlaceholder("location");
     this.locationField.setValue(this.locations);
-    this.locationField.onChange((value) => (this.locations = value));
+    // this.locationField.onChange((value) => (this.locations = value));
+    // Search vault files for locations
+    this.locationField.onChange(async (value) => {
+
+      if(value.length < 3){
+        return;
+      }
+
+      const matchingFiles = this.searchFiles(value);
+
+      const matchingTitles = matchingFiles.map((file) => file.path);
+    
+      // console.log('Matching Files:', matchingTitles);
+    });
 
     // url label and textfield
     const urlDiv = div.createDiv("form-element");
@@ -167,6 +180,21 @@ export class CalendarEvent extends Modal {
     submitButton.setButtonText("Submit").onClick((evt: Event) => {
       this.onSubmit(evt);
     });
+  }
+
+  // Método para buscar archivos en el vault
+  private searchFiles(query: string): TFile[] {
+    const { vault } = this.app;
+    
+    // Obtener todos los archivos Markdown en el vault
+    const allFiles = vault.getMarkdownFiles();
+
+    // Filtrar los archivos que coinciden con la consulta
+    const matchingFiles = allFiles.filter((file) =>
+      file.basename.toLowerCase().includes(query.toLowerCase())
+    );
+
+    return matchingFiles;
   }   
 
   private initializeDropdowns() {
