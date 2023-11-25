@@ -6,7 +6,7 @@ import { BiLogoGmail } from 'react-icons/bi';
 import { BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGitSquare, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
-import { FaBasketball, FaCcVisa, FaPeopleGroup, FaScissors, FaUserDoctor } from 'react-icons/fa6';
+import { FaBasketball, FaCamera, FaCcVisa, FaPeopleGroup, FaScissors, FaUserDoctor } from 'react-icons/fa6';
 import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
@@ -14,7 +14,8 @@ import { IoIosBeer, IoIosPaper, IoMdBasket, IoMdMusicalNotes, IoMdSunny } from '
 import { IoHardwareChipOutline } from 'react-icons/io5';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold } from 'react-icons/pi';
-import { SiTinder as IconoTinder, SiGimp, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
+import { SiTinder as IconoTinder, SiGimp, SiOpenai, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
+import { SlPicture } from "react-icons/sl";
 import { TbBulbFilled, TbPills, TbZzz } from 'react-icons/tb';
 
 // https://github.com/madebybowtie/FlagKit/blob/master/Assets/Flags.md
@@ -118,6 +119,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   bookmark: ({ size }) => <FaBookmark size={size} className="blue cobalt" />,
   buy: ({ size }) => <IoMdBasket size={size} className="red" />,
   calendar: ({ size }) => <BsFillCalendar2WeekFill size={size} className="blue ui" />, 
+  camera: ({ size }) => <FaCamera size={size} className="blue sky" />, 
   car: ({ size }) => <FaCarSide size={size} className="red c3" />, 
   catholic: ({ size }) => <FaCross size={size} className="pink purple" />,
   chess: ({ size }) => <FaChess size={size} className="blue chesscom" />, 
@@ -171,12 +173,14 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   num8: ({ size }) => <PiNumberCircleEightBold size={size} style={{ color: '#fff' }} />,
   num9: ({ size }) => <PiNumberCircleNineBold size={size} style={{ color: '#fff' }} />,
   ok: ({ size }) => <BsFillCheckCircleFill size={size} className="green" />,
+  openai: ({ size }) => <SiOpenai size={size} className="green openai" />,
   payroll: ({ size }) => <IconoPayroll size={size} className="yellow" />,
   peace: ({ size }) => <GiPeaceDove size={size} className="white" />,
   people: ({ size }) => <MdPeople size={size} className="grey" />,
   perspective: ({ size }) => <GiPerspectiveDiceThree size={size} className="yellow" />,
   person: ({ size }) => <BsFillPersonFill size={size} className="grey" />,
   phone: ({ size }) => <FaPhone size={size} className="white" />, 
+  picture: ({ size }) => <SlPicture size={size} className="yellow" />,
   pill: ({ size }) => <CiPill size={size} className="yellow" />,
   plentyoffish: ({ size }) => <IconoPlentyoffish size={size} className="pink" />,
   podcast: ({ size }) => <FaPodcast size={size} className="orange" />,

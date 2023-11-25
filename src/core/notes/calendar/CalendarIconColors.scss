@@ -67,6 +67,10 @@
 .green {
   color: #00FF00; 
 
+  &.openai {
+    color: #73D77A;
+  }
+
   &.spotify {
     color: #1DB954;
   }
