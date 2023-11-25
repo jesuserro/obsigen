@@ -106,6 +106,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   agro: ({ size }) => <GiWheat size={size} className="brown" />, 
   amazon: ({ size }) => <FaAmazon size={size} className="orange amazon" />,
   archeology: ({ size }) => <GiAncientRuins size={size} className="grey" />,
+  argentina: ({ size }) => <Flag country='AR' size={size} className="" />,
   aws: ({ size }) => <FaAws size={size} className="orange aws" />,
   bank: ({ size }) => <GiBank size={size} className="red" />,
   barber: ({ size }) => <FaScissors size={size} className="blue" />,
