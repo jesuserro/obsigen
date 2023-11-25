@@ -17,6 +17,7 @@ import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircle
 import { SiTinder as IconoTinder, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { TbBulbFilled, TbPills, TbZzz } from 'react-icons/tb';
 
+// https://github.com/madebybowtie/FlagKit/blob/master/Assets/Flags.md
 import Flag from 'react-flagkit';
 
 
@@ -189,9 +190,10 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   rain: ({ size }) => <BsFillCloudRainHeavyFill size={size} className="blue sky" />,
   realmadrid: ({ size }) => <FaFutbol size={size} className="white" />,
   repairs: ({ size }) => <MdBuild size={size} className="orange" />,
+  romania: ({ size }) => <Flag country='RO' size={size} className="" />,
   rosary: ({ size }) => <GiPrayerBeads size={size} className="pink purple" />,
-  rss: ({ size }) => <FaRss size={size} className="orange" />, 
-  russia: ({ size }) => <Flag country='RU' size={size} className="orange" />, 
+  rss: ({ size }) => <FaRss size={size} className="orange" />,  
+  russia: ({ size }) => <Flag country='RU' size={size} className="" />, 
   sadness: ({ size }) => <ImSad2 size={size} className="yellow emoji" />,
   saving: ({ size }) => <FaPiggyBank size={size} className="green" />,
   sex: ({ size }) => <FaVenus size={size} className="pink" />,
