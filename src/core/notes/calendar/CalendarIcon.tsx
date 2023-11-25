@@ -7,7 +7,7 @@ import { BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFil
 import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGitSquare, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaCcVisa, FaPeopleGroup, FaScissors, FaUserDoctor } from 'react-icons/fa6';
-import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
+import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiCrownCoin, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoIosPaper, IoMdBasket, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
@@ -125,6 +125,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   catholic: ({ size }) => <FaCross size={size} className="pink purple" />,
   chess: ({ size }) => <FaChess size={size} className="blue chesscom" />, 
   cinema: ({ size }) => <IconoCinema size={size} className="white" />,
+  coin: ({ size }) => <GiCrownCoin size={size} className="grey" />,
   communism: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
   confession: ({ size }) => <GiKneeling size={size} className="pink purple" />,
   cough: ({ size }) => <FaHeadSideCough size={size} className="yellow emoji" />, 
