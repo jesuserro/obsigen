@@ -14,7 +14,7 @@ import { IoIosBeer, IoIosPaper, IoMdBasket, IoMdMusicalNotes, IoMdSunny } from '
 import { IoHardwareChipOutline } from 'react-icons/io5';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold } from 'react-icons/pi';
-import { SiTinder as IconoTinder, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
+import { SiTinder as IconoTinder, SiGimp, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { TbBulbFilled, TbPills, TbZzz } from 'react-icons/tb';
 
 // https://github.com/madebybowtie/FlagKit/blob/master/Assets/Flags.md
@@ -137,6 +137,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   friends: ({ size }) => <MdGroup size={size} className="yellow" />,
   funeral: ({ size }) => <GiTombstone size={size} className="grey" />,
   gastronomy: ({ size }) => <MdRestaurant size={size} style={{ color: '#FFD700' }} />,
+  gimp: ({ size }) => <SiGimp size={size} className='orange' />, 
   git: ({ size }) => <FaGitSquare size={size} className='orange' />, 
   github: ({ size }) => <FaGithub size={size} style={{ color: '#fff' }} />, 
   gluttony: ({ size }) => <GiGluttony size={size} className='yellow emoji' />, 
