@@ -5,7 +5,7 @@ import { useApp } from './../../hooks/useApp';
 import { BiLogoGmail } from 'react-icons/bi';
 import { BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGitSquare, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
 import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiCrownCoin, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
@@ -141,6 +141,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   email: ({ size }) => <BiLogoGmail size={size} className="red" />,
   euro: ({ size }) => <IoIosPaper size={size} className="yellow" />,
   family: ({ size }) => <MdGroup size={size} className="yellow" />, 
+  fatima: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Fatima" />,
   favorite: ({ size }) => <FaStar size={size} className="yellow" />, 
   fever: ({ size }) => <FaTemperatureHigh size={size} className="yellow emoji" />, 
   finances: ({ size }) => <FaMoneyBillWave size={size} className="red" />,
@@ -195,6 +196,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   num7: ({ size }) => <PiNumberCircleSevenBold size={size} style={{ color: '#fff' }} />,
   num8: ({ size }) => <PiNumberCircleEightBold size={size} style={{ color: '#fff' }} />,
   num9: ({ size }) => <PiNumberCircleNineBold size={size} style={{ color: '#fff' }} />,
+  nun: ({ size }) => <CustomIcon size={size} className="pink purple" iconName="Nun" />,
   ok: ({ size }) => <BsFillCheckCircleFill size={size} className="green" />,
   openai: ({ size }) => <SiOpenai size={size} className="green openai" />,
   payroll: ({ size }) => <IconoPayroll size={size} className="yellow" />,
@@ -219,7 +221,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   quote: ({ size }) => <FaQuoteLeft size={size} className="yellow" />,
   rain: ({ size }) => <BsFillCloudRainHeavyFill size={size} className="blue sky" />,
   ramon: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Ramon" />,
-  realmadrid: ({ size }) => <FaFutbol size={size} className="white" />,
+  realmadrid: ({ size }) => <CustomIcon size={size} className="green" iconName="RealMadrid" />,
   repairs: ({ size }) => <MdBuild size={size} className="orange" />,
   romania: ({ size }) => <Flag country='RO' size={size} className="" />,
   rosary: ({ size }) => <GiPrayerBeads size={size} className="pink purple" />,
@@ -246,6 +248,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   travel: ({ size }) => <GiCommercialAirplane size={size} style={{ color: '#1199c2' }} />,
   tree: ({ size }) => <FaTree size={size} style={{ color: '#228B22' }} />,
   twitter: ({ size }) => <SiTwitter size={size} className="blue twitter" />,
+  vatican: ({ size }) => <Flag country='VA' size={size} className="" />,
   victor: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Victor" />,
   village: ({ size }) => <GiVillage size={size} style={{ color: '#47ff6c' }} />,
   visa: ({ size }) => <CustomIcon size={size} className="red" iconName="Visa" />,
