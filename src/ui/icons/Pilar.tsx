@@ -1,13 +1,8 @@
 import dataUrls from '../../assets/icons/dataurls';
+import { iconInterface } from './../iconInterface';
 
-interface PilarProps {
-  size: number;
-  className?: string;
-}
-
-function Pilar({ size, className }: PilarProps) {
+function Pilar({ size, className }: iconInterface) {
   
-  // const dataUrls = require('./../../assets/icons/dataurls');
   const dataUrl = dataUrls['Pilar']; 
 
   return (
@@ -20,7 +15,6 @@ function Pilar({ size, className }: PilarProps) {
     />
   );
 }
-
 
 export default Pilar;
 
