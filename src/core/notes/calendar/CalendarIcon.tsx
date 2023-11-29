@@ -146,6 +146,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   github: ({ size }) => <FaGithub size={size} style={{ color: '#fff' }} />, 
   gluttony: ({ size }) => <GiGluttony size={size} className='yellow emoji' />, 
   goodreads: ({ size }) => <FaGoodreads size={size} className="brown goodreads" />,
+  gospa: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Gospa" />,
   gym: ({ size }) => <MdOutlineSportsGymnastics size={size} className="green" />,
   happiness: ({ size }) => <FaSmile size={size} className="yellow" />,
   hardware: ({ size }) => <IoHardwareChipOutline size={size} className="orange" />,
