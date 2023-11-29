@@ -1,4 +1,5 @@
 export interface iconInterface {
-	size: number;
+	iconName: string;
+  size: number;
   className?: string;
 }
