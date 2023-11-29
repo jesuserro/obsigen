@@ -225,6 +225,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   rss: ({ size }) => <FaRss size={size} className="orange" />,  
   russia: ({ size }) => <Flag country='RU' size={size} className="" />, 
   sadness: ({ size }) => <ImSad2 size={size} className="yellow emoji" />,
+  saint: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Saint" />,
   saving: ({ size }) => <FaPiggyBank size={size} className="green" />,
   sex: ({ size }) => <FaVenus size={size} className="pink" />,
   sick: ({ size }) => <MdSick size={size} className="yellow emoji" />,
