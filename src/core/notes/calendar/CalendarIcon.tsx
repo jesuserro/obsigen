@@ -21,9 +21,8 @@ import { TbBulbFilled, TbPills, TbZzz } from 'react-icons/tb';
 // https://github.com/madebybowtie/FlagKit/blob/master/Assets/Flags.md
 import Flag from 'react-flagkit';
 
+import CustomIcon from './../../../ui/icons/CustomIcon';
 
-import Achelm from './../../../ui/icons/Achelm';
-import Pilar from './../../../ui/icons/Pilar';
 
 export class CalendarIcon {
   
@@ -100,7 +99,7 @@ export class CalendarIcon {
 }
 
 export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
-  achelm: ({ size }) => <Achelm size={size} className="pink" iconName="Achelm" />,
+  achelm: ({ size }) => <CustomIcon size={size} className="pink" iconName="Achelm" />,
   add: ({ size }) => <MdOutlineAddCircle size={size} className="green" />,
   agenda2030: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
   agriculture: ({ size }) => <IoMdBasket size={size} className="brown" />, 
@@ -184,7 +183,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   person: ({ size }) => <BsFillPersonFill size={size} className="grey" />,
   phone: ({ size }) => <FaPhone size={size} className="white" />, 
   picture: ({ size }) => <SlPicture size={size} className="yellow" />,
-  pilar: ({ size }) => <Pilar size={size} className="pink" iconName="Pilar" />,
+  pilar: ({ size }) => <CustomIcon size={size} className="pink" iconName="Pilar" />,
   pill: ({ size }) => <CiPill size={size} className="yellow" />,
   plentyoffish: ({ size }) => <IconoPlentyoffish size={size} className="pink" />,
   podcast: ({ size }) => <FaPodcast size={size} className="orange" />,

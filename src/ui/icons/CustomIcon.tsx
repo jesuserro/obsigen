@@ -1,9 +1,8 @@
 import dataUrls from '../../assets/icons/dataurls';
 import { iconInterface } from './../iconInterface';
 
-function Pilar({ iconName, size, className }: iconInterface) {
-  
-  const dataUrl = dataUrls[iconName]; 
+function CustomIcon({ size, className, iconName }: iconInterface) {
+  const dataUrl = dataUrls[iconName];
 
   return (
     <img
@@ -16,5 +15,4 @@ function Pilar({ iconName, size, className }: iconInterface) {
   );
 }
 
-export default Pilar;
-
+export default CustomIcon;
