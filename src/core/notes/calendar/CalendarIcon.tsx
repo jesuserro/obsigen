@@ -221,6 +221,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   supplement: ({ size }) => <TbPills size={size} className="yellow" />,
   tax: ({ size }) => <HiReceiptTax size={size} style={{ color: '#fc0303' }} />, 
   telegram: ({ size }) => <FaTelegram size={size} className="blue telegram" />, 
+  timothy: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Timothy" />,
   tinder: ({ size }) => <IconoTinder size={size} style={{ color: '#FE3C72' }} />,
   tired: ({ size }) => <FaTired size={size} style={{ color: '#FFC83D' }} />,
   travel: ({ size }) => <GiCommercialAirplane size={size} style={{ color: '#1199c2' }} />,
