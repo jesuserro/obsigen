@@ -124,6 +124,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   car: ({ size }) => <FaCarSide size={size} className="red c3" />, 
   catholic: ({ size }) => <FaCross size={size} className="pink purple" />,
   chess: ({ size }) => <FaChess size={size} className="blue chesscom" />, 
+  christ: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Christ" />, 
   cinema: ({ size }) => <IconoCinema size={size} className="white" />,
   coin: ({ size }) => <GiCrownCoin size={size} className="grey" />,
   communism: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
