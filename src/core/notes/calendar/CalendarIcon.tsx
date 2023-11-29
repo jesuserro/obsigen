@@ -105,6 +105,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   agriculture: ({ size }) => <IoMdBasket size={size} className="brown" />, 
   agro: ({ size }) => <GiWheat size={size} className="brown" />, 
   amazon: ({ size }) => <FaAmazon size={size} className="orange amazon" />,
+  annas: ({ size }) => <CustomIcon size={size} className="pink" iconName="AnnaS" />,
   archeology: ({ size }) => <GiAncientRuins size={size} className="grey" />,
   argentina: ({ size }) => <Flag country='AR' size={size} className="" />,
   aws: ({ size }) => <FaAws size={size} className="orange aws" />,
