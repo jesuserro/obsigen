@@ -6,7 +6,7 @@ import { BiLogoGmail } from 'react-icons/bi';
 import { BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGitSquare, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
-import { FaBasketball, FaCamera, FaCcVisa, FaPeopleGroup, FaScissors, FaUserDoctor } from 'react-icons/fa6';
+import { FaBasketball, FaCamera, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
 import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiCrownCoin, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
@@ -111,7 +111,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   argentina: ({ size }) => <Flag country='AR' size={size} className="" />,
   aws: ({ size }) => <FaAws size={size} className="orange aws" />,
   bank: ({ size }) => <GiBank size={size} className="red" />,
-  barber: ({ size }) => <FaScissors size={size} className="blue" />,
+  barber: ({ size }) => <CustomIcon size={size} className="blue" iconName="Barber" />,
   basketball: ({ size }) => <FaBasketball size={size} className="orange" />,
   beer: ({ size }) => <IoIosBeer size={size} className="yellow" />,
   bible: ({ size }) => <IconoBible size={size} className="pink purple" />,
@@ -125,6 +125,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   camera: ({ size }) => <FaCamera size={size} className="blue sky" />, 
   car: ({ size }) => <FaCarSide size={size} className="red c3" />, 
   catholic: ({ size }) => <FaCross size={size} className="pink purple" />,
+  cdr: ({ size }) => <CustomIcon size={size} className="orange" iconName="Cdr" />,
   chess: ({ size }) => <FaChess size={size} className="blue chesscom" />, 
   christ: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Christ" />, 
   cinema: ({ size }) => <IconoCinema size={size} className="white" />,
@@ -238,7 +239,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   twitter: ({ size }) => <SiTwitter size={size} className="blue twitter" />,
   victor: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Victor" />,
   village: ({ size }) => <GiVillage size={size} style={{ color: '#47ff6c' }} />,
-  visa: ({ size }) => <FaCcVisa size={size} className="red" />,
+  visa: ({ size }) => <CustomIcon size={size} className="red" iconName="Visa" />,
   watchsand: ({ size }) => <GiSandsOfTime size={size} style={{ color: '#FFFF99' }} />,
   weather: ({ size }) => <GiThermometerCold size={size} style={{ color: '#6dc8f2' }} />,
   whatsapp: ({ size }) => <SiWhatsapp size={size} className="green whatsapp" />, 
