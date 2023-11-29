@@ -1,4 +1,4 @@
-export interface iconInterface {
+export interface CustomIconInterface {
 	iconName: string;
   size: number;
   className?: string;

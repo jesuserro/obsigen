@@ -21,7 +21,7 @@ import { TbBulbFilled, TbPills, TbZzz } from 'react-icons/tb';
 // https://github.com/madebybowtie/FlagKit/blob/master/Assets/Flags.md
 import Flag from 'react-flagkit';
 
-import CustomIcon from './../../../ui/icons/CustomIcon';
+import CustomIcon from '../../../ui/CustomIcon';
 
 
 export class CalendarIcon {

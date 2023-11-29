@@ -1,7 +1,7 @@
-import dataUrls from '../../assets/icons/dataurls';
-import { iconInterface } from './../iconInterface';
+import dataUrls from '../assets/icons/dataurls';
+import { CustomIconInterface } from './CustomIconInterface';
 
-function CustomIcon({ size, className, iconName }: iconInterface) {
+function CustomIcon({ size, className, iconName }: CustomIconInterface) {
   const dataUrl = dataUrls[iconName];
 
   return (
