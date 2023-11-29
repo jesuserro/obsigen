@@ -211,6 +211,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   poland: ({ size }) => <Flag country='PL' size={size} className="" />,
   prayer: ({ size }) => <FaPrayingHands size={size} className="pink purple" />,
   price: ({ size }) => <IconoPrice size={size} className="red" />,
+  priest: ({ size }) => <CustomIcon size={size} className="pink purple" iconName="Priest" />,
   programming: ({ size }) => <FaCode size={size} className="orange" />, 
   psychology: ({ size }) => <MdPsychology size={size} className="green" />,
   pumpkin: ({ size }) => <GiPumpkinMask size={size} className="orange" />,
