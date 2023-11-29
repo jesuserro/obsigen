@@ -3,7 +3,7 @@ import { iconInterface } from './../iconInterface';
 
 function Pilar({ iconName, size, className }: iconInterface) {
   
-  const dataUrl = dataUrls['Pilar']; 
+  const dataUrl = dataUrls[iconName]; 
 
   return (
     <img

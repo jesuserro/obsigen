@@ -3,7 +3,7 @@ import { iconInterface } from './../iconInterface';
 
 function Achelm({ iconName, size, className }: iconInterface) {
   
-  const dataUrl = dataUrls['Achelm']; 
+  const dataUrl = dataUrls[iconName]; 
 
   return (
     <img
