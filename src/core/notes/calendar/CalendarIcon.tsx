@@ -23,6 +23,7 @@ import Flag from 'react-flagkit';
 
 
 import Achelm from './../../../ui/icons/Achelm';
+import Pilar from './../../../ui/icons/Pilar';
 
 export class CalendarIcon {
   
@@ -183,6 +184,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   person: ({ size }) => <BsFillPersonFill size={size} className="grey" />,
   phone: ({ size }) => <FaPhone size={size} className="white" />, 
   picture: ({ size }) => <SlPicture size={size} className="yellow" />,
+  pilar: ({ size }) => <Pilar size={size} className="pink" />,
   pill: ({ size }) => <CiPill size={size} className="yellow" />,
   plentyoffish: ({ size }) => <IconoPlentyoffish size={size} className="pink" />,
   podcast: ({ size }) => <FaPodcast size={size} className="orange" />,
