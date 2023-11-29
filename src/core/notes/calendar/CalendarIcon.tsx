@@ -169,6 +169,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   marker: ({ size }) => <FaMapMarkerAlt size={size} className="brown" />,
   mass: ({ size }) => <GiChurch size={size} className="pink purple" />,
   meeting: ({ size }) => <FaPeopleGroup size={size} className="orange" />,
+  mom: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Mom" />,
   music: ({ size }) => <IoMdMusicalNotes size={size} className="indigo" />,
   num0: ({ size }) => <PiNumberCircleZeroBold size={size} style={{ color: '#fff' }} />,
   num3: ({ size }) => <PiNumberCircleThreeBold size={size} style={{ color: '#fff' }} />,
