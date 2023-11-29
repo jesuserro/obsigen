@@ -130,6 +130,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   communism: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
   confession: ({ size }) => <GiKneeling size={size} className="pink purple" />,
   cough: ({ size }) => <FaHeadSideCough size={size} className="yellow emoji" />, 
+  dad: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Dad" />,
   doctor: ({ size }) => <FaUserDoctor size={size} className="green" />,
   dream: ({ size }) => <TbZzz size={size} className="blue cobalt" />,
   elections: ({ size }) => <FaVoteYea size={size} className="orange" />,
