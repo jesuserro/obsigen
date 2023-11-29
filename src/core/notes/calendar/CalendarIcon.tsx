@@ -174,6 +174,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   israel: ({ size }) => <Flag country='IL' size={size} className="" />, 
   italy: ({ size }) => <Flag country='IT' size={size} className="" />,
   itv: ({ size }) => <CustomIcon size={size} className="orange" iconName="Itv" />,
+  josefita: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Josefita" />,
   josemi: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Josemi" />,
   key: ({ size }) => <FaKey size={size} className="yellow" />, 
   kindle: ({ size }) => <FaBookReader size={size} className="blue kindle" />, 
