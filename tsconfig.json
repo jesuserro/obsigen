@@ -23,5 +23,5 @@
       "ES7"
     ]
   },
-  "include": ["src"]
+  "include": ["src", "var/CalendarEvent2.ts"]
 }

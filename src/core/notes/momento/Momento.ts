@@ -17,7 +17,7 @@ export class Momento {
   content: string;
   fileName: string;
   callout: string;
-  startDate: string | null;
+  startDate: Date | null;
   icon: string | null;
   description: string;
   year: number;
@@ -25,18 +25,22 @@ export class Momento {
   day: number;
   hour: number;
   minute: number;
+  locations: string;
+  urls: string;
 
-  constructor(app: App, startDate: string | null = null, icon: string | null = null) {
+  constructor(app: App) {
     this.app = app;
     this.noteGenerator = new NoteGenerator(this.app);
-    this.startDate = startDate;
-    this.icon = icon;
+    this.startDate = new Date();
+    this.icon = "";
     this.date = new Date();
     this.year = this.date.getFullYear();
     this.month = this.date.getMonth() + 1;
     this.day = this.date.getDate();
     this.hour = this.date.getHours();
     this.minute = this.date.getMinutes();
+    this.locations = "";
+    this.urls = "";
   }
 
   getCurrentTime() {
@@ -55,14 +59,28 @@ export class Momento {
   }
 
   setYaml() {
+    
+    let locations = '';
+    if (this.locations) {
+      locations = `"[[${this.locations}]]"`;
+    }
+    let urls = '';
+    if (this.urls) {
+      urls = `"[[${this.urls}]]"`;
+    }
     const link = `"[[${this.getCurrentDate()}]]"`;
+    // this.date = Mon Dec 04 2023 10:35:00 GMT+0100 (hora estándar de Europa central)
+    
     const data = {
       ...DATA_YAML_DEFAULT,
       title: this.title,
       date: this.date,
       links: [...DATA_YAML_DEFAULT.links, link],
+      locations: [...DATA_YAML_DEFAULT.locations, locations],
+      urls: [...DATA_YAML_DEFAULT.urls, urls]
     };
     
+    data.cssclasses = [];
     if (this.icon) {
       data.cssclasses.push(this.icon);
     }
@@ -71,17 +89,19 @@ export class Momento {
     this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
-  async createNote(title: string, content: string, startDate?: string, icon?: string, description?: string) {
+  async createNote(title: string, content: string, startDate?: Date, icon?: string, description?: string, locations?: string, urls:string = '') {
     this.title = this.getTitle(title);
     this.startDate = startDate || null;
     if (this.startDate) {
-      this.date = new Date(this.startDate);
+      this.date =this.startDate;
       this.year = this.date.getFullYear();
       this.month = this.date.getMonth();
       this.day = this.date.getDate();
     }
     this.icon = icon || null;
     this.description = description || '';
+    this.locations = locations || '';
+    this.urls = urls || '';
     this.setYaml();
     this.fileName = this.getFilename(this.title);
     this.setContent(content);

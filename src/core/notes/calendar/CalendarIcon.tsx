@@ -3,30 +3,41 @@ import React from 'react';
 import { useApp } from './../../hooks/useApp';
 
 import { BiLogoGmail } from 'react-icons/bi';
-import { BsFillCalendar2WeekFill, BsFillCloudRainHeavyFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
+import { BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaFutbol, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
-import { FaBasketball, FaPeopleGroup, FaScissors, FaStaffSnake, FaUserDoctor } from 'react-icons/fa6';
-import { GiAncientRuins, GiChurch, GiCommercialAirplane, GiHammerSickle, GiKneeling, GiPalmTree, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
+import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaBasketball, FaCamera, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
+import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiCrownCoin, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
-import { IoIosBeer, IoIosPaper, IoMdBasket, IoMdMusicalNotes } from 'react-icons/io';
+import { IoIosBeer, IoIosPaper, IoMdBasket, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
 import { IoHardwareChipOutline } from 'react-icons/io5';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold } from 'react-icons/pi';
-import { SiTinder as IconoTinder, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
-import { TbZzz } from 'react-icons/tb';
+import { SiTinder as IconoTinder, SiGimp, SiOpenai, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
+import { SlPicture } from "react-icons/sl";
+import { TbBulbFilled, TbPills, TbZzz } from 'react-icons/tb';
 
+// https://github.com/madebybowtie/FlagKit/blob/master/Assets/Flags.md
 import Flag from 'react-flagkit';
 
+import CustomIcon from '../../../ui/CustomIcon';
 
-import Achelm from './../../../ui/icons/Achelm';
 
 export class CalendarIcon {
   
   static getIcon(key: string, size: number): React.ReactNode | null {
     if (iconMap[key]) {
       return iconMap[key]({ size });
+    }
+
+    // Si la clave no se encuentra en el iconMap, puedes devolver nulo o un valor predeterminado.
+    return null;
+  }
+
+  static getIconByCssClass(cssClass: string, size: number): React.ReactNode | null {
+    if (iconMap.hasOwnProperty(cssClass)) {
+      return iconMap[cssClass]({ size });
     }
 
     // Si la clave no se encuentra en el iconMap, puedes devolver nulo o un valor predeterminado.
@@ -79,6 +90,8 @@ export class CalendarIcon {
       return iconMap['birthday']({ size });
     } else if (path.includes('/Moments/')) {
       return iconMap['watchsand']({ size });
+    } else if (path.includes('/Yearly/')) {
+      return iconMap['calendar']({ size });
     } else if (path.includes('/Captures/')) {
       return iconMap['blogpost']({ size });
     } else {
@@ -88,15 +101,19 @@ export class CalendarIcon {
 }
 
 export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
-  achelm: ({ size }) => <Achelm size={size} className="pink" />,
+  achelm: ({ size }) => <CustomIcon size={size} className="pink" iconName="Achelm" />,
   add: ({ size }) => <MdOutlineAddCircle size={size} className="green" />,
   agenda2030: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
   agriculture: ({ size }) => <IoMdBasket size={size} className="brown" />, 
   agro: ({ size }) => <GiWheat size={size} className="brown" />, 
   amazon: ({ size }) => <FaAmazon size={size} className="orange amazon" />,
+  annas: ({ size }) => <CustomIcon size={size} className="pink" iconName="AnnaS" />,
+  arburua: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Arburua" />,
   archeology: ({ size }) => <GiAncientRuins size={size} className="grey" />,
+  argentina: ({ size }) => <Flag country='AR' size={size} className="" />,
   aws: ({ size }) => <FaAws size={size} className="orange aws" />,
-  barber: ({ size }) => <FaScissors size={size} className="blue" />,
+  bank: ({ size }) => <GiBank size={size} className="red" />,
+  barber: ({ size }) => <CustomIcon size={size} className="blue" iconName="Barber" />,
   basketball: ({ size }) => <FaBasketball size={size} className="orange" />,
   beer: ({ size }) => <IoIosBeer size={size} className="yellow" />,
   bible: ({ size }) => <IconoBible size={size} className="pink purple" />,
@@ -107,74 +124,115 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   bookmark: ({ size }) => <FaBookmark size={size} className="blue cobalt" />,
   buy: ({ size }) => <IoMdBasket size={size} className="red" />,
   calendar: ({ size }) => <BsFillCalendar2WeekFill size={size} className="blue ui" />, 
+  camera: ({ size }) => <FaCamera size={size} className="blue sky" />, 
   car: ({ size }) => <FaCarSide size={size} className="red c3" />, 
   catholic: ({ size }) => <FaCross size={size} className="pink purple" />,
+  cdr: ({ size }) => <CustomIcon size={size} className="orange" iconName="Cdr" />,
+  charo: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Charo" />,
   chess: ({ size }) => <FaChess size={size} className="blue chesscom" />, 
+  christ: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Christ" />, 
   cinema: ({ size }) => <IconoCinema size={size} className="white" />,
+  coin: ({ size }) => <GiCrownCoin size={size} className="grey" />,
   communism: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
   confession: ({ size }) => <GiKneeling size={size} className="pink purple" />,
   cough: ({ size }) => <FaHeadSideCough size={size} className="yellow emoji" />, 
+  dad: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Dad" />,
   doctor: ({ size }) => <FaUserDoctor size={size} className="green" />,
   dream: ({ size }) => <TbZzz size={size} className="blue cobalt" />,
   elections: ({ size }) => <FaVoteYea size={size} className="orange" />,
   email: ({ size }) => <BiLogoGmail size={size} className="red" />,
   euro: ({ size }) => <IoIosPaper size={size} className="yellow" />,
   family: ({ size }) => <MdGroup size={size} className="yellow" />, 
+  fatima: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Fatima" />,
   favorite: ({ size }) => <FaStar size={size} className="yellow" />, 
   fever: ({ size }) => <FaTemperatureHigh size={size} className="yellow emoji" />, 
   finances: ({ size }) => <FaMoneyBillWave size={size} className="red" />,
   friends: ({ size }) => <MdGroup size={size} className="yellow" />,
   funeral: ({ size }) => <GiTombstone size={size} className="grey" />,
+  garabandal: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Garabandal" />,
   gastronomy: ({ size }) => <MdRestaurant size={size} style={{ color: '#FFD700' }} />,
+  gimp: ({ size }) => <SiGimp size={size} className='orange' />, 
+  git: ({ size }) => <FaGitSquare size={size} className='orange' />, 
   github: ({ size }) => <FaGithub size={size} style={{ color: '#fff' }} />, 
+  gluttony: ({ size }) => <GiGluttony size={size} className='yellow emoji' />, 
+  gonzalo: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Gonzalo" />,
   goodreads: ({ size }) => <FaGoodreads size={size} className="brown goodreads" />,
+  gospa: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Gospa" />,
   gym: ({ size }) => <MdOutlineSportsGymnastics size={size} className="green" />,
+  hacienda: ({ size }) => <CustomIcon size={size} className="red" iconName="Hacienda" />,
   happiness: ({ size }) => <FaSmile size={size} className="yellow" />,
   hardware: ({ size }) => <IoHardwareChipOutline size={size} className="orange" />,
-  health: ({ size }) => <FaStaffSnake size={size} className="green" />, 
+  health: ({ size }) => <GiHealthNormal size={size} className="yellow emoji" />, 
+  healthok: ({ size }) => <GiHealthIncrease size={size} className="green" />, 
+  healthko: ({ size }) => <GiHealthDecrease size={size} className="red" />, 
+  heartbreak: ({ size }) => <BsFillHeartbreakFill size={size} className="red" />, 
   hiking: ({ size }) => <FaHiking size={size} className="green" />, 
   holiday: ({ size }) => <GiPalmTree size={size} className="green" />, 
-  israel: ({ size }) => <Flag country='IL' size={size} className="" />,
+  holyspirit: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="HolySpirit" />,
+  idea: ({ size }) => <TbBulbFilled size={size} className="yellow" />,
   inlove: ({ size }) => <MdFavorite size={size} className="pink" />,
   inspiration: ({ size }) => <GiSparkSpirit size={size} style={{ color: '#f2a83f' }} />,
-  instagram: ({ size }) => <FaInstagram size={size} className="pink instagram" />, 
+  instagram: ({ size }) => <FaInstagram size={size} className="pink instagram" />,
+  irene: ({ size }) => <CustomIcon size={size} className="pink" iconName="Irene" />,
+  israel: ({ size }) => <Flag country='IL' size={size} className="" />, 
   italy: ({ size }) => <Flag country='IT' size={size} className="" />,
+  itv: ({ size }) => <CustomIcon size={size} className="orange" iconName="Itv" />,
+  josefita: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Josefita" />,
+  josemi: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Josemi" />,
   key: ({ size }) => <FaKey size={size} className="yellow" />, 
   kindle: ({ size }) => <FaBookReader size={size} className="blue kindle" />, 
+  kote: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Kote" />,
   linkedin: ({ size }) => <FaLinkedin size={size} className="blue linkedin" />, 
+  lottery: ({ size }) => <CustomIcon size={size} className="red" iconName="Lottery" />,
+  luis: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Luis" />,
   marker: ({ size }) => <FaMapMarkerAlt size={size} className="brown" />,
   mass: ({ size }) => <GiChurch size={size} className="pink purple" />,
   meeting: ({ size }) => <FaPeopleGroup size={size} className="orange" />,
+  mom: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Mom" />,
   music: ({ size }) => <IoMdMusicalNotes size={size} className="indigo" />,
+  natalia: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Natalia" />,
+  nieves: ({ size }) => <CustomIcon size={size} className="pink" iconName="Nieves" />,
   num0: ({ size }) => <PiNumberCircleZeroBold size={size} style={{ color: '#fff' }} />,
   num3: ({ size }) => <PiNumberCircleThreeBold size={size} style={{ color: '#fff' }} />,
   num6: ({ size }) => <PiNumberCircleSixBold size={size} style={{ color: '#fff' }} />,
   num7: ({ size }) => <PiNumberCircleSevenBold size={size} style={{ color: '#fff' }} />,
   num8: ({ size }) => <PiNumberCircleEightBold size={size} style={{ color: '#fff' }} />,
   num9: ({ size }) => <PiNumberCircleNineBold size={size} style={{ color: '#fff' }} />,
+  nun: ({ size }) => <CustomIcon size={size} className="pink purple" iconName="Nun" />,
+  ok: ({ size }) => <BsFillCheckCircleFill size={size} className="green" />,
+  openai: ({ size }) => <SiOpenai size={size} className="green openai" />,
   payroll: ({ size }) => <IconoPayroll size={size} className="yellow" />,
+  peace: ({ size }) => <GiPeaceDove size={size} className="white" />,
   people: ({ size }) => <MdPeople size={size} className="grey" />,
   perspective: ({ size }) => <GiPerspectiveDiceThree size={size} className="yellow" />,
   person: ({ size }) => <BsFillPersonFill size={size} className="grey" />,
   phone: ({ size }) => <FaPhone size={size} className="white" />, 
+  picture: ({ size }) => <SlPicture size={size} className="yellow" />,
+  pilar: ({ size }) => <CustomIcon size={size} className="pink" iconName="Pilar" />,
   pill: ({ size }) => <CiPill size={size} className="yellow" />,
   plentyoffish: ({ size }) => <IconoPlentyoffish size={size} className="pink" />,
   podcast: ({ size }) => <FaPodcast size={size} className="orange" />,
   poland: ({ size }) => <Flag country='PL' size={size} className="" />,
   prayer: ({ size }) => <FaPrayingHands size={size} className="pink purple" />,
   price: ({ size }) => <IconoPrice size={size} className="red" />,
+  priest: ({ size }) => <CustomIcon size={size} className="pink purple" iconName="Priest" />,
   programming: ({ size }) => <FaCode size={size} className="orange" />, 
   psychology: ({ size }) => <MdPsychology size={size} className="green" />,
   pumpkin: ({ size }) => <GiPumpkinMask size={size} className="orange" />,
   question: ({ size }) => <FaQuestionCircle size={size} className="orange" />,
   quote: ({ size }) => <FaQuoteLeft size={size} className="yellow" />,
   rain: ({ size }) => <BsFillCloudRainHeavyFill size={size} className="blue sky" />,
-  realmadrid: ({ size }) => <FaFutbol size={size} className="white" />,
+  ramon: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Ramon" />,
+  realmadrid: ({ size }) => <CustomIcon size={size} className="green" iconName="RealMadrid" />,
   repairs: ({ size }) => <MdBuild size={size} className="orange" />,
+  romania: ({ size }) => <Flag country='RO' size={size} className="" />,
   rosary: ({ size }) => <GiPrayerBeads size={size} className="pink purple" />,
-  rss: ({ size }) => <FaRss size={size} className="orange" />, 
-  russia: ({ size }) => <Flag country='RU' size={size} className="orange" />, 
+  rss: ({ size }) => <FaRss size={size} className="orange" />,  
+  russia: ({ size }) => <Flag country='RU' size={size} className="" />, 
   sadness: ({ size }) => <ImSad2 size={size} className="yellow emoji" />,
+  saint: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Saint" />,
+  saintwoman: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="SaintWoman" />,
+  saving: ({ size }) => <FaPiggyBank size={size} className="green" />,
   sex: ({ size }) => <FaVenus size={size} className="pink" />,
   sick: ({ size }) => <MdSick size={size} className="yellow emoji" />,
   skype: ({ size }) => <FaSkype size={size} style={{ color: '#00AFF0' }} />,
@@ -183,14 +241,20 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   spain: ({ size }) => <Flag country='ES' size={size} className="" />,
   sport: ({ size }) => <MdDirectionsRun size={size} className="green" />, 
   spotify: ({ size }) => <SiSpotify size={size} className="green spotify" />,
+  sunny: ({ size }) => <IoMdSunny size={size} className="yellow" />,
+  supplement: ({ size }) => <TbPills size={size} className="yellow" />,
   tax: ({ size }) => <HiReceiptTax size={size} style={{ color: '#fc0303' }} />, 
   telegram: ({ size }) => <FaTelegram size={size} className="blue telegram" />, 
+  timothy: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Timothy" />,
   tinder: ({ size }) => <IconoTinder size={size} style={{ color: '#FE3C72' }} />,
   tired: ({ size }) => <FaTired size={size} style={{ color: '#FFC83D' }} />,
   travel: ({ size }) => <GiCommercialAirplane size={size} style={{ color: '#1199c2' }} />,
   tree: ({ size }) => <FaTree size={size} style={{ color: '#228B22' }} />,
   twitter: ({ size }) => <SiTwitter size={size} className="blue twitter" />,
+  vatican: ({ size }) => <Flag country='VA' size={size} className="" />,
+  victor: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Victor" />,
   village: ({ size }) => <GiVillage size={size} style={{ color: '#47ff6c' }} />,
+  visa: ({ size }) => <CustomIcon size={size} className="red" iconName="Visa" />,
   watchsand: ({ size }) => <GiSandsOfTime size={size} style={{ color: '#FFFF99' }} />,
   weather: ({ size }) => <GiThermometerCold size={size} style={{ color: '#6dc8f2' }} />,
   whatsapp: ({ size }) => <SiWhatsapp size={size} className="green whatsapp" />, 
