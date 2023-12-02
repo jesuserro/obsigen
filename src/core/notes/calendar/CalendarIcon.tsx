@@ -89,8 +89,6 @@ export class CalendarIcon {
       return iconMap['key']({ size });
     } else if (path.includes('/Aniversaries/')) {
       return iconMap['birthday']({ size });
-    } else if (path.includes('/Moments/')) {
-      return iconMap['watchsand']({ size });
     } else if (path.includes('/Captures/')) {
       return iconMap['blogpost']({ size });
     } else {
