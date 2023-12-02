@@ -27,6 +27,11 @@ export class NoteGenerator {
       separator = '';
     }
 
+    // check if folder exists and create it if not
+    if (!this.app.vault.getAbstractFileByPath(folder)) {
+      await this.app.vault.createFolder(folder);
+    }
+
     const path = `${folder}${separator}${this.fileName}`;
     let fileRef = this.app.vault.getAbstractFileByPath(path);
     let msg = `Abriendo ${this.fileName}`;
