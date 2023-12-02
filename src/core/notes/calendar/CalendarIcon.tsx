@@ -90,6 +90,8 @@ export class CalendarIcon {
       return iconMap['birthday']({ size });
     } else if (path.includes('/Moments/')) {
       return iconMap['watchsand']({ size });
+    } else if (path.includes('/Yearly/')) {
+      return iconMap['calendar']({ size });
     } else if (path.includes('/Captures/')) {
       return iconMap['blogpost']({ size });
     } else {
