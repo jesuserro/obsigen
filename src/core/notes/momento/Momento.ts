@@ -78,9 +78,10 @@ export class Momento {
       date: this.date,
       links: [...DATA_YAML_DEFAULT.links, link],
       locations: [...DATA_YAML_DEFAULT.locations, locations],
-      urls: [...DATA_YAML_DEFAULT.urls, urls],
+      urls: [...DATA_YAML_DEFAULT.urls, urls]
     };
     
+    data.cssclasses = [];
     if (this.icon) {
       data.cssclasses.push(this.icon);
     }
