@@ -17,7 +17,7 @@ export class Momento {
   content: string;
   fileName: string;
   callout: string;
-  startDate: string | null;
+  startDate: Date | null;
   icon: string | null;
   description: string;
   year: number;
@@ -31,7 +31,7 @@ export class Momento {
   constructor(app: App) {
     this.app = app;
     this.noteGenerator = new NoteGenerator(this.app);
-    this.startDate = "";
+    this.startDate = new Date();
     this.icon = "";
     this.date = new Date();
     this.year = this.date.getFullYear();
@@ -69,8 +69,7 @@ export class Momento {
       urls = `"[[${this.urls}]]"`;
     }
     const link = `"[[${this.getCurrentDate()}]]"`;
-    // Mon Dec 04 2023 10:35:00 GMT+0100 (hora estándar de Europa central)
-    // console.log(this.date);
+    // this.date = Mon Dec 04 2023 10:35:00 GMT+0100 (hora estándar de Europa central)
     
     const data = {
       ...DATA_YAML_DEFAULT,
@@ -90,11 +89,11 @@ export class Momento {
     this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
-  async createNote(title: string, content: string, startDate?: string, icon?: string, description?: string, locations?: string, urls:string = '') {
+  async createNote(title: string, content: string, startDate?: Date, icon?: string, description?: string, locations?: string, urls:string = '') {
     this.title = this.getTitle(title);
     this.startDate = startDate || null;
     if (this.startDate) {
-      this.date = new Date(this.startDate);
+      this.date =this.startDate;
       this.year = this.date.getFullYear();
       this.month = this.date.getMonth();
       this.day = this.date.getDate();
