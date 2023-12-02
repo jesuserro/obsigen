@@ -275,7 +275,7 @@ export class CalendarEvent extends Modal {
 
     const selectedTime = `${selectedHour.padStart(2, '0')}:${selectedMinute.padStart(2, '0')}`;
     
-    const startDate = `${selectedYear}-${selectedMonth.padStart(2, '0')}-${selectedDay.padStart(2, '0')}T${selectedTime}`;
+    const startDate = `${selectedYear}-${selectedMonth.padStart(2, '0')}-${selectedDay.padStart(2, '0')} ${selectedTime}`;
 
     this.locations = this.locationField.getValue();
     this.urls = this.urlField.getValue();
