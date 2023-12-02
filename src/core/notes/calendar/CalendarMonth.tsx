@@ -78,11 +78,23 @@ function createDaysGrid(app:App, metadataCache: MetadataCache, files: TFile[], n
 }
 
 // STATE fns
-function isNoteRelatedToDay(note: TFile, year: number, month: number, dayCounter: number): boolean {
-  // Construye la ruta esperada para la nota del día actual
-  const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayCounter).padStart(2, '0')}`;
-  return note.path.includes(`/${dayDate}`);
+function isNoteRelatedToDay(metadataCache: MetadataCache, note: TFile, year: number, month: number, dayCounter: number): boolean {
+  // Obtiene la fecha del frontmatter de la nota
+  const noteDate = metadataCache.getFileCache(note)?.frontmatter?.date;
+
+  if (typeof noteDate === 'string') {
+    // Extrae el año, mes y día de la fecha de la nota
+    const noteYear = parseInt(noteDate.substring(0, 4));
+    const noteMonth = parseInt(noteDate.substring(5, 7));
+    const noteDay = parseInt(noteDate.substring(8, 10));
+
+    // Compara con la fecha deseada
+    return noteYear === year && noteMonth === month && noteDay === dayCounter;
+  }
+
+  return false; // En caso de que no haya fecha en el frontmatter
 }
+
 
 function createDayState(file: TFile, year: number, month: number, day: number, cssclasses: []) {
   return {
@@ -102,7 +114,7 @@ function getDayNotes(app: App, metadataCache: MetadataCache, files: TFile[], day
 
   useEffect(() => {
     const handleNoteChange = (file: TFile) => {
-      if (isNoteRelatedToDay(file, year, month, dayIndex)) {
+      if (isNoteRelatedToDay(metadataCache, file, year, month, dayIndex)) {
         const cssclasses = metadataCache.getFileCache(file)?.frontmatter?.cssclasses || [];
         const state = createDayState(file, year, month, dayIndex, cssclasses || []);
         const dayStateIndex = dayStates.findIndex((dayState) =>
@@ -128,7 +140,7 @@ function getDayNotes(app: App, metadataCache: MetadataCache, files: TFile[], day
     app.vault.on("delete", (file) => {
         if (!(file instanceof TFile)) return;
         
-        if (isNoteRelatedToDay(file, year, month, dayIndex)) {
+        if (isNoteRelatedToDay(metadataCache, file, year, month, dayIndex)) {
           // Llama a handleNoteChange para manejar la eliminación del archivo
           handleNoteChange(file);
         }
