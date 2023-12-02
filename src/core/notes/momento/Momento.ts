@@ -59,9 +59,19 @@ export class Momento {
   }
 
   setYaml() {
+    
+    let locations = '';
+    if (this.locations) {
+      locations = `"[[${this.locations}]]"`;
+    }
+    let urls = '';
+    if (this.urls) {
+      urls = `"[[${this.urls}]]"`;
+    }
     const link = `"[[${this.getCurrentDate()}]]"`;
-    const locations = `"[[${this.locations}]]"`;
-    const urls = `"[[${this.urls}]]"`;
+    // Mon Dec 04 2023 10:35:00 GMT+0100 (hora estándar de Europa central)
+    // console.log(this.date);
+    
     const data = {
       ...DATA_YAML_DEFAULT,
       title: this.title,
