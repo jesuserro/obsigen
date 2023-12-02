@@ -77,7 +77,19 @@ function createDaysGrid(app:App, metadataCache: MetadataCache, files: TFile[], n
   return daysGrid;
 }
 
-// STATE fns
+/**
+ * Función de estado (state function) que comprueba si una nota está relacionada con un día en particular
+ * @param metadataCache
+ * @param note
+ * @param year
+ * @param month
+ * @param dayCounter
+ * @returns
+ * @description
+ * 1. Obtiene la fecha del frontmatter de la nota
+ * 2. Extrae el año, mes y día de la fecha de la nota
+ * 3. Compara con la fecha deseada
+ */
 function isNoteRelatedToDay(metadataCache: MetadataCache, note: TFile, year: number, month: number, dayCounter: number): boolean {
   // Obtiene la fecha del frontmatter de la nota
   const noteDate = metadataCache.getFileCache(note)?.frontmatter?.date;
@@ -91,7 +103,7 @@ function isNoteRelatedToDay(metadataCache: MetadataCache, note: TFile, year: num
     // Compara con la fecha deseada
     return noteYear === year && noteMonth === month && noteDay === dayCounter;
   }else{
-    // Necesario para el delete de eventos
+    // Necesario para el delete de eventos. Si no existe la nota porque se ha borrado:
     const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayCounter).padStart(2, '0')}`;
     return note.path.includes(`/${dayDate}`);
   }
