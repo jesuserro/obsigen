@@ -90,11 +90,19 @@ function isNoteRelatedToDay(metadataCache: MetadataCache, note: TFile, year: num
 
     // Compara con la fecha deseada
     return noteYear === year && noteMonth === month && noteDay === dayCounter;
+  }else{
+    // Necesario para el delete de eventos
+    const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayCounter).padStart(2, '0')}`;
+    return note.path.includes(`/${dayDate}`);
   }
 
-  return false; // En caso de que no haya fecha en el frontmatter
 }
 
+function isNoteRelatedToDayDelete(note: TFile, year: number, month: number, dayCounter: number): boolean {
+  // Construye la ruta esperada para la nota del día actual
+  const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayCounter).padStart(2, '0')}`;
+  return note.path.includes(`/${dayDate}`);
+}
 
 function createDayState(file: TFile, year: number, month: number, day: number, cssclasses: []) {
   return {
@@ -140,7 +148,7 @@ function getDayNotes(app: App, metadataCache: MetadataCache, files: TFile[], day
     app.vault.on("delete", (file) => {
         if (!(file instanceof TFile)) return;
         
-        if (isNoteRelatedToDay(metadataCache, file, year, month, dayIndex)) {
+        if (isNoteRelatedToDayDelete(file, year, month, dayIndex)) {
           // Llama a handleNoteChange para manejar la eliminación del archivo
           handleNoteChange(file);
         }
