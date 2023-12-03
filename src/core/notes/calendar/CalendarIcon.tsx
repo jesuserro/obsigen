@@ -12,7 +12,7 @@ import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiCrownCoin, Gi
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoIosPaper, IoMdBasket, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
-import { IoHardwareChipOutline } from 'react-icons/io5';
+import { IoFootsteps, IoHardwareChipOutline } from 'react-icons/io5';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold } from 'react-icons/pi';
 import { RiEarthquakeFill } from "react-icons/ri";
@@ -146,6 +146,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   favorite: ({ size }) => <FaStar size={size} className="yellow" />, 
   fever: ({ size }) => <FaTemperatureHigh size={size} className="yellow emoji" />, 
   finances: ({ size }) => <FaMoneyBillWave size={size} className="red" />,
+  foot: ({ size }) => <IoFootsteps size={size} className="blue aws" />,
   friends: ({ size }) => <MdGroup size={size} className="yellow" />,
   funeral: ({ size }) => <GiTombstone size={size} className="grey" />,
   garabandal: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Garabandal" />,
