@@ -221,8 +221,10 @@ function getAnniversaryNote(dayIndex: number, files: TFile[], month: number): TF
 
 function getDailyNote(dayIndex: number, files: TFile[], year: number, month:number): string | false {
   
-  const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}`;
-  const notePath = `100 Calendar/Daily/${year}/${dayDate}.md`;
+  const dayPadded = String(dayIndex).padStart(2, '0');
+  const monthPadded = String(month).padStart(2, '0');
+  const dayDate = `${year}${monthPadded}${dayPadded}`;
+  const notePath = `100 Calendar/${year}/${monthPadded}/${dayDate}.md`;
 
   const note = files.find(file => file.path === notePath);
 
