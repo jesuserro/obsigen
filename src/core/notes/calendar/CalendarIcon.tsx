@@ -62,9 +62,7 @@ export class CalendarIcon {
       }
     }
 
-    if (path.includes('Anna') || path.includes("Nieves")) {
-      return iconMap['inlove']({ size });
-    } else if (path.includes('/Misas/')) {
+    if (path.includes('/Misas/')) {
       return iconMap['mass']({ size });
     } else if (path.includes('/Biblia/')) {
       return iconMap['bible']({ size });
