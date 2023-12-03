@@ -72,11 +72,12 @@ export class MenuPrincipal extends Menu {
       }
     });
 
+    const year = new Date().getFullYear();
     this.addMenuItem({
       title: "Nota anual",
       icon: "calendar-days",
       onClick: () => {
-        new Yearly(this.app).createNote(2023);
+        new Yearly(this.app).createNote(year);
       }
     });
     
