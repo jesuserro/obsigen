@@ -14,7 +14,7 @@ import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoIosPaper, IoMdBasket, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
 import { IoFootsteps, IoHardwareChipOutline } from 'react-icons/io5';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
-import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold } from 'react-icons/pi';
+import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiThermometerCold } from 'react-icons/pi';
 import { RiEarthquakeFill } from "react-icons/ri";
 import { SiTinder as IconoTinder, SiGimp, SiOpenai, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { SlPicture } from "react-icons/sl";
@@ -130,6 +130,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   christ: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Christ" />, 
   cinema: ({ size }) => <IconoCinema size={size} className="white" />,
   coin: ({ size }) => <GiCrownCoin size={size} className="grey" />,
+  cold: ({ size }) => <PiThermometerCold size={size} className="blue aws" />,
   communism: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
   confession: ({ size }) => <GiKneeling size={size} className="pink purple" />,
   cough: ({ size }) => <FaHeadSideCough size={size} className="yellow emoji" />, 
