@@ -140,6 +140,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   earthquake: ({ size }) => <RiEarthquakeFill size={size} className="red" />,
   elections: ({ size }) => <FaVoteYea size={size} className="orange" />,
   email: ({ size }) => <BiLogoGmail size={size} className="red" />,
+  emaus: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Emaus" />,
   euro: ({ size }) => <IoIosPaper size={size} className="yellow" />,
   evil: ({ size }) => <GiDevilMask size={size} className="red" />,
   family: ({ size }) => <MdGroup size={size} className="yellow" />, 
