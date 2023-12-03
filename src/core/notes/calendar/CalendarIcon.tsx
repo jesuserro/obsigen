@@ -75,7 +75,7 @@ export class CalendarIcon {
     } else if (path.includes('005 Synch/Readwise/Podcasts/')) {
       return iconMap['podcast']({ size });
     } else if (path.includes('005 Synch/Readwise/Articles/')) {
-      return iconMap['bookmark']({ size });
+      return iconMap['readwise']({ size });
     } else if (path.includes('005 Synch/goodsidian/')) {
       return iconMap['goodreads']({ size });
     } else if (path.includes('005 Synch/Kindtocs/')) {
@@ -223,6 +223,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   quote: ({ size }) => <FaQuoteLeft size={size} className="yellow" />,
   rain: ({ size }) => <BsFillCloudRainHeavyFill size={size} className="blue sky" />,
   ramon: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Ramon" />,
+  readwise: ({ size }) => <CustomIcon size={size} className="white" iconName="Readwise" />,
   realmadrid: ({ size }) => <CustomIcon size={size} className="green" iconName="RealMadrid" />,
   repairs: ({ size }) => <MdBuild size={size} className="orange" />,
   romania: ({ size }) => <Flag country='RO' size={size} className="" />,
