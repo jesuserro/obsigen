@@ -216,6 +216,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   plentyoffish: ({ size }) => <IconoPlentyoffish size={size} className="pink" />,
   podcast: ({ size }) => <FaPodcast size={size} className="orange" />,
   poland: ({ size }) => <Flag country='PL' size={size} className="" />,
+  pope: ({ size }) => <CustomIcon size={size} className="pink purple" iconName="Pope" />,
   prayer: ({ size }) => <FaPrayingHands size={size} className="pink purple" />,
   price: ({ size }) => <IconoPrice size={size} className="red" />,
   priest: ({ size }) => <CustomIcon size={size} className="pink purple" iconName="Priest" />,
