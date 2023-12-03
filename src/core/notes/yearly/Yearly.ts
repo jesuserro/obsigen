@@ -57,7 +57,7 @@ export class Yearly {
   }
 
   getFilename(year: number) {
-    return `Yearly_${year}`;
+    return `${year} Summary`;
   }
 
   getMonthsContent(year: number): string {
@@ -78,7 +78,7 @@ export class Yearly {
 
   getMonthDataview(year: number, month: number): string {
     const paddedMonth = month.toString().padStart(2, '0');
-    return `\`\`\` dataview\nTABLE date, rating FROM "/" WHERE contains(date,"${year}-${paddedMonth}") SORT date\n\`\`\``;
+    return `\`\`\` dataview\nTABLE date, rating FROM "/" WHERE (rating > 7 OR favorite = true) AND contains(date,"${year}-${paddedMonth}") SORT date\n\`\`\``;
   }
 }
 
