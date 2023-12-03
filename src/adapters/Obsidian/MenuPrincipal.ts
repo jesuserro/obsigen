@@ -1,4 +1,5 @@
 import { App, Menu } from 'obsidian';
+import { Yearly } from 'src/core/notes/yearly/Yearly';
 import { Aniversario } from '../../core/notes/aniversario/Aniversario';
 import { Calendar } from '../../core/notes/calendar/Calendar';
 import { CaptureUrl } from '../../core/notes/captureUrl/CaptureUrl';
@@ -65,9 +66,17 @@ export class MenuPrincipal extends Menu {
 
     this.addMenuItem({
       title: "Calendar",
-      icon: "calendar-days",
+      icon: "calendar-plus",
       onClick: () => {
         new Calendar(this.app); 
+      }
+    });
+
+    this.addMenuItem({
+      title: "Nota anual",
+      icon: "calendar-days",
+      onClick: () => {
+        new Yearly(this.app).createNote(2023);
       }
     });
     
