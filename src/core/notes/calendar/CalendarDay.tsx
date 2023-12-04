@@ -37,8 +37,8 @@ const getCalendarEvent = (year: number, month: number, dayCounter: number, index
 
   const mykey = `${year}-${month}-${dayCounter}${index}`;
 
-  const yaml = metadataCache.getFileCache(note)?.frontmatter;
-  const cssClasses = yaml?.cssclasses || [];
+  const frontmatter = metadataCache.getFileCache(note)?.frontmatter;
+  const cssClasses = frontmatter?.cssclasses || [];
 
   const icon = CalendarIcon.getIconByNote(cssClasses, note, 18);
 
