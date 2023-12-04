@@ -1,6 +1,5 @@
-import { TFile } from 'obsidian';
+import { MetadataCache, TFile } from 'obsidian';
 import React from 'react';
-import { useApp } from './../../hooks/useApp';
 
 import { BiLogoGmail } from 'react-icons/bi';
 import { BsBookmarkStar, BsClockFill, BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsPersonCircle, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
@@ -46,11 +45,10 @@ export class CalendarIcon {
     return null;
   }
 
-  static getIconByNote(note: TFile, size: number): React.ReactNode {
+  static getIconByNote(metadataCache: MetadataCache, note: TFile, size: number): React.ReactNode {
     const path = note.path;
-    const app = useApp();
 
-    const cssClasses = app?.metadataCache.getFileCache(note)?.frontmatter?.cssclasses;
+    const cssClasses = metadataCache.getFileCache(note)?.frontmatter?.cssclasses;
 
     if (cssClasses) {
       // Asegúrate de que cssClasses sea un array
