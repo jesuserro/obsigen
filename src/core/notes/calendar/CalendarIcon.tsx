@@ -1,4 +1,4 @@
-import { MetadataCache, TFile } from 'obsidian';
+import { TFile } from 'obsidian';
 import React from 'react';
 
 import { BiLogoGmail } from 'react-icons/bi';
@@ -45,10 +45,8 @@ export class CalendarIcon {
     return null;
   }
 
-  static getIconByNote(metadataCache: MetadataCache, note: TFile, size: number): React.ReactNode {
+  static getIconByNote(cssClasses:[], note: TFile, size: number): React.ReactNode {
     const path = note.path;
-
-    const cssClasses = metadataCache.getFileCache(note)?.frontmatter?.cssclasses;
 
     if (cssClasses) {
       // Asegúrate de que cssClasses sea un array
