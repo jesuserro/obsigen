@@ -53,10 +53,13 @@ export class CalendarIcon {
     const cssClasses = app?.metadataCache.getFileCache(note)?.frontmatter?.cssclasses;
 
     if (cssClasses) {
-      const cssClassIcons = cssClasses
+      // Asegúrate de que cssClasses sea un array
+      const cssClassesArray = Array.isArray(cssClasses) ? cssClasses : [cssClasses];
+    
+      const cssClassIcons = cssClassesArray
         .filter((cssclass: string) => iconMap.hasOwnProperty(cssclass))
         .map((cssclass: string) => iconMap[cssclass]({ size }));
-
+    
       if (cssClassIcons.length > 0) {
         return cssClassIcons[0];
       }
