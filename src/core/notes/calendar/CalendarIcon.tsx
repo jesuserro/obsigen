@@ -3,7 +3,7 @@ import React from 'react';
 import { useApp } from './../../hooks/useApp';
 
 import { BiLogoGmail } from 'react-icons/bi';
-import { BsClockFill, BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsPersonCircle, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
+import { BsBookmarkStar, BsClockFill, BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsPersonCircle, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
@@ -234,6 +234,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   readwise: ({ size }) => <CustomIcon size={size} className="white" iconName="Readwise" />,
   realmadrid: ({ size }) => <CustomIcon size={size} className="green" iconName="RealMadrid" />,
   repairs: ({ size }) => <MdBuild size={size} className="orange" />,
+  review: ({ size }) => <BsBookmarkStar size={size} className="yellow" />,
   romania: ({ size }) => <Flag country='RO' size={size} className="" />,
   rosary: ({ size }) => <GiPrayerBeads size={size} className="pink purple" />,
   rss: ({ size }) => <FaRss size={size} className="orange" />,  
