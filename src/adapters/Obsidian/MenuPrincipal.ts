@@ -54,6 +54,17 @@ export class MenuPrincipal extends Menu {
       }
     });
 
+    const year = new Date().getFullYear();
+    this.addMenuItem({
+      title: "Nota anual",
+      icon: "calendar-days",
+      onClick: () => {
+        new Yearly(this.app).createNote(year);
+      }
+    });
+
+    this.addSeparator();
+
     this.addMenuItem({
       title: "Aniversario",
       icon: "cake",
@@ -69,15 +80,6 @@ export class MenuPrincipal extends Menu {
       icon: "calendar-plus",
       onClick: () => {
         new Calendar(this.app); 
-      }
-    });
-
-    const year = new Date().getFullYear();
-    this.addMenuItem({
-      title: "Nota anual",
-      icon: "calendar-days",
-      onClick: () => {
-        new Yearly(this.app).createNote(year);
       }
     });
     
