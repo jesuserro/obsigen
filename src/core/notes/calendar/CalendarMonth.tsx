@@ -128,7 +128,11 @@ function createDayState(file: TFile, year: number, month: number, day: number, c
 
 function getDayNotes(app: App, metadataCache: MetadataCache, files: TFile[], dayIndex: number, year: number, month: number): TFile[] {
   
-  const dayDateDashed = `${year}-${String(month).padStart(2, '0')}-${String(dayIndex).padStart(2, '0')}`;
+  const dayPadded = String(dayIndex).padStart(2, '0');
+  const monthPadded = String(month).padStart(2, '0');
+  const dayDate = `${year}${monthPadded}${dayPadded}`;
+  const dayDateDashed = `${year}-${monthPadded}-${dayPadded}`;
+  const dailyPath = `100 Calendar/${year}/${monthPadded}/${dayDate}.md`;
 
   const [dayStates, setDayStates] = useState<({ file:TFile, year: number; month: number; day: number; cssclasses: [] })[]>([]);
 
@@ -175,7 +179,7 @@ function getDayNotes(app: App, metadataCache: MetadataCache, files: TFile[], day
 
   const dayNotes = files.filter((file) => {
     const path = file.path;
-    if (path.includes('/Daily') || path.includes('/Aniversaries/')) {
+    if (path == dailyPath || path.includes('/Aniversaries/')) {
       return false;
     }
     const eventDate = metadataCache.getFileCache(file)?.frontmatter?.date;
@@ -221,8 +225,10 @@ function getAnniversaryNote(dayIndex: number, files: TFile[], month: number): TF
 
 function getDailyNote(dayIndex: number, files: TFile[], year: number, month:number): string | false {
   
-  const dayDate = `${year}${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}`;
-  const notePath = `100 Calendar/Daily/${year}/${dayDate}.md`;
+  const dayPadded = String(dayIndex).padStart(2, '0');
+  const monthPadded = String(month).padStart(2, '0');
+  const dayDate = `${year}${monthPadded}${dayPadded}`;
+  const notePath = `100 Calendar/${year}/${monthPadded}/${dayDate}.md`;
 
   const note = files.find(file => file.path === notePath);
 

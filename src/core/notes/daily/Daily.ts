@@ -68,7 +68,8 @@ export class Daily {
     this.setContent();
     const now = new Date();
     const year = now.getFullYear().toString();
-    await this.noteGenerator.createNote(this.fileName, this.content, `100 Calendar/Daily/${year}`);
+    const paddedMonth = (now.getMonth() + 1).toString().padStart(2, '0');
+    await this.noteGenerator.createNote(this.fileName, this.content, `100 Calendar/${year}/${paddedMonth}`);
   }
 
   setContent(): void {

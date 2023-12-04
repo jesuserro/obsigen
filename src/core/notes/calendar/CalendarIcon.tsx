@@ -1,19 +1,20 @@
 import { TFile } from 'obsidian';
 import React from 'react';
-import { useApp } from './../../hooks/useApp';
 
 import { BiLogoGmail } from 'react-icons/bi';
-import { BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsFillPersonFill, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
+import { BsBookmarkStar, BsClockFill, BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsPersonCircle, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
-import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiCrownCoin, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
+import { FcCalendar } from 'react-icons/fc';
+import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiCrownCoin, GiDevilMask, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoIosPaper, IoMdBasket, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
-import { IoHardwareChipOutline } from 'react-icons/io5';
+import { IoFootsteps, IoHardwareChipOutline } from 'react-icons/io5';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
-import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold } from 'react-icons/pi';
+import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiThermometerCold } from 'react-icons/pi';
+import { RiEarthquakeFill } from "react-icons/ri";
 import { SiTinder as IconoTinder, SiGimp, SiOpenai, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { SlPicture } from "react-icons/sl";
 import { TbBulbFilled, TbPills, TbZzz } from 'react-icons/tb';
@@ -44,25 +45,23 @@ export class CalendarIcon {
     return null;
   }
 
-  static getIconByNote(note: TFile, size: number): React.ReactNode {
+  static getIconByNote(cssClasses:[], note: TFile, size: number): React.ReactNode {
     const path = note.path;
-    const app = useApp();
-
-    const cssClasses = app?.metadataCache.getFileCache(note)?.frontmatter?.cssclasses;
 
     if (cssClasses) {
-      const cssClassIcons = cssClasses
+      // Asegúrate de que cssClasses sea un array
+      const cssClassesArray = Array.isArray(cssClasses) ? cssClasses : [cssClasses];
+    
+      const cssClassIcons = cssClassesArray
         .filter((cssclass: string) => iconMap.hasOwnProperty(cssclass))
         .map((cssclass: string) => iconMap[cssclass]({ size }));
-
+    
       if (cssClassIcons.length > 0) {
         return cssClassIcons[0];
       }
     }
 
-    if (path.includes('Anna') || path.includes("Nieves")) {
-      return iconMap['inlove']({ size });
-    } else if (path.includes('/Misas/')) {
+    if (path.includes('/Misas/')) {
       return iconMap['mass']({ size });
     } else if (path.includes('/Biblia/')) {
       return iconMap['bible']({ size });
@@ -73,7 +72,7 @@ export class CalendarIcon {
     } else if (path.includes('005 Synch/Readwise/Podcasts/')) {
       return iconMap['podcast']({ size });
     } else if (path.includes('005 Synch/Readwise/Articles/')) {
-      return iconMap['bookmark']({ size });
+      return iconMap['readwise']({ size });
     } else if (path.includes('005 Synch/goodsidian/')) {
       return iconMap['goodreads']({ size });
     } else if (path.includes('005 Synch/Kindtocs/')) {
@@ -88,10 +87,6 @@ export class CalendarIcon {
       return iconMap['key']({ size });
     } else if (path.includes('/Aniversaries/')) {
       return iconMap['birthday']({ size });
-    } else if (path.includes('/Moments/')) {
-      return iconMap['watchsand']({ size });
-    } else if (path.includes('/Yearly/')) {
-      return iconMap['calendar']({ size });
     } else if (path.includes('/Captures/')) {
       return iconMap['blogpost']({ size });
     } else {
@@ -101,6 +96,7 @@ export class CalendarIcon {
 }
 
 export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
+  advent: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Advent" />,
   achelm: ({ size }) => <CustomIcon size={size} className="pink" iconName="Achelm" />,
   add: ({ size }) => <MdOutlineAddCircle size={size} className="green" />,
   agenda2030: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
@@ -132,21 +128,28 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   chess: ({ size }) => <FaChess size={size} className="blue chesscom" />, 
   christ: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Christ" />, 
   cinema: ({ size }) => <IconoCinema size={size} className="white" />,
+  clock: ({ size }) => <BsClockFill size={size} className="orange" />,
   coin: ({ size }) => <GiCrownCoin size={size} className="grey" />,
+  cold: ({ size }) => <PiThermometerCold size={size} className="blue aws" />,
   communism: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
   confession: ({ size }) => <GiKneeling size={size} className="pink purple" />,
   cough: ({ size }) => <FaHeadSideCough size={size} className="yellow emoji" />, 
   dad: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Dad" />,
   doctor: ({ size }) => <FaUserDoctor size={size} className="green" />,
   dream: ({ size }) => <TbZzz size={size} className="blue cobalt" />,
+  earthquake: ({ size }) => <RiEarthquakeFill size={size} className="red" />,
   elections: ({ size }) => <FaVoteYea size={size} className="orange" />,
   email: ({ size }) => <BiLogoGmail size={size} className="red" />,
+  emaus: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Emaus" />,
   euro: ({ size }) => <IoIosPaper size={size} className="yellow" />,
+  evil: ({ size }) => <GiDevilMask size={size} className="red" />,
   family: ({ size }) => <MdGroup size={size} className="yellow" />, 
+  fatigue: ({ size }) => <FaGrinTongueWink size={size} className="yellow emoji" />, 
   fatima: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Fatima" />,
   favorite: ({ size }) => <FaStar size={size} className="yellow" />, 
   fever: ({ size }) => <FaTemperatureHigh size={size} className="yellow emoji" />, 
   finances: ({ size }) => <FaMoneyBillWave size={size} className="red" />,
+  foot: ({ size }) => <IoFootsteps size={size} className="blue aws" />,
   friends: ({ size }) => <MdGroup size={size} className="yellow" />,
   funeral: ({ size }) => <GiTombstone size={size} className="grey" />,
   garabandal: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Garabandal" />,
@@ -205,7 +208,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   peace: ({ size }) => <GiPeaceDove size={size} className="white" />,
   people: ({ size }) => <MdPeople size={size} className="grey" />,
   perspective: ({ size }) => <GiPerspectiveDiceThree size={size} className="yellow" />,
-  person: ({ size }) => <BsFillPersonFill size={size} className="grey" />,
+  person: ({ size }) => <BsPersonCircle size={size} className="grey" />,
   phone: ({ size }) => <FaPhone size={size} className="white" />, 
   picture: ({ size }) => <SlPicture size={size} className="yellow" />,
   pilar: ({ size }) => <CustomIcon size={size} className="pink" iconName="Pilar" />,
@@ -213,6 +216,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   plentyoffish: ({ size }) => <IconoPlentyoffish size={size} className="pink" />,
   podcast: ({ size }) => <FaPodcast size={size} className="orange" />,
   poland: ({ size }) => <Flag country='PL' size={size} className="" />,
+  pope: ({ size }) => <CustomIcon size={size} className="pink purple" iconName="Pope" />,
   prayer: ({ size }) => <FaPrayingHands size={size} className="pink purple" />,
   price: ({ size }) => <IconoPrice size={size} className="red" />,
   priest: ({ size }) => <CustomIcon size={size} className="pink purple" iconName="Priest" />,
@@ -223,8 +227,10 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   quote: ({ size }) => <FaQuoteLeft size={size} className="yellow" />,
   rain: ({ size }) => <BsFillCloudRainHeavyFill size={size} className="blue sky" />,
   ramon: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Ramon" />,
+  readwise: ({ size }) => <CustomIcon size={size} className="white" iconName="Readwise" />,
   realmadrid: ({ size }) => <CustomIcon size={size} className="green" iconName="RealMadrid" />,
   repairs: ({ size }) => <MdBuild size={size} className="orange" />,
+  review: ({ size }) => <BsBookmarkStar size={size} className="yellow" />,
   romania: ({ size }) => <Flag country='RO' size={size} className="" />,
   rosary: ({ size }) => <GiPrayerBeads size={size} className="pink purple" />,
   rss: ({ size }) => <FaRss size={size} className="orange" />,  
@@ -260,5 +266,6 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   whatsapp: ({ size }) => <SiWhatsapp size={size} className="green whatsapp" />, 
   woman: ({ size }) => <ImWoman size={size} className="pink" />, 
   writing: ({ size }) => <PiNotePencilBold size={size} style={{ color: '#fcaa62' }} />,
+  year: ({ size }) => <FcCalendar size={size} className="red youtube" />,
   youtube: ({ size }) => <FaYoutube size={size} className="red youtube" />
 };

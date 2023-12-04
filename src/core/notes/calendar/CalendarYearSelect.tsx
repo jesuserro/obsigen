@@ -15,7 +15,7 @@ function CalendarYearSelect({ currentYear, onChange }: CalendarYearSelectProps):
 
   return (
     <>
-      <select value={currentYear} onChange={handleYearChange}>
+      <select id="obs-year-picker" value={currentYear} onChange={handleYearChange}>
         {years.map((year) => (
           <option key={year} value={year}>
             {year}

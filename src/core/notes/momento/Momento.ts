@@ -95,7 +95,7 @@ export class Momento {
     if (this.startDate) {
       this.date =this.startDate;
       this.year = this.date.getFullYear();
-      this.month = this.date.getMonth();
+      this.month = this.date.getMonth() + 1;
       this.day = this.date.getDate();
     }
     this.icon = icon || null;
@@ -105,7 +105,9 @@ export class Momento {
     this.setYaml();
     this.fileName = this.getFilename(this.title);
     this.setContent(content);
-    await this.noteGenerator.createNote(this.fileName, this.content, `100 Calendar/Moments`);
+    const path = `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
+
+    await this.noteGenerator.createNote(this.fileName, this.content, path);
   }
 
   setContent(content: string) {

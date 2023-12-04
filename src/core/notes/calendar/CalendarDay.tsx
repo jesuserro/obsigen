@@ -36,10 +36,12 @@ const generateEventIndex = (note: TFile): number => {
 const getCalendarEvent = (year: number, month: number, dayCounter: number, index: number, note: TFile, metadataCache: MetadataCache) => {
 
   const mykey = `${year}-${month}-${dayCounter}${index}`;
-  const icon = CalendarIcon.getIconByNote(note, 18);
 
-  const yaml = metadataCache.getFileCache(note)?.frontmatter;
-  const cssClasses = yaml?.cssclasses || [];
+  const frontmatter = metadataCache.getFileCache(note)?.frontmatter;
+  const cssClasses = frontmatter?.cssclasses || [];
+
+  const icon = CalendarIcon.getIconByNote(cssClasses, note, 18);
+
   const isHoliday = cssClasses.includes("holiday");
 
   const dayContainerClasses = `day-event-container ${isHoliday ? 'holiday' : ''}`;
