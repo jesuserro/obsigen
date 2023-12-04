@@ -54,16 +54,11 @@ export class MenuPrincipal extends Menu {
       }
     });
 
-
     let year = new Date().getFullYear();
-    // Obtén el elemento select con el ID "obs-year-picker"
     const yearSelect = document.getElementById("obs-year-picker") as HTMLSelectElement;
-
-    // Verifica si el elemento existe y obtén el valor seleccionado
     if (yearSelect) {
       year = parseInt(yearSelect.value, 10);
     }
-
     this.addMenuItem({
       title: "Nota anual",
       icon: "calendar-days",
