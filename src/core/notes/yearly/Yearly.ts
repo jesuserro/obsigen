@@ -53,7 +53,9 @@ export class Yearly {
 
   setContent(year: number): void {
     const monthsContent = this.getMonthsContent(year);
-    this.content = `${this.yaml}\n${monthsContent}`;
+    let body = `## Descripción\n`;
+    body += `## Sumario\n`;
+    this.content = `${this.yaml}\n${body}\n${monthsContent}`;
   }
 
   getFilename(year: number) {
@@ -68,7 +70,7 @@ export class Yearly {
       const monthName = new Date(`${year}-${paddedMonth}-01`).toLocaleString('default', { month: 'long' });
 
       const dataview = this.getMonthDataview(year, month);
-      const monthSection = `## ${monthName}\n${dataview}\n`;
+      const monthSection = `### ${monthName}\n${dataview}\n`;
 
       monthsContent += monthSection;
     }
@@ -78,7 +80,7 @@ export class Yearly {
 
   getMonthDataview(year: number, month: number): string {
     const paddedMonth = month.toString().padStart(2, '0');
-    return `\`\`\` dataview\nTABLE date, rating FROM "/" WHERE (rating > 7 OR favorite = true) AND contains(date,"${year}-${paddedMonth}") SORT date\n\`\`\``;
+    return `\`\`\` dataview\nTABLE date, rating FROM "/" WHERE (rating > 6 OR favorite = true) AND contains(date,"${year}-${paddedMonth}") SORT date\n\`\`\``;
   }
 }
 
