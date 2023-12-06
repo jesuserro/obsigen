@@ -2,11 +2,10 @@ import { App, Menu } from 'obsidian';
 import { Yearly } from 'src/core/notes/yearly/Yearly';
 import { Aniversario } from '../../core/notes/aniversario/Aniversario';
 import { Calendar } from '../../core/notes/calendar/Calendar';
+import { CalendarEvent } from '../../core/notes/calendar/CalendarEvent';
 import { CaptureUrl } from '../../core/notes/captureUrl/CaptureUrl';
 import { CaptureUrlModal } from '../../core/notes/captureUrl/CaptureUrlModal';
 import { Daily } from '../../core/notes/daily/Daily';
-import { Momento } from '../../core/notes/momento/Momento';
-import { PromptModal } from './PromptModal';
 
 interface MenuItem {
   title: string;
@@ -21,6 +20,15 @@ export class MenuPrincipal extends Menu {
     super();
     this.app = app;
     this.menuItems = [];
+
+    const date = new Date();
+    let year = date.getFullYear();
+    const yearSelect = document.getElementById("obs-year-picker") as HTMLSelectElement;
+    if (yearSelect) {
+      year = parseInt(yearSelect.value, 10);
+    }
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
 
     this.addMenuItem({
       title: "Capture URL",
@@ -39,10 +47,7 @@ export class MenuPrincipal extends Menu {
       title: "Momentazo",
       icon: "calendar-plus",
       onClick: async () => {
-        const promptModal = new PromptModal("Momentazo", "", false);
-        await promptModal.openModal();
-        const title = promptModal.getValue();
-        await new Momento(this.app).createNote(title, ``);
+        await new CalendarEvent(app, year, month, day).openModal();
       }
     });
 
@@ -54,11 +59,6 @@ export class MenuPrincipal extends Menu {
       }
     });
 
-    let year = new Date().getFullYear();
-    const yearSelect = document.getElementById("obs-year-picker") as HTMLSelectElement;
-    if (yearSelect) {
-      year = parseInt(yearSelect.value, 10);
-    }
     this.addMenuItem({
       title: "Nota anual",
       icon: "calendar-days",
