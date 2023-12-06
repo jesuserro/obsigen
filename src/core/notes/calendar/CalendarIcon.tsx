@@ -7,7 +7,7 @@ import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHeadSideCough, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTemperatureHigh, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
 import { FcCalendar } from 'react-icons/fc';
-import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiCrownCoin, GiDevilMask, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiTombstone, GiVillage, GiWheat } from 'react-icons/gi';
+import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiCrownCoin, GiDeathSkull, GiDevilMask, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoIosPaper, IoMdBasket, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
@@ -137,6 +137,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   confession: ({ size }) => <GiKneeling size={size} className="pink purple" />,
   cough: ({ size }) => <FaHeadSideCough size={size} className="yellow emoji" />, 
   dad: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Dad" />,
+  death: ({ size }) => <GiDeathSkull size={size} className="grey" />,
   doctor: ({ size }) => <FaUserDoctor size={size} className="green" />,
   dream: ({ size }) => <TbZzz size={size} className="blue cobalt" />,
   earthquake: ({ size }) => <RiEarthquakeFill size={size} className="red" />,
@@ -153,7 +154,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   finances: ({ size }) => <FaMoneyBillWave size={size} className="red" />,
   foot: ({ size }) => <IoFootsteps size={size} className="blue aws" />,
   friends: ({ size }) => <MdGroup size={size} className="yellow" />,
-  funeral: ({ size }) => <GiTombstone size={size} className="grey" />,
+  funeral: ({ size }) => <GiChurch size={size} className="grey" />,
   garabandal: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Garabandal" />,
   gastronomy: ({ size }) => <MdRestaurant size={size} style={{ color: '#FFD700' }} />,
   gimp: ({ size }) => <SiGimp size={size} className='orange' />, 
