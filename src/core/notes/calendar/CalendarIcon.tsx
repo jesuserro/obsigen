@@ -98,6 +98,7 @@ export class CalendarIcon {
 export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
   achelm: ({ size }) => <CustomIcon size={size} className="pink" iconName="Achelm" />,
   add: ({ size }) => <MdOutlineAddCircle size={size} className="green" />,
+  adoration: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Adoration" />,
   advent: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Advent" />,
   agenda2030: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
   agriculture: ({ size }) => <IoMdBasket size={size} className="brown" />, 
