@@ -125,6 +125,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   car: ({ size }) => <FaCarSide size={size} className="red c3" />, 
   catholic: ({ size }) => <FaCross size={size} className="pink purple" />,
   cdr: ({ size }) => <CustomIcon size={size} className="orange" iconName="Cdr" />,
+  cemetery: ({ size }) => <CustomIcon size={size} className="grey" iconName="Cemetery" />,
   charo: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Charo" />,
   chess: ({ size }) => <FaChess size={size} className="blue chesscom" />, 
   christ: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Christ" />, 
