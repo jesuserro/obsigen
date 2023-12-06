@@ -6,6 +6,7 @@ import { CalendarEvent } from '../../core/notes/calendar/CalendarEvent';
 import { CaptureUrl } from '../../core/notes/captureUrl/CaptureUrl';
 import { CaptureUrlModal } from '../../core/notes/captureUrl/CaptureUrlModal';
 import { Daily } from '../../core/notes/daily/Daily';
+import { Favorites } from '../../core/notes/favorites/Favorites';
 
 interface MenuItem {
   title: string;
@@ -77,10 +78,18 @@ export class MenuPrincipal extends Menu {
       }
     });
 
+    this.addMenuItem({
+      title: "Favoritos",
+      icon: "calendar-heart",
+      onClick: () => {
+        new Favorites(this.app).createNote();
+      }
+    });
+
     this.addSeparator();
 
     this.addMenuItem({
-      title: "Refresh Calendar",
+      title: "Refresh",
       icon: "calendar-check-2",
       onClick: () => {
         new Calendar(this.app); 
