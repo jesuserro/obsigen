@@ -155,6 +155,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   foot: ({ size }) => <IoFootsteps size={size} className="blue aws" />,
   friends: ({ size }) => <MdGroup size={size} className="yellow" />,
   funeral: ({ size }) => <GiChurch size={size} className="grey" />,
+  funeralhome: ({ size }) => <CustomIcon size={size} className="grey" iconName="FuneralHome" />,
   garabandal: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Garabandal" />,
   gastronomy: ({ size }) => <MdRestaurant size={size} style={{ color: '#FFD700' }} />,
   gimp: ({ size }) => <SiGimp size={size} className='orange' />, 
