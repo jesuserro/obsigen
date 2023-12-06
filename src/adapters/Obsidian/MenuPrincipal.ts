@@ -80,8 +80,8 @@ export class MenuPrincipal extends Menu {
     this.addSeparator();
 
     this.addMenuItem({
-      title: "Calendar",
-      icon: "calendar-plus",
+      title: "Refresh Calendar",
+      icon: "calendar-check-2",
       onClick: () => {
         new Calendar(this.app); 
       }
