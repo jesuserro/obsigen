@@ -25,7 +25,7 @@ export default class MyPlugin extends Plugin {
 		
 		await this.loadSettings();
 
-		const ribbonIconEl = this.addRibbonIcon('calendar-heart', 'Obsigen', (evt: MouseEvent) => {
+		const ribbonIconEl = this.addRibbonIcon('church', 'Obsigen', (evt: MouseEvent) => {
 			const menu = new MenuPrincipal(this.app);
       menu.showAtMouseEvent(evt);
 		});
