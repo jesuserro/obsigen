@@ -41,8 +41,9 @@ export class CaptureUrl {
     const data = {
       ...DATA_YAML_DEFAULT,
       title: this.title,
+      date: this.convertDateToIsoString(new Date()),
       links: [...DATA_YAML_DEFAULT.links, link], 
-      urls: [...DATA_YAML_DEFAULT.urls, url], 
+      urls: [...DATA_YAML_DEFAULT.urls, url] 
     };
     let yaml = renderToString(Yaml({ data }));
     yaml = yaml.replace(/&quot;/g, '"');
@@ -56,6 +57,16 @@ export class CaptureUrl {
     this.fileName = this.getFilename(this.title);
     this.setContent(url);
     await this.noteGenerator.createNote(this.fileName, this.content, `000 Inbox/Captures`);
+  }
+
+  convertDateToIsoString(date: Date){
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const seconds = date.getSeconds().toString().padStart(2, '0');
+    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
   }
 
   setContent(url: string): void {
