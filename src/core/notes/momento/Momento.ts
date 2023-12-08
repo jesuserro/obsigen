@@ -74,7 +74,7 @@ export class Momento {
     const data = {
       ...DATA_YAML_DEFAULT,
       title: this.title,
-      date: this.date.toISOString(),
+      date: this.convertDateToIsoString(this.date),
       links: [...DATA_YAML_DEFAULT.links, link],
       locations: [...DATA_YAML_DEFAULT.locations, locations],
       urls: [...DATA_YAML_DEFAULT.urls, urls]
@@ -87,6 +87,15 @@ export class Momento {
     let yaml = renderToString(Yaml({ data }));
     yaml = yaml.replace(/&quot;/g, '"');
     this.yaml = yaml.replace(/<!-- -->/g, '');
+  }
+
+  convertDateToIsoString(date: Date){
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      return `${year}-${month}-${day}T${hours}:${minutes}:00`;
   }
 
   async createNote(title: string, content: string, startDate?: Date, icon?: string, description?: string, locations?: string, urls:string = '') {
