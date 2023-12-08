@@ -1,7 +1,7 @@
 export interface iYaml {
 	title: string,
 	aliases: string[],
-	date: Date,
+	date: String,
 	creation: Date, 
 	updated: Date,
 	links: string[],
@@ -23,7 +23,7 @@ export interface iYaml {
 export const DATA_YAML_DEFAULT: iYaml = {
 	title: '',
 	aliases: [],
-	date: new Date(),
+	date: new Date().toISOString(),
 	creation: new Date(), 
 	updated: new Date(),
 	links: [],
@@ -45,7 +45,7 @@ export const DATA_YAML_DEFAULT: iYaml = {
 export const DATA_YAML_SAMPLE: iYaml = {
 	title: 'Sample note',
 	aliases: [],
-	date: new Date(),
+	date: new Date().toISOString(),
 	creation: new Date(), 
 	updated: new Date(),
 	links: [],

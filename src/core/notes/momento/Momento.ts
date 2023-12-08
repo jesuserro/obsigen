@@ -74,7 +74,7 @@ export class Momento {
     const data = {
       ...DATA_YAML_DEFAULT,
       title: this.title,
-      date: this.date,
+      date: this.date.toISOString(),
       links: [...DATA_YAML_DEFAULT.links, link],
       locations: [...DATA_YAML_DEFAULT.locations, locations],
       urls: [...DATA_YAML_DEFAULT.urls, urls]
