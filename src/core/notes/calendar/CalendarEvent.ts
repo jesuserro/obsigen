@@ -278,8 +278,8 @@ export class CalendarEvent extends Modal {
     const strDate = `${selectedYear}-${selectedMonth}-${selectedDay} ${selectedTime}`;
     const startDate = new Date(strDate);
 
-    this.locations = this.locationField.getValue();
-    this.urls = this.urlField.getValue();
+    this.locations = `"${this.locationField.getValue()}"`;
+    this.urls = `"${this.urlField.getValue()}"`;
 
     const formValues: FormValues = {
       title: this.title.trim(),
