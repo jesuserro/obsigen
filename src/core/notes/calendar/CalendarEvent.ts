@@ -9,7 +9,7 @@ export interface FormValues {
   title: string;
   urls: string;
   description: string;
-  startDate: Date;
+  date: Date;
   endDate: string;
   selectedIcon: string;
   locations: string;
@@ -26,7 +26,7 @@ export class CalendarEvent extends Modal {
   private title: string;
   private urls: string;
   private description: string;
-  private startDate: string;
+  private date: string;
   private endDate: string;
   private selectedIcon: string;
   private locations: string;
@@ -43,12 +43,12 @@ export class CalendarEvent extends Modal {
   private locationField: SearchComponent;
   private urlField: TextComponent;
   
-  constructor(app: App, year:number, month:number, day:number) {
+  constructor(app: App, date: Date) {
     super(app);
-    
-    this.year = year;
-    this.month = month;
-    this.day = day;
+
+    this.year = date.getFullYear();
+    this.month = date.getMonth() + 1;
+    this.day = date.getDate();
 
     this.createForm();
   }
@@ -70,7 +70,7 @@ export class CalendarEvent extends Modal {
     this.title = "";
     this.urls = "";
     this.description = "";
-    this.startDate = "";
+    this.date = "";
     this.endDate = "";
     this.selectedIcon = "default-icon"; 
     this.locations = ""; 
@@ -249,12 +249,12 @@ export class CalendarEvent extends Modal {
     });
   }
 
-  getFormValues(): { title: string; urls: string, description: string, startDate: string, endDate: string, selectedIcon: string, locations: string } {
+  getFormValues(): { title: string; urls: string, description: string, date: string, endDate: string, selectedIcon: string, locations: string } {
     return { 
       title: this.title, 
       urls: this.urls, 
       description: this.description, 
-      startDate: this.startDate, 
+      date: this.date, 
       endDate: this.endDate, 
       selectedIcon: this.selectedIcon, 
       locations: this.locations 
@@ -276,18 +276,24 @@ export class CalendarEvent extends Modal {
     const selectedTime = `${selectedHour}:${selectedMinute}:00`;
     
     const strDate = `${selectedYear}-${selectedMonth}-${selectedDay} ${selectedTime}`;
-    const startDate = new Date(strDate);
+    const date = new Date(strDate);
 
-    this.locations = `"${this.locationField.getValue()}"`;
-    this.urls = `"${this.urlField.getValue()}"`;
-
+    this.locations = "";
+    if(this.locationField.getValue() !== "" && this.locationField.getValue() !== undefined){
+      this.locations = `"${this.locationField.getValue()}"`;
+    }
+    this.urls = "";
+    if(this.urlField.getValue() !== "" && this.urlField.getValue() !== undefined){
+      this.urls = `"${this.urlField.getValue()}"`;
+    }
+    
     const formValues: FormValues = {
       title: this.title.trim(),
-      urls: this.urls.trim(),
       description: this.description.trim(),
-      startDate: startDate,
+      date: date,
       endDate: this.endDate.trim(),
       selectedIcon: this.selectedIcon,
+      urls: this.urls.trim(),
       locations: this.locations.trim()
     };
 
@@ -305,12 +311,12 @@ export class CalendarEvent extends Modal {
 
     const path = `100 Calendar/${selectedYear}/${selectedMonth}/${selectedDay}`;
 
-    // title: string, content: string, startDate?: string, icon?: string, description?: string, locations?: string, url:string = ''
-    new Momento(this.app).createNote(
+    // title: string, content: string, date?: string, icon?: string, description?: string, locations?: string, url:string = ''
+    new Momento(date).createNote(
       path,
+      this.app,
       formValues.title, 
-      formValues.description, 
-      formValues.startDate, 
+      formValues.description,  
       formValues.selectedIcon, 
       "description",
       formValues.locations,

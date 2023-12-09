@@ -25,22 +25,25 @@ export class Momento {
   day: number;
   hour: number;
   minute: number;
+  seconds: number;
   locations: string;
   urls: string;
 
-  constructor(app: App) {
-    this.app = app;
-    this.noteGenerator = new NoteGenerator(this.app);
-    this.startDate = new Date();
+  constructor(date: Date) {
+    
     this.icon = "";
-    this.date = new Date();
-    this.year = this.date.getFullYear();
-    this.month = this.date.getMonth() + 1;
-    this.day = this.date.getDate();
-    this.hour = this.date.getHours();
-    this.minute = this.date.getMinutes();
+    
+    this.year = date.getFullYear();
+    this.month = date.getMonth() + 1;
+    this.day = date.getDate();
+    this.hour = date.getHours();
+    this.minute = date.getMinutes();
+    this.seconds = date.getSeconds();
     this.locations = "";
     this.urls = "";
+
+    this.startDate = date;
+    this.date = this.startDate;
   }
 
   getCurrentTime() {
@@ -92,14 +95,16 @@ export class Momento {
       return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
   }
 
-  async createNote(path: string, title: string, content: string, startDate?: Date, icon?: string, description?: string, locations?: string, urls:string = '') {
+  async createNote(path: string, app: App, title: string, content: string, icon?: string, description?: string, locations?: string, urls:string = '') {
     
+    this.app = app;
+    this.noteGenerator = new NoteGenerator(this.app);
+
     if(path === '') {
       path = `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
     }
     
     this.title = this.getTitle(title);
-    this.startDate = startDate || null;
     if (this.startDate) {
       this.date =this.startDate;
       this.year = this.date.getFullYear();
@@ -119,11 +124,13 @@ export class Momento {
 
   setContent(content: string) {
     let mediaContent = "";
-    // For each this.urls array element, get the media content
-    this.urls.split(',').forEach((url: string) => {
-      mediaContent += this.getMedia(url) + "\n";
-    });
-    this.content = `${this.yaml}\n# ${this.title}\n${mediaContent}\n${content}`;
+    if (this.urls !== "") {
+      // For each this.urls array element, get the media content
+      this.urls.split(',').forEach((url: string) => {
+        mediaContent += this.getMedia(url) + "\n";
+      });
+    }
+    this.content = `${this.yaml}\n# ${this.title}\n${mediaContent}${content}`;
   }
 
   getTitle(title: string) {

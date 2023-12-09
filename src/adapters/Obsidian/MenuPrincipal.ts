@@ -30,6 +30,10 @@ export class MenuPrincipal extends Menu {
     }
     const month = date.getMonth() + 1;
     const day = date.getDate();
+    const hour = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+    const selectedDate = new Date(`${year}-${month}-${day} ${hour}:${minutes}:${seconds}`);
 
     this.addMenuItem({
       title: "Capture URL",
@@ -48,7 +52,7 @@ export class MenuPrincipal extends Menu {
       title: "Momentazo",
       icon: "calendar-plus",
       onClick: async () => {
-        await new CalendarEvent(app, year, month, day).openModal();
+        await new CalendarEvent(app, selectedDate).openModal();
       }
     });
 
