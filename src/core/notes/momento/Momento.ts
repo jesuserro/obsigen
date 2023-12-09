@@ -99,7 +99,12 @@ export class Momento {
       return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
   }
 
-  async createNote(title: string, content: string, startDate?: Date, icon?: string, description?: string, locations?: string, urls:string = '') {
+  async createNote(path: string, title: string, content: string, startDate?: Date, icon?: string, description?: string, locations?: string, urls:string = '') {
+    
+    if(path === '') {
+      path = `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
+    }
+    
     this.title = this.getTitle(title);
     this.startDate = startDate || null;
     if (this.startDate) {
@@ -115,8 +120,7 @@ export class Momento {
     this.setYaml();
     this.fileName = this.getFilename(this.title);
     this.setContent(content);
-    const path = `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
-
+    
     await this.noteGenerator.createNote(this.fileName, this.content, path);
   }
 

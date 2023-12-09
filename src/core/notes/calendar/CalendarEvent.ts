@@ -268,14 +268,15 @@ export class CalendarEvent extends Modal {
 
     // Recoge los valores del formulario
     const selectedYear = this.yearDropdown.getValue();
-    const selectedMonth = this.monthDropdown.getValue();
-    const selectedDay = this.dayDropdown.getValue();
-    const selectedHour = this.hourDropdown.getValue();
-    const selectedMinute = this.minuteDropdown.getValue();
+    const selectedMonth = this.monthDropdown.getValue().padStart(2, '0');
+    const selectedDay = this.dayDropdown.getValue().padStart(2, '0');
+    const selectedHour = this.hourDropdown.getValue().padStart(2, '0');
+    const selectedMinute = this.minuteDropdown.getValue().padStart(2, '0');
 
-    const selectedTime = `${selectedHour.padStart(2, '0')}:${selectedMinute.padStart(2, '0')}:00`;
+    const selectedTime = `${selectedHour}:${selectedMinute}:00`;
     
-    const startDate = new Date(`${selectedYear}-${selectedMonth.padStart(2, '0')}-${selectedDay.padStart(2, '0')} ${selectedTime}`);
+    const strDate = `${selectedYear}-${selectedMonth}-${selectedDay} ${selectedTime}`;
+    const startDate = new Date(strDate);
 
     this.locations = this.locationField.getValue();
     this.urls = this.urlField.getValue();
@@ -302,8 +303,11 @@ export class CalendarEvent extends Modal {
     // Validation passed, resolve the values
     this.resolve(formValues);
 
+    const path = `100 Calendar/${selectedYear}/${selectedMonth}/${selectedDay}`;
+
     // title: string, content: string, startDate?: string, icon?: string, description?: string, locations?: string, url:string = ''
     new Momento(this.app).createNote(
+      path,
       formValues.title, 
       formValues.description, 
       formValues.startDate, 

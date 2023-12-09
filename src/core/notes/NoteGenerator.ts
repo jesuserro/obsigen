@@ -5,6 +5,7 @@ export class NoteGenerator {
 
   fileName: string;
   content: string;
+  path: string;
 
   constructor(app: App) {
     this.app = app;
@@ -14,29 +15,30 @@ export class NoteGenerator {
     return 'Hello, World!';
   }
 
-  async createNote(fileName: string, content: string, folder?: string) {
+  async createNote(fileName: string, content: string, path: string) {
     this.content = content;
+    this.path = path;
     this.setFileName(fileName);
-    await this.createNoteInVault(folder);
+    await this.createNoteInVault(path);
   }
 
-  async createNoteInVault(folder?: string) {
+  async createNoteInVault(path?: string) {
     let separator = '/';
-    if (!folder) {
-      folder = '';
+    if (!path) {
+      path = '';
       separator = '';
     }
 
     // check if folder exists and create it if not
-    if (!this.app.vault.getAbstractFileByPath(folder)) {
-      await this.app.vault.createFolder(folder);
+    if (!this.app.vault.getAbstractFileByPath(path)) {
+      await this.app.vault.createFolder(path);
     }
 
-    const path = `${folder}${separator}${this.fileName}`;
-    let fileRef = this.app.vault.getAbstractFileByPath(path);
+    const pathToFile = `${path}${separator}${this.fileName}`;
+    let fileRef = this.app.vault.getAbstractFileByPath(pathToFile);
     let msg = `Abriendo ${this.fileName}`;
     if (!fileRef) {
-      fileRef = await this.app.vault.create(path, this.content);
+      fileRef = await this.app.vault.create(pathToFile, this.content);
       msg = `Creando ${this.fileName}`;
     }
 
