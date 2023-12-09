@@ -23,7 +23,9 @@ export class CalendarView extends ItemView {
   }
 
   private handleAddEvent = async () => {
-    await new CalendarEvent(this.app, this.today.getFullYear(), this.today.getMonth() + 1, this.today.getDate())
+    const strDate = `${this.today.getFullYear()}-${this.today.getMonth() + 1}-${this.today.getDate()}`;
+    const date = new Date(strDate);
+    await new CalendarEvent(this.app, date)
       .openModal()
       .then((values: FormValues) => {
         // Manejar los valores del evento si es necesario
