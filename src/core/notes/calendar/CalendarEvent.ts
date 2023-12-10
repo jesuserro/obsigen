@@ -130,6 +130,7 @@ export class CalendarEvent extends Modal {
     this.typeField = new DropdownComponent(typeDiv);
     this.typeField.addOption("Moment", "Moment");
     this.typeField.addOption("Capture", "Capture");
+    this.typeField.addOption("Content Map", "Content Map");
     this.typeField.onChange((value) => (this.type = value));
     this.typeField.setValue(this.type);
   
@@ -330,8 +331,10 @@ export class CalendarEvent extends Modal {
     let path = "/";
     if(type == "Moment"){
       path = `100 Calendar/${selectedYear}/${selectedMonth}/${selectedDay}`;
-    }else if("Capture"){
+    }else if(type == "Capture"){
       path = `000 Inbox/Captures`;
+    }else if(type == "Content Map"){
+      path = `200 Content Maps`;
     }
   
     new Momento(date).createNote(
