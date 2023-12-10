@@ -3,8 +3,6 @@ import { Yearly } from 'src/core/notes/yearly/Yearly';
 import { Aniversario } from '../../core/notes/aniversario/Aniversario';
 import { Calendar } from '../../core/notes/calendar/Calendar';
 import { CalendarEvent } from '../../core/notes/calendar/CalendarEvent';
-import { CaptureUrl } from '../../core/notes/captureUrl/CaptureUrl';
-import { CaptureUrlModal } from '../../core/notes/captureUrl/CaptureUrlModal';
 import { Daily } from '../../core/notes/daily/Daily';
 import { Favorites } from '../../core/notes/favorites/Favorites';
 
@@ -34,19 +32,6 @@ export class MenuPrincipal extends Menu {
     const minutes = date.getMinutes();
     const seconds = date.getSeconds();
     const selectedDate = new Date(`${year}-${month}-${day} ${hour}:${minutes}:${seconds}`);
-
-    this.addMenuItem({
-      title: "Capture URL",
-      icon: "link",
-      onClick: async () => {
-        const promptModal = new CaptureUrlModal("Capturar Url", "", "");
-        await promptModal.openModal();
-        const { title, url } = promptModal.getFormValues();
-        await new CaptureUrl(this.app).createNote(title, url);
-      }
-    });
-
-    this.addSeparator(); 
 
     this.addMenuItem({
       title: "Momentazo",
