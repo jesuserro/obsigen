@@ -334,7 +334,6 @@ export class CalendarEvent extends Modal {
       path = `000 Inbox/Captures`;
     }
   
-    // title: string, content: string, date?: string, icon?: string, description?: string, locations?: string, url:string = ''
     new Momento(date).createNote(
       path,
       this.app,
