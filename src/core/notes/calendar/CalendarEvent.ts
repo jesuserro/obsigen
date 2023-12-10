@@ -83,20 +83,19 @@ export class CalendarEvent extends Modal {
   }
   
   createForm(): void {
-    const div = this.contentEl.createDiv("form-container");
-  
-    // Title label and textfield
-    const titleDiv = div.createDiv("form-element");
-    const titleLabel = titleDiv.createEl("label", { cls: "form-label" });
+    
+    const form = this.contentEl.createDiv("form-element");
+    
+    const titleLabel = form.createEl("label", { cls: "form-label" });
     titleLabel.setText("Title");
-    this.titleField = new TextComponent(titleDiv);
+    this.titleField = new TextComponent(form);
     this.titleField.inputEl.addClass("form-input");
     this.titleField.setPlaceholder("title");
     this.titleField.setValue(this.title);
     this.titleField.onChange((value) => (this.title = value));
   
     // Fieldset for year, month, and day dropdowns
-    const dateFieldset = div.createEl("fieldset", { cls: "date-fieldset" });
+    const dateFieldset = form.createEl("fieldset", { cls: "date-fieldset" });
   
     // Create Dropdown for selecting the year
     const yearDiv = dateFieldset.createDiv("form-element");
@@ -119,7 +118,7 @@ export class CalendarEvent extends Modal {
     this.initializeDropdowns();
   
     // Icon Selector label and dropdown
-    const iconDiv = div.createDiv();
+    const iconDiv = form.createDiv();
     const iconLabel = iconDiv.createEl("label", { cls: "form-label" });
     iconLabel.setText("Icon");
     this.iconDropdown = React.createElement(CalendarIconPicker, { 
@@ -131,7 +130,7 @@ export class CalendarEvent extends Modal {
     root.render(this.iconDropdown);
   
     // Location label and textfield
-    const locationDiv = div.createDiv("form-element");
+    const locationDiv = form.createDiv("form-element");
     const locationLabel = locationDiv.createEl("label", { cls: "form-label" });
     locationLabel.setText("Location");
     this.locationField = new SearchComponent(locationDiv);
@@ -154,7 +153,7 @@ export class CalendarEvent extends Modal {
     });
 
     // url label and textfield
-    const urlDiv = div.createDiv("form-element");
+    const urlDiv = form.createDiv("form-element");
     const urlLabel = urlDiv.createEl("label", { cls: "form-label" });
     urlLabel.setText("Urls");
     this.urlField = new TextComponent(urlDiv);
@@ -164,7 +163,7 @@ export class CalendarEvent extends Modal {
     this.urlField.onChange((value) => (this.urls = value));
 
     // Description label and textarea
-    const descriptionDiv = div.createDiv("form-element");
+    const descriptionDiv = form.createDiv("form-element");
     const descriptionLabel = descriptionDiv.createEl("label", { cls: "form-label" });
     descriptionLabel.setText("Description");
     this.descriptionTextarea = new TextAreaComponent(descriptionDiv);
@@ -174,7 +173,7 @@ export class CalendarEvent extends Modal {
     this.descriptionTextarea.onChange((value) => (this.description = value));
 
     // Submit button aligned to the right horizontally
-    const buttonDiv = div.createDiv("form-button-container");
+    const buttonDiv = form.createDiv("form-button-container");
     const submitButton = new ButtonComponent(buttonDiv);
     submitButton.buttonEl.addClass("form-submit-button");
     submitButton.setButtonText("Submit").onClick((evt: Event) => {
