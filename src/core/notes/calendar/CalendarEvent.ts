@@ -13,6 +13,7 @@ export interface FormValues {
   endDate: string;
   selectedIcon: string;
   locations: string;
+  type: string
 }
 
 export class CalendarEvent extends Modal {
@@ -30,6 +31,7 @@ export class CalendarEvent extends Modal {
   private endDate: string;
   private selectedIcon: string;
   private locations: string;
+  private type: string;
 
   // Nuevos campos de selección para año, mes y día
   private titleField: TextComponent;
@@ -42,6 +44,7 @@ export class CalendarEvent extends Modal {
   private minuteDropdown: DropdownComponent;
   private locationField: SearchComponent;
   private urlField: TextComponent;
+  private typeField: DropdownComponent;
   
   constructor(app: App, date: Date) {
     super(app);
@@ -49,6 +52,7 @@ export class CalendarEvent extends Modal {
     this.year = date.getFullYear();
     this.month = date.getMonth() + 1;
     this.day = date.getDate();
+    this.type = "Moment";
 
     this.createForm();
   }
@@ -74,12 +78,14 @@ export class CalendarEvent extends Modal {
     this.endDate = "";
     this.selectedIcon = "default-icon"; 
     this.locations = ""; 
+    this.type = "Moment"; 
 
     this.titleField.setValue(this.title);
     this.descriptionTextarea.setValue(this.description);
     // this.iconDropdown.setValue(this.selectedIcon);
     this.locationField.setValue(this.locations);
     this.urlField.setValue(this.urls);
+    this.typeField.setValue(this.type);
   }
   
   createForm(): void {
@@ -116,6 +122,16 @@ export class CalendarEvent extends Modal {
     this.minuteDropdown = new DropdownComponent(minuteDiv);
   
     this.initializeDropdowns();
+
+    // Type label and textfield
+    const typeDiv = form.createDiv("form-element");
+    const typeLabel = typeDiv.createEl("label", { cls: "form-label" });
+    typeLabel.setText("Type");
+    this.typeField = new DropdownComponent(typeDiv);
+    this.typeField.addOption("Moment", "Moment");
+    this.typeField.addOption("Capture", "Capture");
+    this.typeField.onChange((value) => (this.type = value));
+    this.typeField.setValue(this.type);
   
     // Icon Selector label and dropdown
     const iconDiv = form.createDiv();
@@ -248,7 +264,7 @@ export class CalendarEvent extends Modal {
     });
   }
 
-  getFormValues(): { title: string; urls: string, description: string, date: string, endDate: string, selectedIcon: string, locations: string } {
+  getFormValues(): { title: string; urls: string, description: string, date: string, endDate: string, selectedIcon: string, locations: string, type: string } {
     return { 
       title: this.title, 
       urls: this.urls, 
@@ -256,7 +272,8 @@ export class CalendarEvent extends Modal {
       date: this.date, 
       endDate: this.endDate, 
       selectedIcon: this.selectedIcon, 
-      locations: this.locations 
+      locations: this.locations,
+      type: this.type 
     };
   }
 
@@ -293,7 +310,8 @@ export class CalendarEvent extends Modal {
       endDate: this.endDate.trim(),
       selectedIcon: this.selectedIcon,
       urls: this.urls.trim(),
-      locations: this.locations.trim()
+      locations: this.locations.trim(),
+      type: this.type.trim()
     };
 
     // Validar los valores del formulario aquí, si es necesario
@@ -308,8 +326,14 @@ export class CalendarEvent extends Modal {
     // Validation passed, resolve the values
     this.resolve(formValues);
 
-    const path = `100 Calendar/${selectedYear}/${selectedMonth}/${selectedDay}`;
-
+    const type = formValues.type;
+    let path = "/";
+    if(type == "Moment"){
+      path = `100 Calendar/${selectedYear}/${selectedMonth}/${selectedDay}`;
+    }else if("Capture"){
+      path = `000 Inbox/Captures`;
+    }
+  
     // title: string, content: string, date?: string, icon?: string, description?: string, locations?: string, url:string = ''
     new Momento(date).createNote(
       path,
