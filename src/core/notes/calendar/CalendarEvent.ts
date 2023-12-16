@@ -130,6 +130,7 @@ export class CalendarEvent extends Modal {
     this.typeField = new DropdownComponent(typeDiv);
     this.typeField.addOption("Moment", "Moment");
     this.typeField.addOption("Capture", "Capture");
+    this.typeField.addOption("Person", "Person");
     this.typeField.addOption("Content Map", "Content Map");
     this.typeField.onChange((value) => (this.type = value));
     this.typeField.setValue(this.type);

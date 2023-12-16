@@ -125,12 +125,15 @@ export class Momento {
   }
 
   getPath(type:string){
+    const pathFechaMomento = `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
     if(type == "Moment"){
-      return `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
+      return pathFechaMomento;
     }else if(type == "Capture"){
       return `000 Inbox/Captures`;
     }else if(type == "Content Map"){
       return `200 Content Maps`;
+    }else if(type == "Person"){
+      return pathFechaMomento;
     }
     return "/";
   }
