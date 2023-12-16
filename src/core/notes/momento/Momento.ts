@@ -139,6 +139,11 @@ export class Momento {
   }
 
   setContent(content: string) {
+    let mediaContent = this.getMediaContent();
+    this.content = `${this.yaml}\n# ${this.title}\n${mediaContent}${content}`;
+  }
+
+  private getMediaContent() {
     let mediaContent = "";
     if (this.urls !== "") {
       // For each this.urls array element, get the media content
@@ -146,7 +151,7 @@ export class Momento {
         mediaContent += this.getMedia(url) + "\n";
       });
     }
-    this.content = `${this.yaml}\n# ${this.title}\n${mediaContent}${content}`;
+    return mediaContent;
   }
 
   getTitle(title: string) {
