@@ -28,6 +28,8 @@ export class Momento {
   seconds: number;
   locations: string;
   urls: string;
+  type: string;
+  path: string;
 
   constructor(date: Date) {
     
@@ -41,6 +43,8 @@ export class Momento {
     this.seconds = date.getSeconds();
     this.locations = "";
     this.urls = "";
+    this.type = "";
+    this.path = "/";
 
     this.startDate = date;
     this.date = this.startDate;
@@ -95,15 +99,11 @@ export class Momento {
       return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
   }
 
-  async createNote(path: string, app: App, title: string, content: string, icon?: string, description?: string, locations?: string, urls:string = '') {
+  async createNote(type: string, app: App, title: string, content: string, icon?: string, description?: string, locations?: string, urls:string = '') {
     
     this.app = app;
     this.noteGenerator = new NoteGenerator(this.app);
 
-    if(path === '') {
-      path = `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
-    }
-    
     this.title = this.getTitle(title);
     if (this.startDate) {
       this.date =this.startDate;
@@ -118,8 +118,21 @@ export class Momento {
     this.setYaml();
     this.fileName = this.getFilename(this.title);
     this.setContent(content);
+
+    this.path = this.getPath(type);
     
-    await this.noteGenerator.createNote(this.fileName, this.content, path);
+    await this.noteGenerator.createNote(this.fileName, this.content, this.path);
+  }
+
+  getPath(type:string){
+    if(type == "Moment"){
+      return `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
+    }else if(type == "Capture"){
+      return `000 Inbox/Captures`;
+    }else if(type == "Content Map"){
+      return `200 Content Maps`;
+    }
+    return "/";
   }
 
   setContent(content: string) {

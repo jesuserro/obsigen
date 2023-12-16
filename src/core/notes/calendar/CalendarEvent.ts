@@ -327,18 +327,8 @@ export class CalendarEvent extends Modal {
     // Validation passed, resolve the values
     this.resolve(formValues);
 
-    const type = formValues.type;
-    let path = "/";
-    if(type == "Moment"){
-      path = `100 Calendar/${selectedYear}/${selectedMonth}/${selectedDay}`;
-    }else if(type == "Capture"){
-      path = `000 Inbox/Captures`;
-    }else if(type == "Content Map"){
-      path = `200 Content Maps`;
-    }
-  
     new Momento(date).createNote(
-      path,
+      formValues.type,
       this.app,
       formValues.title, 
       formValues.description,  
