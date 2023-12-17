@@ -13,7 +13,8 @@ export interface FormValues {
   endDate: string;
   selectedIcon: string;
   locations: string;
-  type: string
+  type: string,
+  tags: string
 }
 
 export class CalendarEvent extends Modal {
@@ -32,6 +33,7 @@ export class CalendarEvent extends Modal {
   private selectedIcon: string;
   private locations: string;
   private type: string;
+  private tags: string;
 
   // Nuevos campos de selección para año, mes y día
   private titleField: TextComponent;
@@ -45,6 +47,7 @@ export class CalendarEvent extends Modal {
   private locationField: SearchComponent;
   private urlField: TextComponent;
   private typeField: DropdownComponent;
+  private tagsField: TextComponent;
   
   constructor(app: App, date: Date) {
     super(app);
@@ -53,6 +56,7 @@ export class CalendarEvent extends Modal {
     this.month = date.getMonth() + 1;
     this.day = date.getDate();
     this.type = "Moment";
+    this.tags = "";
 
     this.createForm();
   }
@@ -79,6 +83,7 @@ export class CalendarEvent extends Modal {
     this.selectedIcon = "default-icon"; 
     this.locations = ""; 
     this.type = "Moment"; 
+    this.tags = ""; 
 
     this.titleField.setValue(this.title);
     this.descriptionTextarea.setValue(this.description);
@@ -190,6 +195,16 @@ export class CalendarEvent extends Modal {
     this.descriptionTextarea.setValue(this.description);
     this.descriptionTextarea.onChange((value) => (this.description = value));
 
+    // tags
+    const tagsDiv = form.createDiv("form-element");
+    const tagsLabel = tagsDiv.createEl("label", { cls: "form-label" });
+    tagsLabel.setText("Tags");
+    this.tagsField = new TextComponent(tagsDiv);
+    this.tagsField.inputEl.addClass("form-input");
+    this.tagsField.setPlaceholder("tags (comma separated)");
+    this.tagsField.setValue(this.tags);
+    this.tagsField.onChange((value) => (this.tags = value));
+
     // Submit button aligned to the right horizontally
     const buttonDiv = form.createDiv("form-button-container");
     const submitButton = new ButtonComponent(buttonDiv);
@@ -266,7 +281,7 @@ export class CalendarEvent extends Modal {
     });
   }
 
-  getFormValues(): { title: string; urls: string, description: string, date: string, endDate: string, selectedIcon: string, locations: string, type: string } {
+  getFormValues(): { title: string; urls: string, description: string, date: string, endDate: string, selectedIcon: string, locations: string, type: string, tags: string } {
     return { 
       title: this.title, 
       urls: this.urls, 
@@ -275,7 +290,8 @@ export class CalendarEvent extends Modal {
       endDate: this.endDate, 
       selectedIcon: this.selectedIcon, 
       locations: this.locations,
-      type: this.type 
+      type: this.type,
+      tags: this.tags 
     };
   }
 
@@ -313,7 +329,8 @@ export class CalendarEvent extends Modal {
       selectedIcon: this.selectedIcon,
       urls: this.urls.trim(),
       locations: this.locations.trim(),
-      type: this.type.trim()
+      type: this.type.trim(),
+      tags: this.tags.trim()
     };
 
     // Validar los valores del formulario aquí, si es necesario
@@ -336,7 +353,8 @@ export class CalendarEvent extends Modal {
       formValues.selectedIcon, 
       "description",
       formValues.locations,
-      formValues.urls
+      formValues.urls,
+      formValues.tags
     );
 
     // Cerrar el modal

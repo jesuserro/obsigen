@@ -30,6 +30,7 @@ export class Momento {
   urls: string;
   type: string;
   path: string;
+  tags: string;
 
   constructor(date: Date) {
     
@@ -45,6 +46,7 @@ export class Momento {
     this.urls = "";
     this.type = "";
     this.path = "/";
+    this.tags = "";
 
     this.startDate = date;
     this.date = this.startDate;
@@ -76,7 +78,8 @@ export class Momento {
       date: this.convertDateToIsoString(this.date),
       links: [...DATA_YAML_DEFAULT.links, link],
       locations: [...DATA_YAML_DEFAULT.locations, this.locations],
-      urls: [...DATA_YAML_DEFAULT.urls, this.urls]
+      urls: [...DATA_YAML_DEFAULT.urls, this.urls],
+      tags: [...DATA_YAML_DEFAULT.tags, this.tags],
     };
     
     data.cssclasses = [];
@@ -99,7 +102,7 @@ export class Momento {
       return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
   }
 
-  async createNote(type: string, app: App, title: string, content: string, icon?: string, description?: string, locations?: string, urls:string = '') {
+  async createNote(type: string, app: App, title: string, content: string, icon?: string, description?: string, locations?: string, urls:string = '', tags: string = '') {
     
     this.app = app;
     this.noteGenerator = new NoteGenerator(this.app);
@@ -115,6 +118,7 @@ export class Momento {
     this.description = description || '';
     this.locations = locations || '';
     this.urls = urls || '';
+    this.tags = tags || '';
     this.setYaml();
     this.fileName = this.getFilename(this.title);
     this.setContent(content);
