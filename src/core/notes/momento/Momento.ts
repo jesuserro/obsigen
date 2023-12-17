@@ -77,8 +77,8 @@ export class Momento {
       title: this.title,
       date: this.convertDateToIsoString(this.date),
       links: [...DATA_YAML_DEFAULT.links, link],
-      locations: [...DATA_YAML_DEFAULT.locations, this.locations],
-      urls: [...DATA_YAML_DEFAULT.urls, this.urls],
+      locations: this.getListForYamlProperty(this.locations),
+      urls: this.getListForYamlProperty(this.urls),
       tags: [...DATA_YAML_DEFAULT.tags, this.tags],
     };
     
@@ -147,11 +147,27 @@ export class Momento {
     this.content = `${this.yaml}\n# ${this.title}\n${mediaContent}${content}`;
   }
 
+  private getListForYamlProperty(yamlPropertyText: string) {
+    let yamlUrls = "";
+    if (yamlPropertyText !== "") {
+      yamlUrls = "\n";
+      // For each this.urls array element, get the media content
+      yamlPropertyText.split(',').forEach((url: string) => {
+        url = url.trim();
+        yamlUrls += `- ${this.filterParamsFromUrl(url)}\n`;
+      });
+    }
+    // Remove last "\n" string
+    yamlUrls = yamlUrls.slice(0, -1);
+    return yamlUrls;
+  }
+
   private getMediaContent() {
     let mediaContent = "";
     if (this.urls !== "") {
       // For each this.urls array element, get the media content
       this.urls.split(',').forEach((url: string) => {
+        url = url.trim();
         mediaContent += this.getMedia(url) + "\n";
       });
     }

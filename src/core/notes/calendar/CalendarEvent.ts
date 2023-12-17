@@ -181,7 +181,7 @@ export class CalendarEvent extends Modal {
     urlLabel.setText("Urls");
     this.urlField = new TextComponent(urlDiv);
     this.urlField.inputEl.addClass("form-input");
-    this.urlField.setPlaceholder("urls");
+    this.urlField.setPlaceholder("url1, url2");
     this.urlField.setValue(this.urls);
     this.urlField.onChange((value) => (this.urls = value));
 
@@ -195,13 +195,13 @@ export class CalendarEvent extends Modal {
     this.descriptionTextarea.setValue(this.description);
     this.descriptionTextarea.onChange((value) => (this.description = value));
 
-    // tags
+    // Tags
     const tagsDiv = form.createDiv("form-element");
     const tagsLabel = tagsDiv.createEl("label", { cls: "form-label" });
     tagsLabel.setText("Tags");
     this.tagsField = new TextComponent(tagsDiv);
     this.tagsField.inputEl.addClass("form-input");
-    this.tagsField.setPlaceholder("tags (comma separated)");
+    this.tagsField.setPlaceholder("tag1, tag2");
     this.tagsField.setValue(this.tags);
     this.tagsField.onChange((value) => (this.tags = value));
 
