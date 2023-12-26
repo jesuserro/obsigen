@@ -11,9 +11,9 @@ export function CalendarIconPicker({
   onChange,
   icons,
 }: CalendarIconPickerProps): JSX.Element {
-  const [value, setValue] = useState(selectedIcon);
   const [searchTerm, setSearchTerm] = useState('');
-
+  const [value, setValue] = useState(selectedIcon);
+  
   useEffect(() => {
     // Update the selected icon based on the search term
     const matchingIcon = Object.keys(icons).find((iconName) =>

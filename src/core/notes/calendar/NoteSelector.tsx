@@ -14,15 +14,18 @@ export function NoteSelector({
 }: NoteSelectorProps): JSX.Element {
   const [searchTerm, setSearchTerm] = useState('');
   const [matchingFiles, setMatchingFiles] = useState<TFile[]>([]);
+  const [value, setValue] = useState(selectedNote);
 
   useEffect(() => {
     // Update matching files based on the search term
     if (searchTerm.length > 2) {
       const files = searchFiles(searchTerm);
-      setMatchingFiles(files);
-    } else {
-      setMatchingFiles([]);
-    }
+      if(files.length > 0){
+        setMatchingFiles(files);
+        setValue(files[0].basename);
+        onChange(files[0].basename);
+      }
+    } 
   }, [searchTerm]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +36,7 @@ export function NoteSelector({
   const handleNoteChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = e.target.value;
     onChange(selectedValue);
+    setValue(selectedValue);
   };
 
   const searchFiles = (query: string): TFile[] => {
@@ -58,7 +62,7 @@ export function NoteSelector({
           className="form-input"
         />
 
-        <select value={selectedNote} onChange={handleNoteChange} className="form-select">
+        <select value={value} onChange={handleNoteChange} className="form-select">
           {matchingFiles.map((file) => (
             <option key={file.path} value={file.basename}>
               {file.basename}
