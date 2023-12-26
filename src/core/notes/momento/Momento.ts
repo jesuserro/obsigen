@@ -150,7 +150,7 @@ export class Momento {
 
   private getMediaContent() {
     if (this.urls === "") return "";
-    return "\n" + this.urls.split(',').map(url => this.getMedia(url.trim())).join('\n');
+    return "\n" + this.urls.split(',').map(url => this.filterMediaUrl(url.trim())).join('\n');
   }
 
   getTitle(title: string) {
@@ -169,19 +169,19 @@ export class Momento {
     return "";
   }
 
-  getMedia(url: string) {
-    let filteredUrl = this.filterParamsFromUrl(url);
+  filterMediaUrl(url: string) {
+    url = this.filterParamsFromUrl(url);
     const twitterRegexp = new RegExp('https?://(?:mobile\\.)?twitter\\.com/.*');
     const youtubeRegexp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
 
-    if (twitterRegexp.test(filteredUrl) || youtubeRegexp.test(filteredUrl)) {
-      if (youtubeRegexp.test(filteredUrl)) {
-        filteredUrl = filteredUrl.replace(/(\?|&)si=[^&]*$/, "");
-        filteredUrl = filteredUrl.replace(/\/(?:shorts|live)\//, "/embed/");
+    if (twitterRegexp.test(url) || youtubeRegexp.test(url)) {
+      if (youtubeRegexp.test(url)) {
+        url = url.replace(/(\?|&)si=[^&]*$/, "");
+        url = url.replace(/\/(?:shorts|live)\//, "/embed/");
       }
-      return `![${this.title}](${filteredUrl})`;
+      return `![${this.title}](${url})`;
     }
-    return `[${this.title}](${filteredUrl})`;
+    return `[${this.title}](${url})`;
   }
 
   filterParamsFromUrl(url: string): string {
