@@ -31,6 +31,8 @@ export class Momento {
   type: string;
   path: string;
   tags: string;
+  twitterRegexp: RegExp;
+  youtubeRegexp: RegExp;
 
   constructor(date: Date) {
     
@@ -50,6 +52,9 @@ export class Momento {
 
     this.startDate = date;
     this.date = this.startDate;
+
+    this.twitterRegexp = new RegExp('https?://(?:mobile\\.)?twitter\\.com/.*');
+    this.youtubeRegexp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
   }
 
   getCurrentTime() {
@@ -70,8 +75,6 @@ export class Momento {
   setYaml() {
     
     const link = `"[[${this.getCurrentDate()}]]"`;
-    // this.date = Mon Dec 04 2023 10:35:00 GMT+0100 (hora estándar de Europa central)
-    
     const data = {
       ...DATA_YAML_DEFAULT,
       title: this.title,
@@ -109,7 +112,7 @@ export class Momento {
 
     this.title = this.getTitle(title);
     if (this.startDate) {
-      this.date =this.startDate;
+      this.date = this.startDate;
       this.year = this.date.getFullYear();
       this.month = this.date.getMonth() + 1;
       this.day = this.date.getDate();
@@ -177,7 +180,6 @@ export class Momento {
   }
 
   getFilePrefix() {
-    
     return `${this.getCurrentDate()}${this.getCurrentTime()}`;
   }
   
@@ -187,11 +189,8 @@ export class Momento {
 
   getUrlForContent(url: string) {
 
-    const twitterRegexp = new RegExp('https?://(?:mobile\\.)?twitter\\.com/.*');
-    const youtubeRegexp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
-
-    if (twitterRegexp.test(url) || youtubeRegexp.test(url)) {
-      if (youtubeRegexp.test(url)) {
+    if (this.twitterRegexp.test(url) || this.youtubeRegexp.test(url)) {
+      if (this.youtubeRegexp.test(url)) {
         return `![${this.title}](${url})`;
       }
     }
@@ -201,11 +200,9 @@ export class Momento {
 
   cleanUrl(url: string) {
     url = this.filterParamsFromUrl(url);
-    const twitterRegexp = new RegExp('https?://(?:mobile\\.)?twitter\\.com/.*');
-    const youtubeRegexp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
 
-    if (twitterRegexp.test(url) || youtubeRegexp.test(url)) {
-      if (youtubeRegexp.test(url)) {
+    if (this.twitterRegexp.test(url) || this.youtubeRegexp.test(url)) {
+      if (this.youtubeRegexp.test(url)) {
         url = url.replace(/(\?|&)si=[^&]*$/, "");
         url = url.replace(/\/(?:shorts|live)\//, "/embed/");
       }
@@ -218,17 +215,10 @@ export class Momento {
     const urlParts = url.split('?');
     if (urlParts.length === 2) {
       const queryParams = urlParts[1].split('&');
-      let numericTParamFound = false;
-      for (let param of queryParams) {
+      const numericTParamFound = queryParams.some(param => {
         const [name, value] = param.split('=');
-        if (name === 't' && !isNaN(Number(value))) {
-          numericTParamFound = true;
-          break;
-        }
-        if (name === 'v') {
-          return url;
-        }
-      }
+        return name === 't' && !isNaN(Number(value));
+      });
       if (numericTParamFound) return url;
     }
     return urlParts[0];
