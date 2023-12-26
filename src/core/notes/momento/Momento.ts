@@ -32,45 +32,52 @@ export class Momento {
   tags: string;
 
   constructor(date: Date) {
-    
     this.icon = "";
-    
+    this.initializeDateProperties(date);
+    this.locations = "";
+    this.urls = "";
+    this.type = "";
+    this.path = "/";
+    this.tags = "";
+    this.startDate = date;
+    this.date = this.startDate;
+  }
+
+  private initializeDateProperties(date: Date) {
     this.year = date.getFullYear();
     this.month = date.getMonth() + 1;
     this.day = date.getDate();
     this.hour = date.getHours();
     this.minute = date.getMinutes();
     this.seconds = date.getSeconds();
-    this.locations = "";
-    this.urls = "";
-    this.type = "";
-    this.path = "/";
-    this.tags = "";
-
-    this.startDate = date;
-    this.date = this.startDate;
   }
 
   getCurrentTime() {
-    const now = this.date;
-    const hour = now.getHours().toString().padStart(2, '0');
-    const minute = now.getMinutes().toString().padStart(2, '0');
-    return `${hour}${minute}`;
+    return this.formatTime(this.date);
   }
 
   getCurrentDate() {
-    const now = this.date;
-    const year = now.getFullYear().toString();
-    const month = (now.getMonth() + 1).toString().padStart(2, '0');
-    const day = now.getDate().toString().padStart(2, '0');
-    return `${year}${month}${day}`;
+    return this.formatDate(this.date);
+  }
+
+  formatDate(date: Date) {
+    const padTwoDigits = (value: number) => value.toString().padStart(2, '0');
+    const year = date.getFullYear();
+    const month = padTwoDigits(date.getMonth() + 1);
+    const day = padTwoDigits(date.getDate());
+    return `${year}-${month}-${day}`;
+  }
+
+  formatTime(date: Date) {
+    const padTwoDigits = (value: number) => value.toString().padStart(2, '0');
+    const hours = padTwoDigits(date.getHours());
+    const minutes = padTwoDigits(date.getMinutes());
+    const seconds = padTwoDigits(date.getSeconds());
+    return `${hours}${minutes}${seconds}`;
   }
 
   setYaml() {
-    
     const link = `"[[${this.getCurrentDate()}]]"`;
-    // this.date = Mon Dec 04 2023 10:35:00 GMT+0100 (hora estándar de Europa central)
-    
     const data = {
       ...DATA_YAML_DEFAULT,
       title: this.title,
@@ -80,39 +87,32 @@ export class Momento {
       urls: this.getListForYamlProperty(this.urls),
       tags: [...DATA_YAML_DEFAULT.tags, this.tags],
     };
-    
-    data.cssclasses = [];
-    if (this.icon) {
-      data.cssclasses.push(this.icon);
-    }
+    data.cssclasses = this.icon ? [this.icon] : [];
     let yaml = renderToString(Yaml({ data }));
-    yaml = yaml.replace(/&quot;/g, '"');
-    yaml = yaml.replace(/&amp;/g, '&');
-    this.yaml = yaml.replace(/<!-- -->/g, '');
+    this.yaml = this.cleanUpYaml(yaml);
   }
 
-  convertDateToIsoString(date: Date){
-      const year = date.getFullYear();
-      const month = (date.getMonth() + 1).toString().padStart(2, '0');
-      const day = date.getDate().toString().padStart(2, '0');
-      const hours = date.getHours().toString().padStart(2, '0');
-      const minutes = date.getMinutes().toString().padStart(2, '0');
-      const seconds = date.getSeconds().toString().padStart(2, '0');
-      return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+  convertDateToIsoString(date: Date) {
+    const padTwoDigits = (value: number) => value.toString().padStart(2, '0');
+    const year = date.getFullYear();
+    const month = padTwoDigits(date.getMonth() + 1);
+    const day = padTwoDigits(date.getDate());
+    const hours = padTwoDigits(date.getHours());
+    const minutes = padTwoDigits(date.getMinutes());
+    const seconds = padTwoDigits(date.getSeconds());
+    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
   }
 
-  async createNote(type: string, app: App, title: string, content: string, icon?: string, description?: string, locations?: string, urls:string = '', tags: string = '') {
-    
+  private cleanUpYaml(yaml: string) {
+    yaml = yaml.replace(/<!-- -->/g, '');
+    return yaml.replace(/&quot;|&amp;/g, match => (match === '&quot;' ? '"' : '&'));
+  }
+
+  async createNote(type: string, app: App, title: string, content: string, icon?: string, description?: string, locations?: string, urls: string = '', tags: string = '') {
     this.app = app;
     this.noteGenerator = new NoteGenerator(this.app);
-
     this.title = this.getTitle(title);
-    if (this.startDate) {
-      this.date =this.startDate;
-      this.year = this.date.getFullYear();
-      this.month = this.date.getMonth() + 1;
-      this.day = this.date.getDate();
-    }
+    this.initializeDateProperties(this.startDate || new Date());
     this.icon = icon || null;
     this.description = description || '';
     this.locations = locations || '';
@@ -121,61 +121,40 @@ export class Momento {
     this.setYaml();
     this.fileName = this.getFilename(this.title);
     this.setContent(content);
-
     this.path = this.getPath(type);
-    
     await this.noteGenerator.createNote(this.fileName, this.content, this.path);
   }
 
-  getPath(type:string){
-    const pathFechaMomento = `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
-    if(type == "Moment"){
-      return pathFechaMomento;
-    }else if(type == "Capture"){
+  getPath(type: string) {
+    if (type === "Moment") {
+      return `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
+    } else if (type === "Capture") {
       return `000 Inbox/Captures`;
-    }else if(type == "Content Map"){
+    } else if (type === "Content Map") {
       return `200 Content Maps`;
-    }else if(type == "Person"){
-      return pathFechaMomento;
+    } else if (type === "Person") {
+      return `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
     }
     return "/";
   }
 
   setContent(content: string) {
-    let mediaContent = this.getMediaContent();
+    const mediaContent = this.getMediaContent();
     this.content = `${this.yaml}\n# ${this.title}\n${mediaContent}${content}`;
   }
 
   private getListForYamlProperty(yamlPropertyText: string) {
-    let yamlUrls = "";
-    if (yamlPropertyText !== "") {
-      yamlUrls = "\n";
-      // For each this.urls array element, get the media content
-      yamlPropertyText.split(',').forEach((url: string) => {
-        url = url.trim();
-        yamlUrls += `- ${this.filterParamsFromUrl(url)}\n`;
-      });
-    }
-    // Remove last "\n" string
-    yamlUrls = yamlUrls.slice(0, -1);
-    return yamlUrls;
+    if (yamlPropertyText === "") return "";
+    return "\n" + yamlPropertyText.split(',').map(url => `- ${this.filterParamsFromUrl(url.trim())}`).join('\n');
   }
 
   private getMediaContent() {
-    let mediaContent = "";
-    if (this.urls !== "") {
-      // For each this.urls array element, get the media content
-      this.urls.split(',').forEach((url: string) => {
-        url = url.trim();
-        mediaContent += this.getMedia(url) + "\n";
-      });
-    }
-    return mediaContent;
+    if (this.urls === "") return "";
+    return "\n" + this.urls.split(',').map(url => this.getMedia(url.trim())).join('\n');
   }
 
   getTitle(title: string) {
-    title = title.charAt(0).toUpperCase() + title.slice(1);
-    return `${title}`;
+    return title.charAt(0).toUpperCase() + title.slice(1);
   }
 
   getFilename(title: string) {
@@ -183,61 +162,46 @@ export class Momento {
   }
 
   getFilePrefix() {
-    
     return `${this.getCurrentDate()}${this.getCurrentTime()}`;
   }
-  
+
   getContent() {
-    return ``;
+    return "";
   }
 
-  getMedia(url: string) {  
-    url = this.filterParamsFromUrl(url);
-    const twitterRegexp = new RegExp('https?:\\/\\/(?:mobile\\.)?twitter\\.com\\/.*');
-    const youtubeRegexp = new RegExp('https?:\\/\\/(?:www\\.)?(?:youtube\\.com\\/.*|youtu\\.be\\/.*|.*\\.youtube\\.com\\/.*shorts)');
+  getMedia(url: string) {
+    let filteredUrl = this.filterParamsFromUrl(url);
+    const twitterRegexp = new RegExp('https?://(?:mobile\\.)?twitter\\.com/.*');
+    const youtubeRegexp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
 
-    if (twitterRegexp.test(url) || youtubeRegexp.test(url)) {
-      if (youtubeRegexp.test(url)) {
-        // Eliminar parámetros "si" de la URL
-        url = url.replace(/(\?|\&)si=[^&]*$/, "");
-        url = url.replace(/\/(?:shorts|live)\//, "/embed/");
+    if (twitterRegexp.test(filteredUrl) || youtubeRegexp.test(filteredUrl)) {
+      if (youtubeRegexp.test(filteredUrl)) {
+        filteredUrl = filteredUrl.replace(/(\?|&)si=[^&]*$/, "");
+        filteredUrl = filteredUrl.replace(/\/(?:shorts|live)\//, "/embed/");
       }
-      return `![${this.title}](${url})`;
+      return `![${this.title}](${filteredUrl})`;
     }
-    return `[${this.title}](${url})`;
+    return `[${this.title}](${filteredUrl})`;
   }
 
-  // app.js:1 Error: File name cannot contain any of the following characters: * " \ / < > : | ?
   filterParamsFromUrl(url: string): string {
     url = url.replace(/"/g, '');
-    const urlParts = url.split('?'); // Dividir la URL en partes antes y después del signo de interrogación
+    const urlParts = url.split('?');
     if (urlParts.length === 2) {
-      const queryParams = urlParts[1].split('&'); // Dividir los parámetros de consulta
+      const queryParams = urlParts[1].split('&');
       let numericTParamFound = false;
-  
-      // Verificar cada parámetro de consulta
-      for (let i = 0; i < queryParams.length; i++) {
-        const param = queryParams[i];
-        const paramNameValue = param.split('=');
-        if (paramNameValue[0] === 't' && !isNaN(Number(paramNameValue[1]))) {
-          // El parámetro "t" es numérico, mantenerlo y la URL
+      for (let param of queryParams) {
+        const [name, value] = param.split('=');
+        if (name === 't' && !isNaN(Number(value))) {
           numericTParamFound = true;
           break;
         }
-        // Convert Youtube url like "https://www.youtube.com/watch?v=e4uWemSfpwk&t=300" to "https://www.youtube.com/embed/e4uWemSfpwk"
-        // https://youtu.be/e4uWemSfpwk?si=lX1epb1wn2HSLHcM&t=201
-        if (paramNameValue[0] === 'v') {
-            return url;
+        if (name === 'v') {
+          return url;
         }
       }
-  
-      // Si se encontró un parámetro "t" numérico, mantener la URL completa
-      if (numericTParamFound) {
-        return url;
-      }
+      if (numericTParamFound) return url;
     }
-  
-    // Si no se encontró un parámetro "t" numérico o no había parámetros de consulta, eliminar todos los parámetros
     return urlParts[0];
-  } // Salida: "https://example.com/page"
+  }
 }
