@@ -38,7 +38,7 @@ export function CalendarIconPicker({
   };
 
   return (
-    <div className="calendar-icon-picker">
+    <div className="obs-picker">
       <label className="form-label">Icon Picker</label>
 
       <div className="horizontal-container">

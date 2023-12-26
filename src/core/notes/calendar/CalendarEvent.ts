@@ -1,9 +1,10 @@
-import { App, ButtonComponent, DropdownComponent, Modal, Notice, SearchComponent, TextAreaComponent, TextComponent, TFile } from "obsidian";
+import { App, ButtonComponent, DropdownComponent, Modal, Notice, TextAreaComponent, TextComponent, TFile } from "obsidian";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Momento } from "./../../notes/momento/Momento";
 import { iconMap } from "./CalendarIcon";
 import { CalendarIconPicker } from "./CalendarIconPicker";
+import { NoteSelector } from "./NoteSelector";
 
 export interface FormValues {
   title: string;
@@ -31,7 +32,7 @@ export class CalendarEvent extends Modal {
   private date: string;
   private endDate: string;
   private selectedIcon: string;
-  private locations: string;
+  private selectedLocation: string;
   private type: string;
   private tags: string;
 
@@ -42,9 +43,9 @@ export class CalendarEvent extends Modal {
   private monthDropdown: DropdownComponent;
   private dayDropdown: DropdownComponent;
   private iconDropdown: JSX.Element;
+  private locationDropdown: JSX.Element;
   private hourDropdown: DropdownComponent;
   private minuteDropdown: DropdownComponent;
-  private locationField: SearchComponent;
   private urlField: TextComponent;
   private typeField: DropdownComponent;
   private tagsField: TextComponent;
@@ -80,15 +81,13 @@ export class CalendarEvent extends Modal {
     this.description = "";
     this.date = "";
     this.endDate = "";
-    this.selectedIcon = "default-icon"; 
-    this.locations = ""; 
+    this.selectedIcon = "default-icon";  
+    this.selectedLocation = ""; 
     this.type = "Moment"; 
     this.tags = ""; 
 
     this.titleField.setValue(this.title);
     this.descriptionTextarea.setValue(this.description);
-    // this.iconDropdown.setValue(this.selectedIcon);
-    this.locationField.setValue(this.locations);
     this.urlField.setValue(this.urls);
     this.typeField.setValue(this.type);
   }
@@ -140,10 +139,8 @@ export class CalendarEvent extends Modal {
     this.typeField.onChange((value) => (this.type = value));
     this.typeField.setValue(this.type);
   
-    // Icon Selector label and dropdown
+    // Icon Selector
     const iconDiv = form.createDiv();
-    const iconLabel = iconDiv.createEl("label", { cls: "form-label" });
-    iconLabel.setText("Icon");
     this.iconDropdown = React.createElement(CalendarIconPicker, { 
       selectedIcon: 'default-icon',
       onChange: ((value) => (this.selectedIcon = value)),
@@ -151,29 +148,20 @@ export class CalendarEvent extends Modal {
     });
     const root = ReactDOM.createRoot(iconDiv);
     root.render(this.iconDropdown);
-  
-    // Location label and textfield
-    const locationDiv = form.createDiv("form-element");
-    const locationLabel = locationDiv.createEl("label", { cls: "form-label" });
-    locationLabel.setText("Location");
-    this.locationField = new SearchComponent(locationDiv);
-    this.locationField.inputEl.addClass("form-input");
-    this.locationField.setPlaceholder("location");
-    this.locationField.setValue(this.locations);
-    // this.locationField.onChange((value) => (this.locations = value));
-    // Search vault files for locations
-    this.locationField.onChange(async (value) => {
 
-      if(value.length < 3){
-        return;
-      }
-
-      const matchingFiles = this.searchFiles(value);
-
-      const matchingTitles = matchingFiles.map((file) => file.path);
-    
-      // console.log('Matching Files:', matchingTitles);
+    // Get files in folder "300 Geo/"
+    const files = this.app.vault.getFiles();
+    const folder = "300 Geo/";
+    const geoFiles = files.filter((file) => file.path.includes(folder));
+    // Location Selector 
+    const locationDiv = form.createDiv();
+    this.locationDropdown = React.createElement(NoteSelector, { 
+      selectedNote: '',
+      onChange: ((value) => (this.selectedLocation = value)),
+      notes: geoFiles
     });
+    const root2 = ReactDOM.createRoot(locationDiv);
+    root2.render(this.locationDropdown);
 
     // url label and textfield
     const urlDiv = form.createDiv("form-element");
@@ -289,7 +277,7 @@ export class CalendarEvent extends Modal {
       date: this.date, 
       endDate: this.endDate, 
       selectedIcon: this.selectedIcon, 
-      locations: this.locations,
+      locations: this.selectedLocation,
       type: this.type,
       tags: this.tags 
     };
@@ -312,10 +300,6 @@ export class CalendarEvent extends Modal {
     const strDate = `${selectedYear}-${selectedMonth}-${selectedDay} ${selectedTime}`;
     const date = new Date(strDate);
 
-    this.locations = "";
-    if(this.locationField.getValue() !== "" && this.locationField.getValue() !== undefined){
-      this.locations = `"${this.locationField.getValue()}"`;
-    }
     this.urls = "";
     if(this.urlField.getValue() !== "" && this.urlField.getValue() !== undefined){
       this.urls = `"${this.urlField.getValue()}"`;
@@ -328,7 +312,7 @@ export class CalendarEvent extends Modal {
       endDate: this.endDate.trim(),
       selectedIcon: this.selectedIcon,
       urls: this.urls.trim(),
-      locations: this.locations.trim(),
+      locations: this.selectedLocation,
       type: this.type.trim(),
       tags: this.tags.trim()
     };
