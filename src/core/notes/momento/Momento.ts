@@ -151,21 +151,17 @@ export class Momento {
     this.content = `${this.yaml}\n# ${this.title}\n${mediaContent}\n${content}`;
   }
 
-  private getListForYamlProperty(yamlPropertyText: string) {
-    let yamlUrls = "";
-    if (yamlPropertyText !== "") {
-      yamlUrls = "\n";
-      // For each this.urls array element, get the media content
-      yamlPropertyText.split(',').forEach((url: string) => {
-        url = url.trim();
-        yamlUrls += `- ${this.filterParamsFromUrl(url)}\n`;
-      });
-    }
-    // Remove last "\n" string
-    yamlUrls = yamlUrls.slice(0, -1);
-    return yamlUrls;
+  private getListForYamlProperty(yamlPropertyText: string): string {
+    if (!yamlPropertyText) return "";
+  
+    const yamlUrls = yamlPropertyText
+      .split(',')
+      .map((url: string) => `- ${this.filterParamsFromUrl(url.trim())}`)
+      .join('\n');
+  
+    return `\n${yamlUrls}`;
   }
-
+  
   private getMediaContent() {
     if (this.urls === "") return "";
     return this.urls.split(',').map(url => this.getUrlForContent(url.trim())).join('\n');
@@ -187,24 +183,6 @@ export class Momento {
   
   getContent() {
     return ``;
-  }
-
-  getMedia(url: string) {  
-    url = this.filterParamsFromUrl(url);
-    const twitterRegexp = new RegExp('https?:\\/\\/(?:mobile\\.)?twitter\\.com\\/.*');
-    const youtubeRegexp = new RegExp('https?:\\/\\/(?:www\\.)?(?:youtube\\.com\\/.*|youtu\\.be\\/.*|.*\\.youtube\\.com\\/.*shorts)');
-
-    if (twitterRegexp.test(url) || youtubeRegexp.test(url)) {
-      if (youtubeRegexp.test(url)) {
-        // Eliminar parámetros "si" de la URL
-        url = url.replace(/(\?|\&)si=[^&]*$/, "");
-        // Reemplazar "/shorts/" por "/embed/"
-        url = url.replace("/shorts/", "/embed/");
-        url = url.replace("/live/", "/embed/");
-      }
-      return `![${this.title}](${url})`;
-    }
-    return `[${this.title}](${url})`;
   }
 
   getUrlForContent(url: string) {
