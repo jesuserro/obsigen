@@ -16,6 +16,7 @@ export class Momento {
   subheader: string;
   content: string;
   fileName: string;
+  callout: string;
   startDate: Date | null;
   icon: string | null;
   description: string;
@@ -32,52 +33,45 @@ export class Momento {
   tags: string;
 
   constructor(date: Date) {
+    
     this.icon = "";
-    this.initializeDateProperties(date);
-    this.locations = "";
-    this.urls = "";
-    this.type = "";
-    this.path = "/";
-    this.tags = "";
-    this.startDate = date;
-    this.date = this.startDate;
-  }
-
-  private initializeDateProperties(date: Date) {
+    
     this.year = date.getFullYear();
     this.month = date.getMonth() + 1;
     this.day = date.getDate();
     this.hour = date.getHours();
     this.minute = date.getMinutes();
     this.seconds = date.getSeconds();
+    this.locations = "";
+    this.urls = "";
+    this.type = "";
+    this.path = "/";
+    this.tags = "";
+
+    this.startDate = date;
+    this.date = this.startDate;
   }
 
   getCurrentTime() {
-    return this.formatTime(this.date);
+    const now = this.date;
+    const hour = now.getHours().toString().padStart(2, '0');
+    const minute = now.getMinutes().toString().padStart(2, '0');
+    return `${hour}${minute}`;
   }
 
   getCurrentDate() {
-    return this.formatDate(this.date);
-  }
-
-  formatDate(date: Date) {
-    const padTwoDigits = (value: number) => value.toString().padStart(2, '0');
-    const year = date.getFullYear();
-    const month = padTwoDigits(date.getMonth() + 1);
-    const day = padTwoDigits(date.getDate());
-    return `${year}-${month}-${day}`;
-  }
-
-  formatTime(date: Date) {
-    const padTwoDigits = (value: number) => value.toString().padStart(2, '0');
-    const hours = padTwoDigits(date.getHours());
-    const minutes = padTwoDigits(date.getMinutes());
-    const seconds = padTwoDigits(date.getSeconds());
-    return `${hours}${minutes}${seconds}`;
+    const now = this.date;
+    const year = now.getFullYear().toString();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    return `${year}${month}${day}`;
   }
 
   setYaml() {
+    
     const link = `"[[${this.getCurrentDate()}]]"`;
+    // this.date = Mon Dec 04 2023 10:35:00 GMT+0100 (hora estándar de Europa central)
+    
     const data = {
       ...DATA_YAML_DEFAULT,
       title: this.title,
@@ -87,74 +81,99 @@ export class Momento {
       urls: this.getListForYamlProperty(this.urls),
       tags: [...DATA_YAML_DEFAULT.tags, this.tags],
     };
-    data.cssclasses = this.icon ? [this.icon] : [];
+    
+    data.cssclasses = [];
+    if (this.icon) {
+      data.cssclasses.push(this.icon);
+    }
     let yaml = renderToString(Yaml({ data }));
-    this.yaml = this.cleanUpYaml(yaml);
+    yaml = yaml.replace(/&quot;/g, '"');
+    yaml = yaml.replace(/&amp;/g, '&');
+    this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
-  convertDateToIsoString(date: Date) {
-    const padTwoDigits = (value: number) => value.toString().padStart(2, '0');
-    const year = date.getFullYear();
-    const month = padTwoDigits(date.getMonth() + 1);
-    const day = padTwoDigits(date.getDate());
-    const hours = padTwoDigits(date.getHours());
-    const minutes = padTwoDigits(date.getMinutes());
-    const seconds = padTwoDigits(date.getSeconds());
-    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+  convertDateToIsoString(date: Date){
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      const hours = date.getHours().toString().padStart(2, '0');
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+      const seconds = date.getSeconds().toString().padStart(2, '0');
+      return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
   }
 
-  private cleanUpYaml(yaml: string) {
-    yaml = yaml.replace(/<!-- -->/g, '');
-    return yaml.replace(/&quot;|&amp;/g, match => (match === '&quot;' ? '"' : '&'));
-  }
-
-  async createNote(type: string, app: App, title: string, content: string, icon?: string, description?: string, locations?: string, urls: string = '', tags: string = '') {
+  async createNote(type: string, app: App, title: string, content: string, icon?: string, description?: string, locations?: string, urls:string = '', tags: string = '') {
+    
     this.app = app;
     this.noteGenerator = new NoteGenerator(this.app);
+
     this.title = this.getTitle(title);
-    this.initializeDateProperties(this.startDate || new Date());
+    if (this.startDate) {
+      this.date =this.startDate;
+      this.year = this.date.getFullYear();
+      this.month = this.date.getMonth() + 1;
+      this.day = this.date.getDate();
+    }
     this.icon = icon || null;
     this.description = description || '';
     this.locations = locations || '';
-    this.urls = urls || '';
+    this.urls = this.cleanUrls(urls) || '';
     this.tags = tags || '';
     this.setYaml();
     this.fileName = this.getFilename(this.title);
     this.setContent(content);
+
     this.path = this.getPath(type);
+    
     await this.noteGenerator.createNote(this.fileName, this.content, this.path);
   }
 
-  getPath(type: string) {
-    if (type === "Moment") {
-      return `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
-    } else if (type === "Capture") {
+  getPath(type:string){
+    const pathFechaMomento = `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
+    if(type == "Moment"){
+      return pathFechaMomento;
+    }else if(type == "Capture"){
       return `000 Inbox/Captures`;
-    } else if (type === "Content Map") {
+    }else if(type == "Content Map"){
       return `200 Content Maps`;
-    } else if (type === "Person") {
-      return `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
+    }else if(type == "Person"){
+      return pathFechaMomento;
     }
     return "/";
   }
 
+  private cleanUrls(urls: string) {
+    return urls.split(',').map(url => this.cleanUrl(url)).join(',');
+  }
+
   setContent(content: string) {
     const mediaContent = this.getMediaContent();
-    this.content = `${this.yaml}\n# ${this.title}\n${mediaContent}${content}`;
+    this.content = `${this.yaml}\n# ${this.title}\n${mediaContent}\n${content}`;
   }
 
   private getListForYamlProperty(yamlPropertyText: string) {
-    if (yamlPropertyText === "") return "";
-    return "\n" + yamlPropertyText.split(',').map(url => `- ${this.filterParamsFromUrl(url.trim())}`).join('\n');
+    let yamlUrls = "";
+    if (yamlPropertyText !== "") {
+      yamlUrls = "\n";
+      // For each this.urls array element, get the media content
+      yamlPropertyText.split(',').forEach((url: string) => {
+        url = url.trim();
+        yamlUrls += `- ${this.filterParamsFromUrl(url)}\n`;
+      });
+    }
+    // Remove last "\n" string
+    yamlUrls = yamlUrls.slice(0, -1);
+    return yamlUrls;
   }
 
   private getMediaContent() {
     if (this.urls === "") return "";
-    return "\n" + this.urls.split(',').map(url => this.filterMediaUrl(url.trim())).join('\n');
+    return this.urls.split(',').map(url => this.getUrlForContent(url.trim())).join('\n');
   }
 
   getTitle(title: string) {
-    return title.charAt(0).toUpperCase() + title.slice(1);
+    title = title.charAt(0).toUpperCase() + title.slice(1);
+    return `${title}`;
   }
 
   getFilename(title: string) {
@@ -162,14 +181,47 @@ export class Momento {
   }
 
   getFilePrefix() {
+    
     return `${this.getCurrentDate()}${this.getCurrentTime()}`;
   }
-
+  
   getContent() {
-    return "";
+    return ``;
   }
 
-  filterMediaUrl(url: string) {
+  getMedia(url: string) {  
+    url = this.filterParamsFromUrl(url);
+    const twitterRegexp = new RegExp('https?:\\/\\/(?:mobile\\.)?twitter\\.com\\/.*');
+    const youtubeRegexp = new RegExp('https?:\\/\\/(?:www\\.)?(?:youtube\\.com\\/.*|youtu\\.be\\/.*|.*\\.youtube\\.com\\/.*shorts)');
+
+    if (twitterRegexp.test(url) || youtubeRegexp.test(url)) {
+      if (youtubeRegexp.test(url)) {
+        // Eliminar parámetros "si" de la URL
+        url = url.replace(/(\?|\&)si=[^&]*$/, "");
+        // Reemplazar "/shorts/" por "/embed/"
+        url = url.replace("/shorts/", "/embed/");
+        url = url.replace("/live/", "/embed/");
+      }
+      return `![${this.title}](${url})`;
+    }
+    return `[${this.title}](${url})`;
+  }
+
+  getUrlForContent(url: string) {
+
+    const twitterRegexp = new RegExp('https?://(?:mobile\\.)?twitter\\.com/.*');
+    const youtubeRegexp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
+
+    if (twitterRegexp.test(url) || youtubeRegexp.test(url)) {
+      if (youtubeRegexp.test(url)) {
+        return `![${this.title}](${url})`;
+      }
+    }
+
+    return '';
+  }
+
+  cleanUrl(url: string) {
     url = this.filterParamsFromUrl(url);
     const twitterRegexp = new RegExp('https?://(?:mobile\\.)?twitter\\.com/.*');
     const youtubeRegexp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
@@ -179,9 +231,8 @@ export class Momento {
         url = url.replace(/(\?|&)si=[^&]*$/, "");
         url = url.replace(/\/(?:shorts|live)\//, "/embed/");
       }
-      return `![${this.title}](${url})`;
     }
-    return `[${this.title}](${url})`;
+    return url.trim();
   }
 
   filterParamsFromUrl(url: string): string {
