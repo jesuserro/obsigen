@@ -203,6 +203,7 @@ export class Momento {
         url = url.replace(/(\?|\&)si=[^&]*$/, "");
         // Reemplazar "/shorts/" por "/embed/"
         url = url.replace("/shorts/", "/embed/");
+        url = url.replace("/live/", "/embed/");
       }
       return `![${this.title}](${url})`;
     }
