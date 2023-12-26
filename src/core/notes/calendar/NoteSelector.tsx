@@ -40,7 +40,6 @@ export function NoteSelector({
   };
 
   const searchFiles = (query: string): TFile[] => {
-    // Filtrar los archivos que coinciden con la consulta y están en el path "300 Geo/"
     const matchingFiles = notes.filter((file: TFile) => {
       const isMatchingName = file.basename.toLowerCase().includes(query.toLowerCase());
       return isMatchingName;
