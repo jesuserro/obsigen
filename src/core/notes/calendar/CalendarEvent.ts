@@ -1,4 +1,4 @@
-import { App, ButtonComponent, DropdownComponent, Modal, Notice, TextAreaComponent, TextComponent, TFile } from "obsidian";
+import { App, ButtonComponent, DropdownComponent, Modal, Notice, TextAreaComponent, TextComponent } from "obsidian";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Momento } from "./../../notes/momento/Momento";
@@ -200,22 +200,7 @@ export class CalendarEvent extends Modal {
     submitButton.setButtonText("Submit").onClick((evt: Event) => {
       this.onSubmit(evt);
     });
-  }
-
-  // Método para buscar archivos en el vault
-  private searchFiles(query: string): TFile[] {
-    const { vault } = this.app;
-    
-    // Obtener todos los archivos Markdown en el vault
-    const allFiles = vault.getMarkdownFiles();
-
-    // Filtrar los archivos que coinciden con la consulta
-    const matchingFiles = allFiles.filter((file) =>
-      file.basename.toLowerCase().includes(query.toLowerCase())
-    );
-
-    return matchingFiles;
-  }   
+  }  
 
   private initializeDropdowns() {
     // Configura los DropdownComponent para año, mes y día
@@ -312,7 +297,7 @@ export class CalendarEvent extends Modal {
       endDate: this.endDate.trim(),
       selectedIcon: this.selectedIcon,
       urls: this.urls.trim(),
-      locations: this.selectedLocation,
+      locations: `[[${this.selectedLocation}]]`,
       type: this.type.trim(),
       tags: this.tags.trim()
     };

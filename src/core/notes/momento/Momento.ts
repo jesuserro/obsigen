@@ -80,7 +80,7 @@ export class Momento {
       title: this.title,
       date: this.convertDateToIsoString(this.date),
       links: [...DATA_YAML_DEFAULT.links, link],
-      locations: this.getListForYamlProperty(this.locations),
+      locations: this.getListForYamlProperty(this.locations, true),
       urls: this.getListForYamlProperty(this.urls),
       tags: [...DATA_YAML_DEFAULT.tags, this.tags],
     };
@@ -154,12 +154,15 @@ export class Momento {
     this.content = `${this.yaml}\n# ${this.title}\n${mediaContent}\n${content}`;
   }
 
-  private getListForYamlProperty(yamlPropertyText: string): string {
+  private getListForYamlProperty(yamlPropertyText: string, isQuoted: boolean = false): string {
     if (!yamlPropertyText) return "";
   
     const yamlUrls = yamlPropertyText
       .split(',')
-      .map((url: string) => `- ${this.filterParamsFromUrl(url.trim())}`)
+      .map((url: string) => {
+        const formattedUrl = isQuoted ? `"${this.filterParamsFromUrl(url.trim())}"` : this.filterParamsFromUrl(url.trim());
+        return `- ${formattedUrl}`;
+      })
       .join('\n');
   
     return `\n${yamlUrls}`;
