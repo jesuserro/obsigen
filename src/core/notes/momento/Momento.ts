@@ -201,9 +201,7 @@ export class Momento {
       if (youtubeRegexp.test(url)) {
         // Eliminar parámetros "si" de la URL
         url = url.replace(/(\?|\&)si=[^&]*$/, "");
-        // Reemplazar "/shorts/" por "/embed/"
-        url = url.replace("/shorts/", "/embed/");
-        url = url.replace("/live/", "/embed/");
+        url = url.replace(/\/(?:shorts|live)\//, "/embed/");
       }
       return `![${this.title}](${url})`;
     }
