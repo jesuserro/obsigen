@@ -16,7 +16,6 @@ export class Momento {
   subheader: string;
   content: string;
   fileName: string;
-  callout: string;
   startDate: Date | null;
   icon: string | null;
   description: string;
