@@ -2,7 +2,7 @@ import { TFile } from 'obsidian';
 import React from 'react';
 
 import { BiLogoGmail } from 'react-icons/bi';
-import { BsBookmarkStar, BsClockFill, BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsPersonCircle, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
+import { BsBookmarkStar, BsChatLeftQuoteFill, BsClockFill, BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsPersonCircle, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHeadSideCough, FaHeadphones, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaGift, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
@@ -200,6 +200,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   marker: ({ size }) => <FaMapMarkerAlt size={size} className="brown" />,
   mass: ({ size }) => <GiChurch size={size} className="pink purple" />,
   meeting: ({ size }) => <FaPeopleGroup size={size} className="orange" />,
+  meme: ({ size }) => <BsChatLeftQuoteFill size={size} className="blue facebook" />,
   mom: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Mom" />,
   music: ({ size }) => <IoMdMusicalNotes size={size} className="indigo" />,
   natalia: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Natalia" />,
