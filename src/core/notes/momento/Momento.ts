@@ -224,6 +224,9 @@ export class Momento {
       });
       if (numericTParamFound) return url;
     }
-    return urlParts[0];
+    if(this.twitterRegexp.test(url)){
+      return urlParts[0];
+    }
+    return url;
   }
 }
