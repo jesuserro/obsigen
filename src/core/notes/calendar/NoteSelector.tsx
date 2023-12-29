@@ -19,13 +19,14 @@ export function NoteSelector({
   const [value, setValue] = useState(selectedNote);
 
   useEffect(() => {
-    // Update matching files based on the search term
+    
     if (searchTerm.length > 2) {
       const files = searchFiles(searchTerm);
       if(files.length > 0){
+        const basename = files[0].basename;
         setMatchingFiles(files);
-        setValue(files[0].basename);
-        onChange(files[0].basename);
+        setValue(basename);
+        onChange(basename);
       }
     } 
   }, [searchTerm]);
