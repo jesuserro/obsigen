@@ -158,7 +158,8 @@ export class CalendarEvent extends Modal {
     this.locationDropdown = React.createElement(NoteSelector, { 
       selectedNote: '',
       onChange: ((value) => (this.selectedLocation = value)),
-      notes: geoFiles
+      notes: geoFiles,
+      caption: "Location"
     });
     const root2 = ReactDOM.createRoot(locationDiv);
     root2.render(this.locationDropdown);

@@ -5,12 +5,14 @@ export interface NoteSelectorProps {
   selectedNote: string;
   onChange: (notePath: string) => void;
   notes: TFile[];
+  caption: string;
 }
 
 export function NoteSelector({
   selectedNote,
   onChange,
   notes,
+  caption,
 }: NoteSelectorProps): JSX.Element {
   const [searchTerm, setSearchTerm] = useState('');
   const [matchingFiles, setMatchingFiles] = useState<TFile[]>([]);
@@ -57,7 +59,7 @@ export function NoteSelector({
           type="text"
           value={searchTerm}
           onChange={handleSearchChange}
-          placeholder="Search note"
+          placeholder={caption}
           className="form-input"
         />
 
