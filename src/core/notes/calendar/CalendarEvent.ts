@@ -298,7 +298,7 @@ export class CalendarEvent extends Modal {
       endDate: this.endDate.trim(),
       selectedIcon: this.selectedIcon,
       urls: this.urls.trim(),
-      locations: `[[${this.selectedLocation}]]`,
+      locations: this.selectedLocation ? `[[${this.selectedLocation}]]` : "",
       type: this.type.trim(),
       tags: this.tags.trim()
     };
