@@ -1,4 +1,4 @@
-import { App, ButtonComponent, DropdownComponent, Modal, Notice, TextAreaComponent, TextComponent } from "obsidian";
+import { App, ButtonComponent, DropdownComponent, Modal, Notice, TextAreaComponent, TextComponent, TFile } from "obsidian";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Momento } from "./../../notes/momento/Momento";
@@ -35,6 +35,7 @@ export class CalendarEvent extends Modal {
   private selectedLocation: string;
   private type: string;
   private tags: string;
+  private files: TFile[];
 
   // Nuevos campos de selección para año, mes y día
   private titleField: TextComponent;
@@ -53,6 +54,7 @@ export class CalendarEvent extends Modal {
   constructor(app: App, date: Date) {
     super(app);
 
+    this.files = app.vault.getFiles();
     this.year = date.getFullYear();
     this.month = date.getMonth() + 1;
     this.day = date.getDate();
@@ -148,17 +150,13 @@ export class CalendarEvent extends Modal {
     });
     const root = ReactDOM.createRoot(iconDiv);
     root.render(this.iconDropdown);
-
-    // Get files in folder "300 Geo/"
-    const files = this.app.vault.getFiles();
-    const folder = "300 Geo/";
-    const geoFiles = files.filter((file) => file.path.includes(folder));
+    
     // Location Selector 
     const locationDiv = form.createDiv();
     this.locationDropdown = React.createElement(NoteSelector, { 
       selectedNote: '',
       onChange: ((value) => (this.selectedLocation = value)),
-      notes: geoFiles,
+      notes: this.files.filter((file) => file.path.includes("300 Geo/")),
       caption: "Location"
     });
     const root2 = ReactDOM.createRoot(locationDiv);
