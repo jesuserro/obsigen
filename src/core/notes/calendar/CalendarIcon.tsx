@@ -1,3 +1,7 @@
+/**
+ * - https://lucide.dev/icons/
+ * - https://react-icons.github.io/react-icons/search/
+ */
 import { TFile } from 'obsidian';
 import React from 'react';
 
@@ -17,7 +21,7 @@ import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircle
 import { RiEarthquakeFill } from "react-icons/ri";
 import { SiTinder as IconoTinder, SiGimp, SiGooglemeet, SiOpenai, SiPlex, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { SlPicture } from "react-icons/sl";
-import { TbBulbFilled, TbPills, TbZzz } from 'react-icons/tb';
+import { TbBulbFilled, TbPillOff, TbPills, TbZzz } from 'react-icons/tb';
 
 // https://github.com/madebybowtie/FlagKit/blob/master/Assets/Flags.md
 import Flag from 'react-flagkit';
@@ -224,6 +228,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   picture: ({ size }) => <SlPicture size={size} className="yellow" />,
   pilar: ({ size }) => <CustomIcon size={size} className="pink" iconName="Pilar" />,
   pill: ({ size }) => <CiPill size={size} className="yellow" />,
+  pilloff: ({ size }) => <TbPillOff size={size} className="yellow" />,
   plentyoffish: ({ size }) => <IconoPlentyoffish size={size} className="pink" />,
   plex: ({ size }) => <SiPlex size={size} className="orange" />,
   podcast: ({ size }) => <FaPodcast size={size} className="orange" />,
