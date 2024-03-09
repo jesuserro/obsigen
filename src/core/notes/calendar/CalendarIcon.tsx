@@ -228,7 +228,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   picture: ({ size }) => <SlPicture size={size} className="yellow" />,
   pilar: ({ size }) => <CustomIcon size={size} className="pink" iconName="Pilar" />,
   pill: ({ size }) => <CiPill size={size} className="yellow" />,
-  pilloff: ({ size }) => <TbPillOff size={size} className="yellow" />,
+  pilloff: ({ size }) => <TbPillOff size={size} className="grey" />,
   plentyoffish: ({ size }) => <IconoPlentyoffish size={size} className="pink" />,
   plex: ({ size }) => <SiPlex size={size} className="orange" />,
   podcast: ({ size }) => <FaPodcast size={size} className="orange" />,
