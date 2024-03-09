@@ -285,5 +285,6 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   woman: ({ size }) => <ImWoman size={size} className="pink" />, 
   writing: ({ size }) => <PiNotePencilBold size={size} style={{ color: '#fcaa62' }} />,
   year: ({ size }) => <FcCalendar size={size} className="red youtube" />,
-  youtube: ({ size }) => <FaYoutube size={size} className="red youtube" />
+  youtube: ({ size }) => <FaYoutube size={size} className="red youtube" />,
+  wedding: ({ size }) => <CustomIcon size={size} className="pink" iconName="Wedding" />
 };
