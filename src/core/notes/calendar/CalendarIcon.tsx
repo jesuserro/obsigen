@@ -19,7 +19,7 @@ import { IoFootsteps, IoHardwareChipOutline } from 'react-icons/io5';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold } from 'react-icons/pi';
 import { RiEarthquakeFill } from "react-icons/ri";
-import { SiTinder as IconoTinder, SiGimp, SiGooglemeet, SiOpenai, SiPlex, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
+import { SiTinder as IconoTinder, SiGimp, SiGooglemeet, SiInsomnia, SiOpenai, SiPlex, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { SlPicture } from "react-icons/sl";
 import { TbBulbFilled, TbPillOff, TbPills, TbZzz } from 'react-icons/tb';
 
@@ -187,6 +187,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   holyspirit: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="HolySpirit" />,
   idea: ({ size }) => <TbBulbFilled size={size} className="yellow" />,
   inlove: ({ size }) => <MdFavorite size={size} className="pink" />,
+  insomnia: ({ size }) => <SiInsomnia size={size} className="grey" />,
   inspiration: ({ size }) => <GiSparkSpirit size={size} style={{ color: '#f2a83f' }} />,
   instagram: ({ size }) => <FaInstagram size={size} className="pink instagram" />,
   irene: ({ size }) => <CustomIcon size={size} className="pink" iconName="Irene" />,
