@@ -117,6 +117,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   bank: ({ size }) => <GiBank size={size} className="red" />,
   barber: ({ size }) => <CustomIcon size={size} className="blue" iconName="Barber" />,
   basketball: ({ size }) => <FaBasketball size={size} className="orange" />,
+  bbva: ({ size }) => <CustomIcon size={size} className="blue cobalt" iconName="Bbva" />,
   beer: ({ size }) => <IoIosBeer size={size} className="yellow" />,
   bible: ({ size }) => <IconoBible size={size} className="pink purple" />,
   bills: ({ size }) => <FaFileInvoiceDollar size={size} className="red" />, 
