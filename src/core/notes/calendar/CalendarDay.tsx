@@ -62,7 +62,8 @@ const getCalendarEvent = (year: number, month: number, dayCounter: number, index
 const CalendarDay = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes, app }: CalendarDayProps) => {
   
   const fnEventForm = async () => {
-    await new CalendarEvent(app, year, month, dayCounter).openModal();
+    const date = `${year}-${month}-${dayCounter}`;
+    await new CalendarEvent(app, new Date(date)).openModal();
   };
 
   const icon = CalendarIcon.getIcon("add", 18);

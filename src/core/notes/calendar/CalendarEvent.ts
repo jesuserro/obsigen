@@ -1,18 +1,21 @@
-import { App, ButtonComponent, DropdownComponent, Modal, Notice, SearchComponent, TextAreaComponent, TextComponent, TFile } from "obsidian";
+import { App, ButtonComponent, DropdownComponent, Modal, Notice, TextAreaComponent, TextComponent, TFile } from "obsidian";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Momento } from "./../../notes/momento/Momento";
 import { iconMap } from "./CalendarIcon";
 import { CalendarIconPicker } from "./CalendarIconPicker";
+import { NoteSelector } from "./NoteSelector";
 
 export interface FormValues {
   title: string;
   urls: string;
   description: string;
-  startDate: Date;
+  date: Date;
   endDate: string;
   selectedIcon: string;
   locations: string;
+  type: string,
+  tags: string
 }
 
 export class CalendarEvent extends Modal {
@@ -26,10 +29,13 @@ export class CalendarEvent extends Modal {
   private title: string;
   private urls: string;
   private description: string;
-  private startDate: string;
+  private date: string;
   private endDate: string;
   private selectedIcon: string;
-  private locations: string;
+  private selectedLocation: string;
+  private type: string;
+  private tags: string;
+  private files: TFile[];
 
   // Nuevos campos de selección para año, mes y día
   private titleField: TextComponent;
@@ -38,17 +44,22 @@ export class CalendarEvent extends Modal {
   private monthDropdown: DropdownComponent;
   private dayDropdown: DropdownComponent;
   private iconDropdown: JSX.Element;
+  private locationDropdown: JSX.Element;
   private hourDropdown: DropdownComponent;
   private minuteDropdown: DropdownComponent;
-  private locationField: SearchComponent;
   private urlField: TextComponent;
+  private typeField: DropdownComponent;
+  private tagsField: TextComponent;
   
-  constructor(app: App, year:number, month:number, day:number) {
+  constructor(app: App, date: Date) {
     super(app);
-    
-    this.year = year;
-    this.month = month;
-    this.day = day;
+
+    this.files = app.vault.getFiles();
+    this.year = date.getFullYear();
+    this.month = date.getMonth() + 1;
+    this.day = date.getDate();
+    this.type = "Moment";
+    this.tags = "";
 
     this.createForm();
   }
@@ -70,33 +81,33 @@ export class CalendarEvent extends Modal {
     this.title = "";
     this.urls = "";
     this.description = "";
-    this.startDate = "";
+    this.date = "";
     this.endDate = "";
-    this.selectedIcon = "default-icon"; 
-    this.locations = ""; 
+    this.selectedIcon = "default-icon";  
+    this.selectedLocation = ""; 
+    this.type = "Moment"; 
+    this.tags = ""; 
 
     this.titleField.setValue(this.title);
     this.descriptionTextarea.setValue(this.description);
-    // this.iconDropdown.setValue(this.selectedIcon);
-    this.locationField.setValue(this.locations);
     this.urlField.setValue(this.urls);
+    this.typeField.setValue(this.type);
   }
   
   createForm(): void {
-    const div = this.contentEl.createDiv("form-container");
-  
-    // Title label and textfield
-    const titleDiv = div.createDiv("form-element");
-    const titleLabel = titleDiv.createEl("label", { cls: "form-label" });
+    
+    const form = this.contentEl.createDiv("form-element");
+    
+    const titleLabel = form.createEl("label", { cls: "form-label" });
     titleLabel.setText("Title");
-    this.titleField = new TextComponent(titleDiv);
+    this.titleField = new TextComponent(form);
     this.titleField.inputEl.addClass("form-input");
     this.titleField.setPlaceholder("title");
     this.titleField.setValue(this.title);
     this.titleField.onChange((value) => (this.title = value));
   
     // Fieldset for year, month, and day dropdowns
-    const dateFieldset = div.createEl("fieldset", { cls: "date-fieldset" });
+    const dateFieldset = form.createEl("fieldset", { cls: "date-fieldset" });
   
     // Create Dropdown for selecting the year
     const yearDiv = dateFieldset.createDiv("form-element");
@@ -117,11 +128,21 @@ export class CalendarEvent extends Modal {
     this.minuteDropdown = new DropdownComponent(minuteDiv);
   
     this.initializeDropdowns();
+
+    // Type label and textfield
+    const typeDiv = form.createDiv("form-element");
+    const typeLabel = typeDiv.createEl("label", { cls: "form-label" });
+    typeLabel.setText("Type");
+    this.typeField = new DropdownComponent(typeDiv);
+    this.typeField.addOption("Moment", "Moment");
+    this.typeField.addOption("Capture", "Capture");
+    this.typeField.addOption("Person", "Person");
+    this.typeField.addOption("Content Map", "Content Map");
+    this.typeField.onChange((value) => (this.type = value));
+    this.typeField.setValue(this.type);
   
-    // Icon Selector label and dropdown
-    const iconDiv = div.createDiv();
-    const iconLabel = iconDiv.createEl("label", { cls: "form-label" });
-    iconLabel.setText("Icon");
+    // Icon Selector
+    const iconDiv = form.createDiv();
     this.iconDropdown = React.createElement(CalendarIconPicker, { 
       selectedIcon: 'default-icon',
       onChange: ((value) => (this.selectedIcon = value)),
@@ -129,42 +150,30 @@ export class CalendarEvent extends Modal {
     });
     const root = ReactDOM.createRoot(iconDiv);
     root.render(this.iconDropdown);
-  
-    // Location label and textfield
-    const locationDiv = div.createDiv("form-element");
-    const locationLabel = locationDiv.createEl("label", { cls: "form-label" });
-    locationLabel.setText("Location");
-    this.locationField = new SearchComponent(locationDiv);
-    this.locationField.inputEl.addClass("form-input");
-    this.locationField.setPlaceholder("location");
-    this.locationField.setValue(this.locations);
-    // this.locationField.onChange((value) => (this.locations = value));
-    // Search vault files for locations
-    this.locationField.onChange(async (value) => {
-
-      if(value.length < 3){
-        return;
-      }
-
-      const matchingFiles = this.searchFiles(value);
-
-      const matchingTitles = matchingFiles.map((file) => file.path);
     
-      // console.log('Matching Files:', matchingTitles);
+    // Location Selector 
+    const locationDiv = form.createDiv();
+    this.locationDropdown = React.createElement(NoteSelector, { 
+      selectedNote: '',
+      onChange: ((value) => (this.selectedLocation = value)),
+      notes: this.files.filter((file) => file.path.includes("300 Geo/")),
+      caption: "Location"
     });
+    const root2 = ReactDOM.createRoot(locationDiv);
+    root2.render(this.locationDropdown);
 
     // url label and textfield
-    const urlDiv = div.createDiv("form-element");
+    const urlDiv = form.createDiv("form-element");
     const urlLabel = urlDiv.createEl("label", { cls: "form-label" });
     urlLabel.setText("Urls");
     this.urlField = new TextComponent(urlDiv);
     this.urlField.inputEl.addClass("form-input");
-    this.urlField.setPlaceholder("urls");
+    this.urlField.setPlaceholder("url1, url2");
     this.urlField.setValue(this.urls);
     this.urlField.onChange((value) => (this.urls = value));
 
     // Description label and textarea
-    const descriptionDiv = div.createDiv("form-element");
+    const descriptionDiv = form.createDiv("form-element");
     const descriptionLabel = descriptionDiv.createEl("label", { cls: "form-label" });
     descriptionLabel.setText("Description");
     this.descriptionTextarea = new TextAreaComponent(descriptionDiv);
@@ -173,29 +182,24 @@ export class CalendarEvent extends Modal {
     this.descriptionTextarea.setValue(this.description);
     this.descriptionTextarea.onChange((value) => (this.description = value));
 
+    // Tags
+    const tagsDiv = form.createDiv("form-element");
+    const tagsLabel = tagsDiv.createEl("label", { cls: "form-label" });
+    tagsLabel.setText("Tags");
+    this.tagsField = new TextComponent(tagsDiv);
+    this.tagsField.inputEl.addClass("form-input");
+    this.tagsField.setPlaceholder("tag1, tag2");
+    this.tagsField.setValue(this.tags);
+    this.tagsField.onChange((value) => (this.tags = value));
+
     // Submit button aligned to the right horizontally
-    const buttonDiv = div.createDiv("form-button-container");
+    const buttonDiv = form.createDiv("form-button-container");
     const submitButton = new ButtonComponent(buttonDiv);
     submitButton.buttonEl.addClass("form-submit-button");
     submitButton.setButtonText("Submit").onClick((evt: Event) => {
       this.onSubmit(evt);
     });
-  }
-
-  // Método para buscar archivos en el vault
-  private searchFiles(query: string): TFile[] {
-    const { vault } = this.app;
-    
-    // Obtener todos los archivos Markdown en el vault
-    const allFiles = vault.getMarkdownFiles();
-
-    // Filtrar los archivos que coinciden con la consulta
-    const matchingFiles = allFiles.filter((file) =>
-      file.basename.toLowerCase().includes(query.toLowerCase())
-    );
-
-    return matchingFiles;
-  }   
+  }  
 
   private initializeDropdowns() {
     // Configura los DropdownComponent para año, mes y día
@@ -249,15 +253,17 @@ export class CalendarEvent extends Modal {
     });
   }
 
-  getFormValues(): { title: string; urls: string, description: string, startDate: string, endDate: string, selectedIcon: string, locations: string } {
+  getFormValues(): { title: string; urls: string, description: string, date: string, endDate: string, selectedIcon: string, locations: string, type: string, tags: string } {
     return { 
       title: this.title, 
       urls: this.urls, 
       description: this.description, 
-      startDate: this.startDate, 
+      date: this.date, 
       endDate: this.endDate, 
       selectedIcon: this.selectedIcon, 
-      locations: this.locations 
+      locations: this.selectedLocation,
+      type: this.type,
+      tags: this.tags 
     };
   }
 
@@ -268,26 +274,31 @@ export class CalendarEvent extends Modal {
 
     // Recoge los valores del formulario
     const selectedYear = this.yearDropdown.getValue();
-    const selectedMonth = this.monthDropdown.getValue();
-    const selectedDay = this.dayDropdown.getValue();
-    const selectedHour = this.hourDropdown.getValue();
-    const selectedMinute = this.minuteDropdown.getValue();
+    const selectedMonth = this.monthDropdown.getValue().padStart(2, '0');
+    const selectedDay = this.dayDropdown.getValue().padStart(2, '0');
+    const selectedHour = this.hourDropdown.getValue().padStart(2, '0');
+    const selectedMinute = this.minuteDropdown.getValue().padStart(2, '0');
 
-    const selectedTime = `${selectedHour.padStart(2, '0')}:${selectedMinute.padStart(2, '0')}:00`;
+    const selectedTime = `${selectedHour}:${selectedMinute}:00`;
     
-    const startDate = new Date(`${selectedYear}-${selectedMonth.padStart(2, '0')}-${selectedDay.padStart(2, '0')} ${selectedTime}`);
+    const strDate = `${selectedYear}-${selectedMonth}-${selectedDay} ${selectedTime}`;
+    const date = new Date(strDate);
 
-    this.locations = this.locationField.getValue();
-    this.urls = this.urlField.getValue();
-
+    this.urls = "";
+    if(this.urlField.getValue() !== "" && this.urlField.getValue() !== undefined){
+      this.urls = `"${this.urlField.getValue()}"`;
+    }
+    
     const formValues: FormValues = {
       title: this.title.trim(),
-      urls: this.urls.trim(),
       description: this.description.trim(),
-      startDate: startDate,
+      date: date,
       endDate: this.endDate.trim(),
       selectedIcon: this.selectedIcon,
-      locations: this.locations.trim()
+      urls: this.urls.trim(),
+      locations: this.selectedLocation ? `[[${this.selectedLocation}]]` : "",
+      type: this.type.trim(),
+      tags: this.tags.trim()
     };
 
     // Validar los valores del formulario aquí, si es necesario
@@ -302,15 +313,16 @@ export class CalendarEvent extends Modal {
     // Validation passed, resolve the values
     this.resolve(formValues);
 
-    // title: string, content: string, startDate?: string, icon?: string, description?: string, locations?: string, url:string = ''
-    new Momento(this.app).createNote(
+    new Momento(date).createNote(
+      formValues.type,
+      this.app,
       formValues.title, 
-      formValues.description, 
-      formValues.startDate, 
+      formValues.description,  
       formValues.selectedIcon, 
       "description",
       formValues.locations,
-      formValues.urls
+      formValues.urls,
+      formValues.tags
     );
 
     // Cerrar el modal

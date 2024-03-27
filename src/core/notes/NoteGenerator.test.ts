@@ -35,9 +35,10 @@ describe('NoteGenerator', () => {
   test('should create a new note', async () => {
     const title = 'Patata';
     const content = 'Lorem Ipsum';
+    const path = '/mnt/c/Users/Jesús/Documents/vault';
 
     // Call the method being tested
-    await noteGenerator.createNote(title, content);
+    await noteGenerator.createNote(title, content, path);
 
     // Verify the expected function calls
     expect(mockCreate).toHaveBeenCalledTimes(1);

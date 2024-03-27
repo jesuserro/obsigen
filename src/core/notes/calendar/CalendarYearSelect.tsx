@@ -6,7 +6,7 @@ interface CalendarYearSelectProps {
 }
 
 function CalendarYearSelect({ currentYear, onChange }: CalendarYearSelectProps): JSX.Element {
-  const years = Array.from({ length: 2030 - 1898 }, (_, index) => 2029 - index + 1); 
+  const years = Array.from({ length: 2030 - 1897 }, (_, index) => 2029 - index + 1); 
 
   const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedYear = parseInt(event.target.value, 10);
