@@ -49,6 +49,7 @@ const context = await esbuild.context({
   sourcemap: prod ? false : "inline",
   treeShaking: true,
   outfile: `${outputDir}/main.js`,
+  platform: 'node', // Agrega esta línea para generar un bundle para Node.js
   // outdir: `${outputDir}`,
   plugins: [
     copy({

@@ -42,6 +42,7 @@
 	},
 	"dependencies": {
 		"js-yaml": "^4.1.0",
+		"node-fetch": "^3.3.2",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-flagkit": "^2.0.4",

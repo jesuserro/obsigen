@@ -1,5 +1,6 @@
-import { App, Menu, Notice } from 'obsidian';
+import { App, Menu } from 'obsidian';
 import { Yearly } from 'src/core/notes/yearly/Yearly';
+import { getReviews } from '../../api/Goodreads/Review';
 import { Aniversario } from '../../core/notes/aniversario/Aniversario';
 import { Calendar } from '../../core/notes/calendar/Calendar';
 import { CalendarEvent } from '../../core/notes/calendar/CalendarEvent';
@@ -36,9 +37,7 @@ export class MenuPrincipal extends Menu {
     this.addMenuItem({
         title: "Sync Goodreads",
         icon: "book-open",
-        onClick: () => {
-            new Notice("Sync Goodreads");
-        }
+        onClick: async () => await getReviews("read")
     });
 
     this.addSeparator();
