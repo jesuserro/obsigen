@@ -26,6 +26,7 @@
 		"@types/react": "^18.2.21",
 		"@types/react-dom": "^18.2.5",
 		"@types/react-icons": "^3.0.0",
+		"@types/xml2js": "^0.4.14",
 		"@typescript-eslint/eslint-plugin": "5.29.0",
 		"@typescript-eslint/parser": "5.29.0",
 		"builtin-modules": "3.3.0",
@@ -46,6 +47,7 @@
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-flagkit": "^2.0.4",
-		"react-icons": "^4.11.0"
+		"react-icons": "^4.11.0",
+		"xml2js": "^0.6.2"
 	}
 }
