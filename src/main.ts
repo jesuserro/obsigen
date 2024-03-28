@@ -6,7 +6,9 @@ import { CALENDAR_VIEW_TYPE, CalendarView } from 'src/core/notes/calendar/Calend
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 
 const DEFAULT_SETTINGS: MyPluginSettings = {
-	mySetting: 'default'
+	mySetting: 'default',
+    goodreads_user: '',
+    goodreads_apikey: ''
 }
 
 
