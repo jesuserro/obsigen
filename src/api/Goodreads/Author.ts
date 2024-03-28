@@ -1,5 +1,5 @@
 // Clase para representar la información de un autor
-class Author {
+export class Author {
     name: string;
 
     constructor(name: string) {
