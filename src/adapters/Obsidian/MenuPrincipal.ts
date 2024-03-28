@@ -1,4 +1,4 @@
-import { App, Menu } from 'obsidian';
+import { App, Menu, Notice } from 'obsidian';
 import { Yearly } from 'src/core/notes/yearly/Yearly';
 import { Aniversario } from '../../core/notes/aniversario/Aniversario';
 import { Calendar } from '../../core/notes/calendar/Calendar';
@@ -32,6 +32,16 @@ export class MenuPrincipal extends Menu {
     const minutes = date.getMinutes();
     const seconds = date.getSeconds();
     const selectedDate = new Date(`${year}-${month}-${day} ${hour}:${minutes}:${seconds}`);
+
+    this.addMenuItem({
+        title: "Sync Goodreads",
+        icon: "book-open",
+        onClick: () => {
+            new Notice("Sync Goodreads");
+        }
+    });
+
+    this.addSeparator();
 
     this.addMenuItem({
       title: "Momentazo",
