@@ -20,10 +20,7 @@ export default class MyPlugin extends Plugin {
 
 		console.log('Loading Obsigen plugin');
 
-		this.registerView(
-			CALENDAR_VIEW_TYPE,
-			(leaf) => new CalendarView(leaf)
-		);
+		this.registerView(CALENDAR_VIEW_TYPE, (leaf) => new CalendarView(leaf));
 		
 		await this.loadSettings();
 

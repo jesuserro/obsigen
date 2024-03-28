@@ -1,14 +1,16 @@
 import fetch from 'node-fetch';
-import { useApp } from './../../../src/core/hooks/useApp';
+import { App } from 'obsidian';
 
 // Método para obtener la información de un libro desde la API de Goodreads
-export async function getReviews(shelf: string): Promise<String | null> {
+export async function getReviews(app:App, shelf: string): Promise<String | null> {
 
-    const app = useApp() as any;
-    const GOODREADS_USER = app.vault.config.get('goodreads_user');
-    const GOODREADS_API_KEY = app.vault.config.get('goodreads_api_key');
-    
-    const url = `https://www.goodreads.com/review/list_rss/${GOODREADS_USER}?key=${GOODREADS_API_KEY}&shelf=${shelf}`;
+    const setting = (app as any).setting;
+    const pluginTab = setting.pluginTabs.find((tab: any) => tab.id === 'obsigen');
+    const plugin = pluginTab.plugin;
+    const GOODREADS_USER = plugin.settings.goodreads_user;
+    const GOODREADS_APIKEY = plugin.settings.goodreads_apikey;
+
+    const url = `https://www.goodreads.com/review/list_rss/${GOODREADS_USER}?key=${GOODREADS_APIKEY}&shelf=${shelf}`;
 
     console.log("url", url);
     
