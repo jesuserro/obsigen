@@ -140,7 +140,7 @@ export class Review {
   }
 
   setContent(content: string) {
-    const mediaContent = this.getMediaContent();
+    const mediaContent = this.htmlToMarkdown(content);
     this.content = `${this.yaml}\n# ${this.title}\n${mediaContent}\n${content}`;
   }
 
@@ -158,10 +158,37 @@ export class Review {
     return `\n${yamlUrls}`;
   }
   
-  private getMediaContent() {
-    if (this.urls === "") return "";
-    return this.urls.split(',').map(url => this.getUrlForContent(url.trim())).join('\n');
-  }
+  private htmlToMarkdown(htmlText: string): string {
+    // Reemplazar espacios en blanco dentro de las etiquetas
+    htmlText = htmlText.replace(/(<[^\/>]*>)\s+/g, '$1');
+
+    // Reemplazar etiquetas <em> por `
+    htmlText = htmlText.replace(/<em>/g, '`');
+    htmlText = htmlText.replace(/<\/em>/g, '`');
+
+    // Reemplazar etiquetas <strong> por **
+    htmlText = htmlText.replace(/<strong>/g, '**');
+    htmlText = htmlText.replace(/<\/strong>/g, '**');
+
+    // Reemplazar etiquetas <b> por **
+    htmlText = htmlText.replace(/<b>/g, '**');
+    htmlText = htmlText.replace(/<\/b>/g, '**');
+
+    // Reemplazar etiquetas <i> por _
+    htmlText = htmlText.replace(/<i>/g, '_');
+    htmlText = htmlText.replace(/<\/i>/g, '_');
+
+    // Reemplazar etiquetas <a> por []()
+    htmlText = htmlText.replace(/<a href="(.*?)"(?: rel=".*?")?>(.*?)<\/a>/g, '[$2]($1)');
+
+    // Reemplazar saltos de línea <br> o <br /> por '\n'
+    htmlText = htmlText.replace(/<br ?\/?>/g, '\n');
+
+    // Reemplazar etiquetas <blockquote>Text Here</blockquote> por > Text Here
+    htmlText = htmlText.replace(/<blockquote>(.*?)<\/blockquote>/g, '> $1');
+
+    return htmlText;
+}
 
   getTitle(title: string) {
     title = title.charAt(0).toUpperCase() + title.slice(1);
@@ -169,6 +196,8 @@ export class Review {
   }
 
   getFilename(title: string) {
+    //  Error: File name cannot contain any of the following characters: *,",\,/,<,>,:,|,?,¿,,,;
+    title = title.replace(/[*"\\\/<>:|?¿,;]/g, '');
     return `${this.getFilePrefix()} ${title}`;
   }
 
@@ -178,17 +207,6 @@ export class Review {
   
   getContent() {
     return ``;
-  }
-
-  getUrlForContent(url: string) {
-
-    if (this.twitterRegexp.test(url) || this.youtubeRegexp.test(url)) {
-      if (this.youtubeRegexp.test(url)) {
-        return `![${this.title}](${url})`;
-      }
-    }
-
-    return '';
   }
 
   cleanUrl(url: string) {
