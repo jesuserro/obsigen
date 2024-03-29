@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import { App } from 'obsidian';
-import { Momento } from 'src/core/notes/momento/Momento';
+import { Review } from 'src/api/Goodreads/Review';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 
 export module Goodreads {
@@ -75,7 +75,7 @@ export module Goodreads {
 
         const date = new Date(randomReview.date);
 
-        new Momento(date).createNote(
+        new Review(date).createNote(
             'Moment',
             app,
             randomReview.title, 
