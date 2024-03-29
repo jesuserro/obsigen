@@ -19,6 +19,7 @@ export class Review {
   callout: string;
   startDate: Date | null;
   cover: string;
+  rating: number;
   year: number;
   month: number;
   day: number;
@@ -48,6 +49,8 @@ export class Review {
     this.type = "Review";
     this.path = "/";
     this.tags = "";
+    this.title = "";
+    this.rating = 0;
 
     this.startDate = date;
     this.date = this.startDate;
@@ -83,7 +86,8 @@ export class Review {
       urls: this.getListForYamlProperty(this.urls),
       tags: [...DATA_YAML_DEFAULT.tags, this.tags],
       cover: this.cover,
-      cssclasses: [...DATA_YAML_DEFAULT.cssclasses, 'review']
+      cssclasses: [...DATA_YAML_DEFAULT.cssclasses, 'review'],
+      rating: this.rating
     };
 
     let yaml = renderToString(Yaml({ data }));
@@ -112,7 +116,7 @@ export class Review {
     this.year = this.date.getFullYear();
     this.month = this.date.getMonth() + 1;
     this.day = this.date.getDate();
-    
+    this.rating = review.rating;
     this.cover = review.cover;
     this.locations = '';
     this.urls = this.cleanUrls(review.urls) || '';
