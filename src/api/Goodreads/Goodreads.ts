@@ -74,8 +74,11 @@ export module Goodreads {
         console.log(`Número total de revisiones: ${reviews.length}`);
 
         // Mostrar detalles de una revisión al azar
-        const randomIndex = Math.floor(Math.random() * reviews.length);
-        const randomReview = reviews[randomIndex];
+        // const randomIndex = Math.floor(Math.random() * reviews.length);
+        // const randomReview = reviews[randomIndex];
+
+        // Show review with guid = 2333083521 (Mi Corazón Triunfará)
+        const randomReview = reviews.find(review => review.guid === '2333083521');
 
         const date = new Date(randomReview.date);
 
