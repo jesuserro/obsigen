@@ -116,7 +116,7 @@ export class Review {
     this.year = this.date.getFullYear();
     this.month = this.date.getMonth() + 1;
     this.day = this.date.getDate();
-    this.rating = review.rating;
+    this.rating = review.rating * 2;
     this.cover = review.cover;
     this.locations = '';
     this.urls = this.cleanUrls(review.urls) || '';
