@@ -1,11 +1,12 @@
 import { App, Menu } from 'obsidian';
 import { Yearly } from 'src/core/notes/yearly/Yearly';
-import { mainGoodreads } from '../../api/Goodreads/Review';
+import { Goodreads } from '../../api/Goodreads/Goodreads';
 import { Aniversario } from '../../core/notes/aniversario/Aniversario';
 import { Calendar } from '../../core/notes/calendar/Calendar';
 import { CalendarEvent } from '../../core/notes/calendar/CalendarEvent';
 import { Daily } from '../../core/notes/daily/Daily';
 import { Favorites } from '../../core/notes/favorites/Favorites';
+
 
 interface MenuItem {
   title: string;
@@ -37,7 +38,7 @@ export class MenuPrincipal extends Menu {
     this.addMenuItem({
         title: "Sync Goodreads",
         icon: "book-open",
-        onClick: async () => await mainGoodreads(app)
+        onClick: async () => await Goodreads.getRandomReview(app)
     });
 
     this.addSeparator();
