@@ -39,8 +39,12 @@ export module Goodreads {
                 const shelvesElement = item.querySelector('user_shelves');
                 const shelves = shelvesElement ? shelvesElement.textContent?.split(',').map(shelf => shelf.trim()) : [];
 
+                // Utilizar una expresión regular para capturar solo los dígitos del GUID
+                const guidMatch = item.querySelector('guid')?.textContent?.match(/\d+/);
+                const guid = guidMatch ? guidMatch[0] : null;
+
                 return {
-                    guid: item.querySelector('guid')?.textContent,
+                    guid: guid,
                     title: item.querySelector('title')?.textContent,
                     authors: item.querySelector('author_name')?.textContent,
                     rating: item.querySelector('user_rating')?.textContent,
