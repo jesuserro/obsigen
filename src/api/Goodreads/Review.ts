@@ -181,8 +181,10 @@ export class Review {
     // Reemplazar etiquetas <a> por []()
     htmlText = htmlText.replace(/<a href="(.*?)"(?: rel=".*?")?>(.*?)<\/a>/g, '[$2]($1)');
 
-    // Reemplazar saltos de línea <br> o <br /> por '\n'
-    htmlText = htmlText.replace(/<br ?\/?>/g, '\n');
+    // Reemplazar saltos de línea <br> por '\n'
+    htmlText = htmlText.replace(/<br>/g, '\n');
+    htmlText = htmlText.replace(/<br \/>/g, '\n');
+    
 
     // Reemplazar etiquetas <blockquote>Text Here</blockquote> por > Text Here
     htmlText = htmlText.replace(/<blockquote>(.*?)<\/blockquote>/g, '> $1');
