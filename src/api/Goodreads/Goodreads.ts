@@ -32,10 +32,12 @@ export module Goodreads {
     // Función para parsear el XML y extraer la información de cada revisión
     export async function parseReviews(xmlString: string): Promise<any[]> {
         try {
+            const TurndownService = require('turndown');
+            const turndownService = new TurndownService();
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
-            
             const items = xmlDoc.querySelectorAll('item');
+
             const reviews = Array.from(items).map(item => {
                 const shelvesElement = item.querySelector('user_shelves');
                 const shelves = shelvesElement ? shelvesElement.textContent?.split(',').map(shelf => shelf.trim()) : [];
@@ -44,8 +46,6 @@ export module Goodreads {
                 const guidMatch = item.querySelector('guid')?.textContent?.match(/\d+/);
                 const guid = guidMatch ? guidMatch[0] : null;
 
-                const TurndownService = require('turndown');
-                const turndownService = new TurndownService();
                 let content = item.querySelector('user_review')?.textContent;
                 // If content is empty, continue loop
                 if (!content) return;
@@ -86,6 +86,8 @@ export module Goodreads {
         const randomReview = reviews[randomIndex];
 
         // Show review with guid = 2333083521 (Mi Corazón Triunfará)
+        // Show review with guid = 2305880095 (Mero Cristianismo)
+        // Show review with guid = 2337479160 (Jesús Nazareth Resurrección)
         // const randomReview = reviews.find(review => review.guid === '2333083521');
 
         const date = new Date(randomReview.date);
