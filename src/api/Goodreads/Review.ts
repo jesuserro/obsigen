@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import { App } from 'obsidian';
+import { Momento } from 'src/core/notes/momento/Momento';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 
 // Método para obtener el feed de reviews desde la API de Goodreads
@@ -68,6 +69,20 @@ export async function mainGoodreads(app: App) {
     // Mostrar detalles de una revisión al azar
     const randomIndex = Math.floor(Math.random() * reviews.length);
     const randomReview = reviews[randomIndex];
+
+    const date = new Date(randomReview.date);
+
+    new Momento(date).createNote(
+        'Moment',
+        app,
+        randomReview.title, 
+        randomReview.user_review,  
+        randomReview.cover, 
+        randomReview.user_review,
+        '',
+        randomReview.urls,
+        randomReview.tags
+    );
 
     console.log('Detalles de la revisión seleccionada al azar:');
     Object.entries(randomReview).forEach(([key, value]) => {
