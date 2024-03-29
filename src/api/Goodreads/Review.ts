@@ -38,13 +38,13 @@ export async function parseReviews(xmlString: string): Promise<any[]> {
             return {
                 guid: item.querySelector('guid')?.textContent,
                 title: item.querySelector('title')?.textContent,
-                author: item.querySelector('author_name')?.textContent,
+                authors: item.querySelector('author_name')?.textContent,
                 rating: item.querySelector('user_rating')?.textContent,
-                readAt: item.querySelector('user_read_at')?.textContent,
-                shelves: shelves,
-                link: item.querySelector('link')?.textContent,
+                date: item.querySelector('user_read_at')?.textContent,
+                tags: shelves,
+                urls: item.querySelector('link')?.textContent,
                 book_id: item.querySelector('book_id')?.textContent,
-                book_large_image_url: item.querySelector('book_large_image_url')?.textContent,
+                cover: item.querySelector('book_large_image_url')?.textContent,
                 user_review: item.querySelector('user_review')?.textContent
             };
         });
