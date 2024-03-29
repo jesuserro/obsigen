@@ -47,6 +47,8 @@ export module Goodreads {
                 const TurndownService = require('turndown');
                 const turndownService = new TurndownService();
                 let content = item.querySelector('user_review')?.textContent;
+                // If content is empty, continue loop
+                if (!content) return;
                 content = turndownService.turndown(content);
 
                 return {
@@ -79,12 +81,12 @@ export module Goodreads {
 
         console.log(`Número total de revisiones: ${reviews.length}`);
 
-        // Mostrar detalles de una revisión al azar
-        // const randomIndex = Math.floor(Math.random() * reviews.length);
-        // const randomReview = reviews[randomIndex];
+        // Randomly get a review
+        const randomIndex = Math.floor(Math.random() * reviews.length);
+        const randomReview = reviews[randomIndex];
 
         // Show review with guid = 2333083521 (Mi Corazón Triunfará)
-        const randomReview = reviews.find(review => review.guid === '2333083521');
+        // const randomReview = reviews.find(review => review.guid === '2333083521');
 
         const date = new Date(randomReview.date);
 
