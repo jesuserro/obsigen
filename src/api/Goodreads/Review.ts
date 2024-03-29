@@ -18,8 +18,7 @@ export class Review {
   fileName: string;
   callout: string;
   startDate: Date | null;
-  icon: string | null;
-  description: string;
+  cover: string;
   year: number;
   month: number;
   day: number;
@@ -36,7 +35,7 @@ export class Review {
 
   constructor(date: Date) {
     
-    this.icon = "";
+    this.cover = "";
     
     this.year = date.getFullYear();
     this.month = date.getMonth() + 1;
@@ -46,7 +45,7 @@ export class Review {
     this.seconds = date.getSeconds();
     this.locations = "";
     this.urls = "";
-    this.type = "";
+    this.type = "Review";
     this.path = "/";
     this.tags = "";
 
@@ -83,12 +82,10 @@ export class Review {
       locations: this.getListForYamlProperty(this.locations, true),
       urls: this.getListForYamlProperty(this.urls),
       tags: [...DATA_YAML_DEFAULT.tags, this.tags],
+      cover: this.cover,
+      cssclasses: [...DATA_YAML_DEFAULT.cssclasses, 'review']
     };
-    
-    data.cssclasses = [];
-    if (this.icon) {
-      data.cssclasses.push(this.icon);
-    }
+
     let yaml = renderToString(Yaml({ data }));
     yaml = yaml.replace(/&quot;/g, '"');
     yaml = yaml.replace(/&amp;/g, '&');
@@ -105,44 +102,33 @@ export class Review {
     return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
   }
 
-  async createNote(type: string, app: App, title: string, content: string, icon?: string, description?: string, locations?: string, urls:string = '', tags: string = '') {
+  async createNote(app: App, review: Review) {
     
     this.app = app;
     this.noteGenerator = new NoteGenerator(this.app);
 
-    this.title = this.getTitle(title);
-    if (this.startDate) {
-      this.date = this.startDate;
-      this.year = this.date.getFullYear();
-      this.month = this.date.getMonth() + 1;
-      this.day = this.date.getDate();
-    }
-    this.icon = icon || null;
-    this.description = description || '';
-    this.locations = locations || '';
-    this.urls = this.cleanUrls(urls) || '';
-    this.tags = tags || '';
+    this.title = this.getTitle(review.title);
+    this.date = new Date(review.date);
+    this.year = this.date.getFullYear();
+    this.month = this.date.getMonth() + 1;
+    this.day = this.date.getDate();
+    
+    this.cover = review.cover;
+    this.locations = '';
+    this.urls = this.cleanUrls(review.urls) || '';
+    this.tags = review.tags || '';
     this.setYaml();
     this.fileName = this.getFilename(this.title);
-    this.setContent(content);
+    this.setContent(review.content);
 
-    this.path = this.getPath(type);
+    this.path = this.getPath();
     
     await this.noteGenerator.createNote(this.fileName, this.content, this.path);
   }
 
-  getPath(type:string){
+  getPath(){
     const pathFechaMomento = `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
-    if(type == "Moment"){
-      return pathFechaMomento;
-    }else if(type == "Capture"){
-      return `000 Inbox/Captures`;
-    }else if(type == "Content Map"){
-      return `200 Content Maps`;
-    }else if(type == "Person"){
-      return pathFechaMomento;
-    }
-    return "/";
+    return pathFechaMomento;
   }
 
   private cleanUrls(urls: string) {

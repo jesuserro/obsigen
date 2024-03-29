@@ -49,7 +49,7 @@ export module Goodreads {
                     urls: item.querySelector('link')?.textContent,
                     book_id: item.querySelector('book_id')?.textContent,
                     cover: item.querySelector('book_large_image_url')?.textContent,
-                    user_review: item.querySelector('user_review')?.textContent
+                    content: item.querySelector('user_review')?.textContent
                 };
             });
             
@@ -75,17 +75,7 @@ export module Goodreads {
 
         const date = new Date(randomReview.date);
 
-        new Review(date).createNote(
-            'Moment',
-            app,
-            randomReview.title, 
-            randomReview.user_review,  
-            randomReview.cover, 
-            randomReview.user_review,
-            '',
-            randomReview.urls,
-            randomReview.tags
-        );
+        new Review(date).createNote(app, randomReview);
 
         console.log('Detalles de la revisión seleccionada al azar:');
         Object.entries(randomReview).forEach(([key, value]) => {
