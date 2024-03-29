@@ -221,6 +221,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   ok: ({ size }) => <BsFillCheckCircleFill size={size} className="green" />,
   openai: ({ size }) => <SiOpenai size={size} className="green openai" />,
   package: ({ size }) => <PiPackageBold size={size} className="brown" />,
+  pancake: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Pancake" />,
   payroll: ({ size }) => <IconoPayroll size={size} className="yellow" />,
   peace: ({ size }) => <GiPeaceDove size={size} className="white" />,
   people: ({ size }) => <MdPeople size={size} className="grey" />,
