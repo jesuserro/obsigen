@@ -1,11 +1,9 @@
 import fetch from 'node-fetch';
 import { App } from 'obsidian';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
-import * as xml2js from 'xml2js';
 
 // Método para obtener el feed de reviews desde la API de Goodreads
 export async function getReviews(app: App, shelf: string): Promise<string | null> {
-    
     const { goodreads_user, goodreads_apikey }: MyPluginSettings = (app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
 
     const url = `https://www.goodreads.com/review/list_rss/${goodreads_user}?key=${goodreads_apikey}&shelf=${shelf}`;
@@ -18,7 +16,6 @@ export async function getReviews(app: App, shelf: string): Promise<string | null
         }
          
         const textoRespuesta = await respuesta.text();
-        // console.log(textoRespuesta);
         return textoRespuesta;
 
     } catch (error) {
@@ -30,22 +27,27 @@ export async function getReviews(app: App, shelf: string): Promise<string | null
 // Función para parsear el XML y extraer la información de cada revisión
 export async function parseReviews(xmlString: string): Promise<any[]> {
     try {
-        const parser = new xml2js.Parser({ explicitArray: false });
-        const result = await parser.parseStringPromise(xmlString);
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
         
-        const items = result.rss.channel.item;
-        const reviews = items.map((item: any) => ({
-            guid: item.guid,
-            title: item.title,
-            author: item.author_name,
-            rating: item.user_rating,
-            readAt: item.user_read_at,
-            shelves: item.user_shelves.split(',').map((shelf: string) => shelf.trim()),
-            link: item.link,
-            book_id: item.book_id,
-            book_large_image_url: item.book_large_image_url,
-            user_review: item.user_review
-        }));
+        const items = xmlDoc.querySelectorAll('item');
+        const reviews = Array.from(items).map(item => {
+            const shelvesElement = item.querySelector('user_shelves');
+            const shelves = shelvesElement ? shelvesElement.textContent?.split(',').map(shelf => shelf.trim()) : [];
+
+            return {
+                guid: item.querySelector('guid')?.textContent,
+                title: item.querySelector('title')?.textContent,
+                author: item.querySelector('author_name')?.textContent,
+                rating: item.querySelector('user_rating')?.textContent,
+                readAt: item.querySelector('user_read_at')?.textContent,
+                shelves: shelves,
+                link: item.querySelector('link')?.textContent,
+                book_id: item.querySelector('book_id')?.textContent,
+                book_large_image_url: item.querySelector('book_large_image_url')?.textContent,
+                user_review: item.querySelector('user_review')?.textContent
+            };
+        });
         
         return reviews;
     } catch (error) {
@@ -55,7 +57,7 @@ export async function parseReviews(xmlString: string): Promise<any[]> {
 }
 
 // Función principal para mostrar el número total de revisiones y detalles de una revisión al azar
-export async function mainGoodreads(app:App) {
+export async function mainGoodreads(app: App) {
     const xmlString = await getReviews(app, 'read');
     if (!xmlString) return;
 
@@ -72,6 +74,3 @@ export async function mainGoodreads(app:App) {
         console.log(`${key}: ${value}`);
     });
 }
-
-
-
