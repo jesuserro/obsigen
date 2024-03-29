@@ -3,6 +3,7 @@ import { App } from 'obsidian';
 import { Review } from 'src/api/Goodreads/Review';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 
+
 export module Goodreads {
 
     // Método para obtener el feed de reviews desde la API de Goodreads
@@ -43,6 +44,11 @@ export module Goodreads {
                 const guidMatch = item.querySelector('guid')?.textContent?.match(/\d+/);
                 const guid = guidMatch ? guidMatch[0] : null;
 
+                const TurndownService = require('turndown');
+                const turndownService = new TurndownService();
+                let content = item.querySelector('user_review')?.textContent;
+                content = turndownService.turndown(content);
+
                 return {
                     guid: guid,
                     title: item.querySelector('title')?.textContent,
@@ -53,7 +59,7 @@ export module Goodreads {
                     urls: item.querySelector('link')?.textContent,
                     book_id: item.querySelector('book_id')?.textContent,
                     cover: item.querySelector('book_large_image_url')?.textContent,
-                    content: item.querySelector('user_review')?.textContent
+                    content: content
                 };
             });
             
