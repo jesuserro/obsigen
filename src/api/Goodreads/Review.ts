@@ -184,8 +184,7 @@ export class Review {
     htmlText = htmlText.replace(/<blockquote>(.*?)<\/blockquote>/g, '> $1');
 
     return htmlText;
-    }
-
+}
 
   getTitle(title: string) {
     title = title.charAt(0).toUpperCase() + title.slice(1);
