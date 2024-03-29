@@ -79,7 +79,7 @@ export class Review {
     const link = `"[[${this.getCurrentDate()}]]"`;
     const data = {
       ...DATA_YAML_DEFAULT,
-      title: this.title,
+      title: this.title.replace(/[*"\\\/<>:|?¿,.;]/g, ''),
       date: this.convertDateToIsoString(this.date),
       links: [...DATA_YAML_DEFAULT.links, link],
       locations: this.getListForYamlProperty(this.locations, true),
@@ -192,8 +192,8 @@ export class Review {
   }
 
   getFilename(title: string) {
-    //  Error: File name cannot contain any of the following characters: *,",\,/,<,>,:,|,?,¿,,,;
-    title = title.replace(/[*"\\\/<>:|?¿,;]/g, '');
+    // File name cannot contain any of the following characters: *"\/<>:|?¿,.;
+    title = title.replace(/[*"\\\/<>:|?¿,.;]/g, '');
     return `${this.getFilePrefix()} ${title}`;
   }
 
