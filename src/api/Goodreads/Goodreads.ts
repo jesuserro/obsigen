@@ -72,6 +72,9 @@ export module Goodreads {
     }
 
     // Función principal para mostrar el número total de revisiones y detalles de una revisión al azar
+    // guid = 2333083521 (Mi Corazón Triunfará)
+    // guid = 2305880095 (Mero Cristianismo)
+    // guid = 2337479160 (Jesús Nazareth Resurrección)
     export async function getRandomReview(app: App) {
         const xmlString = await getReviews(app, 'read');
         if (!xmlString) return;
@@ -85,11 +88,7 @@ export module Goodreads {
         const randomIndex = Math.floor(Math.random() * reviews.length);
         const randomReview = reviews[randomIndex];
 
-        // Show review with guid = 2333083521 (Mi Corazón Triunfará)
-        // Show review with guid = 2305880095 (Mero Cristianismo)
-        // Show review with guid = 2337479160 (Jesús Nazareth Resurrección)
         // const randomReview = reviews.find(review => review.guid == '2305880095');
-
         const date = new Date(randomReview.date);
 
         new Review(date).createNote(app, randomReview);
