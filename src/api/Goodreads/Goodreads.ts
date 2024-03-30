@@ -88,7 +88,7 @@ export module Goodreads {
         // Show review with guid = 2333083521 (Mi Corazón Triunfará)
         // Show review with guid = 2305880095 (Mero Cristianismo)
         // Show review with guid = 2337479160 (Jesús Nazareth Resurrección)
-        // const randomReview = reviews.find(review => review.guid === '2333083521');
+        // const randomReview = reviews.find(review => review.guid == '2305880095');
 
         const date = new Date(randomReview.date);
 
