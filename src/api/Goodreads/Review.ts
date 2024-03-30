@@ -5,77 +5,52 @@ import { DATA_YAML_DEFAULT } from 'src/core/shared/interface/iYaml';
 import { Yaml } from 'src/core/shared/templates/Yaml';
 
 export class Review {
+  private app: App;
+  private noteGenerator: NoteGenerator;
+  private yaml: string;
+  private title: string;
+  private content: string;
+  private fileName: string;
+  private cover: string;
+  private rating: number;
+  private year: number;
+  private month: number;
+  private day: number;
+  private locations: string;
+  private urls: string;
+  private tags: string;
+  private twitterRegexp: RegExp;
+  private youtubeRegexp: RegExp;
 
-  app: App;
-  noteGenerator: NoteGenerator;
-
-  yaml: string;
-  title: string;
-  filePrefix: string;
-  date: Date;
-  subheader: string;
-  content: string;
-  fileName: string;
-  callout: string;
-  startDate: Date | null;
-  cover: string;
-  rating: number;
-  year: number;
-  month: number;
-  day: number;
-  hour: number;
-  minute: number;
-  seconds: number;
-  locations: string;
-  urls: string;
-  type: string;
-  path: string;
-  tags: string;
-  twitterRegexp: RegExp;
-  youtubeRegexp: RegExp;
-
-  constructor(date: Date) {
-    
-    this.cover = "";
-    
-    this.year = date.getFullYear();
-    this.month = date.getMonth() + 1;
-    this.day = date.getDate();
-    this.hour = date.getHours();
-    this.minute = date.getMinutes();
-    this.seconds = date.getSeconds();
-    this.locations = "";
-    this.urls = "";
-    this.type = "Review";
-    this.path = "/";
-    this.tags = "";
-    this.title = "";
-    this.rating = 0;
-
-    this.startDate = date;
-    this.date = this.startDate;
-
+  constructor(private date: Date) {
     this.twitterRegexp = new RegExp('https?://(?:mobile\\.)?twitter\\.com/.*');
     this.youtubeRegexp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
   }
 
-  getCurrentTime() {
-    const now = this.date;
-    const hour = now.getHours().toString().padStart(2, '0');
-    const minute = now.getMinutes().toString().padStart(2, '0');
-    return `${hour}${minute}`;
+  async createNote(app: App, review: Review) {
+    this.app = app;
+    this.noteGenerator = new NoteGenerator(this.app);
+
+    this.title = this.getTitle(review.title);
+    this.content = review.content;
+    this.year = this.date.getFullYear();
+    this.month = this.date.getMonth() + 1;
+    this.day = this.date.getDate();
+    this.rating = review.rating * 2;
+    this.cover = review.cover;
+    this.locations = '';
+    this.urls = this.cleanUrls(review.urls) || '';
+    this.tags = review.tags || '';
+    this.setYaml();
+    this.fileName = this.getFilename(this.title);
+    this.setContent(review.content);
+
+    const path = this.getPath();
+
+    await this.noteGenerator.createNote(this.fileName, this.content, path);
   }
 
-  getCurrentDate() {
-    const now = this.date;
-    const year = now.getFullYear().toString();
-    const month = (now.getMonth() + 1).toString().padStart(2, '0');
-    const day = now.getDate().toString().padStart(2, '0');
-    return `${year}${month}${day}`;
-  }
-
-  setYaml() {
-    
+  private setYaml() {
     const link = `"[[${this.getCurrentDate()}]]"`;
     const data = {
       ...DATA_YAML_DEFAULT,
@@ -96,7 +71,7 @@ export class Review {
     this.yaml = yaml.replace(/<!-- -->/g, '');
   }
 
-  convertDateToIsoString(date: Date){
+  private convertDateToIsoString(date: Date) {
     const year = date.getFullYear();
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const day = date.getDate().toString().padStart(2, '0');
@@ -106,40 +81,11 @@ export class Review {
     return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
   }
 
-  async createNote(app: App, review: Review) {
-    
-    this.app = app;
-    this.noteGenerator = new NoteGenerator(this.app);
-
-    this.title = this.getTitle(review.title);
-    this.date = new Date(review.date);
-    this.year = this.date.getFullYear();
-    this.month = this.date.getMonth() + 1;
-    this.day = this.date.getDate();
-    this.rating = review.rating * 2;
-    this.cover = review.cover;
-    this.locations = '';
-    this.urls = this.cleanUrls(review.urls) || '';
-    this.tags = review.tags || '';
-    this.setYaml();
-    this.fileName = this.getFilename(this.title);
-    this.setContent(review.content);
-
-    this.path = this.getPath();
-    
-    await this.noteGenerator.createNote(this.fileName, this.content, this.path);
-  }
-
-  getPath(){
-    const pathFechaMomento = `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
-    return pathFechaMomento;
-  }
-
   private cleanUrls(urls: string) {
     return urls.split(',').map(url => this.cleanUrl(url)).join(',');
   }
 
-  setContent(content: string) {
+  private setContent(content: string) {
     this.content = `${this.yaml}\n# ${this.title}\n${content}`;
   }
 
@@ -157,26 +103,40 @@ export class Review {
     return `\n${yamlUrls}`;
   }
 
-  getTitle(title: string) {
+  private getTitle(title: string) {
     title = title.charAt(0).toUpperCase() + title.slice(1);
     return `${title}`;
   }
 
-  getFilename(title: string) {
+  private getFilename(title: string) {
     // File name cannot contain any of the following characters: *"\/<>:|?¿,.;
     title = title.replace(/[*"\\\/<>:|?¿,.;]/g, '');
     return `${this.getFilePrefix()} ${title}`;
   }
 
-  getFilePrefix() {
+  private getFilePrefix() {
     return `${this.getCurrentDate()}${this.getCurrentTime()}`;
   }
-  
-  getContent() {
-    return ``;
+
+  private getCurrentTime() {
+    const hour = this.date.getHours().toString().padStart(2, '0');
+    const minute = this.date.getMinutes().toString().padStart(2, '0');
+    return `${hour}${minute}`;
   }
 
-  cleanUrl(url: string) {
+  private getCurrentDate() {
+    const year = this.date.getFullYear().toString();
+    const month = (this.date.getMonth() + 1).toString().padStart(2, '0');
+    const day = this.date.getDate().toString().padStart(2, '0');
+    return `${year}${month}${day}`;
+  }
+
+  private getPath() {
+    const pathFechaMomento = `100 Calendar/${this.year}/${this.month.toString().padStart(2, '0')}/${this.day.toString().padStart(2, '0')}`;
+    return pathFechaMomento;
+  }
+
+  private cleanUrl(url: string) {
     url = this.filterParamsFromUrl(url);
 
     if (this.twitterRegexp.test(url) || this.youtubeRegexp.test(url)) {
@@ -188,7 +148,7 @@ export class Review {
     return url.trim();
   }
 
-  filterParamsFromUrl(url: string): string {
+  private filterParamsFromUrl(url: string): string {
     url = url.replace(/"/g, '');
     const urlParts = url.split('?');
     if (urlParts.length === 2) {
