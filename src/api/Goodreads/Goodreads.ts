@@ -5,7 +5,15 @@ import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 
 export module Goodreads {
 
-    // Método para obtener el feed de reviews desde la API de Goodreads
+    /**
+     * Get reviews from Goodreads API
+     * @param app Obsidian app instance
+     * @param shelf Shelf to get reviews from
+     * @returns XML string with reviews
+     * @throws Error if network request fails
+     * @returns null if network request fails
+     * @see https://forum.obsidian.md/t/make-http-requests-from-plugins/15461/19
+     */
     export async function getReviews(app: App, shelf: string): Promise<string | null> {
         
         const { goodreads_user, goodreads_apikey }: MyPluginSettings = (app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
