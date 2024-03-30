@@ -1,6 +1,7 @@
 import { App, requestUrl } from 'obsidian';
 import { Review } from 'src/api/Goodreads/Review';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
+import TurndownService from 'turndown';
 
 
 export module Goodreads {
@@ -33,7 +34,6 @@ export module Goodreads {
     // Función para parsear el XML y extraer la información de cada revisión
     export async function parseReviews(xmlString: string): Promise<any[]> {
         try {
-            const TurndownService = require('turndown');
             const turndownService = new TurndownService();
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
@@ -47,9 +47,7 @@ export module Goodreads {
                 const guidMatch = item.querySelector('guid')?.textContent?.match(/\d+/);
                 const guid = guidMatch ? guidMatch[0] : null;
 
-                let content = item.querySelector('user_review')?.textContent;
-                // If content is empty, continue loop
-                if (!content) return;
+                let content = item.querySelector('user_review')?.textContent ?? '';
                 content = turndownService.turndown(content);
 
                 return {
@@ -79,6 +77,7 @@ export module Goodreads {
         if (!xmlString) return;
 
         const reviews = await parseReviews(xmlString);
+        // console.log(reviews);
 
         console.log(`Número total de revisiones: ${reviews.length}`);
 

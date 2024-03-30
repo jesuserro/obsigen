@@ -140,8 +140,7 @@ export class Review {
   }
 
   setContent(content: string) {
-    const mediaContent = this.htmlToMarkdown(content);
-    this.content = `${this.yaml}\n# ${this.title}\n${mediaContent}\n${content}`;
+    this.content = `${this.yaml}\n# ${this.title}\n${content}`;
   }
 
   private getListForYamlProperty(yamlPropertyText: string, isQuoted: boolean = false): string {
@@ -157,34 +156,6 @@ export class Review {
   
     return `\n${yamlUrls}`;
   }
-  
-  private htmlToMarkdown(htmlText: string): string {
-    // Reemplazar espacios en blanco dentro de las etiquetas
-    htmlText = htmlText.replace(/(<[^\/>]*>)\s+/g, '$1');
-
-    // Reemplazar etiquetas <em>xxx</em> por `xxx`
-    htmlText = htmlText.replace(/<em>(.*?)<\/em>/g, '`$1`');
-
-    // Reemplazar etiquetas <strong>aaaa</strong> por **aaaa**
-    htmlText = htmlText.replace(/<strong>(.*?)<\/strong>/g, '**$1**');
-
-    // Reemplazar etiquetas <b>xxx</b> por **xxx**
-    htmlText = htmlText.replace(/<b>(.*?)<\/b>/g, '**$1**');
-
-    // Reemplazar etiquetas <i>yyy</i> por _yyy_
-    htmlText = htmlText.replace(/<i>(.*?)<\/i>/g, '_$1_');
-
-    // Reemplazar etiquetas <a> por []()
-    htmlText = htmlText.replace(/<a href="(.*?)"(?: rel=".*?")?>(.*?)<\/a>/g, '[$2]($1)');
-
-    // Reemplazar saltos de línea <br> y <br /> por '\n'
-    htmlText = htmlText.replace(/<br\s*\/?>/g, '\n');
-
-    // Reemplazar etiquetas <blockquote>Text Here</blockquote> por > Text Here
-    htmlText = htmlText.replace(/<blockquote>(.*?)<\/blockquote>/g, '> $1');
-
-    return htmlText;
-}
 
   getTitle(title: string) {
     title = title.charAt(0).toUpperCase() + title.slice(1);
