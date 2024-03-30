@@ -22,7 +22,6 @@
 		"@types/jest": "^29.5.2",
 		"@types/js-yaml": "^4.0.5",
 		"@types/node": "^16.11.6",
-		"@types/node-fetch": "^2.6.11",
 		"@types/react": "^18.2.21",
 		"@types/react-dom": "^18.2.5",
 		"@types/react-icons": "^3.0.0",
@@ -43,7 +42,6 @@
 	},
 	"dependencies": {
 		"js-yaml": "^4.1.0",
-		"node-fetch": "^3.3.2",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-flagkit": "^2.0.4",
