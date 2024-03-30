@@ -3,28 +3,30 @@ import { Review } from 'src/api/Goodreads/Review';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 import TurndownService from 'turndown';
 
+export class Goodreads {
+    private app: App;
 
-export module Goodreads {
+    constructor(app: App) {
+        this.app = app;
+    }
 
     /**
      * Get reviews from Goodreads API
-     * @param app Obsidian app instance
      * @param shelf Shelf to get reviews from
      * @returns XML string with reviews
      * @throws Error if network request fails
      * @returns null if network request fails
      * @see https://forum.obsidian.md/t/make-http-requests-from-plugins/15461/19
      */
-    export async function getReviews(app: App, shelf: string): Promise<string | null> {
-        
-        const { goodreads_user, goodreads_apikey }: MyPluginSettings = (app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
+    public async getReviews(shelf: string): Promise<string | null> {
+        const { goodreads_user, goodreads_apikey }: MyPluginSettings = (this.app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
 
         const url = `https://www.goodreads.com/review/list_rss/${goodreads_user}?key=${goodreads_apikey}&shelf=${shelf}`;
-        
+
         try {
             const response = await requestUrl(url);
             return response.text;
-        
+
         } catch (error) {
             console.error(`Error de red al obtener la información de reviews: ${error}`);
             return null;
@@ -32,7 +34,7 @@ export module Goodreads {
     }
 
     // Función para parsear el XML y extraer la información de cada revisión
-    export async function parseReviews(xmlString: string): Promise<any[]> {
+    public async parseReviews(xmlString: string): Promise<any[]> {
         try {
             const turndownService = new TurndownService();
             const parser = new DOMParser();
@@ -63,7 +65,7 @@ export module Goodreads {
                     content: content
                 };
             });
-            
+
             return reviews;
         } catch (error) {
             console.error(`Error al parsear el XML: ${error}`);
@@ -72,14 +74,11 @@ export module Goodreads {
     }
 
     // Función principal para mostrar el número total de revisiones y detalles de una revisión al azar
-    // guid = 2333083521 (Mi Corazón Triunfará)
-    // guid = 2305880095 (Mero Cristianismo)
-    // guid = 2337479160 (Jesús Nazareth Resurrección)
-    export async function getRandomReview(app: App) {
-        const xmlString = await getReviews(app, 'read');
+    public async getRandomReview() {
+        const xmlString = await this.getReviews('read');
         if (!xmlString) return;
 
-        const reviews = await parseReviews(xmlString);
+        const reviews = await this.parseReviews(xmlString);
         // console.log(reviews);
 
         console.log(`Número total de revisiones: ${reviews.length}`);
@@ -91,7 +90,7 @@ export module Goodreads {
         // const randomReview = reviews.find(review => review.guid == '2305880095');
         const date = new Date(randomReview.date);
 
-        new Review(date).createNote(app, randomReview);
+        new Review(date).createNote(this.app, randomReview);
 
         console.log('Detalles de la revisión seleccionada al azar:');
         Object.entries(randomReview).forEach(([key, value]) => {

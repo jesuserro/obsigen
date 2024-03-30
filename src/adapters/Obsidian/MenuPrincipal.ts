@@ -38,7 +38,7 @@ export class MenuPrincipal extends Menu {
     this.addMenuItem({
         title: "Sync Goodreads",
         icon: "book-open",
-        onClick: async () => await Goodreads.getRandomReview(app)
+        onClick: async () => new Goodreads(app).getRandomReview()
     });
 
     this.addSeparator();
