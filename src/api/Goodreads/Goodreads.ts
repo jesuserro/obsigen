@@ -5,23 +5,20 @@ import TurndownService from 'turndown';
 
 export class Goodreads {
     private app: App;
+    private turndownService: TurndownService;
+    private parser: DOMParser;
+    private static readonly GOODREADS_RSS_URL = 'https://www.goodreads.com/review/list_rss';
 
     constructor(app: App) {
         this.app = app;
+        this.turndownService = new TurndownService();
+        this.parser = new DOMParser();
     }
 
-    /**
-     * Get reviews from Goodreads API
-     * @param shelf Shelf to get reviews from
-     * @returns XML string with reviews
-     * @throws Error if network request fails
-     * @returns null if network request fails
-     * @see https://forum.obsidian.md/t/make-http-requests-from-plugins/15461/19
-     */
     public async getReviews(shelf: string): Promise<string | null> {
         const { goodreads_user, goodreads_apikey }: MyPluginSettings = (this.app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
 
-        const url = `https://www.goodreads.com/review/list_rss/${goodreads_user}?key=${goodreads_apikey}&shelf=${shelf}`;
+        const url = `${Goodreads.GOODREADS_RSS_URL}/${goodreads_user}?key=${goodreads_apikey}&shelf=${shelf}`;
 
         try {
             const response = await requestUrl(url);
@@ -33,38 +30,12 @@ export class Goodreads {
         }
     }
 
-    // Función para parsear el XML y extraer la información de cada revisión
     public async parseReviews(xmlString: string): Promise<any[]> {
         try {
-            const turndownService = new TurndownService();
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
+            const xmlDoc = this.parser.parseFromString(xmlString, 'text/xml');
             const items = xmlDoc.querySelectorAll('item');
 
-            const reviews = Array.from(items).map(item => {
-                const shelvesElement = item.querySelector('user_shelves');
-                const shelves = shelvesElement ? shelvesElement.textContent?.split(',').map(shelf => shelf.trim()) : [];
-
-                // Utilizar una expresión regular para capturar solo los dígitos del GUID
-                const guidMatch = item.querySelector('guid')?.textContent?.match(/\d+/);
-                const guid = guidMatch ? guidMatch[0] : null;
-
-                let content = item.querySelector('user_review')?.textContent ?? '';
-                content = turndownService.turndown(content);
-
-                return {
-                    guid: guid,
-                    title: item.querySelector('title')?.textContent,
-                    authors: item.querySelector('author_name')?.textContent,
-                    rating: item.querySelector('user_rating')?.textContent,
-                    date: item.querySelector('user_read_at')?.textContent,
-                    tags: shelves,
-                    urls: item.querySelector('link')?.textContent,
-                    book_id: item.querySelector('book_id')?.textContent,
-                    cover: item.querySelector('book_large_image_url')?.textContent,
-                    content: content
-                };
-            });
+            const reviews = Array.from(items).map(item => this.parseReviewItem(item));
 
             return reviews;
         } catch (error) {
@@ -73,21 +44,40 @@ export class Goodreads {
         }
     }
 
-    // Función principal para mostrar el número total de revisiones y detalles de una revisión al azar
+    private parseReviewItem(item: Element): any {
+        const shelvesElement = item.querySelector('user_shelves');
+        const shelves = shelvesElement ? shelvesElement.textContent?.split(',').map(shelf => shelf.trim()) : [];
+
+        const guidMatch = item.querySelector('guid')?.textContent?.match(/\d+/);
+        const guid = guidMatch ? guidMatch[0] : null;
+
+        let content = item.querySelector('user_review')?.textContent ?? '';
+        content = this.turndownService.turndown(content);
+
+        return {
+            guid: guid,
+            title: item.querySelector('title')?.textContent,
+            authors: item.querySelector('author_name')?.textContent,
+            rating: item.querySelector('user_rating')?.textContent,
+            date: item.querySelector('user_read_at')?.textContent,
+            tags: shelves,
+            urls: item.querySelector('link')?.textContent,
+            book_id: item.querySelector('book_id')?.textContent,
+            cover: item.querySelector('book_large_image_url')?.textContent,
+            content: content
+        };
+    }
+
     public async getRandomReview() {
         const xmlString = await this.getReviews('read');
         if (!xmlString) return;
 
         const reviews = await this.parseReviews(xmlString);
-        // console.log(reviews);
-
         console.log(`Número total de revisiones: ${reviews.length}`);
 
-        // Randomly get a review
         const randomIndex = Math.floor(Math.random() * reviews.length);
         const randomReview = reviews[randomIndex];
 
-        // const randomReview = reviews.find(review => review.guid == '2305880095');
         const date = new Date(randomReview.date);
 
         new Review(date).createNote(this.app, randomReview);
