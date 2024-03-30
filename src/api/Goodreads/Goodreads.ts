@@ -1,5 +1,4 @@
-import fetch from 'node-fetch';
-import { App } from 'obsidian';
+import { App, requestUrl } from 'obsidian';
 import { Review } from 'src/api/Goodreads/Review';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 
@@ -14,15 +13,9 @@ export module Goodreads {
         const url = `https://www.goodreads.com/review/list_rss/${goodreads_user}?key=${goodreads_apikey}&shelf=${shelf}`;
         
         try {
-            const respuesta = await fetch(url);
-            if (!respuesta.ok) {
-                console.error(`Error al obtener la información de reviews: ${respuesta.status}`);
-                return null; 
-            }
-            
-            const textoRespuesta = await respuesta.text();
-            return textoRespuesta;
-
+            const response = await requestUrl(url);
+            return response.text;
+        
         } catch (error) {
             console.error(`Error de red al obtener la información de reviews: ${error}`);
             return null;
