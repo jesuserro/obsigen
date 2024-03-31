@@ -116,7 +116,7 @@ export class Review {
 
   private getFilename(title: string) {
     // File name cannot contain any of the following characters: *"\/<>:|?¿,.;
-    title = title.replace(/[*"\\\/<>:|?¿,.;]/g, '');
+    title = title.replace(/[*"\\\/<>:|?¿,.;#]/g, '');
     return `${this.getFilePrefix()} ${title}`;
   }
 

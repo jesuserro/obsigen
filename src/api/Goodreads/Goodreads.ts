@@ -23,7 +23,7 @@ export class Goodreads {
 
         try {
             const response = await requestUrl(url);
-            console.log(response.text);
+            // console.log(response.text);
             return response.text;
 
         } catch (error) {
@@ -80,6 +80,7 @@ export class Goodreads {
 
         const randomIndex = Math.floor(Math.random() * reviews.length);
         const randomReview = reviews[randomIndex];
+        console.log(randomReview);
 
         const date = new Date(randomReview.date);
 
@@ -87,6 +88,50 @@ export class Goodreads {
 
         console.log('Detalles de la revisión seleccionada al azar:');
         Object.entries(randomReview).forEach(([key, value]) => {
+            console.log(`${key}: ${value}`);
+        });
+    }
+
+    public async getReviewByGuid(guid: string) {
+        const xmlString = await this.getFeedReviewsByShelf('read');
+        if (!xmlString) return;
+
+        const reviews = await this.parseReviews(xmlString);
+        const review = reviews.find(review => review.guid === guid);
+
+        if (!review) {
+            console.error(`No se encontró ninguna revisión con el GUID: ${guid}`);
+            return;
+        }
+
+        const date = new Date(review.date);
+
+        new Review(date).createNote(this.app, review);
+
+        console.log('Detalles de la revisión seleccionada por GUID:');
+        Object.entries(review).forEach(([key, value]) => {
+            console.log(`${key}: ${value}`);
+        });
+    }
+
+    public async getReviewByIsbn(isbn: string) {
+        const xmlString = await this.getFeedReviewsByShelf('read');
+        if (!xmlString) return;
+
+        const reviews = await this.parseReviews(xmlString);
+        const review = reviews.find(review => review.isbn === isbn);
+
+        if (!review) {
+            console.error(`No se encontró ninguna revisión con el ISBN: ${isbn}`);
+            return;
+        }
+
+        const date = new Date(review.date);
+
+        new Review(date).createNote(this.app, review);
+
+        console.log('Detalles de la revisión seleccionada por ISBN:');
+        Object.entries(review).forEach(([key, value]) => {
             console.log(`${key}: ${value}`);
         });
     }
