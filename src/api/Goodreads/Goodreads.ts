@@ -15,7 +15,7 @@ export class Goodreads {
         this.parser = new DOMParser();
     }
 
-    public async getReviews(shelf: string): Promise<string | null> {
+    public async getFeedReviewsByShelf(shelf: string): Promise<string | null> {
         const { goodreads_user, goodreads_apikey }: MyPluginSettings = (this.app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
 
         const url = `${Goodreads.GOODREADS_RSS_URL}/${goodreads_user}?key=${goodreads_apikey}&shelf=${shelf}`;
@@ -69,7 +69,7 @@ export class Goodreads {
     }
 
     public async getRandomReview() {
-        const xmlString = await this.getReviews('read');
+        const xmlString = await this.getFeedReviewsByShelf('read');
         if (!xmlString) return;
 
         const reviews = await this.parseReviews(xmlString);
