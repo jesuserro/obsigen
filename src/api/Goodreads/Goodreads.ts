@@ -9,6 +9,8 @@ export class Goodreads {
     private parser: DOMParser;
     private static readonly GOODREADS_URL_BASE = 'https://www.goodreads.com';
     private static readonly GOODREADS_RSS_REVIEWS_URL = 'review/list_rss';
+    private static readonly GOODREADS_RSS_BOOK_URL = "book/show?format=xml&key=$apikey&id=$bookId";
+    private static readonly GOODREADS_RSS_AUTHOR_URL = "author/show.xml?key=$apikey&id=$authorId";
 
     constructor(app: App) {
         this.app = app;
@@ -69,6 +71,32 @@ export class Goodreads {
             return response.text;
         } catch (error) {
             console.error(`Error de red al obtener la información de reviews: ${error}`);
+            return null;
+        }
+    }
+
+    private async fetchBookXmlString(bookId: string): Promise<string | null> {
+        const { goodreads_apikey }: MyPluginSettings = (this.app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
+        const url = `${Goodreads.GOODREADS_URL_BASE}/${Goodreads.GOODREADS_RSS_BOOK_URL.replace('$apikey', goodreads_apikey).replace('$bookId', bookId)}`;
+
+        try {
+            const response = await requestUrl(url);
+            return response.text;
+        } catch (error) {
+            console.error(`Error de red al obtener la información del libro: ${error}`);
+            return null;
+        }
+    }
+
+    private async fetchAuthorXmlString(authorId: string): Promise<string | null> {
+        const { goodreads_apikey }: MyPluginSettings = (this.app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
+        const url = `${Goodreads.GOODREADS_URL_BASE}/${Goodreads.GOODREADS_RSS_AUTHOR_URL.replace('$apikey', goodreads_apikey).replace('$authorId', authorId)}`;
+
+        try {
+            const response = await requestUrl(url);
+            return response.text;
+        } catch (error) {
+            console.error(`Error de red al obtener la información del autor: ${error}`);
             return null;
         }
     }
