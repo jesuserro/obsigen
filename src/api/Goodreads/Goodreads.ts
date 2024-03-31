@@ -26,7 +26,10 @@ export class Goodreads {
         if (!xmlString) return;
 
         const reviews = await this.parseReviews(xmlString);
-        this.processRandomReview(reviews);
+        console.log(`Número total de revisiones: ${reviews.length}`);
+        const randomIndex = Math.floor(Math.random() * reviews.length);
+        const review = reviews[randomIndex];
+        this.showReview(review);
     }
 
     public async getReviewByGuid(guid: string) {
@@ -34,12 +37,13 @@ export class Goodreads {
         if (!xmlString) return;
 
         const reviews = await this.parseReviews(xmlString);
+        console.log(`Número total de revisiones: ${reviews.length}`);
         const review = reviews.find(review => review.guid === guid);
         if (!review) {
             console.error(`No se encontró ninguna revisión con el GUID: ${guid}`);
             return;
         }
-        this.processReview(review);
+        this.showReview(review);
     }
 
     public async getReviewByIsbn(isbn: string) {
@@ -47,12 +51,13 @@ export class Goodreads {
         if (!xmlString) return;
 
         const reviews = await this.parseReviews(xmlString);
+        console.log(`Número total de revisiones: ${reviews.length}`);
         const review = reviews.find(review => review.isbn === isbn);
         if (!review) {
             console.error(`No se encontró ninguna revisión con el ISBN: ${isbn}`);
             return;
         }
-        this.processReview(review);
+        this.showReview(review);
     }
 
     private async fetchReviewsXmlString(shelf: string): Promise<string | null> {
@@ -102,14 +107,7 @@ export class Goodreads {
         };
     }
 
-    private async processRandomReview(reviews: any[]) {
-        console.log(`Número total de revisiones: ${reviews.length}`);
-        const randomIndex = Math.floor(Math.random() * reviews.length);
-        const randomReview = reviews[randomIndex];
-        this.processReview(randomReview);
-    }
-
-    private async processReview(review: any) {
+    private async showReview(review: any) {
         const date = new Date(review.date);
         new Review(date).createNote(this.app, review);
         console.log('Detalles de la revisión seleccionada:');
