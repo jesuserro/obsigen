@@ -7,7 +7,8 @@ export class Goodreads {
     private app: App;
     private turndownService: TurndownService;
     private parser: DOMParser;
-    private static readonly GOODREADS_RSS_URL = 'https://www.goodreads.com/review/list_rss';
+    private static readonly GOODREADS_URL_BASE = 'https://www.goodreads.com';
+    private static readonly GOODREADS_RSS_REVIEWS_URL = 'review/list_rss';
 
     constructor(app: App) {
         this.app = app;
@@ -18,7 +19,7 @@ export class Goodreads {
     public async getFeedReviewsByShelf(shelf: string): Promise<string | null> {
         const { goodreads_user, goodreads_apikey }: MyPluginSettings = (this.app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
 
-        const url = `${Goodreads.GOODREADS_RSS_URL}/${goodreads_user}?key=${goodreads_apikey}&shelf=${shelf}`;
+        const url = `${Goodreads.GOODREADS_URL_BASE}/${Goodreads.GOODREADS_RSS_REVIEWS_URL}/${goodreads_user}?key=${goodreads_apikey}&shelf=${shelf}`;
 
         try {
             const response = await requestUrl(url);
