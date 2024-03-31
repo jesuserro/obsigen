@@ -23,6 +23,7 @@ export class Goodreads {
 
         try {
             const response = await requestUrl(url);
+            console.log(response.text);
             return response.text;
 
         } catch (error) {
@@ -57,6 +58,7 @@ export class Goodreads {
 
         return {
             guid: guid,
+            isbn: item.querySelector('isbn')?.textContent,
             title: item.querySelector('title')?.textContent,
             authors: item.querySelector('author_name')?.textContent,
             rating: item.querySelector('user_rating')?.textContent,

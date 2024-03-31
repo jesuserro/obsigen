@@ -63,3 +63,51 @@ export const DATA_YAML_SAMPLE: iYaml = {
 	emotion: 5,
 	favorite: false
 };
+
+export interface Review {
+	title: string,
+	aliases: string[],
+    guid: string,
+    isbn: string[],
+	date: String,
+	creation: Date, 
+	updated: Date,
+	links: string[],
+	urls: string,
+	authors: string[],
+	locations: string,
+	tags: string[],
+	publish: boolean,
+	permalink: string, 
+	description: string,
+	image: string,
+	cover: string,
+	cssclasses: string[],
+	rating: number,
+	emotion: number,
+	favorite: boolean
+}
+
+export const DATA_YAML_REVIEW_DEFAULT: Review = {
+	title: '',
+    guid: '',
+    isbn: [],
+	aliases: [],
+	date: new Date().toISOString(),
+	creation: new Date(), 
+	updated: new Date(),
+	links: [],
+	urls: "",
+	authors: [],
+	locations: "",
+	tags: [],
+	publish: false,
+	permalink: '', 
+	description: '',
+	image: '',
+	cover: '',
+	cssclasses: [],
+	rating: 0,
+	emotion: 0,
+	favorite: false
+};

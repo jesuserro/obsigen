@@ -1,12 +1,14 @@
 import { App } from 'obsidian';
 import { renderToString } from 'react-dom/server';
 import { NoteGenerator } from 'src/core/notes/NoteGenerator';
-import { DATA_YAML_DEFAULT } from 'src/core/shared/interface/iYaml';
+import { DATA_YAML_REVIEW_DEFAULT } from 'src/core/shared/interface/iYaml';
 import { Yaml } from 'src/core/shared/templates/Yaml';
 
 export class Review {
   private app: App;
   private noteGenerator: NoteGenerator;
+  private guid: string;
+  private isbn: string;
   private yaml: string;
   private title: string;
   private content: string;
@@ -32,6 +34,8 @@ export class Review {
     this.noteGenerator = new NoteGenerator(this.app);
 
     this.title = this.getTitle(review.title);
+    this.guid = review.guid;
+    this.isbn = review.isbn;
     this.content = review.content;
     this.year = this.date.getFullYear();
     this.month = this.date.getMonth() + 1;
@@ -53,15 +57,17 @@ export class Review {
   private setYaml() {
     const link = `"[[${this.getCurrentDate()}]]"`;
     const data = {
-      ...DATA_YAML_DEFAULT,
-      title: this.title.replace(/[*"\\\/<>:|?¿,.;]/g, ''),
+      ...DATA_YAML_REVIEW_DEFAULT,
+      title: this.title.replace(/[*"\\\/<>:|?¿,.;#]/g, ''),
+      guid: this.guid,
+      isbn: this.isbn,
       date: this.convertDateToIsoString(this.date),
-      links: [...DATA_YAML_DEFAULT.links, link],
+      links: [...DATA_YAML_REVIEW_DEFAULT.links, link],
       locations: this.getListForYamlProperty(this.locations, true),
       urls: this.getListForYamlProperty(this.urls),
-      tags: [...DATA_YAML_DEFAULT.tags, this.tags],
+      tags: [...DATA_YAML_REVIEW_DEFAULT.tags, this.tags],
       cover: this.cover,
-      cssclasses: [...DATA_YAML_DEFAULT.cssclasses, 'review'],
+      cssclasses: [...DATA_YAML_REVIEW_DEFAULT.cssclasses, 'review'],
       rating: this.rating
     };
 
