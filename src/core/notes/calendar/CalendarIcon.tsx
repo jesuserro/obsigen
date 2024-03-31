@@ -11,7 +11,7 @@ import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHeadSideCough, FaHeadphones, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaGift, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
 import { FcCalendar } from 'react-icons/fc';
-import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiCrownCoin, GiDeathSkull, GiDevilMask, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiVillage, GiWheat } from 'react-icons/gi';
+import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiCrownCoin, GiDeathSkull, GiDevilMask, GiFarmer, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoMdBasket, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
@@ -153,6 +153,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   euro: ({ size }) => <FaEuroSign size={size} className="yellow" />,
   evil: ({ size }) => <GiDevilMask size={size} className="red" />,
   family: ({ size }) => <MdGroup size={size} className="yellow" />, 
+  farmer: ({ size }) => <GiFarmer size={size} className="brown" />, 
   fatigue: ({ size }) => <FaGrinTongueWink size={size} className="yellow emoji" />, 
   fatima: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Fatima" />,
   favorite: ({ size }) => <FaStar size={size} className="yellow" />, 
