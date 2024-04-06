@@ -9,6 +9,7 @@ export class Book {
   private noteGenerator: NoteGenerator;
   private id: string;
   private isbn: string;
+  private isbn13: string;
   private asin: string;
   private yaml: string;
   private title: string;
@@ -29,6 +30,7 @@ export class Book {
   private num_pages: number = 0;
   private average_rating: number = 0;
   private ratings_count: number = 0;
+  private country_code: string = '';
 
   constructor(app: App, book: Book) {
     this.app = app;
@@ -39,6 +41,7 @@ export class Book {
     this.title = this.getTitle(book.title);
     this.id = book.id;
     this.isbn = book.isbn;
+    this.isbn13 = book.isbn13;
     this.asin = book.asin;
     this.description = book.description;
     this.year = bookDate.getFullYear();
@@ -52,6 +55,7 @@ export class Book {
     this.num_pages = book.num_pages || 0;
     this.average_rating = book.average_rating || 0;
     this.ratings_count = book.ratings_count || 0;
+    this.country_code = book.country_code || '';
     this.setYaml();
     this.fileName = this.getFilename(this.title);
     this.setContent(book.description);
@@ -69,6 +73,7 @@ export class Book {
       title: this.title.replace(/[*"\\\/<>:|?¿,.;#]/g, ''),
       id: this.id,
       isbn: this.isbn,
+      isbn13: this.isbn13,
       asin: this.asin,
       date: this.convertDateToIsoString(this.date),
       links: [...DATA_YAML_BOOK_DEFAULT.links, link],
@@ -80,7 +85,8 @@ export class Book {
       rating: this.rating,
       num_pages: this.num_pages,
       average_rating: this.average_rating,
-      ratings_count: this.ratings_count
+      ratings_count: this.ratings_count,
+      country_code: this.country_code
     };
 
     let yaml = renderToString(Yaml({ data }));
