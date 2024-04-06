@@ -31,7 +31,7 @@ export class Goodreads {
         console.log(`Número total de revisiones: ${reviews.length}`);
         const randomIndex = Math.floor(Math.random() * reviews.length);
         const review = reviews[randomIndex];
-        this.showReview(review);
+        new Review(this.app, review).createNote();
     }
 
     public async getReviewByGuid(guid: string) {
@@ -45,7 +45,7 @@ export class Goodreads {
             console.error(`No se encontró ninguna revisión con el GUID: ${guid}`);
             return;
         }
-        this.showReview(review);
+        new Review(this.app, review).createNote();
     }
 
     public async getReviewByIsbn(isbn: string) {
@@ -59,7 +59,7 @@ export class Goodreads {
             console.error(`No se encontró ninguna revisión con el ISBN: ${isbn}`);
             return;
         }
-        this.showReview(review);
+        new Review(this.app, review).createNote();
     }
 
     private async fetchReviewsXmlString(shelf: string): Promise<string | null> {
@@ -133,13 +133,5 @@ export class Goodreads {
             cover: item.querySelector('book_large_image_url')?.textContent,
             content: content
         };
-    }
-
-    private async showReview(review: any) {
-        new Review(this.app, review).createNote();
-        // console.log('Detalles de la revisión seleccionada:');
-        Object.entries(review).forEach(([key, value]) => {
-            // console.log(`${key}: ${value}`);
-        });
     }
 }
