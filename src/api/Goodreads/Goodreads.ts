@@ -46,6 +46,16 @@ export class Goodreads {
             return;
         }
         new Review(this.app, review).createNote();
+
+        // BOOK INFORMATION
+        // 1. Show book information in the console for debugging purposes
+        const bookXmlString = await this.fetchBookXmlString(review.book_id);
+        if (!bookXmlString) return;
+
+        // 2. Parse book item and show it in the console for debugging purposes
+        const bookItem = this.parser.parseFromString(bookXmlString, 'text/xml').querySelector('book');
+        console.log(bookItem);
+
     }
 
     public async getReviewByIsbn(isbn: string) {
