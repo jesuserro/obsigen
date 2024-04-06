@@ -26,6 +26,9 @@ export class Book {
   private youtubeRegexp: RegExp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
   private content: string = '';
   private date: Date = new Date();
+  private num_pages: number = 0;
+  private average_rating: number = 0;
+  private ratings_count: number = 0;
 
   constructor(app: App, book: Book) {
     this.app = app;
@@ -46,6 +49,9 @@ export class Book {
     this.locations = '';
     this.urls = this.cleanUrls(book.urls) || '';
     this.tags = book.tags || '';
+    this.num_pages = book.num_pages || 0;
+    this.average_rating = book.average_rating || 0;
+    this.ratings_count = book.ratings_count || 0;
     this.setYaml();
     this.fileName = this.getFilename(this.title);
     this.setContent(book.description);
@@ -71,7 +77,10 @@ export class Book {
       tags: [...DATA_YAML_BOOK_DEFAULT.tags, this.tags],
       cover: this.cover,
       cssclasses: [...DATA_YAML_BOOK_DEFAULT.cssclasses, 'book'],
-      rating: this.rating
+      rating: this.rating,
+      num_pages: this.num_pages,
+      average_rating: this.average_rating,
+      ratings_count: this.ratings_count
     };
 
     let yaml = renderToString(Yaml({ data }));

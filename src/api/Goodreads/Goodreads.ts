@@ -179,7 +179,10 @@ export class Goodreads {
             urls: item.querySelector('link')?.textContent,
             book_id: item.querySelector('book_id')?.textContent,
             cover: item.querySelector('image_url')?.textContent,
-            description: description
+            description: description,
+            num_pages: item.querySelector('num_pages')?.textContent,
+            average_rating: item.querySelector('average_rating')?.textContent,
+            ratings_count: item.querySelector('ratings_count')?.textContent,
         };
     }
 
