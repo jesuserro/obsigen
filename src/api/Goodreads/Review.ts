@@ -21,25 +21,23 @@ export class Review {
   private locations: string;
   private urls: string;
   private tags: string;
-  private twitterRegexp: RegExp;
-  private youtubeRegexp: RegExp;
+  private twitterRegexp: RegExp = new RegExp('https?://(?:mobile\\.)?twitter\\.com/.*');
+  private youtubeRegexp: RegExp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
+  private date: Date = new Date();
 
-  constructor(private date: Date) {
-    this.twitterRegexp = new RegExp('https?://(?:mobile\\.)?twitter\\.com/.*');
-    this.youtubeRegexp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
-  }
-
-  async createNote(app: App, review: Review) {
+  constructor(app: App, review: Review) {
     this.app = app;
     this.noteGenerator = new NoteGenerator(this.app);
+
+    const reviewDate = new Date(review.date);
 
     this.title = this.getTitle(review.title);
     this.guid = review.guid;
     this.isbn = review.isbn;
     this.content = review.content;
-    this.year = this.date.getFullYear();
-    this.month = this.date.getMonth() + 1;
-    this.day = this.date.getDate();
+    this.year = reviewDate.getFullYear();
+    this.month = reviewDate.getMonth() + 1;
+    this.day = reviewDate.getDate();
     this.rating = review.rating * 2;
     this.cover = review.cover;
     this.locations = '';
@@ -48,9 +46,10 @@ export class Review {
     this.setYaml();
     this.fileName = this.getFilename(this.title);
     this.setContent(review.content);
+  }
 
+  async createNote() {
     const path = this.getPath();
-
     await this.noteGenerator.createNote(this.fileName, this.content, path);
   }
 
