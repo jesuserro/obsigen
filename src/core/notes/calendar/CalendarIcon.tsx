@@ -14,7 +14,7 @@ import { FcCalendar } from 'react-icons/fc';
 import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiCrownCoin, GiDeathSkull, GiDevilMask, GiFarmer, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
-import { IoIosBeer, IoMdBasket, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
+import { IoIosBeer, IoMdBasket, IoMdCafe, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
 import { IoFootsteps, IoHardwareChipOutline } from 'react-icons/io5';
 import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold } from 'react-icons/pi';
@@ -126,6 +126,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   book: ({ size }) => <FaBook size={size} className="blue kindle" />, 
   bookmark: ({ size }) => <FaBookmark size={size} className="blue cobalt" />,
   buy: ({ size }) => <IoMdBasket size={size} className="red" />,
+  cafe: ({ size }) => <IoMdCafe size={size} className="yellow" />, 
   calendar: ({ size }) => <BsFillCalendar2WeekFill size={size} className="blue ui" />, 
   camera: ({ size }) => <FaCamera size={size} className="blue sky" />, 
   car: ({ size }) => <FaCarSide size={size} className="red c3" />, 
