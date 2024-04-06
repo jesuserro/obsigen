@@ -136,7 +136,6 @@ export class Goodreads {
     }
 
     private async showReview(review: any) {
-        const date = new Date(review.date);
         new Review(this.app, review).createNote();
         // console.log('Detalles de la revisión seleccionada:');
         Object.entries(review).forEach(([key, value]) => {
