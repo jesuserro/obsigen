@@ -2,6 +2,7 @@ import { App, requestUrl } from 'obsidian';
 import { Review } from 'src/api/Goodreads/Review';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 import TurndownService from 'turndown';
+import { Book } from './Book';
 
 export class Goodreads {
     private app: App;
@@ -45,7 +46,7 @@ export class Goodreads {
             console.error(`No se encontró ninguna revisión con el GUID: ${guid}`);
             return;
         }
-        new Review(this.app, review).createNote();
+        // new Review(this.app, review).createNote();
 
         // BOOK INFORMATION
         // 1. Show book information in the console for debugging purposes
@@ -53,9 +54,13 @@ export class Goodreads {
         if (!bookXmlString) return;
 
         // 2. Parse book item and show it in the console for debugging purposes
-        const bookItem = this.parser.parseFromString(bookXmlString, 'text/xml').querySelector('book');
+        const bookItem = this.parser.parseFromString(bookXmlString, 'text/xml').querySelector('book') as Element;
         console.log(bookItem);
+        // Parse bookItem Element into a Book object
+        const book = new Book(this.app, this.parseBookItem(bookItem));
+        // console.log(book);
 
+        new Book(this.app, book).createNote();
     }
 
     public async getReviewByIsbn(isbn: string) {
@@ -143,5 +148,46 @@ export class Goodreads {
             cover: item.querySelector('book_large_image_url')?.textContent,
             content: content
         };
+    }
+
+    private parseBookItem(item: Element): any {
+        const shelvesElement = item.querySelector('popular_shelves');
+        const shelves = shelvesElement ? shelvesElement.textContent?.split(',').map(shelf => shelf.trim()) : [];
+
+        let description = item.querySelector('description')?.textContent ?? '';
+        description = this.turndownService.turndown(description);
+
+        const year = item.querySelector('publication_year')?.textContent || '2024';
+        let month = item.querySelector('publication_month')?.textContent || '01';
+        // pad month with 0
+        if (month.length === 1) month = `0${month}`;
+        let day = item.querySelector('publication_day')?.textContent || '01';
+        // pad day with 0
+        if (day.length === 1) day = `0${day}`;
+
+        return {
+            id: item.querySelector('id')?.textContent?.match(/\d+/)?.[0] || null,
+            isbn: item.querySelector('isbn')?.textContent,
+            isbn13: item.querySelector('isbn13')?.textContent,
+            asin: item.querySelector('asin')?.textContent,
+            kindle_asin: item.querySelector('kindle_asin')?.textContent,
+            title: item.querySelector('title')?.textContent,
+            authors: item.querySelector('author_name')?.textContent,
+            rating: item.querySelector('user_rating')?.textContent,
+            date: this.getBookDate(year, month, day),
+            tags: shelves,
+            urls: item.querySelector('link')?.textContent,
+            book_id: item.querySelector('book_id')?.textContent,
+            cover: item.querySelector('image_url')?.textContent,
+            description: description
+        };
+    }
+
+    // Create new fn getBookDate(year, month, day) to get the date of the book
+    private getBookDate(year: string | null, month: string | null, day: string | null): string {
+        if (!year) return '';
+        if (!month) return year;
+        if (!day) return `${year}-${month}`;
+        return `${year}-${month}-${day}`;
     }
 }
