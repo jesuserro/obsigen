@@ -151,7 +151,7 @@ export class Goodreads {
     }
 
     private parseBookItem(item: Element): any {
-        const shelvesElement = item.querySelector('popular_shelves');
+        const authorNames = this.getAuthorNames(item);
         const shelfNames = this.getShelfNames(item);
     
         let description = item.querySelector('description')?.textContent ?? '';
@@ -166,7 +166,7 @@ export class Goodreads {
             asin: item.querySelector('asin')?.textContent,
             kindle_asin: item.querySelector('kindle_asin')?.textContent,
             title: item.querySelector('title')?.textContent,
-            authors: item.querySelector('author_name')?.textContent,
+            authors: authorNames.join(', '),
             rating: item.querySelector('user_rating')?.textContent,
             date: date,
             tags: shelfNames.join(', '),
@@ -241,5 +241,24 @@ export class Goodreads {
         
         return shelfNames;
     }
+
+    private getAuthorNames(item: Element): string[] {
+        const authorElements = item.querySelectorAll('authors > author');
+        const authorNames: string[] = [];
+        
+        authorElements.forEach((authorElement) => {
+            // Check if the parent node of authorElement is not similar_books
+            if (authorElement.parentElement?.tagName.toLowerCase() !== 'similar_books') {
+                const authorName = authorElement.querySelector('name')?.textContent?.trim();
+                if (authorName) {
+                    authorNames.push(authorName);
+                }
+            }
+        });
+        
+        return authorNames;
+    }
+    
+    
     
 }

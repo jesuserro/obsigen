@@ -13,6 +13,7 @@ export class Book {
   private asin: string;
   private yaml: string;
   private title: string;
+  private authors: string[];
   private description: string;
   private fileName: string;
   private cover: string;
@@ -38,6 +39,7 @@ export class Book {
     this.noteGenerator = new NoteGenerator(this.app);
 
     this.title = this.getTitle(book.title);
+    this.authors = book.authors;
     this.id = book.id;
     this.isbn = book.isbn;
     this.isbn13 = book.isbn13;
@@ -72,6 +74,7 @@ export class Book {
     const data = {
       ...DATA_YAML_BOOK_DEFAULT,
       title: this.title.replace(/[*"\\\/<>:|?¿,.;#]/g, ''),
+      authors: this.authors,
       id: this.id,
       isbn: this.isbn,
       isbn13: this.isbn13,
