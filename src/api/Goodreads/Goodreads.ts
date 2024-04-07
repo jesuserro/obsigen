@@ -60,7 +60,7 @@ export class Goodreads {
         const book = new Book(this.app, this.parseBookItem(bookItem));
         // console.log(book);
 
-        book.createNote();
+        // book.createNote();
     }
 
     public async getReviewByIsbn(isbn: string) {
@@ -247,17 +247,19 @@ export class Goodreads {
         const authorNames: string[] = [];
         
         authorElements.forEach((authorElement) => {
-            // Check if the parent node of authorElement is not similar_books
-            if (authorElement.parentElement?.tagName.toLowerCase() !== 'similar_books') {
-                const authorName = authorElement.querySelector('name')?.textContent?.trim();
-                if (authorName) {
-                    authorNames.push(authorName);
-                }
+            const authorName = authorElement.querySelector('name')?.textContent?.trim();
+            if (authorName) {
+                authorNames.push(authorName);
             }
         });
+
+        console.log(authorNames);
         
         return authorNames;
     }
+    
+    
+    
     
     
     
