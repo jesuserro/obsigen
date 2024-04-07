@@ -178,6 +178,7 @@ export class Goodreads {
             average_rating: item.querySelector('average_rating')?.textContent,
             ratings_count: item.querySelector('ratings_count')?.textContent,
             country_code: item.querySelector('country_code')?.textContent,
+            text_reviews_count: item.querySelector('text_reviews_count')?.textContent
         };
     }
     

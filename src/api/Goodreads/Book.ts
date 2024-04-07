@@ -30,6 +30,7 @@ export class Book {
   private num_pages: number = 0;
   private average_rating: number = 0;
   private ratings_count: number = 0;
+  private text_reviews_count: number = 0;
   private country_code: string = '';
 
   constructor(app: App, book: Book) {
@@ -54,6 +55,7 @@ export class Book {
     this.num_pages = book.num_pages || 0;
     this.average_rating = book.average_rating || 0;
     this.ratings_count = book.ratings_count || 0;
+    this.text_reviews_count = book.text_reviews_count || 0;
     this.country_code = book.country_code || '';
     this.setYaml();
     this.fileName = this.getFilename(this.title);
@@ -85,6 +87,7 @@ export class Book {
       num_pages: this.num_pages,
       average_rating: this.average_rating,
       ratings_count: this.ratings_count,
+      text_reviews_count: this.text_reviews_count,
       country_code: this.country_code
     };
 
