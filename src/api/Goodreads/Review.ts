@@ -29,15 +29,14 @@ export class Review {
     this.app = app;
     this.noteGenerator = new NoteGenerator(this.app);
 
-    const reviewDate = new Date(review.date);
-
     this.title = this.getTitle(review.title);
     this.guid = review.guid;
     this.isbn = review.isbn;
     this.content = review.content;
-    this.year = reviewDate.getFullYear();
-    this.month = reviewDate.getMonth() + 1;
-    this.day = reviewDate.getDate();
+    this.date = new Date(review.date);
+    this.year = this.date.getFullYear();
+    this.month = this.date.getMonth() + 1;
+    this.day = this.date.getDate();
     this.rating = review.rating * 2;
     this.cover = review.cover;
     this.locations = '';
