@@ -152,7 +152,7 @@ export class Goodreads {
 
     private parseBookItem(item: Element): any {
         const shelvesElement = item.querySelector('popular_shelves');
-        const shelves = shelvesElement ? shelvesElement.textContent?.split(',').map(shelf => shelf.trim()) : [];
+        const shelfNames = this.getShelfNames(item);
     
         let description = item.querySelector('description')?.textContent ?? '';
         description = this.turndownService.turndown(description);
@@ -169,7 +169,7 @@ export class Goodreads {
             authors: item.querySelector('author_name')?.textContent,
             rating: item.querySelector('user_rating')?.textContent,
             date: date,
-            tags: shelves,
+            tags: shelfNames.join(', '),
             urls: item.querySelector('link')?.textContent,
             book_id: item.querySelector('book_id')?.textContent,
             cover: item.querySelector('image_url')?.textContent,
@@ -225,6 +225,20 @@ export class Goodreads {
             const originalPublicationDay = item.querySelector('work > original_publication_day');
             return originalPublicationDay ? parseInt(originalPublicationDay.textContent ?? '1', 10) : 1;
         }
+    }
+
+    private getShelfNames(item: Element): string[] {
+        const shelfElements = item.querySelectorAll('popular_shelves > shelf');
+        const shelfNames: string[] = [];
+        
+        shelfElements.forEach((shelfElement) => {
+            const shelfName = shelfElement.getAttribute('name');
+            if (shelfName) {
+                shelfNames.push(shelfName);
+            }
+        });
+        
+        return shelfNames;
     }
     
 }
