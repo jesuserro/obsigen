@@ -36,17 +36,16 @@ export class Book {
     this.app = app;
     this.noteGenerator = new NoteGenerator(this.app);
 
-    const bookDate = new Date(book.date);
-
     this.title = this.getTitle(book.title);
     this.id = book.id;
     this.isbn = book.isbn;
     this.isbn13 = book.isbn13;
     this.asin = book.asin;
     this.description = book.description;
-    this.year = bookDate.getFullYear();
-    this.month = bookDate.getMonth() + 1;
-    this.day = bookDate.getDate();
+    this.date = new Date(book.date);
+    this.year = this.date.getFullYear();
+    this.month = this.date.getMonth() + 1;
+    this.day = this.date.getDate();
     this.rating = book.rating * 2;
     this.cover = book.cover;
     this.locations = '';
