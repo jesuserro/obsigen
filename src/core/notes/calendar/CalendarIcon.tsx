@@ -11,7 +11,7 @@ import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHeadSideCough, FaHeadphones, FaHiking, FaInstagram, FaKey, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTired, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaGift, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
 import { FcCalendar } from 'react-icons/fc';
-import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiCrownCoin, GiDeathSkull, GiDevilMask, GiFarmer, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiVillage, GiWheat } from 'react-icons/gi';
+import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoMdBasket, IoMdCafe, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
@@ -148,6 +148,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   doctor: ({ size }) => <FaUserDoctor size={size} className="green" />,
   dream: ({ size }) => <TbZzz size={size} className="blue cobalt" />,
   earthquake: ({ size }) => <RiEarthquakeFill size={size} className="red" />,
+  eclipse: ({ size }) => <GiEclipse size={size} className="yellow" />,
   elections: ({ size }) => <FaVoteYea size={size} className="orange" />,
   email: ({ size }) => <BiLogoGmail size={size} className="red" />,
   emaus: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Emaus" />,
