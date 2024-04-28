@@ -16,7 +16,7 @@ import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoMdBasket, IoMdCafe, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
 import { IoFootsteps, IoHardwareChipOutline } from 'react-icons/io5';
-import { MdBuild, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlinePiano, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
+import { MdBuild, MdCardTravel, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlinePiano, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold } from 'react-icons/pi';
 import { RiEarthquakeFill } from "react-icons/ri";
 import { SiTinder as IconoTinder, SiGimp, SiGooglemeet, SiInsomnia, SiOpenai, SiPlex, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
@@ -238,6 +238,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   pilar: ({ size }) => <CustomIcon size={size} className="pink" iconName="Pilar" />,
   pill: ({ size }) => <CiPill size={size} className="yellow" />,
   pilloff: ({ size }) => <TbPillOff size={size} className="grey" />,
+  plain: ({ size }) => <GiCommercialAirplane size={size} style={{ color: '#1199c2' }} />,
   plentyoffish: ({ size }) => <IconoPlentyoffish size={size} className="pink" />,
   plex: ({ size }) => <SiPlex size={size} className="orange" />,
   podcast: ({ size }) => <FaPodcast size={size} className="orange" />,
@@ -282,7 +283,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   tinder: ({ size }) => <IconoTinder size={size} style={{ color: '#FE3C72' }} />,
   tired: ({ size }) => <FaTired size={size} style={{ color: '#FFC83D' }} />,
   train: ({ size }) => <FaTrain size={size} className="brown" />,
-  travel: ({ size }) => <GiCommercialAirplane size={size} style={{ color: '#1199c2' }} />,
+  travel: ({ size }) => <MdCardTravel size={size} className="brown" />,
   tree: ({ size }) => <FaTree size={size} style={{ color: '#228B22' }} />,
   twitter: ({ size }) => <SiTwitter size={size} className="blue twitter" />,
   vatican: ({ size }) => <Flag country='VA' size={size} className="" />,
