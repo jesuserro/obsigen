@@ -39,6 +39,7 @@ export class Goodreads {
         const xmlString = await this.getFeedReviewsByShelf('read');
         if (!xmlString) return;
 
+        // 1. REVIEW INFORMATION
         const reviews = await this.parseReviews(xmlString);
         console.log(`Número total de revisiones: ${reviews.length}`);
         const review = reviews.find(review => review.guid === guid);
@@ -46,21 +47,31 @@ export class Goodreads {
             console.error(`No se encontró ninguna revisión con el GUID: ${guid}`);
             return;
         }
+        // 1.1. Create Review Note
         // new Review(this.app, review).createNote();
 
-        // BOOK INFORMATION
-        // 1. Show book information in the console for debugging purposes
+        // 2. BOOK INFORMATION
+        // 2.1. Show book information in the console for debugging purposes
         const bookXmlString = await this.fetchBookXmlString(review.book_id);
         if (!bookXmlString) return;
 
-        // 2. Parse book item and show it in the console for debugging purposes
+        // 2.2. Parse book item and show it in the console for debugging purposes
         const bookItem = this.parser.parseFromString(bookXmlString, 'text/xml').querySelector('book') as Element;
-        console.log(bookItem);
-        // Parse bookItem Element into a Book object
-        const book = new Book(this.app, this.parseBookItem(bookItem));
-        // console.log(book);
+        // 2.3. Parse bookItem Element into a Book object
+        const parsedBookData = this.parseBookItem(bookItem);
+        console.log(review, bookItem, parsedBookData);
 
-        // book.createNote();
+        // 2.4. Mixing review/book data: if empty parsedBookData.cover then set parsedBookData.cover = review.cover
+        if (!parsedBookData.cover) {
+            parsedBookData.cover = review.cover;
+        }
+        // 2.5. Create Book Note
+        const book = new Book(this.app, parsedBookData);
+        book.createNote();
+
+        // AUTHOR INFORMATION
+        // 3.1. Show author information in the console for debugging purposes
+        // const authorXmlString = await this.fetchAuthorXmlString(bookItem.querySelector('author > id')?.textContent ?? '');
     }
 
     public async getReviewByIsbn(isbn: string) {
@@ -128,57 +139,57 @@ export class Goodreads {
         }
     }
 
-    private parseReviewItem(item: Element): any {
-        const shelvesElement = item.querySelector('user_shelves');
-        const shelves = shelvesElement ? shelvesElement.textContent?.split(',').map(shelf => shelf.trim()) : [];
+    private parseReviewItem(review: Element): any {
+        const shelvesElement = review.querySelector('user_shelves');
+        const shelves = shelvesElement ? shelvesElement.textContent?.split(',').map(shelf => `Goodreads/Reviews/${shelf.trim()}`) : [];
 
-        let content = item.querySelector('user_review')?.textContent ?? '';
+        let content = review.querySelector('user_review')?.textContent ?? '';
         content = this.turndownService.turndown(content);
 
         return {
-            guid: item.querySelector('guid')?.textContent?.match(/\d+/)?.[0] || null,
-            isbn: item.querySelector('isbn')?.textContent,
-            title: item.querySelector('title')?.textContent,
-            authors: item.querySelector('author_name')?.textContent,
-            rating: item.querySelector('user_rating')?.textContent,
-            date: item.querySelector('user_read_at')?.textContent,
+            guid: review.querySelector('guid')?.textContent?.match(/\d+/)?.[0] || null,
+            isbn: review.querySelector('isbn')?.textContent,
+            title: review.querySelector('title')?.textContent,
+            authors: review.querySelector('author_name')?.textContent,
+            rating: review.querySelector('user_rating')?.textContent,
+            date: review.querySelector('user_read_at')?.textContent,
             tags: shelves,
-            urls: item.querySelector('link')?.textContent,
-            book_id: item.querySelector('book_id')?.textContent,
-            cover: item.querySelector('book_large_image_url')?.textContent,
+            urls: review.querySelector('link')?.textContent,
+            book_id: review.querySelector('book_id')?.textContent,
+            cover: review.querySelector('book_large_image_url')?.textContent,
             content: content
         };
     }
 
-    private parseBookItem(item: Element): any {
-        const authorNames = this.getAuthorNames(item);
-        const shelfNames = this.getShelfNames(item);
+    private parseBookItem(book: Element): any {
+        const authorNames = this.getAuthorNames(book);
+        const shelfNames = this.getShelfNames(book);
     
-        let description = item.querySelector('description')?.textContent ?? '';
+        let description = book.querySelector('description')?.textContent ?? '';
         description = this.turndownService.turndown(description);
     
-        const date = this.getBookDate(item);
+        const date = this.getBookDate(book);
     
         return {
-            id: item.querySelector('id')?.textContent?.match(/\d+/)?.[0] || null,
-            isbn: item.querySelector('isbn')?.textContent,
-            isbn13: item.querySelector('isbn13')?.textContent,
-            asin: item.querySelector('asin')?.textContent,
-            kindle_asin: item.querySelector('kindle_asin')?.textContent,
-            title: item.querySelector('title')?.textContent,
+            id: book.querySelector('id')?.textContent?.match(/\d+/)?.[0] || null,
+            isbn: book.querySelector('isbn')?.textContent,
+            isbn13: book.querySelector('isbn13')?.textContent,
+            asin: book.querySelector('asin')?.textContent,
+            kindle_asin: book.querySelector('kindle_asin')?.textContent,
+            title: book.querySelector('title')?.textContent,
             authors: authorNames.join(', '),
-            rating: item.querySelector('user_rating')?.textContent,
             date: date,
             tags: shelfNames.join(', '),
-            urls: item.querySelector('link')?.textContent,
-            book_id: item.querySelector('book_id')?.textContent,
-            cover: item.querySelector('image_url')?.textContent,
+            urls: book.querySelector('link')?.textContent,
+            book_id: book.querySelector('book_id')?.textContent,
+            cover: book.querySelector('image_url')?.textContent,
             description: description,
-            num_pages: item.querySelector('num_pages')?.textContent,
-            average_rating: item.querySelector('average_rating')?.textContent,
-            ratings_count: item.querySelector('ratings_count')?.textContent,
-            country_code: item.querySelector('country_code')?.textContent,
-            text_reviews_count: item.querySelector('text_reviews_count')?.textContent
+            num_pages: book.querySelector('num_pages')?.textContent,
+            average_rating: book.querySelector('average_rating')?.textContent,
+            ratings_count: book.querySelector('ratings_count')?.textContent,
+            country_code: book.querySelector('country_code')?.textContent,
+            text_reviews_count: book.querySelector('text_reviews_count')?.textContent,
+            rating: book.querySelector('user_rating')?.textContent
         };
     }
     
@@ -228,22 +239,23 @@ export class Goodreads {
         }
     }
 
-    private getShelfNames(item: Element): string[] {
-        const shelfElements = item.querySelectorAll('popular_shelves > shelf');
+    private getShelfNames(book: Element): string[] {
+        const shelfElements = book.querySelectorAll('popular_shelves > shelf');
         const shelfNames: string[] = [];
         
         shelfElements.forEach((shelfElement) => {
             const shelfName = shelfElement.getAttribute('name');
             if (shelfName) {
-                shelfNames.push(shelfName);
+                shelfNames.push(`Goodreads/Books/${shelfName}`);
             }
         });
         
         return shelfNames;
     }
 
-    private getAuthorNames(item: Element): string[] {
-        const authorElements = item.querySelectorAll('authors > author');
+    private getAuthorNames(book: Element): string[] {
+        // Asegurarse de que solo se seleccionan autores directamente relacionados con el nodo principal del libro
+        const authorElements = book.querySelectorAll(':scope > authors > author');
         const authorNames: string[] = [];
         
         authorElements.forEach((authorElement) => {
@@ -252,11 +264,12 @@ export class Goodreads {
                 authorNames.push(authorName);
             }
         });
-
-        console.log(authorNames);
+    
+        // console.log(authorNames);
         
         return authorNames;
     }
+    
     
     
     

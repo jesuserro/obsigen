@@ -39,7 +39,7 @@ export class MenuPrincipal extends Menu {
         title: "Sync Goodreads",
         icon: "book-open",
         // onClick: async () => new Goodreads(app).getRandomReview()
-        onClick: async () => new Goodreads(app).getReviewByGuid("2807580784")
+        onClick: async () => new Goodreads(app).getReviewByGuid("2807580784") // Liberado
     });
 
     this.addSeparator();
