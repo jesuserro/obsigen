@@ -21,7 +21,7 @@ import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircle
 import { RiEarthquakeFill } from "react-icons/ri";
 import { SiTinder as IconoTinder, SiGimp, SiGooglemeet, SiInsomnia, SiOpenai, SiPlex, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { SlPicture } from "react-icons/sl";
-import { TbBulbFilled, TbPillOff, TbPills, TbZzz } from 'react-icons/tb';
+import { TbAppsFilled, TbBulbFilled, TbPillOff, TbPills, TbZzz } from 'react-icons/tb';
 
 // https://github.com/madebybowtie/FlagKit/blob/master/Assets/Flags.md
 import Flag from 'react-flagkit';
@@ -121,7 +121,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   beer: ({ size }) => <IoIosBeer size={size} className="yellow" />,
   bible: ({ size }) => <IconoBible size={size} className="pink purple" />,
   bills: ({ size }) => <FaFileInvoiceDollar size={size} className="red" />, 
-  birthday: ({ size }) => <FaBirthdayCake size={size} className="blue ui" />, 
+  birthday: ({ size }) => <FaBirthdayCake size={size} className="blue ui" />,  
   blogpost: ({ size }) => <BsWordpress size={size} className="blue wordpress" />,
   book: ({ size }) => <FaBook size={size} className="blue kindle" />, 
   bookmark: ({ size }) => <FaBookmark size={size} className="blue cobalt" />,
@@ -177,6 +177,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   goodreads: ({ size }) => <FaGoodreads size={size} className="brown goodreads" />,
   googlemeet: ({ size }) => <SiGooglemeet size={size} className="yellow intense" />,
   gospa: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Gospa" />,
+  gpt: ({ size }) => <TbAppsFilled size={size} className="green" />,
   gym: ({ size }) => <MdOutlineSportsGymnastics size={size} className="green" />,
   hacienda: ({ size }) => <CustomIcon size={size} className="red" iconName="Hacienda" />,
   happiness: ({ size }) => <FaSmile size={size} className="yellow" />,
