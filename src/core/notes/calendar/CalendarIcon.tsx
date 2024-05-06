@@ -16,7 +16,7 @@ import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoMdBasket, IoMdCafe, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
 import { IoFootsteps, IoHardwareChipOutline } from 'react-icons/io5';
-import { MdBuild, MdCardTravel, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlinePiano, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
+import { MdBuild, MdCancel, MdCardTravel, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlinePiano, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold } from 'react-icons/pi';
 import { RiEarthquakeFill } from "react-icons/ri";
 import { SiTinder as IconoTinder, SiGimp, SiGooglemeet, SiInsomnia, SiOpenai, SiPlex, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
@@ -129,6 +129,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   cafe: ({ size }) => <IoMdCafe size={size} className="yellow" />, 
   calendar: ({ size }) => <BsFillCalendar2WeekFill size={size} className="blue ui" />, 
   camera: ({ size }) => <FaCamera size={size} className="blue sky" />, 
+  cancel: ({ size }) => <MdCancel size={size} className="red" />, 
   car: ({ size }) => <FaCarSide size={size} className="red c3" />, 
   catholic: ({ size }) => <FaCross size={size} className="pink purple" />,
   cdr: ({ size }) => <CustomIcon size={size} className="orange" iconName="Cdr" />,
