@@ -19,7 +19,7 @@ import { IoFootsteps, IoHardwareChipOutline } from 'react-icons/io5';
 import { MdBuild, MdCancel, MdCardTravel, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlinePiano, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold } from 'react-icons/pi';
 import { RiEarthquakeFill } from "react-icons/ri";
-import { SiTinder as IconoTinder, SiGimp, SiGooglemeet, SiInsomnia, SiOpenai, SiPlex, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
+import { SiTinder as IconoTinder, SiDell, SiGimp, SiGooglemeet, SiInsomnia, SiLenovo, SiObsidian, SiOpenai, SiPlex, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { SlPicture } from "react-icons/sl";
 import { TbAppsFilled, TbBulbFilled, TbPillOff, TbPills, TbZzz } from 'react-icons/tb';
 
@@ -146,6 +146,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   cough: ({ size }) => <FaHeadSideCough size={size} className="yellow emoji" />, 
   dad: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Dad" />,
   death: ({ size }) => <GiDeathSkull size={size} className="grey" />,
+  dell: ({ size }) => <SiDell size={size} className="blue linkedin" />,
   doctor: ({ size }) => <FaUserDoctor size={size} className="green" />,
   dream: ({ size }) => <TbZzz size={size} className="blue cobalt" />,
   earthquake: ({ size }) => <RiEarthquakeFill size={size} className="red" />,
@@ -207,6 +208,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   kindle: ({ size }) => <FaBookReader size={size} className="blue kindle" />, 
   kote: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Kote" />,
   laptop: ({ size }) => <FaLaptop size={size} className="orange" />, 
+  lenovo: ({ size }) => <SiLenovo size={size} className="red youtube" />, 
   linkedin: ({ size }) => <FaLinkedin size={size} className="blue linkedin" />, 
   lottery: ({ size }) => <CustomIcon size={size} className="red" iconName="Lottery" />,
   luis: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Luis" />,
@@ -226,6 +228,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   num9: ({ size }) => <PiNumberCircleNineBold size={size} style={{ color: '#fff' }} />,
   nun: ({ size }) => <CustomIcon size={size} className="pink purple" iconName="Nun" />,
   ok: ({ size }) => <BsFillCheckCircleFill size={size} className="green" />,
+  obsidian: ({ size }) => <SiObsidian size={size} className="violet" />,
   openai: ({ size }) => <SiOpenai size={size} className="green openai" />,
   package: ({ size }) => <PiPackageBold size={size} className="brown" />,
   pancake: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Pancake" />,
