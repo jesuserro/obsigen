@@ -19,7 +19,7 @@ import { IoFootsteps, IoHardwareChipOutline } from 'react-icons/io5';
 import { MdBuild, MdCancel, MdCardTravel, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlinePiano, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold } from 'react-icons/pi';
 import { RiEarthquakeFill } from "react-icons/ri";
-import { SiTinder as IconoTinder, SiDell, SiGimp, SiGooglemeet, SiInsomnia, SiLenovo, SiObsidian, SiOpenai, SiPlex, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
+import { SiTinder as IconoTinder, SiDell, SiGimp, SiGooglemeet, SiInsomnia, SiLenovo, SiObsidian, SiOpenai, SiPlex, SiSamsung, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { SlPicture } from "react-icons/sl";
 import { TbAppsFilled, TbBulbFilled, TbPillOff, TbPills, TbZzz } from 'react-icons/tb';
 
@@ -271,6 +271,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   sadness: ({ size }) => <ImSad2 size={size} className="yellow emoji" />,
   saint: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Saint" />,
   saintwoman: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="SaintWoman" />,
+  samsung: ({ size }) => <SiSamsung size={size} className="blue cobalt" />,
   saving: ({ size }) => <FaPiggyBank size={size} className="green" />,
   sex: ({ size }) => <FaVenus size={size} className="pink" />,
   sick: ({ size }) => <MdSick size={size} className="yellow emoji" />,
