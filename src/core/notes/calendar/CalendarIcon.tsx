@@ -8,13 +8,13 @@ import React from 'react';
 import { BiLogoGmail } from 'react-icons/bi';
 import { BsBookmarkStar, BsChatLeftQuoteFill, BsClockFill, BsCloudHaze2, BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsPersonCircle, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHeadSideCough, FaHeadphones, FaHiking, FaInstagram, FaKey, FaLaptop, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTelegram, FaTired, FaTrain, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHeadSideCough, FaHeadphones, FaHiking, FaInstagram, FaKey, FaLaptop, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTabletAlt, FaTelegram, FaTired, FaTrain, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaGift, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
 import { FcAndroidOs, FcCalendar } from 'react-icons/fc';
 import { GiAncientRuins, GiBank, GiChurch, GiCommercialAirplane, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
-import { IoIosBeer, IoMdBasket, IoMdCafe, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
+import { IoIosBeer, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
 import { IoFootsteps, IoHardwareChipOutline } from 'react-icons/io5';
 import { MdBuild, MdCancel, MdCardTravel, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlinePiano, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold } from 'react-icons/pi';
@@ -118,6 +118,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   bank: ({ size }) => <GiBank size={size} className="red" />,
   barber: ({ size }) => <CustomIcon size={size} className="blue" iconName="Barber" />,
   basketball: ({ size }) => <FaBasketball size={size} className="orange" />,
+  battery: ({ size }) => <IoMdBatteryCharging size={size} className="red" />,
   bbva: ({ size }) => <CustomIcon size={size} className="blue cobalt" iconName="Bbva" />,
   beer: ({ size }) => <IoIosBeer size={size} className="yellow" />,
   bible: ({ size }) => <IconoBible size={size} className="pink purple" />,
@@ -285,6 +286,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   spotify: ({ size }) => <SiSpotify size={size} className="green spotify" />,
   sunny: ({ size }) => <IoMdSunny size={size} className="yellow" />,
   supplement: ({ size }) => <TbPills size={size} className="yellow" />,
+  tablet: ({ size }) => <FaTabletAlt size={size} className="yellow" />, 
   tax: ({ size }) => <HiReceiptTax size={size} style={{ color: '#fc0303' }} />, 
   telegram: ({ size }) => <FaTelegram size={size} className="blue telegram" />, 
   timothy: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Timothy" />,
