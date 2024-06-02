@@ -12,6 +12,7 @@ Displaying your Obsidian notes in a year calendar view through icons.
 Use the yaml frontmatter to add the date and icon to your notes. The plugin will read the yaml and display the notes in the calendar view. The icon is defined on "tag" property.
 
 ## Folder Structure
+
 Following the DDD principles, the project is divided into three layers: core, adapters and shared.
 ```
 📦obsigen
@@ -96,19 +97,84 @@ Following the DDD principles, the project is divided into three layers: core, ad
  ┣ 📜version-bump.mjs
  ┗ 📜versions.json
 ```
-## Installing the plugin
-- Clone the plugin into your vault `VaultFolder/.obsidian/plugins/`.
+
+## Installation
+
+To install and set up the "Obsigen" project on a new environment using Ubuntu on WSL2, follow these steps:
+
+### Prerequisites
+
+- Ubuntu on WSL2 configured
+- Internet access
+
+### Step 1: Install Node.js and npm
+
+```bash
+# Update the system and repositories
+sudo apt update
+sudo apt upgrade
+
+# Install Node.js (LTS version)
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt install -y nodejs
+
+# Verify the installation
+node -v
+npm -v
+```
+
+### Step 2: Clone the repository
+
+```bash
+# Navigate to your working directory
+cd ~
+
+# Clone the GitHub repository
+git clone https://github.com/jesuserro/obsigen.git
+cd obsigen
+```
+
+### Step 3: Install project dependencies
+
+```bash
+# Install all dependencies listed in package.json
+npm install
+```
+
+### Step 4: Run the development environment
+
+```bash
+# Start the development environment
+npm run dev
+```
+
+### (Optional) Update npm
+
+```bash
+# Update npm to the latest version
+sudo npm install -g npm@latest
+```
+
+By following these steps, you should have your project configured and ready to use in your new environment. If you encounter any issues or need further assistance, feel free to consult the documentation or open an issue on the repository.
+
 ## Links
+
 - [Use React in your plugin](https://docs.obsidian.md/Plugins/Getting+started/Use+React+in+your+plugin)
+
 ### Icons
+
 - [Obsidian Icons](https://docs.obsidian.md/Plugins/User+interface/Icons)
 - [React Icons](https://react-icons.github.io/react-icons/)
 - [Lucide](https://lucide.dev/icons/)
 - [Hexadecimal Color Picker](https://www.google.com/search?q=hexadecimal+color+picker)
+
 ## Inspired by
+
 - [Obsidian Full Calendar](https://github.com/davish/obsidian-full-calendar)
 - [Full Calendar](https://github.com/fullcalendar/fullcalendar)
 - [Full Calendar Demos](https://fullcalendar.io/demos)
 - [ODIN - Obsidian Driven Information Network](https://github.com/memgraph/odin)
+
 ## Funding
+
 [![Buy Me a Coffee](https://img.shields.io/badge/-Buy%20Me%20a%20Coffee-orange?style=flat&logo=buy-me-a-coffee&logoColor=white)](https://www.buymeacoffee.com/jesuserro)
