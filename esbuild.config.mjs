@@ -3,6 +3,7 @@ import esbuild from "esbuild";
 import { copy } from 'esbuild-plugin-copy';
 import { sassPlugin } from 'esbuild-sass-plugin';
 import process from "process";
+import dotenv from 'dotenv';
 
 const banner =
   `/*
@@ -12,7 +13,10 @@ if you want to view the source, please visit the GitHub repository of this plugi
 `;
 
 const prod = (process.argv[2] === "production");
-const outputDir = "/mnt/c/Users/Jesús/Documents/vault/.obsidian/plugins/obsigen";
+
+// Load environment variables from .env file (outputDir)
+dotenv.config();
+const outputDir = process.env.OUTPUT_DIR;
 
 // scss compilados ya desde package.json, lo sacamos de esbuild
 // const entryPoints = glob.sync("src/**/*.*").filter((file) => file !== "src/styles.scss");
