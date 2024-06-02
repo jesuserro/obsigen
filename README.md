@@ -102,11 +102,6 @@ Following the DDD principles, the project is divided into three layers: core, ad
 
 To install and set up the "Obsigen" project on a new environment using Ubuntu on WSL2, follow these steps:
 
-### Prerequisites
-
-- Ubuntu on WSL2 configured
-- Internet access
-
 ### Step 1: Install Node.js and npm
 
 ```bash
