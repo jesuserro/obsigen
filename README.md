@@ -136,7 +136,22 @@ cd obsigen
 npm install
 ```
 
-### Step 4: Run the development environment
+### Step 4: Create the `dataurls.ts` file
+
+To generate the `dataurls.ts` file in the `src/assets/icons` folder, run the following commands:
+
+```bash
+# Create the directory if it doesn't exist
+mkdir -p src/assets/icons
+
+# Create the dataurls.ts file
+touch src/assets/icons/dataurls.ts
+
+# Optional: Add an initial comment to the file
+echo "// Placeholder for data URLs" > src/assets/icons/dataurls.ts
+```
+
+### Step 5: Run the development environment
 
 ```bash
 # Start the development environment
