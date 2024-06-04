@@ -233,6 +233,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   nun: ({ size }) => <CustomIcon size={size} className="pink purple" iconName="Nun" />,
   ok: ({ size }) => <BsFillCheckCircleFill size={size} className="green" />,
   obsidian: ({ size }) => <SiObsidian size={size} className="violet" />,
+  orejona: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Orejona" />,
   openai: ({ size }) => <SiOpenai size={size} className="green openai" />,
   package: ({ size }) => <PiPackageBold size={size} className="brown" />,
   pancake: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Pancake" />,
