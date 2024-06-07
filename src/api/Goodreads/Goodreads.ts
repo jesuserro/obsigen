@@ -150,17 +150,35 @@ export class Goodreads {
     private parseReviewItem(review: Element): any {
         const shelvesElement = review.querySelector('user_shelves');
         const shelves = shelvesElement ? shelvesElement.textContent?.split(',').map(shelf => `Goodreads/Reviews/${shelf.trim()}`) : [];
-
+    
         let content = review.querySelector('user_review')?.textContent ?? '';
         content = this.turndownService.turndown(content);
+    
+        // Obtener la fecha de lectura
+        let date = review.querySelector('user_read_at')?.textContent;
+    
+        // Si user_read_at está vacío, tomar pubDate
+        if (!date) {
+            date = review.querySelector('pubDate')?.textContent;
 
+            // <pubDate><![CDATA[Sat, 19 Nov 2022 11:50:50 -0800]]></pubDate> transform to 2022-11-19
+            if (date) {
+                date = new Date(date).toISOString().split('T')[0];
+            }
+    
+            // Si pubDate también está vacío o es null, tomar la fecha actual
+            if (!date) {
+                date = new Date().toISOString();
+            }
+        }
+    
         return {
             guid: review.querySelector('guid')?.textContent?.match(/\d+/)?.[0] || null,
             isbn: review.querySelector('isbn')?.textContent,
             title: review.querySelector('title')?.textContent,
             authors: review.querySelector('author_name')?.textContent,
             rating: review.querySelector('user_rating')?.textContent,
-            date: review.querySelector('user_read_at')?.textContent,
+            date: date,
             tags: shelves,
             urls: review.querySelector('link')?.textContent,
             book_id: review.querySelector('book_id')?.textContent,
@@ -168,6 +186,7 @@ export class Goodreads {
             content: content
         };
     }
+    
 
     private parseBookItem(book: Element): any {
         const authorNames = this.getAuthorNames(book);
