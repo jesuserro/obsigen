@@ -173,3 +173,51 @@ export const DATA_YAML_BOOK_DEFAULT: Book = {
 	emotion: 0,
 	favorite: false
 };
+
+export interface Author {
+	title: string,
+	aliases: string[],
+    goodreads_id: string,
+	date: String,
+	creation: Date, 
+	updated: Date,
+	links: string[],
+	urls: string,
+	authors: string[],
+	locations: string,
+	tags: string[],
+	publish: boolean,
+	permalink: string, 
+	description: string,
+	image: string,
+	cover: string,
+    country_code: string,
+	cssclasses: string[],
+	rating: number,
+	emotion: number,
+	favorite: boolean
+}
+
+export const DATA_YAML_AUTHOR_DEFAULT: Author = {
+	title: '',
+    goodreads_id: '',
+	aliases: [],
+	date: new Date().toISOString(),
+	creation: new Date(), 
+	updated: new Date(),
+	links: [],
+	urls: "",
+	authors: [],
+	locations: "",
+	tags: [],
+	publish: false,
+	permalink: '', 
+	description: '',
+	image: '',
+	cover: '',
+    country_code: '',
+	cssclasses: [],
+	rating: 0,
+	emotion: 0,
+	favorite: false
+};

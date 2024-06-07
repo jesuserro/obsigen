@@ -2,6 +2,7 @@ import { App, requestUrl } from 'obsidian';
 import { Review } from 'src/api/Goodreads/Review';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 import TurndownService from 'turndown';
+import { Author } from './Author';
 import { Book } from './Book';
 
 export class Goodreads {
@@ -59,7 +60,7 @@ export class Goodreads {
         const bookItem = this.parser.parseFromString(bookXmlString, 'text/xml').querySelector('book') as Element;
         // 2.3. Parse bookItem Element into a Book object
         const parsedBookData = this.parseBookItem(bookItem);
-        console.log(review, bookItem, parsedBookData);
+        // console.log(review, bookItem, parsedBookData);
 
         // 2.4. Mixing review/book data: if empty parsedBookData.cover then set parsedBookData.cover = review.cover
         if (!parsedBookData.cover) {
@@ -67,11 +68,23 @@ export class Goodreads {
         }
         // 2.5. Create Book Note
         const book = new Book(this.app, parsedBookData);
-        book.createNote();
+        // book.createNote();
 
         // AUTHOR INFORMATION
         // 3.1. Show author information in the console for debugging purposes
-        // const authorXmlString = await this.fetchAuthorXmlString(bookItem.querySelector('author > id')?.textContent ?? '');
+        const authorXmlString = await this.fetchAuthorXmlString(bookItem.querySelector('author > id')?.textContent ?? '');
+        // console.log(authorXmlString);
+        if (!authorXmlString){
+            console.error(`No se encontró ninguna información del autor con el ID: ${bookItem.querySelector('author > id')?.textContent}`);
+            return; 
+        };
+        const authorItem = this.parser.parseFromString(authorXmlString, 'text/xml').querySelector(':scope > author') as Element;
+        const parsedAuthorData = this.parseAuthorItem(authorItem);
+        // console.log(parsedAuthorData);
+        // 3.2. Create Author Note
+        const author = new Author(this.app, parsedAuthorData);
+        author.createNote();
+
     }
 
     public async getReviewByIsbn(isbn: string) {
@@ -192,8 +205,37 @@ export class Goodreads {
             rating: book.querySelector('user_rating')?.textContent
         };
     }
+
+    private parseAuthorItem(author: Element): any {
+        const authorName = author.querySelector('name')?.textContent;
+        const shelfNames = [ 'Goodreads/Authors' ];
+    
+        let description = author.querySelector('about')?.textContent ?? '';
+        description = this.turndownService.turndown(description);
+    
+        let date = new Date().toISOString().split('T')[0];
+        const bornDateXml = author.querySelector('born_at'); 
+        if (bornDateXml !== null && bornDateXml.textContent !== "") {
+            date = this.getBookDate( bornDateXml );
+        }
+        
+        return {
+            goodreads_id: author.querySelector('id')?.textContent?.match(/\d+/)?.[0] || null,
+            title: authorName,
+            authors: [ authorName ],
+            date: date,
+            tags: shelfNames.join(', '),
+            urls: author.querySelector('link')?.textContent,
+            book_id: author.querySelector('book_id')?.textContent,
+            cover: author.querySelector('image_url')?.textContent,
+            description: description,
+            country_code: author.querySelector('country_code')?.textContent,
+            rating: author.querySelector('user_rating')?.textContent || 0
+        };
+    }
     
     private getBookDate(item: Element): string {
+
         const year = this.getYear(item);
         const month = this.getMonth(item);
         const day = this.getDay(item);
