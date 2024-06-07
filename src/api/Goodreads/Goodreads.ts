@@ -101,6 +101,17 @@ export class Goodreads {
         new Review(this.app, review).createNote();
     }
 
+    public async getBookById(bookId: string) {
+        const xmlString = await this.fetchBookXmlString(bookId);
+        if (!xmlString) return;
+
+        console.log(xmlString);
+
+        const bookItem = this.parser.parseFromString(xmlString, 'text/xml').querySelector('book') as Element;
+        const parsedBookData = this.parseBookItem(bookItem);
+        new Book(this.app, parsedBookData).createNote();
+    }
+
     private async fetchReviewsXmlString(shelf: string): Promise<string | null> {
         const { goodreads_user, goodreads_apikey }: MyPluginSettings = (this.app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
         const url = `${Goodreads.GOODREADS_URL_BASE}/${Goodreads.GOODREADS_RSS_REVIEWS_URL}/${goodreads_user}?key=${goodreads_apikey}&shelf=${shelf}`;
@@ -202,7 +213,7 @@ export class Goodreads {
             ratings_count: book.querySelector('ratings_count')?.textContent,
             country_code: book.querySelector('country_code')?.textContent,
             text_reviews_count: book.querySelector('text_reviews_count')?.textContent,
-            rating: book.querySelector('user_rating')?.textContent
+            rating: book.querySelector('user_rating')?.textContent || 0
         };
     }
 
@@ -235,51 +246,71 @@ export class Goodreads {
     }
     
     private getBookDate(item: Element): string {
-
-        const year = this.getYear(item);
-        const month = this.getMonth(item);
-        const day = this.getDay(item);
+        const year = this.getBookYear(item);
+        const month = this.getBookMonth(item);
+        const day = this.getBookDay(item);
     
         // Pad month and day with leading zero if they are single digit
         const paddedMonth = month.toString().padStart(2, '0');
         const paddedDay = day.toString().padStart(2, '0');
     
-        // If year is empty, use the current year
-        const currentDate = new Date();
-        const defaultYear = year || currentDate.getFullYear().toString();
+        // Use the current year if the year is empty
+        const defaultYear = year || new Date().getFullYear().toString();
     
         return `${defaultYear}-${paddedMonth}-${paddedDay}`;
     }
     
-    private getYear(item: Element): string {
-        const publicationYear = item.querySelector('publication_year');
-        if (publicationYear !== null && publicationYear.textContent !== "") {
-            return publicationYear.textContent ?? '';
-        } else {
-            const originalPublicationYear = item.querySelector('work > original_publication_year');
-            return originalPublicationYear?.textContent ?? '';
+    private getBookYear(item: Element): string {
+        const currentYear = new Date().getFullYear().toString();
+        
+        const publicationYear = item.querySelector('publication_year')?.textContent;
+        const originalPublicationYear = item.querySelector('work > original_publication_year')?.textContent;
+        
+        if (publicationYear && publicationYear.trim()) {
+            return publicationYear.trim();
+        } 
+        
+        if (originalPublicationYear && originalPublicationYear.trim()) {
+            return originalPublicationYear.trim();
         }
+        
+        return currentYear;
     }
     
-    private getMonth(item: Element): number {
-        const publicationMonth = item.querySelector('publication_month');
-        if (publicationMonth !== null && publicationMonth.textContent !== "") {
-            return parseInt(publicationMonth.textContent || '1', 10);
-        } else {
-            const originalPublicationMonth = item.querySelector('work > original_publication_month');
-            return originalPublicationMonth ? parseInt(originalPublicationMonth.textContent ?? '1', 10) : 1;
+    private getBookMonth(item: Element): number {
+        const defaultMonth = 1;
+    
+        const publicationMonth = item.querySelector('publication_month')?.textContent;
+        const originalPublicationMonth = item.querySelector('work > original_publication_month')?.textContent;
+    
+        if (publicationMonth && publicationMonth.trim()) {
+            return parseInt(publicationMonth.trim(), 10) || defaultMonth;
+        } 
+        
+        if (originalPublicationMonth && originalPublicationMonth.trim()) {
+            return parseInt(originalPublicationMonth.trim(), 10) || defaultMonth;
         }
+    
+        return defaultMonth;
     }
     
-    private getDay(item: Element): number {
-        const publicationDay = item.querySelector('publication_day');
-        if (publicationDay !== null && publicationDay.textContent !== "") {
-            return parseInt(publicationDay.textContent || '1', 10);
-        } else {
-            const originalPublicationDay = item.querySelector('work > original_publication_day');
-            return originalPublicationDay ? parseInt(originalPublicationDay.textContent ?? '1', 10) : 1;
+    private getBookDay(item: Element): number {
+        const defaultDay = 1;
+    
+        const publicationDay = item.querySelector('publication_day')?.textContent;
+        const originalPublicationDay = item.querySelector('work > original_publication_day')?.textContent;
+    
+        if (publicationDay && publicationDay.trim()) {
+            return parseInt(publicationDay.trim(), 10) || defaultDay;
         }
+    
+        if (originalPublicationDay && originalPublicationDay.trim()) {
+            return parseInt(originalPublicationDay.trim(), 10) || defaultDay;
+        }
+    
+        return defaultDay;
     }
+    
 
     private getShelfNames(book: Element): string[] {
         const shelfElements = book.querySelectorAll('popular_shelves > shelf');

@@ -39,7 +39,9 @@ export class MenuPrincipal extends Menu {
         title: "Sync Goodreads",
         icon: "book-open",
         // onClick: async () => new Goodreads(app).getRandomReview()
-        onClick: async () => new Goodreads(app).getReviewByGuid("2807580784") // Liberado
+        // onClick: async () => new Goodreads(app).getReviewByGuid('2807580784') // Liberado
+        // onClick: async () => new Goodreads(app).getReviewByGuid('2322591776') // [No funciona] El Hombre Eterno (from Reviews https://www.goodreads.com/review/show/2322591776)
+        onClick: async () => new Goodreads(app).getBookById('36949928') // El Hombre Eterno (from Books)
     });
 
     this.addSeparator();
