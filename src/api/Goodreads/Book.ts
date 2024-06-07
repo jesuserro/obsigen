@@ -115,7 +115,7 @@ export class Book {
   }
 
   private setContent(description: string) {
-    this.content = `${this.yaml}\n# ${this.title}\n${description}`;
+    this.content = `${this.yaml}\n# ${this.title}\n\n${description}\n`;
   }
 
   private getListForYamlProperty(yamlPropertyText: string, isQuoted: boolean = false): string {
