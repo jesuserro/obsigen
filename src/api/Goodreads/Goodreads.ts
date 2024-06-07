@@ -20,20 +20,24 @@ export class Goodreads {
         this.parser = new DOMParser();
     }
 
+    private async fetchReviewsXmlString(shelf: string): Promise<string | null> {
+        
+        const { goodreads_user, goodreads_apikey }: MyPluginSettings = (this.app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
+        
+        const url = `${Goodreads.GOODREADS_URL_BASE}/${Goodreads.GOODREADS_RSS_REVIEWS_URL}/${goodreads_user}?key=${goodreads_apikey}&shelf=${shelf}`;
+
+        try {
+            const response = await requestUrl(url);
+            return response.text;
+        } catch (error) {
+            console.error(`Error de red al obtener la información de reviews: ${error}`);
+            return null;
+        }
+    }
+
     public async getFeedReviewsByShelf(shelf: string): Promise<string | null> {
         const xmlString = await this.fetchReviewsXmlString(shelf);
         return xmlString;
-    }
-
-    public async getRandomReview() {
-        const xmlString = await this.getFeedReviewsByShelf('read');
-        if (!xmlString) return;
-
-        const reviews = await this.parseReviews(xmlString);
-        console.log(`Número total de revisiones: ${reviews.length}`);
-        const randomIndex = Math.floor(Math.random() * reviews.length);
-        const review = reviews[randomIndex];
-        new Review(this.app, review).createNote();
     }
 
     public async getReviewByGuid(guid: string) {
@@ -105,24 +109,9 @@ export class Goodreads {
         const xmlString = await this.fetchBookXmlString(bookId);
         if (!xmlString) return;
 
-        console.log(xmlString);
-
         const bookItem = this.parser.parseFromString(xmlString, 'text/xml').querySelector('book') as Element;
         const parsedBookData = this.parseBookItem(bookItem);
         new Book(this.app, parsedBookData).createNote();
-    }
-
-    private async fetchReviewsXmlString(shelf: string): Promise<string | null> {
-        const { goodreads_user, goodreads_apikey }: MyPluginSettings = (this.app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
-        const url = `${Goodreads.GOODREADS_URL_BASE}/${Goodreads.GOODREADS_RSS_REVIEWS_URL}/${goodreads_user}?key=${goodreads_apikey}&shelf=${shelf}`;
-
-        try {
-            const response = await requestUrl(url);
-            return response.text;
-        } catch (error) {
-            console.error(`Error de red al obtener la información de reviews: ${error}`);
-            return null;
-        }
     }
 
     private async fetchBookXmlString(bookId: string): Promise<string | null> {
@@ -195,7 +184,7 @@ export class Goodreads {
         const date = this.getBookDate(book);
     
         return {
-            id: book.querySelector('id')?.textContent?.match(/\d+/)?.[0] || null,
+            goodreads_book_id: book.querySelector('id')?.textContent?.match(/\d+/)?.[0] || null,
             isbn: book.querySelector('isbn')?.textContent,
             isbn13: book.querySelector('isbn13')?.textContent,
             asin: book.querySelector('asin')?.textContent,
@@ -301,16 +290,31 @@ export class Goodreads {
                 authorNames.push(authorName);
             }
         });
-    
-        // console.log(authorNames);
         
         return authorNames;
     }
-    
-    
-    
-    
-    
+
+    // Based on the code above, create new method to get the last book from the shelf 'to-read' and create a note with the book information
+    public async getLastBookFromToReadShelf() {
+        const xmlString = await this.getFeedReviewsByShelf('to-read');
+        if (!xmlString) return;
+
+        const reviews = await this.parseReviews(xmlString);
+        console.log(`Número total de revisiones: ${reviews.length}`);
+        const review = reviews[0];
+        
+        if (!review) {
+            console.error(`No se encontró ninguna revisión en la estantería 'to-read'`);
+            return;
+        }
+
+        const bookXmlString = await this.fetchBookXmlString(review.book_id);
+        if (!bookXmlString) return;
+
+        const bookItem = this.parser.parseFromString(bookXmlString, 'text/xml').querySelector('book') as Element;
+        const parsedBookData = this.parseBookItem(bookItem);
+        new Book(this.app, parsedBookData).createNote();
+    }
     
     
 }

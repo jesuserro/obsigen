@@ -7,7 +7,7 @@ import { Yaml } from 'src/core/shared/templates/Yaml';
 export class Book {
   private app: App;
   private noteGenerator: NoteGenerator;
-  private id: string;
+  private goodreads_book_id: string;
   private isbn: string;
   private isbn13: string;
   private asin: string;
@@ -40,7 +40,7 @@ export class Book {
 
     this.title = this.getTitle(book.title);
     this.authors = book.authors;
-    this.id = book.id;
+    this.goodreads_book_id = book.goodreads_book_id;
     this.isbn = book.isbn;
     this.isbn13 = book.isbn13;
     this.asin = book.asin;
@@ -71,11 +71,13 @@ export class Book {
 
   private setYaml() {
     const link = `"[[${this.getCurrentDate()}]]"`;
+    const title = this.title.replace(/[*"\\\/<>:|?¿,.;#]/g, '');
+    const cover = `"![${title}](${this.cover})"`;
     const data = {
       ...DATA_YAML_BOOK_DEFAULT,
-      title: this.title.replace(/[*"\\\/<>:|?¿,.;#]/g, ''),
+      title: title,
       authors: this.authors,
-      id: this.id,
+      goodreads_book_id: this.goodreads_book_id,
       isbn: this.isbn,
       isbn13: this.isbn13,
       asin: this.asin,
@@ -84,7 +86,7 @@ export class Book {
       locations: this.getListForYamlProperty(this.locations, true),
       urls: this.getListForYamlProperty(this.urls),
       tags: [...DATA_YAML_BOOK_DEFAULT.tags, this.tags],
-      cover: this.cover,
+      cover: cover,
       cssclasses: [...DATA_YAML_BOOK_DEFAULT.cssclasses, 'book'],
       rating: this.rating,
       num_pages: this.num_pages,

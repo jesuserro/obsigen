@@ -115,7 +115,7 @@ export const DATA_YAML_REVIEW_DEFAULT: Review = {
 export interface Book {
 	title: string,
 	aliases: string[],
-    id: string,
+    goodreads_book_id: string,
     isbn: string[],
     isbn13: string[],
     asin: string,
@@ -145,7 +145,7 @@ export interface Book {
 
 export const DATA_YAML_BOOK_DEFAULT: Book = {
 	title: '',
-    id: '',
+    goodreads_book_id: '',
     isbn: [],
     isbn13: [],
     asin: '',
