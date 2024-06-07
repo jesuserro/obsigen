@@ -147,6 +147,56 @@ export class Goodreads {
         }
     }
 
+    private async parseBooksFromReviews(xmlString: string): Promise<any[]> {
+        try {
+            const xmlDoc = this.parser.parseFromString(xmlString, 'text/xml');
+            const items = xmlDoc.querySelectorAll('item');
+            const reviews = Array.from(items).map(item => this.parseBookFromReviewItem(item));
+            return reviews;
+        } catch (error) {
+            console.error(`Error al parsear el XML: ${error}`);
+            return [];
+        }
+    }
+
+    private parseBookFromReviewItem(review: Element): any {
+        const shelvesElement = review.querySelector('user_shelves');
+        const shelves = shelvesElement ? shelvesElement.textContent?.split(',').map(shelf => `Goodreads/Reviews/${shelf.trim()}`) : [];
+    
+
+        let content = review.querySelector('book_description')?.textContent ?? '';
+        content = this.turndownService.turndown(content);
+    
+        // Obtener la fecha de lectura
+        const pubDate = review.querySelector('pubDate')?.textContent;
+        const user_read_at = review.querySelector('user_read_at')?.textContent;
+        const currentDate = new Date().toISOString();
+
+        let date = user_read_at || pubDate || currentDate;
+        
+        
+        // <pubDate><![CDATA[Sat, 19 Nov 2022 11:50:50 -0800]]></pubDate> transform to 2022-11-19
+        if (date) {
+            date = new Date(date).toISOString().split('T')[0];
+        }
+
+        console.log('pubDate', pubDate, 'user_read_at', user_read_at, 'Date', date);
+    
+        return {
+            guid: review.querySelector('guid')?.textContent?.match(/\d+/)?.[0] || null,
+            isbn: review.querySelector('isbn')?.textContent,
+            title: review.querySelector('title')?.textContent,
+            authors: review.querySelector('author_name')?.textContent,
+            rating: review.querySelector('user_rating')?.textContent,
+            date: date,
+            tags: shelves,
+            urls: review.querySelector('link')?.textContent,
+            book_id: review.querySelector('book_id')?.textContent,
+            cover: review.querySelector('book_large_image_url')?.textContent,
+            description: content
+        };
+    }
+
     private parseReviewItem(review: Element): any {
         const shelvesElement = review.querySelector('user_shelves');
         const shelves = shelvesElement ? shelvesElement.textContent?.split(',').map(shelf => `Goodreads/Reviews/${shelf.trim()}`) : [];
@@ -310,11 +360,14 @@ export class Goodreads {
 
     // Based on the code above, create new method to get the last book from the shelf 'to-read' and create a note with the book information
     public async getLastBookFromToReadShelf() {
+
         const xmlString = await this.fetchBooksByShelf('to-read');
         if (!xmlString) return;
 
-        const reviews = await this.parseReviews(xmlString);
-        console.log(`Número total de revisiones: ${reviews.length}`);
+        // const reviews = await this.parseReviews(xmlString);
+        const reviews = await this.parseBooksFromReviews(xmlString);
+        // console.log(`Número total de revisiones: ${reviews.length}`);
+        // console.log(reviews);
         const review = reviews[0];
         
         if (!review) {
@@ -322,13 +375,18 @@ export class Goodreads {
             return;
         }
 
-        const bookXmlString = await this.fetchBookXmlString(review.book_id);
-        if (!bookXmlString) return;
+        // const bookXmlString = await this.fetchBookXmlString(review.book_id);
+        // if (!bookXmlString) return;
 
-        const bookItem = this.parser.parseFromString(bookXmlString, 'text/xml').querySelector('book') as Element;
-        const parsedBookData = this.parseBookItem(bookItem);
-        new Book(this.app, parsedBookData).createNote();
+        // const bookItem = this.parser.parseFromString(bookXmlString, 'text/xml').querySelector('book') as Element;
+        // const parsedBookData = this.parseBookItem(bookItem);
+        // new Book(this.app, parsedBookData).createNote();
+
+        // await this.getBookById(review.book_id);
+
+        new Book(this.app, review).createNote();
+        
+        
     }
-    
     
 }
