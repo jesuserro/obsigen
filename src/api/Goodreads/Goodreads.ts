@@ -20,7 +20,7 @@ export class Goodreads {
         this.parser = new DOMParser();
     }
 
-    private async fetchReviewsXmlString(shelf: string): Promise<string | null> {
+    private async fetchBooksByShelf(shelf: string): Promise<string | null> {
         
         const { goodreads_user, goodreads_apikey }: MyPluginSettings = (this.app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
         
@@ -35,13 +35,8 @@ export class Goodreads {
         }
     }
 
-    public async getFeedReviewsByShelf(shelf: string): Promise<string | null> {
-        const xmlString = await this.fetchReviewsXmlString(shelf);
-        return xmlString;
-    }
-
     public async getReviewByGuid(guid: string) {
-        const xmlString = await this.getFeedReviewsByShelf('read');
+        const xmlString = await this.fetchBooksByShelf('read');
         if (!xmlString) return;
 
         // 1. REVIEW INFORMATION
@@ -92,7 +87,7 @@ export class Goodreads {
     }
 
     public async getReviewByIsbn(isbn: string) {
-        const xmlString = await this.getFeedReviewsByShelf('read');
+        const xmlString = await this.fetchBooksByShelf('read');
         if (!xmlString) return;
 
         const reviews = await this.parseReviews(xmlString);
@@ -296,7 +291,7 @@ export class Goodreads {
 
     // Based on the code above, create new method to get the last book from the shelf 'to-read' and create a note with the book information
     public async getLastBookFromToReadShelf() {
-        const xmlString = await this.getFeedReviewsByShelf('to-read');
+        const xmlString = await this.fetchBooksByShelf('to-read');
         if (!xmlString) return;
 
         const reviews = await this.parseReviews(xmlString);
