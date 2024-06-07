@@ -366,8 +366,8 @@ export class Goodreads {
 
         // const reviews = await this.parseReviews(xmlString);
         const reviews = await this.parseBooksFromReviews(xmlString);
-        // console.log(`Número total de revisiones: ${reviews.length}`);
-        // console.log(reviews);
+        console.log(`Número total de revisiones: ${reviews.length}`);
+        
         const review = reviews[0];
         
         if (!review) {
@@ -375,18 +375,7 @@ export class Goodreads {
             return;
         }
 
-        // const bookXmlString = await this.fetchBookXmlString(review.book_id);
-        // if (!bookXmlString) return;
-
-        // const bookItem = this.parser.parseFromString(bookXmlString, 'text/xml').querySelector('book') as Element;
-        // const parsedBookData = this.parseBookItem(bookItem);
-        // new Book(this.app, parsedBookData).createNote();
-
-        // await this.getBookById(review.book_id);
-
         new Book(this.app, review).createNote();
-        
-        
     }
     
 }
