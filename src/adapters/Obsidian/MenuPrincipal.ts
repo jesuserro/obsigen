@@ -1,6 +1,6 @@
 import { App, Menu } from 'obsidian';
 import { Yearly } from 'src/core/notes/yearly/Yearly';
-import { Goodreads } from '../../api/Goodreads/Goodreads';
+import { GoodreadsReviews } from '../../api/Goodreads/GoodreadsReviews';
 import { Aniversario } from '../../core/notes/aniversario/Aniversario';
 import { Calendar } from '../../core/notes/calendar/Calendar';
 import { CalendarEvent } from '../../core/notes/calendar/CalendarEvent';
@@ -42,7 +42,11 @@ export class MenuPrincipal extends Menu {
         // onClick: async () => new Goodreads(app).getReviewByGuid('2807580784') // Liberado
         // onClick: async () => new Goodreads(app).getReviewByGuid('2322591776') // [No funciona] El Hombre Eterno (from Reviews https://www.goodreads.com/review/show/2322591776)
         // onClick: async () => new Goodreads(app).getBookById('36949928') // El Hombre Eterno (from Books)
-        onClick: async () => new Goodreads(app).getLastBookFromToReadShelf() 
+        // onClick: async () => new Goodreads(app).getLastBookFromToReadShelf() 
+        onClick: async () => {
+            const goodreadsReviews = new GoodreadsReviews(app as App);
+            await goodreadsReviews.getLastBookFromToReadShelf();
+        }
     });
 
     this.addSeparator();
