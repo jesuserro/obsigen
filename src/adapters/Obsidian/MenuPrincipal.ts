@@ -1,6 +1,6 @@
 import { App, Menu } from 'obsidian';
+import { GoodreadsReviewsApi } from 'src/api/Goodreads/GoodreadsReviewsApi';
 import { Yearly } from 'src/core/notes/yearly/Yearly';
-import { GoodreadsReviews } from '../../api/Goodreads/GoodreadsReviews';
 import { Aniversario } from '../../core/notes/aniversario/Aniversario';
 import { Calendar } from '../../core/notes/calendar/Calendar';
 import { CalendarEvent } from '../../core/notes/calendar/CalendarEvent';
@@ -44,7 +44,7 @@ export class MenuPrincipal extends Menu {
         // onClick: async () => new Goodreads(app).getBookById('36949928') // El Hombre Eterno (from Books)
         // onClick: async () => new Goodreads(app).getLastBookFromToReadShelf() 
         onClick: async () => {
-            const goodreadsReviews = new GoodreadsReviews(app as App);
+            const goodreadsReviews = new GoodreadsReviewsApi(app as App);
             await goodreadsReviews.getLastBookFromToReadShelf();
         }
     });
