@@ -11,6 +11,7 @@ export class Goodreads {
     private parser: DOMParser;
     private static readonly GOODREADS_URL_BASE = 'https://www.goodreads.com';
     private static readonly GOODREADS_RSS_REVIEWS_URL = 'review/list_rss';
+    private static readonly GOODREADS_RSS_REVIEWS_URL_V2 = 'review/list/$authorId.xml?key=$apikey&v=2';
     private static readonly GOODREADS_RSS_BOOK_URL = "book/show?format=xml&key=$apikey&id=$bookId";
     private static readonly GOODREADS_RSS_AUTHOR_URL = "author/show.xml?key=$apikey&id=$authorId";
 
@@ -18,6 +19,23 @@ export class Goodreads {
         this.app = app;
         this.turndownService = new TurndownService();
         this.parser = new DOMParser();
+    }
+
+    private async fetchBooksByShelf2(): Promise<string | null> {
+        
+        const { goodreads_user, goodreads_apikey }: MyPluginSettings = (this.app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
+        
+        let url = `${Goodreads.GOODREADS_URL_BASE}/${Goodreads.GOODREADS_RSS_REVIEWS_URL_V2}`;
+        const urlWithParams = url.replace('$authorId', goodreads_user).replace('$apikey', goodreads_apikey);
+        console.log(urlWithParams);
+
+        try {
+            const response = await requestUrl(urlWithParams);
+            return response.text;
+        } catch (error) {
+            console.error(`Error de red al obtener la información de reviews: ${error}`);
+            return null;
+        }
     }
 
     private async fetchBooksByShelf(shelf: string): Promise<string | null> {
@@ -150,7 +168,7 @@ export class Goodreads {
     private async parseBooksFromReviews(xmlString: string): Promise<any[]> {
         try {
             const xmlDoc = this.parser.parseFromString(xmlString, 'text/xml');
-            const items = xmlDoc.querySelectorAll('item');
+            const items = xmlDoc.querySelectorAll('review');
             const reviews = Array.from(items).map(item => this.parseBookFromReviewItem(item));
             return reviews;
         } catch (error) {
@@ -160,40 +178,41 @@ export class Goodreads {
     }
 
     private parseBookFromReviewItem(review: Element): any {
-        const shelvesElement = review.querySelector('user_shelves');
-        const shelves = shelvesElement ? shelvesElement.textContent?.split(',').map(shelf => `Goodreads/Reviews/${shelf.trim()}`) : [];
-    
+       
+        const shelvesElement = review.querySelector(':scope > shelves');
+        const shelves = shelvesElement 
+            ? Array.from(shelvesElement.querySelectorAll('shelf')).map(shelf => `Goodreads/Reviews/${shelf.getAttribute('name')?.trim() ?? ''}`) : [];
 
-        let content = review.querySelector('book_description')?.textContent ?? '';
+        let content = review.querySelector(':scope > book > description')?.textContent ?? '';
         content = this.turndownService.turndown(content);
     
         // Obtener la fecha de lectura
-        const pubDate = review.querySelector('pubDate')?.textContent;
-        const user_read_at = review.querySelector('user_read_at')?.textContent;
-        const currentDate = new Date().toISOString();
+        let date_added = review.querySelector(':scope > date_added')?.textContent;
+        if(date_added) {
+            date_added = new Date(date_added).toISOString().split('T')[0];
+        }
+        const pubDate = this.getBookDate(review);
 
-        let date = user_read_at || pubDate || currentDate;
-        
-        
-        // <pubDate><![CDATA[Sat, 19 Nov 2022 11:50:50 -0800]]></pubDate> transform to 2022-11-19
+        let date = date_added || pubDate;
+
         if (date) {
             date = new Date(date).toISOString().split('T')[0];
         }
-
-        console.log('pubDate', pubDate, 'user_read_at', user_read_at, 'Date', date);
     
         return {
-            guid: review.querySelector('guid')?.textContent?.match(/\d+/)?.[0] || null,
-            isbn: review.querySelector('isbn')?.textContent,
-            title: review.querySelector('title')?.textContent,
+            guid: review.querySelector(':scope > id')?.textContent?.match(/\d+/)?.[0] || null,
+            isbn: review.querySelector(':scope > book > isbn')?.textContent,
+            title: review.querySelector(':scope > book > title')?.textContent,
             authors: review.querySelector('author_name')?.textContent,
             rating: review.querySelector('user_rating')?.textContent,
             date: date,
+            date_pub: pubDate,
+            date_added: date_added,
             tags: shelves,
             urls: review.querySelector('link')?.textContent,
             book_id: review.querySelector('book_id')?.textContent,
-            cover: review.querySelector('book_large_image_url')?.textContent,
-            description: content
+            cover: review.querySelector('image_url')?.textContent,
+            description: content,
         };
     }
 
@@ -311,15 +330,15 @@ export class Goodreads {
     }
     
     private getBookYear(item: Element): string {
-        return this.getTextContent(item, ['publication_year', 'work > original_publication_year'], new Date().getFullYear().toString());
+        return this.getTextContent(item, ['publication_year', 'work > original_publication_year'], '');
     }
     
     private getBookMonth(item: Element): number {
-        return parseInt(this.getTextContent(item, ['publication_month', 'work > original_publication_month'], '1'), 10);
+        return parseInt(this.getTextContent(item, ['publication_month', 'work > original_publication_month'], ''), 10);
     }
     
     private getBookDay(item: Element): number {
-        return parseInt(this.getTextContent(item, ['publication_day', 'work > original_publication_day'], '1'), 10);
+        return parseInt(this.getTextContent(item, ['publication_day', 'work > original_publication_day'], ''), 10);
     }
     
     private getTextContent(item: Element, selectors: string[], defaultValue: string): string {
@@ -361,14 +380,14 @@ export class Goodreads {
     // Based on the code above, create new method to get the last book from the shelf 'to-read' and create a note with the book information
     public async getLastBookFromToReadShelf() {
 
-        const xmlString = await this.fetchBooksByShelf('to-read');
+        const xmlString = await this.fetchBooksByShelf2();
         if (!xmlString) return;
-
-        // const reviews = await this.parseReviews(xmlString);
+        
         const reviews = await this.parseBooksFromReviews(xmlString);
         console.log(`Número total de revisiones: ${reviews.length}`);
         
         const review = reviews[0];
+        console.log(review);
         
         if (!review) {
             console.error(`No se encontró ninguna revisión en la estantería 'to-read'`);

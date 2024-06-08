@@ -118,6 +118,11 @@ export class Book {
 
   private setContent(description: string) {
     this.content = `${this.yaml}\n# ${this.title}\n\n${description}\n`;
+
+    // Put the cover if exists below the title
+    if (this.cover) {
+      this.content = `${this.yaml}\n# ${this.title}\n\n![](${this.cover})\n\n${description}\n\n`;
+    }
   }
 
   private getListForYamlProperty(yamlPropertyText: string, isQuoted: boolean = false): string {
