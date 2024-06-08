@@ -48,7 +48,47 @@ export class GoodreadsApiBase {
         return `${year}-${month}-${day}`;
     }
 
-    private padZero(value: number): string {
+    protected convertDateToIsoString(date: Date): string {
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+        const hours = date.getHours().toString().padStart(2, '0');
+        const minutes = date.getMinutes().toString().padStart(2, '0');
+        const seconds = date.getSeconds().toString().padStart(2, '0');
+        return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+    }
+
+    protected cleanUrls(urls: string, twitterRegexp: RegExp, youtubeRegexp: RegExp): string {
+        return urls.split(',').map(url => this.cleanUrl(url, twitterRegexp, youtubeRegexp)).join(',');
+    }
+
+    protected cleanUrl(url: string, twitterRegexp: RegExp, youtubeRegexp: RegExp): string {
+        url = this.filterParamsFromUrl(url);
+
+        if (twitterRegexp.test(url) || youtubeRegexp.test(url)) {
+            if (youtubeRegexp.test(url)) {
+                url = url.replace(/(\?|&)si=[^&]*$/, "");
+                url = url.replace(/\/(?:shorts|live)\//, "/embed/");
+            }
+        }
+        return url.trim();
+    }
+
+    protected filterParamsFromUrl(url: string): string {
+        url = url.replace(/"/g, '');
+        const urlParts = url.split('?');
+        if (urlParts.length === 2) {
+            const queryParams = urlParts[1].split('&');
+            const numericTParamFound = queryParams.some(param => {
+                const [name, value] = param.split('=');
+                return name === 't' && !isNaN(Number(value));
+            });
+            if (numericTParamFound) return url;
+        }
+        return url;
+    }
+
+    protected padZero(value: number): string {
         return value.toString().padStart(2, '0');
     }
 }
