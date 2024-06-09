@@ -3,7 +3,6 @@ import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 import { Book as BookInterface } from 'src/core/shared/interface/iYaml';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
 
-
 export class GoodreadsBookApi extends GoodreadsApiBase {
     private static readonly BOOK_URL_TEMPLATE = 'book/show?format=xml&key=$apikey&id=$bookId';
 
@@ -30,7 +29,7 @@ export class GoodreadsBookApi extends GoodreadsApiBase {
             isbn: this.getTextContent(bookElement, ['isbn']),
             isbn13: this.getTextContent(bookElement, ['isbn13']),
             asin: this.getTextContent(bookElement, ['asin']),
-            date: new Date(this.getTextContent(bookElement, ['publication_year'], '1970')),
+            date: this.getBookPublicationDate(bookElement) ? new Date(this.getBookPublicationDate(bookElement)) : new Date(),
             creation: new Date(),
             updated: new Date(),
             links: [],
@@ -54,7 +53,7 @@ export class GoodreadsBookApi extends GoodreadsApiBase {
             favorite: false
         };
     }
-
+    
     private getAuthors(bookElement: Element): string[] {
         const authors: string[] = [];
         const authorElements = bookElement.querySelectorAll('authors author name');
@@ -79,4 +78,25 @@ export class GoodreadsBookApi extends GoodreadsApiBase {
 
         return this.parseBook(xmlString);
     }
+
+    private getBookPublicationDate(bookElement: Element): string {
+        const year = this.getTextContent(bookElement, ['publication_year']);
+        const month = this.getTextContent(bookElement, ['publication_month']);
+        const day = this.getTextContent(bookElement, ['publication_day']);
+
+        if (year && month && day) {
+            return `${year}-${this.padZero(parseInt(month, 10))}-${this.padZero(parseInt(day, 10))}`;
+        }
+
+        const originalYear = this.getTextContent(bookElement, ['work > original_publication_year']);
+        const originalMonth = this.getTextContent(bookElement, ['work > original_publication_month']);
+        const originalDay = this.getTextContent(bookElement, ['work > original_publication_day']);
+
+        if (originalYear && originalMonth && originalDay) {
+            return `${originalYear}-${this.padZero(parseInt(originalMonth, 10))}-${this.padZero(parseInt(originalDay, 10))}`;
+        }
+
+        return '';
+    }
+    
 }
