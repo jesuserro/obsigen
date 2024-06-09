@@ -1,5 +1,6 @@
 import { App } from 'obsidian';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
+import { Book } from './Book';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
 import { GoodreadsBookApi } from './GoodreadsBookApi';
 import { Review } from './Review';
@@ -74,7 +75,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         console.log(`Book: ${JSON.stringify(book)}`);
 
         if (book) {
-            // new Book(this.app, book).createNote();
+            new Book(this.app, book).createNote();
         } else {
             console.error(`Failed to fetch book details for book_id: ${review.book_id}`);
         }

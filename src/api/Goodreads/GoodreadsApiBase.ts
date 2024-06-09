@@ -9,6 +9,7 @@ export class GoodreadsApiBase {
 
     protected static readonly BASE_URL = 'https://www.goodreads.com';
     protected static readonly BASE_TAG = 'Goodreads';
+    protected static readonly GLOBAL_TAG = 'Obsigen_SYS';
 
     constructor(app: App) {
         this.app = app;
@@ -99,7 +100,7 @@ export class GoodreadsApiBase {
     }
 
     protected getShelves(element: Element): string[] {
-        const shelves: string[] = [];
+        const shelves: string[] = [GoodreadsApiBase.GLOBAL_TAG];
         const shelfElements = element.querySelectorAll('shelf');
         shelfElements.forEach(shelf => {
             shelves.push(`${GoodreadsApiBase.BASE_TAG}/${shelf.getAttribute('name') || ''}`);
