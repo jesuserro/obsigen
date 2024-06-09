@@ -83,6 +83,8 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
                 if (author) {
                     // console.log(`Author: ${JSON.stringify(author)}`);
                     new Author(this.app, author).createNote();
+                    // exit after first author
+                    break;
                 } else {
                     console.error(`Failed to fetch author details for author_id: ${authorId}`);
                 }
