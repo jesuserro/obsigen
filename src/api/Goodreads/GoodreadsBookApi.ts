@@ -68,7 +68,7 @@ export class GoodreadsBookApi extends GoodreadsApiBase {
         const tags: string[] = [];
         const tagElements = bookElement.querySelectorAll('popular_shelves shelf');
         tagElements.forEach(tag => {
-            tags.push(tag.getAttribute('name') || '');
+            tags.push(`Goodreads/${tag.getAttribute('name') || ''}`);
         });
         return tags;
     }
