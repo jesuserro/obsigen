@@ -35,6 +35,7 @@ export class GoodreadsBookApi extends GoodreadsApiBase {
             links: [],
             urls: this.getTextContent(bookElement, ['link']),
             authors: this.getAuthors(bookElement),
+            authors_id: this.getAuthorsIds(bookElement),
             locations: '',
             tags: this.getTags(bookElement),
             publish: false,
@@ -57,6 +58,15 @@ export class GoodreadsBookApi extends GoodreadsApiBase {
     private getAuthors(bookElement: Element): string[] {
         const authors: string[] = [];
         const authorElements = bookElement.querySelectorAll('authors author name');
+        authorElements.forEach(author => {
+            authors.push(author.textContent || '');
+        });
+        return authors;
+    }
+
+    private getAuthorsIds(bookElement: Element): string[] {
+        const authors: string[] = [];
+        const authorElements = bookElement.querySelectorAll('authors author id');
         authorElements.forEach(author => {
             authors.push(author.textContent || '');
         });
@@ -98,5 +108,5 @@ export class GoodreadsBookApi extends GoodreadsApiBase {
 
         return '';
     }
-    
+
 }
