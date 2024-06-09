@@ -8,6 +8,7 @@ export class GoodreadsApiBase {
     protected parser: DOMParser;
 
     protected static readonly BASE_URL = 'https://www.goodreads.com';
+    protected static readonly BASE_TAG = 'Goodreads';
 
     constructor(app: App) {
         this.app = app;
@@ -97,4 +98,12 @@ export class GoodreadsApiBase {
         return value.toString().padStart(2, '0');
     }
 
+    protected getShelves(element: Element): string[] {
+        const shelves: string[] = [];
+        const shelfElements = element.querySelectorAll('shelf');
+        shelfElements.forEach(shelf => {
+            shelves.push(`${GoodreadsApiBase.BASE_TAG}/${shelf.getAttribute('name') || ''}`);
+        });
+        return shelves;
+    }
 }

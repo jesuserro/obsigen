@@ -1,8 +1,8 @@
 import { App } from 'obsidian';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
-import { Book } from './Book';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
 import { GoodreadsBookApi } from './GoodreadsBookApi';
+import { Review } from './Review';
 
 export class GoodreadsReviewsApi extends GoodreadsApiBase {
     private static readonly REVIEWS_URL_TEMPLATE = 'review/list/$authorId.xml?key=$apikey&v=2';
@@ -54,18 +54,13 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         };
     }
 
-    private getShelves(review: Element): string[] {
-        const shelvesElement = review.querySelector('shelves');
-        return shelvesElement ? Array.from(shelvesElement.querySelectorAll('shelf')).map(shelf => `Goodreads/${shelf.getAttribute('name')?.trim() ?? ''}`) : [];
-    }
-
     public async getLastBookFromToReadShelf() {
         const xmlString = await this.fetchToReadShelfBooks();
         if (!xmlString) return;
 
         const reviews = this.parseReviews(xmlString);
         const review = reviews[0];
-        // new Review(this.app, review).createNote();
+        new Review(this.app, review).createNote();
 
         if (!review) {
             console.error(`No reviews found in 'to-read' shelf`);
@@ -76,10 +71,11 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
 
         const goodreadsBookApi = new GoodreadsBookApi(this.app);
         const book = await goodreadsBookApi.getBookById(review.book_id);
+
         console.log(`Book: ${JSON.stringify(book)}`);
-        
+
         if (book) {
-            new Book(this.app, book).createNote();
+            // new Book(this.app, book).createNote();
         } else {
             console.error(`Failed to fetch book details for book_id: ${review.book_id}`);
         }
