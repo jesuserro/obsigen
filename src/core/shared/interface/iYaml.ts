@@ -66,7 +66,6 @@ export const DATA_YAML_SAMPLE: iYaml = {
 
 export interface Review {
 	title: string,
-	aliases: string[],
     review_id: string,
     isbn: string,
 	date: Date,
@@ -92,7 +91,6 @@ export const DATA_YAML_REVIEW_DEFAULT: Review = {
 	title: '',
     review_id: '',
     isbn: '',
-	aliases: [],
 	date: new Date(),
 	creation: new Date(), 
 	updated: new Date(),
@@ -114,7 +112,6 @@ export const DATA_YAML_REVIEW_DEFAULT: Review = {
 
 export interface Book {
 	title: string,
-	aliases: string[],
     goodreads_book_id: string,
     isbn: string,
     isbn13: string,
@@ -149,7 +146,6 @@ export const DATA_YAML_BOOK_DEFAULT: Book = {
     isbn: '',
     isbn13: '',
     asin: '',
-	aliases: [],
 	date: new Date(),
 	creation: new Date(), 
 	updated: new Date(),

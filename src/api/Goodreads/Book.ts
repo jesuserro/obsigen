@@ -77,6 +77,7 @@ export class Book extends GoodreadsApiBase {
         const data = {
             ...DATA_YAML_BOOK_DEFAULT,
             title: title,
+            aliases: [],
             authors: this.authors,
             goodreads_book_id: this.goodreadsBookId,
             isbn: this.isbn,

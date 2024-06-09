@@ -69,6 +69,7 @@ export class Review extends GoodreadsApiBase {
         const data = {
             ...DATA_YAML_REVIEW_DEFAULT,
             title: title,
+            aliases: [],
             authors: this.authors,
             goodreads_book_id: this.goodreadsBookId,
             isbn: this.isbn,
@@ -78,7 +79,7 @@ export class Review extends GoodreadsApiBase {
             urls: this.getListForYamlProperty(this.urls),
             tags: [...DATA_YAML_REVIEW_DEFAULT.tags, ...this.tags],
             cover: cover,
-            cssclasses: [...DATA_YAML_REVIEW_DEFAULT.cssclasses, 'book'],
+            cssclasses: [...DATA_YAML_REVIEW_DEFAULT.cssclasses, 'review'],
             rating: this.rating,
             num_pages: this.num_pages,
             average_rating: this.average_rating,

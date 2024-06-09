@@ -1,4 +1,5 @@
 import { App, requestUrl } from 'obsidian';
+import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 import TurndownService from 'turndown';
 
 export class GoodreadsApiBase {
@@ -12,6 +13,10 @@ export class GoodreadsApiBase {
         this.app = app;
         this.turndownService = new TurndownService();
         this.parser = new DOMParser();
+    }
+
+    protected getGoodreadsSettings(): MyPluginSettings {
+        return (this.app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
     }
 
     protected async fetchXml(url: string): Promise<string | null> {
@@ -91,4 +96,5 @@ export class GoodreadsApiBase {
     protected padZero(value: number): string {
         return value.toString().padStart(2, '0');
     }
+
 }
