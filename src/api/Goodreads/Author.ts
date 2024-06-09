@@ -64,13 +64,13 @@ export class Author extends GoodreadsApiBase {
         this.rating = author.rating * 2 || 0;
         this.cover = author.image;
         this.locations = author.locations || '';
+        this.influences = author.influences || [];
         this.urls = this.cleanUrls(author.urls, this.twitterRegexp, this.youtubeRegexp) || '';
         this.tags = author.tags || [];
         this.hometown = author.hometown || '';
         this.works_count = author.works_count || 0;
         this.fans_count  = author.fans_count  || 0;
         this.country_code = author.country_code || '';
-        this.influences = author.influences || [];
     }
 
     private setYaml() {
