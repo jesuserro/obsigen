@@ -60,7 +60,7 @@ export class Author extends GoodreadsApiBase {
         this.month = this.date.getMonth() + 1;
         this.day = this.date.getDate();
         this.image = author.image;
-        this.rating = author.rating * 2;
+        this.rating = author.rating * 2 || 0;
         this.cover = author.image;
         this.locations = author.locations || '';
         this.urls = this.cleanUrls(author.urls, this.twitterRegexp, this.youtubeRegexp) || '';
