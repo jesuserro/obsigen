@@ -82,9 +82,13 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
                 const author = await goodreadsAuthorApi.getAuthorById(authorId);
                 if (author) {
                     console.log(`Author: ${JSON.stringify(author)}`);
-                    new Author(this.app, author).createNote();
-                    // exit after first author
-                    break;
+                    
+                    // if (author_id = 40398 "Reverte") then create note
+                    if(authorId == "40398"){
+                        console.log(`Author: ${JSON.stringify(author)}`);
+                        new Author(this.app, author).createNote();
+                    }
+                    
                 } else {
                     console.error(`Failed to fetch author details for author_id: ${authorId}`);
                 }

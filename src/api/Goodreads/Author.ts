@@ -75,6 +75,12 @@ export class Author extends GoodreadsApiBase {
         const link = `"[[${this.getCurrentDate()}]]"`;
         const title = this.title.replace(/[*"\\\/<>:|?¿,.;#]/g, '');
         const cover = `"![${title}](${this.cover})"`;
+
+        // If died_at is not a valid date, we don't want to show it in the YAML
+        if (isNaN(this.died_at.getTime())) {
+            this.died_at = new Date();
+        }
+        
         const data = {
             ...DATA_YAML_AUTHOR_DEFAULT,
             title: title,
