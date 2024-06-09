@@ -39,6 +39,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         return {
             review_id: review.querySelector('id')?.textContent?.match(/\d+/)?.[0],
             book_id: review.querySelector(':scope > book > id')?.textContent,
+            author_id: review.querySelector(':scope > book > authors > author > id')?.textContent,
             isbn: review.querySelector(':scope > book > isbn')?.textContent,
             title: review.querySelector(':scope > book > title')?.textContent,
             authors: review.querySelector(':scope > book > authors > author > name')?.textContent,
@@ -69,7 +70,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         // console.log(`Total reviews: ${reviews.length}`);
 
         const review = reviews[0];
-        // console.log(`Review: ${JSON.stringify(review)}`);
+        console.log(`Review: ${JSON.stringify(review)}`);
 
         if (!review) {
             console.error(`No reviews found in 'to-read' shelf`);
