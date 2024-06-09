@@ -27,7 +27,6 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
     }
 
     private parseReview(review: Element): any {
-        const shelves = this.getShelves(review);
         const description = this.turndownService.turndown(review.querySelector(':scope > book > description')?.textContent ?? '');
         let dateAdded = this.formatDate(review.querySelector('date_added')?.textContent ?? '');
         dateAdded = new Date(dateAdded).toISOString().split('T')[0];
@@ -44,7 +43,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
             date: dateAdded,
             date_added: dateAdded,
             date_updated: dateUpdated,
-            tags: shelves,
+            tags: this.getShelves(review),
             urls: review.querySelector('link')?.textContent,
             cover: review.querySelector('image_url')?.textContent,
             description: description,
