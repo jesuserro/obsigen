@@ -64,14 +64,21 @@ export class Author extends GoodreadsApiBase {
         this.rating = author.rating * 2 || 0;
         this.cover = author.image;
         this.locations = author.locations || '';
+    
+        // Extract only hrefs from influences with hyphens
         this.influences = author.influences || [];
         this.urls = this.cleanUrls(author.urls, this.twitterRegexp, this.youtubeRegexp) || '';
+        this.urls += '\n' + this.influences.map((influence) => {
+        const urlMatch = influence.match(/\[(.*?)\]\((.*?)\)/); // Updated regex
+        return urlMatch ? `- ${urlMatch[2]}` : ''; // Add hyphen before href
+        }).filter(Boolean).join('\n'); // Filter out empty strings
+    
         this.tags = author.tags || [];
         this.hometown = author.hometown || '';
         this.works_count = author.works_count || 0;
-        this.fans_count  = author.fans_count  || 0;
+        this.fans_count = author.fans_count || 0;
         this.country_code = author.country_code || '';
-    }
+      }
 
     private setYaml() {
         const link = `"[[${this.getCurrentDate()}]]"`;
