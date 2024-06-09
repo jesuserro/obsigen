@@ -38,11 +38,6 @@ export class MenuPrincipal extends Menu {
     this.addMenuItem({
         title: "Sync Goodreads",
         icon: "book-open",
-        // onClick: async () => new Goodreads(app).getRandomReview()
-        // onClick: async () => new Goodreads(app).getReviewByGuid('2807580784') // Liberado
-        // onClick: async () => new Goodreads(app).getReviewByGuid('2322591776') // [No funciona] El Hombre Eterno (from Reviews https://www.goodreads.com/review/show/2322591776)
-        // onClick: async () => new Goodreads(app).getBookById('36949928') // El Hombre Eterno (from Books)
-        // onClick: async () => new Goodreads(app).getLastBookFromToReadShelf() 
         onClick: async () => {
             const goodreadsReviews = new GoodreadsReviewsApi(app as App);
             await goodreadsReviews.getLastBookFromToReadShelf();
