@@ -1,5 +1,6 @@
 import { App } from 'obsidian';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
+import { Author } from './Author';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
 import { GoodreadsAuthorApi } from './GoodreadsAuthorApi';
 import { GoodreadsBookApi } from './GoodreadsBookApi';
@@ -81,7 +82,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
                 const author = await goodreadsAuthorApi.getAuthorById(authorId);
                 if (author) {
                     console.log(`Author: ${JSON.stringify(author)}`);
-                    // new Author(this.app, author).createNote();
+                    new Author(this.app, author).createNote();
                 } else {
                     console.error(`Failed to fetch author details for author_id: ${authorId}`);
                 }
