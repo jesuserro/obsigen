@@ -30,6 +30,7 @@ export class Author extends GoodreadsApiBase {
     private text_reviews_count: number;
     private country_code: string;
     private about: string;
+    private image: string;
 
     private twitterRegexp: RegExp = new RegExp('https?://(?:mobile\\.)?twitter\\.com/.*');
     private youtubeRegexp: RegExp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
@@ -52,8 +53,9 @@ export class Author extends GoodreadsApiBase {
         this.year = this.date.getFullYear();
         this.month = this.date.getMonth() + 1;
         this.day = this.date.getDate();
+        this.image = author.image;
         this.rating = author.rating * 2;
-        this.cover = author.cover;
+        this.cover = author.image;
         this.locations = author.locations || '';
         this.urls = this.cleanUrls(author.urls, this.twitterRegexp, this.youtubeRegexp) || '';
         this.tags = author.tags || [];
