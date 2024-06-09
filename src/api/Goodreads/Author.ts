@@ -16,9 +16,6 @@ export class Author extends GoodreadsApiBase {
     // Propiedades del libro
     private title: string;
     private authors: string[];
-    private isbn: string;
-    private isbn13: string;
-    private asin: string;
     private cover: string;
     private rating: number;
     private year: number;
@@ -32,7 +29,7 @@ export class Author extends GoodreadsApiBase {
     private ratings_count: number;
     private text_reviews_count: number;
     private country_code: string;
-    private description: string;
+    private about: string;
 
     private twitterRegexp: RegExp = new RegExp('https?://(?:mobile\\.)?twitter\\.com/.*');
     private youtubeRegexp: RegExp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
@@ -41,16 +38,16 @@ export class Author extends GoodreadsApiBase {
         super(app);
         this.noteGenerator = new NoteGenerator(this.app);
         this.goodreadsBookId = author.goodreads_author_id;
-        this.initializeBookData(author);
+        this.initializeData(author);
         this.setYaml();
         this.fileName = this.getFilename(this.title);
-        this.setContent(author.description);
+        this.setContent(author.about);
     }
 
-    private initializeBookData(author: AuthorInterface) {
+    private initializeData(author: AuthorInterface) {
         this.title = this.formatTitle(author.name);
         this.authors = author.authors;
-        this.description = author.description;
+        this.about = author.about;
         this.date = new Date(author.date);
         this.year = this.date.getFullYear();
         this.month = this.date.getMonth() + 1;
@@ -76,9 +73,6 @@ export class Author extends GoodreadsApiBase {
             aliases: [],
             authors: this.authors,
             goodreads_book_id: this.goodreadsBookId,
-            isbn: this.isbn,
-            isbn13: this.isbn13,
-            asin: this.asin,
             date: this.convertDateToIsoString(this.date),
             links: [...DATA_YAML_AUTHOR_DEFAULT.links, link],
             locations: this.getListForYamlProperty(this.locations, true),

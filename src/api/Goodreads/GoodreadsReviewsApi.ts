@@ -67,7 +67,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
             return;
         }
 
-        console.log(`Review: ${JSON.stringify(review)}`);
+        // console.log(`Review: ${JSON.stringify(review)}`);
 
         const goodreadsBookApi = new GoodreadsBookApi(this.app);
         const book = await goodreadsBookApi.getBookById(review.book_id);
@@ -81,7 +81,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
             for (const authorId of book.authors_id) {
                 const author = await goodreadsAuthorApi.getAuthorById(authorId);
                 if (author) {
-                    // console.log(`Author: ${JSON.stringify(author)}`);
+                    console.log(`Author: ${JSON.stringify(author)}`);
                     new Author(this.app, author).createNote();
                     // exit after first author
                     break;

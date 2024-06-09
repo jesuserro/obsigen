@@ -41,13 +41,13 @@ export class Book extends GoodreadsApiBase {
         super(app);
         this.noteGenerator = new NoteGenerator(this.app);
         this.goodreadsBookId = book.goodreads_book_id;
-        this.initializeBookData(book);
+        this.initializeData(book);
         this.setYaml();
         this.fileName = this.getFilename(this.title);
         this.setContent(book.description);
     }
 
-    private initializeBookData(book: BookInterface) {
+    private initializeData(book: BookInterface) {
         this.title = this.formatTitle(book.title);
         this.authors = book.authors;
         this.isbn = book.isbn;

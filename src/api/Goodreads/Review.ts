@@ -40,13 +40,13 @@ export class Review extends GoodreadsApiBase {
         super(app);
         this.noteGenerator = new NoteGenerator(this.app);
         this.review_id = review.review_id;
-        this.initializeBookData(review);
+        this.initializeData(review);
         this.setYaml();
         this.fileName = this.getFilename(this.title);
         this.setContent(review.description);
     }
 
-    private initializeBookData(review: ReviewInterface) {
+    private initializeData(review: ReviewInterface) {
         this.title = this.formatTitle(review.title);
         this.authors = review.authors;
         this.isbn = review.isbn;
