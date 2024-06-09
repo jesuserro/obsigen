@@ -60,6 +60,7 @@ export class Author {
     const data = {
       ...DATA_YAML_AUTHOR_DEFAULT,
       title: this.title.replace(/[*"\\\/<>:|?¿,.;#]/g, ''),
+      aliases: [],
       authors: this.authors,
       goodreads_id: this.goodreads_id,
       date: this.convertDateToIsoString(this.date),

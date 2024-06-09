@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GoodreadsResponse>
+  <Request>
+    <authentication>true</authentication>
+      <key><![CDATA[DkLO3yfzNSM1JLOIJFXL3A]]></key>
+    <method><![CDATA[author_show]]></method>
+  </Request>
+  <author>
+  <id>40398</id>
+  <name>Arturo Pérez-Reverte</name>
+  <link><![CDATA[https://www.goodreads.com/author/show/40398.Arturo_P_rez_Reverte]]></link>
+  <fans_count type="integer">5397</fans_count>
+  <author_followers_count type="integer">5397</author_followers_count>
+  <large_image_url><![CDATA[https://images.gr-assets.com/authors/1415196332p7/40398.jpg]]></large_image_url>
+  <image_url><![CDATA[https://images.gr-assets.com/authors/1415196332p5/40398.jpg]]></image_url>
+  <small_image_url><![CDATA[https://images.gr-assets.com/authors/1415196332p2/40398.jpg]]></small_image_url>
+  <about><![CDATA[Arturo Pérez-Reverte Gutiérrez, is a Spanish novelist and ex-journalist. He worked as a war reporter for twenty-one years (1973 - 1994). He started his journalistic career writing for the now-defunct newspaper <i>Pueblo</i>. Then, he jumped to news reporter for TVE, Spanish national channel. As a war journalist he traveled to several countries, covering many conflicts. He put this experience into his book 'Territorio Comanche', focusing on the years of Bosnian massacres. That was in 1994, but his debut as a fiction writer started in 1983, with 'El húsar', a historical novella inspired in the Napoleonic era. <br /><br />Although his debut was not quite successful, in 1988, with 'The Fencing Master', he put his name as a serious writer of historic novels. That was confirmed in 1996, when was published the first book of his Captain Alatriste saga, which has been his trademark. After this book, he could leave definitely journalism for focusing on his career as a fiction writer. This saga, that happens in the years of the Spanish golden age, has seen, for now, seven volumes, where Pérez-Reverte shows, from his particular point of view, historical events from Spanish history in the 16th century.<br /><br />Apart from these, he also penned another successful works like Dumas Club and Flanders Panel, titles that, among others, made Pérez-Reverte one of the most famous and bestseller authors of Spanish fiction of our era.]]></about>
+  <influences><![CDATA[<a href="https://www.goodreads.com/author/show/4785.Alexandre_Dumas" title="Alexandre Dumas" rel="nofollow noopener">Alexandre Dumas</a>, <a href="https://www.goodreads.com/author/show/30775.Anthony_Hope" title="Anthony Hope" rel="nofollow noopener">Anthony Hope</a>, <a href="https://www.goodreads.com/author/show/3324.Alberto_V_zquez_Figueroa" title="Alberto Vázquez-Figueroa" rel="nofollow noopener">Alberto Vázquez-Figueroa</a>, <a href="https://www.goodreads.com/author/show/4037220.Miguel_de_Cervantes" title="Miguel de Cervantes" rel="nofollow noopener">Miguel de Cervantes</a>, <a href="https://www.goodreads.com/author/show/25574.Benito_P_rez_Gald_s" title="Benito Pérez Galdós" rel="nofollow noopener">Benito Pérez Galdós</a>, <a href="https://www.goodreads.com/author/show/3345.Joseph_Conrad" title="Joseph Conrad" rel="nofollow noopener">Joseph Conrad</a>, <a href="https://www.goodreads.com/author/show/34604.Francisco_de_Quevedo" title="Francisco de Quevedo" rel="nofollow noopener">Francisco de Quevedo</a>, <a href="https://www.goodreads.com/author/show/44810.Emilio_Salgari" title="Emilio Salgari" rel="nofollow noopener">Emilio Salgari</a>, <a href="https://www.goodreads.com/author/show/696805.Jules_Verne" title="Jules Verne" rel="nofollow noopener">Jules Verne</a>, <a href="https://www.goodreads.com/author/show/17241.Michel_de_Montaigne" title="Michel de Montaigne" rel="nofollow noopener">Michel de Montaigne</a>]]></influences>
+  <works_count>150</works_count>
+  <hometown>Cartagena, Murcia</hometown>
+  <born_at>1951/11/25</born_at>
+  <died_at></died_at>
+  <goodreads_author></goodreads_author>
+
+    <books>
+        <book>
+  <id type="integer">7194</id>
+  <isbn nil="true"/>
+  <isbn13>9780156032834</isbn13>
+  <text_reviews_count type="integer">1696</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.UKp4_F46ylb6_OYFLBzxng</uri>
+  <title>The Club Dumas</title>
+  <title_without_series>The Club Dumas</title_without_series>
+  <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327896341l/7194._SX98_.jpg</image_url>
+  <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327896341l/7194._SY75_.jpg</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/7194.The_Club_Dumas</link>
+  <num_pages>362</num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>3.81</average_rating>
+  <ratings_count>41667</ratings_count>
+  <description>Lucas Corso is a book detective, a middle-aged mercenary hired to hunt down rare editions for wealthy and unscrupulous clients. When a well-known bibliophile is found dead, leaving behind part of the original manuscript of Alexandre Dumas's The Three Musketeers, Corso is brought in to authenticate the fragment. He is soon drawn into a swirling plot involving devil worship, occult practices, and swashbuckling derring-do among a cast of characters bearing a suspicious resemblance to those of Dumas's masterpiece. Aided by a mysterious beauty named for a Conan Doyle heroine, Corso travels from Madrid to Toledo to Paris on the killer's trail in this twisty intellectual romp through the book world.</description>
+<authors>
+<author>
+<id>40398</id>
+<name>Arturo Pérez-Reverte</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p5/40398.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p2/40398.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/40398.Arturo_P_rez_Reverte]]></link>
+<average_rating>3.82</average_rating>
+<ratings_count>227599</ratings_count>
+<text_reviews_count>15949</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>372756</id>
+  <uri>kca://work/amzn1.gr.work.v1.D24pupxEDy8Zs5zx5gCUqg</uri>
+</work></book>
+
+
+        <book>
+  <id type="integer">45806</id>
+  <isbn>8497592654</isbn>
+  <isbn13>9788497592659</isbn13>
+  <text_reviews_count type="integer">58</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.U2cmJKfMEy8BPskziGciZg</uri>
+  <title>La tabla de Flandes</title>
+  <title_without_series>La tabla de Flandes</title_without_series>
+  <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1298154878l/45806._SX98_.jpg</image_url>
+  <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1298154878l/45806._SY75_.jpg</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/45806.La_tabla_de_Flandes</link>
+  <num_pages>412</num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>3.79</average_rating>
+  <ratings_count>24784</ratings_count>
+  <description>A finales del siglo XV un viejo maestro de la pintura flamenca introduce en uno de sus cuadros una partida de ajadrez que pudo cambiar la historia de Europa. Cinco siglos después, una joven resturadora de arte, un anticuario homosexual y un excéntrico jugador de ajedrez unen sus esfuerzos para resolver el enigma. Sus pesquisas abrirán las puertas de un apasionante misterio, que terminará envolviendo a los protagonistas.&lt;br /&gt;&lt;br /&gt;"La tabla de Flandes" es un excitante juego de trampas e inversiones - pintura, musica, literatura y logica matematica, que se convierte para el lector en una peligrosa aventura.</description>
+<authors>
+<author>
+<id>40398</id>
+<name>Arturo Pérez-Reverte</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p5/40398.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p2/40398.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/40398.Arturo_P_rez_Reverte]]></link>
+<average_rating>3.82</average_rating>
+<ratings_count>227599</ratings_count>
+<text_reviews_count>15949</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>1248065</id>
+  <uri>kca://work/amzn1.gr.work.v1.WISchxHp21y4yilK1TV-Mg</uri>
+</work></book>
+
+
+        <book>
+  <id type="integer">90411</id>
+  <isbn>0452287111</isbn>
+  <isbn13>9780452287112</isbn13>
+  <text_reviews_count type="integer">519</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1._y4BbC5DXsB-K2YPP71mSg</uri>
+  <title>Captain Alatriste (Adventures of Captain Alatriste, #1)</title>
+  <title_without_series>Captain Alatriste</title_without_series>
+  <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1309199746l/90411._SX98_.jpg</image_url>
+  <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1309199746l/90411._SY75_.jpg</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/90411.Captain_Alatriste</link>
+  <num_pages>253</num_pages>
+  <format></format>
+  <edition_information>Translation</edition_information>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>3.72</average_rating>
+  <ratings_count>15656</ratings_count>
+  <description>It is the height of Spain's celebrated golden century - but beyond the walls of the Royal Palace there is little on the streets of Madrid that glitters. The Invincible Armada has been defeated. The shadow of the Inquisition looms large. And the Thirty Years' War rages on in Flanders. When a courageous soldier of this war, Captain Diego Alatriste, is forced to retire after being wounded in battle, he returns home to live the comparatively tame - though hardly quiet - life of a swordsman-for-hire. In this dangerous city where a thrust of steel settles all matters, there is no stronger blade than Alatriste's." The captain is approached with an offer of work that involves giving a scare to some strangers soon to arrive in Madrid. But on the night of the attack, it becomes clear that these aren't ordinary travelers - and that someone is out for their blood. What happens next is the first in a series of riveting twists, with implications that will reverberate throughout the courts of Europe</description>
+<authors>
+<author>
+<id>40398</id>
+<name>Arturo Pérez-Reverte</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p5/40398.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p2/40398.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/40398.Arturo_P_rez_Reverte]]></link>
+<average_rating>3.82</average_rating>
+<ratings_count>227599</ratings_count>
+<text_reviews_count>15949</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>533912</id>
+  <uri>kca://work/amzn1.gr.work.v1.ywqYMjIYrLFBQPgv1FUM9w</uri>
+</work></book>
+
+
+        <book>
+  <id type="integer">90413</id>
+  <isbn>0330413147</isbn>
+  <isbn13>9780330413145</isbn13>
+  <text_reviews_count type="integer">497</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.MID2dDiwKD6O9Ltf0gZpOg</uri>
+  <title>The Queen of the South</title>
+  <title_without_series>The Queen of the South</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/90413.The_Queen_of_the_South</link>
+  <num_pages>528</num_pages>
+  <format>Paperback</format>
+  <edition_information>New edition</edition_information>
+  <publisher>Picador</publisher>
+  <publication_day/>
+  <publication_year>2005</publication_year>
+  <publication_month/>
+  <average_rating>3.95</average_rating>
+  <ratings_count>14672</ratings_count>
+  <description>Guero Davila is a pilot engaged in drug-smuggling for the local cartels. Teresa Mendoza is his girlfriend, a typical narco's morra-- quiet, doting, submissive. But then Guero's caught playing both sides, and in Sinaloa, that means death. Teresa finds herself alone, terrified, friendless and running to save her life, carrying nothing but a gym bag containing a pistol and a notebook that she has been forbidden to read. Forced to leave Mexico, she flees to the Spanish city of Melilla, where she meets Santiago Fisterra, a Galician involved in trafficking hashish across the Strait of Gibraltar. When Santiago's partner is captured, it is Teresa who steps in to take his place. Now Teresa has plunged into the dark and ugly world that once claimed Guero's life-- and she's about to get in deeper...</description>
+<authors>
+<author>
+<id>40398</id>
+<name>Arturo Pérez-Reverte</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p5/40398.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p2/40398.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/40398.Arturo_P_rez_Reverte]]></link>
+<average_rating>3.82</average_rating>
+<ratings_count>227599</ratings_count>
+<text_reviews_count>15949</text_reviews_count>
+</author>
+</authors>
+  <published>2005</published>
+<work>  <id>2302976</id>
+  <uri>kca://work/amzn1.gr.work.v1.uYP51DrudVFYuZsxwrotlQ</uri>
+</work></book>
+
+
+        <book>
+  <id type="integer">54072</id>
+  <isbn>0156029839</isbn>
+  <isbn13>9780156029834</isbn13>
+  <text_reviews_count type="integer">281</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.5ZyQcl0proUnVrYi15JrVQ</uri>
+  <title>The Fencing Master</title>
+  <title_without_series>The Fencing Master</title_without_series>
+  <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1328874822l/54072._SX98_.jpg</image_url>
+  <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1328874822l/54072._SY75_.jpg</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/54072.The_Fencing_Master</link>
+  <num_pages>244</num_pages>
+  <format></format>
+  <edition_information>First, First Edition</edition_information>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>3.79</average_rating>
+  <ratings_count>10999</ratings_count>
+  <description>In Madrid in 1868, fencing master and man of honor Don Jaime is approached by a mysterious woman who seeks to learn the unstoppable thrust, an arcane technique known only to him. All too soon he finds himself in the vortex of a plot that includes seduction, secret political documents, and more than one murder. Rich with historical detail of a decaying world that agonizes - as does the art of fencing itself - over the ideals of honor and chivalry, &lt;i&gt;The Fencing Master&lt;/i&gt; is superb literature and a true page-turner.</description>
+<authors>
+<author>
+<id>40398</id>
+<name>Arturo Pérez-Reverte</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p5/40398.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p2/40398.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/40398.Arturo_P_rez_Reverte]]></link>
+<average_rating>3.82</average_rating>
+<ratings_count>227599</ratings_count>
+<text_reviews_count>15949</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>2302954</id>
+  <uri>kca://work/amzn1.gr.work.v1.91RXRC6WHy-GC0bRlBzm6w</uri>
+</work></book>
+
+
+        <book>
+  <id type="integer">11033</id>
+  <isbn>0156029812</isbn>
+  <isbn13>9780156029810</isbn13>
+  <text_reviews_count type="integer">242</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.rP8cnUyhr3EXhA7bvQGXtA</uri>
+  <title>The Seville Communion</title>
+  <title_without_series>The Seville Communion</title_without_series>
+  <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1305158518l/11033._SX98_.jpg</image_url>
+  <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1305158518l/11033._SY75_.jpg</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/11033.The_Seville_Communion</link>
+  <num_pages>375</num_pages>
+  <format></format>
+  <edition_information>First, First Edition</edition_information>
+  <publisher>Harcourt, Inc.</publisher>
+  <publication_day>7</publication_day>
+  <publication_year>1999</publication_year>
+  <publication_month>6</publication_month>
+  <average_rating>3.69</average_rating>
+  <ratings_count>8421</ratings_count>
+  <description>Her name is Our Lady of the Tears. She's a small, crumbling Baroque church in the heart of Seville, Spain. And at least one person -- a computer hacker nicknamed Vespers -- believes that she kills to defend herself. In Arturo Perez-Reverte's stylish and entertaining &lt;i&gt;The Seville Communion&lt;/i&gt;, Rome sends handsome Father Lorenzo Quart to investigate. He meets a feisty parish priest, a beautiful aristocrat, an ambitious banker, and three of the most touching, wonderfully ineffectual crooks to ever dabble in a life of crime. There are mysteries as well, from another death at the church to the secrets of the human heart. &lt;br /&gt;-- Nancy Pate</description>
+<authors>
+<author>
+<id>40398</id>
+<name>Arturo Pérez-Reverte</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p5/40398.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p2/40398.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/40398.Arturo_P_rez_Reverte]]></link>
+<average_rating>3.82</average_rating>
+<ratings_count>227599</ratings_count>
+<text_reviews_count>15949</text_reviews_count>
+</author>
+</authors>
+  <published>1999</published>
+<work>  <id>52761</id>
+  <uri>kca://work/amzn1.gr.work.v1.b0qMXFnqR00upa6DjWqmww</uri>
+</work></book>
+
+
+        <book>
+  <id type="integer">58355594</id>
+  <isbn>8420460508</isbn>
+  <isbn13>9788420460505</isbn13>
+  <text_reviews_count type="integer">562</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v3.skueTkZKOYMCL28Z</uri>
+  <title>El italiano</title>
+  <title_without_series>El italiano</title_without_series>
+  <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1631963841l/58355594._SX98_.jpg</image_url>
+  <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1631963841l/58355594._SY75_.jpg</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/58355594-el-italiano</link>
+  <num_pages>400</num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>4.07</average_rating>
+  <ratings_count>6294</ratings_count>
+  <description>«Nada traiciona, tanto tiempo después, la mujer que desde hace dos años vive sola junto al mar con un perro y unos libros. Qué otra cosa, decide, sería el impulso, o el deseo, de permanecer abrazada a ese hombre para siempre. Ignora qué habrá en su cabeza dentro de un par de horas, cuando la claridad del día la despeje del todo e ilumine con más crudeza su conciencia. Lo cierto es que en este momento, sin duda alguna, desearía morir si él muriera.»&lt;br /&gt;&lt;br /&gt;En los años 1942 y 1943, durante la Segunda Guerra Mundial, buzos de combate italianos hundieron o dañaron catorce barcos aliados en Gibraltar y la bahía de Algeciras. En esta novela, inspirada en hechos reales, sólo algunos personajes y situaciones son imaginarios. Elena Arbués, una librera de veintisiete años, encuentra una madrugada mientras pasea por la playa a uno de esos buzos, desvanecido entre la arena y el agua. Al socorrerlo, la joven ignora que esa determinación cambiará su vida y que el amor será sólo parte de una peligrosa aventura.</description>
+<authors>
+<author>
+<id>40398</id>
+<name>Arturo Pérez-Reverte</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p5/40398.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p2/40398.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/40398.Arturo_P_rez_Reverte]]></link>
+<average_rating>3.82</average_rating>
+<ratings_count>227599</ratings_count>
+<text_reviews_count>15949</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>91509704</id>
+  <uri>kca://work/amzn1.gr.work.v3.58jOtr9yTBGJaq5j</uri>
+</work></book>
+
+
+        <book>
+  <id type="integer">31941619</id>
+  <isbn>8420428949</isbn>
+  <isbn13>9788420428949</isbn13>
+  <text_reviews_count type="integer">441</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.sjxwWS5kuG6J8ferHpn1Qg</uri>
+  <title>Falcó</title>
+  <title_without_series>Falcó</title_without_series>
+  <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1473604925l/31941619._SX98_.jpg</image_url>
+  <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1473604925l/31941619._SY75_.jpg</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/31941619-falc</link>
+  <num_pages>296</num_pages>
+  <format>ebook</format>
+  <edition_information>Narrativa hispánica</edition_information>
+  <publisher>Alfaguara</publisher>
+  <publication_day>19</publication_day>
+  <publication_year>2016</publication_year>
+  <publication_month>10</publication_month>
+  <average_rating>3.75</average_rating>
+  <ratings_count>6643</ratings_count>
+  <description>La Europa turbulenta de los años treinta y cuarenta del siglo XX es el escenario de las andanzas de Lorenzo Falcó, ex contrabandista de armas, espía sin escrúpulos, agente de los servicios de inteligencia. Durante el otoño de 1936, mientras la frontera entre amigos y enemigos se reduce a una línea imprecisa y peligrosa, Falcó recibe el encargo de infiltrarse en una difícil misión que podría cambiar el curso de la historia de España. Un hombre y dos mujeres -los hermanos Montero y Eva Rengel- serán sus compañeros de aventura y tal vez sus víctimas, en un tiempo en el que la vida se escribe a golpe de traiciones y nada es lo que parece.&lt;br /&gt;&lt;br /&gt;Arturo Pérez-Reverte entrelaza magistralmente realidad y ficción en esta historia protagonizada por un nuevo y fascinante personaje, comparable a los más destacados espías y aventureros de la literatura.</description>
+<authors>
+<author>
+<id>40398</id>
+<name>Arturo Pérez-Reverte</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p5/40398.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p2/40398.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/40398.Arturo_P_rez_Reverte]]></link>
+<average_rating>3.82</average_rating>
+<ratings_count>227599</ratings_count>
+<text_reviews_count>15949</text_reviews_count>
+</author>
+</authors>
+  <published>2016</published>
+<work>  <id>52599049</id>
+  <uri>kca://work/amzn1.gr.work.v1.2aNHdatghUcXSClsvwGHrg</uri>
+</work></book>
+
+
+        <book>
+  <id type="integer">11022</id>
+  <isbn>0452287987</isbn>
+  <isbn13>9780452287983</isbn13>
+  <text_reviews_count type="integer">151</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.n-Lq7o746H4vx_ilUbAOUQ</uri>
+  <title>Purity of Blood (Adventures of Captain Alatriste, #2)</title>
+  <title_without_series>Purity of Blood</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/11022.Purity_of_Blood</link>
+  <num_pages>268</num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>3.79</average_rating>
+  <ratings_count>6538</ratings_count>
+  <description>A punto de incorporarse a su antiguo tercio en Flandes, Diego Alatriste se ve envuelto por mediación de su amigo don Francisco de Quevedo en otra peligrosa aventura. Una mujer ha aparecido estrangulada en una silla de manos frente a la iglesia de San Ginés, con una bolsa de dinero y una nota manuscrita: Para misas por su alma. El enigma se complica con los sucesos misteriosos que ocurren tras las paredes de un convento, cuando Alatriste es contratado para rescatar de allí a una joven novicia. En el azaroso y fascinante Madrid de Felipe IV, entre lances, tabernas, garitos, intrigas y estocadas, la aventura pondrá en juego la vida de los amigos del capitán, haciendo surgir del pasado los fantasmas de viejos enemigos: el pérfido secretario real Luis de Alquézar, el inquisidor fray Emilio Bocanegra y el siniestro espadachín italiano Gualterio Malatesta.</description>
+<authors>
+<author>
+<id>40398</id>
+<name>Arturo Pérez-Reverte</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p5/40398.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p2/40398.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/40398.Arturo_P_rez_Reverte]]></link>
+<average_rating>3.82</average_rating>
+<ratings_count>227599</ratings_count>
+<text_reviews_count>15949</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>84243</id>
+  <uri>kca://work/amzn1.gr.work.v1.UvHKeKbxdk9hB8sjq5dJIg</uri>
+</work></book>
+
+
+        <book>
+  <id type="integer">11030</id>
+  <isbn>0156029820</isbn>
+  <isbn13>9780156029827</isbn13>
+  <text_reviews_count type="integer">197</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.onkEIh9mlaWTtXR5_Eh3PQ</uri>
+  <title>The Nautical Chart</title>
+  <title_without_series>The Nautical Chart</title_without_series>
+  <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1328874822l/11030._SX98_.jpg</image_url>
+  <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1328874822l/11030._SY75_.jpg</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/11030.The_Nautical_Chart</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information>First, First Edition</edition_information>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>3.56</average_rating>
+  <ratings_count>6190</ratings_count>
+  <description>A treasure hunt for a Jesuit ship sunk by pirates off the coast of Spain is the plot on which Perez-Reverte's new novel turns, but a love story is the real heart of this nicely crafted, carefully told adventure. A suspended sailor happens on a maritime auction in Barcelona, where he meets the beautiful Tanger Soto, a museum curator whose winning bid buys her a 17th-century atlas that may reveal the final resting place of the &lt;i&gt;Dei Gloria&lt;/i&gt;. Coy, the sailor, is totally smitten, so it's no surprise that he signs on to help Tanger track the sunken ship to its grave in waters he's sailed since childhood. Enlisting the aid of a diver friend, Coy and Tanger stay a few steps ahead of the crooked salvagers who've been trying to get the atlas, outmaneuvering the attempts on their lives and the efforts to keep them from the treasure. Perez-Reverte (&lt;i&gt;The Fencing Master&lt;/i&gt;, &lt;i&gt;The Club Dumas&lt;/i&gt;) is better at plumbing the mysteries of the human heart than those of the sea, but &lt;i&gt;The Nautical Chart&lt;/i&gt; manages to combine history, suspense, and obsessive love in a slow-paced but ultimately engrossing read. &lt;i&gt;--Jane Adams&lt;/i&gt;</description>
+<authors>
+<author>
+<id>40398</id>
+<name>Arturo Pérez-Reverte</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p5/40398.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1415196332p2/40398.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/40398.Arturo_P_rez_Reverte]]></link>
+<average_rating>3.82</average_rating>
+<ratings_count>227599</ratings_count>
+<text_reviews_count>15949</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>2302998</id>
+  <uri>kca://work/amzn1.gr.work.v1.CO5HEI79d8m5-hXCwMDhyQ</uri>
+</work></book>
+
+
+    </books>
+</author>
+
+</GoodreadsResponse>
