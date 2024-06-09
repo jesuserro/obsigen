@@ -31,15 +31,16 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
 
     private parseReview(review: Element): any {
         const shelves = this.getShelves(review);
-        const description = this.turndownService.turndown(review.querySelector('book > description')?.textContent ?? '');
+        const description = this.turndownService.turndown(review.querySelector(':scope > book > description')?.textContent ?? '');
         let dateAdded = this.formatDate(review.querySelector('date_added')?.textContent ?? '');
         dateAdded = new Date(dateAdded).toISOString().split('T')[0];
         const dateUpdated = this.formatDate(review.querySelector('date_updated')?.textContent ?? '');
 
         return {
-            review_id: review.querySelector('id')?.textContent?.match(/\d+/)?.[0] || null,
-            isbn: review.querySelector('book > isbn')?.textContent,
-            title: review.querySelector('book > title')?.textContent,
+            review_id: review.querySelector('id')?.textContent?.match(/\d+/)?.[0],
+            book_id: review.querySelector(':scope > book > id')?.textContent,
+            isbn: review.querySelector(':scope > book > isbn')?.textContent,
+            title: review.querySelector(':scope > book > title')?.textContent,
             authors: review.querySelector(':scope > book > authors > author > name')?.textContent,
             rating: review.querySelector('rating')?.textContent,
             date: dateAdded,
@@ -47,7 +48,6 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
             date_updated: dateUpdated,
             tags: shelves,
             urls: review.querySelector('link')?.textContent,
-            book_id: review.querySelector('book_id')?.textContent,
             cover: review.querySelector('image_url')?.textContent,
             description: description,
             votes: review.querySelector('votes')?.textContent,
@@ -58,7 +58,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
 
     private getShelves(review: Element): string[] {
         const shelvesElement = review.querySelector('shelves');
-        return shelvesElement ? Array.from(shelvesElement.querySelectorAll('shelf')).map(shelf => `Goodreads/Reviews/${shelf.getAttribute('name')?.trim() ?? ''}`) : [];
+        return shelvesElement ? Array.from(shelvesElement.querySelectorAll('shelf')).map(shelf => `Goodreads/${shelf.getAttribute('name')?.trim() ?? ''}`) : [];
     }
 
     public async getLastBookFromToReadShelf() {
@@ -66,9 +66,11 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         if (!xmlString) return;
 
         const reviews = this.parseReviews(xmlString);
-        console.log(`Total reviews: ${reviews.length}`);
+        // console.log(`Total reviews: ${reviews.length}`);
 
         const review = reviews[0];
+        // console.log(`Review: ${JSON.stringify(review)}`);
+
         if (!review) {
             console.error(`No reviews found in 'to-read' shelf`);
             return;
