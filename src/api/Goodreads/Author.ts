@@ -34,6 +34,7 @@ export class Author extends GoodreadsApiBase {
     private country_code: string;
     private about: string;
     private image: string;
+    private influences: string[];
 
     private twitterRegexp: RegExp = new RegExp('https?://(?:mobile\\.)?twitter\\.com/.*');
     private youtubeRegexp: RegExp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
@@ -69,6 +70,7 @@ export class Author extends GoodreadsApiBase {
         this.works_count = author.works_count || 0;
         this.fans_count  = author.fans_count  || 0;
         this.country_code = author.country_code || '';
+        this.influences = author.influences || [];
     }
 
     private setYaml() {
@@ -112,7 +114,7 @@ export class Author extends GoodreadsApiBase {
         this.content = `${this.yaml}\n# ${this.title}\n\n${description}\n`;
 
         if (this.cover) {
-            this.content = `${this.yaml}\n# ${this.title}\n\n![](${this.cover})\n\n${description}\n\n`;
+            this.content = `${this.yaml}\n# ${this.title}\n\n![](${this.cover})\n\n${description}\n\n# Influencias\n\n${this.influences.join(', ')}\n\n`;
         }
     }
 

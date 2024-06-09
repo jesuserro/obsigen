@@ -23,6 +23,9 @@ export class GoodreadsAuthorApi extends GoodreadsApiBase {
         const authorElement = this.parseXml(xmlString, 'author');
         if (!authorElement) return null;
 
+        const influencesHtml = this.getTextContent(authorElement, ['influences'], '');
+        const influences = influencesHtml ? this.parseInfluences(influencesHtml) : [];
+
         return {
             goodreads_author_id: this.getTextContent(authorElement, ['id']),
             name: this.getTextContent(authorElement, ['name']),
@@ -33,12 +36,12 @@ export class GoodreadsAuthorApi extends GoodreadsApiBase {
             born_at: new Date(this.getTextContent(authorElement, ['born_at'])),
             died_at: new Date(this.getTextContent(authorElement, ['died_at'])),
             about: this.turndownService.turndown(this.getTextContent(authorElement, ['about'])),
-            influences: this.getTextContent(authorElement, ['influences']),
             gender: this.getTextContent(authorElement, ['gender']),
             hometown: this.getTextContent(authorElement, ['hometown']),
             birthplace: this.getTextContent(authorElement, ['birthplace']),
             website: this.getTextContent(authorElement, ['website']),
             fans_count: parseInt(this.getTextContent(authorElement, ['fans_count'], '0'), 10),
+            influences: influences
         };
     }
 
@@ -47,5 +50,20 @@ export class GoodreadsAuthorApi extends GoodreadsApiBase {
         if (!xmlString) return null;
 
         return this.parseAuthor(xmlString);
+    }
+
+    private parseInfluences(influencesHtml: string): string[] {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(influencesHtml, 'text/html');
+        const links = doc.querySelectorAll('a');
+        const influences: string[] = [];
+        links.forEach(link => {
+            const href = link.getAttribute('href');
+            const title = link.textContent;
+            if (href && title) {
+                influences.push(`[${title}](${href})`);
+            }
+        });
+        return influences;
     }
 }

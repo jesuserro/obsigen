@@ -194,7 +194,6 @@ export interface Author {
     fans_count: number,
     works_count: number,
     about: string,
-    influences: string,
     gender: string,
     hometown: string,
     birthplace: string,
@@ -202,7 +201,8 @@ export interface Author {
 	cssclasses: string[],
 	rating: number,
 	emotion: number,
-	favorite: boolean
+	favorite: boolean,
+    influences: string[]
 }
 
 export const DATA_YAML_AUTHOR_DEFAULT: Author = {
@@ -228,12 +228,12 @@ export const DATA_YAML_AUTHOR_DEFAULT: Author = {
     works_count: 0,
     about: '',
     gender: '',
-    influences: '',
     hometown: '',
     birthplace: '',
     website: '',
 	cssclasses: [],
 	rating: 0,
 	emotion: 0,
-	favorite: false
+	favorite: false,
+    influences: []
 };
