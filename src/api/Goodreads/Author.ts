@@ -114,7 +114,11 @@ export class Author extends GoodreadsApiBase {
         this.content = `${this.yaml}\n# ${this.title}\n\n${description}\n`;
 
         if (this.cover) {
-            this.content = `${this.yaml}\n# ${this.title}\n\n![](${this.cover})\n\n${description}\n\n# Influencias\n\n${this.influences.join(', ')}\n\n`;
+            this.content = `${this.yaml}\n# ${this.title}\n\n![](${this.cover})\n\n${description}\n`;
+        }
+
+        if (this.influences.length > 0) {
+            this.content += `\n\n## Influences\n\n${this.influences.map((influence: string) => `- ${influence}`).join('\n')}`;
         }
     }
 
