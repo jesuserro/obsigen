@@ -1,7 +1,7 @@
 import { App } from 'obsidian';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
-import { Book } from './Book';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
+import { Review } from './Review';
 
 export class GoodreadsReviewsApi extends GoodreadsApiBase {
     private static readonly REVIEWS_URL_TEMPLATE = 'review/list/$authorId.xml?key=$apikey&v=2';
@@ -33,20 +33,24 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         const shelves = this.getShelves(review);
         const content = this.turndownService.turndown(review.querySelector('book > description')?.textContent ?? '');
         const dateAdded = this.formatDate(review.querySelector('date_added')?.textContent ?? '');
-        const pubDate = this.getFormattedDate(review, ['publication_year', 'work > original_publication_year'], ['publication_month', 'work > original_publication_month'], ['publication_day', 'work > original_publication_day']);
+        const dateUpdated = this.formatDate(review.querySelector('date_updated')?.textContent ?? '');
 
         return {
             guid: review.querySelector('id')?.textContent?.match(/\d+/)?.[0] || null,
             isbn: review.querySelector('book > isbn')?.textContent,
             title: review.querySelector('book > title')?.textContent,
-            authors: review.querySelector('author_name')?.textContent,
-            rating: review.querySelector('user_rating')?.textContent,
-            date: dateAdded || pubDate,
+            authors: review.querySelector(':scope > book > authors > author > name')?.textContent,
+            rating: review.querySelector('rating')?.textContent,
+            date: dateAdded,
+            date_updated: dateUpdated,
             tags: shelves,
             urls: review.querySelector('link')?.textContent,
             book_id: review.querySelector('book_id')?.textContent,
             cover: review.querySelector('image_url')?.textContent,
             description: content,
+            votes: review.querySelector('votes')?.textContent,
+            read_count: review.querySelector('read_count')?.textContent,
+            comments_count: review.querySelector('comments_count')?.textContent,
         };
     }
 
@@ -68,6 +72,6 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
             return;
         }
 
-        new Book(this.app, review).createNote();
+        new Review(this.app, review).createNote();
     }
 }
