@@ -16,8 +16,6 @@ export class GoodreadsAuthorApi extends GoodreadsApiBase {
             .replace('$apikey', goodreads_apikey)
             .replace('$authorId', authorId);
 
-        console.log(url);
-
         return this.fetchXml(url);
     }
 
@@ -30,9 +28,6 @@ export class GoodreadsAuthorApi extends GoodreadsApiBase {
             name: this.getTextContent(authorElement, ['name']),
             image: this.getTextContent(authorElement, ['image_url']),
             urls: this.getTextContent(authorElement, ['link']),
-            average_rating: parseFloat(this.getTextContent(authorElement, ['average_rating'], '0')),
-            ratings_count: parseInt(this.getTextContent(authorElement, ['ratings_count'], '0'), 10),
-            text_reviews_count: parseInt(this.getTextContent(authorElement, ['text_reviews_count'], '0'), 10),
             works_count: parseInt(this.getTextContent(authorElement, ['works_count'], '0'), 10),
             date: new Date(this.getTextContent(authorElement, ['born_at'])),
             born_at: new Date(this.getTextContent(authorElement, ['born_at'])),
@@ -42,7 +37,8 @@ export class GoodreadsAuthorApi extends GoodreadsApiBase {
             gender: this.getTextContent(authorElement, ['gender']),
             hometown: this.getTextContent(authorElement, ['hometown']),
             birthplace: this.getTextContent(authorElement, ['birthplace']),
-            website: this.getTextContent(authorElement, ['website'])
+            website: this.getTextContent(authorElement, ['website']),
+            fans_count: parseInt(this.getTextContent(authorElement, ['fans_count'], '0'), 10),
         };
     }
 

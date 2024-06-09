@@ -12,9 +12,13 @@ export class Author extends GoodreadsApiBase {
     private fileName: string;
     private content: string = '';
     private date: Date = new Date();
+    private born_at: Date = new Date();
+    private died_at: Date = new Date();
 
-    // Propiedades del libro
+    // Author properties
+    private goodreads_author_id: string;
     private title: string;
+    private name: string;
     private authors: string[];
     private cover: string;
     private rating: number;
@@ -24,10 +28,9 @@ export class Author extends GoodreadsApiBase {
     private locations: string;
     private urls: string;
     private tags: string[];
-    private num_pages: number;
-    private average_rating: number;
-    private ratings_count: number;
-    private text_reviews_count: number;
+    private hometown: string;
+    private works_count: number;
+    private fans_count : number;
     private country_code: string;
     private about: string;
     private image: string;
@@ -38,7 +41,6 @@ export class Author extends GoodreadsApiBase {
     constructor(app: App, author: AuthorInterface) {
         super(app);
         this.noteGenerator = new NoteGenerator(this.app);
-        this.goodreadsBookId = author.goodreads_author_id;
         this.initializeData(author);
         this.setYaml();
         this.fileName = this.getFilename(this.title);
@@ -46,10 +48,14 @@ export class Author extends GoodreadsApiBase {
     }
 
     private initializeData(author: AuthorInterface) {
+        this.goodreads_author_id = author.goodreads_author_id;
         this.title = this.formatTitle(author.name);
+        this.name = this.formatTitle(author.name);
         this.authors = author.authors;
         this.about = author.about;
         this.date = new Date(author.date);
+        this.born_at = new Date(author.born_at);
+        this.died_at = new Date(author.died_at);
         this.year = this.date.getFullYear();
         this.month = this.date.getMonth() + 1;
         this.day = this.date.getDate();
@@ -59,9 +65,9 @@ export class Author extends GoodreadsApiBase {
         this.locations = author.locations || '';
         this.urls = this.cleanUrls(author.urls, this.twitterRegexp, this.youtubeRegexp) || '';
         this.tags = author.tags || [];
-        this.average_rating = author.average_rating || 0;
-        this.ratings_count = author.ratings_count || 0;
-        this.text_reviews_count = author.text_reviews_count || 0;
+        this.hometown = author.hometown || '';
+        this.works_count = author.works_count || 0;
+        this.fans_count  = author.fans_count  || 0;
         this.country_code = author.country_code || '';
     }
 
@@ -73,21 +79,21 @@ export class Author extends GoodreadsApiBase {
             ...DATA_YAML_AUTHOR_DEFAULT,
             title: title,
             aliases: [],
+            goodreads_author_id: this.goodreads_author_id,
             authors: this.authors,
-            goodreads_book_id: this.goodreadsBookId,
             date: this.convertDateToIsoString(this.date),
+            born_at: this.convertDateToIsoString(this.born_at),
+            died_at: this.convertDateToIsoString(this.died_at),
             links: [...DATA_YAML_AUTHOR_DEFAULT.links, link],
             locations: this.getListForYamlProperty(this.locations, true),
             urls: this.getListForYamlProperty(this.urls),
             tags: [...DATA_YAML_AUTHOR_DEFAULT.tags, ...this.tags],
             cover: cover,
-            cssclasses: [...DATA_YAML_AUTHOR_DEFAULT.cssclasses, 'book'],
+            cssclasses: [...DATA_YAML_AUTHOR_DEFAULT.cssclasses, 'person'],
             rating: this.rating,
-            num_pages: this.num_pages,
-            average_rating: this.average_rating,
-            ratings_count: this.ratings_count,
-            text_reviews_count: this.text_reviews_count,
-            country_code: this.country_code
+            works_count: this.works_count,
+            fans_count : this.fans_count ,
+            hometown: this.hometown
         };
 
         let yaml = renderToString(Yaml({ data }));
