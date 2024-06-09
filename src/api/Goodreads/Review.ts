@@ -1,7 +1,7 @@
 import { App } from 'obsidian';
 import { renderToString } from 'react-dom/server';
 import { NoteGenerator } from 'src/core/notes/NoteGenerator';
-import { Book as BookInterface, DATA_YAML_BOOK_DEFAULT } from 'src/core/shared/interface/iYaml';
+import { DATA_YAML_REVIEW_DEFAULT, Review as ReviewInterface } from 'src/core/shared/interface/iYaml';
 import { Yaml } from 'src/core/shared/templates/Yaml';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
 
@@ -13,12 +13,11 @@ export class Review extends GoodreadsApiBase {
     private content: string = '';
     private date: Date = new Date();
 
-    // Propiedades del libro
+    // Propiedades de la review
+    private review_id: string;
     private title: string;
     private authors: string[];
     private isbn: string;
-    private isbn13: string;
-    private asin: string;
     private cover: string;
     private rating: number;
     private year: number;
@@ -37,37 +36,30 @@ export class Review extends GoodreadsApiBase {
     private twitterRegexp: RegExp = new RegExp('https?://(?:mobile\\.)?twitter\\.com/.*');
     private youtubeRegexp: RegExp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
 
-    constructor(app: App, book: BookInterface) {
+    constructor(app: App, review: ReviewInterface) {
         super(app);
         this.noteGenerator = new NoteGenerator(this.app);
-        this.goodreadsBookId = book.goodreads_book_id;
-        this.initializeBookData(book);
+        this.review_id = review.review_id;
+        this.initializeBookData(review);
         this.setYaml();
         this.fileName = this.getFilename(this.title);
-        this.setContent(book.description);
+        this.setContent(review.description);
     }
 
-    private initializeBookData(book: BookInterface) {
-        this.title = this.formatTitle(book.title);
-        this.authors = book.authors;
-        this.isbn = book.isbn;
-        this.isbn13 = book.isbn13;
-        this.asin = book.asin;
-        this.description = book.description;
-        this.date = new Date(book.date);
+    private initializeBookData(review: ReviewInterface) {
+        this.title = this.formatTitle(review.title);
+        this.authors = review.authors;
+        this.isbn = review.isbn;
+        this.description = review.description;
+        this.date = new Date(review.date);
         this.year = this.date.getFullYear();
         this.month = this.date.getMonth() + 1;
         this.day = this.date.getDate();
-        this.rating = book.rating * 2;
-        this.cover = book.cover;
-        this.locations = book.locations || '';
-        this.urls = this.cleanUrls(book.urls, this.twitterRegexp, this.youtubeRegexp) || '';
-        this.tags = book.tags || [];
-        this.num_pages = book.num_pages || 0;
-        this.average_rating = book.average_rating || 0;
-        this.ratings_count = book.ratings_count || 0;
-        this.text_reviews_count = book.text_reviews_count || 0;
-        this.country_code = book.country_code || '';
+        this.rating = review.rating * 2;
+        this.cover = review.cover;
+        this.locations = review.locations || '';
+        this.urls = this.cleanUrls(review.urls, this.twitterRegexp, this.youtubeRegexp) || '';
+        this.tags = review.tags || [];
     }
 
     private setYaml() {
@@ -75,20 +67,18 @@ export class Review extends GoodreadsApiBase {
         const title = this.title.replace(/[*"\\\/<>:|?¿,.;#]/g, '');
         const cover = `"![${title}](${this.cover})"`;
         const data = {
-            ...DATA_YAML_BOOK_DEFAULT,
+            ...DATA_YAML_REVIEW_DEFAULT,
             title: title,
             authors: this.authors,
             goodreads_book_id: this.goodreadsBookId,
             isbn: this.isbn,
-            isbn13: this.isbn13,
-            asin: this.asin,
             date: this.convertDateToIsoString(this.date),
-            links: [...DATA_YAML_BOOK_DEFAULT.links, link],
+            links: [...DATA_YAML_REVIEW_DEFAULT.links, link],
             locations: this.getListForYamlProperty(this.locations, true),
             urls: this.getListForYamlProperty(this.urls),
-            tags: [...DATA_YAML_BOOK_DEFAULT.tags, ...this.tags],
+            tags: [...DATA_YAML_REVIEW_DEFAULT.tags, ...this.tags],
             cover: cover,
-            cssclasses: [...DATA_YAML_BOOK_DEFAULT.cssclasses, 'book'],
+            cssclasses: [...DATA_YAML_REVIEW_DEFAULT.cssclasses, 'book'],
             rating: this.rating,
             num_pages: this.num_pages,
             average_rating: this.average_rating,

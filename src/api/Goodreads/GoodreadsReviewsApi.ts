@@ -31,23 +31,25 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
 
     private parseReview(review: Element): any {
         const shelves = this.getShelves(review);
-        const content = this.turndownService.turndown(review.querySelector('book > description')?.textContent ?? '');
-        const dateAdded = this.formatDate(review.querySelector('date_added')?.textContent ?? '');
+        const description = this.turndownService.turndown(review.querySelector('book > description')?.textContent ?? '');
+        let dateAdded = this.formatDate(review.querySelector('date_added')?.textContent ?? '');
+        dateAdded = new Date(dateAdded).toISOString().split('T')[0];
         const dateUpdated = this.formatDate(review.querySelector('date_updated')?.textContent ?? '');
 
         return {
-            guid: review.querySelector('id')?.textContent?.match(/\d+/)?.[0] || null,
+            review_id: review.querySelector('id')?.textContent?.match(/\d+/)?.[0] || null,
             isbn: review.querySelector('book > isbn')?.textContent,
             title: review.querySelector('book > title')?.textContent,
             authors: review.querySelector(':scope > book > authors > author > name')?.textContent,
             rating: review.querySelector('rating')?.textContent,
             date: dateAdded,
+            date_added: dateAdded,
             date_updated: dateUpdated,
             tags: shelves,
             urls: review.querySelector('link')?.textContent,
             book_id: review.querySelector('book_id')?.textContent,
             cover: review.querySelector('image_url')?.textContent,
-            description: content,
+            description: description,
             votes: review.querySelector('votes')?.textContent,
             read_count: review.querySelector('read_count')?.textContent,
             comments_count: review.querySelector('comments_count')?.textContent,
