@@ -103,11 +103,10 @@ export class GoodreadsApiBase {
         const shelves: string[] = [GoodreadsApiBase.GLOBAL_TAG];
         const shelfElements = element.querySelectorAll('shelf');
         shelfElements.forEach(shelf => {
-            if (baseTag) {
-                shelves.push(`${GoodreadsApiBase.BASE_TAG}/${baseTag}/${shelf.getAttribute('name') || ''}`);
-            } else {
-                shelves.push(`${GoodreadsApiBase.BASE_TAG}/${shelf.getAttribute('name') || ''}`);
-            }
+            const shelfName = shelf.getAttribute('name') || '';
+            const basePath = `${GoodreadsApiBase.BASE_TAG}/${shelfName}`;
+            const fullPath = baseTag ? `${GoodreadsApiBase.BASE_TAG}/${baseTag}/${shelfName}` : basePath;
+            shelves.push(fullPath);
         });
         return shelves;
     }

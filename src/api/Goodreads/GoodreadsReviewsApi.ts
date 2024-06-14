@@ -1,7 +1,5 @@
 import { App } from 'obsidian';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
-import { Author } from './Author';
-import { Book } from './Book';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
 import { GoodreadsAuthorApi } from './GoodreadsAuthorApi';
 import { GoodreadsBookApi } from './GoodreadsBookApi';
@@ -34,7 +32,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         const dateUpdated = this.formatDate(this.parseReviewElement(review, 'date_updated') ?? '');
 
         return {
-            review_id: this.parseReviewElement(review, 'id')?.match(/\d+/)?.[0],
+            review_id: this.parseReviewElement(review, 'id'),
             book_id: this.parseReviewElement(review, ':scope > book > id'),
             author_id: this.parseReviewElement(review, ':scope > book > authors > author > id'),
             isbn: this.parseReviewElement(review, ':scope > book > isbn'),
@@ -81,7 +79,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
             console.error(`Failed to fetch book details for book_id: ${review.book_id}`);
             return null;
         }
-        new Book(this.app, book).createNote();
+        // new Book(this.app, book).createNote();
         return book;
     }
 
@@ -94,7 +92,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
                 continue;
             }
             console.log(`Author: ${JSON.stringify(author)}`);
-            new Author(this.app, author).createNote();
+            // new Author(this.app, author).createNote();
             break;
         }
     }
