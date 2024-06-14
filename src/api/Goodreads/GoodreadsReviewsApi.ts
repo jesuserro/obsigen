@@ -60,26 +60,32 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         return Array.from(items).map(item => this.parseReview(item));
     }
 
-    private async fetchAndCreateReviewNotes(reviews: any[]) {
+    private getFirstReview(reviews: any[]): any {
         if (reviews.length === 0) {
             console.error(`No reviews found in 'to-read' shelf`);
-            return;
+            return null;
         }
 
         const review = reviews[0];
         console.log(`Review: ${JSON.stringify(review)}`);
         new Review(this.app, review).createNote();
+        return review;
+    }
 
+    private async fetchBookDetails(review: any): Promise<any> {
         const goodreadsBookApi = new GoodreadsBookApi(this.app);
         const book = await goodreadsBookApi.getBookById(review.book_id);
 
         console.log(`Book: ${JSON.stringify(book)}`);
         if (!book) {
             console.error(`Failed to fetch book details for book_id: ${review.book_id}`);
-            return;
+            return null;
         }
         new Book(this.app, book).createNote();
+        return book;
+    }
 
+    private async fetchPrimaryAuthor(book: any): Promise<void> {
         const goodreadsAuthorApi = new GoodreadsAuthorApi(this.app);
         for (const authorId of book.authors_id) {
             const author = await goodreadsAuthorApi.getAuthorById(authorId);
@@ -98,6 +104,12 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         if (!xmlString) return;
 
         const reviews = this.parseReviews(xmlString);
-        await this.fetchAndCreateReviewNotes(reviews);
+        const review = this.getFirstReview(reviews);
+        if (!review) return;
+
+        const book = await this.fetchBookDetails(review);
+        if (!book) return;
+
+        await this.fetchPrimaryAuthor(book);
     }
 }
