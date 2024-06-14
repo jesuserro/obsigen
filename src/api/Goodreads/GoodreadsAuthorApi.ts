@@ -41,7 +41,8 @@ export class GoodreadsAuthorApi extends GoodreadsApiBase {
             birthplace: this.getTextContent(authorElement, ['birthplace']),
             website: this.getTextContent(authorElement, ['website']),
             fans_count: parseInt(this.getTextContent(authorElement, ['fans_count'], '0'), 10),
-            influences: influences
+            influences: influences,
+            tags: this.getShelves(authorElement),
         };
     }
 
@@ -66,4 +67,5 @@ export class GoodreadsAuthorApi extends GoodreadsApiBase {
         });
         return influences;
     }
+    
 }
