@@ -49,7 +49,8 @@ export class MenuPrincipal extends Menu {
         icon: "book-open",
         onClick: async () => {
             const goodreadsReviews = new GoodreadsReviewsApi(app as App);
-            await goodreadsReviews.getReviewById('6585220665');
+            // await goodreadsReviews.getReviewById('6585220665'); // El diario de la felicidad
+            await goodreadsReviews.getReviewById('2322591776'); // El Hombre Eterno
         }
     });
 
