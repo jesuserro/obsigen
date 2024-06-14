@@ -5,6 +5,7 @@ import { Book } from './Book';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
 import { GoodreadsAuthorApi } from './GoodreadsAuthorApi';
 import { GoodreadsBookApi } from './GoodreadsBookApi';
+import { Review } from './Review';
 
 
 export class GoodreadsReviewsApi extends GoodreadsApiBase {
@@ -61,8 +62,11 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         if (!xmlString) return;
 
         const reviews = this.parseReviews(xmlString);
+
+        // Only the first review
         const review = reviews[0];
-        // new Review(this.app, review).createNote();
+        console.log(`Review: ${JSON.stringify(review)}`);
+        new Review(this.app, review).createNote();
 
         if (!review) {
             console.error(`No reviews found in 'to-read' shelf`);
