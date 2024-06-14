@@ -74,28 +74,25 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
 
         console.log(`Book: ${JSON.stringify(book)}`);
 
-        if (book) {
-            // new Book(this.app, book).createNote();
-
-            const goodreadsAuthorApi = new GoodreadsAuthorApi(this.app);
-            for (const authorId of book.authors_id) {
-                const author = await goodreadsAuthorApi.getAuthorById(authorId);
-                if (author) {
-                    console.log(`Author: ${JSON.stringify(author)}`);
-                    
-                    // if (author_id = 40398 "Reverte") then create note
-                    if(authorId == "40398"){
-                        console.log(`Author: ${JSON.stringify(author)}`);
-                        new Author(this.app, author).createNote();
-                    }
-                    
-                } else {
-                    console.error(`Failed to fetch author details for author_id: ${authorId}`);
-                }
-            }
-
-        } else {
+        if (!book) {
             console.error(`Failed to fetch book details for book_id: ${review.book_id}`);
+            return;
+        }
+
+        // new Book(this.app, book).createNote();
+
+        const goodreadsAuthorApi = new GoodreadsAuthorApi(this.app);
+            
+        for (const authorId of book.authors_id) {
+            const author = await goodreadsAuthorApi.getAuthorById(authorId);
+            if (!author) {
+                console.error(`Failed to fetch author details for author_id: ${authorId}`);
+                continue;
+            }
+            console.log(`Author: ${JSON.stringify(author)}`);
+            new Author(this.app, author).createNote();
+            // Only first author
+            break;
         }
     }
 }
