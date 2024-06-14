@@ -1,5 +1,6 @@
 import { App } from 'obsidian';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
+import { Book } from './Book';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
 import { GoodreadsAuthorApi } from './GoodreadsAuthorApi';
 import { GoodreadsBookApi } from './GoodreadsBookApi';
@@ -128,7 +129,12 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         const review = this.parseReview(reviewElement);
         console.log(`Review: ${JSON.stringify(review)}`);
 
-        await new Review(this.app, review).createNote();
+        // await new Review(this.app, review).createNote();
+
+        // Add book from review
+        const book = await this.fetchBookDetails(review);
+        if (!book) return null;
+        new Book(this.app, book).createNote();
 
         return review;
     }
