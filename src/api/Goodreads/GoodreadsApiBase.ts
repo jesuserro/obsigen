@@ -99,12 +99,17 @@ export class GoodreadsApiBase {
         return value.toString().padStart(2, '0');
     }
 
-    protected getShelves(element: Element): string[] {
+    protected getShelves(element: Element, baseTag: string = ''): string[] {
         const shelves: string[] = [GoodreadsApiBase.GLOBAL_TAG];
         const shelfElements = element.querySelectorAll('shelf');
         shelfElements.forEach(shelf => {
-            shelves.push(`${GoodreadsApiBase.BASE_TAG}/${shelf.getAttribute('name') || ''}`);
+            if (baseTag) {
+                shelves.push(`${GoodreadsApiBase.BASE_TAG}/${baseTag}/${shelf.getAttribute('name') || ''}`);
+            } else {
+                shelves.push(`${GoodreadsApiBase.BASE_TAG}/${shelf.getAttribute('name') || ''}`);
+            }
         });
         return shelves;
     }
+    
 }

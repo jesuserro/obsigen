@@ -42,7 +42,7 @@ export class GoodreadsAuthorApi extends GoodreadsApiBase {
             website: this.getTextContent(authorElement, ['website']),
             fans_count: parseInt(this.getTextContent(authorElement, ['fans_count'], '0'), 10),
             influences: influences,
-            tags: this.getShelves(authorElement),
+            tags: this.getShelves(authorElement, 'Community'),
         };
     }
 

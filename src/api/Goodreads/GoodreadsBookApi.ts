@@ -57,7 +57,7 @@ export class GoodreadsBookApi extends GoodreadsApiBase {
             authors: this.getAuthors(bookElement),
             authors_id: this.getAuthorsIds(bookElement),
             locations: '',
-            tags: this.getShelves(bookElement),
+            tags: this.getShelves(bookElement, 'Community'),
             publish: false,
             permalink: '',
             description: this.turndownService.turndown(this.getTextContent(bookElement, ['description'])),

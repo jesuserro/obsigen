@@ -47,7 +47,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
             date: dateAdded,
             date_added: dateAdded,
             date_updated: dateUpdated,
-            tags: this.getShelves(review),
+            tags: this.getShelves(review, 'My-Tags'),
             urls: review.querySelector('link')?.textContent,
             cover: review.querySelector('image_url')?.textContent,
             description: description,
