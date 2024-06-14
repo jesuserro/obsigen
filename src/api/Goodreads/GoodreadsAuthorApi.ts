@@ -4,6 +4,8 @@ import { Author as AuthorInterface } from 'src/core/shared/interface/iYaml';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
 
 export class GoodreadsAuthorApi extends GoodreadsApiBase {
+    
+    // https://www.goodreads.com/author/show.xml?key=API_KEY&id=40398
     private static readonly AUTHOR_URL_TEMPLATE = 'author/show.xml?key=$apikey&id=$authorId';
 
     constructor(app: App) {

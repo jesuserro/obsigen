@@ -6,7 +6,9 @@ import { GoodreadsBookApi } from './GoodreadsBookApi';
 import { Review } from './Review';
 
 export class GoodreadsReviewsApi extends GoodreadsApiBase {
+
     private static readonly REVIEWS_URL_TEMPLATE = 'review/list/$authorId.xml?key=$apikey&v=2';
+    private static readonly REVIEW_SHOW_URL_TEMPLATE = 'review/show/$reviewId.xml?key=$apikey';
 
     constructor(app: App) {
         super(app);
@@ -27,9 +29,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
 
     private parseReview(review: Element): any {
         const description = this.turndownService.turndown(this.parseReviewElement(review, ':scope > book > description') ?? '');
-        let dateAdded = this.formatDate(this.parseReviewElement(review, 'date_added') ?? '');
-        dateAdded = new Date(dateAdded).toISOString().split('T')[0];
-        const dateUpdated = this.formatDate(this.parseReviewElement(review, 'date_updated') ?? '');
+        const dateAdded = this.parseReviewElement(review, 'date_added');
 
         return {
             review_id: this.parseReviewElement(review, ':scope > id'),
@@ -41,7 +41,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
             rating: this.parseReviewElement(review, 'rating'),
             date: dateAdded,
             date_added: dateAdded,
-            date_updated: dateUpdated,
+            date_updated: this.parseReviewElement(review, 'date_updated'),
             tags: this.getShelves(review, 'My-Tags'),
             urls: this.parseReviewElement(review, 'link'),
             cover: this.parseReviewElement(review, 'image_url'),
@@ -79,7 +79,6 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
             console.error(`Failed to fetch book details for book_id: ${review.book_id}`);
             return null;
         }
-        // new Book(this.app, book).createNote();
         return book;
     }
 
@@ -92,7 +91,6 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
                 continue;
             }
             console.log(`Author: ${JSON.stringify(author)}`);
-            // new Author(this.app, author).createNote();
             break;
         }
     }
@@ -109,5 +107,29 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         if (!book) return;
 
         await this.fetchPrimaryAuthor(book);
+    }
+
+    // Nuevo método para obtener una review por su ID
+    public async getReviewById(reviewId: string): Promise<any> {
+        const { goodreads_apikey }: MyPluginSettings = this.getGoodreadsSettings();
+        const url = `${GoodreadsApiBase.BASE_URL}/${GoodreadsReviewsApi.REVIEW_SHOW_URL_TEMPLATE}`
+            .replace('$reviewId', reviewId)
+            .replace('$apikey', goodreads_apikey);
+
+        console.log(`Fetching review by ID: ${url}`);
+
+        const xmlString = await this.fetchXml(url);
+        if (!xmlString) return null;
+
+        const xmlDoc = this.parser.parseFromString(xmlString, 'text/xml');
+        const reviewElement = xmlDoc.querySelector('review');
+        if (!reviewElement) return null;
+
+        const review = this.parseReview(reviewElement);
+        console.log(`Review: ${JSON.stringify(review)}`);
+
+        await new Review(this.app, review).createNote();
+
+        return review;
     }
 }

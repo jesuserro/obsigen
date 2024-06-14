@@ -4,6 +4,8 @@ import { Book as BookInterface } from 'src/core/shared/interface/iYaml';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
 
 export class GoodreadsBookApi extends GoodreadsApiBase {
+    
+    // https://www.goodreads.com/book/show?format=xml&key=API_KEY&id=24331152
     private static readonly BOOK_URL_TEMPLATE = 'book/show?format=xml&key=$apikey&id=$bookId';
 
     constructor(app: App) {

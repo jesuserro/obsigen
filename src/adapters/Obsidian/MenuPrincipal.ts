@@ -36,11 +36,20 @@ export class MenuPrincipal extends Menu {
     const selectedDate = new Date(`${year}-${month}-${day} ${hour}:${minutes}:${seconds}`);
 
     this.addMenuItem({
-        title: "Sync Goodreads",
+        title: "Goodreads - Get Last Review",
         icon: "book-open",
         onClick: async () => {
             const goodreadsReviews = new GoodreadsReviewsApi(app as App);
             await goodreadsReviews.getLastBookFromToReadShelf();
+        }
+    });
+
+    this.addMenuItem({
+        title: "Goodreads - Get Review By ID",
+        icon: "book-open",
+        onClick: async () => {
+            const goodreadsReviews = new GoodreadsReviewsApi(app as App);
+            await goodreadsReviews.getReviewById('6585220665');
         }
     });
 
