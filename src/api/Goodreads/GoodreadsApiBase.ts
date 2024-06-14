@@ -9,7 +9,7 @@ export class GoodreadsApiBase {
 
     protected static readonly BASE_URL = 'https://www.goodreads.com';
     protected static readonly BASE_TAG = 'Goodreads';
-    protected static readonly GLOBAL_TAG = 'Obsigen_SYS';
+    protected static readonly GLOBAL_TAG = 'GOODREADS-SYNC';
 
     constructor(app: App) {
         this.app = app;
