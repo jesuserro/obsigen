@@ -1,9 +1,11 @@
 import { App } from 'obsidian';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 import { Author } from './Author';
+import { Book } from './Book';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
 import { GoodreadsAuthorApi } from './GoodreadsAuthorApi';
 import { GoodreadsBookApi } from './GoodreadsBookApi';
+
 
 export class GoodreadsReviewsApi extends GoodreadsApiBase {
     private static readonly REVIEWS_URL_TEMPLATE = 'review/list/$authorId.xml?key=$apikey&v=2';
@@ -79,7 +81,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
             return;
         }
 
-        // new Book(this.app, book).createNote();
+        new Book(this.app, book).createNote();
 
         const goodreadsAuthorApi = new GoodreadsAuthorApi(this.app);
             
