@@ -94,7 +94,9 @@ export class GoodreadsBookApi extends GoodreadsApiBase {
         authorElements.forEach(author => {
             authors.push(author.textContent || '');
         });
-        return authors;
+
+        // Remove duplicated items
+        return authors.filter((item, index) => authors.indexOf(item) === index);
     }
 
     public async getBookById(bookId: string): Promise<BookInterface | null> {
