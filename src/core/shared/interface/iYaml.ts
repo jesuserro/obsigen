@@ -67,6 +67,7 @@ export const DATA_YAML_SAMPLE: iYaml = {
 export interface Review {
 	title: string,
     review_id: string,
+    book_id: string,
     isbn: string,
 	date: Date,
 	creation: Date, 
@@ -90,6 +91,7 @@ export interface Review {
 export const DATA_YAML_REVIEW_DEFAULT: Review = {
 	title: '',
     review_id: '',
+    book_id: '',
     isbn: '',
 	date: new Date(),
 	creation: new Date(), 

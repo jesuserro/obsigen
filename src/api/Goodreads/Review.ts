@@ -15,6 +15,7 @@ export class Review extends GoodreadsApiBase {
 
     // Propiedades de la review
     private review_id: string;
+    private book_id: string;
     private title: string;
     private authors: string[];
     private isbn: string;
@@ -39,7 +40,6 @@ export class Review extends GoodreadsApiBase {
     constructor(app: App, review: ReviewInterface) {
         super(app);
         this.noteGenerator = new NoteGenerator(this.app);
-        this.review_id = review.review_id;
         this.initializeData(review);
         this.setYaml();
         this.fileName = this.getFilename(this.title);
@@ -47,6 +47,8 @@ export class Review extends GoodreadsApiBase {
     }
 
     private initializeData(review: ReviewInterface) {
+        this.review_id = review.review_id;
+        this.book_id = review.book_id;
         this.title = this.formatTitle(review.title);
         this.authors = review.authors;
         this.isbn = review.isbn;
@@ -71,7 +73,6 @@ export class Review extends GoodreadsApiBase {
             title: title,
             aliases: [],
             authors: this.authors,
-            goodreads_book_id: this.goodreadsBookId,
             isbn: this.isbn,
             date: this.convertDateToIsoString(this.date),
             links: [...DATA_YAML_REVIEW_DEFAULT.links, link],
@@ -80,6 +81,8 @@ export class Review extends GoodreadsApiBase {
             tags: [...DATA_YAML_REVIEW_DEFAULT.tags, ...this.tags],
             cover: cover,
             cssclasses: [...DATA_YAML_REVIEW_DEFAULT.cssclasses, 'review'],
+            review_id: this.review_id,
+            book_id: this.book_id,
             rating: this.rating,
             num_pages: this.num_pages,
             average_rating: this.average_rating,

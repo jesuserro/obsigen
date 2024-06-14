@@ -32,7 +32,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         const dateUpdated = this.formatDate(this.parseReviewElement(review, 'date_updated') ?? '');
 
         return {
-            review_id: this.parseReviewElement(review, 'id'),
+            review_id: this.parseReviewElement(review, ':scope > id'),
             book_id: this.parseReviewElement(review, ':scope > book > id'),
             author_id: this.parseReviewElement(review, ':scope > book > authors > author > id'),
             isbn: this.parseReviewElement(review, ':scope > book > isbn'),
