@@ -7,7 +7,6 @@ import { GoodreadsAuthorApi } from './GoodreadsAuthorApi';
 import { GoodreadsBookApi } from './GoodreadsBookApi';
 import { Review } from './Review';
 
-
 export class GoodreadsReviewsApi extends GoodreadsApiBase {
     private static readonly REVIEWS_URL_TEMPLATE = 'review/list/$authorId.xml?key=$apikey&v=2';
 
@@ -24,71 +23,64 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         return this.fetchXml(url);
     }
 
+    private parseReviewElement(element: Element, selector: string): string | null {
+        return element.querySelector(selector)?.textContent ?? null;
+    }
+
+    private parseReview(review: Element): any {
+        const description = this.turndownService.turndown(this.parseReviewElement(review, ':scope > book > description') ?? '');
+        let dateAdded = this.formatDate(this.parseReviewElement(review, 'date_added') ?? '');
+        dateAdded = new Date(dateAdded).toISOString().split('T')[0];
+        const dateUpdated = this.formatDate(this.parseReviewElement(review, 'date_updated') ?? '');
+
+        return {
+            review_id: this.parseReviewElement(review, 'id')?.match(/\d+/)?.[0],
+            book_id: this.parseReviewElement(review, ':scope > book > id'),
+            author_id: this.parseReviewElement(review, ':scope > book > authors > author > id'),
+            isbn: this.parseReviewElement(review, ':scope > book > isbn'),
+            title: this.parseReviewElement(review, ':scope > book > title'),
+            authors: this.parseReviewElement(review, ':scope > book > authors > author > name'),
+            rating: this.parseReviewElement(review, 'rating'),
+            date: dateAdded,
+            date_added: dateAdded,
+            date_updated: dateUpdated,
+            tags: this.getShelves(review, 'My-Tags'),
+            urls: this.parseReviewElement(review, 'link'),
+            cover: this.parseReviewElement(review, 'image_url'),
+            description: description,
+            votes: this.parseReviewElement(review, 'votes'),
+            read_count: this.parseReviewElement(review, 'read_count'),
+            comments_count: this.parseReviewElement(review, 'comments_count'),
+        };
+    }
+
     private parseReviews(xmlString: string): any[] {
         const xmlDoc = this.parser.parseFromString(xmlString, 'text/xml');
         const items = xmlDoc.querySelectorAll('review');
         return Array.from(items).map(item => this.parseReview(item));
     }
 
-    private parseReview(review: Element): any {
-        const description = this.turndownService.turndown(review.querySelector(':scope > book > description')?.textContent ?? '');
-        let dateAdded = this.formatDate(review.querySelector('date_added')?.textContent ?? '');
-        dateAdded = new Date(dateAdded).toISOString().split('T')[0];
-        const dateUpdated = this.formatDate(review.querySelector('date_updated')?.textContent ?? '');
-
-        return {
-            review_id: review.querySelector('id')?.textContent?.match(/\d+/)?.[0],
-            book_id: review.querySelector(':scope > book > id')?.textContent,
-            author_id: review.querySelector(':scope > book > authors > author > id')?.textContent,
-            isbn: review.querySelector(':scope > book > isbn')?.textContent,
-            title: review.querySelector(':scope > book > title')?.textContent,
-            authors: review.querySelector(':scope > book > authors > author > name')?.textContent,
-            rating: review.querySelector('rating')?.textContent,
-            date: dateAdded,
-            date_added: dateAdded,
-            date_updated: dateUpdated,
-            tags: this.getShelves(review, 'My-Tags'),
-            urls: review.querySelector('link')?.textContent,
-            cover: review.querySelector('image_url')?.textContent,
-            description: description,
-            votes: review.querySelector('votes')?.textContent,
-            read_count: review.querySelector('read_count')?.textContent,
-            comments_count: review.querySelector('comments_count')?.textContent,
-        };
-    }
-
-    public async getLastBookFromToReadShelf() {
-        const xmlString = await this.fetchToReadShelfBooks();
-        if (!xmlString) return;
-
-        const reviews = this.parseReviews(xmlString);
-
-        // Only the first review
-        const review = reviews[0];
-        console.log(`Review: ${JSON.stringify(review)}`);
-        new Review(this.app, review).createNote();
-
-        if (!review) {
+    private async fetchAndCreateReviewNotes(reviews: any[]) {
+        if (reviews.length === 0) {
             console.error(`No reviews found in 'to-read' shelf`);
             return;
         }
 
-        // console.log(`Review: ${JSON.stringify(review)}`);
+        const review = reviews[0];
+        console.log(`Review: ${JSON.stringify(review)}`);
+        new Review(this.app, review).createNote();
 
         const goodreadsBookApi = new GoodreadsBookApi(this.app);
         const book = await goodreadsBookApi.getBookById(review.book_id);
 
         console.log(`Book: ${JSON.stringify(book)}`);
-
         if (!book) {
             console.error(`Failed to fetch book details for book_id: ${review.book_id}`);
             return;
         }
-
         new Book(this.app, book).createNote();
 
         const goodreadsAuthorApi = new GoodreadsAuthorApi(this.app);
-            
         for (const authorId of book.authors_id) {
             const author = await goodreadsAuthorApi.getAuthorById(authorId);
             if (!author) {
@@ -97,8 +89,15 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
             }
             console.log(`Author: ${JSON.stringify(author)}`);
             new Author(this.app, author).createNote();
-            // Only first author
             break;
         }
+    }
+
+    public async getLastBookFromToReadShelf() {
+        const xmlString = await this.fetchToReadShelfBooks();
+        if (!xmlString) return;
+
+        const reviews = this.parseReviews(xmlString);
+        await this.fetchAndCreateReviewNotes(reviews);
     }
 }
