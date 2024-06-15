@@ -74,6 +74,8 @@ export class Author extends GoodreadsApiBase {
         }).filter(Boolean).join('\n'); // Filter out empty strings
     
         this.tags = author.tags || [];
+        this.tags.push('people/authors');
+        
         this.hometown = author.hometown || '';
         this.works_count = author.works_count || 0;
         this.fans_count = author.fans_count || 0;
