@@ -75,7 +75,7 @@ export class Author extends GoodreadsApiBase {
     
         this.tags = author.tags || [];
         this.tags.push('people/authors');
-        
+
         this.hometown = author.hometown || '';
         this.works_count = author.works_count || 0;
         this.fans_count = author.fans_count || 0;
@@ -95,6 +95,7 @@ export class Author extends GoodreadsApiBase {
         const data = {
             ...DATA_YAML_AUTHOR_DEFAULT,
             title: title,
+            name: title,
             aliases: [],
             goodreads_author_id: this.goodreads_author_id,
             authors: this.authors,
@@ -110,7 +111,16 @@ export class Author extends GoodreadsApiBase {
             rating: this.rating,
             works_count: this.works_count,
             fans_count : this.fans_count ,
-            hometown: this.hometown
+            hometown: this.hometown,
+
+            // Add the influences in a list format getting onñy the names of the authors
+            influences: this.influences.map((influence: string) => {
+                const urlMatch = influence.match(/\[(.*?)\]\((.*?)\)/);
+                return urlMatch ? urlMatch[1] : '';
+            }),
+
+            // influences: this.getListForYamlProperty(this.influences.join(','), true),
+              
         };
 
         let yaml = renderToString(Yaml({ data }));
