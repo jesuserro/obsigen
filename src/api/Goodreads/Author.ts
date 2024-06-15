@@ -154,7 +154,7 @@ export class Author extends GoodreadsApiBase {
 
     private getFilename(title: string) {
         title = title.replace(/[*"\\\/<>:|?¿,.;#]/g, '');
-        return `${this.getFilePrefix()} ${title}`;
+        return `${title}`;
     }
 
     private getFilePrefix() {

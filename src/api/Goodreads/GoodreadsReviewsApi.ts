@@ -1,6 +1,6 @@
 import { App } from 'obsidian';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
-import { Book } from './Book';
+import { Author } from './Author';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
 import { GoodreadsAuthorApi } from './GoodreadsAuthorApi';
 import { GoodreadsBookApi } from './GoodreadsBookApi';
@@ -83,7 +83,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         return book;
     }
 
-    private async fetchPrimaryAuthor(book: any): Promise<void> {
+    private async fetchPrimaryAuthor(book: any): Promise<any> {
         const goodreadsAuthorApi = new GoodreadsAuthorApi(this.app);
         for (const authorId of book.authors_id) {
             const author = await goodreadsAuthorApi.getAuthorById(authorId);
@@ -92,7 +92,8 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
                 continue;
             }
             console.log(`Author: ${JSON.stringify(author)}`);
-            break;
+
+            return author;
         }
     }
 
@@ -117,8 +118,6 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
             .replace('$reviewId', reviewId)
             .replace('$apikey', goodreads_apikey);
 
-        console.log(`Fetching review by ID: ${url}`);
-
         const xmlString = await this.fetchXml(url);
         if (!xmlString) return null;
 
@@ -127,14 +126,21 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         if (!reviewElement) return null;
 
         const review = this.parseReview(reviewElement);
-        console.log(`Review: ${JSON.stringify(review)}`);
 
         // await new Review(this.app, review).createNote();
 
         // Add book from review
         const book = await this.fetchBookDetails(review);
         if (!book) return null;
-        new Book(this.app, book).createNote();
+
+        // await new Book(this.app, book).createNote();
+
+        // Add primary author from book
+        const author = await this.fetchPrimaryAuthor(book);
+        if (!author) return null;
+
+        await new Author(this.app, author).createNote();
+        
 
         return review;
     }
