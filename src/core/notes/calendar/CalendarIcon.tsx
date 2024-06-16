@@ -11,7 +11,7 @@ import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHeadSideCough, FaHeadphones, FaHiking, FaInstagram, FaKey, FaLaptop, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTabletAlt, FaTelegram, FaTired, FaTrain, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaGift, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
 import { FcAndroidOs, FcCalendar } from 'react-icons/fc';
-import { GiAncientRuins, GiArabicDoor, GiBank, GiChampions, GiChurch, GiCommercialAirplane, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiVillage, GiWheat } from 'react-icons/gi';
+import { GiAncientRuins, GiBank, GiChampions, GiChurch, GiCommercialAirplane, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
@@ -111,7 +111,6 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   android: ({ size }) => <FcAndroidOs size={size} className="" />,
   annas: ({ size }) => <CustomIcon size={size} className="pink" iconName="AnnaS" />,
   anxiety: ({ size }) => <RiMentalHealthFill size={size} className="yellow emoji" />,
-  arabic: ({ size }) => <GiArabicDoor size={size} className="green openai" />,
   arburua: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Arburua" />,
   archeology: ({ size }) => <GiAncientRuins size={size} className="grey" />,
   argentina: ({ size }) => <Flag country='AR' size={size} className="" />,
@@ -202,7 +201,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   insomnia: ({ size }) => <SiInsomnia size={size} className="grey" />,
   inspiration: ({ size }) => <GiSparkSpirit size={size} style={{ color: '#f2a83f' }} />,
   instagram: ({ size }) => <FaInstagram size={size} className="pink instagram" />,
-  irene: ({ size }) => <CustomIcon size={size} className="pink" iconName="Irene" />,
+  islam: ({ size }) => <Flag country='TR' size={size} className="" />,
   israel: ({ size }) => <Flag country='IL' size={size} className="" />, 
   italy: ({ size }) => <Flag country='IT' size={size} className="" />,
   itv: ({ size }) => <CustomIcon size={size} className="orange" iconName="Itv" />,
