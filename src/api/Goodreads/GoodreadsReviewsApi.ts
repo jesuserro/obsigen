@@ -1,6 +1,5 @@
 import { App } from 'obsidian';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
-import { Author } from './Author';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
 import { GoodreadsAuthorApi } from './GoodreadsAuthorApi';
 import { GoodreadsBookApi } from './GoodreadsBookApi';
@@ -30,7 +29,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
 
     private parseReview(review: Element): any {
         const description = this.turndownService.turndown(this.parseReviewElement(review, ':scope > book > description') ?? '');
-        const dateAdded = this.parseReviewElement(review, 'date_added');
+        const dateAdded = this.parseReviewElement(review, ':scope > date_added');
 
         return {
             review_id: this.parseReviewElement(review, ':scope > id'),
@@ -42,12 +41,12 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
             rating: this.parseReviewElement(review, 'rating'),
             date: dateAdded,
             date_added: dateAdded,
-            date_updated: this.parseReviewElement(review, 'date_updated'),
+            date_updated: this.parseReviewElement(review, ':scope > date_updated'),
             tags: this.getShelves(review, 'My-Tags'),
-            urls: this.parseReviewElement(review, 'link'),
-            cover: this.parseReviewElement(review, 'image_url'),
+            urls: this.parseReviewElement(review, ':scope > link'),
+            cover: this.parseReviewElement(review, ':scope > book > image_url'),
             description: description,
-            votes: this.parseReviewElement(review, 'votes'),
+            votes: this.parseReviewElement(review, ':scope > votes'),
             read_count: this.parseReviewElement(review, 'read_count'),
             comments_count: this.parseReviewElement(review, 'comments_count'),
         };
@@ -127,7 +126,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
 
         const review = this.parseReview(reviewElement);
 
-        // await new Review(this.app, review).createNote();
+        await new Review(this.app, review).createNote();
 
         // Add book from review
         const book = await this.fetchBookDetails(review);
@@ -139,7 +138,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
         const author = await this.fetchPrimaryAuthor(book);
         if (!author) return null;
 
-        await new Author(this.app, author).createNote();
+        // await new Author(this.app, author).createNote();
         
 
         return review;
