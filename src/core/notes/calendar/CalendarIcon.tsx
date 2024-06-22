@@ -10,7 +10,7 @@ import { BsBookmarkStar, BsChatLeftQuoteFill, BsClockFill, BsCloudHaze2, BsFillC
 import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHeadSideCough, FaHeadphones, FaHiking, FaInstagram, FaKey, FaLaptop, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTabletAlt, FaTelegram, FaTired, FaTrain, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaGift, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
-import { FcAndroidOs, FcCalendar } from 'react-icons/fc';
+import { FcAndroidOs, FcCalendar, FcGoogle } from 'react-icons/fc';
 import { GiAncientRuins, GiBank, GiChampions, GiChurch, GiCommercialAirplane, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
@@ -180,6 +180,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   gluttony: ({ size }) => <GiGluttony size={size} className='yellow emoji' />, 
   gonzalo: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Gonzalo" />,
   goodreads: ({ size }) => <FaGoodreads size={size} className="brown goodreads" />,
+  google: ({ size }) => <FcGoogle size={size} className="yellow intense" />,
   googlemeet: ({ size }) => <SiGooglemeet size={size} className="yellow intense" />,
   gospa: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Gospa" />,
   gpt: ({ size }) => <TbAppsFilled size={size} className="green" />,
