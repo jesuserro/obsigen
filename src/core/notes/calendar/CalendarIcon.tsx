@@ -10,18 +10,19 @@ import { BsBookmarkStar, BsChatLeftQuoteFill, BsClockFill, BsCloudHaze2, BsFillC
 import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChess, FaCode, FaCross, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHeadSideCough, FaHeadphones, FaHiking, FaInstagram, FaKey, FaLaptop, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaSkype, FaSmile, FaStar, FaTabletAlt, FaTelegram, FaTired, FaTrain, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaGift, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
-import { FcAndroidOs, FcCalendar, FcGoogle } from 'react-icons/fc';
+import { FcAndroidOs, FcCalendar, FcDataBackup, FcGoogle } from 'react-icons/fc';
 import { GiAncientRuins, GiBank, GiChampions, GiChurch, GiCommercialAirplane, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiThermometerCold, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
 import { IoFootsteps, IoHardwareChipOutline } from 'react-icons/io5';
-import { MdBuild, MdCancel, MdCardTravel, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlinePiano, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
+import { MdBackup, MdBuild, MdCancel, MdCardTravel, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlinePiano, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold } from 'react-icons/pi';
 import { RiEarthquakeFill, RiMentalHealthFill } from "react-icons/ri";
 import { SiTinder as IconoTinder, SiDell, SiGimp, SiGooglemeet, SiInsomnia, SiLenovo, SiObsidian, SiOpenai, SiPlex, SiSamsung, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { SlPicture } from "react-icons/sl";
 import { TbAppsFilled, TbBulbFilled, TbPillOff, TbPills, TbZzz } from 'react-icons/tb';
+import { TfiHarddrives } from "react-icons/tfi";
 
 // https://github.com/madebybowtie/FlagKit/blob/master/Assets/Flags.md
 import Flag from 'react-flagkit';
@@ -115,6 +116,8 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   archeology: ({ size }) => <GiAncientRuins size={size} className="grey" />,
   argentina: ({ size }) => <Flag country='AR' size={size} className="" />,
   aws: ({ size }) => <FaAws size={size} className="orange aws" />,
+  backup: ({ size }) => <FcDataBackup size={size} className="green spotify" />,
+  backup_cloud: ({ size }) => <MdBackup size={size} className="green spotify" />,
   bank: ({ size }) => <GiBank size={size} className="red" />,
   barber: ({ size }) => <CustomIcon size={size} className="blue" iconName="Barber" />,
   basketball: ({ size }) => <FaBasketball size={size} className="orange" />,
@@ -187,6 +190,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   gym: ({ size }) => <MdOutlineSportsGymnastics size={size} className="green" />,
   hacienda: ({ size }) => <CustomIcon size={size} className="red" iconName="Hacienda" />,
   happiness: ({ size }) => <FaSmile size={size} className="yellow" />,
+  hard_drive: ({ size }) => <TfiHarddrives size={size} className="orange" />,
   hardware: ({ size }) => <IoHardwareChipOutline size={size} className="orange" />,
   haze: ({ size }) => <BsCloudHaze2  size={size} className="grey" />,
   headphones: ({ size }) => <FaHeadphones size={size} className="orange" />,
