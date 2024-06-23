@@ -36,6 +36,15 @@ export class MenuPrincipal extends Menu {
     const selectedDate = new Date(`${year}-${month}-${day} ${hour}:${minutes}:${seconds}`);
 
     this.addMenuItem({
+        title: "Goodreads - Get To Read Shelf",
+        icon: "book-open",
+        onClick: async () => {
+            const goodreadsReviews = new GoodreadsReviewsApi(app as App);
+            await goodreadsReviews.getToReadList();
+        }
+    });
+
+    this.addMenuItem({
         title: "Goodreads - Get Last Review",
         icon: "book-open",
         onClick: async () => {
