@@ -7,7 +7,7 @@ import { Review } from './Review';
 
 export class GoodreadsReviewsApi extends GoodreadsApiBase {
 
-    private static readonly REVIEWS_URL_TEMPLATE = 'review/list/$authorId.xml?key=$apikey&v=2';
+    private static readonly REVIEWS_URL_TEMPLATE = 'review/list/$userId.xml?key=$apikey&v=2';
     private static readonly REVIEW_SHOW_URL_TEMPLATE = 'review/show/$reviewId.xml?key=$apikey';
 
     constructor(app: App) {
@@ -17,7 +17,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
     private async fetchToReadShelfBooks(): Promise<string | null> {
         const { goodreads_user, goodreads_apikey }: MyPluginSettings = this.getGoodreadsSettings();
         const url = `${GoodreadsApiBase.BASE_URL}/${GoodreadsReviewsApi.REVIEWS_URL_TEMPLATE}`
-            .replace('$authorId', goodreads_user)
+            .replace('$userId', goodreads_user)
             .replace('$apikey', goodreads_apikey);
 
         return this.fetchXml(url);
