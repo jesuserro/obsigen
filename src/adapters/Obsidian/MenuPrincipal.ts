@@ -1,5 +1,6 @@
 import { App, Menu } from 'obsidian';
 import { GoodreadsReviewsApi } from 'src/api/Goodreads/GoodreadsReviewsApi';
+import { GoodreadsRssItemApi } from 'src/api/Goodreads/GoodreadsRssItemApi';
 import { Yearly } from 'src/core/notes/yearly/Yearly';
 import { Aniversario } from '../../core/notes/aniversario/Aniversario';
 import { Calendar } from '../../core/notes/calendar/Calendar';
@@ -39,8 +40,8 @@ export class MenuPrincipal extends Menu {
         title: "Goodreads - Get To Read Shelf",
         icon: "book-open",
         onClick: async () => {
-            const goodreadsReviews = new GoodreadsReviewsApi(app as App);
-            await goodreadsReviews.getToReadList();
+            const goodreadsRssShelf = new GoodreadsRssItemApi(app as App);
+            await goodreadsRssShelf.getShelfList('to-read');
         }
     });
 
