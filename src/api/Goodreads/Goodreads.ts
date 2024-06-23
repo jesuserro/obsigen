@@ -11,7 +11,7 @@ export class Goodreads {
     private parser: DOMParser;
     private static readonly GOODREADS_URL_BASE = 'https://www.goodreads.com';
     private static readonly GOODREADS_RSS_REVIEWS_URL = 'review/list_rss';
-    private static readonly GOODREADS_RSS_REVIEWS_URL_V2 = 'review/list/$authorId.xml?key=$apikey&v=2';
+    private static readonly GOODREADS_RSS_REVIEWS_URL_V2 = 'review/list/$userId.xml?key=$apikey&v=2';
     private static readonly GOODREADS_RSS_BOOK_URL = "book/show?format=xml&key=$apikey&id=$bookId";
     private static readonly GOODREADS_RSS_AUTHOR_URL = "author/show.xml?key=$apikey&id=$authorId";
 
@@ -26,7 +26,7 @@ export class Goodreads {
         const { goodreads_user, goodreads_apikey }: MyPluginSettings = (this.app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
         
         let url = `${Goodreads.GOODREADS_URL_BASE}/${Goodreads.GOODREADS_RSS_REVIEWS_URL_V2}`;
-        const urlWithParams = url.replace('$authorId', goodreads_user).replace('$apikey', goodreads_apikey);
+        const urlWithParams = url.replace('$userId', goodreads_user).replace('$apikey', goodreads_apikey);
         console.log(urlWithParams);
 
         try {
