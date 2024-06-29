@@ -60,9 +60,15 @@ export class GoodreadsRssItemApi extends GoodreadsApiBase {
         if (!xmlString) return;
 
         const reviews = this.parseItems(xmlString);
-        reviews.forEach(review => {
-            console.log(`Review: ${JSON.stringify(review)}`);
-            // new Review(this.app, review).createNote();
-        });
+        // reviews.forEach(review => {
+        //     console.log(`Review: ${JSON.stringify(review)}`);
+        //     // new Review(this.app, review).createNote();
+        // });
+        // Take the first review and create a note
+        //new Review(this.app, reviews[0]).createNote();
+
+        console.log(`Num reviews: ${reviews.length} for shelf: ${shelf}`);
+        console.log(`Review: ${JSON.stringify(reviews[0])}`);
+
     }
 }

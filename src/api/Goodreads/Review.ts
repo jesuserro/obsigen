@@ -75,6 +75,8 @@ export class Review extends GoodreadsApiBase {
             authors: this.authors,
             isbn: this.isbn,
             date: this.convertDateToIsoString(this.date),
+            creation: this.date,
+            updated: this.date,
             links: [...DATA_YAML_REVIEW_DEFAULT.links, link],
             locations: this.getListForYamlProperty(this.locations, true),
             urls: this.getListForYamlProperty(this.urls),
