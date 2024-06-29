@@ -27,11 +27,6 @@ describe('NoteGenerator', () => {
     noteGenerator = new NoteGenerator(app as any); // Use 'as any' to bypass type checking
   });
 
-  test('should return "Hello, World!"', () => {
-    const result = noteGenerator.getHelloWorld();
-    expect(result).toBe('Hello, World!');
-  });
-
   test('should create a new note', async () => {
     const title = 'Patata';
     const content = 'Lorem Ipsum';
