@@ -5,7 +5,7 @@ import { Review } from './Review';
 
 export class GoodreadsRssItemApi extends GoodreadsApiBase {
     
-    private static readonly REVIEWS_RSS = 'review/list_rss/$userId?key=$apikey&shelf=$shelf';
+    private static readonly REVIEWS_RSS = 'review/list_rss/$userId?key=$apikey&shelf=$shelf&page=$page&per_page=$perPage';
 
     constructor(app: App) {
         super(app);
@@ -16,11 +16,11 @@ export class GoodreadsRssItemApi extends GoodreadsApiBase {
         const url = `${GoodreadsApiBase.BASE_URL}/${GoodreadsRssItemApi.REVIEWS_RSS}`
             .replace('$userId', goodreads_user)
             .replace('$apikey', goodreads_apikey)
-            .replace('$shelf', shelf);
+            .replace('$shelf', shelf)
+            .replace('$page', page.toString())
+            .replace('$perPage', '100');
 
-        const fullUrl = `${url}&page=${page}&per_page=100`; // Ajustar per_page según necesites
-
-        return this.fetchXml(fullUrl);
+        return this.fetchXml(url);
     }
 
     private parseReviewElement(element: Element, selector: string): string | null {
