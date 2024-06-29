@@ -72,7 +72,6 @@ export class GoodreadsRssItemApi extends GoodreadsApiBase {
     }
 
     public async countPagesInShelf(shelf: string): Promise<number> {
-        const perPage = 100; // Número de libros por página
         let totalPages = 0;
         let currentPage = 1;
     
