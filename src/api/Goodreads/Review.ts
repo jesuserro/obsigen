@@ -86,7 +86,7 @@ export class Review extends GoodreadsApiBase {
             urls: this.getListForYamlProperty(this.urls),
             tags: [...DATA_YAML_REVIEW_DEFAULT.tags, ...this.tags],
             cover: cover,
-            cssclasses: [...DATA_YAML_REVIEW_DEFAULT.cssclasses, 'review'],
+            cssclasses: [...DATA_YAML_REVIEW_DEFAULT.cssclasses, 'goodreads_book'],
             review_id: this.review_id,
             book_id: this.book_id,
             rating: this.rating,

@@ -78,6 +78,8 @@ export class CalendarIcon {
       return iconMap['podcast']({ size });
     } else if (path.includes('005 Synch/Readwise/Articles/')) {
       return iconMap['readwise']({ size });
+    } else if (path.includes('005 Synch/goodsidian/autores')) {
+      return iconMap['person']({ size });
     } else if (path.includes('005 Synch/goodsidian/')) {
       return iconMap['goodreads']({ size });
     } else if (path.includes('005 Synch/Kindtocs/')) {
@@ -128,7 +130,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   bills: ({ size }) => <FaFileInvoiceDollar size={size} className="red" />, 
   birthday: ({ size }) => <FaBirthdayCake size={size} className="blue ui" />,  
   blogpost: ({ size }) => <BsWordpress size={size} className="blue wordpress" />,
-  book: ({ size }) => <FaBook size={size} className="blue kindle" />, 
+  book: ({ size }) => <FaBook size={size} className="blue aws" />, 
   bookmark: ({ size }) => <FaBookmark size={size} className="blue cobalt" />,
   buy: ({ size }) => <IoMdBasket size={size} className="red" />,
   cafe: ({ size }) => <IoMdCafe size={size} className="yellow" />, 
@@ -184,6 +186,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   gluttony: ({ size }) => <GiGluttony size={size} className='yellow emoji' />, 
   gonzalo: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Gonzalo" />,
   goodreads: ({ size }) => <FaGoodreads size={size} className="brown goodreads" />,
+  goodreads_book: ({ size }) => <FaBook size={size} className="brown goodreads" />,
   google: ({ size }) => <FcGoogle size={size} className="yellow intense" />,
   googlemeet: ({ size }) => <SiGooglemeet size={size} className="yellow intense" />,
   gospa: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Gospa" />,
