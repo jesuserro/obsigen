@@ -170,6 +170,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   fever: ({ size }) => <MdSick size={size} className="yellow emoji" />, 
   finances: ({ size }) => <FaMoneyBillWave size={size} className="red" />,
   foot: ({ size }) => <IoFootsteps size={size} className="blue aws" />,
+  france: ({ size }) => <Flag country='FR' size={size} className="" />,
   friedeggs: ({ size }) => <GiFriedEggs size={size} className="yellow" />,
   friends: ({ size }) => <MdGroup size={size} className="yellow" />,
   funeral: ({ size }) => <GiChurch size={size} className="grey" />,
