@@ -126,5 +126,30 @@ export class GoodreadsRssItemApi extends GoodreadsApiBase {
         return lastBookOfLastPage; // Devuelve el último libro de la última página
     }
 
+    protected getShelves(element: Element, baseTag: string = ''): string[] {
+        const shelves: string[] = [GoodreadsApiBase.GLOBAL_TAG];
+    
+        // Obtener todos los elementos 'user_shelves' dentro del elemento dado
+        const shelfElements = element.querySelectorAll('user_shelves');
+    
+        // Iterar sobre cada elemento 'user_shelves'
+        shelfElements.forEach(shelf => {
+            // Obtener el contenido del elemento 'user_shelves'
+            const shelvesText = shelf.textContent?.trim() || '';
+    
+            // Dividir el contenido por comas para obtener los tags individuales
+            const shelfNames = shelvesText.split(',').map(tag => tag.trim());
+    
+            // Agregar los tags individuales al arreglo de estanterías
+            shelfNames.forEach(tag => {
+                const shelfName = tag;
+                const basePath = `${GoodreadsApiBase.BASE_TAG}/${shelfName}`;
+                const fullPath = baseTag ? `${GoodreadsApiBase.BASE_TAG}/${baseTag}/${shelfName}` : basePath;
+                shelves.push(fullPath);
+            });
+        });
+    
+        return shelves;
+    }
     
 }

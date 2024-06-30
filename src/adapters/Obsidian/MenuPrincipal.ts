@@ -40,7 +40,7 @@ export class MenuPrincipal extends Menu {
         icon: "book-open",
         onClick: async () => {
             const goodreadsRssShelf = new GoodreadsRssItemApi(app as App);
-            await goodreadsRssShelf.getShelfList('to-read', 22);
+            await goodreadsRssShelf.getShelfList('to-read', 11);
             // await goodreadsRssShelf.countPagesInShelf('to-read');
         }
     });
