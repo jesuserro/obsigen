@@ -20,7 +20,11 @@ export class GoodreadsRssItemApi extends GoodreadsApiBase {
             .replace('$page', page.toString())
             .replace('$perPage', '100');
 
-        return this.fetchXml(url);
+        const xmlString = await this.fetchXml(url);
+
+        console.log(xmlString);
+
+        return xmlString;
     }
 
     private parseReviewElement(element: Element, selector: string): string | null {
@@ -49,6 +53,13 @@ export class GoodreadsRssItemApi extends GoodreadsApiBase {
             votes: this.parseReviewElement(review, ':scope > votes'),
             read_count: this.parseReviewElement(review, 'read_count'),
             comments_count: this.parseReviewElement(review, 'comments_count'),
+            num_pages: this.parseReviewElement(review, ':scope > book > num_pages'),
+            average_rating: this.parseReviewElement(review, ':scope > average_rating'),
+            ratings_count: this.parseReviewElement(review, ':scope > user_ratings_count'),
+            text_reviews_count: this.parseReviewElement(review, ':scope > text_reviews_count'),
+            country_code: this.parseReviewElement(review, ':scope > country_code'),
+            locations: this.parseReviewElement(review, ':scope > user_statuses > user_status > location'),
+            book_published: this.parseReviewElement(review, ':scope > book_published'),
         };
     }
 
@@ -64,7 +75,7 @@ export class GoodreadsRssItemApi extends GoodreadsApiBase {
     
         const reviews = this.parseItems(xmlString);
         console.log(`Num reviews: ${reviews.length} for shelf: ${shelf}`);
-        console.log(`Review: ${JSON.stringify(reviews[0])}`); // Muestra el primer libro de la página especificada
+        // console.log(`Review: ${JSON.stringify(reviews[0])}`); // Muestra el primer libro de la página especificada
 
         new Review(this.app, reviews[0]).createNote();
     

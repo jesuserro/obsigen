@@ -33,6 +33,7 @@ export class Review extends GoodreadsApiBase {
     private text_reviews_count: number;
     private country_code: string;
     private description: string;
+    private book_published: string;
 
     private twitterRegexp: RegExp = new RegExp('https?://(?:mobile\\.)?twitter\\.com/.*');
     private youtubeRegexp: RegExp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
@@ -62,6 +63,9 @@ export class Review extends GoodreadsApiBase {
         this.locations = review.locations || '';
         this.urls = this.cleanUrls(review.urls, this.twitterRegexp, this.youtubeRegexp) || '';
         this.tags = review.tags || [];
+        this.num_pages = review.num_pages;
+        this.average_rating = review.average_rating;
+        this.book_published = review.book_published;
     }
 
     private setYaml() {
@@ -90,7 +94,8 @@ export class Review extends GoodreadsApiBase {
             average_rating: this.average_rating,
             ratings_count: this.ratings_count,
             text_reviews_count: this.text_reviews_count,
-            country_code: this.country_code
+            country_code: this.country_code,
+            book_published: this.book_published,
         };
 
         let yaml = renderToString(Yaml({ data }));

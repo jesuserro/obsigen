@@ -85,7 +85,10 @@ export interface Review {
 	cssclasses: string[],
 	rating: number,
 	emotion: number,
-	favorite: boolean
+	favorite: boolean,
+    num_pages: number,
+    average_rating: number,
+    book_published: string
 }
 
 export const DATA_YAML_REVIEW_DEFAULT: Review = {
@@ -109,7 +112,10 @@ export const DATA_YAML_REVIEW_DEFAULT: Review = {
 	cssclasses: [],
 	rating: 0,
 	emotion: 0,
-	favorite: false
+	favorite: false,
+    num_pages: 0,
+    average_rating: 0,
+    book_published: ''
 };
 
 export interface Book {

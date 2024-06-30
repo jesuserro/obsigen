@@ -1,5 +1,4 @@
 import { App, Menu } from 'obsidian';
-import { GoodreadsReviewsApi } from 'src/api/Goodreads/GoodreadsReviewsApi';
 import { GoodreadsRssItemApi } from 'src/api/Goodreads/GoodreadsRssItemApi';
 import { Yearly } from 'src/core/notes/yearly/Yearly';
 import { Aniversario } from '../../core/notes/aniversario/Aniversario';
@@ -46,24 +45,18 @@ export class MenuPrincipal extends Menu {
         }
     });
 
+    /*
     this.addMenuItem({
         title: "Goodreads - Get Last Review",
         icon: "book-open",
         onClick: async () => {
             const goodreadsReviews = new GoodreadsReviewsApi(app as App);
             await goodreadsReviews.getLastBookFromToReadShelf();
-        }
-    });
-
-    this.addMenuItem({
-        title: "Goodreads - Get Review By ID",
-        icon: "book-open",
-        onClick: async () => {
-            const goodreadsReviews = new GoodreadsReviewsApi(app as App);
             // await goodreadsReviews.getReviewById('6585220665'); // El diario de la felicidad
-            await goodreadsReviews.getReviewById('2322591776'); // El Hombre Eterno
+            // await goodreadsReviews.getReviewById('2322591776'); // El Hombre Eterno
         }
     });
+    */
 
     this.addSeparator();
 
