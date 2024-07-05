@@ -28,7 +28,8 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
     }
 
     private parseReview(review: Element): any {
-        const description = this.turndownService.turndown(this.parseReviewElement(review, ':scope > book > description') ?? '');
+        const book_description = this.turndownService.turndown(this.parseReviewElement(review, ':scope > book > description') ?? '');
+        const body = this.turndownService.turndown(this.parseReviewElement(review, ':scope > body') ?? '');
         const dateAdded = this.parseReviewElement(review, ':scope > date_added');
 
         return {
@@ -45,7 +46,8 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
             tags: this.getShelves(review, 'My-Tags'),
             urls: this.parseReviewElement(review, ':scope > link'),
             cover: this.parseReviewElement(review, ':scope > book > image_url'),
-            description: description,
+            book_description: book_description,
+            body: body,
             votes: this.parseReviewElement(review, ':scope > votes'),
             read_count: this.parseReviewElement(review, 'read_count'),
             comments_count: this.parseReviewElement(review, 'comments_count'),
@@ -126,11 +128,14 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
 
         const review = this.parseReview(reviewElement);
 
-        await new Review(this.app, review).createNote();
+        // console.log(`Review: ${JSON.stringify(review)}`);
+
+        // await new Review(this.app, review).createNote();
 
         // Add book from review
         const book = await this.fetchBookDetails(review);
         if (!book) return null;
+
 
         // await new Book(this.app, book).createNote();
 

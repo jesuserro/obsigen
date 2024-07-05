@@ -88,7 +88,9 @@ export interface Review {
 	favorite: boolean,
     num_pages: number,
     average_rating: number,
-    book_published: string
+    book_published: string,
+    body: string,
+    book_description: string,
 }
 
 export const DATA_YAML_REVIEW_DEFAULT: Review = {
@@ -115,7 +117,9 @@ export const DATA_YAML_REVIEW_DEFAULT: Review = {
 	favorite: false,
     num_pages: 0,
     average_rating: 0,
-    book_published: ''
+    book_published: '',
+    body: '',
+    book_description: '',
 };
 
 export interface Book {

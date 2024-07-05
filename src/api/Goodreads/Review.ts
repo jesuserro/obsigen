@@ -32,8 +32,9 @@ export class Review extends GoodreadsApiBase {
     private ratings_count: number;
     private text_reviews_count: number;
     private country_code: string;
-    private description: string;
+    private book_description: string;
     private book_published: string;
+    private body: string;
 
     private twitterRegexp: RegExp = new RegExp('https?://(?:mobile\\.)?twitter\\.com/.*');
     private youtubeRegexp: RegExp = new RegExp('https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)');
@@ -44,7 +45,7 @@ export class Review extends GoodreadsApiBase {
         this.initializeData(review);
         this.setYaml();
         this.fileName = this.getFilename(this.title);
-        this.setContent(review.description);
+        this.setContent(review.body);
     }
 
     private initializeData(review: ReviewInterface) {
@@ -53,7 +54,8 @@ export class Review extends GoodreadsApiBase {
         this.title = this.formatTitle(review.title);
         this.authors = review.authors;
         this.isbn = review.isbn;
-        this.description = review.description;
+        this.book_description = review.book_description;
+        this.body = review.body;
         this.date = new Date(review.date);
         this.year = this.date.getFullYear();
         this.month = this.date.getMonth() + 1;

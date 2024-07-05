@@ -1,7 +1,6 @@
 import { App } from 'obsidian';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
-import { Review } from './Review';
 
 export class GoodreadsRssItemApi extends GoodreadsApiBase {
     
@@ -22,7 +21,7 @@ export class GoodreadsRssItemApi extends GoodreadsApiBase {
 
         const xmlString = await this.fetchXml(url);
 
-        console.log(xmlString);
+        // console.log(xmlString);
 
         return xmlString;
     }
@@ -36,7 +35,7 @@ export class GoodreadsRssItemApi extends GoodreadsApiBase {
         const dateAdded = this.parseReviewElement(review, ':scope > user_date_added');
 
         return {
-            review_id: this.parseReviewElement(review, ':scope > guid'),
+            review_id: this.extractReviewId(review),
             book_id: this.parseReviewElement(review, ':scope > book_id'),
             author_id: this.parseReviewElement(review, ':scope > book > authors > author > id'),
             isbn: this.parseReviewElement(review, ':scope > isbn'),
@@ -69,17 +68,16 @@ export class GoodreadsRssItemApi extends GoodreadsApiBase {
         return Array.from(items).map(item => this.parseItem(item));
     }
 
-    public async getShelfList(shelf: string, page: number = 1) {
+    public async getShelfList(shelf: string, page: number = 1): Promise<any[]> {
         const xmlString = await this.fetchShelfRss(shelf, page);
-        if (!xmlString) return;
+        if (!xmlString) return [];
     
         const reviews = this.parseItems(xmlString);
-        console.log(`Num reviews: ${reviews.length} for shelf: ${shelf}`);
+        // console.log(`Num reviews: ${reviews.length} for shelf: ${shelf}`);
         // console.log(`Review: ${JSON.stringify(reviews[0])}`); // Muestra el primer libro de la página especificada
-
-        new Review(this.app, reviews[0]).createNote();
+        // new Review(this.app, reviews[0]).createNote();
     
-        return reviews[0]; // Puedes devolver los datos o hacer otras operaciones aquí
+        return reviews; // Puedes devolver los datos o hacer otras operaciones aquí
     }
 
     public async countPagesInShelf(shelf: string): Promise<number> {
@@ -150,6 +148,30 @@ export class GoodreadsRssItemApi extends GoodreadsApiBase {
         });
     
         return shelves;
+    }
+
+    // Get review_id from guid tag. For example, review_id = 4926202654 in: "<item><guid><![CDATA[https://www.goodreads.com/review/show/4926202654?utm_medium=api&utm_source=rss]]></guid>"
+    private extractReviewId(review: Element): string | null {
+        const reviewGuid = this.parseReviewElement(review, ':scope > guid');
+        if (!reviewGuid) return null;
+    
+        // Extrae el review_id del GUID usando una expresión regular para simplificar
+        const match = reviewGuid.match(/\/review\/show\/(\d+)\?/);
+        return match ? match[1] : null;
+    }
+
+    public async getReviewRssItemByReviewId(reviewId: string) {
+        
+        // Get all reviews from the 'read' shelf
+        const rewiesFromReadShelf = await this.getShelfList('read', 1);
+
+        // Get review by id from the list
+        const review = rewiesFromReadShelf.find(review => review.review_id === reviewId);
+
+        // await new Review(this.app, review).createNote();
+
+        return review;
+
     }
     
 }
