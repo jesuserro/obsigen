@@ -15,7 +15,7 @@ import { GiAncientRuins, GiBank, GiChampions, GiChurch, GiCommercialAirplane, Gi
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
-import { IoFootsteps, IoHardwareChipOutline } from 'react-icons/io5';
+import { IoFootsteps, IoHardwareChipOutline, IoThunderstorm } from 'react-icons/io5';
 import { MdBackup, MdBuild, MdCancel, MdCardTravel, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlinePiano, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold } from 'react-icons/pi';
 import { RiEarthquakeFill, RiMentalHealthFill } from "react-icons/ri";
@@ -298,6 +298,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   spain: ({ size }) => <Flag country='ES' size={size} className="" />,
   sport: ({ size }) => <MdDirectionsRun size={size} className="green" />, 
   spotify: ({ size }) => <SiSpotify size={size} className="green spotify" />,
+  storm: ({ size }) => <IoThunderstorm size={size} className="blue aws" />,
   sunny: ({ size }) => <IoMdSunny size={size} className="yellow" />,
   supplement: ({ size }) => <TbPills size={size} className="yellow" />,
   tablet: ({ size }) => <FaTabletAlt size={size} className="yellow" />, 
