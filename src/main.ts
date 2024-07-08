@@ -97,36 +97,47 @@ export default class MyPlugin extends Plugin {
 	}
 
 	onLayoutReady(): void {
-		if (this.app.workspace.getLeavesOfType(CALENDAR_VIEW_TYPE).length) {
-        return;
+        if (this.app.workspace.getLeavesOfType(CALENDAR_VIEW_TYPE).length > 0) {
+            return;
         }
+    
         const rightLeaf = this.app.workspace.getRightLeaf(false);
-
-        if (rightLeaf !== null) {
-            rightLeaf.setViewState({
-                type: CALENDAR_VIEW_TYPE,
-            });
-            this.view = rightLeaf.view as CalendarView;
-        } 
-        
-	}
+    
+        if (rightLeaf === null) {
+            console.error("Unable to get right leaf.");
+            return;
+        }
+    
+        rightLeaf.setViewState({
+            type: CALENDAR_VIEW_TYPE,
+        });
+        this.view = rightLeaf.view as CalendarView;
+    }
+    
 
 	async activateView() {
         this.app.workspace.detachLeavesOfType(CALENDAR_VIEW_TYPE);
-
+    
         const rightLeaf = this.app.workspace.getRightLeaf(false);
-        
-        if (rightLeaf !== null) {
-            await rightLeaf.setViewState({
-                type: CALENDAR_VIEW_TYPE,
-                active: true,
-            });
+    
+        if (rightLeaf === null) {
+            console.error("Unable to get right leaf.");
+            return;
         }
-
-        this.app.workspace.revealLeaf(
-            this.app.workspace.getLeavesOfType(CALENDAR_VIEW_TYPE)[0]
-        );
-  }
+    
+        await rightLeaf.setViewState({
+            type: CALENDAR_VIEW_TYPE,
+            active: true,
+        });
+    
+        const leaf = this.app.workspace.getLeavesOfType(CALENDAR_VIEW_TYPE)[0];
+        if (leaf === null) {
+            console.error("Unable to find calendar view leaf.");
+            return;
+        }
+        
+        this.app.workspace.revealLeaf(leaf);
+    }
 
 }
 
