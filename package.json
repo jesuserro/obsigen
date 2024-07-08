@@ -41,6 +41,8 @@
 		"typescript": "4.7.4"
 	},
 	"dependencies": {
+		"@eslint/config-array": "^0.17.0",
+		"@eslint/object-schema": "^2.1.4",
 		"dotenv": "^16.4.5",
 		"js-yaml": "^4.1.0",
 		"react": "^18.2.0",

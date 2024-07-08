@@ -98,26 +98,34 @@ export default class MyPlugin extends Plugin {
 
 	onLayoutReady(): void {
 		if (this.app.workspace.getLeavesOfType(CALENDAR_VIEW_TYPE).length) {
-      return;
-    }
-    const rightLeaf = this.app.workspace.getRightLeaf(false);
-    rightLeaf.setViewState({
-      type: CALENDAR_VIEW_TYPE,
-    });
-    this.view = rightLeaf.view as CalendarView;
+        return;
+        }
+        const rightLeaf = this.app.workspace.getRightLeaf(false);
+
+        if (rightLeaf !== null) {
+            rightLeaf.setViewState({
+                type: CALENDAR_VIEW_TYPE,
+            });
+            this.view = rightLeaf.view as CalendarView;
+        } 
+        
 	}
 
 	async activateView() {
-    this.app.workspace.detachLeavesOfType(CALENDAR_VIEW_TYPE);
+        this.app.workspace.detachLeavesOfType(CALENDAR_VIEW_TYPE);
 
-    await this.app.workspace.getRightLeaf(false).setViewState({
-      type: CALENDAR_VIEW_TYPE,
-      active: true,
-    });
+        const rightLeaf = this.app.workspace.getRightLeaf(false);
+        
+        if (rightLeaf !== null) {
+            await rightLeaf.setViewState({
+                type: CALENDAR_VIEW_TYPE,
+                active: true,
+            });
+        }
 
-    this.app.workspace.revealLeaf(
-      this.app.workspace.getLeavesOfType(CALENDAR_VIEW_TYPE)[0]
-    );
+        this.app.workspace.revealLeaf(
+            this.app.workspace.getLeavesOfType(CALENDAR_VIEW_TYPE)[0]
+        );
   }
 
 }

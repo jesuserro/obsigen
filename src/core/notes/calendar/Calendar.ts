@@ -16,13 +16,16 @@ export class Calendar {
         this.app.workspace.detachLeavesOfType(CALENDAR_VIEW_TYPE);
 
         const leaf = this.app.workspace.getRightLeaf(false);
-        
 
-        leaf.setViewState({
-            type: CALENDAR_VIEW_TYPE,
-            active: true,   
-        });
+        if (leaf !== null) {
+            leaf.setViewState({
+                type: CALENDAR_VIEW_TYPE,
+                active: true,   
+            });
+        }
 
-        this.app.workspace.revealLeaf(leaf);
+        if (leaf !== null) {
+            this.app.workspace.revealLeaf(leaf);
+        }
     }
 }
