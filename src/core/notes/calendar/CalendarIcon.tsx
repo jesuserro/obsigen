@@ -293,7 +293,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   sick: ({ size }) => <MdSick size={size} className="yellow emoji" />,
   skype: ({ size }) => <FaSkype size={size} style={{ color: '#00AFF0' }} />,
   snow: ({ size }) => <BsSnow3 size={size} className="white" />,
-  soccer: ({ size }) => <GiSoccerBall size={size} className="green" />,
+  soccer: ({ size }) => <GiSoccerBall size={size} className="white" />,
   sophie: ({ size }) => <CustomIcon size={size} className="pink" iconName="Sophie" />,
   spain: ({ size }) => <Flag country='ES' size={size} className="" />,
   sport: ({ size }) => <MdDirectionsRun size={size} className="green" />, 
