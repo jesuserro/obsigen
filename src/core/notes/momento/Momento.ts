@@ -236,6 +236,7 @@ let timePassed = '';
 if (diff.years > 0) {
     timePassed += diff.years + ' años';
     if (diff.months > 0) timePassed += ' y ' + diff.months + ' meses';
+    if (diff.days > 0) timePassed += ' y ' + diff.days + ' días';
 } else if (diff.months > 0) {
     timePassed += diff.months + ' meses';
     if (diff.days > 0) timePassed += ' y ' + diff.days + ' días';
