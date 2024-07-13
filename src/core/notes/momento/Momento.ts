@@ -198,7 +198,7 @@ export class Momento {
 		const mediaContent = this.getMediaContent();
 		const dataviewBlock = `
 \`\`\`dataview
-TABLE date as "Fecha del evento", date(today) - date AS "Tiempo transcurrido"
+TABLE dateformat(date, "cccc, hh:mm a - MMMM dd, yyyy") as "Fecha del evento", date(today) - date AS "Tiempo transcurrido"
 WHERE file.name = this.file.name
 \`\`\`
 		`;
