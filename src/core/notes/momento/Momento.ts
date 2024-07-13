@@ -195,38 +195,67 @@ export class Momento {
 	}
 
 	setContent(content: string) {
-		const mediaContent = this.getMediaContent();
-		const dataviewBlock = `
+        const mediaContent = this.getMediaContent();
+        const dataviewBlock = `
 \`\`\`dataviewjs
 const dateFormat = 'cccc, hh:mm a - MMMM dd, yyyy';
 const eventDate = dv.date(dv.current().date);
 const now = dv.date(DateTime.now());
 const diff = now.diff(eventDate, ['years', 'months', 'days', 'hours', 'minutes']);
 
-const formattedDate = eventDate.toFormat(dateFormat);
+const daysOfWeek = {
+    'Sunday': 'Domingo',
+    'Monday': 'Lunes',
+    'Tuesday': 'Martes',
+    'Wednesday': 'Miércoles',
+    'Thursday': 'Jueves',
+    'Friday': 'Viernes',
+    'Saturday': 'Sábado'
+};
+
+const monthsOfYear = {
+    'January': 'Enero',
+    'February': 'Febrero',
+    'March': 'Marzo',
+    'April': 'Abril',
+    'May': 'Mayo',
+    'June': 'Junio',
+    'July': 'Julio',
+    'August': 'Agosto',
+    'September': 'Septiembre',
+    'October': 'Octubre',
+    'November': 'Noviembre',
+    'December': 'Diciembre'
+};
+
+const formattedDate = eventDate.toFormat(dateFormat)
+    .replace(/Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday/, match => daysOfWeek[match])
+    .replace(/January|February|March|April|May|June|July|August|September|October|November|December/, match => monthsOfYear[match]);
+
 let timePassed = '';
 if (diff.years > 0) {
-	timePassed += diff.years + ' años';
-	if (diff.months > 0) timePassed += ' y ' + diff.months + ' meses';
+    timePassed += diff.years + ' años';
+    if (diff.months > 0) timePassed += ' y ' + diff.months + ' meses';
 } else if (diff.months > 0) {
-	timePassed += diff.months + ' meses';
-	if (diff.days > 0) timePassed += ' y ' + diff.days + ' días';
+    timePassed += diff.months + ' meses';
+    if (diff.days > 0) timePassed += ' y ' + diff.days + ' días';
 } else if (diff.days > 0) {
-	timePassed += diff.days + ' días';
-	if (diff.hours > 0) timePassed += ' y ' + diff.hours + ' horas';
+    timePassed += diff.days + ' días';
+    if (diff.hours > 0) timePassed += ' y ' + diff.hours + ' horas';
 } else if (diff.hours > 0) {
-	timePassed += diff.hours + ' horas';
-	if (diff.minutes > 0) timePassed += ' y ' + Math.round(diff.minutes) + ' minutos';
+    timePassed += diff.hours + ' horas';
+    if (diff.minutes > 0) timePassed += ' y ' + Math.round(diff.minutes) + ' minutos';
 } else {
-	timePassed += Math.round(diff.minutes) + ' minutos';
+    timePassed += Math.round(diff.minutes) + ' minutos';
 }
 
 dv.table(["Fecha evento", "Tiempo transcurrido"], [
     [formattedDate, timePassed]
 ]);
 \`\`\``;
-		this.content = `${this.yaml}\n# ${this.title}\n${dataviewBlock}\n${mediaContent}\n${content}\n\n`;
-	}
+        this.content = `${this.yaml}\n# ${this.title}\n${dataviewBlock}\n${mediaContent}\n${content}\n\n`;
+    }
+    
 
 	private getListForYamlProperty(
 		yamlPropertyText: string,
