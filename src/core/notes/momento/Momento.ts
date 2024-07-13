@@ -216,9 +216,9 @@ if (diff.years > 0) {
 	if (diff.hours > 0) timePassed += ' y ' + diff.hours + ' horas';
 } else if (diff.hours > 0) {
 	timePassed += diff.hours + ' horas';
-	if (diff.minutes > 0) timePassed += ' y ' + diff.minutes + ' minutos';
+	if (diff.minutes > 0) timePassed += ' y ' + Math.round(diff.minutes) + ' minutos';
 } else {
-	timePassed += diff.minutes + ' minutos';
+	timePassed += Math.round(diff.minutes) + ' minutos';
 }
 
 dv.list([{
