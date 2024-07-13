@@ -198,11 +198,10 @@ export class Momento {
 		const mediaContent = this.getMediaContent();
 		const dataviewBlock = `
 \`\`\`dataview
-TABLE dateformat(date, "cccc, hh:mm a - MMMM dd, yyyy") as "Fecha del evento", date(today) - date AS "Tiempo transcurrido"
+TABLE dateformat(date, "cccc, hh:mm a - MMMM dd, yyyy") as "Fecha evento", date(today) - date AS "Tiempo transcurrido"
 WHERE file.name = this.file.name
-\`\`\`
-		`;
-		this.content = `${this.yaml}\n# ${this.title}\n${mediaContent}\n${content}\n${dataviewBlock}`;
+\`\`\``;
+		this.content = `${this.yaml}\n# ${this.title}\n${dataviewBlock}\n${mediaContent}\n${content}\n\n`;
 	}
 
 	private getListForYamlProperty(
