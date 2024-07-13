@@ -1,3 +1,4 @@
+import { differenceInDays, differenceInHours, differenceInMinutes, differenceInMonths, differenceInYears } from 'date-fns';
 import { App } from "obsidian";
 import { renderToString } from "react-dom/server";
 import { DATA_YAML_DEFAULT } from "./../../shared/interface/iYaml";
@@ -74,7 +75,6 @@ export class Momento {
 		return `${year}${month}${day}`;
 	}
 
-	// Create new function getCurrentAniversary returning month and day in this format: MMDD, for example 0327 for March 27
 	getCurrentAniversary() {
 		const now = this.date;
 		const month = (now.getMonth() + 1).toString().padStart(2, "0");
@@ -82,13 +82,44 @@ export class Momento {
 		return `${month}${day}`;
 	}
 
+	getDayOfWeek() {
+		const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+		return days[this.date.getDay()];
+	}
+
+	getTimePassed() {
+		const now = new Date();
+		const years = differenceInYears(now, this.date);
+		const months = differenceInMonths(now, this.date) % 12;
+		const days = differenceInDays(now, this.date) % 30;
+		const hours = differenceInHours(now, this.date) % 24;
+		const minutes = differenceInMinutes(now, this.date) % 60;
+
+		if (years > 0) {
+			return `${years} años${months > 0 ? ` y ${months} meses` : ''}`;
+		} else if (months > 0) {
+			return `${months} meses${days > 0 ? ` y ${days} días` : ''}`;
+		} else if (days > 0) {
+			return `${days} días${hours > 0 ? ` y ${hours} horas` : ''}`;
+		} else if (hours > 0) {
+			return `${hours} horas${minutes > 0 ? ` y ${minutes} minutos` : ''}`;
+		} else {
+			return `${minutes} minutos`;
+		}
+	}
+
 	setYaml() {
 		const link = `"[[${this.getCurrentDate()}]]"`;
 		const anniversary = `"[[${this.getCurrentAniversary()}]]"`;
+		const dayOfWeek = this.getDayOfWeek();
+		const timePassed = this.getTimePassed();
+
 		const data = {
 			...DATA_YAML_DEFAULT,
 			title: this.title,
 			date: this.convertDateToIsoString(this.date),
+			dayOfWeek: dayOfWeek,
+			timePassed: timePassed, // Añadimos el tiempo transcurrido al YAML
 			links: [...DATA_YAML_DEFAULT.links, link, anniversary],
 			locations: this.getListForYamlProperty(this.locations, true),
 			urls: this.getListForYamlProperty(this.urls),
