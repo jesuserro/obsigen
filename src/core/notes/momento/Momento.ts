@@ -221,10 +221,9 @@ if (diff.years > 0) {
 	timePassed += Math.round(diff.minutes) + ' minutos';
 }
 
-dv.list([{
-	"Fecha evento": formattedDate,
-	"Tiempo transcurrido": timePassed
-}]);
+dv.table(["Fecha evento", "Tiempo transcurrido"], [
+    [formattedDate, timePassed]
+]);
 \`\`\``;
 		this.content = `${this.yaml}\n# ${this.title}\n${dataviewBlock}\n${mediaContent}\n${content}\n\n`;
 	}
