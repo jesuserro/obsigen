@@ -266,7 +266,8 @@ const timePassed = calculateTimePassed(diff);
 dv.table(["Fecha evento", "Tiempo transcurrido"], [
     [formattedDate, timePassed]
 ]);
-\`\`\``;
+\`\`\`
+`;
     }
     
     
