@@ -203,14 +203,9 @@ export class Momento {
     generateDataviewBlock(): string {
         return `
 \`\`\`dataviewjs
-const dateFormat = 'cccc, hh:mm a - MMMM dd, yyyy';
 const eventDate = dv.date(dv.current().date);
 const now = dv.date(DateTime.now());
 const diff = now.diff(eventDate, ['years', 'months', 'days', 'hours', 'minutes']);
-
-function formatDate(date) {
-    return date.toFormat('cccc, hh:mm a - MMMM dd, yyyy');
-}
 
 function calculateTimePassed(diff) {
     let timePassed = '';
@@ -233,8 +228,8 @@ function calculateTimePassed(diff) {
     return timePassed;
 }
 
-dv.table(["Fecha evento", "Tiempo transcurrido"], [
-    [formatDate(eventDate), calculateTimePassed(diff)]
+dv.table(["Tiempo transcurrido"], [
+    [calculateTimePassed(diff)]
 ]);
 \`\`\`
     `;
