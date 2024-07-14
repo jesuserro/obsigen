@@ -52,6 +52,8 @@ export class GoodreadsBookApi extends GoodreadsApiBase {
             isbn13: this.getTextContent(bookElement, ['isbn13']),
             asin: this.getTextContent(bookElement, ['asin']),
             date: this.getBookPublicationDate(bookElement) ? new Date(this.getBookPublicationDate(bookElement)) : new Date(),
+            dayOfWeek: '',
+            timePassed: '',
             creation: new Date(),
             updated: new Date(),
             links: [],
