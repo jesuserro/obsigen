@@ -208,24 +208,18 @@ const now = dv.date(DateTime.now());
 const diff = now.diff(eventDate, ['years', 'months', 'days', 'hours', 'minutes']);
 
 function calculateTimePassed(diff) {
-    let timePassed = '';
-    if (diff.years > 0) {
-        timePassed += diff.years + ' años';
-        if (diff.months > 0) timePassed += ' y ' + diff.months + ' meses';
-        if (diff.days > 0) timePassed += ' y ' + diff.days + ' días';
-    } else if (diff.months > 0) {
-        timePassed += diff.months + ' meses';
-        if (diff.days > 0) timePassed += ' y ' + diff.days + ' días';
-    } else if (diff.days > 0) {
-        timePassed += diff.days + ' días';
-        if (diff.hours > 0) timePassed += ' y ' + diff.hours + ' horas';
-    } else if (diff.hours > 0) {
-        timePassed += diff.hours + ' horas';
-        if (diff.minutes > 0) timePassed += ' y ' + Math.round(diff.minutes) + ' minutos';
-    } else {
-        timePassed += Math.round(diff.minutes) + ' minutos';
-    }
-    return timePassed;
+    const units = [
+        { label: 'años', value: diff.years },
+        { label: 'meses', value: diff.months },
+        { label: 'días', value: diff.days },
+        { label: 'horas', value: diff.hours },
+        { label: 'minutos', value: Math.round(diff.minutes) }
+    ];
+
+    return units
+        .filter(({ value }) => value > 0)
+        .map(({ value, label }) => \`\${value} \${label}\`)
+        .join(' y ');
 }
 
 dv.table(["Tiempo transcurrido"], [
