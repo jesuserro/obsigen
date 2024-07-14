@@ -197,7 +197,7 @@ export class Momento {
 	setContent(content: string): void {
         const mediaContent = this.getMediaContent();
         const dataviewBlock = this.generateDataviewBlock();
-        this.content = `${this.yaml}${dataviewBlock}\n# ${this.title}\n${mediaContent}\n${content}\n\n`;
+        this.content = `${this.yaml}\n${dataviewBlock}\n# ${this.title}\n${mediaContent}\n${content}\n\n`;
     }
     
     generateDataviewBlock(): string {
