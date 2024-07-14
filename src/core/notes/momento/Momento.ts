@@ -208,35 +208,8 @@ const eventDate = dv.date(dv.current().date);
 const now = dv.date(DateTime.now());
 const diff = now.diff(eventDate, ['years', 'months', 'days', 'hours', 'minutes']);
 
-const daysOfWeek = {
-    'Sunday': 'Domingo',
-    'Monday': 'Lunes',
-    'Tuesday': 'Martes',
-    'Wednesday': 'Miércoles',
-    'Thursday': 'Jueves',
-    'Friday': 'Viernes',
-    'Saturday': 'Sábado'
-};
-
-const monthsOfYear = {
-    'January': 'Enero',
-    'February': 'Febrero',
-    'March': 'Marzo',
-    'April': 'Abril',
-    'May': 'Mayo',
-    'June': 'Junio',
-    'July': 'Julio',
-    'August': 'Agosto',
-    'September': 'Septiembre',
-    'October': 'Octubre',
-    'November': 'Noviembre',
-    'December': 'Diciembre'
-};
-
 function formatDate(date) {
-    return date.toFormat('cccc, hh:mm a - MMMM dd, yyyy')
-        .replace(/Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday/, match => daysOfWeek[match])
-        .replace(/January|February|March|April|May|June|July|August|September|October|November|December/, match => monthsOfYear[match]);
+    return date.toFormat('cccc, hh:mm a - MMMM dd, yyyy');
 }
 
 function calculateTimePassed(diff) {
@@ -260,18 +233,13 @@ function calculateTimePassed(diff) {
     return timePassed;
 }
 
-const formattedDate = formatDate(eventDate);
-const timePassed = calculateTimePassed(diff);
-
 dv.table(["Fecha evento", "Tiempo transcurrido"], [
-    [formattedDate, timePassed]
+    [formatDate(eventDate), calculateTimePassed(diff)]
 ]);
 \`\`\`
-`;
+    `;
     }
     
-    
-
 	private getListForYamlProperty(
 		yamlPropertyText: string,
 		isQuoted: boolean = false
