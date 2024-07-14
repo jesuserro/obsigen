@@ -16,6 +16,7 @@ import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
 import { IoFootsteps, IoHardwareChipOutline, IoThunderstorm } from 'react-icons/io5';
+import { LuPartyPopper } from 'react-icons/lu';
 import { MdBackup, MdBuild, MdCancel, MdCardTravel, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlinePiano, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold } from 'react-icons/pi';
 import { RiEarthquakeFill, RiMentalHealthFill } from "react-icons/ri";
@@ -250,6 +251,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   openai: ({ size }) => <SiOpenai size={size} className="green openai" />,
   package: ({ size }) => <PiPackageBold size={size} className="brown" />,
   pancake: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Pancake" />,
+  party: ({ size }) => <LuPartyPopper  size={size} className="violet" />,
   payroll: ({ size }) => <IconoPayroll size={size} className="yellow" />,
   peace: ({ size }) => <GiPeaceDove size={size} className="white" />,
   people: ({ size }) => <MdPeople size={size} className="grey" />,
