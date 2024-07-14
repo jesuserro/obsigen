@@ -254,7 +254,7 @@ dv.table(["Fecha evento", "Tiempo transcurrido"], [
     [formattedDate, timePassed]
 ]);
 \`\`\``;
-        this.content = `${this.yaml}\n# ${this.title}\n${dataviewBlock}\n${mediaContent}\n${content}\n\n`;
+        this.content = `${this.yaml}${dataviewBlock}\n# ${this.title}\n${mediaContent}\n${content}\n\n`;
     }
     
 
