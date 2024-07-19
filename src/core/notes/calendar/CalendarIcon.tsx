@@ -250,6 +250,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   olympics: ({ size }) => <CustomIcon size={size} className="green" iconName="Olympics" />,
   orejona: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Orejona" />,
   openai: ({ size }) => <SiOpenai size={size} className="green openai" />,
+  orthodox: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Orthodox" />,
   package: ({ size }) => <PiPackageBold size={size} className="brown" />,
   pancake: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Pancake" />,
   party: ({ size }) => <LuPartyPopper  size={size} className="violet" />,
