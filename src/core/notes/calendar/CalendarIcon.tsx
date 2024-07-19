@@ -22,7 +22,7 @@ import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircle
 import { RiEarthquakeFill, RiMentalHealthFill } from "react-icons/ri";
 import { SiTinder as IconoTinder, SiDell, SiGimp, SiGooglemeet, SiInsomnia, SiLenovo, SiObsidian, SiOpenai, SiPlex, SiSamsung, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { SlPicture } from "react-icons/sl";
-import { TbAppsFilled, TbBulbFilled, TbPillOff, TbPills, TbZzz } from 'react-icons/tb';
+import { TbAppsFilled, TbBulbFilled, TbFishChristianity, TbPillOff, TbPills, TbZzz } from 'react-icons/tb';
 import { TfiHarddrives } from "react-icons/tfi";
 
 // https://github.com/madebybowtie/FlagKit/blob/master/Assets/Flags.md
@@ -156,6 +156,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   dad: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Dad" />,
   death: ({ size }) => <GiDeathSkull size={size} className="grey" />,
   dell: ({ size }) => <SiDell size={size} className="blue linkedin" />,
+  diosidencia: ({ size }) => <TbFishChristianity size={size} className="violet" />,
   doctor: ({ size }) => <FaUserDoctor size={size} className="green" />,
   dream: ({ size }) => <TbZzz size={size} className="blue cobalt" />,
   earthquake: ({ size }) => <RiEarthquakeFill size={size} className="red" />,
