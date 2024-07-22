@@ -11,11 +11,11 @@ export interface FormValues {
   urls: string;
   description: string;
   date: Date;
-  endDate: string;
+  endDate: Date;
   selectedIcon: string;
   locations: string;
-  type: string,
-  tags: string
+  type: string;
+  tags: string;
 }
 
 export class CalendarEvent extends Modal {
@@ -23,9 +23,9 @@ export class CalendarEvent extends Modal {
   private reject!: (reason?: TemplaterError) => void;
   private submitted = false;
   
-  private year:number;
-  private month:number;
-  private day:number;
+  private year: number;
+  private month: number;
+  private day: number;
   private title: string;
   private urls: string;
   private description: string;
@@ -43,10 +43,15 @@ export class CalendarEvent extends Modal {
   private yearDropdown: DropdownComponent;
   private monthDropdown: DropdownComponent;
   private dayDropdown: DropdownComponent;
-  private iconDropdown: JSX.Element;
-  private locationDropdown: JSX.Element;
   private hourDropdown: DropdownComponent;
   private minuteDropdown: DropdownComponent;
+  private endYearDropdown: DropdownComponent;
+  private endMonthDropdown: DropdownComponent;
+  private endDayDropdown: DropdownComponent;
+  private endHourDropdown: DropdownComponent;
+  private endMinuteDropdown: DropdownComponent;
+  private iconDropdown: JSX.Element;
+  private locationDropdown: JSX.Element;
   private urlField: TextComponent;
   private typeField: DropdownComponent;
   private tagsField: TextComponent;
@@ -127,7 +132,26 @@ export class CalendarEvent extends Modal {
     const minuteDiv = dateFieldset.createDiv("form-element");
     this.minuteDropdown = new DropdownComponent(minuteDiv);
   
+    // Create Dropdowns for end date and time
+    const endDateFieldset = form.createEl("fieldset", { cls: "date-fieldset" });
+  
+    const endYearDiv = endDateFieldset.createDiv("form-element");
+    this.endYearDropdown = new DropdownComponent(endYearDiv);
+  
+    const endMonthDiv = endDateFieldset.createDiv("form-element");
+    this.endMonthDropdown = new DropdownComponent(endMonthDiv);
+  
+    const endDayDiv = endDateFieldset.createDiv("form-element");
+    this.endDayDropdown = new DropdownComponent(endDayDiv);
+
+    const endHourDiv = endDateFieldset.createDiv("form-element");
+    this.endHourDropdown = new DropdownComponent(endHourDiv);
+
+    const endMinuteDiv = endDateFieldset.createDiv("form-element");
+    this.endMinuteDropdown = new DropdownComponent(endMinuteDiv);
+
     this.initializeDropdowns();
+    this.initializeEndDropdowns();
 
     // Type label and textfield
     const typeDiv = form.createDiv("form-element");
@@ -207,38 +231,67 @@ export class CalendarEvent extends Modal {
       this.yearDropdown.addOption(i.toString(), i.toString());
     }
     for (let i = 1; i <= 12; i++) {
-      this.monthDropdown.addOption(i.toString(), i.toString());
+      this.monthDropdown.addOption(i.toString().padStart(2, '0'), i.toString().padStart(2, '0'));
     }
     for (let i = 1; i <= 31; i++) {
-      this.dayDropdown.addOption(i.toString(), i.toString());
+      this.dayDropdown.addOption(i.toString().padStart(2, '0'), i.toString().padStart(2, '0'));
     }
-    for (let i = 0; i <= 24; i++) {
-      this.hourDropdown.addOption(i.toString(), i.toString());
+    for (let i = 0; i <= 23; i++) { // Cambiado a 23 para horas
+      this.hourDropdown.addOption(i.toString().padStart(2, '0'), i.toString().padStart(2, '0'));
     }
-    for (let i = 0; i <= 60; i += 5) {
-      this.minuteDropdown.addOption(i.toString(), i.toString());
+    for (let i = 0; i <= 55; i += 5) {
+      this.minuteDropdown.addOption(i.toString().padStart(2, '0'), i.toString().padStart(2, '0'));
     }
 
     // Establece los valores iniciales de los DropdownComponent
     this.yearDropdown.setValue(this.year.toString());
-    this.monthDropdown.setValue(this.month.toString());
-    this.dayDropdown.setValue(this.day.toString());
+    this.monthDropdown.setValue(this.month.toString().padStart(2, '0'));
+    this.dayDropdown.setValue(this.day.toString().padStart(2, '0'));
     
     this.initializeTimeDropdowns();
   }
+
+  private initializeEndDropdowns() {
+    // Configura los DropdownComponent para año, mes y día de fin
+    for (let i = 1897; i <= 2030; i++) {
+        this.endYearDropdown.addOption(i.toString(), i.toString());
+    }
+    for (let i = 1; i <= 12; i++) {
+        this.endMonthDropdown.addOption(i.toString().padStart(2, '0'), i.toString().padStart(2, '0'));
+    }
+    for (let i = 1; i <= 31; i++) {
+        this.endDayDropdown.addOption(i.toString().padStart(2, '0'), i.toString().padStart(2, '0'));
+    }
+    for (let i = 0; i <= 23; i++) { // Cambiado a 23 para horas
+        this.endHourDropdown.addOption(i.toString().padStart(2, '0'), i.toString().padStart(2, '0'));
+    }
+    for (let i = 0; i <= 55; i += 5) {
+        this.endMinuteDropdown.addOption(i.toString().padStart(2, '0'), i.toString().padStart(2, '0'));
+    }
+
+    // Establece los valores iniciales de los DropdownComponent utilizando la fecha del constructor
+    this.endYearDropdown.setValue(this.year.toString());
+    this.endMonthDropdown.setValue(this.month.toString().padStart(2, '0'));
+    this.endDayDropdown.setValue(this.day.toString().padStart(2, '0'));
+    this.endHourDropdown.setValue(this.hourDropdown.getValue());
+    this.endMinuteDropdown.setValue(this.minuteDropdown.getValue());
+}
 
   private initializeTimeDropdowns() {
     const now = new Date();
     const currentHour = now.getHours();
     const currentMinute = Math.floor(now.getMinutes() / 5) * 5; // Round down to the nearest 5 minutes
   
-    this.hourDropdown.setValue(currentHour.toString());
-    this.minuteDropdown.setValue(currentMinute.toString());
+    this.hourDropdown.setValue(currentHour.toString().padStart(2, '0'));
+    this.minuteDropdown.setValue(currentMinute.toString().padStart(2, '0'));
   }
   
   private validateForm(formValues: FormValues): string | null {
     // Implement your validation logic here for the new fields
     // Example: Check if the start date is before the end date, validate URL, etc.
+    if (formValues.date > formValues.endDate) {
+      return "La fecha de inicio debe ser anterior a la fecha de fin.";
+    }
     // Return a validation error message if there's an issue.
     // Return null if validation passes.
     // You can also reuse the existing validation functions if applicable.
@@ -279,13 +332,22 @@ export class CalendarEvent extends Modal {
     const selectedHour = this.hourDropdown.getValue().padStart(2, '0');
     const selectedMinute = this.minuteDropdown.getValue().padStart(2, '0');
 
+    const selectedEndYear = this.endYearDropdown.getValue();
+    const selectedEndMonth = this.endMonthDropdown.getValue().padStart(2, '0');
+    const selectedEndDay = this.endDayDropdown.getValue().padStart(2, '0');
+    const selectedEndHour = this.endHourDropdown.getValue().padStart(2, '0');
+    const selectedEndMinute = this.endMinuteDropdown.getValue().padStart(2, '0');
+
     const selectedTime = `${selectedHour}:${selectedMinute}:00`;
+    const selectedEndTime = `${selectedEndHour}:${selectedEndMinute}:00`;
     
-    const strDate = `${selectedYear}-${selectedMonth}-${selectedDay} ${selectedTime}`;
+    const strDate = `${selectedYear}-${selectedMonth}-${selectedDay}T${selectedTime}`;
+    const endStrDate = `${selectedEndYear}-${selectedEndMonth}-${selectedEndDay}T${selectedEndTime}`;
     const date = new Date(strDate);
+    const endDate = new Date(endStrDate);
 
     this.urls = "";
-    if(this.urlField.getValue() !== "" && this.urlField.getValue() !== undefined){
+    if (this.urlField.getValue() !== "" && this.urlField.getValue() !== undefined) {
       this.urls = `"${this.urlField.getValue()}"`;
     }
     
@@ -293,7 +355,7 @@ export class CalendarEvent extends Modal {
       title: this.title.trim(),
       description: this.description.trim(),
       date: date,
-      endDate: this.endDate.trim(),
+      endDate: endDate,
       selectedIcon: this.selectedIcon,
       urls: this.urls.trim(),
       locations: this.selectedLocation ? `[[${this.selectedLocation}]]` : "",
@@ -313,7 +375,7 @@ export class CalendarEvent extends Modal {
     // Validation passed, resolve the values
     this.resolve(formValues);
 
-    new Momento(date).createNote(
+    new Momento(date, endDate).createNote(
       formValues.type,
       this.app,
       formValues.title, 

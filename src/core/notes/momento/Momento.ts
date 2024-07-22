@@ -3,6 +3,8 @@ import { renderToString } from "react-dom/server";
 import { DATA_YAML_DEFAULT } from "./../../shared/interface/iYaml";
 import { Yaml } from "./../../shared/templates/Yaml";
 import { NoteGenerator } from "./../NoteGenerator";
+import { Duration } from "./Duration";
+
 
 export class Momento {
 	app: App;
@@ -12,11 +14,12 @@ export class Momento {
 	title: string;
 	filePrefix: string;
 	date: Date;
+    dateEnd: Date | null;
+    duration: Duration | null;
 	subheader: string;
 	content: string;
 	fileName: string;
 	callout: string;
-	startDate: Date | null;
 	icon: string | null;
 	description: string;
 	year: number;
@@ -33,7 +36,7 @@ export class Momento {
 	twitterRegexp: RegExp;
 	youtubeRegexp: RegExp;
 
-	constructor(date: Date) {
+	constructor(date: Date, dateEnd: Date | null = null) {
 		this.icon = "";
 
 		this.year = date.getFullYear();
@@ -48,11 +51,18 @@ export class Momento {
 		this.path = "/";
 		this.tags = "";
 
-		this.startDate = date;
-		this.date = this.startDate;
+		this.date = date;
+        this.dateEnd = dateEnd;
+
+        // Calcular la duración si se proporciona una fecha de fin
+        this.duration = null;
+        if (this.date && this.dateEnd) {
+            const durationMinutes = Math.floor((this.dateEnd.getTime() - this.date.getTime()) / (1000 * 60)); // Duración en minutos
+            this.duration = new Duration(durationMinutes); // Duración en días, horas y minutos
+        } 
 
 		this.twitterRegexp = new RegExp(
-			"https?://(?:mobile\\.)?twitter\\.com/.*"
+			"https?://(?:mobile\\.)?(?:twitter\\.com|x\\.com)/.*"
 		);
 		this.youtubeRegexp = new RegExp(
 			"https?://(?:www\\.)?(?:youtube\\.com/.*|youtu\\.be/.*|.*\\.youtube\\.com/.*shorts)"
@@ -95,6 +105,8 @@ export class Momento {
 			...DATA_YAML_DEFAULT,
 			title: this.title,
 			date: this.convertDateToIsoString(this.date),
+            dateEnd: this.dateEnd ? this.convertDateToIsoString(this.dateEnd) : "",
+            duration: this.duration ? this.duration.toString() : "",
 			dayOfWeek: dayOfWeek,
 			links: [...DATA_YAML_DEFAULT.links, link, anniversary],
 			locations: this.getListForYamlProperty(this.locations, true),
@@ -147,12 +159,11 @@ export class Momento {
 		this.noteGenerator = new NoteGenerator(this.app);
 
 		this.title = this.getTitle(title);
-		if (this.startDate) {
-			this.date = this.startDate;
-			this.year = this.date.getFullYear();
-			this.month = this.date.getMonth() + 1;
-			this.day = this.date.getDate();
-		}
+		
+        this.year = this.date.getFullYear();
+        this.month = this.date.getMonth() + 1;
+        this.day = this.date.getDate();
+		
 		this.icon = icon || null;
 		this.description = description || "";
 		this.locations = locations || "";
