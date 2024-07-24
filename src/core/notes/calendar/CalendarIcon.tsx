@@ -8,7 +8,7 @@ import React from 'react';
 import { BiLogoGmail } from 'react-icons/bi';
 import { BsBookmarkStar, BsChatLeftQuoteFill, BsClockFill, BsCloudHaze2, BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsPersonCircle, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAws, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChalkboardTeacher, FaChess, FaCode, FaCross, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHeadSideCough, FaHeadphones, FaHiking, FaInstagram, FaKey, FaLaptop, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaScroll, FaSkype, FaSmile, FaStar, FaTabletAlt, FaTelegram, FaTired, FaTrain, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaAmazon, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChalkboardTeacher, FaChess, FaCode, FaCross, FaDog, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHeadSideCough, FaHeadphones, FaHiking, FaInstagram, FaKey, FaLaptop, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaScroll, FaSkype, FaSmile, FaStar, FaTabletAlt, FaTelegram, FaTired, FaTrain, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaGift, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
 import { FcAndroidOs, FcCalendar, FcDataBackup, FcGoogle } from 'react-icons/fc';
 import { GiAncientRuins, GiBank, GiChampions, GiChurch, GiCommercialAirplane, GiCook, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFireworkRocket, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiMiracleMedecine, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiStrong, GiThermometerCold, GiVillage, GiWheat } from 'react-icons/gi';
@@ -17,7 +17,7 @@ import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
 import { IoFootsteps, IoHardwareChipOutline, IoThunderstorm } from 'react-icons/io5';
 import { LuPartyPopper } from 'react-icons/lu';
-import { MdBackup, MdBuild, MdCancel, MdCardTravel, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlinePiano, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
+import { MdBackup, MdBuild, MdCancel, MdCardTravel, MdDirectionsRun, MdFavorite, MdGroup, MdNightlife, MdOutlineAddCircle, MdOutlinePiano, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold } from 'react-icons/pi';
 import { RiEarthquakeFill, RiMentalHealthFill } from "react-icons/ri";
 import { SiTinder as IconoTinder, SiDell, SiGimp, SiGooglemeet, SiInsomnia, SiLenovo, SiObsidian, SiOpenai, SiPlex, SiSamsung, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
@@ -119,6 +119,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   archeology: ({ size }) => <GiAncientRuins size={size} className="grey" />,
   argentina: ({ size }) => <Flag country='AR' size={size} className="" />,
   aws: ({ size }) => <FaAws size={size} className="orange aws" />,
+  baby: ({ size }) => <FaBaby size={size} className="blue ui" />,
   backup: ({ size }) => <FcDataBackup size={size} className="green spotify" />,
   backup_cloud: ({ size }) => <MdBackup size={size} className="green spotify" />,
   bank: ({ size }) => <GiBank size={size} className="red" />,
@@ -156,9 +157,11 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   cough: ({ size }) => <FaHeadSideCough size={size} className="yellow emoji" />, 
   dad: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Dad" />,
   death: ({ size }) => <GiDeathSkull size={size} className="grey" />,
+  dance: ({ size }) => <MdNightlife size={size} className="yellow intense" />,
   dell: ({ size }) => <SiDell size={size} className="blue linkedin" />,
   diosidencia: ({ size }) => <TbFishChristianity size={size} className="violet" />,
   doctor: ({ size }) => <FaUserDoctor size={size} className="green" />,
+  dog: ({ size }) => <FaDog size={size} className="brown" />,
   dream: ({ size }) => <TbZzz size={size} className="blue cobalt" />,
   earthquake: ({ size }) => <RiEarthquakeFill size={size} className="red" />,
   eclipse: ({ size }) => <GiEclipse size={size} className="yellow" />,
