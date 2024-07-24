@@ -3,6 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { NoteGenerator } from 'src/core/notes/NoteGenerator';
 import { Book as BookInterface, DATA_YAML_BOOK_DEFAULT } from 'src/core/shared/interface/iYaml';
 import { Yaml } from 'src/core/shared/templates/Yaml';
+import { Duration } from './../../core/notes/momento/Duration';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
 
 export class Book extends GoodreadsApiBase {
@@ -12,6 +13,8 @@ export class Book extends GoodreadsApiBase {
     private fileName: string;
     private content: string = '';
     private date: Date = new Date();
+    private dateEnd: Date = new Date();
+    private duration: Duration | null;
 
     // Propiedades del libro
     private title: string;
@@ -55,6 +58,7 @@ export class Book extends GoodreadsApiBase {
         this.asin = book.asin;
         this.description = book.description;
         this.date = new Date(book.date);
+        this.dateEnd = new Date(book.dateEnd);
         this.year = this.date.getFullYear();
         this.month = this.date.getMonth() + 1;
         this.day = this.date.getDate();
@@ -68,6 +72,12 @@ export class Book extends GoodreadsApiBase {
         this.ratings_count = book.ratings_count || 0;
         this.text_reviews_count = book.text_reviews_count || 0;
         this.country_code = book.country_code || '';
+
+        this.duration = null;
+        if (this.date && this.dateEnd) {
+            const durationMinutes = Math.floor((this.dateEnd.getTime() - this.date.getTime()) / (1000 * 60)); // Duración en minutos
+            this.duration = new Duration(durationMinutes); // Duración en días, horas y minutos
+        } 
     }
 
     private setYaml() {
@@ -84,6 +94,8 @@ export class Book extends GoodreadsApiBase {
             isbn13: this.isbn13,
             asin: this.asin,
             date: this.convertDateToIsoString(this.date),
+            dateEnd: this.dateEnd ? this.convertDateToIsoString(this.dateEnd) : "",
+            duration: this.duration,
             links: [...DATA_YAML_BOOK_DEFAULT.links, link],
             locations: this.getListForYamlProperty(this.locations, true),
             urls: this.getListForYamlProperty(this.urls),

@@ -3,6 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { NoteGenerator } from 'src/core/notes/NoteGenerator';
 import { Author as AuthorInterface, DATA_YAML_AUTHOR_DEFAULT } from 'src/core/shared/interface/iYaml';
 import { Yaml } from 'src/core/shared/templates/Yaml';
+import { Duration } from './../../core/notes/momento/Duration';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
 
 export class Author extends GoodreadsApiBase {
@@ -12,6 +13,8 @@ export class Author extends GoodreadsApiBase {
     private fileName: string;
     private content: string = '';
     private date: Date = new Date();
+    private dateEnd: Date = new Date();
+    private duration: Duration | null;;
     private born_at: Date = new Date();
     private died_at: Date = new Date();
 
@@ -55,6 +58,7 @@ export class Author extends GoodreadsApiBase {
         this.authors = author.authors;
         this.about = author.about;
         this.date = new Date(author.date);
+        this.dateEnd = new Date(author.dateEnd);
         this.born_at = new Date(author.born_at);
         this.died_at = new Date(author.died_at);
         this.year = this.date.getFullYear();
@@ -64,6 +68,12 @@ export class Author extends GoodreadsApiBase {
         this.rating = author.rating * 2 || 0;
         this.cover = author.image;
         this.locations = author.locations || '';
+
+        this.duration = null;
+        if (this.date && this.dateEnd) {
+            const durationMinutes = Math.floor((this.dateEnd.getTime() - this.date.getTime()) / (1000 * 60)); // Duración en minutos
+            this.duration = new Duration(durationMinutes); // Duración en días, horas y minutos
+        } 
     
         // Extract only hrefs from influences with hyphens
         this.influences = author.influences || [];
@@ -100,6 +110,8 @@ export class Author extends GoodreadsApiBase {
             goodreads_author_id: this.goodreads_author_id,
             authors: this.authors,
             date: this.convertDateToIsoString(this.date),
+            dateEnd: this.convertDateToIsoString(this.dateEnd),
+            duration: this.duration,
             born_at: this.convertDateToIsoString(this.born_at),
             died_at: this.convertDateToIsoString(this.died_at),
             links: [...DATA_YAML_AUTHOR_DEFAULT.links, link],

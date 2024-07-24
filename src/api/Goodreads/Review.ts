@@ -3,6 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { NoteGenerator } from 'src/core/notes/NoteGenerator';
 import { DATA_YAML_REVIEW_DEFAULT, Review as ReviewInterface } from 'src/core/shared/interface/iYaml';
 import { Yaml } from 'src/core/shared/templates/Yaml';
+import { Duration } from './../../core/notes/momento/Duration';
 import { GoodreadsApiBase } from './GoodreadsApiBase';
 
 export class Review extends GoodreadsApiBase {
@@ -12,6 +13,8 @@ export class Review extends GoodreadsApiBase {
     private fileName: string;
     private content: string = '';
     private date: Date = new Date();
+    private dateEnd: Date = new Date();
+    private duration: Duration | null;
 
     // Propiedades de la review
     private review_id: string;
@@ -57,6 +60,7 @@ export class Review extends GoodreadsApiBase {
         this.book_description = review.book_description;
         this.body = review.body;
         this.date = new Date(review.date);
+        this.dateEnd = new Date(review.dateEnd);
         this.year = this.date.getFullYear();
         this.month = this.date.getMonth() + 1;
         this.day = this.date.getDate();
@@ -68,6 +72,12 @@ export class Review extends GoodreadsApiBase {
         this.num_pages = review.num_pages;
         this.average_rating = review.average_rating;
         this.book_published = review.book_published;
+
+        this.duration = null;
+        if (this.date && this.dateEnd) {
+            const durationMinutes = Math.floor((this.dateEnd.getTime() - this.date.getTime()) / (1000 * 60)); // Duración en minutos
+            this.duration = new Duration(durationMinutes); // Duración en días, horas y minutos
+        } 
     }
 
     private setYaml() {
@@ -81,6 +91,8 @@ export class Review extends GoodreadsApiBase {
             authors: this.authors,
             isbn: this.isbn,
             date: this.convertDateToIsoString(this.date),
+            dateEnd: this.convertDateToIsoString(this.dateEnd),
+            duration: this.duration,
             creation: new Date(),
             updated: new Date(),
             links: [...DATA_YAML_REVIEW_DEFAULT.links, link],
