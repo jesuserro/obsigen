@@ -17,7 +17,7 @@ import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
 import { IoFootsteps, IoHardwareChipOutline, IoThunderstorm } from 'react-icons/io5';
 import { LuPartyPopper } from 'react-icons/lu';
-import { MdBackup, MdBuild, MdCancel, MdCardTravel, MdDirectionsRun, MdFavorite, MdGroup, MdNightlife, MdOutlineAddCircle, MdOutlinePiano, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
+import { MdBackup, MdBuild, MdCancel, MdCardTravel, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlinePiano, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold } from 'react-icons/pi';
 import { RiEarthquakeFill, RiMentalHealthFill } from "react-icons/ri";
 import { SiTinder as IconoTinder, SiDell, SiGimp, SiGooglemeet, SiInsomnia, SiLenovo, SiObsidian, SiOpenai, SiPlex, SiSamsung, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
@@ -157,7 +157,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   cough: ({ size }) => <FaHeadSideCough size={size} className="yellow emoji" />, 
   dad: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Dad" />,
   death: ({ size }) => <GiDeathSkull size={size} className="grey" />,
-  dance: ({ size }) => <MdNightlife size={size} className="yellow intense" />,
+  dance: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Dance" />, 
   dell: ({ size }) => <SiDell size={size} className="blue linkedin" />,
   diosidencia: ({ size }) => <TbFishChristianity size={size} className="violet" />,
   doctor: ({ size }) => <FaUserDoctor size={size} className="green" />,
