@@ -9,7 +9,7 @@ import { BiLogoGmail } from 'react-icons/bi';
 import { BsBookmarkStar, BsChatLeftQuoteFill, BsClockFill, BsCloudHaze2, BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsPersonCircle, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaCarSide, FaChalkboardTeacher, FaChess, FaCode, FaCross, FaDog, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHeadSideCough, FaHeadphones, FaHiking, FaInstagram, FaKey, FaLaptop, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaScroll, FaSkype, FaSmile, FaStar, FaSwimmingPool, FaTabletAlt, FaTelegram, FaTired, FaTrain, FaTree, FaVenus, FaVoteYea, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
-import { FaBasketball, FaCamera, FaGift, FaPeopleGroup, FaUserDoctor } from 'react-icons/fa6';
+import { FaBasketball, FaCamera, FaGift, FaPeopleGroup, FaUserDoctor, FaVirusCovid } from 'react-icons/fa6';
 import { FcAndroidOs, FcCalendar, FcDataBackup, FcGoogle } from 'react-icons/fc';
 import { GiAncientRuins, GiBank, GiChampions, GiChurch, GiCommercialAirplane, GiCook, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFireworkRocket, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiMiracleMedecine, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiStrong, GiThermometerCold, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
@@ -328,6 +328,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
   vatican: ({ size }) => <Flag country='VA' size={size} className="" />,
   victor: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Victor" />,
   village: ({ size }) => <GiVillage size={size} style={{ color: '#47ff6c' }} />,
+  virus: ({ size }) => <FaVirusCovid size={size} className="red" />,
   visa: ({ size }) => <CustomIcon size={size} className="red" iconName="Visa" />,
   watchsand: ({ size }) => <GiSandsOfTime size={size} style={{ color: '#FFFF99' }} />,
   weather: ({ size }) => <GiThermometerCold size={size} style={{ color: '#6dc8f2' }} />,
