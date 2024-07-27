@@ -327,6 +327,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
     twitter: ({ size }) => <SiTwitter size={size} className="blue twitter" />,
     usa: ({ size }) => <Flag country='US' size={size} className="" />,
     vatican: ({ size }) => <Flag country='VA' size={size} className="" />,
+    venezuela: ({ size }) => <Flag country='VE' size={size} className="" />,
     victor: ({ size }) => <CustomIcon size={size} className="yellow" iconName="Victor" />,
     village: ({ size }) => <GiVillage size={size} style={{ color: '#47ff6c' }} />,
     virus: ({ size }) => <FaVirusCovid size={size} className="red" />,
