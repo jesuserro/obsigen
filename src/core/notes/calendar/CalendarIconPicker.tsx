@@ -16,8 +16,10 @@ export function CalendarIconPicker({
 
   useEffect(() => {
     // Update the selected icon based on the search term
-    const matchingIcon = Object.keys(icons).find((iconName) =>
-      iconName.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchingIcon = Object.keys(icons).find(
+      (iconName) => iconName.toLowerCase() === searchTerm.toLowerCase()
+    ) || Object.keys(icons).find(
+      (iconName) => iconName.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     if (matchingIcon) {
