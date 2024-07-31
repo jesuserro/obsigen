@@ -16,468 +16,288 @@ import { CalendarIconPicker } from "./CalendarIconPicker";
 import { NoteSelector } from "./NoteSelector";
 
 export interface FormValues {
-	title: string;
-	urls: string;
-	description: string;
-	date: Date;
-	endDate: Date;
-	selectedIcon: string;
-	locations: string;
-	type: string;
-	tags: string;
+    title: string;
+    urls: string;
+    description: string;
+    date: Date;
+    endDate: Date;
+    selectedIcon: string;
+    locations: string;
+    type: string;
+    tags: string;
 }
 
 export class CalendarEvent extends Modal {
-	private resolve!: (value: FormValues) => void;
-	private reject!: (reason?: TemplaterError) => void;
-	private submitted = false;
+    private resolve!: (value: FormValues) => void;
+    private reject!: (reason?: TemplaterError) => void;
+    private submitted = false;
 
-	private year: number;
-	private month: number;
-	private day: number;
-	private title: string;
-	private urls: string;
-	private description: string;
-	private date: string;
-	private endDate: string;
-	private selectedIcon: string;
-	private selectedLocation: string;
-	private type: string;
-	private tags: string;
-	private files: TFile[];
+    private year: number;
+    private month: number;
+    private day: number;
+    private type = "Moment";
+    private tags = "";
+    private selectedIcon = "default-icon";
+    private selectedLocation = "";
 
-	// Nuevos campos de selección para año, mes y día
-	private titleField: TextComponent;
-	private descriptionTextarea: TextAreaComponent;
-	private yearDropdown: DropdownComponent;
-	private monthDropdown: DropdownComponent;
-	private dayDropdown: DropdownComponent;
-	private hourDropdown: DropdownComponent;
-	private minuteDropdown: DropdownComponent;
-	private endYearDropdown: DropdownComponent;
-	private endMonthDropdown: DropdownComponent;
-	private endDayDropdown: DropdownComponent;
-	private endHourDropdown: DropdownComponent;
-	private endMinuteDropdown: DropdownComponent;
-	private iconDropdown: JSX.Element;
-	private locationDropdown: JSX.Element;
-	private urlField: TextComponent;
-	private typeField: DropdownComponent;
-	private tagsField: TextComponent;
+    private files: TFile[];
 
-	constructor(app: App, date: Date) {
-		super(app);
+    private titleField!: TextComponent;
+    private descriptionTextarea!: TextAreaComponent;
+    private yearDropdown!: DropdownComponent;
+    private monthDropdown!: DropdownComponent;
+    private dayDropdown!: DropdownComponent;
+    private hourDropdown!: DropdownComponent;
+    private minuteDropdown!: DropdownComponent;
+    private endYearDropdown!: DropdownComponent;
+    private endMonthDropdown!: DropdownComponent;
+    private endDayDropdown!: DropdownComponent;
+    private endHourDropdown!: DropdownComponent;
+    private endMinuteDropdown!: DropdownComponent;
+    private iconDropdown!: JSX.Element;
+    private locationDropdown!: JSX.Element;
+    private urlField!: TextComponent;
+    private typeField!: DropdownComponent;
+    private tagsField!: TextComponent;
 
-		this.files = app.vault.getFiles();
-		this.year = date.getFullYear();
-		this.month = date.getMonth() + 1;
-		this.day = date.getDate();
-		this.type = "Moment";
-		this.tags = "";
+    constructor(app: App, private initialDate: Date) {
+        super(app);
+        this.files = app.vault.getFiles();
+        this.year = initialDate.getFullYear();
+        this.month = initialDate.getMonth() + 1;
+        this.day = initialDate.getDate();
+        this.createForm();
+    }
 
-		this.createForm();
-	}
+    onOpen(): void {
+        this.titleEl.setText("Nuevo Evento");
+        this.resetValues();
+    }
 
-	onOpen(): void {
-		this.titleEl.setText("Nuevo Evento");
+    onClose(): void {
+        if (!this.submitted) {
+            new Notice("Cancelled prompt");
+        }
+    }
 
-		this.resetValues();
-	}
+    private resetValues() {
+        this.titleField.setValue("");
+        this.descriptionTextarea.setValue("");
+        this.urlField.setValue("");
+        this.typeField.setValue(this.type);
+        this.tagsField.setValue("");
+    }
 
-	onClose(): void {
-		if (!this.submitted) {
-			new Notice("Cancelled prompt");
-			return;
-		}
-	}
+    private createForm(): void {
+        const form = this.contentEl.createDiv("form-element");
 
-	resetValues() {
-		this.title = "";
-		this.urls = "";
-		this.description = "";
-		this.date = "";
-		this.endDate = "";
-		this.selectedIcon = "default-icon";
-		this.selectedLocation = "";
-		this.type = "Moment";
-		this.tags = "";
+        this.createFormElement(form, "Title", (div) => {
+            this.titleField = new TextComponent(div);
+            this.titleField.inputEl.addClass("form-input");
+            this.titleField.setPlaceholder("title");
+        });
 
-		this.titleField.setValue(this.title);
-		this.descriptionTextarea.setValue(this.description);
-		this.urlField.setValue(this.urls);
-		this.typeField.setValue(this.type);
-	}
+        const dateFieldset = form.createEl("fieldset", { cls: "date-fieldset" });
+        this.createDateDropdowns(dateFieldset);
 
-	createForm(): void {
-		const form = this.contentEl.createDiv("form-element");
+        const endDateFieldset = form.createEl("fieldset", { cls: "date-fieldset" });
+        this.createEndDateDropdowns(endDateFieldset);
 
-		const titleLabel = form.createEl("label", { cls: "form-label" });
-		titleLabel.setText("Title");
-		this.titleField = new TextComponent(form);
-		this.titleField.inputEl.addClass("form-input");
-		this.titleField.setPlaceholder("title");
-		this.titleField.setValue(this.title);
-		this.titleField.onChange((value) => (this.title = value));
+        this.createFormElement(form, "Type", (div) => {
+            this.typeField = new DropdownComponent(div);
+            ["Moment", "Capture", "Person", "Content Map"].forEach(option =>
+                this.typeField.addOption(option, option)
+            );
+        });
 
-		// Fieldset for year, month, and day dropdowns
-		const dateFieldset = form.createEl("fieldset", {
-			cls: "date-fieldset",
-		});
+        this.iconDropdown = this.createReactComponent(form, CalendarIconPicker, {
+            selectedIcon: this.selectedIcon,
+            onChange: (value: string) => (this.selectedIcon = value),
+            icons: iconMap,
+        });
 
-		// Create Dropdown for selecting the year
-		const yearDiv = dateFieldset.createDiv("form-element");
-		this.yearDropdown = new DropdownComponent(yearDiv);
+        this.locationDropdown = this.createReactComponent(form, NoteSelector, {
+            selectedNote: this.selectedLocation,
+            onChange: (value: string) => (this.selectedLocation = value),
+            notes: this.files.filter((file) => file.path.includes("300 Geo/")),
+            caption: "Location",
+        });
 
-		// Create Dropdown for selecting the month
-		const monthDiv = dateFieldset.createDiv("form-element");
-		this.monthDropdown = new DropdownComponent(monthDiv);
+        this.createFormElement(form, "Urls", (div) => {
+            this.urlField = new TextComponent(div);
+            this.urlField.inputEl.addClass("form-input");
+            this.urlField.setPlaceholder("url1, url2");
+        });
 
-		// Create Dropdown for selecting the day
-		const dayDiv = dateFieldset.createDiv("form-element");
-		this.dayDropdown = new DropdownComponent(dayDiv);
+        this.createFormElement(form, "Description", (div) => {
+            this.descriptionTextarea = new TextAreaComponent(div);
+            this.descriptionTextarea.inputEl.addClass("form-input");
+            this.descriptionTextarea.setPlaceholder("description");
+        });
 
-		const hourDiv = dateFieldset.createDiv("form-element");
-		this.hourDropdown = new DropdownComponent(hourDiv);
+        this.createFormElement(form, "Tags", (div) => {
+            this.tagsField = new TextComponent(div);
+            this.tagsField.inputEl.addClass("form-input");
+            this.tagsField.setPlaceholder("tag1, tag2");
+        });
 
-		const minuteDiv = dateFieldset.createDiv("form-element");
-		this.minuteDropdown = new DropdownComponent(minuteDiv);
+        const buttonDiv = form.createDiv("form-button-container");
+        const submitButton = new ButtonComponent(buttonDiv);
+        submitButton.buttonEl.addClass("form-submit-button");
+        submitButton.setButtonText("Submit").onClick((evt: Event) => {
+            this.onSubmit(evt);
+        });
+    }
 
-		// Create Dropdowns for end date and time
-		const endDateFieldset = form.createEl("fieldset", {
-			cls: "date-fieldset",
-		});
+    private createFormElement(parent: HTMLElement, labelText: string, createComponent: (div: HTMLDivElement) => void) {
+        const div = parent.createDiv("form-element");
+        const label = div.createEl("label", { cls: "form-label" });
+        label.setText(labelText);
+        createComponent(div);
+    }
 
-		const endYearDiv = endDateFieldset.createDiv("form-element");
-		this.endYearDropdown = new DropdownComponent(endYearDiv);
+    private createDateDropdowns(parent: HTMLElement) {
+        this.yearDropdown = this.createDropdown(parent, "Year", 1897, 2030);
+        this.monthDropdown = this.createDropdown(parent, "Month", 1, 12);
+        this.dayDropdown = this.createDropdown(parent, "Day", 1, 31);
+        this.hourDropdown = this.createDropdown(parent, "Hour", 0, 23);
+        this.minuteDropdown = this.createDropdown(parent, "Minute", 0, 55, 5);
+        this.setDefaultDateTime(this.initialDate, this.yearDropdown, this.monthDropdown, this.dayDropdown, this.hourDropdown, this.minuteDropdown);
+        this.addDropdownChangeEvents(this.yearDropdown, this.monthDropdown, this.dayDropdown, this.hourDropdown, this.minuteDropdown);
+    }
 
-		const endMonthDiv = endDateFieldset.createDiv("form-element");
-		this.endMonthDropdown = new DropdownComponent(endMonthDiv);
+    private createEndDateDropdowns(parent: HTMLElement) {
+        this.endYearDropdown = this.createDropdown(parent, "End Year", 1897, 2030);
+        this.endMonthDropdown = this.createDropdown(parent, "End Month", 1, 12);
+        this.endDayDropdown = this.createDropdown(parent, "End Day", 1, 31);
+        this.endHourDropdown = this.createDropdown(parent, "End Hour", 0, 23);
+        this.endMinuteDropdown = this.createDropdown(parent, "End Minute", 0, 55, 5);
+        this.setDefaultDateTime(this.initialDate, this.endYearDropdown, this.endMonthDropdown, this.endDayDropdown, this.endHourDropdown, this.endMinuteDropdown);
+        this.addDropdownChangeEvents(this.endYearDropdown, this.endMonthDropdown, this.endDayDropdown, this.endHourDropdown, this.endMinuteDropdown);
+    }
 
-		const endDayDiv = endDateFieldset.createDiv("form-element");
-		this.endDayDropdown = new DropdownComponent(endDayDiv);
+    private createDropdown(parent: HTMLElement, label: string, start: number, end: number, step: number = 1) {
+        const div = parent.createDiv("form-element");
+        const dropdown = new DropdownComponent(div);
+        for (let i = start; i <= end; i += step) {
+            dropdown.addOption(i.toString().padStart(2, "0"), i.toString().padStart(2, "0"));
+        }
+        return dropdown;
+    }
 
-		const endHourDiv = endDateFieldset.createDiv("form-element");
-		this.endHourDropdown = new DropdownComponent(endHourDiv);
+    private setDefaultDateTime(date: Date, yearDropdown: DropdownComponent, monthDropdown: DropdownComponent, dayDropdown: DropdownComponent, hourDropdown: DropdownComponent, minuteDropdown: DropdownComponent) {
+        yearDropdown.setValue(date.getFullYear().toString());
+        monthDropdown.setValue((date.getMonth() + 1).toString().padStart(2, "0"));
+        dayDropdown.setValue(date.getDate().toString().padStart(2, "0"));
+        hourDropdown.setValue(date.getHours().toString().padStart(2, "0"));
+        minuteDropdown.setValue((Math.floor(date.getMinutes() / 5) * 5).toString().padStart(2, "0"));
+    }
 
-		const endMinuteDiv = endDateFieldset.createDiv("form-element");
-		this.endMinuteDropdown = new DropdownComponent(endMinuteDiv);
+    private addDropdownChangeEvents(...dropdowns: DropdownComponent[]) {
+        dropdowns.forEach(dropdown => {
+            dropdown.onChange(() => {
+                this.syncEndDate();
+            });
+        });
+    }
 
-		this.initializeDropdowns();
-		this.initializeEndDropdowns();
+    private createReactComponent(parent: HTMLElement, component: React.FC<any>, props: any) {
+        const div = parent.createDiv();
+        const element = React.createElement(component, props);
+        const root = ReactDOM.createRoot(div);
+        root.render(element);
+        return element;
+    }
 
-		// Type label and textfield
-		const typeDiv = form.createDiv("form-element");
-		const typeLabel = typeDiv.createEl("label", { cls: "form-label" });
-		typeLabel.setText("Type");
-		this.typeField = new DropdownComponent(typeDiv);
-		this.typeField.addOption("Moment", "Moment");
-		this.typeField.addOption("Capture", "Capture");
-		this.typeField.addOption("Person", "Person");
-		this.typeField.addOption("Content Map", "Content Map");
-		this.typeField.onChange((value) => (this.type = value));
-		this.typeField.setValue(this.type);
+    private validateForm(values: FormValues): string | null {
+        if (values.date > values.endDate) {
+            return "La fecha de inicio debe ser anterior a la fecha de fin.";
+        }
+        return null;
+    }
 
-		// Icon Selector
-		const iconDiv = form.createDiv();
-		this.iconDropdown = React.createElement(CalendarIconPicker, {
-			selectedIcon: "default-icon",
-			onChange: (value) => (this.selectedIcon = value),
-			icons: iconMap,
-		});
-		const root = ReactDOM.createRoot(iconDiv);
-		root.render(this.iconDropdown);
+    openModal(): Promise<FormValues> {
+        return new Promise<FormValues>((resolve, reject) => {
+            this.resolve = resolve;
+            this.reject = reject;
+            this.open();
+        });
+    }
 
-		// Location Selector
-		const locationDiv = form.createDiv();
-		this.locationDropdown = React.createElement(NoteSelector, {
-			selectedNote: "",
-			onChange: (value) => (this.selectedLocation = value),
-			notes: this.files.filter((file) => file.path.includes("300 Geo/")),
-			caption: "Location",
-		});
-		const root2 = ReactDOM.createRoot(locationDiv);
-		root2.render(this.locationDropdown);
+    private onSubmit(evt: Event) {
+        evt.preventDefault();
+        this.submitted = true;
 
-		// url label and textfield
-		const urlDiv = form.createDiv("form-element");
-		const urlLabel = urlDiv.createEl("label", { cls: "form-label" });
-		urlLabel.setText("Urls");
-		this.urlField = new TextComponent(urlDiv);
-		this.urlField.inputEl.addClass("form-input");
-		this.urlField.setPlaceholder("url1, url2");
-		this.urlField.setValue(this.urls);
-		this.urlField.onChange((value) => (this.urls = value));
+        const formValues = this.getFormValues();
+        const validationError = this.validateForm(formValues);
+        if (validationError) {
+            new Notice(validationError);
+            this.submitted = false;
+            this.close();
+            return;
+        }
 
-		// Description label and textarea
-		const descriptionDiv = form.createDiv("form-element");
-		const descriptionLabel = descriptionDiv.createEl("label", {
-			cls: "form-label",
-		});
-		descriptionLabel.setText("Description");
-		this.descriptionTextarea = new TextAreaComponent(descriptionDiv);
-		this.descriptionTextarea.inputEl.addClass("form-input");
-		this.descriptionTextarea.setPlaceholder("description");
-		this.descriptionTextarea.setValue(this.description);
-		this.descriptionTextarea.onChange(
-			(value) => (this.description = value)
-		);
+        this.resolve(formValues);
 
-		// Tags
-		const tagsDiv = form.createDiv("form-element");
-		const tagsLabel = tagsDiv.createEl("label", { cls: "form-label" });
-		tagsLabel.setText("Tags");
-		this.tagsField = new TextComponent(tagsDiv);
-		this.tagsField.inputEl.addClass("form-input");
-		this.tagsField.setPlaceholder("tag1, tag2");
-		this.tagsField.setValue(this.tags);
-		this.tagsField.onChange((value) => (this.tags = value));
+        new Momento(formValues.date, formValues.endDate).createNote(
+            formValues.type,
+            this.app,
+            formValues.title,
+            formValues.description,
+            formValues.selectedIcon,
+            "description",
+            formValues.locations,
+            formValues.urls,
+            formValues.tags
+        );
 
-		// Submit button aligned to the right horizontally
-		const buttonDiv = form.createDiv("form-button-container");
-		const submitButton = new ButtonComponent(buttonDiv);
-		submitButton.buttonEl.addClass("form-submit-button");
-		submitButton.setButtonText("Submit").onClick((evt: Event) => {
-			this.onSubmit(evt);
-		});
-	}
+        this.close();
+    }
 
-	private initializeDropdowns() {
-		// Configura los DropdownComponent para año, mes y día
-		for (let i = 1897; i <= 2030; i++) {
-			this.yearDropdown.addOption(i.toString(), i.toString());
-		}
-		for (let i = 1; i <= 12; i++) {
-			this.monthDropdown.addOption(
-				i.toString().padStart(2, "0"),
-				i.toString().padStart(2, "0")
-			);
-		}
-		for (let i = 1; i <= 31; i++) {
-			this.dayDropdown.addOption(
-				i.toString().padStart(2, "0"),
-				i.toString().padStart(2, "0")
-			);
-		}
-		for (let i = 0; i <= 23; i++) {
-			this.hourDropdown.addOption(
-				i.toString().padStart(2, "0"),
-				i.toString().padStart(2, "0")
-			);
-		}
-		for (let i = 0; i <= 55; i += 5) {
-			this.minuteDropdown.addOption(
-				i.toString().padStart(2, "0"),
-				i.toString().padStart(2, "0")
-			);
-		}
+    private getFormValues(): FormValues {
+        const date = this.getDate(this.yearDropdown, this.monthDropdown, this.dayDropdown, this.hourDropdown, this.minuteDropdown);
+        const endDate = this.getDate(this.endYearDropdown, this.endMonthDropdown, this.endDayDropdown, this.endHourDropdown, this.endMinuteDropdown);
 
-		this.yearDropdown.setValue(this.year.toString());
-		this.monthDropdown.setValue(this.month.toString().padStart(2, "0"));
-		this.dayDropdown.setValue(this.day.toString().padStart(2, "0"));
-		this.initializeTimeDropdowns();
+        return {
+            title: this.titleField.getValue().trim(),
+            urls: this.urlField.getValue().trim(),
+            description: this.descriptionTextarea.getValue().trim(),
+            date,
+            endDate,
+            selectedIcon: this.selectedIcon,
+            locations: this.selectedLocation ? `[[${this.selectedLocation}]]` : "",
+            type: this.typeField.getValue().trim(),
+            tags: this.tagsField.getValue().trim(),
+        };
+    }
 
-		// Agrega eventos de cambio
-		this.yearDropdown.onChange(() => this.syncEndDate());
-		this.monthDropdown.onChange(() => this.syncEndDate());
-		this.dayDropdown.onChange(() => this.syncEndDate());
-		this.hourDropdown.onChange(() => this.syncEndDate());
-		this.minuteDropdown.onChange(() => this.syncEndDate());
-	}
+    private getDate(yearDropdown: DropdownComponent, monthDropdown: DropdownComponent, dayDropdown: DropdownComponent, hourDropdown: DropdownComponent, minuteDropdown: DropdownComponent): Date {
+        const year = yearDropdown.getValue();
+        const month = monthDropdown.getValue().padStart(2, "0");
+        const day = dayDropdown.getValue().padStart(2, "0");
+        const hour = hourDropdown.getValue().padStart(2, "0");
+        const minute = minuteDropdown.getValue().padStart(2, "0");
+        return new Date(`${year}-${month}-${day}T${hour}:${minute}:00`);
+    }
 
-	private initializeEndDropdowns() {
-		// Configura los DropdownComponent para año, mes y día de fin
-		for (let i = 1897; i <= 2030; i++) {
-			this.endYearDropdown.addOption(i.toString(), i.toString());
-		}
-		for (let i = 1; i <= 12; i++) {
-			this.endMonthDropdown.addOption(
-				i.toString().padStart(2, "0"),
-				i.toString().padStart(2, "0")
-			);
-		}
-		for (let i = 1; i <= 31; i++) {
-			this.endDayDropdown.addOption(
-				i.toString().padStart(2, "0"),
-				i.toString().padStart(2, "0")
-			);
-		}
-		for (let i = 0; i <= 23; i++) {
-			this.endHourDropdown.addOption(
-				i.toString().padStart(2, "0"),
-				i.toString().padStart(2, "0")
-			);
-		}
-		for (let i = 0; i <= 55; i += 5) {
-			this.endMinuteDropdown.addOption(
-				i.toString().padStart(2, "0"),
-				i.toString().padStart(2, "0")
-			);
-		}
+    private syncEndDate() {
+        const startDate = this.getDate(this.yearDropdown, this.monthDropdown, this.dayDropdown, this.hourDropdown, this.minuteDropdown);
+        const endDate = this.getDate(this.endYearDropdown, this.endMonthDropdown, this.endDayDropdown, this.endHourDropdown, this.endMinuteDropdown);
 
-		this.endYearDropdown.setValue(this.year.toString());
-		this.endMonthDropdown.setValue(this.month.toString().padStart(2, "0"));
-		this.endDayDropdown.setValue(this.day.toString().padStart(2, "0"));
-		this.endHourDropdown.setValue(this.hourDropdown.getValue());
-		this.endMinuteDropdown.setValue(this.minuteDropdown.getValue());
-	}
-
-	private initializeTimeDropdowns() {
-		const now = new Date();
-		const currentHour = now.getHours();
-		const currentMinute = Math.floor(now.getMinutes() / 5) * 5; // Round down to the nearest 5 minutes
-
-		this.hourDropdown.setValue(currentHour.toString().padStart(2, "0"));
-		this.minuteDropdown.setValue(currentMinute.toString().padStart(2, "0"));
-	}
-
-	private validateForm(formValues: FormValues): string | null {
-		// Implement your validation logic here for the new fields
-		// Example: Check if the start date is before the end date, validate URL, etc.
-		if (formValues.date > formValues.endDate) {
-			return "La fecha de inicio debe ser anterior a la fecha de fin.";
-		}
-		// Return a validation error message if there's an issue.
-		// Return null if validation passes.
-		// You can also reuse the existing validation functions if applicable.
-		return null;
-	}
-
-	openModal(): Promise<FormValues> {
-		return new Promise<FormValues>((resolve, reject) => {
-			this.resolve = resolve;
-			this.reject = reject;
-			this.open();
-		});
-	}
-
-	getFormValues(): {
-		title: string;
-		urls: string;
-		description: string;
-		date: string;
-		endDate: string;
-		selectedIcon: string;
-		locations: string;
-		type: string;
-		tags: string;
-	} {
-		return {
-			title: this.title,
-			urls: this.urls,
-			description: this.description,
-			date: this.date,
-			endDate: this.endDate,
-			selectedIcon: this.selectedIcon,
-			locations: this.selectedLocation,
-			type: this.type,
-			tags: this.tags,
-		};
-	}
-
-	// Agrega un método para manejar la acción cuando se presiona el botón "Submit"
-	private onSubmit(evt: Event) {
-		this.submitted = true;
-		evt.preventDefault();
-
-		// Recoge los valores del formulario
-		const selectedYear = this.yearDropdown.getValue();
-		const selectedMonth = this.monthDropdown.getValue().padStart(2, "0");
-		const selectedDay = this.dayDropdown.getValue().padStart(2, "0");
-		const selectedHour = this.hourDropdown.getValue().padStart(2, "0");
-		const selectedMinute = this.minuteDropdown.getValue().padStart(2, "0");
-
-		const selectedEndYear = this.endYearDropdown.getValue();
-		const selectedEndMonth = this.endMonthDropdown
-			.getValue()
-			.padStart(2, "0");
-		const selectedEndDay = this.endDayDropdown.getValue().padStart(2, "0");
-		const selectedEndHour = this.endHourDropdown
-			.getValue()
-			.padStart(2, "0");
-		const selectedEndMinute = this.endMinuteDropdown
-			.getValue()
-			.padStart(2, "0");
-
-		const selectedTime = `${selectedHour}:${selectedMinute}:00`;
-		const selectedEndTime = `${selectedEndHour}:${selectedEndMinute}:00`;
-
-		const strDate = `${selectedYear}-${selectedMonth}-${selectedDay}T${selectedTime}`;
-		const endStrDate = `${selectedEndYear}-${selectedEndMonth}-${selectedEndDay}T${selectedEndTime}`;
-		const date = new Date(strDate);
-		const endDate = new Date(endStrDate);
-
-		this.urls = "";
-		if (
-			this.urlField.getValue() !== "" &&
-			this.urlField.getValue() !== undefined
-		) {
-			this.urls = `"${this.urlField.getValue()}"`;
-		}
-
-		const formValues: FormValues = {
-			title: this.title.trim(),
-			description: this.description.trim(),
-			date: date,
-			endDate: endDate,
-			selectedIcon: this.selectedIcon,
-			urls: this.urls.trim(),
-			locations: this.selectedLocation
-				? `[[${this.selectedLocation}]]`
-				: "",
-			type: this.type.trim(),
-			tags: this.tags.trim(),
-		};
-
-		// Validar los valores del formulario aquí, si es necesario
-		const validationError = this.validateForm(formValues);
-		if (validationError) {
-			new Notice(validationError);
-			this.submitted = false;
-			this.close();
-			return;
-		}
-
-		// Validation passed, resolve the values
-		this.resolve(formValues);
-
-		new Momento(date, endDate).createNote(
-			formValues.type,
-			this.app,
-			formValues.title,
-			formValues.description,
-			formValues.selectedIcon,
-			"description",
-			formValues.locations,
-			formValues.urls,
-			formValues.tags
-		);
-
-		// Cerrar el modal
-		this.close();
-	}
-
-	private syncEndDate() {
-		const startDate = new Date(
-			`${this.yearDropdown.getValue()}-${this.monthDropdown.getValue()}-${this.dayDropdown.getValue()}T${this.hourDropdown.getValue()}:${this.minuteDropdown.getValue()}:00`
-		);
-		const endDate = new Date(
-			`${this.endYearDropdown.getValue()}-${this.endMonthDropdown.getValue()}-${this.endDayDropdown.getValue()}T${this.endHourDropdown.getValue()}:${this.endMinuteDropdown.getValue()}:00`
-		);
-
-		if (endDate < startDate) {
-			this.endYearDropdown.setValue(this.yearDropdown.getValue());
-			this.endMonthDropdown.setValue(this.monthDropdown.getValue());
-			this.endDayDropdown.setValue(this.dayDropdown.getValue());
-			this.endHourDropdown.setValue(this.hourDropdown.getValue());
-			this.endMinuteDropdown.setValue(this.minuteDropdown.getValue());
-		}
-	}
+        if (endDate < startDate) {
+            this.endYearDropdown.setValue(this.yearDropdown.getValue());
+            this.endMonthDropdown.setValue(this.monthDropdown.getValue());
+            this.endDayDropdown.setValue(this.dayDropdown.getValue());
+            this.endHourDropdown.setValue(this.hourDropdown.getValue());
+            this.endMinuteDropdown.setValue(this.minuteDropdown.getValue());
+        }
+    }
 }
 
 class TemplaterError extends Error {
-	constructor(msg: string, public console_msg?: string) {
-		super(msg);
-		this.name = this.constructor.name;
-		Error.captureStackTrace(this, this.constructor);
-	}
+    constructor(msg: string, public console_msg?: string) {
+        super(msg);
+        this.name = this.constructor.name;
+        Error.captureStackTrace(this, this.constructor);
+    }
 }
