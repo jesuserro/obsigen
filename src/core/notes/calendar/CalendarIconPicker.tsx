@@ -13,7 +13,7 @@ export function CalendarIconPicker({
 }: CalendarIconPickerProps): JSX.Element {
   const [searchTerm, setSearchTerm] = useState('');
   const [value, setValue] = useState(selectedIcon);
-  
+
   useEffect(() => {
     // Update the selected icon based on the search term
     const matchingIcon = Object.keys(icons).find((iconName) =>
@@ -37,6 +37,8 @@ export function CalendarIconPicker({
     setSearchTerm(searchText);
   };
 
+  const SelectedIconComponent = icons[value];
+
   return (
     <div className="obs-picker">
       <label className="form-label">Icon Picker</label>
@@ -57,6 +59,10 @@ export function CalendarIconPicker({
             </option>
           ))}
         </select>
+      </div>
+
+      <div className="selected-icon-preview">
+        {SelectedIconComponent && <SelectedIconComponent size={32} />}
       </div>
     </div>
   );
