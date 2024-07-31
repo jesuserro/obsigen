@@ -5,16 +5,18 @@
   
   .horizontal-container {
     display: flex;
-    align-items: center;
+    align-items: center; /* Centra verticalmente los elementos en la línea */
     gap: 8px;
   }
   
   .form-input {
     flex: 1;
+    margin: 0; /* Asegúrate de que no haya márgenes que desalineen el input */
   }
   
   .form-select {
     width: 150px;
+    margin: 0; /* Asegúrate de que no haya márgenes que desalineen el select */
   }
   
   .selected-icon-preview {
@@ -23,5 +25,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+  } 
   
