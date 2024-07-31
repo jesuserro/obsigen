@@ -1,28 +1,27 @@
 .obs-picker {
-  display: flex;
-  flex-direction: column;
-
-  .form-label {
-    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
   }
-
-  .form-input,
-  .form-select {
-    width: 100%;
-    margin-bottom: 8px;
-    box-sizing: border-box;
-  }
-
+  
   .horizontal-container {
     display: flex;
-
-    input[type="text"] {
-      flex: 1;
-      margin-right: 8px; 
-    }
-
-    select {
-      flex: 1;
-    }
+    align-items: center;
+    gap: 8px;
   }
-}
+  
+  .form-input {
+    flex: 1;
+  }
+  
+  .form-select {
+    width: 150px;
+  }
+  
+  .selected-icon-preview {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  

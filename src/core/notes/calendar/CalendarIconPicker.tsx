@@ -59,10 +59,10 @@ export function CalendarIconPicker({
             </option>
           ))}
         </select>
-      </div>
 
-      <div className="selected-icon-preview">
-        {SelectedIconComponent && <SelectedIconComponent size={32} />}
+        <div className="selected-icon-preview">
+          {SelectedIconComponent && <SelectedIconComponent size={32} />}
+        </div>
       </div>
     </div>
   );
