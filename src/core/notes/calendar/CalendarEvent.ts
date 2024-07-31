@@ -110,13 +110,15 @@ export class CalendarEvent extends Modal {
             );
         });
 
-        this.iconDropdown = this.createReactComponent(form, CalendarIconPicker, {
+        const iconContainer = form.createDiv("icon-picker-container");
+        this.iconDropdown = this.createReactComponent(iconContainer, CalendarIconPicker, {
             selectedIcon: this.selectedIcon,
             onChange: (value: string) => (this.selectedIcon = value),
             icons: iconMap,
         });
 
-        this.locationDropdown = this.createReactComponent(form, NoteSelector, {
+        const locationContainer = form.createDiv("note-selector-container");
+        this.locationDropdown = this.createReactComponent(locationContainer, NoteSelector, {
             selectedNote: this.selectedLocation,
             onChange: (value: string) => (this.selectedLocation = value),
             notes: this.files.filter((file) => file.path.includes("300 Geo/")),
