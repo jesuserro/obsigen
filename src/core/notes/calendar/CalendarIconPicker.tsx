@@ -8,14 +8,15 @@ export interface CalendarIconPickerProps {
 }
 
 const iconGroups = {
-  Emojis: ['fatigue', 'sadness', 'happiness', 'angry', 'tired', 'sick', 'insomnia', 'anxiety', 'cough', 'fever', 'gluttony', 'inlove', 'pumpkin', 'sex', 'dance', 'party', 'woman'],
+  Emojis: ['birthday', 'fatigue', 'sadness', 'happiness', 'angry', 'tired', 'sick', 'insomnia', 'anxiety', 'cough', 'fever', 'gluttony', 'inlove', 'pumpkin', 'sex', 'dance', 'party', 'woman', 'family', 'people', 'friends', 'learning', 'psychology', 'baby'],
   Gente: ['person', 'achelm', 'annas', 'charo', 'dad', 'gonzalo', 'natalia', 'timothy', 'josefita', 'mom', 'irene', 'kote', 'luis', 'pilar', 'nieves', 'josemi', 'ramon', 'victor', 'sophie'],
   Tiempo: ['sunny', 'storm', 'haze', 'rain', 'snow', 'weather', 'cold', 'earthquake', 'eclipse'],
-  Economía: ['buy', 'bills', 'euro', 'coin', 'bank', 'bbva', 'finances', 'tax', 'saving', 'price', 'visa'],
-  IT: ['blogpost', 'google', 'lenovo', 'spotify', 'github', 'goodreads', 'amazon', 'instagram', 'linkedin', 'kindle', 'aws', 'git', 'android', 'googlemeet', 'openai', 'gpt', 'obsidian', 'whatsapp', 'tinder', 'plentyoffish', 'youtube', 'twitter', 'dell', 'plex', 'telegram', 'skype', 'samsung' ],
+  Economía: ['barber', 'buy', 'repairs', 'bills', 'euro', 'payroll', 'coin', 'bank', 'bbva', 'finances', 'itv', 'hacienda', 'gift', 'tax', 'saving', 'lottery', 'price', 'visa'],
+  IT: ['blogpost', 'podcast', 'email', 'phone', 'writing', 'meeting', 'google', 'rss', 'lenovo', 'spotify', 'github', 'goodreads', 'amazon', 'instagram', 'linkedin', 'kindle', 'aws', 'git', 'android', 'googlemeet', 'openai', 'gpt', 'obsidian', 'whatsapp', 'tinder', 'plentyoffish', 'youtube', 'twitter', 'dell', 'plex', 'telegram', 'skype', 'readwise', 'samsung' ],
+  Agro: ['village', 'agro', 'agriculture', 'farmer', 'tree', 'dog'],
   Deportes: ['soccer', 'basketball', 'champions', 'hiking', 'gym', 'chess', 'orejona', 'realmadrid', 'olympics', 'sport', 'pool'],
   Banderas: ['argentina', 'france', 'israel', 'italy', 'vatican', 'usa', 'venezuela', 'romania', 'poland', 'spain', 'russia'],
-  Religión: ['arburua', 'prayer', 'confession', 'inspiration', 'miracle', 'fatima', 'christ', 'mass', 'bible', 'prophecy', 'funeral', 'priest', 'garabandal', 'gospa', 'funeralhome', 'saint', 'saintwoman', 'nun', 'catholic', 'rosary', 'adoration', 'advent', 'emaus', 'islam', 'diosidencia', 'holyspirit', 'orthodox', 'pope', 'peace', 'wedding', 'death', 'cemetery', 'evil'],
+  Religión: ['arburua', 'prayer', 'confession', 'inspiration', 'miracle', 'fatima', 'christ', 'mass', 'bible', 'prophecy', 'funeral', 'priest', 'garabandal', 'gospa', 'funeralhome', 'saint', 'saintwoman', 'nun', 'catholic', 'rosary', 'adoration', 'advent', 'emaus', 'islam', 'diosidencia', 'holyspirit', 'orthodox', 'pope', 'peace', 'wedding', 'death', 'cemetery', 'evil', 'communism', 'agenda2030'],
   Gastronomía: ['cafe', 'cook', 'beer', 'pancake', 'friedeggs', 'gastronomy'],
   Transporte: ['car', 'train', 'bus', 'plane', 'travel'],
   Salud: ['strong', 'healthok', 'healthko', 'heartbreak', 'dream', 'insomnia', 'legs', 'pill', 'pilloff', 'supplement', 'doctor', 'health', 'foot', 'virus'],

@@ -11,7 +11,7 @@ import { CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAngry, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader, FaBookmark, FaBuilding, FaBus, FaCarSide, FaChalkboardTeacher, FaChess, FaCode, FaCross, FaDog, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHeadSideCough, FaHeadphones, FaHiking, FaHome, FaInstagram, FaKey, FaLaptop, FaLinkedin, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaScroll, FaSkype, FaSmile, FaStar, FaSwimmingPool, FaTabletAlt, FaTelegram, FaTired, FaTrain, FaTree, FaVenus, FaVoteYea, FaWpforms, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaGift, FaPeopleGroup, FaUserDoctor, FaVirusCovid } from 'react-icons/fa6';
 import { FcAndroidOs, FcCalendar, FcDataBackup, FcGoogle } from 'react-icons/fc';
-import { GiAncientRuins, GiBank, GiChampions, GiChurch, GiCommercialAirplane, GiCook, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFireworkRocket, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiMiracleMedecine, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiStrong, GiTheaterCurtains, GiThermometerCold, GiVillage, GiWheat } from 'react-icons/gi';
+import { GiAncientRuins, GiBank, GiChampions, GiChurch, GiCommercialAirplane, GiCook, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFireworkRocket, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiMiracleMedecine, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiStrong, GiTheaterCurtains, GiThermometerCold, GiThreeFriends, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
@@ -108,7 +108,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
     add: ({ size }) => <MdOutlineAddCircle size={size} className="green" />,
     adoration: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Adoration" />,
     advent: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Advent" />,
-    agenda2030: ({ size }) => <GiHammerSickle size={size} className="red communism" />,
+    agenda2030: ({ size }) => <CustomIcon size={size} className="red" iconName="Agenda2030" />,
     agriculture: ({ size }) => <IoMdBasket size={size} className="brown" />,
     agro: ({ size }) => <GiWheat size={size} className="brown" />,
     amazon: ({ size }) => <FaAmazon size={size} className="orange amazon" />,
@@ -184,8 +184,8 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
     foot: ({ size }) => <IoFootsteps size={size} className="blue aws" />,
     form: ({ size }) => <FaWpforms size={size} className="orange" />,
     france: ({ size }) => <Flag country='FR' size={size} className="" />,
-    friedeggs: ({ size }) => <GiFriedEggs size={size} className="yellow" />,
-    friends: ({ size }) => <MdGroup size={size} className="yellow" />,
+    friedeggs: ({ size }) => <GiFriedEggs size={size} className="white" />,
+    friends: ({ size }) => <GiThreeFriends size={size} className="orange" />,
     funeral: ({ size }) => <GiChurch size={size} className="grey" />,
     funeralhome: ({ size }) => <CustomIcon size={size} className="grey" iconName="FuneralHome" />,
     garabandal: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="Garabandal" />,
