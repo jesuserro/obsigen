@@ -10,7 +10,7 @@ export interface CalendarIconPickerProps {
 const iconGroups = {
   Emojis: ['angry', 'anxiety', 'baby', 'birthday', 'cough', 'dance', 'family', 'fatigue', 'fever', 'friends', 'gluttony', 'happiness', 'inlove', 'insomnia', 'learning', 'party', 'people', 'psychology', 'pumpkin', 'sadness', 'sex', 'sick', 'tired', 'woman'],
   Gente: ['achelm', 'annas', 'charo', 'dad', 'gonzalo', 'irene', 'josefita', 'josemi', 'kote', 'luis', 'mom', 'natalia', 'nieves', 'person', 'pilar', 'ramon', 'sophie', 'timothy', 'victor'],
-  Tiempo: ['cold', 'earthquake', 'eclipse', 'haze', 'rain', 'snow', 'storm', 'sunny', 'weather'],
+  Tiempo: ['cold', 'earthquake', 'eclipse', 'haze', 'hot', 'rain', 'snow', 'storm', 'sunny', 'weather'],
   Economía: ['bank', 'barber', 'bbva', 'bills', 'buy', 'coin', 'euro', 'finances', 'gift', 'hacienda', 'itv', 'lottery', 'payroll', 'price', 'repairs', 'saving', 'tax', 'visa'],
   IT: ['amazon', 'android', 'aws', 'blogpost', 'dell', 'email', 'git', 'github', 'google', 'googlemeet', 'goodreads', 'gpt', 'instagram', 'kindle', 'lenovo', 'linkedin', 'meeting', 'obsidian', 'openai', 'phone', 'plentyoffish', 'podcast', 'readwise', 'rss', 'samsung', 'skype', 'spotify', 'telegram', 'tinder', 'twitter', 'whatsapp', 'writing', 'youtube'],
   Agro: ['agriculture', 'agro', 'dog', 'farmer', 'tree', 'village'],
@@ -108,7 +108,7 @@ export function CalendarIconPicker({
         <div className="icon-modal" onClick={() => setIsModalOpen(false)}>
           <div className="icon-modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="icon-modal-header">
-              <button onClick={() => setIsModalOpen(false)}>Close</button>
+              <button onClick={() => setIsModalOpen(false)}>X</button>
             </div>
             <h1>Seleccione un icono</h1>
             {Object.entries(iconGroups).map(([groupName, iconsInGroup]) => (

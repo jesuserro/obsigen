@@ -18,7 +18,7 @@ import { IoIosBeer, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdMusicalNotes,
 import { IoFootsteps, IoHardwareChipOutline, IoThunderstorm } from 'react-icons/io5';
 import { LuPartyPopper } from 'react-icons/lu';
 import { MdBackup, MdBuild, MdCancel, MdCardTravel, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlinePiano, MdOutlineSportsGymnastics, MdPeople, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
-import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold } from 'react-icons/pi';
+import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold, PiThermometerHot } from 'react-icons/pi';
 import { RiEarthquakeFill, RiMentalHealthFill } from "react-icons/ri";
 import { SiTinder as IconoTinder, SiDell, SiGimp, SiGooglemeet, SiInsomnia, SiLenovo, SiObsidian, SiOpenai, SiPlex, SiSamsung, SiSpotify, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { SlPicture } from "react-icons/sl";
@@ -217,6 +217,7 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
     holiday: ({ size }) => <GiPalmTree size={size} className="green" />,
     holyspirit: ({ size }) => <CustomIcon size={size} className="blue sky" iconName="HolySpirit" />,
     home: ({ size }) => <FaHome size={size} className="brown" />,
+    hot: ({ size }) => <PiThermometerHot size={size} className="red" />,
     idea: ({ size }) => <TbBulbFilled size={size} className="yellow" />,
     inlove: ({ size }) => <MdFavorite size={size} className="pink" />,
     insomnia: ({ size }) => <SiInsomnia size={size} className="grey" />,
