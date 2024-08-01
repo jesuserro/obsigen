@@ -34,14 +34,15 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.8); /* Fondo oscuro para el modal */
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
   .icon-modal-content {
-    background: white;
+    background: #2e2e2e; /* Fondo oscuro para el contenido del modal */
+    color: #ffffff; /* Texto blanco para contraste */
     padding: 20px;
     border-radius: 8px;
     max-width: 600px;
@@ -59,5 +60,26 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+  }
+  
+  .icon-item span {
+    color: #ffffff; /* Texto blanco para los nombres de los íconos */
+  }
+  
+  .icon-modal-content h3 {
+    color: #ffffff; /* Texto blanco para el encabezado del modal */
+  }
+  
+  .icon-modal-content button {
+    background: #444444; /* Fondo oscuro para el botón de cerrar */
+    color: #ffffff; /* Texto blanco para el botón */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .icon-modal-content button:hover {
+    background: #555555; /* Fondo un poco más claro al pasar el cursor sobre el botón */
   }
   
