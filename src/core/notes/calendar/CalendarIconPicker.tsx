@@ -107,6 +107,9 @@ export function CalendarIconPicker({
       {isModalOpen && (
         <div className="icon-modal" onClick={() => setIsModalOpen(false)}>
           <div className="icon-modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="icon-modal-header">
+              <button onClick={() => setIsModalOpen(false)}>Close</button>
+            </div>
             <h1>Seleccione un icono</h1>
             {Object.entries(iconGroups).map(([groupName, iconsInGroup]) => (
               <div key={groupName}>
@@ -121,7 +124,6 @@ export function CalendarIconPicker({
                 </div>
               </div>
             ))}
-            <button onClick={() => setIsModalOpen(false)}>Close</button>
           </div>
         </div>
       )}
