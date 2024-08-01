@@ -9,11 +9,11 @@ export interface CalendarIconPickerProps {
 
 const iconGroups = {
   Emojis: ['fatigue', 'sadness', 'happiness', 'angry', 'tired', 'sick', 'insomnia', 'anxiety', 'cough', 'fever', 'gluttony'],
-  Banderas: ['argentina', 'france', 'israel', 'italy', 'vatican', 'usa', 'venezuela', 'romania', 'poland', 'spain', 'russia'],
   Gente: ['person', 'achelm', 'annas', 'charo', 'dad', 'gonzalo', 'natalia', 'timothy', 'josefita', 'mom', 'irene', 'kote', 'luis', 'pilar', 'nieves', 'josemi', 'ramon', 'victor', 'sophie'],
   Tiempo: ['sunny', 'storm', 'haze', 'rain', 'snow', 'weather', 'cold', 'earthquake', 'eclipse'],
-  Deportes: ['soccer', 'basketball', 'champions', 'hiking', 'gym', 'chess', 'orejona', 'realmadrid', 'olympics', 'sport'],
   IT: ['google', 'lenovo', 'spotify', 'github', 'goodreads', 'amazon', 'instagram', 'linkedin', 'kindle', 'aws', 'git', 'android', 'googlemeet', 'openai', 'gpt', 'obsidian', 'whatsapp', 'tinder', 'plentyoffish', 'youtube', 'twitter', 'dell', 'plex', 'telegram', 'skype'],
+  Deportes: ['soccer', 'basketball', 'champions', 'hiking', 'gym', 'chess', 'orejona', 'realmadrid', 'olympics', 'sport'],
+  Banderas: ['argentina', 'france', 'israel', 'italy', 'vatican', 'usa', 'venezuela', 'romania', 'poland', 'spain', 'russia'],
   Otros: [] as string[],
 };
 
