@@ -1,10 +1,35 @@
 import React, { useEffect, useState } from 'react';
+import { iconMap } from './CalendarIcon'; // Importar iconMap desde CalendarIcon
 
 export interface CalendarIconPickerProps {
   selectedIcon: string;
   onChange: (icon: string) => void;
   icons: { [key: string]: (props: { size: number }) => JSX.Element };
 }
+
+const iconGroups = {
+  Emojis: ['fatigue', 'sadness', 'happiness', 'angry', 'tired', 'sick', 'insomnia', 'anxiety', 'cough', 'fever', 'gluttony'],
+  Banderas: ['argentina', 'france', 'israel', 'italy', 'vatican', 'usa', 'venezuela', 'romania', 'poland', 'spain', 'russia'],
+  Gente: ['person', 'achelm', 'annas', 'charo', 'dad', 'gonzalo', 'natalia', 'timothy', 'josefita', 'mom', 'irene', 'kote', 'luis', 'pilar', 'nieves', 'josemi', 'ramon', 'victor', 'sophie'],
+  Tiempo: ['sunny', 'storm', 'haze', 'rain', 'snow', 'weather', 'cold', 'earthquake', 'eclipse'],
+  Deportes: ['soccer', 'basketball', 'champions', 'hiking', 'gym', 'chess', 'orejona', 'realmadrid', 'olympics', 'sport'],
+  IT: ['google', 'lenovo', 'spotify', 'github', 'goodreads', 'amazon', 'instagram', 'linkedin', 'kindle', 'aws', 'git', 'android', 'googlemeet', 'openai', 'gpt', 'obsidian', 'whatsapp', 'tinder', 'plentyoffish', 'youtube', 'twitter', 'dell', 'plex', 'telegram', 'skype'],
+  Otros: [] as string[],
+};
+
+// Clasifica los iconos en sus respectivos grupos, y coloca los no clasificados en "Otros"
+Object.keys(iconMap).forEach(iconName => {
+  let found = false;
+  for (const groupName in iconGroups) {
+    if (iconGroups[groupName as keyof typeof iconGroups].includes(iconName)) {
+      found = true;
+      break;
+    }
+  }
+  if (!found) {
+    iconGroups.Otros.push(iconName);
+  }
+});
 
 export function CalendarIconPicker({
   selectedIcon,
@@ -39,11 +64,7 @@ export function CalendarIconPicker({
     setSearchTerm(searchText);
   };
 
-  const handlePreviewClick = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleIconSelect = (iconName: string) => {
+  const handleIconClick = (iconName: string) => {
     setValue(iconName);
     onChange(iconName);
     setIsModalOpen(false);
@@ -72,26 +93,28 @@ export function CalendarIconPicker({
           ))}
         </select>
 
-        <div className="selected-icon-preview" onClick={handlePreviewClick}>
+        <div className="selected-icon-preview" onClick={() => setIsModalOpen(true)}>
           {SelectedIconComponent && <SelectedIconComponent size={32} />}
         </div>
       </div>
 
       {isModalOpen && (
-        <div className="icon-modal">
-          <div className="icon-modal-content">
-            <h3>Select an Icon</h3>
-            <div className="icon-grid">
-              {Object.keys(icons).map((iconName) => {
-                const IconComponent = icons[iconName];
-                return (
-                  <div key={iconName} className="icon-item" onClick={() => handleIconSelect(iconName)}>
-                    <IconComponent size={32} />
-                    <span>{iconName}</span>
-                  </div>
-                );
-              })}
-            </div>
+        <div className="icon-modal" onClick={() => setIsModalOpen(false)}>
+          <div className="icon-modal-content" onClick={(e) => e.stopPropagation()}>
+            <h3>Seleccione un icono</h3>
+            {Object.entries(iconGroups).map(([groupName, iconsInGroup]) => (
+              <div key={groupName}>
+                <h4>{groupName}</h4>
+                <div className="icon-grid">
+                  {iconsInGroup.map((iconName) => (
+                    <div key={iconName} className="icon-item" onClick={() => handleIconClick(iconName)}>
+                      {icons[iconName] && icons[iconName]({ size: 32 })}
+                      <span>{iconName}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
             <button onClick={() => setIsModalOpen(false)}>Close</button>
           </div>
         </div>
