@@ -16,6 +16,9 @@ export function CalendarIconPicker({
   const [value, setValue] = useState(selectedIcon);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Calcular el número total de iconos
+  const totalIcons = Object.values(iconData).reduce((total, group) => total + Object.keys(group).length, 0);
+
   useEffect(() => {
     const matchingIcon = Object.keys(icons).find(
       (iconName) => iconName.toLowerCase() === searchTerm.toLowerCase()
@@ -80,10 +83,10 @@ export function CalendarIconPicker({
             <div className="icon-modal-header">
               <button onClick={() => setIsModalOpen(false)}>X</button>
             </div>
-            <h1>Seleccione un icono</h1>
+            <h1>Select Icon ({totalIcons})</h1>
             {Object.entries(iconData).map(([groupName, iconsInGroup]) => (
               <div key={groupName}>
-                <h2>{groupName}</h2>
+                <h2>{groupName} ({Object.keys(iconsInGroup).length})</h2>
                 <div className="icon-grid">
                   {Object.keys(iconsInGroup).map((iconName) => (
                     <div key={iconName} className="icon-item" onClick={() => handleIconClick(iconName)}>
