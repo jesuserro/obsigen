@@ -8,7 +8,7 @@ import { FaAmazon, FaAngry, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader,
 import { FaBasketball, FaCamera, FaGift, FaPeopleGroup, FaUserDoctor, FaVirusCovid } from 'react-icons/fa6';
 import { FcAndroidOs, FcCalendar, FcDataBackup, FcGoogle } from 'react-icons/fc';
 import { FiSmartphone } from 'react-icons/fi';
-import { GiAncientRuins, GiBank, GiCakeSlice, GiChampions, GiChurch, GiCommercialAirplane, GiCook, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiMiracleMedecine, GiMoneyStack, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiSpikyExplosion, GiStrong, GiTheaterCurtains, GiThermometerCold, GiThreeFriends, GiTomato, GiVillage, GiWheat } from 'react-icons/gi';
+import { GiAncientRuins, GiAngelWings, GiBank, GiCakeSlice, GiChampions, GiChurch, GiCommercialAirplane, GiCook, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiMiracleMedecine, GiMoneyStack, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiSpikyExplosion, GiStrong, GiTheaterCurtains, GiThermometerCold, GiThreeFriends, GiTomato, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
@@ -105,7 +105,7 @@ export const iconData: IconData = {
         hot: ({ size }: IconProps) => <PiThermometerHot size={size} className="red" />,
         rain: ({ size }: IconProps) => <BsFillCloudRainHeavyFill size={size} className="blue sky" />,
         snow: ({ size }: IconProps) => <BsSnow3 size={size} className="white" />,
-        storm: ({ size }: IconProps) => <IoThunderstorm size={size} className="blue aws" />,
+        storm: ({ size }: IconProps) => <IoThunderstorm size={size} className="blue sky" />,
         sunny: ({ size }: IconProps) => <IoMdSunny size={size} className="yellow" />,
         weather: ({ size }: IconProps) => <GiThermometerCold size={size} style={{ color: '#6dc8f2' }} />
     },
@@ -218,6 +218,7 @@ export const iconData: IconData = {
         adoration: ({ size }: IconProps) => <CustomIcon size={size} className="blue sky" iconName="Adoration" />,
         advent: ({ size }: IconProps) => <CustomIcon size={size} className="blue sky" iconName="Advent" />,
         agenda2030: ({ size }: IconProps) => <CustomIcon size={size} className="red" iconName="Agenda2030" />,
+        angel: ({ size }: IconProps) => <GiAngelWings size={size} className="pink purple" />,
         arburua: ({ size }: IconProps) => <CustomIcon size={size} className="blue sky" iconName="Arburua" />,
         bible: ({ size }: IconProps) => <IconoBible size={size} className="pink purple" />,
         catholic: ({ size }: IconProps) => <FaCross size={size} className="pink purple" />,
