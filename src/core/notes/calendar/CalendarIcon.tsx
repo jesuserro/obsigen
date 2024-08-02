@@ -3,7 +3,7 @@ import React from 'react';
 import Flag from 'react-flagkit';
 import { BiLogoGmail } from 'react-icons/bi';
 import { BsBookmarkStar, BsChatLeftQuoteFill, BsClockFill, BsCloudHaze2, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsPersonCircle, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
-import { CiCalendar, CiHeadphones, CiPill } from 'react-icons/ci';
+import { CiBookmark, CiCalendar, CiHeadphones, CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAngry, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader, FaBuilding, FaBus, FaCarSide, FaChalkboardTeacher, FaChess, FaCode, FaCross, FaDog, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHeadSideCough, FaHiking, FaHome, FaInstagram, FaKey, FaLaptop, FaLinkedin, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaScroll, FaSkype, FaSmile, FaStar, FaSwimmingPool, FaTabletAlt, FaTelegram, FaTired, FaTrain, FaTree, FaVenus, FaVoteYea, FaWpforms, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaGift, FaPeopleGroup, FaUserDoctor, FaVirusCovid } from 'react-icons/fa6';
 import { FcAndroidOs, FcCalendar, FcDataBackup, FcGoogle } from 'react-icons/fc';
@@ -258,7 +258,8 @@ export const iconData: IconData = {
       backup: ({ size }: IconProps) => <FcDataBackup size={size} className="green spotify" />,
       backup_cloud: ({ size }: IconProps) => <MdBackup size={size} className="green spotify" />,
       battery: ({ size }: IconProps) => <IoMdBatteryCharging size={size} className="red" />,
-      book: ({ size }: IconProps) => <FaBook size={size} className="blue" />,
+      book: ({ size }: IconProps) => <FaBook size={size} className="blue sky" />,
+      bookmark: ({ size }: IconProps) => <CiBookmark size={size} className="blue sky" />,
       building: ({ size }: IconProps) => <FaBuilding size={size} className="brown" />,
       calendar: ({ size }: IconProps) => <CiCalendar size={size} className="blue sky" />,
       camera: ({ size }: IconProps) => <FaCamera size={size} className="blue sky" />,
