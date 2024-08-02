@@ -11,7 +11,7 @@ import {
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Momento } from "./../../notes/momento/Momento";
-import { iconMap } from "./CalendarIcon";
+import { iconData } from "./CalendarIcon"; // Cambiado iconMap a iconData
 import { CalendarIconPicker } from "./CalendarIconPicker";
 import { NoteSelector } from "./NoteSelector";
 
@@ -114,7 +114,7 @@ export class CalendarEvent extends Modal {
         this.iconDropdown = this.createReactComponent(iconContainer, CalendarIconPicker, {
             selectedIcon: this.selectedIcon,
             onChange: (value: string) => (this.selectedIcon = value),
-            icons: iconMap,
+            icons: Object.assign({}, ...Object.values(iconData)), // Combina todos los grupos de iconos en un solo objeto
         });
 
         const locationContainer = form.createDiv("note-selector-container");

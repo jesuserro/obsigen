@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { iconGroups } from './CalendarIcon'; // Importar iconMap e iconGroups desde CalendarIcon
+import { iconData } from './CalendarIcon'; // Importar iconData desde CalendarIcon
 
 export interface CalendarIconPickerProps {
   selectedIcon: string;
@@ -81,13 +81,13 @@ export function CalendarIconPicker({
               <button onClick={() => setIsModalOpen(false)}>X</button>
             </div>
             <h1>Seleccione un icono</h1>
-            {Object.entries(iconGroups).map(([groupName, iconsInGroup]) => (
+            {Object.entries(iconData).map(([groupName, iconsInGroup]) => (
               <div key={groupName}>
                 <h2>{groupName}</h2>
                 <div className="icon-grid">
-                  {iconsInGroup.map((iconName) => (
+                  {Object.keys(iconsInGroup).map((iconName) => (
                     <div key={iconName} className="icon-item" onClick={() => handleIconClick(iconName)}>
-                      {icons[iconName] && icons[iconName]({ size: 32 })}
+                      {iconsInGroup[iconName] && iconsInGroup[iconName]({ size: 32 })}
                       <span>{iconName}</span>
                     </div>
                   ))}
