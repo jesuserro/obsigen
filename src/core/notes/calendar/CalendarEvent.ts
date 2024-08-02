@@ -167,7 +167,7 @@ export class CalendarEvent extends Modal {
         this.setDefaultDateTime(this.initialDate, this.yearDropdown, this.monthDropdown, this.dayDropdown, this.hourDropdown, this.minuteDropdown);
         this.addDropdownChangeEvents(this.yearDropdown, this.monthDropdown, this.dayDropdown, this.hourDropdown, this.minuteDropdown);
     }
-
+    
     private createEndDateDropdowns(parent: HTMLElement) {
         this.endYearDropdown = this.createDropdown(parent, "End Year", 1897, 2030);
         this.endMonthDropdown = this.createDropdown(parent, "End Month", 1, 12);
@@ -188,11 +188,15 @@ export class CalendarEvent extends Modal {
     }
 
     private setDefaultDateTime(date: Date, yearDropdown: DropdownComponent, monthDropdown: DropdownComponent, dayDropdown: DropdownComponent, hourDropdown: DropdownComponent, minuteDropdown: DropdownComponent) {
+        const now = new Date();
+        const currentMinutes = now.getMinutes();
+        const roundedMinutes = Math.ceil(currentMinutes / 5) * 5;
+    
         yearDropdown.setValue(date.getFullYear().toString());
         monthDropdown.setValue((date.getMonth() + 1).toString().padStart(2, "0"));
         dayDropdown.setValue(date.getDate().toString().padStart(2, "0"));
-        hourDropdown.setValue(date.getHours().toString().padStart(2, "0"));
-        minuteDropdown.setValue((Math.floor(date.getMinutes() / 5) * 5).toString().padStart(2, "0"));
+        hourDropdown.setValue(now.getHours().toString().padStart(2, "0"));
+        minuteDropdown.setValue(roundedMinutes.toString().padStart(2, "0"));
     }
 
     private addDropdownChangeEvents(...dropdowns: DropdownComponent[]) {
