@@ -1,10 +1,6 @@
-/**
- * - https://lucide.dev/icons/
- * - https://react-icons.github.io/react-icons/search/
- */
 import { TFile } from 'obsidian';
 import React from 'react';
-
+import Flag from 'react-flagkit';
 import { BiLogoGmail } from 'react-icons/bi';
 import { BsBookmarkStar, BsChatLeftQuoteFill, BsClockFill, BsCloudHaze2, BsFillCalendar2WeekFill, BsFillCheckCircleFill, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsPersonCircle, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiPill } from 'react-icons/ci';
@@ -24,84 +20,7 @@ import { SiTinder as IconoTinder, SiDell, SiGimp, SiGooglemeet, SiInsomnia, SiLe
 import { SlPicture } from "react-icons/sl";
 import { TbAppsFilled, TbBulbFilled, TbFishChristianity, TbPillOff, TbPills, TbZzz } from 'react-icons/tb';
 import { TfiHarddrives } from "react-icons/tfi";
-
-// https://github.com/madebybowtie/FlagKit/blob/master/Assets/Flags.md
-import Flag from 'react-flagkit';
-
 import CustomIcon from '../../../ui/CustomIcon';
-
-
-export class CalendarIcon {
-
-    static getIcon(key: string, size: number): React.ReactNode | null {
-        if (iconMap[key]) {
-            return iconMap[key]({ size });
-        }
-
-        // Si la clave no se encuentra en el iconMap, puedes devolver nulo o un valor predeterminado.
-        return null;
-    }
-
-    static getIconByCssClass(cssClass: string, size: number): React.ReactNode | null {
-        if (iconMap.hasOwnProperty(cssClass)) {
-            return iconMap[cssClass]({ size });
-        }
-
-        // Si la clave no se encuentra en el iconMap, puedes devolver nulo o un valor predeterminado.
-        return null;
-    }
-
-    static getIconByNote(cssClasses: [], note: TFile, size: number): React.ReactNode {
-        const path = note.path;
-
-        if (cssClasses) {
-            // Asegúrate de que cssClasses sea un array
-            const cssClassesArray = Array.isArray(cssClasses) ? cssClasses : [cssClasses];
-
-            const cssClassIcons = cssClassesArray
-                .filter((cssclass: string) => iconMap.hasOwnProperty(cssclass))
-                .map((cssclass: string) => iconMap[cssclass]({ size }));
-
-            if (cssClassIcons.length > 0) {
-                return cssClassIcons[0];
-            }
-        }
-
-        if (path.includes('/Misas/')) {
-            return iconMap['mass']({ size });
-        } else if (path.includes('/Biblia/')) {
-            return iconMap['bible']({ size });
-        } else if (path.includes('005 Synch/Readwise/Books/')) {
-            return iconMap['book']({ size });
-        } else if (path.includes('005 Synch/Readwise/Tweets/')) {
-            return iconMap['twitter']({ size });
-        } else if (path.includes('005 Synch/Readwise/Podcasts/')) {
-            return iconMap['podcast']({ size });
-        } else if (path.includes('005 Synch/Readwise/Articles/')) {
-            return iconMap['readwise']({ size });
-        } else if (path.includes('005 Synch/goodsidian/autores')) {
-            return iconMap['person']({ size });
-        } else if (path.includes('005 Synch/goodsidian/')) {
-            return iconMap['goodreads']({ size });
-        } else if (path.includes('005 Synch/Kindtocs/')) {
-            return iconMap['kindle']({ size });
-        } else if (path.includes('500 Gente/Chicas/')) {
-            return iconMap['woman']({ size });
-        } else if (path.includes('500 Gente/')) {
-            return iconMap['person']({ size });
-        } else if (path.includes('300 Geo/')) {
-            return iconMap['marker']({ size });
-        } else if (path.includes('200 Content Maps/')) {
-            return iconMap['key']({ size });
-        } else if (path.includes('/Aniversaries/')) {
-            return iconMap['birthday']({ size });
-        } else if (path.includes('/Captures/')) {
-            return iconMap['blogpost']({ size });
-        } else {
-            return iconMap['question']({ size });
-        }
-    }
-}
 
 export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element } = {
     achelm: ({ size }) => <CustomIcon size={size} className="pink" iconName="Achelm" />,
@@ -347,3 +266,94 @@ export const iconMap: { [key: string]: (props: { size: number }) => JSX.Element 
     youtube: ({ size }) => <FaYoutube size={size} className="red youtube" />,
     wedding: ({ size }) => <CustomIcon size={size} className="pink" iconName="Wedding" />
 };
+
+export const iconGroups = {
+  Emojis: ['angry', 'anxiety', 'baby', 'birthday', 'cough', 'dance', 'family', 'fatigue', 'fever', 'friends', 'gluttony', 'happiness', 'inlove', 'insomnia', 'learning', 'party', 'people', 'psychology', 'pumpkin', 'sadness', 'sex', 'sick', 'tired', 'woman'],
+  Gente: ['achelm', 'annas', 'charo', 'dad', 'gonzalo', 'irene', 'josefita', 'josemi', 'kote', 'luis', 'mom', 'natalia', 'nieves', 'person', 'pilar', 'ramon', 'sophie', 'timothy', 'victor'],
+  Tiempo: ['cold', 'earthquake', 'eclipse', 'haze', 'hot', 'rain', 'snow', 'storm', 'sunny', 'weather'],
+  Economía: ['bank', 'barber', 'bbva', 'bills', 'buy', 'coin', 'euro', 'finances', 'gift', 'hacienda', 'itv', 'lottery', 'payroll', 'price', 'repairs', 'saving', 'tax', 'visa'],
+  IT: ['amazon', 'android', 'aws', 'blogpost', 'dell', 'email', 'git', 'github', 'google', 'googlemeet', 'goodreads', 'gpt', 'instagram', 'kindle', 'lenovo', 'linkedin', 'meeting', 'obsidian', 'openai', 'phone', 'plentyoffish', 'podcast', 'readwise', 'rss', 'samsung', 'skype', 'spotify', 'telegram', 'tinder', 'twitter', 'whatsapp', 'writing', 'youtube'],
+  Agro: ['agriculture', 'agro', 'dog', 'farmer', 'tree', 'village'],
+  Deportes: ['basketball', 'champions', 'chess', 'gym', 'hiking', 'olympics', 'orejona', 'pool', 'realmadrid', 'soccer', 'sport'],
+  Banderas: ['argentina', 'france', 'israel', 'italy', 'poland', 'romania', 'russia', 'spain', 'usa', 'vatican', 'venezuela'],
+  Religión: ['adoration', 'advent', 'agenda2030', 'arburua', 'bible', 'catholic', 'cemetery', 'christ', 'communism', 'confession', 'death', 'diosidencia', 'emaus', 'evil', 'fatima', 'funeral', 'funeralhome', 'garabandal', 'gospa', 'holyspirit', 'inspiration', 'islam', 'mass', 'miracle', 'nun', 'orthodox', 'peace', 'pope', 'prayer', 'priest', 'prophecy', 'rosary', 'saint', 'saintwoman', 'wedding'],
+  Gastronomía: ['beer', 'cafe', 'cook', 'friedeggs', 'gastronomy', 'pancake'],
+  Transporte: ['bus', 'car', 'plane', 'train', 'travel'],
+  Salud: ['doctor', 'dream', 'foot', 'health', 'healthko', 'healthok', 'heartbreak', 'insomnia', 'legs', 'pill', 'pilloff', 'strong', 'supplement', 'virus'],
+  Otros: [] as string[],
+};
+
+Object.keys(iconMap).forEach(iconName => {
+  let found = false;
+  for (const groupName in iconGroups) {
+    if (iconGroups[groupName as keyof typeof iconGroups].includes(iconName)) {
+      found = true;
+      break;
+    }
+  }
+  if (!found) {
+    iconGroups.Otros.push(iconName);
+  }
+});
+
+export class CalendarIcon {
+  static getIcon(key: string, size: number): React.ReactNode | null {
+    if (iconMap[key]) {
+      return iconMap[key]({ size });
+    }
+    return null;
+  }
+
+  static getIconByCssClass(cssClass: string, size: number): React.ReactNode | null {
+    if (iconMap.hasOwnProperty(cssClass)) {
+      return iconMap[cssClass]({ size });
+    }
+    return null;
+  }
+
+  static getIconByNote(cssClasses: [], note: TFile, size: number): React.ReactNode {
+    const path = note.path;
+    if (cssClasses) {
+      const cssClassesArray = Array.isArray(cssClasses) ? cssClasses : [cssClasses];
+      const cssClassIcons = cssClassesArray
+        .filter((cssclass: string) => iconMap.hasOwnProperty(cssclass))
+        .map((cssclass: string) => iconMap[cssclass]({ size }));
+      if (cssClassIcons.length > 0) {
+        return cssClassIcons[0];
+      }
+    }
+    if (path.includes('/Misas/')) {
+      return iconMap['mass']({ size });
+    } else if (path.includes('/Biblia/')) {
+      return iconMap['bible']({ size });
+    } else if (path.includes('005 Synch/Readwise/Books/')) {
+      return iconMap['book']({ size });
+    } else if (path.includes('005 Synch/Readwise/Tweets/')) {
+      return iconMap['twitter']({ size });
+    } else if (path.includes('005 Synch/Readwise/Podcasts/')) {
+      return iconMap['podcast']({ size });
+    } else if (path.includes('005 Synch/Readwise/Articles/')) {
+      return iconMap['readwise']({ size });
+    } else if (path.includes('005 Synch/goodsidian/autores')) {
+      return iconMap['person']({ size });
+    } else if (path.includes('005 Synch/goodsidian/')) {
+      return iconMap['goodreads']({ size });
+    } else if (path.includes('005 Synch/Kindtocs/')) {
+      return iconMap['kindle']({ size });
+    } else if (path.includes('500 Gente/Chicas/')) {
+      return iconMap['woman']({ size });
+    } else if (path.includes('500 Gente/')) {
+      return iconMap['person']({ size });
+    } else if (path.includes('300 Geo/')) {
+      return iconMap['marker']({ size });
+    } else if (path.includes('200 Content Maps/')) {
+      return iconMap['key']({ size });
+    } else if (path.includes('/Aniversaries/')) {
+      return iconMap['birthday']({ size });
+    } else if (path.includes('/Captures/')) {
+      return iconMap['blogpost']({ size });
+    } else {
+      return iconMap['question']({ size });
+    }
+  }
+}

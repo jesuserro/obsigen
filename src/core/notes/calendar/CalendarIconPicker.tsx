@@ -1,41 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { iconMap } from './CalendarIcon'; // Importar iconMap desde CalendarIcon
+import { iconGroups } from './CalendarIcon'; // Importar iconMap e iconGroups desde CalendarIcon
 
 export interface CalendarIconPickerProps {
   selectedIcon: string;
   onChange: (icon: string) => void;
   icons: { [key: string]: (props: { size: number }) => JSX.Element };
 }
-
-const iconGroups = {
-  Emojis: ['angry', 'anxiety', 'baby', 'birthday', 'cough', 'dance', 'family', 'fatigue', 'fever', 'friends', 'gluttony', 'happiness', 'inlove', 'insomnia', 'learning', 'party', 'people', 'psychology', 'pumpkin', 'sadness', 'sex', 'sick', 'tired', 'woman'],
-  Gente: ['achelm', 'annas', 'charo', 'dad', 'gonzalo', 'irene', 'josefita', 'josemi', 'kote', 'luis', 'mom', 'natalia', 'nieves', 'person', 'pilar', 'ramon', 'sophie', 'timothy', 'victor'],
-  Tiempo: ['cold', 'earthquake', 'eclipse', 'haze', 'hot', 'rain', 'snow', 'storm', 'sunny', 'weather'],
-  Economía: ['bank', 'barber', 'bbva', 'bills', 'buy', 'coin', 'euro', 'finances', 'gift', 'hacienda', 'itv', 'lottery', 'payroll', 'price', 'repairs', 'saving', 'tax', 'visa'],
-  IT: ['amazon', 'android', 'aws', 'blogpost', 'dell', 'email', 'git', 'github', 'google', 'googlemeet', 'goodreads', 'gpt', 'instagram', 'kindle', 'lenovo', 'linkedin', 'meeting', 'obsidian', 'openai', 'phone', 'plentyoffish', 'podcast', 'readwise', 'rss', 'samsung', 'skype', 'spotify', 'telegram', 'tinder', 'twitter', 'whatsapp', 'writing', 'youtube'],
-  Agro: ['agriculture', 'agro', 'dog', 'farmer', 'tree', 'village'],
-  Deportes: ['basketball', 'champions', 'chess', 'gym', 'hiking', 'olympics', 'orejona', 'pool', 'realmadrid', 'soccer', 'sport'],
-  Banderas: ['argentina', 'france', 'israel', 'italy', 'poland', 'romania', 'russia', 'spain', 'usa', 'vatican', 'venezuela'],
-  Religión: ['adoration', 'advent', 'agenda2030', 'arburua', 'bible', 'catholic', 'cemetery', 'christ', 'communism', 'confession', 'death', 'diosidencia', 'emaus', 'evil', 'fatima', 'funeral', 'funeralhome', 'garabandal', 'gospa', 'holyspirit', 'inspiration', 'islam', 'mass', 'miracle', 'nun', 'orthodox', 'peace', 'pope', 'prayer', 'priest', 'prophecy', 'rosary', 'saint', 'saintwoman', 'wedding'],
-  Gastronomía: ['beer', 'cafe', 'cook', 'friedeggs', 'gastronomy', 'pancake'],
-  Transporte: ['bus', 'car', 'plane', 'train', 'travel'],
-  Salud: ['doctor', 'dream', 'foot', 'health', 'healthko', 'healthok', 'heartbreak', 'insomnia', 'legs', 'pill', 'pilloff', 'strong', 'supplement', 'virus'],
-  Otros: [] as string[],
-};
-
-// Clasifica los iconos en sus respectivos grupos, y coloca los no clasificados en "Otros"
-Object.keys(iconMap).forEach(iconName => {
-  let found = false;
-  for (const groupName in iconGroups) {
-    if (iconGroups[groupName as keyof typeof iconGroups].includes(iconName)) {
-      found = true;
-      break;
-    }
-  }
-  if (!found) {
-    iconGroups.Otros.push(iconName);
-  }
-});
 
 export function CalendarIconPicker({
   selectedIcon,
