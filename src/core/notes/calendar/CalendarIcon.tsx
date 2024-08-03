@@ -186,6 +186,7 @@ export const iconData: IconData = {
     Agro: {
         agriculture: ({ size }: IconProps) => <IoMdBasket size={size} className="brown" />,
         agro: ({ size }: IconProps) => <GiWheat size={size} className="brown" />,
+        butterfly: ({ size }: IconProps) => <PiButterflyFill size={size} className="blue sapphire" />,
         dog: ({ size }: IconProps) => <FaDog size={size} className="brown" />,
         farmer: ({ size }: IconProps) => <GiFarmer size={size} className="brown" />,
         tree: ({ size }: IconProps) => <FaTree size={size} style={{ color: '#228B22' }} />,
@@ -282,7 +283,6 @@ export const iconData: IconData = {
         book: ({ size }: IconProps) => <FaBook size={size} className="blue sky" />,
         bookmark: ({ size }: IconProps) => <CiBookmark size={size} className="blue sky" />,
         building: ({ size }: IconProps) => <FaBuilding size={size} className="brown" />,
-        butterfly: ({ size }: IconProps) => <PiButterflyFill size={size} className="blue sapphire" />,
         calendar: ({ size }: IconProps) => <CiCalendar size={size} className="blue sky" />,
         camera: ({ size }: IconProps) => <FaCamera size={size} className="blue sky" />,
         cancel: ({ size }: IconProps) => <MdCancel size={size} className="red" />,
