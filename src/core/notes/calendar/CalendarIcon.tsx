@@ -4,18 +4,18 @@ import Flag from 'react-flagkit';
 import { BiLogoGmail } from 'react-icons/bi';
 import { BsBookmarkStar, BsChatLeftQuoteFill, BsClockFill, BsCloudHaze2, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsPersonCircle, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiBookmark, CiCalendar, CiHeadphones, CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAngry, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader, FaBuilding, FaBus, FaCarSide, FaChalkboardTeacher, FaCheck, FaChess, FaCode, FaCross, FaDatabase, FaDog, FaEnvelope, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHandshake, FaHeadSideCough, FaHiking, FaHome, FaInstagram, FaKey, FaLaptop, FaLinkedin, FaMapMarkerAlt, FaPhone, FaPiggyBank, FaPizzaSlice, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaScroll, FaSkype, FaSmile, FaSms, FaStar, FaSwimmingPool, FaTabletAlt, FaTelegram, FaTired, FaTrain, FaTree, FaVenus, FaVoteYea, FaWpforms, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
-import { FaBasketball, FaCamera, FaGift, FaPeopleGroup, FaUserDoctor, FaVirusCovid } from 'react-icons/fa6';
-import { FcAndroidOs, FcCalendar, FcDataBackup, FcGoogle } from 'react-icons/fc';
+import { FaAmazon, FaAngry, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader, FaBuilding, FaBus, FaCarSide, FaChalkboardTeacher, FaCheck, FaChess, FaCode, FaCross, FaDatabase, FaDog, FaEnvelope, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHandshake, FaHeadSideCough, FaHiking, FaHome, FaHotel, FaInstagram, FaKey, FaLaptop, FaLinkedin, FaMapMarkerAlt, FaPhone, FaPiggyBank, FaPizzaSlice, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaScroll, FaSkype, FaSmile, FaSms, FaStar, FaSwimmingPool, FaTabletAlt, FaTaxi, FaTelegram, FaTired, FaTrain, FaTree, FaVenus, FaVoteYea, FaWpforms, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaBasketball, FaCamera, FaGift, FaHillRockslide, FaPeopleGroup, FaUserDoctor, FaVirusCovid } from 'react-icons/fa6';
+import { FcAndroidOs, FcCalendar, FcDataBackup, FcGoogle, FcPodiumWithSpeaker } from 'react-icons/fc';
 import { FiSmartphone } from 'react-icons/fi';
 import { GiAncientRuins, GiAngelWings, GiBank, GiCakeSlice, GiChampions, GiChurch, GiCommercialAirplane, GiCook, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiMiracleMedecine, GiMoneyStack, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiSpikyExplosion, GiStrong, GiTheaterCurtains, GiThermometerCold, GiThreeFriends, GiTomato, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
-import { IoFootsteps, IoHardwareChip, IoThunderstorm } from 'react-icons/io5';
+import { IoFootsteps, IoHardwareChip, IoRestaurant, IoThunderstorm } from 'react-icons/io5';
 import { LuPartyPopper } from 'react-icons/lu';
-import { MdBackup, MdBuild, MdCancel, MdCardTravel, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdPeople, MdPiano, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
-import { PiFishSimpleBold as IconoPlentyoffish, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold, PiThermometerHot } from 'react-icons/pi';
+import { MdBackup, MdBuild, MdCancel, MdCardTravel, MdCastle, MdDirectionsRun, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdPeople, MdPiano, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
+import { PiFishSimpleBold as IconoPlentyoffish, PiButterflyFill, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold, PiThermometerHot } from 'react-icons/pi';
 import { RiEarthquakeFill, RiFridgeFill, RiMentalHealthFill } from "react-icons/ri";
 import { SiTinder as IconoTinder, SiDell, SiGimp, SiGooglemeet, SiInsomnia, SiLenovo, SiObsidian, SiOpenai, SiPlex, SiSamsung, SiSpotify, SiSynology, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { SlPicture } from "react-icons/sl";
@@ -145,6 +145,7 @@ export const iconData: IconData = {
         phone: ({ size }: IconProps) => <FaPhone size={size} className="white" />,
         plentyoffish: ({ size }: IconProps) => <IconoPlentyoffish size={size} className="pink" />,
         podcast: ({ size }: IconProps) => <FaPodcast size={size} className="orange" />,
+        publicspeaker: ({ size }: IconProps) => <FcPodiumWithSpeaker size={size} className="yellow emoji" />,
         rss: ({ size }: IconProps) => <FaRss size={size} className="orange" />,
         skype: ({ size }: IconProps) => <FaSkype size={size} style={{ color: '#00AFF0' }} />,
         sms: ({ size }: IconProps) => <FaSms size={size} className="white" />,
@@ -264,11 +265,13 @@ export const iconData: IconData = {
         gastronomy: ({ size }: IconProps) => <MdRestaurant size={size} className='yellow emoji' />,
         pancake: ({ size }: IconProps) => <CustomIcon size={size} iconName="Pancake" />,
         pizza: ({ size }: IconProps) => <FaPizzaSlice size={size} className="yellow emoji" />,
+        restaurant: ({ size }: IconProps) => <IoRestaurant size={size} className="yellow emoji" />
     },
     Transport: {
         bus: ({ size }: IconProps) => <FaBus size={size} className="brown" />,
         car: ({ size }: IconProps) => <FaCarSide size={size} className="red c3" />,
         plane: ({ size }: IconProps) => <GiCommercialAirplane size={size} style={{ color: '#1199c2' }} />,
+        taxi: ({ size }: IconProps) => <FaTaxi size={size} className="yellow emoji"/>,
         train: ({ size }: IconProps) => <FaTrain size={size} className="brown" />,
         travel: ({ size }: IconProps) => <MdCardTravel size={size} className="brown" />
     },
@@ -279,9 +282,11 @@ export const iconData: IconData = {
         book: ({ size }: IconProps) => <FaBook size={size} className="blue sky" />,
         bookmark: ({ size }: IconProps) => <CiBookmark size={size} className="blue sky" />,
         building: ({ size }: IconProps) => <FaBuilding size={size} className="brown" />,
+        butterfly: ({ size }: IconProps) => <PiButterflyFill size={size} className="blue sapphire" />,
         calendar: ({ size }: IconProps) => <CiCalendar size={size} className="blue sky" />,
         camera: ({ size }: IconProps) => <FaCamera size={size} className="blue sky" />,
         cancel: ({ size }: IconProps) => <MdCancel size={size} className="red" />,
+        castle: ({ size }: IconProps) => <MdCastle size={size} className="grey" />,
         cdr: ({ size }: IconProps) => <CustomIcon size={size} className="yellow" iconName="Cdr" />,
         cinema: ({ size }: IconProps) => <IconoCinema size={size} className="white" />,
         clock: ({ size }: IconProps) => <BsClockFill size={size} className="orange" />,
@@ -290,8 +295,10 @@ export const iconData: IconData = {
         fireworks: ({ size }: IconProps) => <GiSpikyExplosion size={size} className="yellow" />,
         form: ({ size }: IconProps) => <FaWpforms size={size} className="orange" />,
         fridge: ({ size }: IconProps) => <RiFridgeFill  size={size} className="white" />,
+        hillrock: ({ size }: IconProps) => <FaHillRockslide size={size} className="brown" />,
         holiday: ({ size }: IconProps) => <GiPalmTree size={size} className="green" />,
         home: ({ size }: IconProps) => <FaHome size={size} className="brown" />,
+        hotel: ({ size }: IconProps) => <FaHotel size={size} className="brown" />,
         idea: ({ size }: IconProps) => <TbBulbFilled size={size} className="yellow" />,
         key: ({ size }: IconProps) => <FaKey size={size} className="yellow" />,
         marker: ({ size }: IconProps) => <FaMapMarkerAlt size={size} className="brown" />,
