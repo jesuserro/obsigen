@@ -4,7 +4,7 @@ import Flag from 'react-flagkit';
 import { BiLogoGmail } from 'react-icons/bi';
 import { BsBookmarkStar, BsChatLeftQuoteFill, BsClockFill, BsCloudHaze2, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsPersonCircle, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiBookmark, CiCalendar, CiHeadphones, CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAngry, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader, FaBuilding, FaBus, FaCarSide, FaChalkboardTeacher, FaCheck, FaChess, FaCode, FaCross, FaDatabase, FaDog, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHandshake, FaHeadSideCough, FaHiking, FaHome, FaInstagram, FaKey, FaLaptop, FaLinkedin, FaMapMarkerAlt, FaPhone, FaPiggyBank, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaScroll, FaSkype, FaSmile, FaStar, FaSwimmingPool, FaTabletAlt, FaTelegram, FaTired, FaTrain, FaTree, FaVenus, FaVoteYea, FaWpforms, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaAmazon, FaAngry, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader, FaBuilding, FaBus, FaCarSide, FaChalkboardTeacher, FaCheck, FaChess, FaCode, FaCross, FaDatabase, FaDog, FaEnvelope, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHandshake, FaHeadSideCough, FaHiking, FaHome, FaInstagram, FaKey, FaLaptop, FaLinkedin, FaMapMarkerAlt, FaPhone, FaPiggyBank, FaPizzaSlice, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaScroll, FaSkype, FaSmile, FaSms, FaStar, FaSwimmingPool, FaTabletAlt, FaTelegram, FaTired, FaTrain, FaTree, FaVenus, FaVoteYea, FaWpforms, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaGift, FaPeopleGroup, FaUserDoctor, FaVirusCovid } from 'react-icons/fa6';
 import { FcAndroidOs, FcCalendar, FcDataBackup, FcGoogle } from 'react-icons/fc';
 import { FiSmartphone } from 'react-icons/fi';
@@ -135,6 +135,7 @@ export const iconData: IconData = {
     SocialMediaAndComunications: {
         blogpost: ({ size }: IconProps) => <BsWordpress size={size} className="blue wordpress" />,
         email: ({ size }: IconProps) => <BiLogoGmail size={size} className="red" />,
+        envelope: ({ size }: IconProps) => <FaEnvelope size={size} className="white" />,
         github: ({ size }: IconProps) => <FaGithub size={size} style={{ color: '#fff' }} />,
         googlemeet: ({ size }: IconProps) => <SiGooglemeet size={size} className="yellow intense" />,
         goodreads: ({ size }: IconProps) => <FaGoodreads size={size} className="brown goodreads" />,
@@ -146,6 +147,7 @@ export const iconData: IconData = {
         podcast: ({ size }: IconProps) => <FaPodcast size={size} className="orange" />,
         rss: ({ size }: IconProps) => <FaRss size={size} className="orange" />,
         skype: ({ size }: IconProps) => <FaSkype size={size} style={{ color: '#00AFF0' }} />,
+        sms: ({ size }: IconProps) => <FaSms size={size} className="white" />,
         spotify: ({ size }: IconProps) => <SiSpotify size={size} className="green spotify" />,
         telegram: ({ size }: IconProps) => <FaTelegram size={size} className="blue telegram" />,
         tinder: ({ size }: IconProps) => <IconoTinder size={size} style={{ color: '#FE3C72' }} />,
@@ -254,13 +256,14 @@ export const iconData: IconData = {
         wedding: ({ size }: IconProps) => <CustomIcon size={size} className="pink" iconName="Wedding" />
     },
     Gastronomy: {
-        beer: ({ size }: IconProps) => <IoIosBeer size={size} className="yellow" />,
-        cafe: ({ size }: IconProps) => <IoMdCafe size={size} className="yellow" />,
-        cake: ({ size }: IconProps) => <GiCakeSlice size={size} className="yellow" />,
+        beer: ({ size }: IconProps) => <IoIosBeer size={size} className="yellow emoji" />,
+        cafe: ({ size }: IconProps) => <IoMdCafe size={size} className="yellow emoji" />,
+        cake: ({ size }: IconProps) => <GiCakeSlice size={size} className="yellow emoji" />,
         cook: ({ size }: IconProps) => <GiCook size={size} className="white" />,
         friedeggs: ({ size }: IconProps) => <GiFriedEggs size={size} className="white" />,
-        gastronomy: ({ size }: IconProps) => <MdRestaurant size={size} style={{ color: '#FFD700' }} />,
-        pancake: ({ size }: IconProps) => <CustomIcon size={size} className="yellow" iconName="Pancake" />
+        gastronomy: ({ size }: IconProps) => <MdRestaurant size={size} className='yellow emoji' />,
+        pancake: ({ size }: IconProps) => <CustomIcon size={size} iconName="Pancake" />,
+        pizza: ({ size }: IconProps) => <FaPizzaSlice size={size} className="yellow emoji" />,
     },
     Transport: {
         bus: ({ size }: IconProps) => <FaBus size={size} className="brown" />,
