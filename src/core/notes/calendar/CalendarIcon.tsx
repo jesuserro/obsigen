@@ -217,6 +217,7 @@ export const iconData: IconData = {
         bosnia: ({ size }: IconProps) => <Flag country='BA' size={size} className="" />,
         eu: ({ size }: IconProps) => <Flag country='EU' size={size} className="" />,
         france: ({ size }: IconProps) => <Flag country='FR' size={size} className="" />,
+        gb: ({ size }: IconProps) => <Flag country='GB' size={size} className="" />,
         israel: ({ size }: IconProps) => <Flag country='IL' size={size} className="" />,
         italy: ({ size }: IconProps) => <Flag country='IT' size={size} className="" />,
         poland: ({ size }: IconProps) => <Flag country='PL' size={size} className="" />,
@@ -224,7 +225,6 @@ export const iconData: IconData = {
         romania: ({ size }: IconProps) => <Flag country='RO' size={size} className="" />,
         russia: ({ size }: IconProps) => <Flag country='RU' size={size} className="" />,
         spain: ({ size }: IconProps) => <Flag country='ES' size={size} className="" />,
-        uk: ({ size }: IconProps) => <Flag country='GB' size={size} className="" />,
         usa: ({ size }: IconProps) => <Flag country='US' size={size} className="" />,
         vatican: ({ size }: IconProps) => <Flag country='VA' size={size} className="" />,
         venezuela: ({ size }: IconProps) => <Flag country='VE' size={size} className="" />
