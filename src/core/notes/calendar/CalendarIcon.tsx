@@ -170,7 +170,7 @@ export const iconData: IconData = {
         gpt: ({ size }: IconProps) => <TbAppsFilled size={size} className="green" />,
         hardware: ({ size }: IconProps) => <IoHardwareChip size={size} className="orange" />,
         headphones: ({ size }: IconProps) => <CiHeadphones size={size} className="orange" />,
-        kindle: ({ size }: IconProps) => <FaBookReader size={size} className="white" />,
+        kindle: ({ size }: IconProps) => <FaBookReader size={size} className='blue kindle' />,
         laptop: ({ size }: IconProps) => <FaLaptop size={size} className="orange" />,
         lenovo: ({ size }: IconProps) => <SiLenovo size={size} className="red youtube" />,
         obsidian: ({ size }: IconProps) => <SiObsidian size={size} className="violet" />,
@@ -271,7 +271,7 @@ export const iconData: IconData = {
     Transport: {
         bus: ({ size }: IconProps) => <FaBus size={size} className="brown" />,
         car: ({ size }: IconProps) => <FaCarSide size={size} className="red c3" />,
-        plane: ({ size }: IconProps) => <GiCommercialAirplane size={size} style={{ color: '#1199c2' }} />,
+        plane: ({ size }: IconProps) => <GiCommercialAirplane size={size} className='blue kindle' />,
         taxi: ({ size }: IconProps) => <FaTaxi size={size} className="yellow emoji"/>,
         train: ({ size }: IconProps) => <FaTrain size={size} className="brown" />,
         travel: ({ size }: IconProps) => <MdCardTravel size={size} className="brown" />
