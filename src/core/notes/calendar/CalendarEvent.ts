@@ -225,26 +225,20 @@ export class CalendarEvent extends Modal {
         if (isBC) {
             yearValue = -yearValue;
         }
-
+    
         const month = parseInt(monthDropdown.getValue().padStart(2, "0")) - 1; // Los meses van de 0 a 11
         const day = parseInt(dayDropdown.getValue().padStart(2, "0"));
         const hour = parseInt(hourDropdown.getValue().padStart(2, "0"));
         const minute = parseInt(minuteDropdown.getValue().padStart(2, "0"));
-
+    
         // Asegurar que los valores son válidos antes de crear la fecha
         if (isNaN(yearValue) || isNaN(month) || isNaN(day) || isNaN(hour) || isNaN(minute)) {
             throw new Error("Invalid date component values");
         }
-
-        // Crear la fecha manualmente para evitar problemas con años menores de 100
-        const date = new Date(0); // Empezar con la época Unix (1970)
-        date.setUTCFullYear(yearValue); // Establecer el año manualmente para evitar el problema con años < 100
-        date.setUTCMonth(month);
-        date.setUTCDate(day);
-        date.setUTCHours(hour);
-        date.setUTCMinutes(minute);
-        date.setUTCSeconds(0);
-
+    
+        // Crear la fecha usando la hora y la zona horaria tal como se selecciona en el formulario
+        const date = new Date(yearValue, month, day, hour, minute, 0);
+    
         return date;
     }
 
