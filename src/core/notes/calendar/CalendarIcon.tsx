@@ -89,6 +89,7 @@ export const iconData: IconData = {
         josemi: ({ size }: IconProps) => <CustomIcon size={size} className="yellow" iconName="Josemi" />,
         kote: ({ size }: IconProps) => <CustomIcon size={size} className="yellow" iconName="Kote" />,
         luis: ({ size }: IconProps) => <CustomIcon size={size} className="yellow" iconName="Luis" />,
+        margarita: ({ size }: IconProps) => <CustomIcon size={size} className="pink" iconName="Margarita" />,
         mom: ({ size }: IconProps) => <CustomIcon size={size} className="yellow" iconName="Mom" />,
         natalia: ({ size }: IconProps) => <CustomIcon size={size} className="yellow" iconName="Natalia" />,
         nieves: ({ size }: IconProps) => <CustomIcon size={size} className="pink" iconName="Nieves" />,
