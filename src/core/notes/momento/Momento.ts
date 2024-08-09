@@ -77,12 +77,11 @@ export class Momento {
 
     getCurrentDate() {
         const now = this.date;
-        const year = now.getFullYear().toString().padStart(4, "0");
-        const month = (now.getMonth() + 1).toString().padStart(2, "0");
-        const day = now.getDate().toString().padStart(2, "0");
-        return `${year}${month}${day}`;
+        const month = (now.getMonth() + 1).toString().padStart(2, "0"); // Mes con dos dígitos
+        const day = now.getDate().toString().padStart(2, "0"); // Día con dos dígitos
+        return `${month}${day}`;
     }
-
+    
     getCurrentAniversary() {
         const now = this.date;
         const month = (now.getMonth() + 1).toString().padStart(2, "0");
@@ -279,11 +278,12 @@ dv.table(["Tiempo transcurrido"], [
     }
 
     getFilePrefix() {
-        // Asegura que el año tenga 4 dígitos y usa "_" para años AC
+        // Asegura que el año tenga 4 dígitos y usa "_" para años BC
         const paddedYear = (this.year < 0 ? `_${Math.abs(this.year).toString().padStart(4, "0")}` : this.year.toString().padStart(4, "0"));
-        return `${paddedYear}${this.getCurrentDate().slice(4)}${this.getCurrentTime()}`;
+        // Concatena el año con la fecha completa (mes y día)
+        return `${paddedYear}${this.getCurrentDate()}${this.getCurrentTime()}`;
     }
-
+    
     getContent() {
         return ``;
     }

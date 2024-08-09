@@ -187,7 +187,7 @@ export class CalendarEvent extends Modal {
             // Create end year input
             this.endYearField = new TextComponent(div);
             this.endYearField.inputEl.addClass("form-input");
-            this.endYearField.setPlaceholder("e.g., 0100 for 100 AC, 0005 for 5 DC");
+            this.endYearField.setPlaceholder("e.g., write year number");
             this.endYearField.setValue(this.formatYear(this.initialDate.getFullYear()));
         });
 
