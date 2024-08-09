@@ -166,8 +166,14 @@ export class CalendarEvent extends Modal {
     
             this.yearField = new TextComponent(div);
             this.yearField.inputEl.addClass("form-input");
+            this.yearField.inputEl.addClass("form-year-input");
             this.yearField.setPlaceholder("e.g., 0100 for 100 AC, 0005 for 5 DC");
             this.yearField.setValue(this.formatYear(this.initialDate.getFullYear()));
+
+            // Evento onChange para sincronizar con el dropdown de endEraField
+            this.eraField.onChange(value => {
+                this.endEraField.setValue(value);
+            });
         });
     
         this.dayDropdown = this.createDropdown(datePart, "Day", 1, 31);
@@ -192,6 +198,7 @@ export class CalendarEvent extends Modal {
     
             this.endYearField = new TextComponent(div);
             this.endYearField.inputEl.addClass("form-input");
+            this.endYearField.inputEl.addClass("form-year-input");
             this.endYearField.setPlaceholder("e.g., 0100 for 100 AC, 0005 for 5 DC");
             this.endYearField.setValue(this.formatYear(this.initialDate.getFullYear()));
         });
