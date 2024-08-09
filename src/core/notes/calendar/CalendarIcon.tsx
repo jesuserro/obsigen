@@ -70,6 +70,7 @@ export const iconData: IconData = {
         heartbreak: ({ size }: IconProps) => <BsFillHeartbreakFill size={size} className="red" />,
         insomnia: ({ size }: IconProps) => <SiInsomnia size={size} className="grey" />,
         legs: ({ size }: IconProps) => <GiFemaleLegs size={size} className="yellow emoji" />,
+        nightmare: ({ size }: IconProps) => <CustomIcon size={size} className="grey" iconName="Nightmare" />,
         pill: ({ size }: IconProps) => <CiPill size={size} className="yellow" />,
         pilloff: ({ size }: IconProps) => <TbPillOff size={size} className="grey" />,
         sick: ({ size }: IconProps) => <MdSick size={size} className="yellow emoji" />,
