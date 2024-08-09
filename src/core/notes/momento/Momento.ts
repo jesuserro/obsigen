@@ -134,7 +134,8 @@ export class Momento {
     }
 
     convertDateToIsoString(date: Date) {
-        const year = date.getFullYear().toString().padStart(4, "0"); // Asegura que el año tenga 4 dígitos
+        // Manejo del año: si es AC, se representa como negativo en ISO 8601
+        const year = (date.getFullYear() < 0 ? `-${Math.abs(date.getFullYear()).toString().padStart(4, "0")}` : date.getFullYear().toString().padStart(4, "0"));
         const month = (date.getMonth() + 1).toString().padStart(2, "0");
         const day = date.getDate().toString().padStart(2, "0");
         const hours = date.getHours().toString().padStart(2, "0");
@@ -142,7 +143,7 @@ export class Momento {
         const seconds = date.getSeconds().toString().padStart(2, "0");
         return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
     }
-
+    
     async createNote(
         type: string,
         app: App,
@@ -182,8 +183,8 @@ export class Momento {
     }
 
     getPath(type: string) {
-        // Asegura que el año tenga 4 dígitos
-        const paddedYear = this.year.toString().padStart(4, "0");
+        // Asegura que el año tenga 4 dígitos y usa "_" para años AC
+        const paddedYear = (this.year < 0 ? `_${Math.abs(this.year).toString().padStart(4, "0")}` : this.year.toString().padStart(4, "0"));
         const pathFechaMomento = `100 Calendar/${paddedYear}/${this.month
             .toString()
             .padStart(2, "0")}/${this.day.toString().padStart(2, "0")}`;
@@ -278,7 +279,9 @@ dv.table(["Tiempo transcurrido"], [
     }
 
     getFilePrefix() {
-        return `${this.getCurrentDate()}${this.getCurrentTime()}`;
+        // Asegura que el año tenga 4 dígitos y usa "_" para años AC
+        const paddedYear = (this.year < 0 ? `_${Math.abs(this.year).toString().padStart(4, "0")}` : this.year.toString().padStart(4, "0"));
+        return `${paddedYear}${this.getCurrentDate().slice(4)}${this.getCurrentTime()}`;
     }
 
     getContent() {
