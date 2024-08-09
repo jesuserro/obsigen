@@ -9,16 +9,26 @@
     align-items: center; /* Alinea verticalmente los elementos */
 }
 
-/* Container styles */
-.form-container {
-    padding: 1rem;
+/* Container for date and time parts */
+.date-time-container {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
 }
 
-/* Label styles */
-.form-label {
-    font-weight: bold;
-    display: none; /* Oculta los labels de los DropdownComponentes */
+/* Date part styles */
+.date-part {
+    display: flex;
+    gap: 0.5rem; /* Añade un pequeño espacio entre los elementos */
+    align-items: center; /* Alinea los elementos horizontalmente */
+}
+
+/* Time part styles */
+.time-part {
+    display: flex;
+    gap: 0.5rem; /* Añade un pequeño espacio entre los elementos */
+    align-items: center; /* Alinea los elementos horizontalmente */
+    margin-left: auto; /* Empuja la sección de tiempo hacia la derecha */
 }
 
 /* Input styles */
@@ -27,8 +37,13 @@
     padding: 0.5rem;
     border-radius: 0.25rem;
     width: calc(100% - 1rem); /* Ocupa el 100% menos el margen derecho */
-    margin-right: 1%; /* Margen derecho del 1% */
     margin-bottom: 1rem;
+}
+
+/* Specific width for Year input fields */
+.form-year-input {
+    width: 5rem; /* Ajuste de tamaño para que quepan hasta 8 caracteres */
+    margin-right: 0; /* Elimina el margen derecho en este contexto */
 }
 
 /* Title input specific style */
@@ -43,15 +58,17 @@
     margin-right: 0.8rem; /* Añade una separación más clara entre el dropdown y la caja del año */
 }
 
+/* Label styles */
+.form-label {
+    font-weight: bold;
+    display: none; /* Oculta los labels de los DropdownComponentes */
+}
+
 /* Date fields adjustments */
 .date-fieldset .form-element {
     display: flex;
     align-items: center; /* Alinea verticalmente el dropdown y el input */
-}
-
-.date-fieldset .form-input {
-    width: 8ch; /* Ajusta la anchura para que quepan hasta 8 caracteres */
-    margin-right: 0; /* Elimina el margen derecho en este contexto */
+    flex-direction: row; /* Asegura que los elementos estén alineados horizontalmente */
 }
 
 /* Submit button styles */

@@ -154,47 +154,53 @@ export class CalendarEvent extends Modal {
     }
 
     private createDateFields(parent: HTMLElement) {
-        this.createFormElement(parent, "Year", (div) => {
-            // Create era dropdown (DC/AC)
+        const dateContainer = parent.createDiv({ cls: 'date-time-container' });
+        const datePart = dateContainer.createDiv({ cls: 'date-part' });
+        const timePart = dateContainer.createDiv({ cls: 'time-part' });
+    
+        this.createFormElement(datePart, "Year", (div) => {
             this.eraField = new DropdownComponent(div);
             this.eraField.addOption("DC", "DC");
             this.eraField.addOption("AC", "AC");
             this.eraField.setValue("DC");
     
-            // Create year input
             this.yearField = new TextComponent(div);
             this.yearField.inputEl.addClass("form-input");
             this.yearField.setPlaceholder("e.g., 0100 for 100 AC, 0005 for 5 DC");
             this.yearField.setValue(this.formatYear(this.initialDate.getFullYear()));
         });
     
-        this.dayDropdown = this.createDropdown(parent, "Day", 1, 31); // Día después del año
-        this.monthDropdown = this.createDropdown(parent, "Month", 1, 12); // Mes después del día
-        this.hourDropdown = this.createDropdown(parent, "Hour", 0, 23);
-        this.minuteDropdown = this.createDropdown(parent, "Minute", 0, 55, 5);
+        this.dayDropdown = this.createDropdown(datePart, "Day", 1, 31);
+        this.monthDropdown = this.createDropdown(datePart, "Month", 1, 12);
+    
+        this.hourDropdown = this.createDropdown(timePart, "Hour", 0, 23);
+        this.minuteDropdown = this.createDropdown(timePart, "Minute", 0, 55, 5);
     
         this.setDefaultDateTime(this.initialDate, this.monthDropdown, this.dayDropdown, this.hourDropdown, this.minuteDropdown);
     }
 
     private createEndDateFields(parent: HTMLElement) {
-        this.createFormElement(parent, "End Year", (div) => {
-            // Create end era dropdown (DC/AC)
+        const dateContainer = parent.createDiv({ cls: 'date-time-container' });
+        const datePart = dateContainer.createDiv({ cls: 'date-part' });
+        const timePart = dateContainer.createDiv({ cls: 'time-part' });
+    
+        this.createFormElement(datePart, "End Year", (div) => {
             this.endEraField = new DropdownComponent(div);
             this.endEraField.addOption("DC", "DC");
             this.endEraField.addOption("AC", "AC");
             this.endEraField.setValue("DC");
     
-            // Create end year input
             this.endYearField = new TextComponent(div);
             this.endYearField.inputEl.addClass("form-input");
             this.endYearField.setPlaceholder("e.g., 0100 for 100 AC, 0005 for 5 DC");
             this.endYearField.setValue(this.formatYear(this.initialDate.getFullYear()));
         });
     
-        this.endDayDropdown = this.createDropdown(parent, "End Day", 1, 31); // Día después del año
-        this.endMonthDropdown = this.createDropdown(parent, "End Month", 1, 12); // Mes después del día
-        this.endHourDropdown = this.createDropdown(parent, "End Hour", 0, 23);
-        this.endMinuteDropdown = this.createDropdown(parent, "End Minute", 0, 55, 5);
+        this.endDayDropdown = this.createDropdown(datePart, "End Day", 1, 31);
+        this.endMonthDropdown = this.createDropdown(datePart, "End Month", 1, 12);
+    
+        this.endHourDropdown = this.createDropdown(timePart, "End Hour", 0, 23);
+        this.endMinuteDropdown = this.createDropdown(timePart, "End Minute", 0, 55, 5);
     
         this.setDefaultDateTime(this.initialDate, this.endMonthDropdown, this.endDayDropdown, this.endHourDropdown, this.endMinuteDropdown);
     }
