@@ -170,20 +170,25 @@ export class CalendarEvent extends Modal {
             this.yearField.setPlaceholder("e.g., 0100 for 100 AC, 0005 for 5 DC");
             this.yearField.setValue(this.formatYear(this.initialDate.getFullYear()));
     
-            this.eraField.onChange(value => {
-                this.endEraField.setValue(value);
-            });
+            // Añadir listener para sincronizar la fecha final
+            this.yearField.onChange(() => this.syncEndDate());
+            this.eraField.onChange(() => this.syncEndDate());
         });
     
-        // Cambiar el orden de los dropdowns de mes y día
         this.monthDropdown = this.createDropdown(datePart, "Month", 1, 12);
+        this.monthDropdown.onChange(() => this.syncEndDate());
+    
         this.dayDropdown = this.createDropdown(datePart, "Day", 1, 31);
+        this.dayDropdown.onChange(() => this.syncEndDate());
     
         this.hourDropdown = this.createDropdown(timePart, "Hour", 0, 23);
+        this.hourDropdown.onChange(() => this.syncEndDate());
+    
         this.minuteDropdown = this.createDropdown(timePart, "Minute", 0, 55, 5);
+        this.minuteDropdown.onChange(() => this.syncEndDate());
     
         this.setDefaultDateTime(this.initialDate, this.monthDropdown, this.dayDropdown, this.hourDropdown, this.minuteDropdown);
-    }    
+    }
 
     private createEndDateFields(parent: HTMLElement) {
         const dateContainer = parent.createDiv({ cls: 'date-time-container' });
@@ -203,10 +208,8 @@ export class CalendarEvent extends Modal {
             this.endYearField.setValue(this.formatYear(this.initialDate.getFullYear()));
         });
     
-        // Cambiar el orden de los dropdowns de mes y día
         this.endMonthDropdown = this.createDropdown(datePart, "End Month", 1, 12);
         this.endDayDropdown = this.createDropdown(datePart, "End Day", 1, 31);
-    
         this.endHourDropdown = this.createDropdown(timePart, "End Hour", 0, 23);
         this.endMinuteDropdown = this.createDropdown(timePart, "End Minute", 0, 55, 5);
     
@@ -338,7 +341,8 @@ export class CalendarEvent extends Modal {
     private syncEndDate() {
         const startDate = this.getDateFromFields(this.yearField, this.eraField, this.monthDropdown, this.dayDropdown, this.hourDropdown, this.minuteDropdown);
         const endDate = this.getDateFromFields(this.endYearField, this.endEraField, this.endMonthDropdown, this.endDayDropdown, this.endHourDropdown, this.endMinuteDropdown);
-
+    
+        // Si la fecha final es anterior a la fecha inicial, ajustar la fecha final para que coincida con la fecha inicial
         if (endDate < startDate) {
             this.endYearField.setValue(this.yearField.getValue());
             this.endEraField.setValue(this.eraField.getValue());
@@ -347,7 +351,7 @@ export class CalendarEvent extends Modal {
             this.endHourDropdown.setValue(this.hourDropdown.getValue());
             this.endMinuteDropdown.setValue(this.minuteDropdown.getValue());
         }
-    }
+    }    
 }
 
 class TemplaterError extends Error {
