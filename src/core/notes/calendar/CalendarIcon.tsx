@@ -4,11 +4,11 @@ import Flag from 'react-flagkit';
 import { BiLogoGmail } from 'react-icons/bi';
 import { BsBookmarkStar, BsChatLeftQuoteFill, BsClockFill, BsCloudHaze2, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsPersonCircle, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiBookmark, CiCalendar, CiHeadphones, CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAngry, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader, FaBuilding, FaBus, FaCarSide, FaChalkboardTeacher, FaCheck, FaChess, FaCode, FaCross, FaDatabase, FaDog, FaEnvelope, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHandshake, FaHeadSideCough, FaHiking, FaHome, FaHotel, FaInstagram, FaKey, FaLaptop, FaLinkedin, FaMapMarkerAlt, FaPhone, FaPiggyBank, FaPizzaSlice, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRss, FaRunning, FaScroll, FaShip, FaSkype, FaSmile, FaSms, FaStar, FaSwimmingPool, FaTabletAlt, FaTaxi, FaTelegram, FaTired, FaTractor, FaTrain, FaTree, FaVenus, FaVoteYea, FaWpforms, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaAmazon, FaAngry, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader, FaBuilding, FaBus, FaCarSide, FaChalkboardTeacher, FaCheck, FaChess, FaCode, FaCross, FaDatabase, FaDog, FaEnvelope, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHandshake, FaHeadSideCough, FaHiking, FaHome, FaHotel, FaInstagram, FaKey, FaKissWinkHeart, FaLaptop, FaLinkedin, FaMapMarkerAlt, FaPhone, FaPiggyBank, FaPizzaSlice, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRegSadCry, FaRss, FaRunning, FaScroll, FaShip, FaSkype, FaSmile, FaSms, FaStar, FaSurprise, FaSwimmingPool, FaTabletAlt, FaTaxi, FaTelegram, FaTired, FaTractor, FaTrain, FaTree, FaVenus, FaVoteYea, FaWpforms, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaGift, FaHillRockslide, FaPeopleGroup, FaScissors, FaUserDoctor, FaVirusCovid } from 'react-icons/fa6';
 import { FcAndroidOs, FcCalendar, FcDataBackup, FcGoogle, FcPodiumWithSpeaker, FcSportsMode } from 'react-icons/fc';
 import { FiSmartphone } from 'react-icons/fi';
-import { GiAncientRuins, GiAngelWings, GiBank, GiBigDiamondRing, GiCakeSlice, GiChampions, GiChurch, GiCommercialAirplane, GiCook, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiGardeningShears, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiMiracleMedecine, GiMoneyStack, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPlantSeed, GiPlantWatering, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiSpikyExplosion, GiStrong, GiTheaterCurtains, GiThermometerCold, GiThreeFriends, GiTomato, GiVillage, GiWheat } from 'react-icons/gi';
+import { GiAncientRuins, GiAngelWings, GiBank, GiBigDiamondRing, GiBowlOfRice, GiCakeSlice, GiChampions, GiChurch, GiCommercialAirplane, GiCook, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiGardeningShears, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiMiracleMedecine, GiMoneyStack, GiNoodles, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPlantSeed, GiPlantWatering, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiSpikyExplosion, GiStrong, GiTheaterCurtains, GiThermometerCold, GiThreeFriends, GiTomato, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoIosRose, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdFlower, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
@@ -39,6 +39,7 @@ export const iconData: IconData = {
         angry: ({ size }: IconProps) => <FaAngry size={size} className="red" />,
         baby: ({ size }: IconProps) => <FaBaby size={size} className="blue ui" />,
         birthday: ({ size }: IconProps) => <FaBirthdayCake size={size} className="blue ui" />,
+        cry: ({ size }: IconProps) => <FaRegSadCry size={size} className="blue sky" />,
         dance: ({ size }: IconProps) => <CustomIcon size={size} className="yellow" iconName="Dance" />,
         family: ({ size }: IconProps) => <MdGroup size={size} className="yellow" />,
         friends: ({ size }: IconProps) => <GiThreeFriends size={size} className="orange" />,
@@ -46,6 +47,7 @@ export const iconData: IconData = {
         gluttony: ({ size }: IconProps) => <GiGluttony size={size} className="yellow emoji" />,
         happiness: ({ size }: IconProps) => <FaSmile size={size} className="yellow" />,
         inlove: ({ size }: IconProps) => <MdFavorite size={size} className="pink" />,
+        kiss: ({ size }: IconProps) => <FaKissWinkHeart size={size} className="yellow emoji" />,
         learning: ({ size }: IconProps) => <FaChalkboardTeacher size={size} className="yellow" />,
         party: ({ size }: IconProps) => <LuPartyPopper size={size} className="violet" />,
         people: ({ size }: IconProps) => <MdPeople size={size} className="grey" />,
@@ -54,6 +56,7 @@ export const iconData: IconData = {
         pumpkin: ({ size }: IconProps) => <GiPumpkinMask size={size} className="orange" />,
         sadness: ({ size }: IconProps) => <ImSad2 size={size} className="yellow emoji" />,
         sex: ({ size }: IconProps) => <FaVenus size={size} className="pink" />,
+        surprise: ({ size }: IconProps) => <FaSurprise size={size} className="yellow emoji" />,
         woman: ({ size }: IconProps) => <ImWoman size={size} className="pink" />
     },
     Health: {
@@ -202,21 +205,6 @@ export const iconData: IconData = {
         village: ({ size }: IconProps) => <GiVillage size={size} style={{ color: '#47ff6c' }} />,
         watering: ({ size }: IconProps) => <GiPlantWatering size={size} className="blue sky" />
     },
-    Sport: {
-        basketball: ({ size }: IconProps) => <FaBasketball size={size} className="orange" />,
-        champions: ({ size }: IconProps) => <GiChampions size={size} className="yellow" />,
-        chess: ({ size }: IconProps) => <FaChess size={size} className="white" />,
-        gym: ({ size }: IconProps) => <MdOutlineSportsGymnastics size={size} className="green" />,
-        hiking: ({ size }: IconProps) => <FaHiking size={size} className="green" />,
-        olympics: ({ size }: IconProps) => <CustomIcon size={size} className="green" iconName="Olympics" />,
-        orejona: ({ size }: IconProps) => <CustomIcon size={size} className="yellow" iconName="Orejona" />,
-        pool: ({ size }: IconProps) => <FaSwimmingPool size={size} className="blue sapphire" />,
-        realmadrid: ({ size }: IconProps) => <CustomIcon size={size} className="green" iconName="RealMadrid" />,
-        running: ({ size }: IconProps) => <FaRunning size={size} className="green" />,
-        soccer: ({ size }: IconProps) => <GiSoccerBall size={size} className="white" />,
-        sport: ({ size }: IconProps) => <FcSportsMode size={size} className="green" />,
-        tennis: ({ size }: IconProps) => <MdOutlineSportsTennis size={size} className="white" />
-    },
     Flags: {
         argentina: ({ size }: IconProps) => <Flag country='AR' size={size} className="" />,
         australia: ({ size }: IconProps) => <Flag country='AU' size={size} className="" />,
@@ -286,6 +274,15 @@ export const iconData: IconData = {
         saintwoman: ({ size }: IconProps) => <CustomIcon size={size} className="blue sky" iconName="SaintWoman" />,
         wedding: ({ size }: IconProps) => <CustomIcon size={size} className="pink" iconName="Wedding" />
     },
+    Transport: {
+        bus: ({ size }: IconProps) => <FaBus size={size} className="brown" />,
+        car: ({ size }: IconProps) => <FaCarSide size={size} className="red c3" />,
+        plane: ({ size }: IconProps) => <GiCommercialAirplane size={size} className='blue kindle' />,
+        ship: ({ size }: IconProps) => <FaShip size={size} className="blue kindle" />,
+        taxi: ({ size }: IconProps) => <FaTaxi size={size} className="yellow emoji"/>,
+        train: ({ size }: IconProps) => <FaTrain size={size} className="brown" />,
+        travel: ({ size }: IconProps) => <MdCardTravel size={size} className="brown" />
+    },
     Gastronomy: {
         beer: ({ size }: IconProps) => <IoIosBeer size={size} className="yellow emoji" />,
         cafe: ({ size }: IconProps) => <IoMdCafe size={size} className="yellow emoji" />,
@@ -297,16 +294,24 @@ export const iconData: IconData = {
         meat: ({ size }: IconProps) => <TbMeat size={size} className="red tomato" />,
         pancake: ({ size }: IconProps) => <CustomIcon size={size} iconName="Pancake" />,
         pizza: ({ size }: IconProps) => <FaPizzaSlice size={size} className="yellow emoji" />,
-        restaurant: ({ size }: IconProps) => <IoRestaurant size={size} className="yellow emoji" />
+        restaurant: ({ size }: IconProps) => <IoRestaurant size={size} className="yellow emoji" />,
+        rice: ({ size }: IconProps) => <GiBowlOfRice size={size} className="yellow emoji" />,
+        spaghetti: ({ size }: IconProps) => <GiNoodles size={size} className="yellow emoji" />,
     },
-    Transport: {
-        bus: ({ size }: IconProps) => <FaBus size={size} className="brown" />,
-        car: ({ size }: IconProps) => <FaCarSide size={size} className="red c3" />,
-        plane: ({ size }: IconProps) => <GiCommercialAirplane size={size} className='blue kindle' />,
-        ship: ({ size }: IconProps) => <FaShip size={size} className="blue kindle" />,
-        taxi: ({ size }: IconProps) => <FaTaxi size={size} className="yellow emoji"/>,
-        train: ({ size }: IconProps) => <FaTrain size={size} className="brown" />,
-        travel: ({ size }: IconProps) => <MdCardTravel size={size} className="brown" />
+    Sport: {
+        basketball: ({ size }: IconProps) => <FaBasketball size={size} className="orange" />,
+        champions: ({ size }: IconProps) => <GiChampions size={size} className="yellow" />,
+        chess: ({ size }: IconProps) => <FaChess size={size} className="white" />,
+        gym: ({ size }: IconProps) => <MdOutlineSportsGymnastics size={size} className="green" />,
+        hiking: ({ size }: IconProps) => <FaHiking size={size} className="green" />,
+        olympics: ({ size }: IconProps) => <CustomIcon size={size} className="green" iconName="Olympics" />,
+        orejona: ({ size }: IconProps) => <CustomIcon size={size} className="yellow" iconName="Orejona" />,
+        pool: ({ size }: IconProps) => <FaSwimmingPool size={size} className="blue sapphire" />,
+        realmadrid: ({ size }: IconProps) => <CustomIcon size={size} className="green" iconName="RealMadrid" />,
+        running: ({ size }: IconProps) => <FaRunning size={size} className="green" />,
+        soccer: ({ size }: IconProps) => <GiSoccerBall size={size} className="white" />,
+        sport: ({ size }: IconProps) => <FcSportsMode size={size} className="green" />,
+        tennis: ({ size }: IconProps) => <MdOutlineSportsTennis size={size} className="white" />
     },
     Others: {
         add: ({ size }: IconProps) => <MdOutlineAddCircle size={size} className="green" />,
