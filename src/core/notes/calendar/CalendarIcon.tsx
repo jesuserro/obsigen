@@ -8,7 +8,7 @@ import { FaAmazon, FaAngry, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader,
 import { FaBasketball, FaCamera, FaGift, FaHillRockslide, FaPeopleGroup, FaScissors, FaUserDoctor, FaVirusCovid } from 'react-icons/fa6';
 import { FcAndroidOs, FcCalendar, FcDataBackup, FcGoogle, FcPodiumWithSpeaker, FcSportsMode } from 'react-icons/fc';
 import { FiSmartphone } from 'react-icons/fi';
-import { GiAncientRuins, GiAngelWings, GiBank, GiBigDiamondRing, GiCakeSlice, GiChampions, GiChurch, GiCommercialAirplane, GiCook, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiGardeningShears, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiMiracleMedecine, GiMoneyStack, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPlantWatering, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiSpikyExplosion, GiStrong, GiTheaterCurtains, GiThermometerCold, GiThreeFriends, GiTomato, GiVillage, GiWheat } from 'react-icons/gi';
+import { GiAncientRuins, GiAngelWings, GiBank, GiBigDiamondRing, GiCakeSlice, GiChampions, GiChurch, GiCommercialAirplane, GiCook, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiGardeningShears, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiMiracleMedecine, GiMoneyStack, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPlantSeed, GiPlantWatering, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiSpikyExplosion, GiStrong, GiTheaterCurtains, GiThermometerCold, GiThreeFriends, GiTomato, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoIosRose, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdFlower, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
@@ -195,6 +195,7 @@ export const iconData: IconData = {
         plant: ({ size }: IconProps) => <PiPlant size={size} className="green tree" />,
         prunning: ({ size }: IconProps) => <GiGardeningShears size={size} className="green tree" />,
         rose: ({ size }: IconProps) => <IoIosRose size={size} className="red" />,
+        seed: ({ size }: IconProps) => <GiPlantSeed size={size} className="brown" />,
         tree: ({ size }: IconProps) => <FaTree size={size} className='green tree' />,
         tomato: ({ size }: IconProps) => <GiTomato size={size} className="red youtube" />,
         tractor: ({ size }: IconProps) => <FaTractor size={size} className="brown" />,
