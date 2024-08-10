@@ -82,6 +82,14 @@ export class Momento {
         return `${month}${day}`;
     }
 
+    getFullDate() {
+        const now = this.date;
+        const year = now.getFullYear().toString().padStart(4, "0");
+        const month = (now.getMonth() + 1).toString().padStart(2, "0");
+        const day = now.getDate().toString().padStart(2, "0");
+        return `${year}${month}${day}`;
+    }
+
     getCurrentAniversary() {
         const now = this.date;
         const month = (now.getMonth() + 1).toString().padStart(2, "0");
@@ -97,6 +105,7 @@ export class Momento {
     setYaml() {
         const link = `"[[${this.getCurrentDate()}]]"`; // Comillas dobles añadidas
         const anniversary = `"[[${this.getCurrentAniversary()}]]"`; // Comillas dobles añadidas
+        const fullDateLink = `"[[${this.getFullDate()}]]"`; // Comillas dobles añadidas para el enlace completo YYYYMMDD
         const dayOfWeek = this.getDayOfWeek();
 
         const data = {
@@ -106,7 +115,7 @@ export class Momento {
             dateEnd: this.dateEnd ? this.convertDateToIsoString(this.dateEnd) : "",
             duration: this.duration ? this.duration.toString() : "",
             dayOfWeek: dayOfWeek,
-            links: Array.from(new Set([...DATA_YAML_DEFAULT.links, link, anniversary])), // Evitar duplicados en los enlaces
+            links: Array.from(new Set([...DATA_YAML_DEFAULT.links, link, anniversary, fullDateLink])), // Evitar duplicados en los enlaces
             locations: this.getListForYamlProperty(this.locations, true),
             urls: this.getListForYamlProperty(this.urls),
             tags: [...DATA_YAML_DEFAULT.tags, this.tags],
