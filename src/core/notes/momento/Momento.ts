@@ -81,7 +81,7 @@ export class Momento {
         const day = now.getDate().toString().padStart(2, "0"); // Día con dos dígitos
         return `${month}${day}`;
     }
-    
+
     getCurrentAniversary() {
         const now = this.date;
         const month = (now.getMonth() + 1).toString().padStart(2, "0");
@@ -95,8 +95,8 @@ export class Momento {
     }
 
     setYaml() {
-        const link = `"[[${this.getCurrentDate()}]]"`;
-        const anniversary = `"[[${this.getCurrentAniversary()}]]"`;
+        const link = `"[[${this.getCurrentDate()}]]"`; // Comillas dobles añadidas
+        const anniversary = `"[[${this.getCurrentAniversary()}]]"`; // Comillas dobles añadidas
         const dayOfWeek = this.getDayOfWeek();
 
         const data = {
@@ -106,7 +106,7 @@ export class Momento {
             dateEnd: this.dateEnd ? this.convertDateToIsoString(this.dateEnd) : "",
             duration: this.duration ? this.duration.toString() : "",
             dayOfWeek: dayOfWeek,
-            links: [...DATA_YAML_DEFAULT.links, link, anniversary],
+            links: Array.from(new Set([...DATA_YAML_DEFAULT.links, link, anniversary])), // Evitar duplicados en los enlaces
             locations: this.getListForYamlProperty(this.locations, true),
             urls: this.getListForYamlProperty(this.urls),
             tags: [...DATA_YAML_DEFAULT.tags, this.tags],
@@ -142,7 +142,7 @@ export class Momento {
         const seconds = date.getSeconds().toString().padStart(2, "0");
         return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
     }
-    
+
     async createNote(
         type: string,
         app: App,
@@ -283,7 +283,7 @@ dv.table(["Tiempo transcurrido"], [
         // Concatena el año con la fecha completa (mes y día)
         return `${paddedYear}${this.getCurrentDate()}${this.getCurrentTime()}`;
     }
-    
+
     getContent() {
         return ``;
     }
