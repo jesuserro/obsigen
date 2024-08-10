@@ -19,7 +19,7 @@ import { PiFishSimpleBold as IconoPlentyoffish, PiButterflyFill, PiNotePencilBol
 import { RiEarthquakeFill, RiFridgeFill, RiMentalHealthFill } from "react-icons/ri";
 import { SiTinder as IconoTinder, SiDell, SiGimp, SiGooglemeet, SiInsomnia, SiLenovo, SiObsidian, SiOpenai, SiPlex, SiSamsung, SiSpotify, SiSynology, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { SlPicture } from "react-icons/sl";
-import { TbAppsFilled, TbBulbFilled, TbFishChristianity, TbPillOff, TbPills, TbZoomMoney, TbZzz } from 'react-icons/tb';
+import { TbAppsFilled, TbBulbFilled, TbFishChristianity, TbMeat, TbPillOff, TbPills, TbZoomMoney, TbZzz } from 'react-icons/tb';
 import CustomIcon from '../../../ui/CustomIcon';
 
 interface IconProps {
@@ -291,8 +291,10 @@ export const iconData: IconData = {
         cafe: ({ size }: IconProps) => <IoMdCafe size={size} className="yellow emoji" />,
         cake: ({ size }: IconProps) => <GiCakeSlice size={size} className="yellow emoji" />,
         cook: ({ size }: IconProps) => <GiCook size={size} className="white" />,
+        fish: ({ size }: IconProps) => <IconoPlentyoffish size={size} className="blue sky" />,
         friedeggs: ({ size }: IconProps) => <GiFriedEggs size={size} className="white" />,
         gastronomy: ({ size }: IconProps) => <MdRestaurant size={size} className='yellow emoji' />,
+        meat: ({ size }: IconProps) => <TbMeat size={size} className="red tomato" />,
         pancake: ({ size }: IconProps) => <CustomIcon size={size} iconName="Pancake" />,
         pizza: ({ size }: IconProps) => <FaPizzaSlice size={size} className="yellow emoji" />,
         restaurant: ({ size }: IconProps) => <IoRestaurant size={size} className="yellow emoji" />
