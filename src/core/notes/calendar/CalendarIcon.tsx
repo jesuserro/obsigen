@@ -8,14 +8,14 @@ import { FaAmazon, FaAngry, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader,
 import { FaBasketball, FaCamera, FaGift, FaHillRockslide, FaPeopleGroup, FaScissors, FaUserDoctor, FaVirusCovid } from 'react-icons/fa6';
 import { FcAndroidOs, FcCalendar, FcDataBackup, FcGoogle, FcPodiumWithSpeaker, FcSportsMode } from 'react-icons/fc';
 import { FiSmartphone } from 'react-icons/fi';
-import { GiAncientRuins, GiAngelWings, GiBank, GiCakeSlice, GiChampions, GiChurch, GiCommercialAirplane, GiCook, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiGardeningShears, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiMiracleMedecine, GiMoneyStack, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiSpikyExplosion, GiStrong, GiTheaterCurtains, GiThermometerCold, GiThreeFriends, GiTomato, GiVillage, GiWheat } from 'react-icons/gi';
+import { GiAncientRuins, GiAngelWings, GiBank, GiBigDiamondRing, GiCakeSlice, GiChampions, GiChurch, GiCommercialAirplane, GiCook, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiGardeningShears, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiMiracleMedecine, GiMoneyStack, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPlantWatering, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiSpikyExplosion, GiStrong, GiTheaterCurtains, GiThermometerCold, GiThreeFriends, GiTomato, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoIosRose, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdFlower, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
 import { IoFootsteps, IoHardwareChip, IoRestaurant, IoThunderstorm } from 'react-icons/io5';
 import { LuPartyPopper } from 'react-icons/lu';
 import { MdBackup, MdBuild, MdCancel, MdCardTravel, MdCastle, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdOutlineSportsTennis, MdPeople, MdPiano, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
-import { PiFishSimpleBold as IconoPlentyoffish, PiButterflyFill, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiThermometerCold, PiThermometerHot } from 'react-icons/pi';
+import { PiFishSimpleBold as IconoPlentyoffish, PiButterflyFill, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiPlant, PiThermometerCold, PiThermometerHot } from 'react-icons/pi';
 import { RiEarthquakeFill, RiFridgeFill, RiMentalHealthFill } from "react-icons/ri";
 import { SiTinder as IconoTinder, SiDell, SiGimp, SiGooglemeet, SiInsomnia, SiLenovo, SiObsidian, SiOpenai, SiPlex, SiSamsung, SiSpotify, SiSynology, SiTwitter, SiWhatsapp } from 'react-icons/si';
 import { SlPicture } from "react-icons/sl";
@@ -192,12 +192,14 @@ export const iconData: IconData = {
         dog: ({ size }: IconProps) => <FaDog size={size} className="brown" />,
         farmer: ({ size }: IconProps) => <GiFarmer size={size} className="brown" />,
         flower: ({ size }: IconProps) => <IoMdFlower size={size} className="yellow" />,
+        plant: ({ size }: IconProps) => <PiPlant size={size} className="green tree" />,
         prunning: ({ size }: IconProps) => <GiGardeningShears size={size} className="green tree" />,
         rose: ({ size }: IconProps) => <IoIosRose size={size} className="red" />,
         tree: ({ size }: IconProps) => <FaTree size={size} className='green tree' />,
         tomato: ({ size }: IconProps) => <GiTomato size={size} className="red youtube" />,
         tractor: ({ size }: IconProps) => <FaTractor size={size} className="brown" />,
-        village: ({ size }: IconProps) => <GiVillage size={size} style={{ color: '#47ff6c' }} />
+        village: ({ size }: IconProps) => <GiVillage size={size} style={{ color: '#47ff6c' }} />,
+        watering: ({ size }: IconProps) => <GiPlantWatering size={size} className="blue sky" />
     },
     Sport: {
         basketball: ({ size }: IconProps) => <FaBasketball size={size} className="orange" />,
@@ -345,6 +347,7 @@ export const iconData: IconData = {
         question: ({ size }: IconProps) => <FaQuestionCircle size={size} className="orange" />,
         quote: ({ size }: IconProps) => <FaQuoteLeft size={size} className="yellow" />,
         review: ({ size }: IconProps) => <BsBookmarkStar size={size} className="yellow" />,
+        ring: ({ size }: IconProps) => <GiBigDiamondRing size={size} className="white" />,
         scissors: ({ size }: IconProps) => <FaScissors size={size} className="orange" />,
         theater: ({ size }: IconProps) => <GiTheaterCurtains size={size} className="violet" />,
         watchsand: ({ size }: IconProps) => <GiSandsOfTime size={size} className="yellow" />,
