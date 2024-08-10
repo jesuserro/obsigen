@@ -169,21 +169,21 @@ export class CalendarEvent extends Modal {
             this.yearField.inputEl.addClass("form-year-input");
             this.yearField.setPlaceholder("e.g., 0100 for 100 AC, 0005 for 5 DC");
             this.yearField.setValue(this.formatYear(this.initialDate.getFullYear()));
-
-            // Evento onChange para sincronizar con el dropdown de endEraField
+    
             this.eraField.onChange(value => {
                 this.endEraField.setValue(value);
             });
         });
     
-        this.dayDropdown = this.createDropdown(datePart, "Day", 1, 31);
+        // Cambiar el orden de los dropdowns de mes y día
         this.monthDropdown = this.createDropdown(datePart, "Month", 1, 12);
+        this.dayDropdown = this.createDropdown(datePart, "Day", 1, 31);
     
         this.hourDropdown = this.createDropdown(timePart, "Hour", 0, 23);
         this.minuteDropdown = this.createDropdown(timePart, "Minute", 0, 55, 5);
     
         this.setDefaultDateTime(this.initialDate, this.monthDropdown, this.dayDropdown, this.hourDropdown, this.minuteDropdown);
-    }
+    }    
 
     private createEndDateFields(parent: HTMLElement) {
         const dateContainer = parent.createDiv({ cls: 'date-time-container' });
@@ -203,8 +203,9 @@ export class CalendarEvent extends Modal {
             this.endYearField.setValue(this.formatYear(this.initialDate.getFullYear()));
         });
     
-        this.endDayDropdown = this.createDropdown(datePart, "End Day", 1, 31);
+        // Cambiar el orden de los dropdowns de mes y día
         this.endMonthDropdown = this.createDropdown(datePart, "End Month", 1, 12);
+        this.endDayDropdown = this.createDropdown(datePart, "End Day", 1, 31);
     
         this.endHourDropdown = this.createDropdown(timePart, "End Hour", 0, 23);
         this.endMinuteDropdown = this.createDropdown(timePart, "End Minute", 0, 55, 5);

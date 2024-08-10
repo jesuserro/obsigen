@@ -16,11 +16,12 @@
     width: 100%;
 }
 
-/* Date part styles */
+/* Asegúrate de que los dropdowns estén alineados correctamente */
 .date-part {
     display: flex;
-    gap: 0.5rem; /* Añade un pequeño espacio entre los elementos */
-    align-items: center; /* Alinea los elementos horizontalmente */
+    gap: 0.5rem;
+    align-items: center;
+    flex-direction: row;
 }
 
 /* Time part styles */
