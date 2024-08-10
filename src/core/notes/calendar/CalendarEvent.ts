@@ -225,11 +225,16 @@ export class CalendarEvent extends Modal {
     private setDefaultDateTime(date: Date, monthDropdown: DropdownComponent, dayDropdown: DropdownComponent, hourDropdown: DropdownComponent, minuteDropdown: DropdownComponent) {
         const now = new Date();
         const currentMinutes = now.getMinutes();
-        const roundedMinutes = Math.ceil(currentMinutes / 5) * 5;
-
+        let roundedMinutes = Math.ceil(currentMinutes / 5) * 5;
+    
         monthDropdown.setValue((date.getMonth() + 1).toString().padStart(2, "0"));
         dayDropdown.setValue(date.getDate().toString().padStart(2, "0"));
         hourDropdown.setValue(now.getHours().toString().padStart(2, "0"));
+    
+        // Verificamos si el valor redondeado está fuera de los 60 minutos, y ajustamos en consecuencia
+        if (roundedMinutes >= 60) {
+            roundedMinutes = 0;
+        }
         minuteDropdown.setValue(roundedMinutes.toString().padStart(2, "0"));
     }
 
