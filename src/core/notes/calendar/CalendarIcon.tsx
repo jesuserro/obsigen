@@ -8,12 +8,12 @@ import { FaAmazon, FaAngry, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader,
 import { FaBasketball, FaCamera, FaGift, FaHillRockslide, FaPeopleGroup, FaScissors, FaUserDoctor, FaVirusCovid } from 'react-icons/fa6';
 import { FcAndroidOs, FcCalendar, FcDataBackup, FcGoogle, FcPodiumWithSpeaker, FcSportsMode } from 'react-icons/fc';
 import { FiSmartphone } from 'react-icons/fi';
-import { GiAncientRuins, GiAngelWings, GiBank, GiBigDiamondRing, GiBowlOfRice, GiCakeSlice, GiChampions, GiChurch, GiCommercialAirplane, GiCook, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiGardeningShears, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiMiracleMedecine, GiMoneyStack, GiNoodles, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPlantSeed, GiPlantWatering, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiSpikyExplosion, GiStrong, GiTheaterCurtains, GiThermometerCold, GiThreeFriends, GiTomato, GiVillage, GiWheat } from 'react-icons/gi';
+import { GiAncientRuins, GiAngelWings, GiBank, GiBigDiamondRing, GiBowlOfRice, GiCakeSlice, GiChampions, GiChurch, GiCommercialAirplane, GiCook, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiFruitBowl, GiGardeningShears, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiMiracleMedecine, GiMoneyStack, GiNoodles, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPlantSeed, GiPlantWatering, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiSpikyExplosion, GiStrong, GiTheaterCurtains, GiThermometerCold, GiThreeFriends, GiTomato, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
 import { ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoIosRose, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdFlower, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
 import { IoFootsteps, IoHardwareChip, IoRestaurant, IoThunderstorm } from 'react-icons/io5';
-import { LuPartyPopper } from 'react-icons/lu';
+import { LuPartyPopper, LuSalad } from 'react-icons/lu';
 import { MdBackup, MdBuild, MdCancel, MdCardTravel, MdCastle, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdOutlineSportsTennis, MdPeople, MdPiano, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiButterflyFill, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiPlant, PiThermometerCold, PiThermometerHot } from 'react-icons/pi';
 import { RiEarthquakeFill, RiFridgeFill, RiMentalHealthFill } from "react-icons/ri";
@@ -290,12 +290,14 @@ export const iconData: IconData = {
         cook: ({ size }: IconProps) => <GiCook size={size} className="white" />,
         fish: ({ size }: IconProps) => <IconoPlentyoffish size={size} className="blue sky" />,
         friedeggs: ({ size }: IconProps) => <GiFriedEggs size={size} className="white" />,
+        fruit: ({ size }: IconProps) => <GiFruitBowl size={size} className="yellow emoji" />,
         gastronomy: ({ size }: IconProps) => <MdRestaurant size={size} className='yellow emoji' />,
         meat: ({ size }: IconProps) => <TbMeat size={size} className="red tomato" />,
         pancake: ({ size }: IconProps) => <CustomIcon size={size} iconName="Pancake" />,
         pizza: ({ size }: IconProps) => <FaPizzaSlice size={size} className="yellow emoji" />,
         restaurant: ({ size }: IconProps) => <IoRestaurant size={size} className="yellow emoji" />,
         rice: ({ size }: IconProps) => <GiBowlOfRice size={size} className="yellow emoji" />,
+        salad: ({ size }: IconProps) => <LuSalad size={size} className="green tree" />,
         spaghetti: ({ size }: IconProps) => <GiNoodles size={size} className="yellow emoji" />,
     },
     Sport: {
