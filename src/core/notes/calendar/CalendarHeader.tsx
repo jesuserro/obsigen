@@ -16,7 +16,9 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
     <>
       <div className="header-container">
         <button onClick={onAddEvent}>Add Event</button>
-        <CalendarYearSelect currentYear={currentYear} onChange={onYearChange} />
+        <div className="year-selector-container">
+          <CalendarYearSelect currentYear={currentYear} onChange={onYearChange} />
+        </div>
       </div>
     </>
   );
