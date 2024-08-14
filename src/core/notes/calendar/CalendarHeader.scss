@@ -8,3 +8,10 @@
   align-items: center; /* Alinea los elementos verticalmente */
   border-radius: 10px;
 }
+
+.year-selector-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea el selector a la derecha */
+    align-items: center;
+    flex-grow: 1; /* Permite que el contenedor crezca para ocupar el espacio disponible */
+  }
