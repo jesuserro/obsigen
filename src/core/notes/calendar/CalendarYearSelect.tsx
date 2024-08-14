@@ -5,11 +5,35 @@ interface CalendarYearSelectProps {
   onChange: (year: number) => void;
 }
 
+const generateYears = (): string[] => {
+  const years: string[] = [];
+
+  // Agregar años antes de Cristo
+  for (let i = 500; i >= 1; i--) {
+    years.push(`${i} AC`);
+  }
+
+  // Agregar años después de Cristo
+  for (let i = 1; i <= 2030; i++) {
+    years.push(`${i} DC`);
+  }
+
+  return years;
+};
+
 function CalendarYearSelect({ currentYear, onChange }: CalendarYearSelectProps): JSX.Element {
-  const years = Array.from({ length: 2030 - 1897 }, (_, index) => 2029 - index + 1); 
+  const years = generateYears();
 
   const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedYear = parseInt(event.target.value, 10);
+    const selectedValue = event.target.value;
+    let selectedYear: number;
+
+    if (selectedValue.includes('AC')) {
+      selectedYear = -parseInt(selectedValue.replace(' AC', ''), 10);
+    } else {
+      selectedYear = parseInt(selectedValue.replace(' DC', ''), 10);
+    }
+
     onChange(selectedYear);
   };
 
@@ -22,6 +46,11 @@ function CalendarYearSelect({ currentYear, onChange }: CalendarYearSelectProps):
           </option>
         ))}
       </select>
+      <input
+        type="number"
+        placeholder="Enter year"
+        onChange={(e) => onChange(parseInt(e.target.value, 10))}
+      />
     </>
   );
 }
