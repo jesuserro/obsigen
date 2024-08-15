@@ -61,10 +61,20 @@ const getCalendarEvent = (year: number, month: number, dayCounter: number, index
 
 const CalendarDay = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes, app }: CalendarDayProps) => {
   
-  const fnEventForm = async () => {
-    const date = `${year}-${month}-${dayCounter}`;
-    await new CalendarEvent(app, new Date(date)).openModal();
-  };
+    const fnEventForm = async () => {
+        // Crear manualmente la fecha para años menores a 1000 d.C.
+        const date = new Date();
+        date.setFullYear(year);  // Ajustamos el año manualmente
+        date.setMonth(month - 1);  // Restamos 1 porque los meses en JavaScript son de 0 a 11
+        date.setDate(dayCounter);  // Ajustamos el día
+    
+        // Aseguramos que las horas, minutos y segundos estén en cero para evitar problemas de hora
+        date.setHours(0, 0, 0, 0);
+    
+        console.log('date', `${year}-${month}-${dayCounter}`, date);
+    
+        await new CalendarEvent(app, date).openModal();
+    };
 
   const icon = CalendarIcon.getIcon("add", 18);
 
