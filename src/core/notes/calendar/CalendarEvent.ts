@@ -162,13 +162,15 @@ export class CalendarEvent extends Modal {
             this.eraField = new DropdownComponent(div);
             this.eraField.addOption("DC", "DC");
             this.eraField.addOption("AC", "AC");
-            this.eraField.setValue("DC");
+    
+            const yearValue = this.initialDate.getFullYear();
+            this.eraField.setValue(yearValue < 0 ? "AC" : "DC");
     
             this.yearField = new TextComponent(div);
             this.yearField.inputEl.addClass("form-input");
             this.yearField.inputEl.addClass("form-year-input");
             this.yearField.setPlaceholder("e.g., 0100 for 100 AC, 0005 for 5 DC");
-            this.yearField.setValue(this.formatYear(this.initialDate.getFullYear()));
+            this.yearField.setValue(this.formatYear(Math.abs(yearValue)));
     
             // Añadir listener para sincronizar la fecha final
             this.yearField.onChange(() => this.syncEndDate());
@@ -199,13 +201,15 @@ export class CalendarEvent extends Modal {
             this.endEraField = new DropdownComponent(div);
             this.endEraField.addOption("DC", "DC");
             this.endEraField.addOption("AC", "AC");
-            this.endEraField.setValue("DC");
+    
+            const endYearValue = this.initialDate.getFullYear();
+            this.endEraField.setValue(endYearValue < 0 ? "AC" : "DC");
     
             this.endYearField = new TextComponent(div);
             this.endYearField.inputEl.addClass("form-input");
             this.endYearField.inputEl.addClass("form-year-input");
             this.endYearField.setPlaceholder("e.g., 0100 for 100 AC, 0005 for 5 DC");
-            this.endYearField.setValue(this.formatYear(this.initialDate.getFullYear()));
+            this.endYearField.setValue(this.formatYear(Math.abs(endYearValue)));
         });
     
         this.endMonthDropdown = this.createDropdown(datePart, "End Month", 1, 12);
@@ -230,6 +234,7 @@ export class CalendarEvent extends Modal {
         const currentMinutes = now.getMinutes();
         let roundedMinutes = Math.ceil(currentMinutes / 5) * 5;
     
+        // Ajustamos los campos del dropdown usando la fecha proporcionada
         monthDropdown.setValue((date.getMonth() + 1).toString().padStart(2, "0"));
         dayDropdown.setValue(date.getDate().toString().padStart(2, "0"));
         hourDropdown.setValue(now.getHours().toString().padStart(2, "0"));
@@ -245,7 +250,7 @@ export class CalendarEvent extends Modal {
         let yearValue = parseInt(yearField.getValue().trim());
         const isBC = eraField.getValue() === "AC";
         if (isBC) {
-            yearValue = -yearValue;
+            yearValue = -yearValue; // Si es AC, convertimos el año a negativo
         }
     
         const month = parseInt(monthDropdown.getValue().padStart(2, "0")) - 1; // Los meses van de 0 a 11
@@ -253,7 +258,7 @@ export class CalendarEvent extends Modal {
         const hour = parseInt(hourDropdown.getValue().padStart(2, "0"));
         const minute = parseInt(minuteDropdown.getValue().padStart(2, "0"));
     
-        // Asegurar que los valores son válidos antes de crear la fecha
+        // Aseguramos que los valores son válidos antes de crear la fecha
         if (isNaN(yearValue) || isNaN(month) || isNaN(day) || isNaN(hour) || isNaN(minute)) {
             throw new Error("Invalid date component values");
         }
