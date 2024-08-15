@@ -127,90 +127,95 @@ function createDayState(file: TFile, year: number, month: number, day: number, c
 }
 
 function getDayNotes(app: App, metadataCache: MetadataCache, files: TFile[], dayIndex: number, year: number, month: number): TFile[] {
+    const dayPadded = String(dayIndex).padStart(2, '0');
+    const monthPadded = String(month).padStart(2, '0');
+    
+    // Crear las fechas correctamente usando setFullYear para manejar años AC y DC
+    const dayDateDashed = `${year}-${monthPadded}-${dayPadded}`;
+    const dailyPath = `100 Calendar/${year}/${monthPadded}/${dayPadded}.md`;
   
-  const dayPadded = String(dayIndex).padStart(2, '0');
-  const monthPadded = String(month).padStart(2, '0');
-  const dayDate = `${year}${monthPadded}${dayPadded}`;
-  const dayDateDashed = `${year}-${monthPadded}-${dayPadded}`;
-  const dailyPath = `100 Calendar/${year}/${monthPadded}/${dayDate}.md`;
-
-  const [dayStates, setDayStates] = useState<({ file:TFile, year: number; month: number; day: number; cssclasses: [] })[]>([]);
-
-  useEffect(() => {
-    const handleNoteChange = (file: TFile) => {
-      if (isNoteRelatedToDay(metadataCache, file, year, month, dayIndex)) {
-        const cssclasses = metadataCache.getFileCache(file)?.frontmatter?.cssclasses || [];
-        const state = createDayState(file, year, month, dayIndex, cssclasses || []);
-        const dayStateIndex = dayStates.findIndex((dayState) =>
-          isDayState(dayState) && // Comprobar si es un objeto de estado
-          dayState.year === state.year &&
-          dayState.month === state.month &&
-          dayState.day === state.day &&
-          dayState.cssclasses === state.cssclasses
-        );
-
-        if (dayStateIndex === -1) {
-          setDayStates((prevStates) => [...prevStates, state]);
-        } else {
-          setDayStates((prevStates) => [
-            ...prevStates.slice(0, dayStateIndex),
-            state,
-            ...prevStates.slice(dayStateIndex + 1),
-          ]);
+    const [dayStates, setDayStates] = useState<({ file: TFile, year: number; month: number; day: number; cssclasses: [] })[]>([]);
+  
+    useEffect(() => {
+      const handleNoteChange = (file: TFile) => {
+        if (isNoteRelatedToDay(metadataCache, file, year, month, dayIndex)) {
+          const cssclasses = metadataCache.getFileCache(file)?.frontmatter?.cssclasses || [];
+          const state = createDayState(file, year, month, dayIndex, cssclasses || []);
+          const dayStateIndex = dayStates.findIndex((dayState) =>
+            isDayState(dayState) && 
+            dayState.year === state.year &&
+            dayState.month === state.month &&
+            dayState.day === state.day &&
+            JSON.stringify(dayState.cssclasses) === JSON.stringify(state.cssclasses) // Comparar objetos de manera efectiva
+          );
+  
+          if (dayStateIndex === -1) {
+            setDayStates((prevStates) => [...prevStates, state]);
+          } else {
+            setDayStates((prevStates) => [
+              ...prevStates.slice(0, dayStateIndex),
+              state,
+              ...prevStates.slice(dayStateIndex + 1),
+            ]);
+          }
         }
-      }
-    };
-
-    app.vault.on("delete", (file) => {
+      };
+  
+      app.vault.on("delete", (file) => {
         if (!(file instanceof TFile)) return;
-        
+  
         if (isNoteRelatedToDayDelete(file, year, month, dayIndex)) {
-          // Llama a handleNoteChange para manejar la eliminación del archivo
           handleNoteChange(file);
         }
-    })
-    
-    metadataCache.on('changed', handleNoteChange);
-
-    return () => {
-      metadataCache.off('changed', handleNoteChange);
-    };
-  }, [year, month, dayIndex, dayStates]);
-
-  const dayNotes = files.filter((file) => {
-    const path = file.path;
-    if (path == dailyPath || path.includes('/Aniversaries/')) {
-      return false;
-    }
-    const eventDate = metadataCache.getFileCache(file)?.frontmatter?.date;
-    if (typeof eventDate === 'string' && eventDate.includes(dayDateDashed)) {
-      return true;
-    }
-
-    return false;
-  });
-
-  // Crea un nuevo array que combina elementos de dayNotes con sus estados correspondientes
-  const dayNotesWithStates = dayNotes.map((file) => {
-    const dayState = dayStates.find((state) =>
-      isDayState(state) && // Comprobar si es un objeto de estado
-      state.year === year &&
-      state.month === month &&
-      state.day === dayIndex
-    );
-
-    if (dayState) {
-      return {
-        ...file,
-        dayState: dayState as { year: number; month: number; day: number; cssclasses: [] }, // Cast a { year: number; month: number; day: number; cssclasses: [] }
+      });
+  
+      metadataCache.on('changed', handleNoteChange);
+  
+      return () => {
+        metadataCache.off('changed', handleNoteChange);
       };
-    } else {
-      return file;
-    }
-  });
-
-  return dayNotesWithStates;
-}
+    }, [year, month, dayIndex, dayStates]);
+  
+    const dayNotes = files.filter((file) => {
+      const path = file.path;
+      if (path === dailyPath || path.includes('/Aniversaries/')) {
+        return false;
+      }
+      const eventDate = metadataCache.getFileCache(file)?.frontmatter?.date;
+      
+      if (typeof eventDate === 'string') {
+        const eventYear = parseInt(eventDate.substring(0, 4));
+        const eventMonth = parseInt(eventDate.substring(5, 7));
+        const eventDay = parseInt(eventDate.substring(8, 10));
+  
+        // Comparar correctamente para años negativos (AC) y positivos (DC)
+        return eventYear === year && eventMonth === month && eventDay === dayIndex;
+      }
+  
+      return false;
+    });
+  
+    // Crea un nuevo array que combina elementos de dayNotes con sus estados correspondientes
+    const dayNotesWithStates = dayNotes.map((file) => {
+      const dayState = dayStates.find((state) =>
+        isDayState(state) &&
+        state.year === year &&
+        state.month === month &&
+        state.day === dayIndex
+      );
+  
+      if (dayState) {
+        return {
+          ...file,
+          dayState: dayState as { year: number; month: number; day: number; cssclasses: [] },
+        };
+      } else {
+        return file;
+      }
+    });
+  
+    return dayNotesWithStates;
+  }  
 
 // Función auxiliar para verificar si es un objeto de estado
 function isDayState(obj: TFile | { year: number; month: number; day: number; cssclasses: [] }): obj is { year: number; month: number; day: number; cssclasses: [] } {
