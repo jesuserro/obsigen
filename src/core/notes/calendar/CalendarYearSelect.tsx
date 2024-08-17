@@ -17,6 +17,18 @@ function CalendarYearSelect({ currentYear, onChange }: CalendarYearSelectProps):
 
   // Guardar el año en el historial cuando el usuario salga del input
   const handleYearBlur = () => {
+    saveYear();
+  };
+
+  // Guardar el año en el historial cuando el usuario presiona ENTER
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      saveYear();
+    }
+  };
+
+  // Función para guardar el año en el historial
+  const saveYear = () => {
     const newYear = parseInt(year.toString(), 10);
     if (!isNaN(newYear)) {
       const newHistory = yearHistory.slice(0, currentIndex + 1); // Corta el historial en el índice actual
@@ -86,6 +98,7 @@ function CalendarYearSelect({ currentYear, onChange }: CalendarYearSelectProps):
         value={year}
         onChange={handleYearChange}
         onBlur={handleYearBlur} // Se guarda el año al salir del input
+        onKeyDown={handleKeyDown} // Se guarda el año al presionar ENTER
       />
       <button onClick={handleRedo} className="redo-button" disabled={currentIndex >= yearHistory.length - 1}>
         &#8594;
