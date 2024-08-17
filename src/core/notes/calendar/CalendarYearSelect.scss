@@ -1,11 +1,26 @@
 input[type="number"] {
     padding: 5px;
     font-size: 14px;
-    width: 100px; /* Ajusta la anchura del campo de entrada numérico */
+    width: 50px; /* Ajusta la anchura del campo de entrada numérico */
     margin-left: 10px;
     background-color: #2e2e2e; /* Fondo oscuro */
     color: #ffffff; /* Texto blanco para contraste en el tema oscuro */
     border: 1px solid #555; /* Borde más oscuro */
     border-radius: 5px;
+  }
+  
+  button.clear-button {
+    margin-left: 5px;
+    padding: 5px;
+    background-color: #2e2e2e; /* Color de fondo rojo */
+    color: #ffffff; /* Color de texto blanco */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  button.clear-button:hover {
+    background-color: #cc0000; /* Cambia el color al pasar el ratón */
   }
   
