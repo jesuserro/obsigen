@@ -1,3 +1,9 @@
+.calendar-year-select {
+	display: flex;
+	align-items: center; /* Alinea verticalmente los elementos en el centro */
+	justify-content: flex-start; /* Alinea horizontalmente los elementos al inicio */
+}
+
 .calendar-year-select input[type="text"] {
 	padding: 5px;
 	font-size: 14px;
@@ -18,6 +24,7 @@
 	border-radius: 5px;
 	cursor: pointer;
 	font-size: 14px;
+	margin-left: 10px; /* Espaciado entre botones */
 }
 
 .calendar-year-select button.revert-button:disabled,
@@ -29,10 +36,6 @@
 .calendar-year-select button.revert-button:hover:not(:disabled),
 .calendar-year-select button.redo-button:hover:not(:disabled) {
 	background-color: #0056b3; /* Cambia el color al pasar el ratón */
-}
-
-.calendar-year-select button.redo-button {
-	margin-left: 10px; /* Espaciado a la izquierda del input */
 }
 
 .calendar-year-select button.clear-button {
