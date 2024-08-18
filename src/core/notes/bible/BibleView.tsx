@@ -13,8 +13,11 @@ const BibleView: React.FC = () => {
             <div className="chapters-grid">
               {Object.entries(data.chapters).map(([chapterNumber, chapterInfo]) => (
                 <div key={chapterNumber} className="chapter-container">
-                  {/* Mostrar solo el número del capítulo y el título */}
-                  <h3>{chapterNumber}</h3>
+                  {/* Mostrar el número del capítulo con el número de versículos en un subíndice */}
+                  <h3>
+                    {chapterNumber}
+                    <sub>{chapterInfo.verseCount}</sub>
+                  </h3>
                   <p>{chapterInfo.title}</p>
                   <div className="events-container">
                     {/* Mostrar los eventos como puntos de colores con un tooltip */}

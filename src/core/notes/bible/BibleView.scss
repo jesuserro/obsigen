@@ -29,6 +29,17 @@
     text-align: center;
   }
   
+  h3 {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  h3 sub {
+    font-size: 12px;
+    vertical-align: text-top; /* Alinea el subíndice con el texto principal */
+    margin-left: 5px; /* Espacio entre el número del capítulo y el subíndice */
+  }
+  
   .events-container {
     margin-top: 5px;
   }
