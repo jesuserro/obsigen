@@ -34,10 +34,16 @@
   }
   
   .event-icon {
-    background-color: rebeccapurple; /* Color del icono del evento */
+    width: 12px;
+    height: 12px;
+    background-color: #007bff; /* Color del punto de evento */
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    margin: 5px auto;
+    display: inline-block;
+    margin: 5px 2px; /* Ajusta el espaciado */
+    cursor: pointer;
+  }
+  
+  .event-icon:hover {
+    background-color: #0056b3; /* Cambia el color al pasar el ratón */
   }
   

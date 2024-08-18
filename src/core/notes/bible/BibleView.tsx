@@ -8,18 +8,27 @@ const BibleView: React.FC = () => {
       <div className="books-grid">
         {Object.entries(bibleStructure).map(([book, data]) => (
           <div key={book} className="book-container">
-            <h2>{book}</h2>
+            {/* Título del libro con el número de capítulos entre paréntesis */}
+            <h2>{book} ({data.chapterCount})</h2>
             <div className="chapters-grid">
-              {Array.from({ length: data.chapters }, (_, i) => i + 1).map((chapter) => (
-                <div key={chapter} className="chapter-container">
-                  <span>Capítulo {chapter}</span>
-                  {/* Aquí eventualmente se añadirán los eventos del capítulo */}
+              {Object.entries(data.chapters).map(([chapterNumber, chapterInfo]) => (
+                <div key={chapterNumber} className="chapter-container">
+                  {/* Mostrar solo el número del capítulo y el título */}
+                  <h3>{chapterNumber}</h3>
+                  <p>{chapterInfo.title}</p>
                   <div className="events-container">
-                    {data.events[chapter]?.map((event, index) => (
-                      <div key={index} className="event-icon">
-                        {/* Renderizar el icono del evento */}
-                      </div>
-                    )) || <span>Sin eventos</span>}
+                    {/* Mostrar los eventos como puntos de colores con un tooltip */}
+                    {chapterInfo.events.length > 0 ? (
+                      chapterInfo.events.map((event, index) => (
+                        <div
+                          key={index}
+                          className="event-icon"
+                          title={event.title} // Tooltip con el texto del evento
+                        />
+                      ))
+                    ) : (
+                      <span>Sin eventos</span>
+                    )}
                   </div>
                 </div>
               ))}
