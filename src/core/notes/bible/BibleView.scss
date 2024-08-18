@@ -1,0 +1,43 @@
+.bible-view-container {
+    padding: 20px;
+    color: #ffffff;
+    background-color: #2e2e2e; /* Fondo oscuro */
+  }
+  
+  .books-grid {
+    display: flex;
+    flex-direction: column; /* Apilamos los libros verticalmente */
+    gap: 20px; /* Espacio entre libros */
+  }
+  
+  .book-container {
+    border: 1px solid #555; /* Borde oscuro */
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Distribución de capítulos */
+    gap: 10px; /* Espacio entre capítulos */
+  }
+  
+  .chapter-container {
+    background-color: #444;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .events-container {
+    margin-top: 5px;
+  }
+  
+  .event-icon {
+    background-color: #007bff; /* Color del icono del evento */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin: 5px auto;
+  }
+  
