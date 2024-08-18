@@ -2,7 +2,7 @@ import { ItemView, WorkspaceLeaf } from 'obsidian';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { AppContext } from './../../shared/appContext';
-import BibleView from './../bible/BibleView'; // Importa la nueva vista
+import BibleView from './../bible/BibleView';
 import { CalendarEvent, FormValues } from './CalendarEvent';
 import CalendarHeader from './CalendarHeader';
 import CalendarYear from './CalendarYear';
@@ -15,13 +15,13 @@ export class CalendarView extends ItemView {
   private root: ReactDOM.Root;
   private currentYear: number;
   private today: Date;
-  private isBibleView: boolean; // Nuevo estado para alternar entre vistas
+  private isBibleView: boolean;
 
   constructor(leaf: WorkspaceLeaf) {
     super(leaf);
     this.today = new Date();
     this.currentYear = this.today.getFullYear();
-    this.isBibleView = false; // Inicialmente, estamos en la vista de calendario
+    this.isBibleView = false;
     this.root = ReactDOM.createRoot(this.contentEl as HTMLElement);
   }
 
@@ -39,14 +39,13 @@ export class CalendarView extends ItemView {
   };
 
   private handleYearChange = (selectedYear: number) => {
-    this.currentYear = selectedYear; // Actualizar el año seleccionado
+    this.currentYear = selectedYear;
     this.renderComponent();
   };
 
   private handleBookClick = () => {
-    // Alternar entre la vista de calendario y la vista de Biblia
     this.isBibleView = !this.isBibleView;
-    this.renderComponent(); // Volver a renderizar el componente con la nueva vista
+    this.renderComponent();
   };
 
   private renderComponent() {
@@ -58,10 +57,11 @@ export class CalendarView extends ItemView {
         onAddEvent: this.handleAddEvent,
         onYearChange: this.handleYearChange,
         onBookClick: this.handleBookClick,
+        isBibleView: this.isBibleView, // Pasar el estado actual de la vista
       }),
       this.isBibleView
-        ? React.createElement(BibleView) // Mostrar la vista de Biblia si isBibleView es true
-        : React.createElement(CalendarYear, { key: this.currentYear, year: this.currentYear }) // Mostrar el calendario si isBibleView es false
+        ? React.createElement(BibleView)
+        : React.createElement(CalendarYear, { key: this.currentYear, year: this.currentYear })
     );
     this.root.render(this.reactComponent);
   }
