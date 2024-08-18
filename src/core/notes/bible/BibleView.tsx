@@ -4,7 +4,7 @@ import { bibleStructure } from './bibleStructure'; // Importamos la estructura d
 const BibleView: React.FC = () => {
   return (
     <div className="bible-view-container">
-      <h1>Vista Biblia</h1>
+      {/* <h1>Biblia</h1> */}
       <div className="books-grid">
         {Object.entries(bibleStructure).map(([book, data]) => (
           <div key={book} className="book-container">
@@ -16,9 +16,8 @@ const BibleView: React.FC = () => {
                   {/* Mostrar el número del capítulo con el número de versículos en un subíndice */}
                   <h3>
                     {chapterNumber}
-                    <sub>{chapterInfo.verseCount}</sub>
+                    <sub>{chapterInfo.verseCount}</sub> {chapterInfo.title}
                   </h3>
-                  <p>{chapterInfo.title}</p>
                   <div className="events-container">
                     {/* Mostrar los eventos como puntos de colores con un tooltip */}
                     {chapterInfo.events.length > 0 ? (
