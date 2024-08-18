@@ -42,8 +42,13 @@ export class CalendarView extends ItemView {
     this.renderComponent();
   };
 
+  // Nueva función para manejar el clic en el botón del libro
+  private handleBookClick = () => {
+    // Aquí puedes manejar la acción para el botón del libro
+    console.log("Book button clicked!");
+  };
+
   private renderComponent() {
-    
     this.reactComponent = React.createElement(
       AppContext.Provider,
       { value: this.app },
@@ -51,6 +56,7 @@ export class CalendarView extends ItemView {
         currentYear: this.currentYear,
         onAddEvent: this.handleAddEvent,
         onYearChange: this.handleYearChange,
+        onBookClick: this.handleBookClick, // Pasar la nueva prop onBookClick
       }),
       React.createElement(CalendarYear, { key: this.currentYear, year: this.currentYear })
     );

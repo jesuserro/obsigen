@@ -17,7 +17,6 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
     return (
         <>
             <div className="header-container">
-                <button onClick={onAddEvent}>+</button>
                 <button onClick={onBookClick} className="book-button">
                     {/* Ícono de libro cerrado en SVG */}
                     <svg
@@ -33,6 +32,7 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
                         <path d="M10.5 1h-1v14h1a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2z" />
                     </svg>
                 </button>
+                <button onClick={onAddEvent}>+</button>
                 <div className="year-selector-container">
                     <CalendarYearSelect currentYear={currentYear} onChange={onYearChange} />
                 </div>
