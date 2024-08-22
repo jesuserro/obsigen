@@ -1,54 +1,49 @@
 .calendar-year-select {
-	display: flex;
-	align-items: center; /* Alinea verticalmente los elementos en el centro */
-	justify-content: flex-start; /* Alinea horizontalmente los elementos al inicio */
-}
-
-.calendar-year-select input[type="text"] {
-	padding: 5px;
-	font-size: 14px;
-	width: 60px; /* Ajusta la anchura del campo de entrada */
-	margin-left: 10px;
-	background-color: #2e2e2e; /* Fondo oscuro */
-	color: #ffffff; /* Texto blanco para contraste en el tema oscuro */
-	border: 1px solid #555; /* Borde más oscuro */
-	border-radius: 5px;
-}
-
-.calendar-year-select button.revert-button,
-.calendar-year-select button.redo-button {
-	padding: 5px;
-	background-color: #007bff; /* Color de fondo azul */
-	color: #ffffff; /* Color de texto blanco */
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 14px;
-	margin-left: 10px; /* Espaciado entre botones */
-}
-
-.calendar-year-select button.revert-button:disabled,
-.calendar-year-select button.redo-button:disabled {
-	background-color: #aaaaaa; /* Color gris cuando está deshabilitado */
-	cursor: not-allowed;
-}
-
-.calendar-year-select button.revert-button:hover:not(:disabled),
-.calendar-year-select button.redo-button:hover:not(:disabled) {
-	background-color: #0056b3; /* Cambia el color al pasar el ratón */
-}
-
-.calendar-year-select button.clear-button {
-	margin-left: 10px;
-	padding: 5px;
-	background-color: #ff0000; /* Color de fondo rojo */
-	color: #ffffff; /* Color de texto blanco */
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 14px;
-}
-
-.calendar-year-select button.clear-button:hover {
-	background-color: #cc0000; /* Cambia el color al pasar el ratón */
-}
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .calendar-year-select input[type="text"] {
+    padding: 5px;
+    font-size: 14px;
+    width: 60px;
+    margin-left: 10px;
+    background-color: #2e2e2e;
+    color: #ffffff;
+    border: 1px solid #555;
+    border-radius: 5px;
+  }
+  
+  .calendar-year-select button {
+    padding: 5px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+  
+  .calendar-year-select button.add-event-button {
+    margin-left: 0; /* Sin margen a la izquierda para el primer botón */
+  }
+  
+  .calendar-year-select button:disabled {
+    background-color: #aaaaaa;
+    cursor: not-allowed;
+  }
+  
+  .calendar-year-select button:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  .calendar-year-select button.clear-button {
+    background-color: #ff0000;
+  }
+  
+  .calendar-year-select button.clear-button:hover {
+    background-color: #cc0000;
+  }
+  
