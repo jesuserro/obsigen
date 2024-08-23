@@ -49,6 +49,10 @@ export class CalendarView extends ItemView {
   };
 
   private renderComponent() {
+    // Obtener metadataCache y files
+    const metadataCache = this.app.metadataCache;
+    const files = this.app.vault.getMarkdownFiles(); // Obtener archivos de markdown del vault
+
     this.reactComponent = React.createElement(
       AppContext.Provider,
       { value: this.app },
@@ -60,7 +64,11 @@ export class CalendarView extends ItemView {
         isBibleView: this.isBibleView, // Pasar el estado actual de la vista
       }),
       this.isBibleView
-        ? React.createElement(BibleView)
+        ? React.createElement(BibleView, {
+            app: this.app,
+            metadataCache: metadataCache,
+            files: files,
+          })
         : React.createElement(CalendarYear, { key: this.currentYear, year: this.currentYear })
     );
     this.root.render(this.reactComponent);

@@ -6,33 +6,36 @@ import { bibleStructure } from './bibleStructure';
 interface Props {
     app: App;
     metadataCache: MetadataCache;
-    files: TFile[] | undefined; // Permitir que files sea undefined
+    files: TFile[];
 }
 
 const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
   const [bibleNotes, setBibleNotes] = useState(bibleStructure);
 
   useEffect(() => {
-    // Verificar si `files` está definido antes de continuar
-    if (!files || files.length === 0) return;
-
-    // Para cada capítulo en San Juan, obtén las notas y asígnalas a las perícopas
-    const updatedBibleStructure = { ...bibleNotes };
-
-    Object.entries(updatedBibleStructure["San Juan"].chapters).forEach(([chapterNumber, chapterInfo]) => {
-      const notes = getChapterNotes(app, metadataCache, files, parseInt(chapterNumber));
-
-      // Asignar notas a las perícopas correspondientes
-      chapterInfo.pericopes.forEach(pericope => {
-        pericope.notes = notes.filter(note => {
-          // Aquí puedes añadir lógica para determinar si una nota corresponde a una perícopa específica
-          return true; 
+    // Ejecutar el efecto solo si todos los datos están disponibles
+    if (app && metadataCache && files && files.length > 0) {
+      
+  
+      const updatedBibleStructure = { ...bibleNotes };
+  
+      Object.entries(updatedBibleStructure["San Juan"].chapters).forEach(([chapterNumber, chapterInfo]) => {
+        const notes = getChapterNotes(app, metadataCache, files, parseInt(chapterNumber));
+  
+        // console.log(`Notes for chapter ${chapterNumber}:`, notes);
+  
+        // Asignar notas a las perícopas correspondientes
+        chapterInfo.pericopes.forEach(pericope => {
+          pericope.notes = notes.filter(note => true);
         });
       });
-    });
-
-    setBibleNotes(updatedBibleStructure);
+  
+      setBibleNotes(updatedBibleStructure);
+    } else {
+    //   console.log('Waiting for app, metadataCache, or files to be available');
+    }
   }, [app, metadataCache, files]);
+  
 
   return (
     <div className="bible-view-container">
