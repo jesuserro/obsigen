@@ -1,25 +1,25 @@
 .bible-view-container {
     padding: 20px;
     color: #ffffff;
-    background-color: #2e2e2e; /* Fondo oscuro */
+    background-color: #2e2e2e;
   }
   
   .books-grid {
     display: flex;
-    flex-direction: column; /* Apilamos los libros verticalmente */
-    gap: 20px; /* Espacio entre libros */
+    flex-direction: column;
+    gap: 20px;
   }
   
   .book-container {
-    border: 1px solid #555; /* Borde oscuro */
+    border: 1px solid #555;
     padding: 10px;
     border-radius: 10px;
   }
   
   .chapters-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Distribución de capítulos */
-    gap: 10px; /* Espacio entre capítulos */
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
   }
   
   .chapter-container {
@@ -36,8 +36,19 @@
   
   h3 sub {
     font-size: 12px;
-    vertical-align: text-top; /* Alinea el subíndice con el texto principal */
-    margin-left: 5px; /* Espacio entre el número del capítulo y el subíndice */
+    vertical-align: text-top;
+    margin-left: 5px;
+  }
+  
+  .pericopes-container {
+    margin-top: 5px;
+  }
+  
+  .pericope-container {
+    background-color: #333;
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 5px;
   }
   
   .events-container {
@@ -47,14 +58,14 @@
   .event-icon {
     width: 12px;
     height: 12px;
-    background-color: #007bff; /* Color del punto de evento */
+    background-color: #007bff;
     border-radius: 50%;
     display: inline-block;
-    margin: 5px 2px; /* Ajusta el espaciado */
+    margin: 5px 2px;
     cursor: pointer;
   }
   
   .event-icon:hover {
-    background-color: #0056b3; /* Cambia el color al pasar el ratón */
+    background-color: #0056b3;
   }
   

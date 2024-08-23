@@ -1,35 +1,44 @@
 import React from 'react';
-import { bibleStructure } from './bibleStructure'; // Importamos la estructura de la Biblia
+import { bibleStructure } from './bibleStructure';
 
 const BibleView: React.FC = () => {
   return (
     <div className="bible-view-container">
-      {/* <h1>Biblia</h1> */}
       <div className="books-grid">
         {Object.entries(bibleStructure).map(([book, data]) => (
           <div key={book} className="book-container">
-            {/* Título del libro con el número de capítulos entre paréntesis */}
             <h2>{book} ({data.chapterCount})</h2>
             <div className="chapters-grid">
               {Object.entries(data.chapters).map(([chapterNumber, chapterInfo]) => (
                 <div key={chapterNumber} className="chapter-container">
-                  {/* Mostrar el número del capítulo con el número de versículos en un subíndice */}
                   <h3>
                     {chapterNumber}
                     <sub>{chapterInfo.verseCount}</sub> {chapterInfo.title}
                   </h3>
-                  <div className="events-container">
-                    {/* Mostrar los eventos como puntos de colores con un tooltip */}
-                    {chapterInfo.events.length > 0 ? (
-                      chapterInfo.events.map((event, index) => (
-                        <div
-                          key={index}
-                          className="event-icon"
-                          title={event.title} // Tooltip con el texto del evento
-                        />
+                  <div className="pericopes-container">
+                    {chapterInfo.pericopes.length > 0 ? (
+                      chapterInfo.pericopes.map((pericope, index) => (
+                        <div key={index} className="pericope-container">
+                          <h4>
+                            {pericope.title} ({pericope.verseRange[0]}-{pericope.verseRange[1]})
+                          </h4>
+                          <div className="events-container">
+                            {pericope.events.length > 0 ? (
+                              pericope.events.map((event, eventIndex) => (
+                                <div
+                                  key={eventIndex}
+                                  className="event-icon"
+                                  title={event.title}
+                                />
+                              ))
+                            ) : (
+                              <span>Sin eventos</span>
+                            )}
+                          </div>
+                        </div>
                       ))
                     ) : (
-                      <span>Sin eventos</span>
+                      <span>Sin perícopas</span>
                     )}
                   </div>
                 </div>
