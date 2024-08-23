@@ -1,7 +1,10 @@
 export interface Note {
     title: string;
     date?: string;
+    verseStart?: number;  // Añade esta línea para definir verseStart
+    verseEnd?: number;    // Si también estás utilizando verseEnd, mantenla aquí
 }
+
 
 interface Pericope {
     title: string;

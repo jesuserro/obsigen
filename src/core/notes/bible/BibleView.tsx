@@ -23,9 +23,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
             const notes = getChapterNotes(app, metadataCache, files, parseInt(chapterNumber));
 
             chapterInfo.pericopes.forEach(pericope => {
-                // Filtrar las notas que corresponden al rango de versículos de la perícopa
                 const notesForPericope = notes.filter(note => {
-                    // Asignar la nota al perícope si su versículo inicial cae dentro del rango de la perícopa
                     return note.verseStart !== undefined &&
                            note.verseStart >= pericope.verseRange[0] &&
                            note.verseStart <= pericope.verseRange[1];
@@ -36,6 +34,22 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
 
         setBibleNotes(updatedBibleStructure);
     }, [app, metadataCache, files]);
+
+    // Función para manejar el click en una nota
+    const handleNoteClick = (noteTitle: string, chapterNumber: number) => {
+        // Asumimos que noteTitle ya incluye el prefijo, así que no lo duplicamos
+        const notePath = `333 Biblia/San Juan/${chapterNumber}/${noteTitle}.md`;
+
+        // Buscar el archivo en el vault usando la ruta completa
+        const file = app.vault.getAbstractFileByPath(notePath);
+
+        if (file instanceof TFile) {
+            // Si el archivo existe, abrirlo
+            app.workspace.getLeaf().openFile(file);
+        } else {
+            console.error(`File not found: ${notePath}`);
+        }
+    };
 
     return (
         <div className="bible-view-container">
@@ -64,6 +78,8 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                                     key={noteIndex}
                                                                     className="event-icon"
                                                                     title={note.title}
+                                                                    onClick={() => handleNoteClick(note.title, parseInt(chapterNumber))} // Añadir el evento onClick
+                                                                    style={{ cursor: 'pointer' }} // Cambiar el cursor al pasar sobre la nota
                                                                 />
                                                             ))
                                                         ) : (
