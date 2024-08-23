@@ -1,4 +1,4 @@
-interface Event {
+export interface Note {
     title: string;
     date?: string;
 }
@@ -6,7 +6,7 @@ interface Event {
 interface Pericope {
     title: string;
     verseRange: [number, number]; // Rango de versículos, e.g., [1, 18]
-    events: Event[];
+    notes: Note[]; // Cambiado de events a notes
 }
 
 interface ChapterInfo {
@@ -31,7 +31,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Prólogo",
                         verseRange: [1, 18],
-                        events: [
+                        notes: [
                             { title: "Nacimiento de Juan el Bautista" },
                             { title: "Bautismo de Jesús" }
                         ]
@@ -39,22 +39,22 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Testimonio de Juan el Bautista",
                         verseRange: [19, 28],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "El Cordero de Dios",
                         verseRange: [29, 34],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Los primeros discípulos",
                         verseRange: [35, 42],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Jesús llama a Felipe y a Natanael",
                         verseRange: [43, 51],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -65,17 +65,17 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "El primer milagro de Jesús en Caná",
                         verseRange: [1, 12],
-                        events: [{ title: "Milagro del agua convertida en vino" }]
+                        notes: [{ title: "Milagro del agua convertida en vino" }]
                     },
                     {
                         title: "Jesús purifica el templo",
                         verseRange: [13, 22],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Jesús conoce a todos los hombres",
                         verseRange: [23, 25],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -86,7 +86,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús enseña a Nicodemo",
                         verseRange: [1, 21],
-                        events: [
+                        notes: [
                             { title: "Discurso sobre el nuevo nacimiento" },
                             { title: "Jesús habla de la salvación" }
                         ]
@@ -94,7 +94,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "El testimonio de Juan el Bautista",
                         verseRange: [22, 36],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -105,19 +105,19 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús y la mujer samaritana",
                         verseRange: [1, 26],
-                        events: [
+                        notes: [
                             { title: "Encuentro de Jesús con la mujer samaritana" }
                         ]
                     },
                     {
                         title: "La conversión de los samaritanos",
                         verseRange: [27, 42],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Jesús sana al hijo de un funcionario",
                         verseRange: [43, 54],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -128,19 +128,19 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús sana al paralítico en Betesda",
                         verseRange: [1, 15],
-                        events: [
+                        notes: [
                             { title: "Sanación en la piscina de Betesda" }
                         ]
                     },
                     {
                         title: "Jesús habla de su autoridad",
                         verseRange: [16, 30],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Testimonios acerca de Jesús",
                         verseRange: [31, 47],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -151,24 +151,24 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús alimenta a los cinco mil",
                         verseRange: [1, 15],
-                        events: [
+                        notes: [
                             { title: "Milagro de la alimentación de los cinco mil" }
                         ]
                     },
                     {
                         title: "Jesús camina sobre el agua",
                         verseRange: [16, 21],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Jesús, el pan de vida",
                         verseRange: [22, 59],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Muchos discípulos abandonan a Jesús",
                         verseRange: [60, 71],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -179,22 +179,22 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús va a la fiesta en secreto",
                         verseRange: [1, 13],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Jesús enseña en la fiesta",
                         verseRange: [14, 24],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "¿Es Jesús el Cristo?",
                         verseRange: [25, 36],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "El último día de la fiesta",
                         verseRange: [37, 53],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -205,29 +205,29 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús y la mujer adúltera",
                         verseRange: [1, 11],
-                        events: [
+                        notes: [
                             { title: "Jesús y la mujer adúltera" }
                         ]
                     },
                     {
                         title: "Jesús, la luz del mundo",
                         verseRange: [12, 20],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Jesús predice su partida",
                         verseRange: [21, 30],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "La verdad os hará libres",
                         verseRange: [31, 47],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Jesús y Abraham",
                         verseRange: [48, 59],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -238,19 +238,19 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús sana a un ciego de nacimiento",
                         verseRange: [1, 12],
-                        events: [
+                        notes: [
                             { title: "Milagro de la sanación del ciego" }
                         ]
                     },
                     {
                         title: "El ciego es interrogado por los fariseos",
                         verseRange: [13, 34],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "El ciego cree en Jesús",
                         verseRange: [35, 41],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -261,14 +261,14 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús, el buen pastor",
                         verseRange: [1, 21],
-                        events: [
+                        notes: [
                             { title: "Jesús se presenta como el buen pastor" }
                         ]
                     },
                     {
                         title: "Jesús y las obras de su Padre",
                         verseRange: [22, 42],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -279,24 +279,24 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "La muerte de Lázaro",
                         verseRange: [1, 16],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Jesús, la resurrección y la vida",
                         verseRange: [17, 37],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Jesús resucita a Lázaro",
                         verseRange: [38, 44],
-                        events: [
+                        notes: [
                             { title: "Resurrección de Lázaro" }
                         ]
                     },
                     {
                         title: "La conspiración para matar a Jesús",
                         verseRange: [45, 57],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -307,31 +307,31 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús ungido en Betania",
                         verseRange: [1, 11],
-                        events: [
+                        notes: [
                             { title: "Unción de Jesús en Betania" }
                         ]
                     },
                     {
                         title: "La entrada triunfal en Jerusalén",
                         verseRange: [12, 19],
-                        events: [
+                        notes: [
                             { title: "Entrada triunfal en Jerusalén" }
                         ]
                     },
                     {
                         title: "Jesús predice su muerte",
                         verseRange: [20, 36],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "La incredulidad de la gente",
                         verseRange: [37, 43],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Jesús habla del juicio final",
                         verseRange: [44, 50],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -342,21 +342,21 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús lava los pies a sus discípulos",
                         verseRange: [1, 17],
-                        events: [
+                        notes: [
                             { title: "Jesús lava los pies a sus discípulos" }
                         ]
                     },
                     {
                         title: "Predicción de la traición de Judas",
                         verseRange: [18, 30],
-                        events: [
+                        notes: [
                             { title: "Predicción de la traición de Judas" }
                         ]
                     },
                     {
                         title: "El nuevo mandamiento",
                         verseRange: [31, 38],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -367,12 +367,12 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús promete un lugar en el cielo",
                         verseRange: [1, 14],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Jesús promete el Espíritu Santo",
                         verseRange: [15, 31],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -383,14 +383,14 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús, la vid verdadera",
                         verseRange: [1, 17],
-                        events: [
+                        notes: [
                             { title: "Jesús enseña sobre la vid y los sarmientos" }
                         ]
                     },
                     {
                         title: "El odio del mundo",
                         verseRange: [18, 27],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -401,14 +401,14 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús habla del Espíritu Santo",
                         verseRange: [1, 15],
-                        events: [
+                        notes: [
                             { title: "Jesús promete el Espíritu Santo" }
                         ]
                     },
                     {
                         title: "Jesús habla de su regreso",
                         verseRange: [16, 33],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -419,19 +419,19 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús ora por sí mismo",
                         verseRange: [1, 5],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Jesús ora por sus discípulos",
                         verseRange: [6, 19],
-                        events: [
+                        notes: [
                             { title: "Jesús ora por sus discípulos" }
                         ]
                     },
                     {
                         title: "Jesús ora por todos los creyentes",
                         verseRange: [20, 26],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -442,19 +442,19 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús es arrestado",
                         verseRange: [1, 11],
-                        events: [
+                        notes: [
                             { title: "Arresto de Jesús en Getsemaní" }
                         ]
                     },
                     {
                         title: "Jesús ante el sumo sacerdote",
                         verseRange: [12, 27],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Jesús ante Pilato",
                         verseRange: [28, 40],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -465,26 +465,26 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús es flagelado y condenado",
                         verseRange: [1, 16],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Jesús es crucificado",
                         verseRange: [17, 30],
-                        events: [
+                        notes: [
                             { title: "Jesús es crucificado" }
                         ]
                     },
                     {
                         title: "La muerte de Jesús",
                         verseRange: [31, 37],
-                        events: [
+                        notes: [
                             { title: "Muerte de Jesús" }
                         ]
                     },
                     {
                         title: "El entierro de Jesús",
                         verseRange: [38, 42],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -495,31 +495,31 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "La tumba vacía",
                         verseRange: [1, 10],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "Jesús se aparece a María Magdalena",
                         verseRange: [11, 18],
-                        events: [
+                        notes: [
                             { title: "Jesús resucita y se aparece a María Magdalena" }
                         ]
                     },
                     {
                         title: "Jesús se aparece a sus discípulos",
                         verseRange: [19, 23],
-                        events: [
+                        notes: [
                             { title: "Jesús se aparece a los discípulos" }
                         ]
                     },
                     {
                         title: "Jesús se aparece a Tomás",
                         verseRange: [24, 29],
-                        events: []
+                        notes: []
                     },
                     {
                         title: "El propósito de este evangelio",
                         verseRange: [30, 31],
-                        events: []
+                        notes: []
                     }
                 ]
             },
@@ -530,21 +530,21 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús se aparece en el mar de Tiberíades",
                         verseRange: [1, 14],
-                        events: [
+                        notes: [
                             { title: "Jesús se aparece a los discípulos en el mar" }
                         ]
                     },
                     {
                         title: "Jesús y Pedro",
                         verseRange: [15, 19],
-                        events: [
+                        notes: [
                             { title: "Rehabilitación de Pedro" }
                         ]
                     },
                     {
                         title: "El futuro de Pedro y Juan",
                         verseRange: [20, 25],
-                        events: []
+                        notes: []
                     }
                 ]
             }
