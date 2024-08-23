@@ -275,8 +275,15 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     },
                     {
                         title: "Jesús, la resurrección y la vida",
-                        verseRange: [17, 37],
+                        verseRange: [17, 27],
                         notes: []
+                    },
+                    {
+                        title: "Jesús llora ante la tumba de Lázaro",
+                        verseRange: [28, 37],
+                        notes: [
+                           
+                        ]
                     },
                     {
                         title: "Jesús resucita a Lázaro",

@@ -25,9 +25,11 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
             chapterInfo.pericopes.forEach(pericope => {
                 // Filtrar las notas que corresponden al rango de versículos de la perícopa
                 const notesForPericope = notes.filter(note => {
-                    return note.verseStart !== undefined && 
-                           note.verseStart >= pericope.verseRange[0] && 
-                           note.verseStart <= pericope.verseRange[1];
+                    return (
+                        note.verseStart !== undefined &&
+                        note.verseStart >= pericope.verseRange[0] &&
+                        (note.verseEnd ? note.verseEnd <= pericope.verseRange[1] : note.verseStart <= pericope.verseRange[1])
+                    );
                 });
                 pericope.notes = notesForPericope;
             });

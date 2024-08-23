@@ -3,7 +3,8 @@ import { App, MetadataCache, TFile } from 'obsidian';
 interface Note {
     title: string;
     date?: string;
-    verseStart?: number;  // Agregar campo para el versículo inicial
+    verseStart?: number;  // Versículo inicial
+    verseEnd?: number;    // Versículo final (opcional)
 }
 
 export function getChapterNotes(app: App, metadataCache: MetadataCache, files: TFile[] | undefined, chapterNumber: number): Note[] {
@@ -19,15 +20,17 @@ export function getChapterNotes(app: App, metadataCache: MetadataCache, files: T
     chapterFiles.forEach(file => {
         const fileName = file.name.replace(/\.md$/, '');
 
-        // Extraer el versículo inicial del nombre del archivo
-        const verseMatch = fileName.match(/Jn-\d{2}_(\d{2})/);
+        // Actualizamos la expresión regular para manejar casos como "Jn-04_5-42"
+        const verseMatch = fileName.match(/Jn-\d{2}_(\d+)(-(\d+))?/);
         const verseStart = verseMatch ? parseInt(verseMatch[1], 10) : null;
+        const verseEnd = verseMatch && verseMatch[3] ? parseInt(verseMatch[3], 10) : null;
 
-        const noteTitle = fileName.replace(/^Jn-\d{2}_\d{2} - /, '');
+        const noteTitle = fileName.replace(/^Jn-\d{2}_(\d+)(-(\d+))?__?/, '');
 
         const note: Note = {
             title: noteTitle,
-            verseStart: verseStart || undefined, // Asignar versículo inicial si está disponible
+            verseStart: verseStart || undefined,
+            verseEnd: verseEnd || undefined,
         };
 
         chapterNotes.push(note);
