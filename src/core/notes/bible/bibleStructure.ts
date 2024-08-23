@@ -29,7 +29,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                 verseCount: 51,
                 pericopes: [
                     {
-                        title: "El Verbo hecho carne",
+                        title: "Prólogo",
                         verseRange: [1, 18],
                         events: [
                             { title: "Nacimiento de Juan el Bautista" },
@@ -69,7 +69,12 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     },
                     {
                         title: "Jesús purifica el templo",
-                        verseRange: [13, 25],
+                        verseRange: [13, 22],
+                        events: []
+                    },
+                    {
+                        title: "Jesús conoce a todos los hombres",
+                        verseRange: [23, 25],
                         events: []
                     }
                 ]
