@@ -31,10 +31,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Prólogo",
                         verseRange: [1, 18],
-                        notes: [
-                            { title: "Nacimiento de Juan el Bautista" },
-                            { title: "Bautismo de Jesús" }
-                        ]
+                        notes: []
                     },
                     {
                         title: "Testimonio de Juan el Bautista",
@@ -65,7 +62,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "El primer milagro de Jesús en Caná",
                         verseRange: [1, 12],
-                        notes: [{ title: "Milagro del agua convertida en vino" }]
+                        notes: []
                     },
                     {
                         title: "Jesús purifica el templo",
@@ -86,10 +83,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús enseña a Nicodemo",
                         verseRange: [1, 21],
-                        notes: [
-                            { title: "Discurso sobre el nuevo nacimiento" },
-                            { title: "Jesús habla de la salvación" }
-                        ]
+                        notes: []
                     },
                     {
                         title: "El testimonio de Juan el Bautista",
@@ -105,9 +99,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     {
                         title: "Jesús y la mujer samaritana",
                         verseRange: [1, 26],
-                        notes: [
-                            { title: "Encuentro de Jesús con la mujer samaritana" }
-                        ]
+                        notes: []
                     },
                     {
                         title: "La conversión de los samaritanos",
@@ -129,7 +121,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús sana al paralítico en Betesda",
                         verseRange: [1, 15],
                         notes: [
-                            { title: "Sanación en la piscina de Betesda" }
+                            
                         ]
                     },
                     {
@@ -152,7 +144,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús alimenta a los cinco mil",
                         verseRange: [1, 15],
                         notes: [
-                            { title: "Milagro de la alimentación de los cinco mil" }
+                            
                         ]
                     },
                     {
@@ -206,7 +198,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús y la mujer adúltera",
                         verseRange: [1, 11],
                         notes: [
-                            { title: "Jesús y la mujer adúltera" }
+                            
                         ]
                     },
                     {
@@ -239,7 +231,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús sana a un ciego de nacimiento",
                         verseRange: [1, 12],
                         notes: [
-                            { title: "Milagro de la sanación del ciego" }
+                            
                         ]
                     },
                     {
@@ -262,7 +254,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús, el buen pastor",
                         verseRange: [1, 21],
                         notes: [
-                            { title: "Jesús se presenta como el buen pastor" }
+                            
                         ]
                     },
                     {
@@ -290,7 +282,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús resucita a Lázaro",
                         verseRange: [38, 44],
                         notes: [
-                            { title: "Resurrección de Lázaro" }
+                           
                         ]
                     },
                     {
@@ -308,14 +300,14 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús ungido en Betania",
                         verseRange: [1, 11],
                         notes: [
-                            { title: "Unción de Jesús en Betania" }
+                            
                         ]
                     },
                     {
                         title: "La entrada triunfal en Jerusalén",
                         verseRange: [12, 19],
                         notes: [
-                            { title: "Entrada triunfal en Jerusalén" }
+                            
                         ]
                     },
                     {
@@ -343,14 +335,14 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús lava los pies a sus discípulos",
                         verseRange: [1, 17],
                         notes: [
-                            { title: "Jesús lava los pies a sus discípulos" }
+                           
                         ]
                     },
                     {
                         title: "Predicción de la traición de Judas",
                         verseRange: [18, 30],
                         notes: [
-                            { title: "Predicción de la traición de Judas" }
+                            
                         ]
                     },
                     {
@@ -384,7 +376,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús, la vid verdadera",
                         verseRange: [1, 17],
                         notes: [
-                            { title: "Jesús enseña sobre la vid y los sarmientos" }
+                           
                         ]
                     },
                     {
@@ -402,7 +394,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús habla del Espíritu Santo",
                         verseRange: [1, 15],
                         notes: [
-                            { title: "Jesús promete el Espíritu Santo" }
+                            
                         ]
                     },
                     {
@@ -425,7 +417,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús ora por sus discípulos",
                         verseRange: [6, 19],
                         notes: [
-                            { title: "Jesús ora por sus discípulos" }
+                            
                         ]
                     },
                     {
@@ -443,7 +435,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús es arrestado",
                         verseRange: [1, 11],
                         notes: [
-                            { title: "Arresto de Jesús en Getsemaní" }
+                            
                         ]
                     },
                     {
@@ -471,14 +463,14 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús es crucificado",
                         verseRange: [17, 30],
                         notes: [
-                            { title: "Jesús es crucificado" }
+                            
                         ]
                     },
                     {
                         title: "La muerte de Jesús",
                         verseRange: [31, 37],
                         notes: [
-                            { title: "Muerte de Jesús" }
+                            
                         ]
                     },
                     {
@@ -501,14 +493,14 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús se aparece a María Magdalena",
                         verseRange: [11, 18],
                         notes: [
-                            { title: "Jesús resucita y se aparece a María Magdalena" }
+                            
                         ]
                     },
                     {
                         title: "Jesús se aparece a sus discípulos",
                         verseRange: [19, 23],
                         notes: [
-                            { title: "Jesús se aparece a los discípulos" }
+                            
                         ]
                     },
                     {
@@ -531,14 +523,14 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús se aparece en el mar de Tiberíades",
                         verseRange: [1, 14],
                         notes: [
-                            { title: "Jesús se aparece a los discípulos en el mar" }
+                            
                         ]
                     },
                     {
                         title: "Jesús y Pedro",
                         verseRange: [15, 19],
                         notes: [
-                            { title: "Rehabilitación de Pedro" }
+                            
                         ]
                     },
                     {

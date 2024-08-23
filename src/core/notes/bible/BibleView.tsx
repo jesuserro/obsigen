@@ -6,15 +6,15 @@ import { bibleStructure } from './bibleStructure';
 interface Props {
     app: App;
     metadataCache: MetadataCache;
-    files: TFile[] | undefined;  // Cambia files para permitir undefined
+    files: TFile[] | undefined; // Permitir que files sea undefined
 }
 
 const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
   const [bibleNotes, setBibleNotes] = useState(bibleStructure);
 
   useEffect(() => {
-    // Verificar si files está definido antes de continuar
-    if (!files) return;
+    // Verificar si `files` está definido antes de continuar
+    if (!files || files.length === 0) return;
 
     // Para cada capítulo en San Juan, obtén las notas y asígnalas a las perícopas
     const updatedBibleStructure = { ...bibleNotes };

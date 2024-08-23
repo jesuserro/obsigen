@@ -6,9 +6,9 @@ interface Note {
 }
 
 export function getChapterNotes(app: App, metadataCache: MetadataCache, files: TFile[] | undefined, chapterNumber: number): Note[] {
-    if (!files) {
-        // Retornar un array vacío si `files` no está definido
-        return [];
+    // Verificar si `files` está definido y no es null o undefined
+    if (!files || files.length === 0) {
+        return []; // Si no hay archivos, devolver un array vacío
     }
 
     const chapterPath = `333 Biblia/San Juan/${chapterNumber}/`;
@@ -18,9 +18,11 @@ export function getChapterNotes(app: App, metadataCache: MetadataCache, files: T
     const chapterFiles = files.filter(file => file.path.startsWith(chapterPath));
 
     chapterFiles.forEach(file => {
-        // Extraer título de la nota desde el nombre del archivo
-        const fileName = file.name;
-        const noteTitle = fileName.replace(/\.md$/, ''); // Quitar la extensión ".md"
+        // Extraer el nombre del archivo sin la extensión
+        const fileName = file.name.replace(/\.md$/, '');
+
+        // Eliminar el prefijo que sigue el formato "Jn-01_01 - "
+        const noteTitle = fileName.replace(/^Jn-\d{2}_\d{2} - /, '');
 
         // Crear una nota con el título extraído
         const note: Note = {
