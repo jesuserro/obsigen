@@ -7,6 +7,7 @@ interface Note {
     verseEnd?: number;    // Versículo final (opcional)
 }
 
+// Modificación en Bible.ts
 export function getChapterNotes(app: App, metadataCache: MetadataCache, files: TFile[] | undefined, chapterNumber: number): Note[] {
     if (!files || files.length === 0) {
         return [];
@@ -25,10 +26,10 @@ export function getChapterNotes(app: App, metadataCache: MetadataCache, files: T
         const verseStart = verseMatch ? parseInt(verseMatch[1], 10) : null;
         const verseEnd = verseMatch && verseMatch[3] ? parseInt(verseMatch[3], 10) : null;
 
-        const noteTitle = fileName.replace(/^Jn-\d{2}_(\d+)(-(\d+))?__?/, '');
+        const noteTitle = fileName;  // Almacenar el nombre completo del archivo
 
         const note: Note = {
-            title: noteTitle,
+            title: noteTitle,  // Almacenar el nombre del archivo completo como título
             verseStart: verseStart || undefined,
             verseEnd: verseEnd || undefined,
         };

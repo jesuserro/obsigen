@@ -35,14 +35,13 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
         setBibleNotes(updatedBibleStructure);
     }, [app, metadataCache, files]);
 
-    // Función para manejar el click en una nota
     const handleNoteClick = (noteTitle: string, chapterNumber: number) => {
-        // Asumimos que noteTitle ya incluye el prefijo, así que no lo duplicamos
+        // Asumimos que noteTitle ya es el nombre completo del archivo, sin modificaciones
         const notePath = `333 Biblia/San Juan/${chapterNumber}/${noteTitle}.md`;
-
+    
         // Buscar el archivo en el vault usando la ruta completa
         const file = app.vault.getAbstractFileByPath(notePath);
-
+    
         if (file instanceof TFile) {
             // Si el archivo existe, abrirlo
             app.workspace.getLeaf().openFile(file);
@@ -50,7 +49,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
             console.error(`File not found: ${notePath}`);
         }
     };
-
+    
     return (
         <div className="bible-view-container">
             <div className="books-grid">
