@@ -247,7 +247,7 @@ dv.table(["Tiempo transcurrido"], [
     [calculateTimePassed(diff)]
 ]);
 \`\`\`
-    `;
+`;
     }
 
     private getListForYamlProperty(
