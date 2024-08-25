@@ -22,14 +22,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
         Object.entries(updatedBibleStructure["San Juan"].chapters).forEach(([chapterNumber, chapterInfo]) => {
             const notes = getChapterNotes(app, metadataCache, files, parseInt(chapterNumber));
 
-            chapterInfo.pericopes.forEach(pericope => {
-                const notesForPericope = notes.filter(note => {
-                    return note.verseStart !== undefined &&
-                           note.verseStart >= pericope.verseRange[0] &&
-                           note.verseStart <= pericope.verseRange[1];
-                });
-                pericope.notes = notesForPericope;
-            });
+            // Ya no es necesario asignar las notas a pericope.notes, por lo que esta parte se elimina
         });
 
         setBibleNotes(updatedBibleStructure);
@@ -55,38 +48,45 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
             <div className="books-grid">
                 {Object.entries(bibleNotes).map(([book, data]) => (
                     <div key={book} className="book-container">
-                        <h2>{book} ({data.chapterCount})</h2>
+                        <h2>{book}</h2>
                         <div className="chapters-grid">
                             {Object.entries(data.chapters).map(([chapterNumber, chapterInfo]) => (
                                 <div key={chapterNumber} className="chapter-container">
                                     <h3>
-                                        {chapterNumber}
-                                        <sub>{chapterInfo.verseCount}</sub> {chapterInfo.title}
+                                        {chapterNumber} {chapterInfo.title}
                                     </h3>
                                     <div className="pericopes-container">
                                         {chapterInfo.pericopes.length > 0 ? (
-                                            chapterInfo.pericopes.map((pericope, index) => (
-                                                <div key={index} className="pericope-container">
-                                                    <h4>
-                                                        {pericope.title} ({pericope.verseRange[0]}-{pericope.verseRange[1]})
-                                                    </h4>
-                                                    <div className="events-container">
-                                                        {pericope.notes.length > 0 ? (
-                                                            pericope.notes.map((note, noteIndex) => (
-                                                                <div
-                                                                    key={noteIndex}
-                                                                    className="event-icon"
-                                                                    title={note.title}
-                                                                    onClick={() => handleNoteClick(note.title, parseInt(chapterNumber))} // Añadir el evento onClick
-                                                                    style={{ cursor: 'pointer' }} // Cambiar el cursor al pasar sobre la nota
-                                                                />
-                                                            ))
-                                                        ) : (
-                                                            <span>Sin notas</span>
-                                                        )}
+                                            chapterInfo.pericopes.map((pericope, index) => {
+                                                // Filtrar las notas correspondientes a esta perícopa
+                                                const notesForPericope = getChapterNotes(app, metadataCache, files, parseInt(chapterNumber))
+                                                    .filter(note => note.verseStart !== undefined &&
+                                                        note.verseStart >= pericope.verseRange[0] &&
+                                                        note.verseStart <= pericope.verseRange[1]);
+
+                                                return (
+                                                    <div key={index} className="pericope-container">
+                                                        <h4>
+                                                            {pericope.title} ({pericope.verseRange[0]}-{pericope.verseRange[1]})
+                                                        </h4>
+                                                        <div className="events-container">
+                                                            {notesForPericope.length > 0 ? (
+                                                                notesForPericope.map((note, noteIndex) => (
+                                                                    <div
+                                                                        key={noteIndex}
+                                                                        className="event-icon"
+                                                                        title={note.title}
+                                                                        onClick={() => handleNoteClick(note.title, parseInt(chapterNumber))} // Añadir el evento onClick
+                                                                        style={{ cursor: 'pointer' }} // Cambiar el cursor al pasar sobre la nota
+                                                                    />
+                                                                ))
+                                                            ) : (
+                                                                <span>Sin notas</span>
+                                                            )}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            ))
+                                                );
+                                            })
                                         ) : (
                                             <span>Sin perícopas</span>
                                         )}
