@@ -1,7 +1,7 @@
 import { App, MetadataCache, TFile } from 'obsidian';
 import React, { useEffect, useState } from 'react';
+import { getChapterNotes } from './BibleView';
 import { bibleStructure } from './BibleViewStructure';
-import { getChapterNotes } from './BibleViewUtils';
 
 interface Props {
     app: App;

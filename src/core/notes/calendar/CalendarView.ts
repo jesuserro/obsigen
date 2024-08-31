@@ -1,8 +1,8 @@
 import { ItemView, WorkspaceLeaf } from 'obsidian';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import BibleView from '../bible/BibleViewUI';
 import { AppContext } from './../../shared/appContext';
-import BibleView from './../bible/BibleView';
 import { CalendarEvent, FormValues } from './CalendarEvent';
 import CalendarHeader from './CalendarHeader';
 import CalendarYear from './CalendarYear';
