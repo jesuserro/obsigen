@@ -1,5 +1,6 @@
-// src/core/notes/calendar/Month.ts
 import { App, MetadataCache, TFile } from 'obsidian';
+import { useEffect, useRef, useState } from 'react';
+import { createDaysGrid } from './MonthGrid'; // Asegúrate de que esta línea esté presente
 
 export interface CalendarMonthProps {
     year: number;
@@ -20,6 +21,27 @@ export function getDayOffset(dayOfWeek: number): number {
 
 export function calculateNumRows(numDaysInMonth: number, dayOffset: number): number {
     return Math.ceil((numDaysInMonth + dayOffset) / 7);
+}
+
+// Nueva función para obtener la nota de aniversario
+export function getAnniversaryNote(dayIndex: number, files: TFile[], month: number): TFile | undefined {
+    const anniversaryPath = `/Aniversaries/${String(month).padStart(2, '0')}/${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}.md`;
+    return files.find(file => file.path.includes(anniversaryPath));
+}
+
+export function getDailyNote(dayIndex: number, files: TFile[], year: number, month: number): string | false {
+    const dayPadded = String(dayIndex).padStart(2, '0');
+    const monthPadded = String(month).padStart(2, '0');
+    const dayDate = `${year}${monthPadded}${dayPadded}`;
+    const notePath = `100 Calendar/${year}/${monthPadded}/${dayDate}.md`;
+
+    const note = files.find(file => file.path === notePath);
+
+    if (note?.path) {
+        return note.path;
+    }
+
+    return false;
 }
 
 export function getDayNotes(app: App, metadataCache: MetadataCache, files: TFile[], dayIndex: number, year: number, month: number): TFile[] {
@@ -58,23 +80,79 @@ export function getDayNotes(app: App, metadataCache: MetadataCache, files: TFile
     return dayNotes;
 }
 
-// Nueva función para obtener la nota de aniversario
-export function getAnniversaryNote(dayIndex: number, files: TFile[], month: number): TFile | undefined {
-    const anniversaryPath = `/Aniversaries/${String(month).padStart(2, '0')}/${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}.md`;
-    return files.find(file => file.path.includes(anniversaryPath));
-}
+export function useMonthLogic(app: App | undefined, year: number, month: number) {
+    const [files, setFiles] = useState<TFile[]>(app?.vault.getMarkdownFiles() || []);
 
-export function getDailyNote(dayIndex: number, files: TFile[], year: number, month: number): string | false {
-    const dayPadded = String(dayIndex).padStart(2, '0');
-    const monthPadded = String(month).padStart(2, '0');
-    const dayDate = `${year}${monthPadded}${dayPadded}`;
-    const notePath = `100 Calendar/${year}/${monthPadded}/${dayDate}.md`;
+    useEffect(() => {
+        if (!app) return;
 
-    const note = files.find(file => file.path === notePath);
+        const updateFiles = () => {
+            setFiles(app.vault.getMarkdownFiles() || []);
+        };
 
-    if (note?.path) {
-        return note.path;
+        app.vault.on('create', updateFiles);
+        app.vault.on('delete', updateFiles);
+        app.metadataCache.on('changed', updateFiles);
+
+        return () => {
+            app.vault.off('create', updateFiles);
+            app.vault.off('delete', updateFiles);
+            app.metadataCache.off('changed', updateFiles);
+        };
+    }, [app]);
+
+    const metadataCache = app?.metadataCache;
+    const monthStr = month < 10 ? '0' + month : month.toString();
+    const dateStr = `${year}-${monthStr}`;
+
+    const filteredFiles = files.filter((file) => {
+        const eventDate = metadataCache?.getFileCache(file)?.frontmatter?.date;
+        const anniversaryPath = `/Aniversaries/${String(month).padStart(2, '0')}`;
+
+        return (typeof eventDate === 'string' && eventDate.includes(dateStr)) || file.path.includes(anniversaryPath);
+    });
+
+    const firstDayOfMonth = getFirstDayOfMonth(year, month - 1);
+    const lastDayOfMonth = getLastDayOfMonth(year, month);
+    const numDaysInMonth = lastDayOfMonth.getDate();
+    const firstDayOfWeek = firstDayOfMonth.getDay();
+    const dayOffset = getDayOffset(firstDayOfWeek);
+    const numRows = calculateNumRows(numDaysInMonth, dayOffset);
+
+    const daysGrid = createDaysGrid({ 
+        app: app as App, 
+        metadataCache: metadataCache as MetadataCache, 
+        files: filteredFiles, 
+        numRows, 
+        numDaysInMonth, 
+        dayOffset, 
+        year, 
+        month 
+    });
+
+    const monthName = `${firstDayOfMonth.toLocaleString('default', { month: 'long' })}`;
+    const monthNameFirstCase = monthName.charAt(0).toUpperCase() + monthName.slice(1);
+    const monthNameAndYear = `${monthNameFirstCase} ${year}`;
+
+    const today = new Date();
+    const currentMonth = today.getMonth() + 1;
+    let cssCurrentMonth = '';
+    if (currentMonth === month) {
+        cssCurrentMonth = 'obs-current-month';
     }
 
-    return false;
+    const monthRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        if (cssCurrentMonth === 'obs-current-month' && monthRef.current) {
+            monthRef.current.scrollIntoView();
+        }
+    }, [cssCurrentMonth]);
+
+    return {
+        monthRef,
+        cssCurrentMonth,
+        monthNameAndYear,
+        daysGrid,
+    };
 }
