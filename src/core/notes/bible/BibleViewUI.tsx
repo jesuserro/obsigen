@@ -25,8 +25,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
         setBibleNotes(updatedBibleStructure);
     }, [app, metadataCache, files]);
 
-    const handleNoteClick = (noteTitle: string, chapterNumber: number) => {
-        const notePath = `333 Biblia/San Juan/${chapterNumber}/${noteTitle}.md`;
+    const handleNoteClick = (notePath: string) => {
         const file = app.vault.getAbstractFileByPath(notePath);
 
         if (file instanceof TFile) {
@@ -63,7 +62,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                                     key={noteIndex}
                                                                     className="event-icon"
                                                                     title={note.title}
-                                                                    onClick={() => handleNoteClick(note.title, parseInt(chapterNumber))}
+                                                                    onClick={() => handleNoteClick(note.path)} // Usar la ruta completa del archivo
                                                                 />
                                                             ))
                                                         ) : (

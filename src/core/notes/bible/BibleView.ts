@@ -2,6 +2,7 @@ import { App, MetadataCache, TFile } from 'obsidian';
 
 interface Note {
     title: string;
+    path: string; // Añadimos el path para identificar la ruta completa
     date?: string;
     verseStart?: number;
     verseEnd?: number;
@@ -25,6 +26,7 @@ export function getChapterNotes(app: App, metadataCache: MetadataCache, files: T
 
         return {
             title: fileName,
+            path: file.path, // Guardamos la ruta completa del archivo
             verseStart,
             verseEnd,
         };
@@ -51,6 +53,7 @@ export function getChapterNotes(app: App, metadataCache: MetadataCache, files: T
 
             return {
                 title: file.name.replace(/\.md$/, ''),
+                path: file.path, // Guardamos la ruta completa del archivo
                 verseStart: verseRange ? verseRange[0] : undefined,
                 verseEnd: verseRange ? verseRange[1] : undefined,
             };
