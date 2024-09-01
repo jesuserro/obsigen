@@ -1,10 +1,23 @@
 import { App, MetadataCache, TFile } from 'obsidian';
 import { useEffect, useRef, useState } from 'react';
-import { createDaysGrid } from './MonthGrid'; // Asegúrate de que esta línea esté presente
 
 export interface CalendarMonthProps {
     year: number;
     month: number;
+}
+
+export interface MonthGridProps {
+    daysGrid: {
+        year: number;
+        month: number;
+        dayIndex: number;
+        isWithinMonth: boolean;
+        hasNote: string | false;
+        anniversaryNote: TFile | undefined;
+        dayNotes: TFile[];
+        className: string;
+        app: App;
+    }[][];
 }
 
 export function getFirstDayOfMonth(year: number, month: number): Date {
@@ -78,6 +91,57 @@ export function getDayNotes(app: App, metadataCache: MetadataCache, files: TFile
     });
 
     return dayNotes;
+}
+
+export function createDaysGrid({ 
+    app, 
+    metadataCache, 
+    files, 
+    numRows, 
+    numDaysInMonth, 
+    dayOffset, 
+    year, 
+    month 
+}: {
+    app: App;
+    metadataCache: MetadataCache;
+    files: TFile[];
+    numRows: number;
+    numDaysInMonth: number;
+    dayOffset: number;
+    year: number;
+    month: number;
+}): MonthGridProps['daysGrid'] {
+    const daysGrid: MonthGridProps['daysGrid'] = [];
+
+    for (let row = 0; row < numRows; row++) {
+        const cells: MonthGridProps['daysGrid'][0] = [];
+
+        for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
+            const dayIndex = row * 7 + dayOfWeek + 1 - dayOffset;
+            const isWithinMonth = dayIndex >= 1 && dayIndex <= numDaysInMonth;
+
+            const hasNote = getDailyNote(dayIndex, files, year, month);
+            const anniversaryNote = getAnniversaryNote(dayIndex, files, month);
+            const dayNotes = getDayNotes(app, metadataCache, files, dayIndex, year, month);
+
+            cells.push({
+                year,
+                month,
+                dayIndex,
+                isWithinMonth,
+                hasNote,
+                anniversaryNote,
+                dayNotes,
+                className: isWithinMonth ? 'within-month' : 'outside-month',
+                app
+            });
+        }
+
+        daysGrid.push(cells);
+    }
+
+    return daysGrid;
 }
 
 export function useMonthLogic(app: App | undefined, year: number, month: number) {
