@@ -1,4 +1,4 @@
-import CalendarMonth from './CalendarMonth';
+import MonthUI from './MonthUI'; // Importar el nuevo componente MonthUI
 
 interface CalendarYearProps {
   year: number;
@@ -11,7 +11,7 @@ function CalendarYear({ year }: CalendarYearProps): JSX.Element {
     const monthKey = `${year}-${(month).toString().padStart(2, '0')}`;
     
     return (
-      <CalendarMonth key={monthKey} year={year} month={month} />
+      <MonthUI key={monthKey} year={year} month={month} /> // Usar MonthUI en lugar de CalendarMonth
     );
   });
 

@@ -17,25 +17,13 @@ const getFileName = (path: string) => {
     return parts[parts.length - 1];
 };
 
-const hashCode = (str: string) => {
-    let hash = 0;
-    if (str.length === 0) return hash;
-
-    for (let i = 0; i < str.length; i++) {
-        const char = str.charCodeAt(i);
-        hash = (hash << 5) - hash + char;
-    }
-
-    return hash;
+const generateEventIndex = (note: TFile): string => {
+    // Generar un índice único basado en el path del archivo y su contenido
+    return `${note.path}-${note.stat.mtime}`; // Consideramos el path y el tiempo de modificación
 };
 
-const generateEventIndex = (note: TFile): number => {
-    return hashCode(note.path);
-};
-
-const getCalendarEvent = (year: number, month: number, dayCounter: number, index: number, note: TFile, metadataCache: MetadataCache) => {
-
-    const mykey = `${year}-${month}-${dayCounter}${index}`;
+const getCalendarEvent = (year: number, month: number, dayCounter: number, index: string, note: TFile, metadataCache: MetadataCache) => {
+    const mykey = `${year}-${month}-${dayCounter}-${index}`;
 
     const frontmatter = metadataCache.getFileCache(note)?.frontmatter;
     const cssClasses = frontmatter?.cssclasses || [];
@@ -78,7 +66,7 @@ const CalendarDay = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNot
 
     const notePath = hasNote ? `obsidian://open?file=${encodeURIComponent(hasNote)}` : '';
     const anniversary = anniversaryNote ? getCalendarEvent(year, month, dayCounter, generateEventIndex(anniversaryNote), anniversaryNote, app.metadataCache) : null;
-    const notesOfTheDay = dayNotes ? dayNotes.map((note, index) => getCalendarEvent(year, month, dayCounter, generateEventIndex(note), note, app.metadataCache)) : null;
+    const notesOfTheDay = dayNotes ? dayNotes.map((note) => getCalendarEvent(year, month, dayCounter, generateEventIndex(note), note, app.metadataCache)) : null;
 
     return (
         <div className="day-container">
