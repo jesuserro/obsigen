@@ -1,5 +1,5 @@
-import CalendarDay from './CalendarDay';
-import { MonthGridProps } from './Month'; // Importamos las props desde Month.ts
+import DayUI from './DayUI';
+import { MonthGridProps } from './Month';
 
 export function MonthGrid({ daysGrid }: MonthGridProps): JSX.Element {
     return (
@@ -9,7 +9,7 @@ export function MonthGrid({ daysGrid }: MonthGridProps): JSX.Element {
                     {row.map((cell, cellIndex) => (
                         <td key={`cell-${rowIndex}-${cellIndex}`} className={cell.className}>
                             {cell.dayIndex > 0 && cell.isWithinMonth ? (
-                                <CalendarDay
+                                <DayUI
                                     key={`${cell.year}-${String(cell.month).padStart(2, '0')}-${String(cell.dayIndex).padStart(2, '0')}`}
                                     year={cell.year}
                                     month={cell.month}
@@ -29,3 +29,5 @@ export function MonthGrid({ daysGrid }: MonthGridProps): JSX.Element {
         </>
     );
 }
+
+export default MonthGrid;
