@@ -1,7 +1,7 @@
 import { App, MetadataCache, TFile } from 'obsidian';
-import React, { useEffect, useState } from 'react';
-import { getChapterNotes } from './BibleView';
-import { bibleStructure } from './BibleViewStructure';
+import React from 'react';
+import { getChapterNotes, handleNoteClick, useBibleViewLogic } from './BibleView'; // Importamos la lógica y el manejador de clics
+
 
 interface Props {
     app: App;
@@ -10,30 +10,7 @@ interface Props {
 }
 
 const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
-    const [bibleNotes, setBibleNotes] = useState(bibleStructure);
-
-    useEffect(() => {
-        if (!app || !metadataCache || !files?.length) return;
-
-        const updatedBibleStructure = { ...bibleNotes };
-
-        Object.keys(updatedBibleStructure["San Juan"].chapters).forEach(chapterNumber => {
-            const notes = getChapterNotes(app, metadataCache, files, parseInt(chapterNumber));
-            // Asignar notas a perícopas si es necesario
-        });
-
-        setBibleNotes(updatedBibleStructure);
-    }, [app, metadataCache, files]);
-
-    const handleNoteClick = (notePath: string) => {
-        const file = app.vault.getAbstractFileByPath(notePath);
-
-        if (file instanceof TFile) {
-            app.workspace.getLeaf().openFile(file);
-        } else {
-            console.error(`File not found: ${notePath}`);
-        }
-    };
+    const { bibleNotes } = useBibleViewLogic(app, metadataCache, files);
 
     return (
         <div className="bible-view-container">
@@ -62,7 +39,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                                     key={noteIndex}
                                                                     className="event-icon"
                                                                     title={note.title}
-                                                                    onClick={() => handleNoteClick(note.path)} // Usar la ruta completa del archivo
+                                                                    onClick={() => handleNoteClick(app, note.path)} // Usar la lógica importada
                                                                 />
                                                             ))
                                                         ) : (
