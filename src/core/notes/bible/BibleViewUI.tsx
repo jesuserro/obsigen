@@ -66,9 +66,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                     <div className="pericopes-container">
                                         {chapterInfo.pericopes.map((pericope, index) => {
                                             const notesForPericope = getChapterNotes(app, metadataCache, files, parseInt(chapterNumber))
-                                                .filter(note => note.verseStart !== undefined &&
-                                                    note.verseStart >= pericope.verseRange[0] &&
-                                                    note.verseStart <= pericope.verseRange[1]);
+                                                .filter(note => note && note.verseStart !== undefined && note.verseStart !== null && note.verseStart >= pericope.verseRange[0] && note.verseStart <= pericope.verseRange[1]);
 
                                             return (
                                                 <div key={index} className="pericope-wrapper">
@@ -82,7 +80,9 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                                         className="event-icon"
                                                                         title={note.title}
                                                                         onClick={() => handleNoteClick(app, note.path)} // Usar la lógica importada
-                                                                    />
+                                                                    >
+                                                                        {note.icon} {/* Mostrar el icono en lugar del punto azul */}
+                                                                    </div>
                                                                 ))
                                                             ) : (
                                                                 <span className="no-notes">Sin notas</span>

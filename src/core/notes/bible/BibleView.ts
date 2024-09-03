@@ -1,5 +1,6 @@
 import { App, MetadataCache, TFile } from 'obsidian';
 import { useEffect, useState } from 'react';
+import { CalendarIcon } from './../calendar/CalendarIcon';
 import { bibleStructure } from './BibleViewStructure';
 
 interface Note {
@@ -8,6 +9,7 @@ interface Note {
     date?: string;
     verseStart?: number;
     verseEnd?: number;
+    icon?: React.ReactNode;
 }
 
 export function getChapterNotes(app: App, metadataCache: MetadataCache, files: TFile[] | undefined, chapterNumber: number): Note[] {
@@ -15,35 +17,55 @@ export function getChapterNotes(app: App, metadataCache: MetadataCache, files: T
         return [];
     }
 
-    // Filtramos y mapeamos las notas que contengan bible_passages en el YAML
-    const biblePassagesNotes: Note[] = files
+    const bibleNotes = files.map(file => {
+        const fileName = file.name.replace(/\.md$/, '');
+        const verseMatch = fileName.match(/Jn-\d{2}_(\d+)(-(\d+))?/);
+        const verseStart = verseMatch ? parseInt(verseMatch[1], 10) : undefined;
+        const verseEnd = verseMatch && verseMatch[3] ? parseInt(verseMatch[3], 10) : undefined;
+        const cache = metadataCache.getFileCache(file);
+        const cssClasses = cache?.frontmatter?.cssclasses || [];
+        const icon = CalendarIcon.getIconByNote(cssClasses, file, 18);
+
+        return verseStart !== undefined ? {
+            title: fileName,
+            path: file.path,
+            verseStart,
+            verseEnd,
+            icon,
+        } : null;  // Retornar null si verseStart es undefined
+    }).filter(note => note !== null) as Note[]; // Filtrar las notas nulas
+
+    const calendarNotes: Note[] = files
         .map(file => {
             const cache = metadataCache.getCache(file.path);
             if (!cache || !cache.frontmatter) return null;
 
             const { bible_passages } = cache.frontmatter;
             if (Array.isArray(bible_passages)) {
-                // Verificamos si alguna de las entradas en bible_passages coincide con el capítulo actual
-                const matchingPassages = bible_passages.filter((passage: any) => {
-                    return passage.book === "San Juan" && passage.chapter === chapterNumber;
-                });
-
-                if (matchingPassages.length > 0) {
-                    // Si encontramos coincidencias, las convertimos en notas
-                    return matchingPassages.map((passage: any) => ({
-                        title: file.name.replace(/\.md$/, ''),
-                        path: file.path,
-                        verseStart: passage.verse_range[0] ? parseInt(passage.verse_range[0], 10) : undefined,
-                        verseEnd: passage.verse_range[1] ? parseInt(passage.verse_range[1], 10) : undefined,
-                    }));
-                }
+                return bible_passages.map(passage => {
+                    if (
+                        typeof passage.book === 'string' &&
+                        passage.chapter === chapterNumber
+                    ) {
+                        const cssClasses = cache.frontmatter?.cssclasses || [];
+                        const icon = CalendarIcon.getIconByNote(cssClasses, file, 18);
+                        return {
+                            title: file.name.replace(/\.md$/, ''),
+                            path: file.path,
+                            verseStart: parseInt(passage.verse_range[0], 10),
+                            verseEnd: parseInt(passage.verse_range[1], 10),
+                            icon,
+                        };
+                    }
+                    return null;
+                }).filter(note => note !== null);
             }
             return null;
         })
-        .flat() // Aplanamos el array para manejar múltiples coincidencias en bible_passages
-        .filter(note => note !== null) as Note[]; // Filtramos posibles nulls que se hayan retornado y aseguramos el tipo
+        .flat()
+        .filter(note => note !== null) as Note[];
 
-    return biblePassagesNotes;
+    return [...bibleNotes, ...calendarNotes];
 }
 
 export function handleNoteClick(app: App, notePath: string) {
