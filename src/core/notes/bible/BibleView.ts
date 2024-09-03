@@ -15,49 +15,35 @@ export function getChapterNotes(app: App, metadataCache: MetadataCache, files: T
         return [];
     }
 
-    const chapterPath = `333 Biblia/San Juan/${chapterNumber}/`;
-
-    // Filtrar notas en el capítulo específico
-    const chapterFiles = files.filter(file => file.path.startsWith(chapterPath));
-
-    const bibleNotes = chapterFiles.map(file => {
-        const fileName = file.name.replace(/\.md$/, '');
-        const verseMatch = fileName.match(/Jn-\d{2}_(\d+)(-(\d+))?/);
-        const verseStart = verseMatch ? parseInt(verseMatch[1], 10) : undefined;
-        const verseEnd = verseMatch && verseMatch[3] ? parseInt(verseMatch[3], 10) : undefined;
-
-        return {
-            title: fileName,
-            path: file.path,
-            verseStart,
-            verseEnd,
-        };
-    });
-
-    // Filtrar y mapear notas en el calendario que contienen las propiedades YAML relevantes
-    const calendarNotes: Note[] = files
+    // Filtramos y mapeamos las notas que contengan bible_passages en el YAML
+    const biblePassagesNotes: Note[] = files
         .map(file => {
             const cache = metadataCache.getCache(file.path);
             if (!cache || !cache.frontmatter) return null;
 
-            const { bible_book, bible_chapter, bible_verse_range } = cache.frontmatter;
-            if (
-                typeof bible_book === 'string' &&
-                bible_chapter === chapterNumber &&
-                Array.isArray(bible_verse_range)
-            ) {
-                return {
-                    title: file.name.replace(/\.md$/, ''),
-                    path: file.path,
-                    verseStart: bible_verse_range[0],
-                    verseEnd: bible_verse_range[1],
-                };
+            const { bible_passages } = cache.frontmatter;
+            if (Array.isArray(bible_passages)) {
+                // Verificamos si alguna de las entradas en bible_passages coincide con el capítulo actual
+                const matchingPassages = bible_passages.filter((passage: any) => {
+                    return passage.book === "San Juan" && passage.chapter === chapterNumber;
+                });
+
+                if (matchingPassages.length > 0) {
+                    // Si encontramos coincidencias, las convertimos en notas
+                    return matchingPassages.map((passage: any) => ({
+                        title: file.name.replace(/\.md$/, ''),
+                        path: file.path,
+                        verseStart: passage.verse_range[0] ? parseInt(passage.verse_range[0], 10) : undefined,
+                        verseEnd: passage.verse_range[1] ? parseInt(passage.verse_range[1], 10) : undefined,
+                    }));
+                }
             }
             return null;
         })
-        .filter(note => note !== null) as Note[]; // Filtra posibles nulls que se hayan retornado y asegura el tipo
+        .flat() // Aplanamos el array para manejar múltiples coincidencias en bible_passages
+        .filter(note => note !== null) as Note[]; // Filtramos posibles nulls que se hayan retornado y aseguramos el tipo
 
-    return [...bibleNotes, ...calendarNotes]; // Combinar notas
+    return biblePassagesNotes;
 }
 
 export function handleNoteClick(app: App, notePath: string) {
