@@ -123,7 +123,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         verseRange: [16, 21]
                     },
                     {
-                        title: "La gente busca a Jesús",
+                        title: "Las multitudes buscan a Jesús",
                         verseRange: [22, 26]
                     },
                     {
