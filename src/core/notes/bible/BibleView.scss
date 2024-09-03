@@ -2,60 +2,75 @@
     padding: 20px;
     color: #ffffff;
     background-color: #2e2e2e;
-  }
+}
   
-  .books-grid {
+.books-grid {
     display: flex;
     flex-direction: column;
     gap: 20px;
-  }
+}
   
-  .book-container {
+.book-container {
     border: 1px solid #555;
     padding: 10px;
     border-radius: 10px;
-  }
+}
   
-  .chapters-grid {
+.chapters-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 10px;
-  }
+}
   
-  .chapter-container {
+.chapter-container {
     background-color: #444;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
-  }
+}
   
-  h3 {
+h3 {
     margin: 0;
     font-size: 16px;
-  }
+}
   
-  h3 sub {
+h3 sub {
     font-size: 12px;
     vertical-align: text-top;
     margin-left: 5px;
-  }
+}
   
-  .pericopes-container {
+.pericopes-container {
     margin-top: 5px;
-  }
+}
   
-  .pericope-container {
+.pericope-container {
     background-color: #333;
     padding: 8px;
     border-radius: 5px;
     margin-top: 5px;
-  }
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative; /* Agregar posición relativa para contener a los elementos posicionados */
+    overflow: hidden; /* Asegurar que los elementos no sobresalgan del contenedor */
+}
   
-  .events-container {
+.events-container {
     margin-top: 5px;
-  }
+    position: absolute; /* Posicionar absolutamente respecto al contenedor padre */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Alinear los puntos horizontalmente si es necesario */
+    align-items: center; /* Alinear los puntos verticalmente si es necesario */
+    z-index: 1; /* Colocar los puntos por encima del fondo */
+    pointer-events: none; /* Permitir que los clics pasen a través de este contenedor, si es necesario */
+}
   
-  .event-icon {
+.event-icon {
     width: 12px;
     height: 12px;
     background-color: #007bff;
@@ -63,9 +78,10 @@
     display: inline-block;
     margin: 5px 2px;
     cursor: pointer;
-  }
+    z-index: 2; /* Asegurar que los puntos estén por encima de cualquier otro contenido */
+    pointer-events: auto; /* Habilitar clics en los puntos */
+}
   
-  .event-icon:hover {
+.event-icon:hover {
     background-color: #0056b3;
-  }
-  
+}

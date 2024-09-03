@@ -1,13 +1,13 @@
-export interface Note {
-    title: string;
-    date?: string;
-    verseStart?: number;
-    verseEnd?: number;
+export interface BibleImage {
+    type: 'local' | 'url'; // 'local' para imágenes guardadas en el vault, 'url' para imágenes online
+    path: string; // Ruta del archivo en el vault o URL de la imagen
+    altText?: string; // Texto alternativo para la imagen, útil para accesibilidad
 }
 
 interface Pericope {
     title: string;
     verseRange: [number, number]; // Rango de versículos, e.g., [1, 18]
+    images?: BibleImage[]; // Array de imágenes asociadas a la perícopa
 }
 
 interface ChapterInfo {
@@ -27,7 +27,10 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                 pericopes: [
                     {
                         title: "Prólogo",
-                        verseRange: [1, 18]
+                        verseRange: [1, 18],
+                        images: [
+                            { type: 'url', path: 'https://alfayomega.es/wp-content/uploads/2023/12/20231225_36549.jpg', altText: 'Descripción de la imagen 2' }
+                        ]
                     },
                     {
                         title: "Testimonio de Juan el Bautista",

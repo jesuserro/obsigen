@@ -1,7 +1,7 @@
 import { App, MetadataCache, TFile } from 'obsidian';
 import React from 'react';
-import { getChapterNotes, handleNoteClick, useBibleViewLogic } from './BibleView'; // Importamos la lógica y el manejador de clics
-
+import { getChapterNotes, handleNoteClick, useBibleViewLogic } from './BibleView';
+import { BibleImage } from './BibleViewStructure';
 
 interface Props {
     app: App;
@@ -11,6 +11,44 @@ interface Props {
 
 const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
     const { bibleNotes } = useBibleViewLogic(app, metadataCache, files);
+
+    const getBackgroundStyle = (images: BibleImage[] | undefined) => {
+        if (!images || images.length === 0) return {};
+    
+        const imageUrls = images.map((image: BibleImage) => `url(${image.path})`);
+        switch (images.length) {
+            case 1:
+                return {
+                    backgroundImage: imageUrls[0],
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                };
+            case 2:
+                return {
+                    backgroundImage: `${imageUrls[0]}, ${imageUrls[1]}`,
+                    backgroundSize: '100% 50%',
+                    backgroundPosition: 'top, bottom',
+                    backgroundRepeat: 'no-repeat',
+                };
+            case 3:
+                return {
+                    backgroundImage: `${imageUrls[0]}, ${imageUrls[1]}, ${imageUrls[2]}`,
+                    backgroundSize: '100% 50%, 50% 50%',
+                    backgroundPosition: 'top, left bottom, right bottom',
+                    backgroundRepeat: 'no-repeat',
+                };
+            case 4:
+                return {
+                    backgroundImage: `${imageUrls[0]}, ${imageUrls[1]}, ${imageUrls[2]}, ${imageUrls[3]}`,
+                    backgroundSize: '50% 50%',
+                    backgroundPosition: 'top left, top right, bottom left, bottom right',
+                    backgroundRepeat: 'no-repeat',
+                };
+            default:
+                return {};
+        }
+    };
+    
 
     return (
         <div className="bible-view-container">
@@ -30,7 +68,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                     note.verseStart <= pericope.verseRange[1]);
 
                                             return (
-                                                <div key={index} className="pericope-container">
+                                                <div key={index} className="pericope-container" style={getBackgroundStyle(pericope.images)}>
                                                     <h4>{pericope.title} ({pericope.verseRange[0]}-{pericope.verseRange[1]})</h4>
                                                     <div className="events-container">
                                                         {notesForPericope.length > 0 ? (
