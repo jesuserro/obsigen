@@ -358,7 +358,10 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                 pericopes: [
                     {
                         title: "Jesús es arrestado",
-                        verseRange: [1, 11]
+                        verseRange: [1, 11],
+                        images: [
+                            { type: 'url', path: 'https://api.brushwiz.com/images/paintings/t/The_Guards_Falling_Backwards_by_James_Jacques_Joseph_Tissot_F62.jpg', altText: 'James J. Tissot, The guards falling backwards (1884-1896), gouache on grey wove paper, 7-13/16 x 10-3/8 in, brooklyn museum, new york.' }
+                        ]
                     },
                     {
                         title: "Jesús ante el sumo sacerdote",
