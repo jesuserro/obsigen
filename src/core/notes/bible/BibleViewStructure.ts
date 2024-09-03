@@ -55,11 +55,17 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                 pericopes: [
                     {
                         title: "El primer milagro de Jesús en Caná",
-                        verseRange: [1, 12]
+                        verseRange: [1, 12],
+                        images: [
+                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/CarlBloch_weddingatCana.jpg/640px-CarlBloch_weddingatCana.jpg', altText: 'Descripción de la imagen 2' }
+                        ]
                     },
                     {
                         title: "Jesús purifica el templo",
-                        verseRange: [13, 22]
+                        verseRange: [13, 22],
+                        images: [
+                            { type: 'url', path: 'https://m.media-amazon.com/images/I/71V4-AFAivL._AC_UF894,1000_QL80_.jpg', altText: 'Descripción de la imagen 2' }
+                        ]
                     },
                     {
                         title: "Jesús conoce a todos los hombres",
@@ -237,7 +243,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús resucita a Lázaro",
                         verseRange: [38, 44],
                         images: [
-                            { type: 'url', path: 'https://wahooart.com/Art.nsf/O/8XXHZF/$File/Carl-Heinrich-Bloch-Jesus-Raises-Lazarus-from-the-Dead.jpg', altText: 'Descripción de la imagen 2' }
+                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/RaisingofLazarusBloch.jpg', altText: 'Descripción de la imagen 2' }
                         ]
                     },
                     {
