@@ -29,7 +29,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Prólogo",
                         verseRange: [1, 18],
                         images: [
-                            { type: 'url', path: 'https://alfayomega.es/wp-content/uploads/2023/12/20231225_36549.jpg', altText: 'Descripción de la imagen 2' }
+                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Carl_Heinrich_Bloch_-_The_Annunciation.jpg', altText: 'Descripción de la imagen 2' }
                         ]
                     },
                     {
