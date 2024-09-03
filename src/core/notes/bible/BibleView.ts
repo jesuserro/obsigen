@@ -12,60 +12,46 @@ interface Note {
     icon?: React.ReactNode;
 }
 
-export function getChapterNotes(app: App, metadataCache: MetadataCache, files: TFile[] | undefined, chapterNumber: number): Note[] {
+export function getChapterNotes(app: App, metadataCache: MetadataCache, files: TFile[] | undefined, book: string, chapterNumber: number): Note[] {
     if (!files || files.length === 0) {
         return [];
     }
 
     const bibleNotes = files.map(file => {
         const fileName = file.name.replace(/\.md$/, '');
-        const verseMatch = fileName.match(/Jn-\d{2}_(\d+)(-(\d+))?/);
-        const verseStart = verseMatch ? parseInt(verseMatch[1], 10) : undefined;
-        const verseEnd = verseMatch && verseMatch[3] ? parseInt(verseMatch[3], 10) : undefined;
         const cache = metadataCache.getFileCache(file);
         const cssClasses = cache?.frontmatter?.cssclasses || [];
         const icon = CalendarIcon.getIconByNote(cssClasses, file, 18);
 
-        return verseStart !== undefined ? {
-            title: fileName,
-            path: file.path,
-            verseStart,
-            verseEnd,
-            icon,
-        } : null;  // Retornar null si verseStart es undefined
-    }).filter(note => note !== null) as Note[]; // Filtrar las notas nulas
+        // Filtrar correctamente según el libro y el capítulo
+        const { bible_passages } = cache?.frontmatter || {};
+        if (Array.isArray(bible_passages)) {
+            return bible_passages.map(passage => {
+                if (
+                    passage.book === book &&
+                    passage.chapter === chapterNumber &&
+                    passage.verse_range &&
+                    passage.verse_range.length > 0
+                ) {
+                    const verseStart = parseInt(passage.verse_range[0], 10);
+                    const verseEnd = passage.verse_range[1] ? parseInt(passage.verse_range[1], 10) : undefined;
 
-    const calendarNotes: Note[] = files
-        .map(file => {
-            const cache = metadataCache.getCache(file.path);
-            if (!cache || !cache.frontmatter) return null;
+                    return {
+                        title: fileName,
+                        path: file.path,
+                        verseStart,
+                        verseEnd,
+                        icon,
+                    };
+                }
+                return null;
+            }).filter(note => note !== null);
+        }
 
-            const { bible_passages } = cache.frontmatter;
-            if (Array.isArray(bible_passages)) {
-                return bible_passages.map(passage => {
-                    if (
-                        typeof passage.book === 'string' &&
-                        passage.chapter === chapterNumber
-                    ) {
-                        const cssClasses = cache.frontmatter?.cssclasses || [];
-                        const icon = CalendarIcon.getIconByNote(cssClasses, file, 18);
-                        return {
-                            title: file.name.replace(/\.md$/, ''),
-                            path: file.path,
-                            verseStart: parseInt(passage.verse_range[0], 10),
-                            verseEnd: parseInt(passage.verse_range[1], 10),
-                            icon,
-                        };
-                    }
-                    return null;
-                }).filter(note => note !== null);
-            }
-            return null;
-        })
-        .flat()
-        .filter(note => note !== null) as Note[];
+        return null;
+    }).filter(note => note !== null).flat() as Note[]; // Filtrar las notas nulas y aplanar el array
 
-    return [...bibleNotes, ...calendarNotes];
+    return bibleNotes;
 }
 
 export function handleNoteClick(app: App, notePath: string) {
@@ -88,10 +74,10 @@ export function useBibleViewLogic(app: App, metadataCache: MetadataCache, files:
         const updatedBibleStructure = { ...bibleNotes };
 
         Object.keys(updatedBibleStructure["San Juan"].chapters).forEach(chapterNumber => {
-            const notes = getChapterNotes(app, metadataCache, files, parseInt(chapterNumber));
+            const notes = getChapterNotes(app, metadataCache, files, "San Juan", parseInt(chapterNumber));
             // Asignar notas a perícopas si es necesario
         });
-
+        
         setBibleNotes(updatedBibleStructure);
     }, [app, metadataCache, files]);
 
