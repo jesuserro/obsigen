@@ -22,6 +22,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                     backgroundImage: imageUrls[0],
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
+                    filter: 'brightness(0.5)', // Aplica el efecto "mate"
                 };
             case 2:
                 return {
@@ -29,6 +30,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                     backgroundSize: '100% 50%',
                     backgroundPosition: 'top, bottom',
                     backgroundRepeat: 'no-repeat',
+                    filter: 'brightness(0.5)', // Aplica el efecto "mate"
                 };
             case 3:
                 return {
@@ -36,6 +38,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                     backgroundSize: '100% 50%, 50% 50%',
                     backgroundPosition: 'top, left bottom, right bottom',
                     backgroundRepeat: 'no-repeat',
+                    filter: 'brightness(0.5)', // Aplica el efecto "mate"
                 };
             case 4:
                 return {
@@ -43,12 +46,12 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                     backgroundSize: '50% 50%',
                     backgroundPosition: 'top left, top right, bottom left, bottom right',
                     backgroundRepeat: 'no-repeat',
+                    filter: 'brightness(0.5)', // Aplica el efecto "mate"
                 };
             default:
                 return {};
         }
     };
-    
 
     return (
         <div className="bible-view-container">
@@ -68,21 +71,23 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                     note.verseStart <= pericope.verseRange[1]);
 
                                             return (
-                                                <div key={index} className="pericope-container" style={getBackgroundStyle(pericope.images)}>
+                                                <div key={index} className="pericope-wrapper">
                                                     <h4>{pericope.title} ({pericope.verseRange[0]}-{pericope.verseRange[1]})</h4>
-                                                    <div className="events-container">
-                                                        {notesForPericope.length > 0 ? (
-                                                            notesForPericope.map((note, noteIndex) => (
-                                                                <div
-                                                                    key={noteIndex}
-                                                                    className="event-icon"
-                                                                    title={note.title}
-                                                                    onClick={() => handleNoteClick(app, note.path)} // Usar la lógica importada
-                                                                />
-                                                            ))
-                                                        ) : (
-                                                            <span>Sin notas</span>
-                                                        )}
+                                                    <div className="pericope-container" style={getBackgroundStyle(pericope.images)}>
+                                                        <div className="events-container">
+                                                            {notesForPericope.length > 0 ? (
+                                                                notesForPericope.map((note, noteIndex) => (
+                                                                    <div
+                                                                        key={noteIndex}
+                                                                        className="event-icon"
+                                                                        title={note.title}
+                                                                        onClick={() => handleNoteClick(app, note.path)} // Usar la lógica importada
+                                                                    />
+                                                                ))
+                                                            ) : (
+                                                                <span className="no-notes">Sin notas</span>
+                                                            )}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             );

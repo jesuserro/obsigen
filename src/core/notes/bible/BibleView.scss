@@ -39,11 +39,20 @@ h3 sub {
     vertical-align: text-top;
     margin-left: 5px;
 }
-  
+
+h4 {
+    font-size: 15px; /* Ajuste del tamaño de letra para que sea más pequeño que h3 */
+    margin: 0;
+}
+
 .pericopes-container {
     margin-top: 5px;
 }
-  
+
+.pericope-wrapper {
+    margin-top: 10px;
+}
+
 .pericope-container {
     background-color: #333;
     padding: 8px;
@@ -52,22 +61,24 @@ h3 sub {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    position: relative; /* Agregar posición relativa para contener a los elementos posicionados */
-    overflow: hidden; /* Asegurar que los elementos no sobresalgan del contenedor */
+    position: relative;
+    overflow: hidden;
+    filter: brightness(0.5); /* Efecto mate */
+    height: 150px; /* Altura fija estilo thumbnail */
 }
-  
+
 .events-container {
     margin-top: 5px;
-    position: absolute; /* Posicionar absolutamente respecto al contenedor padre */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center; /* Alinear los puntos horizontalmente si es necesario */
-    align-items: center; /* Alinear los puntos verticalmente si es necesario */
-    z-index: 1; /* Colocar los puntos por encima del fondo */
-    pointer-events: none; /* Permitir que los clics pasen a través de este contenedor, si es necesario */
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    pointer-events: none;
 }
   
 .event-icon {
@@ -78,10 +89,15 @@ h3 sub {
     display: inline-block;
     margin: 5px 2px;
     cursor: pointer;
-    z-index: 2; /* Asegurar que los puntos estén por encima de cualquier otro contenido */
-    pointer-events: auto; /* Habilitar clics en los puntos */
+    z-index: 2;
+    pointer-events: auto;
 }
-  
+
+.no-notes {
+    color: #ffffff;
+    font-size: 12px;
+}
+
 .event-icon:hover {
     background-color: #0056b3;
 }
