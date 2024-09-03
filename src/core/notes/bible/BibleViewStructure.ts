@@ -199,7 +199,10 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                 pericopes: [
                     {
                         title: "Jesús sana a un ciego de nacimiento",
-                        verseRange: [1, 12]
+                        verseRange: [1, 12],
+                        images: [
+                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Healing_of_the_Blind_Man_by_Jesus_Christ.jpg', altText: 'Descripción de la imagen 2' }
+                        ]
                     },
                     {
                         title: "El ciego es interrogado por los fariseos",
@@ -380,7 +383,10 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     },
                     {
                         title: "La muerte de Jesús",
-                        verseRange: [31, 37]
+                        verseRange: [31, 37],
+                        images: [
+                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg/197px-Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg', altText: 'Descripción de la imagen 2' }
+                        ]
                     },
                     {
                         title: "El entierro de Jesús",
