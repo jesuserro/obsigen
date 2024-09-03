@@ -72,9 +72,9 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                 <div key={index} className="pericope-wrapper">
                                                     <h4>{pericope.title} ({pericope.verseRange[0]}-{pericope.verseRange[1]})</h4>
                                                     <div className="pericope-container" style={getBackgroundStyle(pericope.images)}>
-                                                        <div className="events-container">
-                                                            {notesForPericope.length > 0 ? (
-                                                                notesForPericope.map((note, noteIndex) => (
+                                                        {notesForPericope.length > 0 && (
+                                                            <div className="events-container">
+                                                                {notesForPericope.map((note, noteIndex) => (
                                                                     <a
                                                                         key={noteIndex}
                                                                         href={`obsidian://open?file=${encodeURIComponent(note.path)}`}
@@ -87,14 +87,11 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                                             {note.icon} {/* Mostrar el icono en lugar del punto azul */}
                                                                         </div>
                                                                     </a>
-                                                                ))
-                                                            ) : (
-                                                                <span className="no-notes">Sin notas</span>
-                                                            )}
-                                                        </div>
+                                                                ))}
+                                                            </div>
+                                                        )}
                                                     </div>
                                                 </div>
-
                                             );
                                         })}
                                     </div>

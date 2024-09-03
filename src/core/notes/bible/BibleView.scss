@@ -80,17 +80,8 @@ h4 {
     pointer-events: auto;
     padding: 5px; /* Espacio alrededor de los iconos */
     box-sizing: border-box; /* Asegura que el padding no expanda el tamaño del contenedor */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente mate */
+    background-color: rgba(0, 0, 0, 0.3); /* Fondo semitransparente más claro */
     border-radius: 5px; /* Redondea las esquinas para una apariencia más suave */
-}
-
-.no-notes {
-    color: #ffffff;
-    font-size: 12px;
-    padding-bottom: 5px;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente mate */
-    border-radius: 5px; /* Redondea las esquinas para una apariencia más suave */
-    padding: 3px 5px; /* Padding interno para que el texto no esté pegado al borde */
 }
 
 .event-icon {
