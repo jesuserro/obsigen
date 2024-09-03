@@ -14,7 +14,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
 
     const getBackgroundStyle = (images: BibleImage[] | undefined) => {
         if (!images || images.length === 0) return {};
-    
+
         const imageUrls = images.map((image: BibleImage) => `url(${image.path})`);
         switch (images.length) {
             case 1:
@@ -75,14 +75,18 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                         <div className="events-container">
                                                             {notesForPericope.length > 0 ? (
                                                                 notesForPericope.map((note, noteIndex) => (
-                                                                    <div
+                                                                    <a
                                                                         key={noteIndex}
-                                                                        className="event-icon"
+                                                                        href={`obsidian://open?file=${encodeURIComponent(note.path)}`}
                                                                         title={note.title}
-                                                                        onClick={() => handleNoteClick(app, note.path)} // Usar la lógica importada
                                                                     >
-                                                                        {note.icon} {/* Mostrar el icono en lugar del punto azul */}
-                                                                    </div>
+                                                                        <div
+                                                                            className="event-icon"
+                                                                            onClick={() => handleNoteClick(app, note.path)} // Usar la lógica importada
+                                                                        >
+                                                                            {note.icon} {/* Mostrar el icono en lugar del punto azul */}
+                                                                        </div>
+                                                                    </a>
                                                                 ))
                                                             ) : (
                                                                 <span className="no-notes">Sin notas</span>
@@ -90,6 +94,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             );
                                         })}
                                     </div>

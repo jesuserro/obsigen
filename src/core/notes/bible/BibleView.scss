@@ -3,37 +3,37 @@
     color: #ffffff;
     background-color: #2e2e2e;
 }
-  
+
 .books-grid {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-  
+
 .book-container {
     border: 1px solid #555;
     padding: 10px;
     border-radius: 10px;
 }
-  
+
 .chapters-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 10px;
 }
-  
+
 .chapter-container {
     background-color: #444;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
 }
-  
+
 h3 {
     margin: 0;
     font-size: 16px;
 }
-  
+
 h3 sub {
     font-size: 12px;
     vertical-align: text-top;
@@ -74,26 +74,14 @@ h4 {
     width: 100%;
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos se envuelvan en nuevas filas */
-    justify-content: center; /* Centra los puntos horizontalmente */
+    justify-content: center; /* Centra los iconos horizontalmente */
     align-items: center; /* Centra verticalmente dentro de la línea */
     z-index: 1;
-    pointer-events: none;
-    padding: 5px; /* Espacio alrededor de los puntos */
+    pointer-events: auto;
+    padding: 5px; /* Espacio alrededor de los iconos */
     box-sizing: border-box; /* Asegura que el padding no expanda el tamaño del contenedor */
     background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente mate */
     border-radius: 5px; /* Redondea las esquinas para una apariencia más suave */
-}
-  
-.event-icon {
-    width: 12px;
-    height: 12px;
-    background-color: #007bff;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 3px; /* Espacio entre los puntos para evitar que se amontonen */
-    cursor: pointer;
-    z-index: 2;
-    pointer-events: auto;
 }
 
 .no-notes {
@@ -105,6 +93,17 @@ h4 {
     padding: 3px 5px; /* Padding interno para que el texto no esté pegado al borde */
 }
 
+.event-icon {
+    cursor: pointer; /* Cambiar el cursor a una mano al pasar sobre el icono */
+    z-index: 2;
+    pointer-events: auto;
+    transition: transform 0.2s ease; /* Añadir una transición suave */
+}
+
+.events-container a {
+    cursor: pointer; /* Asegura que el cursor cambie a mano en el enlace */
+}
+
 .event-icon:hover {
-    background-color: #0056b3;
+    transform: scale(1.2); /* Ampliar un poco el icono al hacer hover */
 }
