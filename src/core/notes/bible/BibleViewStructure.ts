@@ -85,7 +85,10 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                 pericopes: [
                     {
                         title: "Jesús y la mujer samaritana",
-                        verseRange: [1, 26]
+                        verseRange: [1, 26],
+                        images: [
+                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Carl_Heinrich_Bloch_-_Woman_at_the_Well.jpg/800px-Carl_Heinrich_Bloch_-_Woman_at_the_Well.jpg'}
+                        ]
                     },
                     {
                         title: "La conversión de los samaritanos",
@@ -232,7 +235,10 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     },
                     {
                         title: "Jesús resucita a Lázaro",
-                        verseRange: [38, 44]
+                        verseRange: [38, 44],
+                        images: [
+                            { type: 'url', path: 'https://wahooart.com/Art.nsf/O/8XXHZF/$File/Carl-Heinrich-Bloch-Jesus-Raises-Lazarus-from-the-Dead.jpg', altText: 'Descripción de la imagen 2' }
+                        ]
                     },
                     {
                         title: "La conspiración para matar a Jesús",
