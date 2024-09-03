@@ -46,7 +46,10 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     },
                     {
                         title: "Jesús llama a Felipe y a Natanael",
-                        verseRange: [43, 51]
+                        verseRange: [43, 51],
+                        images: [
+                            { type: 'url', path: 'https://achristianpilgrim.wordpress.com/wp-content/uploads/2010/08/filipus-mengajak-nataniel-untuk-bertemu-dengan-yesus.jpg', altText: 'Descripción de la imagen 2' }
+                        ]
                     }
                 ]
             },
@@ -174,7 +177,10 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                 pericopes: [
                     {
                         title: "Jesús y la mujer adúltera",
-                        verseRange: [1, 11]
+                        verseRange: [1, 11],
+                        images: [
+                            { type: 'url', path: 'https://i.redd.it/kwbz58h5k9rb1.jpg', altText: 'Descripción de la imagen 2' }
+                        ]
                     },
                     {
                         title: "Jesús, la luz del mundo",
@@ -289,7 +295,10 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     },
                     {
                         title: "Predicción de la traición de Judas",
-                        verseRange: [18, 30]
+                        verseRange: [18, 30],
+                        images: [
+                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/The-Last-Supper-large.jpg/390px-The-Last-Supper-large.jpg', altText: 'Descripción de la imagen 2' }
+                        ]
                     },
                     {
                         title: "El nuevo mandamiento",
@@ -393,7 +402,10 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                     },
                     {
                         title: "El entierro de Jesús",
-                        verseRange: [38, 42]
+                        verseRange: [38, 42],
+                        images: [
+                            { type: 'url', path: 'https://w0.peakpx.com/wallpaper/151/716/HD-wallpaper-the-burial-of-christ-art-bloch-old-master-beautiful-illustration-artwork-jesus-christ-painting-wide-screen-portrait-carl-heinrich-bloch-burial.jpg', altText: 'Descripción de la imagen 2' }
+                        ]
                     }
                 ]
             },
