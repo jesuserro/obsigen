@@ -123,8 +123,12 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         verseRange: [16, 21]
                     },
                     {
+                        title: "La gente busca a Jesús",
+                        verseRange: [22, 26]
+                    },
+                    {
                         title: "Jesús, el pan de vida",
-                        verseRange: [22, 59]
+                        verseRange: [27, 59]
                     },
                     {
                         title: "Muchos discípulos abandonan a Jesús",
