@@ -80,28 +80,31 @@ h4 {
     align-items: center;
 }
 
-/* Nueva barra vertical a la derecha del contenedor de la perícopa */
+/* Nueva barra vertical con flechas y mejor contraste */
 .related-passages-container {
     position: absolute;
-    right: 0; /* Barra a la derecha del contenedor */
+    right: 0;
     top: 0;
     bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding-right: 5px;
-    background-color: rgba(0, 0, 0, 0.5); /* Transparencia similar a la barra inferior */
-    border-left: 2px solid rgba(255, 255, 255, 0.2); /* Línea de separación con el contenedor */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    border-left: 2px solid rgba(255, 255, 255, 0.2); /* Línea de separación */
     border-radius: 5px;
 }
 
 .related-icon {
     margin: 5px 0; /* Espaciado entre cada flecha */
+    cursor: pointer; /* Mostrar la mano al pasar sobre la flecha */
+    position: relative;
 }
 
 .arrow-icon {
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo casi opaco */
-    padding: 5px;
+    background-color: #282c34; /* Fondo más oscuro para mejor contraste */
+    color: #f7c600; /* Flecha de color amarillo más brillante */
+    padding: 8px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -110,5 +113,36 @@ h4 {
 }
 
 .arrow-icon:hover {
-    transform: scale(1.2); /* Efecto al pasar el ratón sobre la flecha */
+    transform: scale(1.2); /* Ampliar un poco al pasar el ratón */
+}
+
+/* Estilo del tooltip para las flechas */
+.related-icon[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    top: -30px; /* Ajustar la posición del tooltip */
+    right: 50%;
+    background-color: #000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 12px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+    transform: translateX(50%);
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.related-icon[title]:hover::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 50%;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #000 transparent;
+    transform: translateX(50%);
+    z-index: 9;
 }

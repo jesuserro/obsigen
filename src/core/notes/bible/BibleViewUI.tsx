@@ -60,7 +60,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                                 ))
                                                             ) : null}
                                                         </div>
-                                                        {/* Nueva barra vertical de flechas a la derecha del thumbnail */}
+                                                        {/* Barra vertical con flechas y tooltips */}
                                                         <div className="related-passages-container">
                                                             {notesForPericope.map((note, noteIndex) => (
                                                                 <div key={noteIndex} className="related-passages">
@@ -68,6 +68,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                                         <a
                                                                             key={passageIndex}
                                                                             href={`obsidian://open?file=${encodeURIComponent(passage.book)}#${passage.chapter}`}
+                                                                            title={`Ver ${passage.book} ${passage.chapter}`}  // Tooltip con el nombre de la nota
                                                                             className="related-icon"
                                                                         >
                                                                             <div className="arrow-icon">
