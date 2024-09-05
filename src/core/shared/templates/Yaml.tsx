@@ -25,7 +25,7 @@ function renderPropertyValue(key: string, value: any) {
     const seconds = value.getSeconds().toString().padStart(2, '0');
 
     // Formatea la fecha como una cadena legible
-    const formattedDate = `${year}-${month}-${day} ${hour}:${minutes}:${seconds}`;
+    const formattedDate = `${year}-${month}-${day}T${hour}:${minutes}:${seconds}`;
 
     return formattedDate;
   } else if (Array.isArray(value)) {

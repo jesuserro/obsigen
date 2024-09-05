@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { iconData } from './CalendarIcon'; // Importar iconData desde CalendarIcon
 
 export interface CalendarIconPickerProps {
   selectedIcon: string;
@@ -13,11 +14,16 @@ export function CalendarIconPicker({
 }: CalendarIconPickerProps): JSX.Element {
   const [searchTerm, setSearchTerm] = useState('');
   const [value, setValue] = useState(selectedIcon);
-  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Calcular el número total de iconos
+  const totalIcons = Object.values(iconData).reduce((total, group) => total + Object.keys(group).length, 0);
+
   useEffect(() => {
-    // Update the selected icon based on the search term
-    const matchingIcon = Object.keys(icons).find((iconName) =>
-      iconName.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchingIcon = Object.keys(icons).find(
+      (iconName) => iconName.toLowerCase() === searchTerm.toLowerCase()
+    ) || Object.keys(icons).find(
+      (iconName) => iconName.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     if (matchingIcon) {
@@ -36,6 +42,14 @@ export function CalendarIconPicker({
     const searchText = e.target.value;
     setSearchTerm(searchText);
   };
+
+  const handleIconClick = (iconName: string) => {
+    setValue(iconName);
+    onChange(iconName);
+    setIsModalOpen(false);
+  };
+
+  const SelectedIconComponent = icons[value];
 
   return (
     <div className="obs-picker">
@@ -57,7 +71,35 @@ export function CalendarIconPicker({
             </option>
           ))}
         </select>
+
+        <div className="selected-icon-preview" onClick={() => setIsModalOpen(true)}>
+          {SelectedIconComponent && <SelectedIconComponent size={32} />}
+        </div>
       </div>
+
+      {isModalOpen && (
+        <div className="icon-modal" onClick={() => setIsModalOpen(false)}>
+          <div className="icon-modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="icon-modal-header">
+              <button onClick={() => setIsModalOpen(false)}>X</button>
+            </div>
+            <h1>Select Icon ({totalIcons})</h1>
+            {Object.entries(iconData).map(([groupName, iconsInGroup]) => (
+              <div key={groupName}>
+                <h2>{groupName} ({Object.keys(iconsInGroup).length})</h2>
+                <div className="icon-grid">
+                  {Object.keys(iconsInGroup).map((iconName) => (
+                    <div key={iconName} className="icon-item" onClick={() => handleIconClick(iconName)}>
+                      {iconsInGroup[iconName] && iconsInGroup[iconName]({ size: 32 })}
+                      <span>{iconName}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

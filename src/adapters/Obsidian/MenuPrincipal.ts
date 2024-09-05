@@ -1,10 +1,14 @@
 import { App, Menu } from 'obsidian';
+import { GoodreadsReviewsApi } from 'src/api/Goodreads/GoodreadsReviewsApi';
+import { GoodreadsRssItemApi } from 'src/api/Goodreads/GoodreadsRssItemApi';
 import { Yearly } from 'src/core/notes/yearly/Yearly';
 import { Aniversario } from '../../core/notes/aniversario/Aniversario';
 import { Calendar } from '../../core/notes/calendar/Calendar';
 import { CalendarEvent } from '../../core/notes/calendar/CalendarEvent';
 import { Daily } from '../../core/notes/daily/Daily';
 import { Favorites } from '../../core/notes/favorites/Favorites';
+
+
 
 interface MenuItem {
   title: string;
@@ -32,6 +36,53 @@ export class MenuPrincipal extends Menu {
     const minutes = date.getMinutes();
     const seconds = date.getSeconds();
     const selectedDate = new Date(`${year}-${month}-${day} ${hour}:${minutes}:${seconds}`);
+
+    /*
+    this.addMenuItem({
+        title: "Goodreads - Get To Read Shelf",
+        icon: "book-open",
+        onClick: async () => {
+            const goodreadsRssShelf = new GoodreadsRssItemApi(app as App);
+            await goodreadsRssShelf.getShelfList('to-read', 22);
+            // await goodreadsRssShelf.countPagesInShelf('to-read');
+        }
+    });
+    */
+
+    this.addMenuItem({
+        title: "Goodreads - Get Review By Id",
+        icon: "book-open",
+        onClick: async () => {
+            const goodreadsReviews = new GoodreadsReviewsApi(app as App);
+            const review = await goodreadsReviews.getReviewById('2304450830'); 
+            console.log(review);
+        }
+    });
+
+    this.addMenuItem({
+        title: "Goodreads - Get ReviewRSS By Id",
+        icon: "book-open",
+        onClick: async () => {
+            const goodreadsRssShelf = new GoodreadsRssItemApi(app as App);
+            const review = await goodreadsRssShelf.getReviewRssItemByReviewId('2304450830'); 
+            console.log(review);
+        }
+    });
+
+    /*
+    this.addMenuItem({
+        title: "Goodreads - Get Last Review",
+        icon: "book-open",
+        onClick: async () => {
+            const goodreadsReviews = new GoodreadsReviewsApi(app as App);
+            await goodreadsReviews.getLastBookFromToReadShelf();
+            // await goodreadsReviews.getReviewById('6585220665'); // El diario de la felicidad
+            // await goodreadsReviews.getReviewById('2322591776'); // El Hombre Eterno
+        }
+    });
+    */
+
+    this.addSeparator();
 
     this.addMenuItem({
       title: "Momentazo",

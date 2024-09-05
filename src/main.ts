@@ -6,7 +6,9 @@ import { CALENDAR_VIEW_TYPE, CalendarView } from 'src/core/notes/calendar/Calend
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 
 const DEFAULT_SETTINGS: MyPluginSettings = {
-	mySetting: 'default'
+	mySetting: 'default',
+    goodreads_user: '',
+    goodreads_apikey: ''
 }
 
 
@@ -18,10 +20,7 @@ export default class MyPlugin extends Plugin {
 
 		console.log('Loading Obsigen plugin');
 
-		this.registerView(
-			CALENDAR_VIEW_TYPE,
-			(leaf) => new CalendarView(leaf)
-		);
+		this.registerView(CALENDAR_VIEW_TYPE, (leaf) => new CalendarView(leaf));
 		
 		await this.loadSettings();
 
@@ -98,28 +97,47 @@ export default class MyPlugin extends Plugin {
 	}
 
 	onLayoutReady(): void {
-		if (this.app.workspace.getLeavesOfType(CALENDAR_VIEW_TYPE).length) {
-      return;
+        if (this.app.workspace.getLeavesOfType(CALENDAR_VIEW_TYPE).length > 0) {
+            return;
+        }
+    
+        const rightLeaf = this.app.workspace.getRightLeaf(false);
+    
+        if (rightLeaf === null) {
+            console.error("Unable to get right leaf.");
+            return;
+        }
+    
+        rightLeaf.setViewState({
+            type: CALENDAR_VIEW_TYPE,
+        });
+        this.view = rightLeaf.view as CalendarView;
     }
-    const rightLeaf = this.app.workspace.getRightLeaf(false);
-    rightLeaf.setViewState({
-      type: CALENDAR_VIEW_TYPE,
-    });
-    this.view = rightLeaf.view as CalendarView;
-	}
+    
 
 	async activateView() {
-    this.app.workspace.detachLeavesOfType(CALENDAR_VIEW_TYPE);
-
-    await this.app.workspace.getRightLeaf(false).setViewState({
-      type: CALENDAR_VIEW_TYPE,
-      active: true,
-    });
-
-    this.app.workspace.revealLeaf(
-      this.app.workspace.getLeavesOfType(CALENDAR_VIEW_TYPE)[0]
-    );
-  }
+        this.app.workspace.detachLeavesOfType(CALENDAR_VIEW_TYPE);
+    
+        const rightLeaf = this.app.workspace.getRightLeaf(false);
+    
+        if (rightLeaf === null) {
+            console.error("Unable to get right leaf.");
+            return;
+        }
+    
+        await rightLeaf.setViewState({
+            type: CALENDAR_VIEW_TYPE,
+            active: true,
+        });
+    
+        const leaf = this.app.workspace.getLeavesOfType(CALENDAR_VIEW_TYPE)[0];
+        if (leaf === null) {
+            console.error("Unable to find calendar view leaf.");
+            return;
+        }
+        
+        this.app.workspace.revealLeaf(leaf);
+    }
 
 }
 

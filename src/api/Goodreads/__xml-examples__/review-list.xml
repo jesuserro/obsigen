@@ -1,0 +1,1793 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GoodreadsResponse>
+  <Request>
+    <authentication>true</authentication>
+      <key><![CDATA[DkLO3yfzNSM1JLOIJFXL3A]]></key>
+    <method><![CDATA[review_list]]></method>
+  </Request>
+  
+<reviews start="1" end="20" total="2586">
+    <review>
+  <id>6422131433</id>
+      <book>
+  <id type="integer">24331152</id>
+  <isbn>8490601186</isbn>
+  <isbn13>9788490601181</isbn13>
+  <text_reviews_count type="integer">7</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.UgFcmOWDy-l7gRC_Lxb-IQ</uri>
+  <title>La leyenda negra (Historia)</title>
+  <title_without_series>La leyenda negra (Historia)</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/24331152-la-leyenda-negra-historia</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information>1</edition_information>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>4.05</average_rating>
+  <ratings_count>39</ratings_count>
+  <description></description>
+<authors>
+<author>
+<id>1381531</id>
+<name>Julián Juderías</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1512306878p5/1381531.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1512306878p2/1381531.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/1381531.Juli_n_Juder_as]]></link>
+<average_rating>3.94</average_rating>
+<ratings_count>53</ratings_count>
+<text_reviews_count>11</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>43910241</id>
+  <uri>kca://work/amzn1.gr.work.v1.pK2KfgtBfPHfnJnuMEQvcw</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='6076610105' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='259234344' name='historia' review_shelf_id='6076610590' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='437509566' name='españa' review_shelf_id='6076610726' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='441663223' name='leyendanegra' review_shelf_id='6076610424' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='583218124' name='globalización' review_shelf_id='6076611109' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Fri Apr 12 02:08:35 -0700 2024</date_added>
+  <date_updated>Fri Apr 12 02:08:37 -0700 2024</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/6422131433]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/6422131433]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>6406249055</id>
+      <book>
+  <id type="integer">11953787</id>
+  <isbn nil="true"/>
+  <isbn13 nil="true"/>
+  <text_reviews_count type="integer">0</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.7XbG6oeYtiChW62-o03mHg</uri>
+  <title>Winnetou Band 1 2 3</title>
+  <title_without_series>Winnetou Band 1 2 3</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/11953787-winnetou-band-1-2-3</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information>2</edition_information>
+  <publisher/>
+  <publication_day/>
+  <publication_year/>
+  <publication_month/>
+  <average_rating>4.35</average_rating>
+  <ratings_count>699</ratings_count>
+  <description></description>
+<authors>
+<author>
+<id>45306</id>
+<name>Karl May</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1241917855p5/45306.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1241917855p2/45306.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/45306.Karl_May]]></link>
+<average_rating>4.04</average_rating>
+<ratings_count>40822</ratings_count>
+<text_reviews_count>1011</text_reviews_count>
+</author>
+</authors>
+  <published/>
+<work>  <id>31659543</id>
+  <uri>kca://work/amzn1.gr.work.v1.aJQishxZQWhI0fo4GJu6Ng</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='6060321078' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='310446046' name='clásicos' review_shelf_id='6060324367' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='255682236' name='chełmińska' review_shelf_id='6060322191' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259670127' name='ficción' review_shelf_id='6060323006' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='346487939' name='usa' review_shelf_id='6060322432' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='408037023' name='aventuras' review_shelf_id='6060324122' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='408370573' name='ficciónhistórica' review_shelf_id='6060323040' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='502896345' name='alemania' review_shelf_id='6060324693' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Sat Apr 06 03:14:56 -0700 2024</date_added>
+  <date_updated>Sat Apr 06 03:14:57 -0700 2024</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/6406249055]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/6406249055]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>6383464354</id>
+      <book>
+  <id type="integer">19058062</id>
+  <isbn nil="true"/>
+  <isbn13>9780786723065</isbn13>
+  <text_reviews_count type="integer">3</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.W32ekR_-ubcwY_Lno5NzlA</uri>
+  <title>Death On A Friday Afternoon: Meditations On The Last Words Of Jesus From The Cross</title>
+  <title_without_series>Death On A Friday Afternoon: Meditations On The Last Words Of Jesus From The Cross</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/19058062-death-on-a-friday-afternoon</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>4.31</average_rating>
+  <ratings_count>636</ratings_count>
+  <description>Numerous writers and composers have been captivated by the suggestiveness of Jesus' Seven Last Words. But Richard John Neuhaus's sustained exploration of these utterances is something altogether different. Through them he plumbs the depths of human experience and sets forth the central narrative of Western civilization-the suffering, death, and resurrection of Christ-in a way that engages the attention of believers, unbelievers, and those who are not sure what they believe. Death on a Friday Afternoon is an invitation to the reader into a spiritual and intellectual exploration of the dark side of human experience with the promise of light and life on the far side of darkness.</description>
+<authors>
+<author>
+<id>8122</id>
+<name>Richard John Neuhaus</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1436635571p5/8122.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1436635571p2/8122.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/8122.Richard_John_Neuhaus]]></link>
+<average_rating>4.12</average_rating>
+<ratings_count>1675</ratings_count>
+<text_reviews_count>193</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>230677</id>
+  <uri>kca://work/amzn1.gr.work.v1.g_u553iok3gqWKVNJrWldg</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>1</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='6036916412' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='259674933' name='católico' review_shelf_id='6036917314' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='336632863' name='espiritualidad' review_shelf_id='6036919659' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='310290188' name='cuaresma' review_shelf_id='6036917114' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='339815907' name='muerte' review_shelf_id='6036917459' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='345309296' name='martirio' review_shelf_id='6036920810' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='346371235' name='lecturadensa' review_shelf_id='6036920639' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='355611337' name='meditaciones' review_shelf_id='6036917926' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='358193941' name='palabras' review_shelf_id='6036921345' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='489487942' name='pasióndecristo' review_shelf_id='6036921482' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='489489287' name='lamentaciones' review_shelf_id='6036920494' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='501838327' name='mortificación' review_shelf_id='6036921076' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='504598248' name='fragilidad' review_shelf_id='6036919910' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='505147739' name='arsmoriendi' review_shelf_id='6036918647' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Thu Mar 28 23:53:25 -0700 2024</date_added>
+  <date_updated>Thu Mar 28 23:53:27 -0700 2024</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/6383464354]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/6383464354]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>6051218598</id>
+      <book>
+  <id type="integer">61677039</id>
+  <isbn nil="true"/>
+  <isbn13 nil="true"/>
+  <text_reviews_count type="integer">0</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v3.XsxUESbwdntgPr8t</uri>
+  <title>Aprender a mirar para aprender a vivir: Memorias literarias de un profesor católico</title>
+  <title_without_series>Aprender a mirar para aprender a vivir: Memorias literarias de un profesor católico</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/61677039-aprender-a-mirar-para-aprender-a-vivir</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>4.00</average_rating>
+  <ratings_count>1</ratings_count>
+  <description></description>
+<authors>
+<author>
+<id>22588894</id>
+<name>Santiago Arellano Hernández</name>
+<role></role>
+<image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_200x266-e183445fd1a1b5cc7075bb1cf7043306.png]]>
+</image_url>
+<small_image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_50x66-632230dc9882b4352d753eedf9396530.png]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/22588894.Santiago_Arellano_Hern_ndez]]></link>
+<average_rating>4.00</average_rating>
+<ratings_count>1</ratings_count>
+<text_reviews_count>0</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>97277417</id>
+  <uri>kca://work/amzn1.gr.work.v3.Df7apgASAiHFRNEL</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='5705945133' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='259674933' name='católico' review_shelf_id='5705945463' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='350020366' name='memoria' review_shelf_id='5705946000' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259235530' name='biografía' review_shelf_id='5705946172' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259319933' name='testimonios' review_shelf_id='5705945578' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='305872120' name='navarra' review_shelf_id='5705946605' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='341120132' name='educación' review_shelf_id='5705946927' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Fri Dec 15 03:45:44 -0800 2023</date_added>
+  <date_updated>Fri Dec 15 03:45:46 -0800 2023</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/6051218598]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/6051218598]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>6015753312</id>
+      <book>
+  <id type="integer">30635654</id>
+  <isbn>8490613397</isbn>
+  <isbn13>9788490613399</isbn13>
+  <text_reviews_count type="integer">4</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.JNablB-e00FkIj0Itd6Vpw</uri>
+  <title>La sombra del padre</title>
+  <title_without_series>La sombra del padre</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/30635654-la-sombra-del-padre</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information>1</edition_information>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>4.51</average_rating>
+  <ratings_count>579</ratings_count>
+  <description>El autor emprende la formidable tarea de rehacer no solo la vida del Santo Patriarca, sino también el entorno en el que se desarrolló. Jan Dobraczynski es el escritor polaco más conocido de nuestro tiempo. Con La sombra del Padre reafirma su calidad de narrador y constructor de novelas históricas. En esta historia novelada de José de Nazaret, emprende la formidable tarea de rehacer no solo la vida del Santo Patriarca, sino también el entorno en que se desarrolló: las dificultades que presentaba el ambiente familiar, impregnado del exigente espíritu de raza; el clima de tensión con el que los judíos esperaban la venida del Mesías; las peripecias políticas de la corte de Herodes el Grande, con sus intrigas, sus degeneraciones y sus crímenes. Para todo esto, se vale de las fuentes escriturísticas y del vasto material literario de la época descrita."Me siento profundamente edificado por el tacto y la finura con la que Vd. ha sabido acometer un trabajo tan difícil y apasionante", son palabras que le dirigió el cardenal Wiszynski.</description>
+<authors>
+<author>
+<id>994597</id>
+<name>Jan Dobraczyński</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1337301312p5/994597.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1337301312p2/994597.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/994597.Jan_Dobraczy_ski]]></link>
+<average_rating>4.37</average_rating>
+<ratings_count>978</ratings_count>
+<text_reviews_count>98</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>16147058</id>
+  <uri>kca://work/amzn1.gr.work.v1.egNhYQSkP0Dbb38T0hX6_w</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='5669796624' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='259674933' name='católico' review_shelf_id='5669798444' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='255682718' name='_pilar' review_shelf_id='5669798280' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259235530' name='biografía' review_shelf_id='5669798624' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259670127' name='ficción' review_shelf_id='5669802082' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='405889894' name='histórico' review_shelf_id='5669799335' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='408370573' name='ficciónhistórica' review_shelf_id='5669802078' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='425390604' name='polonia' review_shelf_id='5669798871' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='438741064' name='sagradafamilia' review_shelf_id='5669799051' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='489485535' name='sanjosé' review_shelf_id='5669798154' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Fri Dec 01 02:34:00 -0800 2023</date_added>
+  <date_updated>Fri Dec 01 02:34:02 -0800 2023</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/6015753312]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/6015753312]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>5983830475</id>
+      <book>
+  <id type="integer">19268272</id>
+  <isbn>8498406137</isbn>
+  <isbn13 nil="true"/>
+  <text_reviews_count type="integer">0</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.M5NgbhFf0Tpy13d-GN6hSA</uri>
+  <title>El esbirro</title>
+  <title_without_series>El esbirro</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/19268272-el-esbirro</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information>3</edition_information>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>4.37</average_rating>
+  <ratings_count>1653</ratings_count>
+  <description>"El esbirro" narra la vida de un joven ruso, educado en orfelinatos y escuelas estatales bolcheviques. Por su reciedumbre, valentía, ambición y cualidades de líder, fue jefe de la Liga Comunista Juvenil. Fue además reclutado, junto a otros veinte jóvenes, para hacerse cargo de una división especial de la policía que perseguía brutalmente a los grupos de creyentes, es decir, a los cristianos clandestinos, a los que el comunismo ruso consideraba como un enemigo público. &lt;br /&gt;&lt;br /&gt;Sergei Kourdakov, desengañado del sistema comunista, huye de Rusia. Cuando navega de oficial de radio en un barco en las costas de Canadá se echa al mar nadando en plena tempestad.&lt;br /&gt;&lt;br /&gt;"¿Por qué estaba yo allí, en esa fría mañana del 4 de septiembre de 1971, tan cerca de la muerte y lejos de mi hogar? ¿Por qué había abandonado la vida de Oficial de la marina y de Jefe de las Juventudes Comunistas de la URSS, para venir a caer aquí en el umbral de la muerte, en estas costas rocosas y hostiles del Canadá? Todo había comenzado mucho tiempo antes, en Rusia, con mi abuelo y mi abuela...".&lt;br /&gt;&lt;br /&gt;Sergei Kourdakov (1951-1973), narra en este relato su accidentada vida desde su nacimiento en Rusia hasta su huida a Canadá. Al llegar a este país hizo planes para dirigirse a la juventud rusa a través de la radio pero cuando estaba a punto de comenzar esas emisiones murió de un disparo. En principio se difundió la idea de que se había suicidado. Luego se dictaminó que había sido un accidente. Pero Sergei, que se sentía amenazado, ya había advertido que si le sucedía algo "tendría toda la pinta de un accidente".&lt;br /&gt;&lt;br /&gt;Este libro, conocido también como Forgive Me, Natasha, se ha convertido en un clásico de la literatura juvenil.</description>
+<authors>
+<author>
+<id>503856</id>
+<name>Sergei Kourdakov</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1265599355p5/503856.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1265599355p2/503856.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/503856.Sergei_Kourdakov]]></link>
+<average_rating>4.37</average_rating>
+<ratings_count>1608</ratings_count>
+<text_reviews_count>141</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>988484</id>
+  <uri>kca://work/amzn1.gr.work.v1.4uY-G6g6Tc-ayOmoYhZlKw</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='5637041419' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='350020366' name='memoria' review_shelf_id='5637045612' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='344132862' name='fe' review_shelf_id='5637044397' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259235530' name='biografía' review_shelf_id='5637044814' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259319933' name='testimonios' review_shelf_id='5637045890' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='262049037' name='comunismo' review_shelf_id='5637043350' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='316584610' name='cristianismo' review_shelf_id='5637043060' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='329762618' name='rusia' review_shelf_id='5637042817' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='345309296' name='martirio' review_shelf_id='5637054733' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='346368484' name='noficción' review_shelf_id='5637043794' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='350188560' name='conversiones' review_shelf_id='5637046289' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Fri Nov 17 10:19:02 -0800 2023</date_added>
+  <date_updated>Fri Nov 17 10:19:04 -0800 2023</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/5983830475]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/5983830475]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>5983773126</id>
+      <book>
+  <id type="integer">61094946</id>
+  <isbn nil="true"/>
+  <isbn13 nil="true"/>
+  <text_reviews_count type="integer">0</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v3.oRWwaUEF4x_J0JeH</uri>
+  <title>Miracles Do Happen: God Can Do the Impossible</title>
+  <title_without_series>Miracles Do Happen: God Can Do the Impossible</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/61094946-miracles-do-happen</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>4.38</average_rating>
+  <ratings_count>189</ratings_count>
+  <description></description>
+<authors>
+<author>
+<id>24459</id>
+<name>Briege McKenna</name>
+<role></role>
+<image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_200x266-e183445fd1a1b5cc7075bb1cf7043306.png]]>
+</image_url>
+<small_image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_50x66-632230dc9882b4352d753eedf9396530.png]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/24459.Briege_McKenna]]></link>
+<average_rating>4.38</average_rating>
+<ratings_count>205</ratings_count>
+<text_reviews_count>22</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>876717</id>
+  <uri>kca://work/amzn1.gr.work.v1.xn-SOlIr7M5ypDoY34-KHw</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='5636980671' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='259674933' name='católico' review_shelf_id='5636981742' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259319933' name='testimonios' review_shelf_id='5636982659' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='260075616' name='oración' review_shelf_id='5637006187' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='345357796' name='monjas' review_shelf_id='5636983591' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='345425925' name='milagros' review_shelf_id='5636981977' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='346368484' name='noficción' review_shelf_id='5636982485' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='376630342' name='sanación' review_shelf_id='5636984803' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='408712562' name='medjugorje' review_shelf_id='5636983321' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Fri Nov 17 09:46:53 -0800 2023</date_added>
+  <date_updated>Fri Nov 17 09:46:55 -0800 2023</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/5983773126]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/5983773126]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>5966952448</id>
+      <book>
+  <id type="integer">58842833</id>
+  <isbn>8432153974</isbn>
+  <isbn13>9788432153976</isbn13>
+  <text_reviews_count type="integer">6</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v3.28gS0Da09QW5giyh</uri>
+  <title>Elogio de la edad media: De Constantino a Leonardo (Historia)</title>
+  <title_without_series>Elogio de la edad media: De Constantino a Leonardo (Historia)</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/58842833-elogio-de-la-edad-media</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information>1</edition_information>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>4.18</average_rating>
+  <ratings_count>22</ratings_count>
+  <description>Los estereotipos presentan la época medieval como algo grotesco e incluso aterrador. Desde su hondo conocimiento de ese período, el autor propone una visión alternativa, liberadora y luminosa. Porque la vida en la Edad Media tal vez fuera más dura que la nuestra, pero también más bella.&lt;br /&gt;&lt;br /&gt;Sin omitir los errores, Jaume Aurell enfatiza los valores más sublimes, recurriendo a una estructura teatral en tres el primero presenta los personajes, desde Constantino a Carlomagno; el segundo, los elementos corales, desde los señores feudales a los mercaderes, y el tercero, los escenarios, desde el infierno de las pandemias al paraíso de los poetas y artistas. El texto, divulgativo y riguroso, enmarca así los siglos que separan a Constantino de Leonardo da Vinci.</description>
+<authors>
+<author>
+<id>3393365</id>
+<name>Jaume Aurell</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1711378992p5/3393365.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1711378992p2/3393365.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/3393365.Jaume_Aurell]]></link>
+<average_rating>4.26</average_rating>
+<ratings_count>80</ratings_count>
+<text_reviews_count>12</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>92686144</id>
+  <uri>kca://work/amzn1.gr.work.v3.Rowy_t52zcHOmXVw</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='5619770418' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='259234344' name='historia' review_shelf_id='5619771087' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='336075843' name='medieval' review_shelf_id='5619770937' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='346368484' name='noficción' review_shelf_id='5619771301' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Fri Nov 10 05:48:12 -0800 2023</date_added>
+  <date_updated>Fri Nov 10 05:48:14 -0800 2023</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/5966952448]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/5966952448]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>5956020672</id>
+      <book>
+  <id type="integer">199909769</id>
+  <isbn>8412745612</isbn>
+  <isbn13>9788412745610</isbn13>
+  <text_reviews_count type="integer">2</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v3.pzMoT936F1lTMzJR</uri>
+  <title>Dios - La ciencia - Las pruebas: El albor de una revolución</title>
+  <title_without_series>Dios - La ciencia - Las pruebas: El albor de una revolución</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/199909769-dios---la-ciencia---las-pruebas</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>3.88</average_rating>
+  <ratings_count>234</ratings_count>
+  <description>Trois ans de travail avec plus de vingt scientifiques et de spécialistes de haut niveau :&lt;br /&gt;voici révélées les preuves modernes de l'existence de Dieu.&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;Pendant près de quatre siècles, de Copernic à Freud en passant par Galilée et Darwin, les découvertes scientifiques se sont accumulées de façon spectaculaire, donnant l'impression qu'il était possible d'expliquer l'Univers sans avoir besoin de recourir à un dieu créateur. Et c'est ainsi qu'au début du XXe siècle, le matérialisme triomphait intellectuellement.&lt;br /&gt;&lt;br /&gt;De façon aussi imprévue qu'étonnante, le balancier de la science est reparti dans l'autre sens, avec une force incroyable. Les découvertes de la Relativité, de la mécanique quantique, de l'expansion de l'Univers, de sa mort thermique, du Big Bang, du réglage fin de l'Univers ou de la complexité du vivant, se sont succédées.&lt;br /&gt;&lt;br /&gt;Ces connaissances nouvelles sont venues dynamiter les certitudes ancrées dans l'esprit collectif du XXe siècle, au point que l'on peut dire aujourd'hui que le matérialisme, qui n'a jamais été qu'une croyance comme une autre, est en passe de devenir une croyance irrationnelle.&lt;br /&gt;&lt;br /&gt;Dans une langue accessible à tous, les auteurs de ce livre retracent de façon passionnante l'histoire de ces avancées et offrent un panorama rigoureux des nouvelles preuves de l'existence de Dieu. À l'orée du XXe siècle, croire en un dieu créateur semblait s'opposer à la science. Aujourd'hui, ne serait-ce pas le contraire ?&lt;br /&gt;&lt;br /&gt;Une invitation à la réflexion et au débat.</description>
+<authors>
+<author>
+<id>21916049</id>
+<name>Michel-Yves Bolloré</name>
+<role></role>
+<image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_200x266-e183445fd1a1b5cc7075bb1cf7043306.png]]>
+</image_url>
+<small_image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_50x66-632230dc9882b4352d753eedf9396530.png]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/21916049.Michel_Yves_Bollor_]]></link>
+<average_rating>3.88</average_rating>
+<ratings_count>234</ratings_count>
+<text_reviews_count>47</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>93514831</id>
+  <uri>kca://work/amzn1.gr.work.v3.vx3GBynzlnOqEku-</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='5608470276' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='259310266' name='filosofía' review_shelf_id='5608476992' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='356429732' name='apologética' review_shelf_id='5608471717' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259401692' name='teología' review_shelf_id='5608478572' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259141003' name='ciencia' review_shelf_id='5608471058' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='261657721' name='astronomía' review_shelf_id='5608476333' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='405889894' name='histórico' review_shelf_id='5608480122' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='497873808' name='creación' review_shelf_id='5608479091' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='498459948' name='física' review_shelf_id='5608476589' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Sun Nov 05 11:19:22 -0800 2023</date_added>
+  <date_updated>Wed Feb 28 01:52:12 -0800 2024</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/5956020672]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/5956020672]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>5902163820</id>
+      <book>
+  <id type="integer">48613688</id>
+  <isbn>8881559080</isbn>
+  <isbn13>9788881559084</isbn13>
+  <text_reviews_count type="integer">1</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v3.NJOQmGwcWHcRHmZt</uri>
+  <title>Ipotesi su Gesù</title>
+  <title_without_series>Ipotesi su Gesù</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/48613688-ipotesi-su-ges</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>4.14</average_rating>
+  <ratings_count>118</ratings_count>
+  <description>Un classico della saggistica religiosa: l'ormai celeberrima inchiesta di un giornalista sul più decisivo mistero della storia, l'origine del cristianesimo. Quale enigma si cela dietro il nome «Gesù»? Quali ipotesi ragionevoli è possibile fare, oggi, su di lui? È stato davvero «predetto»? dalle Scritture degli ebrei? Ma Gesù è esistito? O è un mito che la fede ha travestito da cronaca? Se è esistito, perché l'oscuro predicatore si trasforma nel Cristo che spezza la storia in due tronconi? Da dove viene quel suo insegnamento di inesauribile fecondità? A queste domande il libro propone risposte chiare, oneste, documentate. Al termine dell'inchiesta, sembra all'autore che la più plausibile delle «ipotesi su Gesù» rimanga quella proposta dalla fede, e che la ragione consigli di scommettere sulla verità dei vangeli.</description>
+<authors>
+<author>
+<id>344173</id>
+<name>Vittorio Messori</name>
+<role></role>
+<image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_200x266-e183445fd1a1b5cc7075bb1cf7043306.png]]>
+</image_url>
+<small_image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_50x66-632230dc9882b4352d753eedf9396530.png]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/344173.Vittorio_Messori]]></link>
+<average_rating>4.21</average_rating>
+<ratings_count>4785</ratings_count>
+<text_reviews_count>206</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>14522384</id>
+  <uri>kca://work/amzn1.gr.work.v1.0Rb6TGex5AtqKjX7-qF6Qg</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='5553053325' sortable='true'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Wed Oct 11 11:53:58 -0700 2023</date_added>
+  <date_updated>Wed Oct 11 11:53:59 -0700 2023</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/5902163820]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/5902163820]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>5795605246</id>
+      <book>
+  <id type="integer">8379953</id>
+  <isbn nil="true"/>
+  <isbn13 nil="true"/>
+  <text_reviews_count type="integer">1</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.afhoa8ElTKpnlpVU_cEkOA</uri>
+  <title>The Final Days of Jesus: The Archaeological Evidence</title>
+  <title_without_series>The Final Days of Jesus: The Archaeological Evidence</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/8379953-the-final-days-of-jesus</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information>Reprint</edition_information>
+  <publisher/>
+  <publication_day/>
+  <publication_year/>
+  <publication_month/>
+  <average_rating>3.79</average_rating>
+  <ratings_count>110</ratings_count>
+  <description></description>
+<authors>
+<author>
+<id>596582</id>
+<name>Shimon Gibson</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1271803404p5/596582.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1271803404p2/596582.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/596582.Shimon_Gibson]]></link>
+<average_rating>3.68</average_rating>
+<ratings_count>140</ratings_count>
+<text_reviews_count>20</text_reviews_count>
+</author>
+</authors>
+  <published/>
+<work>  <id>6600712</id>
+  <uri>kca://work/amzn1.gr.work.v1.3v-OxHd6_whiUBbHdc-a9w</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='5442712616' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='259234344' name='historia' review_shelf_id='5442715389' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='304500633' name='arqueología' review_shelf_id='5442714391' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='310328483' name='historiadelaiglesia' review_shelf_id='5442715522' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='339552103' name='israel' review_shelf_id='5442714624' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='346368484' name='noficción' review_shelf_id='5442714886' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Fri Aug 25 12:52:05 -0700 2023</date_added>
+  <date_updated>Fri Aug 25 12:52:06 -0700 2023</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/5795605246]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/5795605246]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>5689896629</id>
+      <book>
+  <id type="integer">60302706</id>
+  <isbn>0736984690</isbn>
+  <isbn13>9780736984690</isbn13>
+  <text_reviews_count type="integer">4</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v3.8HoEzL7F_3Iogvyz</uri>
+  <title>Excavating the Evidence for Jesus: The Archaeology and History of Christ and the Gospels</title>
+  <title_without_series>Excavating the Evidence for Jesus: The Archaeology and History of Christ and the Gospels</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/60302706-excavating-the-evidence-for-jesus</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>4.45</average_rating>
+  <ratings_count>148</ratings_count>
+  <description></description>
+<authors>
+<author>
+<id>19942316</id>
+<name>Titus Kennedy</name>
+<role></role>
+<image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_200x266-e183445fd1a1b5cc7075bb1cf7043306.png]]>
+</image_url>
+<small_image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_50x66-632230dc9882b4352d753eedf9396530.png]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/19942316.Titus_Kennedy]]></link>
+<average_rating>4.43</average_rating>
+<ratings_count>334</ratings_count>
+<text_reviews_count>41</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>92704605</id>
+  <uri>kca://work/amzn1.gr.work.v3.FnqDliCvWeP3nmXU</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>1</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='5334172714' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='259234344' name='historia' review_shelf_id='5334174731' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259891699' name='cristo' review_shelf_id='5334174286' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='304500633' name='arqueología' review_shelf_id='5334173512' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='310328483' name='historiadelaiglesia' review_shelf_id='5334174689' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='316584610' name='cristianismo' review_shelf_id='5334174298' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='339552103' name='israel' review_shelf_id='5334173819' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='346368484' name='noficción' review_shelf_id='5334175356' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Thu Jul 13 10:08:11 -0700 2023</date_added>
+  <date_updated>Thu Jul 13 10:08:13 -0700 2023</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/5689896629]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/5689896629]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>5667014934</id>
+      <book>
+  <id type="integer">122449</id>
+  <isbn>0752847732</isbn>
+  <isbn13>9780752847733</isbn13>
+  <text_reviews_count type="integer">66</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.NwvsrEtgFe7vyhl4AX3-7g</uri>
+  <title>Asterix and the Great Divide (Asterix #25)</title>
+  <title_without_series>Asterix and the Great Divide</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/122449.Asterix_and_the_Great_Divide</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>3.98</average_rating>
+  <ratings_count>6604</ratings_count>
+  <description>The path of true love never did run smoothly#151;especially when the sweethearts#8217; fathers have split their town in half. That#8217;s the problem for Histrionix and the beautiful Melodrama, son and daughter of two rival chieftains. So the star-crossed lovers call in Asterix, Obelix, and Getafix to sort everything out. Can the trusty trio persuade the village to reunite? Maybe some magic will help. BRBR</description>
+<authors>
+<author>
+<id>26082</id>
+<name>Albert Uderzo</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1599054885p5/26082.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1599054885p2/26082.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/26082.Albert_Uderzo]]></link>
+<average_rating>4.12</average_rating>
+<ratings_count>276217</ratings_count>
+<text_reviews_count>7579</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>15258652</id>
+  <uri>kca://work/amzn1.gr.work.v1.Lj_ZMNQKdQK6MooEU3zvtg</uri>
+</work></book>
+
+
+  <rating>4</rating>
+  <votes>1</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+    <shelf name="read" exclusive="true" id="131199903" review_shelf_id= ""/>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Tue Jul 04 09:04:19 -0700 2023</date_added>
+  <date_updated>Tue Jul 04 09:04:19 -0700 2023</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/5667014934]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/5667014934]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>5663718169</id>
+      <book>
+  <id type="integer">5973978</id>
+  <isbn>8471517590</isbn>
+  <isbn13>9788471517593</isbn13>
+  <text_reviews_count type="integer">1</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.JQPa_L1Fq96N9tRMIZuVjA</uri>
+  <title>Testamento del pájaro solitario</title>
+  <title_without_series>Testamento del pájaro solitario</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/5973978-testamento-del-p-jaro-solitario</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information>1</edition_information>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>3.73</average_rating>
+  <ratings_count>11</ratings_count>
+  <description></description>
+<authors>
+<author>
+<id>675178</id>
+<name>José Luis Martín Descalzo</name>
+<role></role>
+<image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_200x266-e183445fd1a1b5cc7075bb1cf7043306.png]]>
+</image_url>
+<small_image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_50x66-632230dc9882b4352d753eedf9396530.png]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/675178.Jos_Luis_Mart_n_Descalzo]]></link>
+<average_rating>4.43</average_rating>
+<ratings_count>326</ratings_count>
+<text_reviews_count>21</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>6147169</id>
+  <uri>kca://work/amzn1.gr.work.v1.2KCF_r0x4oSecN8WXLGySw</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='5307407546' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='259674933' name='católico' review_shelf_id='5307408248' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259401692' name='teología' review_shelf_id='5307408563' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259656669' name='poesía' review_shelf_id='5307408139' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='261657721' name='astronomía' review_shelf_id='5307408362' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Mon Jul 03 02:37:22 -0700 2023</date_added>
+  <date_updated>Mon Jul 03 02:37:24 -0700 2023</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/5663718169]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/5663718169]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>5643525169</id>
+      <book>
+  <id type="integer">61303883</id>
+  <isbn nil="true"/>
+  <isbn13 nil="true"/>
+  <text_reviews_count type="integer">1</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v3.TEpH4qsicwVxuurk</uri>
+  <title>Nacido en un día azul</title>
+  <title_without_series>Nacido en un día azul</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/61303883-nacido-en-un-d-a-azul</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>3.84</average_rating>
+  <ratings_count>23186</ratings_count>
+  <description>&lt;i&gt;Born on a Blue Day&lt;/i&gt; is a journey into one of the most fascinating minds alive today -- guided by its owner himself. Daniel Tammet sees numbers as shapes, colors, and textures, and he can perform extraordinary calculations in his head. He can learn to speak new languages fluently, from scratch, in a week. In 2004, he memorized and recited more than 22,000 digits of pi, setting a record. He has savant syndrome, an extremely rare condition that gives him almost unimaginable mental powers, much like those portrayed by Dustin Hoffman in the film &lt;i&gt;Rain Man.&lt;/i&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Daniel has a compulsive need for order and routine -- he eats the same precise amount of cereal for breakfast every morning and cannot leave the house without counting the number of items of clothing he's wearing. When he gets stressed or is unhappy, he closes his eyes and counts. But in one crucial way Daniel is not at all like the Rain Man: he is virtually unique among people who have sev- ere autistic disorders in that he is capable of living a fully independent life. He has emerged from the "other side" of autism with the ability to function successfully -- he is even able to explain what is happening inside his head.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Born on a Blue Day&lt;/i&gt; is a triumphant and uplifting story, starting from early childhood, when Daniel was incapable of making friends and prone to tantrums, to young adulthood, when he learned how to control himself and to live independently, fell in love, experienced a religious conversion to Christianity, and most recently, emerged as a celebrity. The world's leading neuroscientists have been studying Daniel's ability to solve complicated math problems in one fell swoop by seeing shapes rather than making step-by-step calculations. Here he explains how he does it, and how he is able to learn new languages so quickly, simply by absorbing their patterns. Fascinating and inspiring, &lt;i&gt;Born on a Blue Day&lt;/i&gt; explores what it's like to be special and gives us an insight into what makes us all human -- our minds.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</description>
+<authors>
+<author>
+<id>42429</id>
+<name>Daniel Tammet</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1707072078p5/42429.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1707072078p2/42429.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/42429.Daniel_Tammet]]></link>
+<average_rating>3.82</average_rating>
+<ratings_count>26625</ratings_count>
+<text_reviews_count>2747</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>1461054</id>
+  <uri>kca://work/amzn1.gr.work.v1.0cdQsI9RWXn6AkrgxtLvsw</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='5286655871' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='350020366' name='memoria' review_shelf_id='5286658047' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='355402799' name='uk' review_shelf_id='5286658935' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259141003' name='ciencia' review_shelf_id='5286659570' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='259146568' name='psicología' review_shelf_id='5286657512' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='314613251' name='audiolibros' review_shelf_id='5286657177' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='346368484' name='noficción' review_shelf_id='5286658560' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='349758002' name='autismo' review_shelf_id='5286657041' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='507186360' name='memorización' review_shelf_id='5286658168' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Sat Jun 24 20:49:29 -0700 2023</date_added>
+  <date_updated>Sat Jun 24 20:49:31 -0700 2023</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/5643525169]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/5643525169]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>5575378556</id>
+      <book>
+  <id type="integer">56442040</id>
+  <isbn>0998037419</isbn>
+  <isbn13>9780998037417</isbn13>
+  <text_reviews_count type="integer">2</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v3.Svs49RAWYfGYMSgF</uri>
+  <title>Where God Came Down</title>
+  <title_without_series>Where God Came Down</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/56442040-where-god-came-down</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>4.83</average_rating>
+  <ratings_count>18</ratings_count>
+  <description></description>
+<authors>
+<author>
+<id>191409</id>
+<name>Joel P. Kramer</name>
+<role></role>
+<image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_200x266-e183445fd1a1b5cc7075bb1cf7043306.png]]>
+</image_url>
+<small_image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_50x66-632230dc9882b4352d753eedf9396530.png]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/191409.Joel_P_Kramer]]></link>
+<average_rating>4.64</average_rating>
+<ratings_count>99</ratings_count>
+<text_reviews_count>18</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>88040745</id>
+  <uri>kca://work/amzn1.gr.work.v3.z2O7U_fsfXr1LOYo</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>1</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='5216028338' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='259401692' name='teología' review_shelf_id='5216031733' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259234344' name='historia' review_shelf_id='5216030872' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259859304' name='biblia' review_shelf_id='5216029243' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='304500633' name='arqueología' review_shelf_id='5216028841' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='310328483' name='historiadelaiglesia' review_shelf_id='5216030745' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='316584610' name='cristianismo' review_shelf_id='5216028640' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='339552103' name='israel' review_shelf_id='5216030005' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='346368484' name='noficción' review_shelf_id='5216028984' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='505176851' name='orientemedio' review_shelf_id='5216030139' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Fri May 26 06:45:30 -0700 2023</date_added>
+  <date_updated>Fri May 26 06:45:32 -0700 2023</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/5575378556]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/5575378556]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>5574925347</id>
+      <book>
+  <id type="integer">35009259</id>
+  <isbn>9873725016</isbn>
+  <isbn13 nil="true"/>
+  <text_reviews_count type="integer">1</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.Y4u9DlVyKTGB2raBLPTSOg</uri>
+  <title>La mujer pobre</title>
+  <title_without_series>La mujer pobre</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/35009259-la-mujer-pobre</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information>1</edition_information>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>3.99</average_rating>
+  <ratings_count>146</ratings_count>
+  <description>A través de la historia de Clotilde Maréchal, personaje de una pureza extrema que, en manos de cualquier otro autor, apenas si daría material para un tedioso relato edificante, Bloy construye una hagiografía digna de La leyenda dorada. Mucho más aún: su inteligencia en constante ebullición transfigura la historia meramente piadosa para convertirla en el medio capaz de transmitirnos sus audaces e inclasificables ideas sobre la historia, el destino del hombre y el valor del arte y la literatura; y su estilo inimitable, característico de quien fuera uno de los mayores prosistas de la literatura francesa, realza los tenues y dulces colores de una estampa religiosa con resplandores perturbadores y desconcertantes. Cuando pensamos en Bloy se nos presenta siempre, en primer lugar, la imagen de un furioso imprecador poseído por una violencia verbal inaudita; La mujer pobre nos brinda la posibilidad de descubrir que ese profeta flamígero es capaz, también, de escribir páginas de una conmovedora ternura o una enorme comicidad.</description>
+<authors>
+<author>
+<id>308636</id>
+<name>Léon Bloy</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1340534823p5/308636.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1340534823p2/308636.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/308636.L_on_Bloy]]></link>
+<average_rating>3.96</average_rating>
+<ratings_count>2434</ratings_count>
+<text_reviews_count>325</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>2310630</id>
+  <uri>kca://work/amzn1.gr.work.v1.ZApRbEJ6GqEle5EVA891Kg</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='5215553408' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='259674933' name='católico' review_shelf_id='5215554288' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='310446046' name='clásicos' review_shelf_id='5215554407' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259670127' name='ficción' review_shelf_id='5215554160' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259678585' name='literatura' review_shelf_id='5215554686' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='310355880' name='recomendados' review_shelf_id='5215555747' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='336075830' name='francia' review_shelf_id='5215554549' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='339816025' name='religión' review_shelf_id='5215555428' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='410502359' name='pecado' review_shelf_id='5215554873' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='489489621' name='santidad' review_shelf_id='5215555019' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Thu May 25 22:51:19 -0700 2023</date_added>
+  <date_updated>Thu May 25 22:54:46 -0700 2023</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/5574925347]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/5574925347]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>5559672092</id>
+      <book>
+  <id type="integer">75670861</id>
+  <isbn>0813236819</isbn>
+  <isbn13>9780813236810</isbn13>
+  <text_reviews_count type="integer">1</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v3.96ERT1xcy4BA0DyN</uri>
+  <title>The Political Economy of Distributism: Property, Liberty, and the Common Good (Thomistic Ressourcement Series)</title>
+  <title_without_series>The Political Economy of Distributism: Property, Liberty, and the Common Good</title_without_series>
+  <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1688349845l/75670861._SX98_.jpg</image_url>
+  <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1688349845l/75670861._SX50_.jpg</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/75670861-the-political-economy-of-distributism</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>3.86</average_rating>
+  <ratings_count>7</ratings_count>
+  <description>In recent years, prominent scholars, public intellectuals, and politicians have advocated reforming America's economic model to embrace "common-good capitalism." Catholic social teaching is a major influence on this movement. Is common-good capitalism compatible with the historical American commitments to private property rights and ordered liberty? What resources from Catholic social teaching can help orient free enterprise towards the common good? This book is the first scholarly inquiry into these exciting new questions.&lt;br /&gt;&lt;br /&gt;We can better understand common-good capitalism by exploring the political economy of distributism . Formulated in the early 20th century by prominent Catholic intellectuals such as Hilaire Belloc and G.K. Chesterton, distributism emphasizes the importance of widely dispersed property ownership for human flourishing. Distributist thinkers, opposed both to capitalism and socialism, sought a humane approach to politics and economics that reflected the truths of Catholic social teaching.&lt;br /&gt;&lt;br /&gt;Some of the distributists' claims about markets and government must be revised in light of contemporary social science. Nevertheless, their political-economic vision contains profound truths about the human condition, which social scientists would be unwise to ignore. Distributism's insights about the nature of liberty and the social foundations of human dignity can improve ongoing conversations among economists, political scientists, and philosophers.&lt;br /&gt;&lt;br /&gt;The Political Economy of Distributism explores distributism both as a research program and a blueprint for political-economic reform. As many are reconsidering the relationship between markets and government, this timely book demonstrates the perennial relevance of the Catholic intellectual tradition to public affairs. Academics, public servants, policy experts, and concerned citizens can all benefit from this timely study of common-good capitalism's prospects.</description>
+<authors>
+<author>
+<id>20856450</id>
+<name>Alexander William Salter</name>
+<role></role>
+<image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_200x266-e183445fd1a1b5cc7075bb1cf7043306.png]]>
+</image_url>
+<small_image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_50x66-632230dc9882b4352d753eedf9396530.png]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/20856450.Alexander_William_Salter]]></link>
+<average_rating>4.14</average_rating>
+<ratings_count>29</ratings_count>
+<text_reviews_count>5</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>101041062</id>
+  <uri>kca://work/amzn1.gr.work.v3.it3tOp3i7cKA9nF0</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='5199470212' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='259674933' name='católico' review_shelf_id='5199470692' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259310266' name='filosofía' review_shelf_id='5199474644' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259931066' name='política' review_shelf_id='5199471144' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='262049037' name='comunismo' review_shelf_id='5199481049' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='310328483' name='historiadelaiglesia' review_shelf_id='5199472782' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='329687270' name='economía' review_shelf_id='5199470945' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='333973976' name='libertad' review_shelf_id='5199471709' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='360286229' name='sociedad' review_shelf_id='5199473546' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='425863971' name='sociología' review_shelf_id='5199481283' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='457701078' name='humanismo' review_shelf_id='5199475098' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='489481410' name='papas' review_shelf_id='5199472461' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='504405896' name='socialismo' review_shelf_id='5199473543' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='541882874' name='capitalismo' review_shelf_id='5199480168' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Thu May 18 19:28:39 -0700 2023</date_added>
+  <date_updated>Thu May 18 19:28:41 -0700 2023</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/5559672092]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/5559672092]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>5550890628</id>
+      <book>
+  <id type="integer">123159078</id>
+  <isbn>8412244389</isbn>
+  <isbn13>9788412244380</isbn13>
+  <text_reviews_count type="integer">0</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v3.sarDU4NMgBQYrmFA</uri>
+  <title>La imagen descartada: INTRODUCCIÓN A LA LITERATURA MEDIEVAL Y RENACENTISTA</title>
+  <title_without_series>La imagen descartada: INTRODUCCIÓN A LA LITERATURA MEDIEVAL Y RENACENTISTA</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/123159078-la-imagen-descartada</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>4.28</average_rating>
+  <ratings_count>2806</ratings_count>
+  <description>C.S. Lewis' The Discarded Image paints a lucid picture of the medieval world view, as historical and cultural background to the literature of the Middle Ages and Renaissance. It describes the "image" discarded by later ages as "the medieval synthesis itself, the whole organization of their theology, science and history into a single, complex, harmonious mental model of the universe." This, Lewis' last book, was hailed as "the final memorial to the work of a great scholar and teacher and a wise and noble mind."</description>
+<authors>
+<author>
+<id>1069006</id>
+<name>C.S. Lewis</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1564671804p5/1069006.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1564671804p2/1069006.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/1069006.C_S_Lewis]]></link>
+<average_rating>4.17</average_rating>
+<ratings_count>7807096</ratings_count>
+<text_reviews_count>214520</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>1731922</id>
+  <uri>kca://work/amzn1.gr.work.v1.6zZ2ixtvjBCI9Zi26uuxBg</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='5190240424' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='259674933' name='católico' review_shelf_id='5190241267' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='310446046' name='clásicos' review_shelf_id='5190243325' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259310266' name='filosofía' review_shelf_id='5190243861' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259234344' name='historia' review_shelf_id='5190241828' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259678585' name='literatura' review_shelf_id='5190242465' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='310328483' name='historiadelaiglesia' review_shelf_id='5190241908' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='336075843' name='medieval' review_shelf_id='5190241032' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='345357754' name='historiadelarte' review_shelf_id='5190241611' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='346368484' name='noficción' review_shelf_id='5190243505' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='410502085' name='literaturaantigua' review_shelf_id='5190242415' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Sun May 14 19:07:14 -0700 2023</date_added>
+  <date_updated>Sun May 14 19:07:16 -0700 2023</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/5550890628]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/5550890628]]></link>
+    <owned>0</owned>
+</review>
+
+    <review>
+  <id>5529357185</id>
+      <book>
+  <id type="integer">82427134</id>
+  <isbn>1642292095</isbn>
+  <isbn13>9781642292091</isbn13>
+  <text_reviews_count type="integer">1</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v3.OLDCQb3Gml_v6aWW</uri>
+  <title>The Gaze of Jesus: A Novel</title>
+  <title_without_series>The Gaze of Jesus: A Novel</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/82427134-the-gaze-of-jesus</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>4.00</average_rating>
+  <ratings_count>9</ratings_count>
+  <description></description>
+<authors>
+<author>
+<id>1428146</id>
+<name>Riccardo Bacchelli</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1345761272p5/1428146.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1345761272p2/1428146.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/1428146.Riccardo_Bacchelli]]></link>
+<average_rating>3.60</average_rating>
+<ratings_count>835</ratings_count>
+<text_reviews_count>58</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>107150397</id>
+  <uri>kca://work/amzn1.gr.work.v3.sudeaaQy5dXjYE4Q</uri>
+</work></book>
+
+
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='5167483024' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='259670127' name='ficción' review_shelf_id='5167483366' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259891699' name='cristo' review_shelf_id='5167483528' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='274026936' name='demonios' review_shelf_id='5167484055' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='327277493' name='nuevotestamento' review_shelf_id='5167483678' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='336633002' name='italia' review_shelf_id='5167483799' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='376630342' name='sanación' review_shelf_id='5167483929' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='408370573' name='ficciónhistórica' review_shelf_id='5167483399' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='504742883' name='novela' review_shelf_id='5167483262' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Thu May 04 02:13:31 -0700 2023</date_added>
+  <date_updated>Thu May 04 02:17:50 -0700 2023</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/5529357185]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/5529357185]]></link>
+    <owned>0</owned>
+</review>
+
+</reviews>
+
+</GoodreadsResponse>

@@ -8,12 +8,13 @@
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jesuserro/obsigen?style=for-the-badge&sort=semver)](https://github.com/jesuserro/obsigen/releases/)
 [![GitHub issues](https://img.shields.io/github/issues/jesuserro/obsigen?style=for-the-badge)](https://github.com/jesuserro/obsigen/issues/)
 
-Displaying your Obsidian notes in a year calendar view through icons. 
+Displaying your Obsidian notes in a year calendar view through icons.
 Use the yaml frontmatter to add the date and icon to your notes. The plugin will read the yaml and display the notes in the calendar view. The icon is defined on "tag" property.
 
 ## Folder Structure
 
 Following the DDD principles, the project is divided into three layers: core, adapters and shared.
+
 ```
 📦obsigen
  ┣📦src
@@ -151,7 +152,50 @@ touch src/assets/icons/dataurls.ts
 echo "// Placeholder for data URLs" > src/assets/icons/dataurls.ts
 ```
 
-### Step 5: Run the development environment
+### Step 5: Configure the environment variables
+
+Create a .env file in the root of your project by copying the provided .env.example:
+
+```bash
+cp .env.example .env
+
+#Edit the .env file to set the output directory path:
+OUTPUT_DIR=/mnt/c/Users/jesus/Documents/vault/.obsidian/plugins/obsigen
+```
+
+### Step 6: Install dotenv and create the tsconfig and copy scripts
+
+Install dotenv:
+
+```bash
+npm install dotenv --save
+```
+
+### Step 7: Install missing dependencies
+
+Ensure you have turndown and its type declarations installed:
+
+```bash
+# Install turndown and its type declarations
+npm install turndown --save
+npm install @types/turndown --save-dev
+```
+
+### Step 8: Clean and rebuild the project
+
+Clean the cache and rebuild the project to ensure all dependencies are properly configured:
+
+```bash
+# Clean TypeScript cache and node_modules
+rm -rf node_modules
+rm -rf dist
+npm install
+
+# Rebuild the project
+npm run build
+```
+
+### Step 9: Run the development environment
 
 ```bash
 # Start the development environment

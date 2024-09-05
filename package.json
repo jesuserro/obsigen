@@ -10,7 +10,7 @@
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
 		"version": "node version-bump.mjs && git add manifest.json versions.json",
 		"test": "jest",
-		"sasscp": "cp src/styles.css /mnt/c/Users/Jesús/Documents/vault/.obsidian/plugins/obsigen/styles.css",
+		"sasscp": "cp src/styles.css /mnt/c/Users/jesus/Documents/vault/.obsidian/plugins/obsigen/styles.css",
 		"iconos": "node src/createPrivateIcons.mjs"
 	},
 	"keywords": [],
@@ -25,6 +25,7 @@
 		"@types/react": "^18.2.21",
 		"@types/react-dom": "^18.2.5",
 		"@types/react-icons": "^3.0.0",
+		"@types/turndown": "^5.0.4",
 		"@typescript-eslint/eslint-plugin": "5.29.0",
 		"@typescript-eslint/parser": "5.29.0",
 		"builtin-modules": "3.3.0",
@@ -40,10 +41,14 @@
 		"typescript": "4.7.4"
 	},
 	"dependencies": {
+		"@eslint/config-array": "^0.17.0",
+		"@eslint/object-schema": "^2.1.4",
+		"dotenv": "^16.4.5",
 		"js-yaml": "^4.1.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-flagkit": "^2.0.4",
-		"react-icons": "^4.11.0"
+		"react-icons": "^4.11.0",
+		"turndown": "^7.2.0"
 	}
 }

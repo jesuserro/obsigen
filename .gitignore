@@ -25,3 +25,5 @@ data.json
 
 src/assets/icons/dataurls.ts
 src/assets/icons/*.png
+
+.env

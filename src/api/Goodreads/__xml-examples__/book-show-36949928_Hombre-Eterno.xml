@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GoodreadsResponse>
+  <Request>
+    <authentication>true</authentication>
+      <key><![CDATA[DkLO3yfzNSM1JLOIJFXL3A]]></key>
+    <method><![CDATA[book_show]]></method>
+  </Request>
+  <book>
+  <id>36949928</id>
+  <title><![CDATA[El Hombre Eterno (Philosophiae Memoria nº 11) (Spanish Edition)]]></title>
+  <isbn><![CDATA[]]></isbn>
+  <isbn13><![CDATA[]]></isbn13>
+  <asin><![CDATA[B077L4YH3Z]]></asin>
+  <kindle_asin><![CDATA[]]></kindle_asin>
+  <marketplace_id><![CDATA[]]></marketplace_id>
+  <country_code><![CDATA[ES]]></country_code>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <publication_day></publication_day>
+  <publisher></publisher>
+  <language_code></language_code>
+  <is_ebook>true</is_ebook>
+  <description><![CDATA[El hombre eterno (The Everlasting Man) es un ensayo histórico en dos partes sobre la humanidad, Cristo y el Cristianismo, de G. K. Chesterton, publicado en 1925. Es hasta cierto punto una consciente respuesta al libro de H. G. Wells’ Outline of History, que envuelve ambos, el origen evolutivo de la humanidad y la mortalidad humana de Jesús. <br />Chesterton comienza de la siguiente manera: Hay dos formas de llegar a casa, una de ellas es permanecer en ella y la otra es caminar a través de todo el mundo hasta que volvamos al mismo lugar, El Hombre Eterno está dirigido para aquellos que no han logrado llegar a casa de la primera forma, invitándolos a que se aproximen a casa de la segunda manera. <br />El objetivo de este libro, en otras palabras, es que la mejor cosa siguiente a estar realmente dentro de la cristiandad es estar realmente fuera de ella. Y un punto particular es que los críticos populares del Cristianismo no están realmente fuera de él .]]></description>
+  <work>
+  <id type="integer">2420302</id>
+  <books_count type="integer">2</books_count>
+  <best_book_id type="integer">112760</best_book_id>
+  <reviews_count type="integer">35725</reviews_count>
+  <ratings_sum type="integer">39932</ratings_sum>
+  <ratings_count type="integer">9613</ratings_count>
+  <text_reviews_count type="integer">888</text_reviews_count>
+  <original_publication_year type="integer">1925</original_publication_year>
+  <original_publication_month type="integer" nil="true"/>
+  <original_publication_day type="integer" nil="true"/>
+  <original_title>The Everlasting Man</original_title>
+  <original_language_id type="integer" nil="true"/>
+  <media_type>book</media_type>
+  <rating_dist>5:4460|4:3098|3:1388|2:409|1:258|total:9613</rating_dist>
+  <desc_user_id type="integer">16251166</desc_user_id>
+  <default_chaptering_book_id type="integer" nil="true"/>
+  <default_description_language_code nil="true"/>
+  <work_uri>kca://work/amzn1.gr.work.v1.1cl27ZYdSh9b7Cb5HXV5CA</work_uri>
+</work>
+  <average_rating>4.15</average_rating>
+  <num_pages><![CDATA[]]></num_pages>
+  <format><![CDATA[]]></format>
+  <edition_information><![CDATA[]]></edition_information>
+  <ratings_count><![CDATA[3]]></ratings_count>
+  <text_reviews_count><![CDATA[2]]></text_reviews_count>
+  <url><![CDATA[https://www.goodreads.com/book/show/36949928-el-hombre-eterno-philosophiae-memoria-n-11]]></url>
+  <link><![CDATA[https://www.goodreads.com/book/show/36949928-el-hombre-eterno-philosophiae-memoria-n-11]]></link>
+  <authors>
+<author>
+<id>7014283</id>
+<name>G.K. Chesterton</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1365860649p5/7014283.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1365860649p2/7014283.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/7014283.G_K_Chesterton]]></link>
+<average_rating>3.98</average_rating>
+<ratings_count>324236</ratings_count>
+<text_reviews_count>21662</text_reviews_count>
+</author>
+<author>
+<id>16453272</id>
+<name>Gloria López de los Santos</name>
+<role>Editor</role>
+<image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_200x266-e183445fd1a1b5cc7075bb1cf7043306.png]]>
+</image_url>
+<small_image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_50x66-632230dc9882b4352d753eedf9396530.png]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/16453272.Gloria_L_pez_de_los_Santos]]></link>
+<average_rating>3.97</average_rating>
+<ratings_count>100</ratings_count>
+<text_reviews_count>12</text_reviews_count>
+</author>
+<author>
+<id>6821167</id>
+<name>Francisco Gijón</name>
+<role>Translator</role>
+<image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_200x266-e183445fd1a1b5cc7075bb1cf7043306.png]]>
+</image_url>
+<small_image_url nophoto='true'>
+<![CDATA[https://s.gr-assets.com/assets/nophoto/user/u_50x66-632230dc9882b4352d753eedf9396530.png]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/6821167.Francisco_Gij_n]]></link>
+<average_rating>4.10</average_rating>
+<ratings_count>167</ratings_count>
+<text_reviews_count>18</text_reviews_count>
+</author>
+</authors>
+
+    <reviews_widget>
+      <![CDATA[
+        <style>
+  #goodreads-widget {
+    font-family: georgia, serif;
+    padding: 18px 0;
+    width:565px;
+  }
+  #goodreads-widget h1 {
+    font-weight:normal;
+    font-size: 16px;
+    border-bottom: 1px solid #BBB596;
+    margin-bottom: 0;
+  }
+  #goodreads-widget a {
+    text-decoration: none;
+    color:#660;
+  }
+  iframe{
+    background-color: #fff;
+  }
+  #goodreads-widget a:hover { text-decoration: underline; }
+  #goodreads-widget a:active {
+    color:#660;
+  }
+  #gr_footer {
+    width: 100%;
+    border-top: 1px solid #BBB596;
+    text-align: right;
+  }
+  #goodreads-widget .gr_branding{
+    color: #382110;
+    font-size: 11px;
+    text-decoration: none;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+</style>
+<div id="goodreads-widget">
+  <div id="gr_header"><h1><a rel="nofollow" href="https://www.goodreads.com/book/show/36949928-el-hombre-eterno-philosophiae-memoria-n-11">El Hombre Eterno (Philosophiae Memoria nº 11) Reviews</a></h1></div>
+  <iframe sandbox id="the_iframe" src="https://www.goodreads.com/api/reviews_widget_iframe?did=DEVELOPER_ID&amp;format=html&amp;isbn=B077L4YH3Z&amp;links=660&amp;min_rating=&amp;review_back=fff&amp;stars=000&amp;text=000" width="565" height="400" frameborder="0"></iframe>
+  <div id="gr_footer">
+    <a class="gr_branding" target="_blank" rel="nofollow noopener noreferrer" href="https://www.goodreads.com/book/show/36949928-el-hombre-eterno-philosophiae-memoria-n-11?utm_medium=api&amp;utm_source=reviews_widget">Reviews from Goodreads.com</a>
+  </div>
+</div>
+
+      ]]>
+    </reviews_widget>
+  <popular_shelves>
+      <shelf name="to-read" count="21196"/>
+      <shelf name="currently-reading" count="2258"/>
+      <shelf name="theology" count="293"/>
+      <shelf name="religion" count="258"/>
+      <shelf name="philosophy" count="242"/>
+      <shelf name="christian" count="217"/>
+      <shelf name="christianity" count="205"/>
+      <shelf name="non-fiction" count="205"/>
+      <shelf name="classics" count="131"/>
+      <shelf name="favorites" count="119"/>
+      <shelf name="history" count="110"/>
+      <shelf name="nonfiction" count="106"/>
+      <shelf name="apologetics" count="98"/>
+      <shelf name="catholic" count="85"/>
+      <shelf name="faith" count="84"/>
+      <shelf name="owned" count="68"/>
+      <shelf name="religious" count="58"/>
+      <shelf name="spirituality" count="47"/>
+      <shelf name="spiritual" count="43"/>
+      <shelf name="chesterton" count="39"/>
+      <shelf name="kindle" count="34"/>
+      <shelf name="catholicism" count="29"/>
+      <shelf name="g-k-chesterton" count="25"/>
+      <shelf name="fiction" count="22"/>
+      <shelf name="library" count="21"/>
+      <shelf name="to-buy" count="20"/>
+      <shelf name="books-i-own" count="20"/>
+      <shelf name="audible" count="17"/>
+      <shelf name="audiobooks" count="17"/>
+      <shelf name="default" count="16"/>
+      <shelf name="audio" count="16"/>
+      <shelf name="dxp" count="16"/>
+      <shelf name="christian-living" count="16"/>
+      <shelf name="christian-non-fiction" count="16"/>
+      <shelf name="theology-philosophy" count="15"/>
+      <shelf name="gk-chesterton" count="15"/>
+      <shelf name="wish-list" count="15"/>
+      <shelf name="audiobook" count="14"/>
+      <shelf name="classic" count="13"/>
+      <shelf name="religion-spirituality" count="13"/>
+      <shelf name="british" count="13"/>
+      <shelf name="my-library" count="13"/>
+      <shelf name="literature" count="12"/>
+      <shelf name="culture" count="12"/>
+      <shelf name="christian-theology" count="11"/>
+      <shelf name="personal-library" count="11"/>
+      <shelf name="christian-nonfiction" count="11"/>
+      <shelf name="owned-books" count="10"/>
+      <shelf name="20th-century" count="10"/>
+      <shelf name="religión" count="10"/>
+      <shelf name="essays" count="10"/>
+      <shelf name="dnf" count="10"/>
+      <shelf name="ebook" count="10"/>
+      <shelf name="christian-books" count="9"/>
+      <shelf name="inklings" count="9"/>
+      <shelf name="christian-classics" count="9"/>
+      <shelf name="historical" count="9"/>
+      <shelf name="philosophy-religion" count="9"/>
+      <shelf name="filosofia" count="8"/>
+      <shelf name="my-books" count="8"/>
+      <shelf name="religion-theology" count="8"/>
+      <shelf name="mythology" count="8"/>
+      <shelf name="theology-religion" count="8"/>
+      <shelf name="2024-reading-list" count="7"/>
+      <shelf name="did-not-finish" count="7"/>
+      <shelf name="abandoned" count="7"/>
+      <shelf name="hoopla" count="7"/>
+      <shelf name="non-fiction-to-read" count="7"/>
+      <shelf name="christian-apologetics" count="7"/>
+      <shelf name="re-read" count="7"/>
+      <shelf name="christian-thought" count="7"/>
+      <shelf name="1920s" count="7"/>
+      <shelf name="english-literature" count="7"/>
+      <shelf name="anthropology" count="7"/>
+      <shelf name="audio-books" count="7"/>
+      <shelf name="unfinished" count="7"/>
+      <shelf name="favourites" count="6"/>
+      <shelf name="christian-life" count="6"/>
+      <shelf name="british-literature" count="6"/>
+      <shelf name="partially-read" count="6"/>
+      <shelf name="jesus" count="6"/>
+      <shelf name="english" count="6"/>
+      <shelf name="theo" count="6"/>
+      <shelf name="read-next" count="6"/>
+      <shelf name="philosophy-and-religion" count="6"/>
+      <shelf name="home-library" count="6"/>
+      <shelf name="to-read-non-fiction" count="5"/>
+      <shelf name="philosophical" count="5"/>
+      <shelf name="spiritual-reading" count="5"/>
+      <shelf name="christian-philosophy" count="5"/>
+      <shelf name="to-reread" count="5"/>
+      <shelf name="spiritual-formation" count="5"/>
+      <shelf name="filosofía" count="5"/>
+      <shelf name="brit-lit" count="5"/>
+      <shelf name="uk" count="5"/>
+      <shelf name="catholic-books" count="5"/>
+      <shelf name="couldn-t-finish" count="5"/>
+      <shelf name="christian-reading" count="4"/>
+      <shelf name="maybe" count="4"/>
+      <shelf name="philosophy-theology" count="4"/>
+  </popular_shelves>
+  <book_links>
+    <book_link>
+  <id>8</id>
+  <name>Libraries</name>
+  <link>https://www.goodreads.com/book_link/follow/8</link>
+</book_link>
+
+  </book_links>
+  <buy_links>
+    <buy_link>
+<id>1</id>
+<name>Amazon</name>
+<link>https://www.goodreads.com/book_link/follow/1</link>
+</buy_link>
+<buy_link>
+<id>10</id>
+<name>Audible</name>
+<link>https://www.goodreads.com/book_link/follow/10</link>
+</buy_link>
+<buy_link>
+<id>3</id>
+<name>Barnes &amp; Noble</name>
+<link>https://www.goodreads.com/book_link/follow/3</link>
+</buy_link>
+<buy_link>
+<id>4</id>
+<name>AbeBooks</name>
+<link>https://www.goodreads.com/book_link/follow/4</link>
+</buy_link>
+<buy_link>
+<id>1027</id>
+<name>Walmart eBooks</name>
+<link>https://www.goodreads.com/book_link/follow/1027</link>
+</buy_link>
+<buy_link>
+<id>2102</id>
+<name>Apple Books</name>
+<link>https://www.goodreads.com/book_link/follow/2102</link>
+</buy_link>
+<buy_link>
+<id>8036</id>
+<name>Google Play</name>
+<link>https://www.goodreads.com/book_link/follow/8036</link>
+</buy_link>
+<buy_link>
+<id>5</id>
+<name>Alibris</name>
+<link>https://www.goodreads.com/book_link/follow/5</link>
+</buy_link>
+<buy_link>
+<id>9</id>
+<name>Indigo</name>
+<link>https://www.goodreads.com/book_link/follow/9</link>
+</buy_link>
+<buy_link>
+<id>107</id>
+<name>Better World Books</name>
+<link>https://www.goodreads.com/book_link/follow/107</link>
+</buy_link>
+<buy_link>
+<id>7</id>
+<name>IndieBound</name>
+<link>https://www.goodreads.com/book_link/follow/7</link>
+</buy_link>
+<buy_link>
+<id>92</id>
+<name>Thriftbooks</name>
+<link>https://www.goodreads.com/book_link/follow/92</link>
+</buy_link>
+
+  </buy_links>
+  <series_works>
+    
+  </series_works>
+  <similar_books>
+          <book>
+<id>25825420</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.AJOXm9QavEdWtqr-16ktZw]]></uri>
+<title>The Abolition of Man</title>
+<title_without_series>The Abolition of Man</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/25825420-the-abolition-of-man]]></link>
+<small_image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1435685201l/25825420._SY75_.jpg]]></small_image_url>
+<image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1435685201l/25825420._SX98_.jpg]]></image_url>
+<num_pages>113</num_pages>
+
+<work>
+<id>14823978</id>
+</work>
+<isbn></isbn>
+<isbn13></isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year>2015</publication_year>
+<publication_month>4</publication_month>
+<publication_day>7</publication_day>
+<authors>
+<author>
+<id>1069006</id>
+<name>C.S. Lewis</name>
+<link><![CDATA[https://www.goodreads.com/author/show/1069006.C_S_Lewis]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>13650512</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.QXse4mGplNtDFtHK2Ls1eA]]></uri>
+<title>Miracles</title>
+<title_without_series>Miracles</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/13650512-miracles]]></link>
+<small_image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1483970857l/13650512._SY75_.jpg]]></small_image_url>
+<image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1483970857l/13650512._SX98_.jpg]]></image_url>
+<num_pages>294</num_pages>
+
+<work>
+<id>2682328</id>
+</work>
+<isbn>0007461259</isbn>
+<isbn13>9780007461257</isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year></publication_year>
+<publication_month></publication_month>
+<publication_day></publication_day>
+<authors>
+<author>
+<id>1069006</id>
+<name>C.S. Lewis</name>
+<link><![CDATA[https://www.goodreads.com/author/show/1069006.C_S_Lewis]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>121732</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.D1OCOFVgRfx0Iq4olOrbKQ]]></uri>
+<title><![CDATA[Surprised by Joy: The Shape of My Early Life]]></title>
+<title_without_series><![CDATA[Surprised by Joy: The Shape of My Early Life]]></title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/121732.Surprised_by_Joy]]></link>
+<small_image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1381407473l/121732._SY75_.jpg]]></small_image_url>
+<image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1381407473l/121732._SX98_.jpg]]></image_url>
+<num_pages>185</num_pages>
+
+<work>
+<id>877675</id>
+</work>
+<isbn>0006280838</isbn>
+<isbn13>9780006280835</isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year></publication_year>
+<publication_month></publication_month>
+<publication_day></publication_day>
+<authors>
+<author>
+<id>1069006</id>
+<name>C.S. Lewis</name>
+<link><![CDATA[https://www.goodreads.com/author/show/1069006.C_S_Lewis]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>111563</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.bKNErZV5j7WWM1YfmMYXbA]]></uri>
+<title><![CDATA[God in the Dock: Essays on Theology and Ethics]]></title>
+<title_without_series><![CDATA[God in the Dock: Essays on Theology and Ethics]]></title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/111563.God_in_the_Dock]]></link>
+<small_image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1565719963l/111563._SX50_.jpg]]></small_image_url>
+<image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1565719963l/111563._SX98_.jpg]]></image_url>
+<num_pages>346</num_pages>
+
+<work>
+<id>1241712</id>
+</work>
+<isbn>0802808689</isbn>
+<isbn13></isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year>1972</publication_year>
+<publication_month>3</publication_month>
+<publication_day>24</publication_day>
+<authors>
+<author>
+<id>1069006</id>
+<name>C.S. Lewis</name>
+<link><![CDATA[https://www.goodreads.com/author/show/1069006.C_S_Lewis]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>31837</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.c1ckPpTqh9UJMQFfmPz7Eg]]></uri>
+<title>The Consolation of Philosophy</title>
+<title_without_series>The Consolation of Philosophy</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/31837.The_Consolation_of_Philosophy]]></link>
+<small_image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1477580108l/31837._SY75_.jpg]]></small_image_url>
+<image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1477580108l/31837._SY160_.jpg]]></image_url>
+<num_pages></num_pages>
+
+<work>
+<id>835371</id>
+</work>
+<isbn>0140447806</isbn>
+<isbn13>9780140447804</isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year></publication_year>
+<publication_month></publication_month>
+<publication_day></publication_day>
+<authors>
+<author>
+<id>5589950</id>
+<name>Boethius</name>
+<link><![CDATA[https://www.goodreads.com/author/show/5589950.Boethius]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>29921671</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.TMRluUBe-dlqhnZ3Gp2K0A]]></uri>
+<title>The Weight of Glory</title>
+<title_without_series>The Weight of Glory</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/29921671-the-weight-of-glory]]></link>
+<small_image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1460733381l/29921671._SY75_.jpg]]></small_image_url>
+<image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1460733381l/29921671._SX98_.jpg]]></image_url>
+<num_pages>208</num_pages>
+
+<work>
+<id>1629232</id>
+</work>
+<isbn></isbn>
+<isbn13></isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year>2015</publication_year>
+<publication_month>4</publication_month>
+<publication_day>7</publication_day>
+<authors>
+<author>
+<id>1069006</id>
+<name>C.S. Lewis</name>
+<link><![CDATA[https://www.goodreads.com/author/show/1069006.C_S_Lewis]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>100933</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.aPzHGr4nYS46BdB10BGR0A]]></uri>
+<title><![CDATA[That Hideous Strength (The Space Trilogy, #3)]]></title>
+<title_without_series>That Hideous Strength</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/100933.That_Hideous_Strength]]></link>
+<small_image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png]]></small_image_url>
+<image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png]]></image_url>
+<num_pages>534</num_pages>
+
+<work>
+<id>964487</id>
+</work>
+<isbn>0007157177</isbn>
+<isbn13>9780007157174</isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year>2005</publication_year>
+<publication_month>12</publication_month>
+<publication_day>5</publication_day>
+<authors>
+<author>
+<id>1069006</id>
+<name>C.S. Lewis</name>
+<link><![CDATA[https://www.goodreads.com/author/show/1069006.C_S_Lewis]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>782050</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.MwdK1F1Smh2INMY5pwkZ_Q]]></uri>
+<title>The Mind of the Maker</title>
+<title_without_series>The Mind of the Maker</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/782050.The_Mind_of_the_Maker]]></link>
+<small_image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png]]></small_image_url>
+<image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png]]></image_url>
+<num_pages>229</num_pages>
+
+<work>
+<id>768066</id>
+</work>
+<isbn>0060670770</isbn>
+<isbn13>9780060670771</isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year></publication_year>
+<publication_month></publication_month>
+<publication_day></publication_day>
+<authors>
+<author>
+<id>8734</id>
+<name>Dorothy L. Sayers</name>
+<link><![CDATA[https://www.goodreads.com/author/show/8734.Dorothy_L_Sayers]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>174948</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.scgqG0P3UFEFWZ_Vnnc6uw]]></uri>
+<title>Phantastes</title>
+<title_without_series>Phantastes</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/174948.Phantastes]]></link>
+<small_image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327629648l/174948._SX50_.jpg]]></small_image_url>
+<image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327629648l/174948._SX98_.jpg]]></image_url>
+<num_pages></num_pages>
+
+<work>
+<id>2206809</id>
+</work>
+<isbn>160096401X</isbn>
+<isbn13>9781600964015</isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year></publication_year>
+<publication_month></publication_month>
+<publication_day></publication_day>
+<authors>
+<author>
+<id>2413</id>
+<name>George MacDonald</name>
+<link><![CDATA[https://www.goodreads.com/author/show/2413.George_MacDonald]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>100924</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.ZMWz9-Nt6oUrZRgU28Xupg]]></uri>
+<title><![CDATA[Perelandra (The Space Trilogy, #2)]]></title>
+<title_without_series>Perelandra</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/100924.Perelandra]]></link>
+<small_image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png]]></small_image_url>
+<image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png]]></image_url>
+<num_pages></num_pages>
+
+<work>
+<id>3148586</id>
+</work>
+<isbn>0007157169</isbn>
+<isbn13>9780007157167</isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year></publication_year>
+<publication_month></publication_month>
+<publication_day></publication_day>
+<authors>
+<author>
+<id>1069006</id>
+<name>C.S. Lewis</name>
+<link><![CDATA[https://www.goodreads.com/author/show/1069006.C_S_Lewis]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>27037</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.NafbVKi4uq5e1xmWibKo9A]]></uri>
+<title>Confessions</title>
+<title_without_series>Confessions</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/27037.Confessions]]></link>
+<small_image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png]]></small_image_url>
+<image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png]]></image_url>
+<num_pages>341</num_pages>
+
+<work>
+<id>1427207</id>
+</work>
+<isbn>0192833723</isbn>
+<isbn13>9780192833723</isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year></publication_year>
+<publication_month></publication_month>
+<publication_day></publication_day>
+<authors>
+<author>
+<id>6819578</id>
+<name>Augustine of Hippo</name>
+<link><![CDATA[https://www.goodreads.com/author/show/6819578.Augustine_of_Hippo]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>75511257</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v3.xUE8VEDeU3Q9XXwn]]></uri>
+<title><![CDATA[Fire Prayers: Building Arsenals That Destroy Satanic Kingdoms]]></title>
+<title_without_series><![CDATA[Fire Prayers: Building Arsenals That Destroy Satanic Kingdoms]]></title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/75511257-fire-prayers]]></link>
+<small_image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png]]></small_image_url>
+<image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png]]></image_url>
+<num_pages>218</num_pages>
+
+<work>
+<id>96752235</id>
+</work>
+<isbn>1636411568</isbn>
+<isbn13>9781636411569</isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year></publication_year>
+<publication_month></publication_month>
+<publication_day></publication_day>
+<authors>
+<author>
+<id>4775993</id>
+<name>John Ramirez</name>
+<link><![CDATA[https://www.goodreads.com/author/show/4775993.John_Ramirez]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>13650513</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.1kPEU5POHYiQdvEy8xvICQ]]></uri>
+<title>The Problem of Pain</title>
+<title_without_series>The Problem of Pain</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/13650513-the-problem-of-pain]]></link>
+<small_image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1504348728l/13650513._SY75_.jpg]]></small_image_url>
+<image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1504348728l/13650513._SX98_.jpg]]></image_url>
+<num_pages>162</num_pages>
+
+<work>
+<id>2976220</id>
+</work>
+<isbn>0007461267</isbn>
+<isbn13>9780007461264</isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year></publication_year>
+<publication_month></publication_month>
+<publication_day></publication_day>
+<authors>
+<author>
+<id>1069006</id>
+<name>C.S. Lewis</name>
+<link><![CDATA[https://www.goodreads.com/author/show/1069006.C_S_Lewis]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>25350</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.RFklA94v31rcmxJ_cZYXvg]]></uri>
+<title><![CDATA[Out of the Silent Planet (The Space Trilogy, #1)]]></title>
+<title_without_series>Out of the Silent Planet</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/25350.Out_of_the_Silent_Planet]]></link>
+<small_image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1310984018l/25350._SY75_.jpg]]></small_image_url>
+<image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1310984018l/25350._SX98_.jpg]]></image_url>
+<num_pages>160</num_pages>
+
+<work>
+<id>879622</id>
+</work>
+<isbn>0007157150</isbn>
+<isbn13>9780007157150</isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year></publication_year>
+<publication_month></publication_month>
+<publication_day></publication_day>
+<authors>
+<author>
+<id>1069006</id>
+<name>C.S. Lewis</name>
+<link><![CDATA[https://www.goodreads.com/author/show/1069006.C_S_Lewis]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>25845273</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.Jx2-cktOlVm0uDb6sih1mA]]></uri>
+<title>The Great Divorce</title>
+<title_without_series>The Great Divorce</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/25845273-the-great-divorce]]></link>
+<small_image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1435968645l/25845273._SX50_.jpg]]></small_image_url>
+<image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1435968645l/25845273._SX98_.jpg]]></image_url>
+<num_pages>146</num_pages>
+
+<work>
+<id>1215780</id>
+</work>
+<isbn></isbn>
+<isbn13></isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year>2015</publication_year>
+<publication_month>4</publication_month>
+<publication_day>21</publication_day>
+<authors>
+<author>
+<id>1069006</id>
+<name>C.S. Lewis</name>
+<link><![CDATA[https://www.goodreads.com/author/show/1069006.C_S_Lewis]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>242319</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.uWz2Bum4ISDP1BZc_uJSCQ]]></uri>
+<title><![CDATA[I See Satan Fall Like Lightning]]></title>
+<title_without_series><![CDATA[I See Satan Fall Like Lightning]]></title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/242319.I_See_Satan_Fall_Like_Lightning]]></link>
+<small_image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png]]></small_image_url>
+<image_url><![CDATA[https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png]]></image_url>
+<num_pages>215</num_pages>
+
+<work>
+<id>234751</id>
+</work>
+<isbn>1570753199</isbn>
+<isbn13>9781570753190</isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year></publication_year>
+<publication_month></publication_month>
+<publication_day></publication_day>
+<authors>
+<author>
+<id>193536</id>
+<name>René Girard</name>
+<link><![CDATA[https://www.goodreads.com/author/show/193536.Ren_Girard]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>29938407</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.4u5LeDSSKAY4QthA7WCeRw]]></uri>
+<title>The Four Loves</title>
+<title_without_series>The Four Loves</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/29938407-the-four-loves]]></link>
+<small_image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1483646226l/29938407._SY75_.jpg]]></small_image_url>
+<image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1483646226l/29938407._SX98_.jpg]]></image_url>
+<num_pages></num_pages>
+
+<work>
+<id>14816053</id>
+</work>
+<isbn>0062565397</isbn>
+<isbn13>9780062565396</isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year></publication_year>
+<publication_month></publication_month>
+<publication_day></publication_day>
+<authors>
+<author>
+<id>1069006</id>
+<name>C.S. Lewis</name>
+<link><![CDATA[https://www.goodreads.com/author/show/1069006.C_S_Lewis]]></link>
+</author>
+</authors>
+</book>
+
+          <book>
+<id>673655</id>
+<uri><![CDATA[kca://book/amzn1.gr.book.v1.7VErM2BWuoUyacxHta7nVg]]></uri>
+<title>On the Incarnation</title>
+<title_without_series>On the Incarnation</title_without_series>
+<link><![CDATA[https://www.goodreads.com/book/show/673655.On_the_Incarnation]]></link>
+<small_image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1269974899l/673655._SX50_.jpg]]></small_image_url>
+<image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1269974899l/673655._SX98_.jpg]]></image_url>
+<num_pages></num_pages>
+
+<work>
+<id>659669</id>
+</work>
+<isbn>0913836400</isbn>
+<isbn13>9780913836408</isbn13>
+<average_rating>4.15</average_rating>
+<ratings_count>9613</ratings_count>
+<publication_year>1977</publication_year>
+<publication_month>6</publication_month>
+<publication_day>28</publication_day>
+<authors>
+<author>
+<id>5786637</id>
+<name>Athanasius of Alexandria</name>
+<link><![CDATA[https://www.goodreads.com/author/show/5786637.Athanasius_of_Alexandria]]></link>
+</author>
+</authors>
+</book>
+
+  </similar_books>
+  
+
+</book>
+
+</GoodreadsResponse>

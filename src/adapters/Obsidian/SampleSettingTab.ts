@@ -24,9 +24,31 @@ export default class SampleSettingTab extends PluginSettingTab {
 				.setPlaceholder('Enter your secret')
 				.setValue(this.plugin.settings.mySetting)
 				.onChange(async (value) => {
-					console.log('Secret: ' + value);
 					this.plugin.settings.mySetting = value;
 					await this.plugin.saveSettings();
-				}));
+				})
+            );
+		new Setting(containerEl)
+			.setName('Goodreads User')
+			.setDesc('Goodreads User')
+			.addText(text => text
+				.setPlaceholder('Enter your Goodreads User')
+				.setValue(this.plugin.settings.goodreads_user)
+				.onChange(async (value) => {
+					this.plugin.settings.goodreads_user = value;
+					await this.plugin.saveSettings();
+				})
+            );
+		new Setting(containerEl)
+			.setName('Goodreads Api Key')
+			.setDesc('Goodreads Api Key')
+			.addText(text => text
+				.setPlaceholder('Enter your Goodreads APIKEY')
+				.setValue(this.plugin.settings.goodreads_apikey)
+				.onChange(async (value) => {
+					this.plugin.settings.goodreads_apikey = value;
+					await this.plugin.saveSettings();
+				})
+            );
 	}
 }

@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GoodreadsResponse>
+  <Request>
+    <authentication>true</authentication>
+      <key><![CDATA[]]></key>
+    <method><![CDATA[review_show]]></method>
+  </Request>
+      <review>
+  <id>2304450830</id>
+    
+  <user>
+    <id>40291334</id>
+    <uri>kca://profile:goodreads/A3EWY4COMXEFUP</uri>
+    <name>Jesús </name>
+    <display_name>Jesús</display_name>
+
+    <location></location>
+
+    <link><![CDATA[https://www.goodreads.com/user/show/40291334-jes-s-erro]]></link>
+
+    <image_url><![CDATA[https://images.gr-assets.com/users/1658206211p3/40291334.jpg]]></image_url>
+    <small_image_url><![CDATA[https://images.gr-assets.com/users/1658206211p2/40291334.jpg]]></small_image_url>
+    <has_image>true</has_image>
+
+  </user>
+
+      <book>
+  <id type="integer">46264376</id>
+  <isbn>8432150363</isbn>
+  <isbn13>9788432150364</isbn13>
+  <text_reviews_count type="integer">9</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.ZjhSeMm7kQJ8aPA298rVVQ</uri>
+  <title>El arte de recomenzar</title>
+  <title_without_series>El arte de recomenzar</title_without_series>
+  <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+  <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/46264376-el-arte-de-recomenzar</link>
+  <num_pages></num_pages>
+  <format></format>
+  <edition_information/>
+  <publisher></publisher>
+  <publication_day></publication_day>
+  <publication_year></publication_year>
+  <publication_month></publication_month>
+  <average_rating>4.49</average_rating>
+  <ratings_count>229</ratings_count>
+  <description>&lt;b&gt;Este libro demuestra que recomenzar es posible.&lt;/b&gt;&lt;p&gt;Es cierto que no es fácil, pues se trata de un arte que exige humildad y unos pies que caminen en la realidad.&lt;/p&gt;&lt;p&gt;Rosini introduce al lector en este arte, siguiendo los seis días del relato de la creación.&lt;/p&gt;&lt;p&gt;Se conjuga así la Palabra de Dios con nuestra propia vida, que a menudo necesita una nueva creación que reconstruya la propia existencia.&lt;/p&gt;</description>
+<authors>
+<author>
+<id>16299593</id>
+<name>Fabio Rosini</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1706983160p5/16299593.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1706983160p2/16299593.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/16299593.Fabio_Rosini]]></link>
+<average_rating>4.49</average_rating>
+<ratings_count>547</ratings_count>
+<text_reviews_count>69</text_reviews_count>
+</author>
+</authors>
+  <published></published>
+<work>  <id>59975641</id>
+  <uri>kca://work/amzn1.gr.work.v1.ZhEYDay6zw2cbBzkZoNTFQ</uri>
+</work></book>
+
+
+    <user_statuses>
+        <user_status>
+          <id type="integer">249023784</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Sun Nov 03 12:52:49 -0800 2019</created_at>
+          <updated_at type="datetime">Thu Aug 04 14:44:50 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">92</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.e9e05b3312c14245cc87542b0188f192</note_uri>
+          <note_updated_at type="datetime">Thu Aug 04 14:44:50 -0700 2022</note_updated_at>
+          <body><![CDATA[Bendición.<br />Buscar paternidad. Amor es relación. Cuidar del otro. Dios Padre es Dios personal, da libertad porque quiere hijos distintos. Creamos identidad propia. Soledad mala. Si soy impulsivo es porque me faltan relaciones. <br />Estar en paraíso es estár con alguien.<br />Discernir es decirse ¿para quién soy? ¿A quién me lleva hacer esto? <br />Recomenzar es abandonar malos hábitos. La curación es buscar la felicidad del otro.]]></body>
+        </user_status>
+        <user_status>
+          <id type="integer">249013147</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Sun Nov 03 11:32:40 -0800 2019</created_at>
+          <updated_at type="datetime">Thu Aug 04 14:41:39 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">88</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.cd658096b50c68efd85d8a4223971646</note_uri>
+          <note_updated_at type="datetime">Thu Aug 04 14:41:39 -0700 2022</note_updated_at>
+          <body><![CDATA[El dominio<br />Es la realización de mi imagen y semejanza entrando en mi realidad a través de mis habilidades. Dios confía en mí. Soy pobre y sólo me queda aprovechar cada instante para hacer el bien. Trabajar es amar a través del servicio al prójimo. Hacer lista potestades basada en realidad inmediata, no sueños.<br />Caín ¿Guardián hermano? Huyo compromisos, vivo sin perseverancia ni resistencia, no riesgos, me quito gente.]]></body>
+        </user_status>
+        <user_status>
+          <id type="integer">248895382</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Sat Nov 02 14:26:49 -0700 2019</created_at>
+          <updated_at type="datetime">Thu Aug 04 14:00:20 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">85</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.500a703840b5fb7af4a78e979fc556f1</note_uri>
+          <note_updated_at type="datetime">Thu Aug 04 14:00:20 -0700 2022</note_updated_at>
+          <body><![CDATA[Hombre y mujer los creó.<br />Debe cortejarla, asumir debilidad, esperarla, hacerla sentir acogida, cuidar, acariciarla, comprenderla, apoyarla, sorprenderla.<br />Mujer paciente, sensible, benevolente ante infantil y superficialidad, domina impactos vida, entiende personas y cosas<br />Cristo enseña a ser varón. Bueno sentir dolor agudo en alma por no haber amado.<br />Conjunción copulativa positiva. Hay esponsabilidad. Darse al otro.]]></body>
+        </user_status>
+        <user_status>
+          <id type="integer">248661782</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Thu Oct 31 14:47:22 -0700 2019</created_at>
+          <updated_at type="datetime">Thu Aug 04 12:31:44 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">83</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.a93da459b5de262fc84b4ac3ec8b96cd</note_uri>
+          <note_updated_at type="datetime">Thu Aug 04 12:31:44 -0700 2022</note_updated_at>
+          <body><![CDATA[Día 6 parte 2 A imagen y semejanza<br />Ser verdadero yo. Ver a Dios como Padre. Soy perla de Cristo. Tener fe, buena representación de Dios. Recomenzar discirniendo: somos preciosos, mis errores no dicen mi verdad. Gloria Dios es amar, servir, morir por otro.<br />Mala imagen Dios mata amor en corazón y lo deja vacío. Se llena de orgullo, miedos, que es rechazo de uno mismo. Engañados por placer, estrategias autodestructivas.]]></body>
+        </user_status>
+        <user_status>
+          <id type="integer">248499089</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Wed Oct 30 09:17:43 -0700 2019</created_at>
+          <updated_at type="datetime">Thu Aug 04 11:32:34 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">75</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.4b49c1123dde831fe93ee6bf0c8bdb3e</note_uri>
+          <note_updated_at type="datetime">Thu Aug 04 11:32:34 -0700 2022</note_updated_at>
+          <body><![CDATA[Día 6 parte 1 tierra crea seres vivos.<br />Dios crea vida de injusticia, caos. Adán degenera, Cristo da vida.<br />Morir para dar fruto a través de humillaciones, obediencia y cruz.<br />Humillación es oportunidad aprender voluntad de Dios.<br />Merecida: salto a la verdad. Injusta: salto de mis obras a las de Dios.<br />Mi libertad condiciona realidad, cruces a discernir.<br />Priorizar salvación, esto no se discierne. <br />Lista de humillaciones.]]></body>
+        </user_status>
+        <user_status>
+          <id type="integer">248354745</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Tue Oct 29 09:25:23 -0700 2019</created_at>
+          <updated_at type="datetime">Thu Aug 04 10:42:53 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">70</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.dfb21d001ae89c58345c15f2ce2c22bf</note_uri>
+          <note_updated_at type="datetime">Thu Aug 04 10:42:52 -0700 2022</note_updated_at>
+          <body><![CDATA[Día 5: seres vivos<br />Fecundidad. Aceptar la realidad y buscar lo que existe, lo mío. Abre creatividad, arte. Si no, ideología basada en mi propio rechazo, en expectativas, sueños, hipótesis, no hechos. Ver enfermo como oportunidad.<br />Hacer lista de gracias recibidas y abrirse a gratitud para renegar la tristeza, que es enemiga de la esperanza. Tristeza sana es arrepentimiento, mira amor no dado. Decálogo alegría pareja.]]></body>
+        </user_status>
+        <user_status>
+          <id type="integer">247492492</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Wed Oct 23 00:58:42 -0700 2019</created_at>
+          <updated_at type="datetime">Thu Aug 04 05:28:04 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">59</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.a6e4d06575b04c7561eb2cb73b1736f5</note_uri>
+          <note_updated_at type="datetime">Thu Aug 04 05:28:04 -0700 2022</note_updated_at>
+          <body><![CDATA[Día 4<br />Mejora iluminación xa fiestas, gobernar y distinguir bien. Lámpara cuerpo es ojo, ilumina hacia dentro. Todo empieza en 1 palabra/pensamiento. Analizar inspiraciones/sugestiones, 2 niveles examen conciencia:<br />-Respetan 1as evidencias, contenido, finalidad, comunión (perder razón), circunstancias, intenciones? <br />-Compromisos, forzamientos y agresividad (Ismael)<br />Generosidad=pérdidas pero libre.<br />Lewis y S. Ignacio]]></body>
+        </user_status>
+        <user_status>
+          <id type="integer">246798525</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Fri Oct 18 02:39:14 -0700 2019</created_at>
+          <updated_at type="datetime">Thu Aug 04 01:23:19 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">42</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.bf091472a2c4851064f703bbf25b33c8</note_uri>
+          <note_updated_at type="datetime">Thu Aug 04 01:23:19 -0700 2022</note_updated_at>
+          <body><![CDATA[Día 3:<br />Mis puntos firmes establecen prioridades. Cada prioridad origina límites, que son una lista de síes y noes (diques) Los límites 2 tipos: impuestos aceptados (partes de Cristo) y establecidos por nosotros. Detrás del pecado, desamor, está el odio a limitaciones, hacia la pobreza, que es odio hacia nosotros mismos. Cristo usa límites para acercarse al Padre. Tentaciones Cristo y virtudes recuperan no fecundidad.]]></body>
+        </user_status>
+        <user_status>
+          <id type="integer">245705710</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Thu Oct 10 09:40:53 -0700 2019</created_at>
+          <updated_at type="datetime">Wed Aug 03 18:42:14 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">31</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.b7f54ca8a2932fdd86e49eb60f7dda55</note_uri>
+          <note_updated_at type="datetime">Wed Aug 03 18:42:14 -0700 2022</note_updated_at>
+          <body><![CDATA[Día 2 Haya firmamento en medio aguas.<br />Firmamento lo pone Dios, es lo que nos hace vivir (no deseos ni lo que decido hacer) Dejándolo trabajar aparecen mis puntos firmes: habilidades, arte consolar o hacer feliz a los demás, capacidades (lo nuestro) Usar negaciones, sin pérdidas tiempo en tareas. Si se confunden con emergencias nos hace volubles y tiramos toalla pronto. Don resolución problemas importante en noviazgo.]]></body>
+        </user_status>
+        <user_status>
+          <id type="integer">245059549</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Sun Oct 06 04:07:21 -0700 2019</created_at>
+          <updated_at type="datetime">Wed Aug 03 13:29:42 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">21</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.38a47df98e14f851690d945e44ea3d9c</note_uri>
+          <note_updated_at type="datetime">Wed Aug 03 13:29:42 -0700 2022</note_updated_at>
+          <body><![CDATA[Buscar motivos para recomenzar.<br />Dios espera en mi realidad pero estaba fuera. Hacer caso luz interior que dice "no te maltrates". Reconocer primeras evidencias, lo sencillo, nuestra cruz. Caja donde meter hábitos que evitan autodestruccción. Reconocer cosas (cuerpo, espacio, tiempo) y deberes.<br />Ejemplo minusválida. Acoger secreto de Dios como oportunidad. No hechos para estar bien sino para amar. Arte de consolar.]]></body>
+        </user_status>
+        <user_status>
+          <id type="integer">244934012</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Sat Oct 05 03:54:48 -0700 2019</created_at>
+          <updated_at type="datetime">Wed Aug 03 12:25:37 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">17</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.a44a688a0aa6e19d82939032fdb29305</note_uri>
+          <note_updated_at type="datetime">Wed Aug 03 12:25:37 -0700 2022</note_updated_at>
+          <body><![CDATA[Primeras palabras de Dios:"Haya luz"<br />Establecen separación bien mal. Luz, día: bien, trabajo, buenas obras. Noche, oscuridad: lo q se deja de hacer, cosas que abstenerse.<br />Lo peor de enemigo no es pecado, sino que hace perder tiempo o distrae para que no hagamos el bien. Sabiduría es hacer buenas obras. Inútil analizar culpas. Discernir para reconocer aceptar realidad inmediata. Poco q conocer o detalles a descubrir.]]></body>
+        </user_status>
+        <user_status>
+          <id type="integer">244827085</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Fri Oct 04 07:04:09 -0700 2019</created_at>
+          <updated_at type="datetime">Wed Aug 03 11:18:48 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">14</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.907f23efd2d3f43914a69ba4a751e550</note_uri>
+          <note_updated_at type="datetime">Wed Aug 03 11:18:48 -0700 2022</note_updated_at>
+          <body><![CDATA[Espíritu de Dios se cernía sobre las aguas.<br />Dios incuba a sus futuras criaturas. Somos pensamiento de Dios. Nuestra primera misión es aceptar vivir. Entonces podremos recomenzar para discernir nuestra vocación. Debemos aceptar que estamos vivos y no es poco. Dios no impone esto, debe ser desde nuestro interior. Desilusión vital a los pies de Cristo pq nos amó antes de nuestras acciones. Aprovecharlo y recomenzar.]]></body>
+        </user_status>
+        <user_status>
+          <id type="integer">244727686</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Thu Oct 03 12:50:47 -0700 2019</created_at>
+          <updated_at type="datetime">Wed Aug 03 10:22:13 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">12</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.b7d46db94847289db57535a99177c53a</note_uri>
+          <note_updated_at type="datetime">Wed Aug 03 10:22:13 -0700 2022</note_updated_at>
+          <body><![CDATA[Génesis: día primero.<br />Recomenzar implica 3: acoger realidad, identificar mis expectativas como enemigos y aceptar el caos vital permanente. Desabsolutizar sabiendo que hay un Padre mayor que nuestras miserias. No aceptar realidad viene de nuestro interior con conductas erróneas.<br />Cambiar visión vida: nunca simetría, necedad cruz, recomenzar sin nada, no forcejear, estamos vivos!, dejar muertos enterrar muertos.]]></body>
+        </user_status>
+        <user_status>
+          <id type="integer">244559542</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Wed Oct 02 09:56:18 -0700 2019</created_at>
+          <updated_at type="datetime">Wed Aug 03 08:45:33 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">9</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.3c71e63821667c879521eba07fda819c</note_uri>
+          <note_updated_at type="datetime">Wed Aug 03 08:45:33 -0700 2022</note_updated_at>
+          <body><![CDATA[3. Antes de las cosas.<br />La fuerza bíblica esta en sus paradigmas: creación (para recomenzar), mujer sangrante (afectos) Cada uno los conjuga con su realidad y discierne para recomenzar. Hay que recapitular, devolver a Cristo nuestro camino y encontrar lo que es vital para cada uno. Uno es regenerado, necesario Padre del que recibir gracia, abandonarse. Discernir es oler al Padre en todos los sucesos de nuestra vida.]]></body>
+        </user_status>
+        <user_status>
+          <id type="integer">244437332</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Tue Oct 01 13:55:08 -0700 2019</created_at>
+          <updated_at type="datetime">Wed Aug 03 07:34:27 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">5</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.d5678082f9046e46be79791991154d29</note_uri>
+          <note_updated_at type="datetime">Wed Aug 03 07:34:27 -0700 2022</note_updated_at>
+          <body><![CDATA[El inicio lo contiene todo. Si me salgo de la realidad marcada entro en fracaso. Recomenzar recapitulando, devolviendo a Cristo, mi realidad rota. Encontrar lo vital para mí.<br />Fuerzas bíblicas 2: performativa (sacramentos) y paradigmática (soy declinación de su palabra) Mc 5,26 paradigma curación afectiva.<br />Cristo usa parábolas. Buenos ejs. más potentes.<br />Analogía vida espiritual es naturaleza: creación es a Redención.]]></body>
+        </user_status>
+        <user_status>
+          <id type="integer">244397938</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Tue Oct 01 08:48:14 -0700 2019</created_at>
+          <updated_at type="datetime">Wed Aug 03 07:11:12 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">3</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.ddef674093f884704d566258149502c1</note_uri>
+          <note_updated_at type="datetime">Wed Aug 03 07:11:12 -0700 2022</note_updated_at>
+          <body><![CDATA[Según Soloviev, el conocimiento verdadero es el relacional. El que sale de la comunión y el amor al prójimo. La vida no viene de teorías, sino de la sabiduría, que viene del conocimiento relacional y litúrgico. Sabiduría es la miel recolectada en los campos de la palabra. En la Eucaristía la palabra se encarna y la comemos. Somos lo que acogemos. La palabra es la vida, nos salva de la historia de nuestros fracasos.]]></body>
+        </user_status>
+        <user_status>
+          <id type="integer">244394987</id>
+          <page type="integer"></page>
+          <chapter type="integer"></chapter>
+          <comments_count>0</comments_count>
+          <created_at type="datetime">Tue Oct 01 08:22:30 -0700 2019</created_at>
+          <updated_at type="datetime">Wed Aug 03 07:08:57 -0700 2022</updated_at>
+          <last_comment_at type="datetime"></last_comment_at>
+          <ratings_count type="integer">0</ratings_count>
+          <percent type="integer">3</percent>
+          <work_id type="integer">59975641</work_id>
+          <note_uri>kca://note/amzn1.grok.note.1d714861de30b0e0a4d13f5f8ce0b709</note_uri>
+          <note_updated_at type="datetime">Wed Aug 03 07:08:57 -0700 2022</note_updated_at>
+          <body><![CDATA[El conocimiento verdadero basado en el amor al prójimo. El sufrimiento - como envejecimiento - produce cambios positivos. Despierta interés por las preguntas esenciales de existencia. Disminuye ego, despierta sabiduría no poseída, sino recibida. Produce paz interior. El autor basa su exégesis en el relato de la creación, Génesis. El pueblo de Israel - como nosotros - en su largo caminar, recomenzamos una y otra vez.]]></body>
+        </user_status>
+    </user_statuses>
+    <read_statuses>
+        <read_status>
+          <id type="integer">3205158555</id>
+          <old_status>currently-reading</old_status>
+          <status>read</status>
+          <updated_at type="datetime">Sun Nov 03 23:00:05 -0800 2019</updated_at>
+          <ratings_count>0</ratings_count>
+          <comments_count>0</comments_count>
+        </read_status>
+        <read_status>
+          <id type="integer">3132643538</id>
+          <old_status>to-read</old_status>
+          <status>currently-reading</status>
+          <updated_at type="datetime">Wed Sep 18 04:53:23 -0700 2019</updated_at>
+          <ratings_count>0</ratings_count>
+          <comments_count>0</comments_count>
+        </read_status>
+        <read_status>
+          <id type="integer">3094250839</id>
+          <old_status>league-tercera</old_status>
+          <status>to-read</status>
+          <updated_at type="datetime">Mon Aug 26 12:29:21 -0700 2019</updated_at>
+          <ratings_count>0</ratings_count>
+          <comments_count>0</comments_count>
+        </read_status>
+        <read_status>
+          <id type="integer">2853231066</id>
+          <old_status>league-segunda</old_status>
+          <status>league-tercera</status>
+          <updated_at type="datetime">Mon Apr 01 15:27:26 -0700 2019</updated_at>
+          <ratings_count>0</ratings_count>
+          <comments_count>0</comments_count>
+        </read_status>
+        <read_status>
+          <id type="integer">2853111205</id>
+          <old_status>league-regional</old_status>
+          <status>league-segunda</status>
+          <updated_at type="datetime">Mon Apr 01 14:03:48 -0700 2019</updated_at>
+          <ratings_count>0</ratings_count>
+          <comments_count>0</comments_count>
+        </read_status>
+        <read_status>
+          <id type="integer">2852736582</id>
+          <old_status>league-champions</old_status>
+          <status>league-regional</status>
+          <updated_at type="datetime">Mon Apr 01 09:40:48 -0700 2019</updated_at>
+          <ratings_count>0</ratings_count>
+          <comments_count>0</comments_count>
+        </read_status>
+        <read_status>
+          <id type="integer">2852648392</id>
+          <old_status>champions-league</old_status>
+          <status>league-champions</status>
+          <updated_at type="datetime">Mon Apr 01 08:35:24 -0700 2019</updated_at>
+          <ratings_count>0</ratings_count>
+          <comments_count>0</comments_count>
+        </read_status>
+        <read_status>
+          <id type="integer">2852638485</id>
+          <old_status>2nd-want-to-read</old_status>
+          <status>champions-league</status>
+          <updated_at type="datetime">Mon Apr 01 08:28:23 -0700 2019</updated_at>
+          <ratings_count>0</ratings_count>
+          <comments_count>0</comments_count>
+        </read_status>
+        <read_status>
+          <id type="integer">2852634280</id>
+          <old_status>to-read</old_status>
+          <status>2nd-want-to-read</status>
+          <updated_at type="datetime">Mon Apr 01 08:25:43 -0700 2019</updated_at>
+          <ratings_count>0</ratings_count>
+          <comments_count>0</comments_count>
+        </read_status>
+        <read_status>
+          <id type="integer">2852586565</id>
+          <old_status>next</old_status>
+          <status>to-read</status>
+          <updated_at type="datetime">Mon Apr 01 07:51:33 -0700 2019</updated_at>
+          <ratings_count>0</ratings_count>
+          <comments_count>0</comments_count>
+        </read_status>
+        <read_status>
+          <id type="integer">2270534946</id>
+          <old_status>to-read</old_status>
+          <status>next</status>
+          <updated_at type="datetime">Sat Mar 17 15:05:24 -0700 2018</updated_at>
+          <ratings_count>0</ratings_count>
+          <comments_count>0</comments_count>
+        </read_status>
+        <read_status>
+          <id type="integer">2235789986</id>
+          <old_status></old_status>
+          <status>to-read</status>
+          <updated_at type="datetime">Wed Feb 21 23:50:08 -0800 2018</updated_at>
+          <ratings_count>0</ratings_count>
+          <comments_count>0</comments_count>
+        </read_status>
+    </read_statuses>
+  <rating>5</rating>
+  <votes>12</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+    <shelf name="read" exclusive="true" id="131199903" review_shelf_id= ""/>
+
+    <shelf exclusive='false' id='254475540' name='favorites' review_shelf_id='2645217942' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='336698209' name='discernment' review_shelf_id='2651086227' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259859304' name='bible' review_shelf_id='2655194444' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='344978812' name='everyday-life' review_shelf_id='2721064085' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='333974492' name='practical' review_shelf_id='2683053932' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='336633002' name='italy' review_shelf_id='2683054069' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259674933' name='catholic' review_shelf_id='2416192249' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='327277368' name='old-testament' review_shelf_id='2655194727' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='338866703' name='hope' review_shelf_id='2669827470' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='300261514' name='rating-top' review_shelf_id='2577809632' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='352273791' name='light-reading' review_shelf_id='2782852082' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='333392178' name='abandonment-in-god' review_shelf_id='2655194519' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='440122777' name='paradigms' review_shelf_id='3652713721' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='336632863' name='spirituality' review_shelf_id='2655194821' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='328406808' name='suffering' review_shelf_id='2683054212' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='327106290' name='mental-health' review_shelf_id='2577809790' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259401692' name='theology' review_shelf_id='2577810183' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='263396758' name='selfhelp' review_shelf_id='2577810115' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='367587127' name='limits' review_shelf_id='2926209590' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='489481542' name='art-of' review_shelf_id='4308880928' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259146568' name='psichology' review_shelf_id='2577809960' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='344323364' name='restart' review_shelf_id='2715949010' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='425790585' name='libricos' review_shelf_id='3493558589' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at>Wed Sep 18 00:00:00 -0700 2019</started_at>
+  <read_at>Mon Nov 04 00:00:00 -0800 2019</read_at>
+  <date_added>Wed Feb 21 23:50:08 -0800 2018</date_added>
+  <date_updated>Tue Apr 26 01:38:10 -0700 2022</date_updated>
+  <read_count>1</read_count>
+  <body>
+      <![CDATA[Un muy buen libro, escrito de forma coloquial. Transmite una sabiduría muy profunda. Para ello usa la Biblia como <b>
+  <i>paradigma</i>
+</b>. Esto significa que puedes tomar la sabiduría de algunos versículos y aplicarla a tu vida diaria. Una especie de modelo o <i>patrón de comportamiento</i>. Por eso decimos que la Biblia es un libro vivo. En este caso, el autor se basa en el libro del Génesis. Usa esta sabiduría ancestral para que - por ejemplo hoy, en pleno siglo XXI - puedas volver a nacer tras una crisis. <br /><br />El autor ofrece explicaciones teológicas - y a la vez prácticas - para aceptar una realidad que siempre termina superándonos. Es curioso cómo muchas de estas enseñanzas coinciden con las de psicólogos laicos, como Walter Riso, Ramani Durvasula o Jordan B. Peterson. A menudo, la psicología y la espiritualidad son caminos que llevan a la misma cumbre por distintos caminos. <br /><br />El libro menciona citas bíblicas y ejemplos reales muy interesantes. Me han abierto nuevos enfoques en algunos versículos bíblicos que creía amortizados. También es la puerta que te lleva a otros grandes clásicos como: <a href="https://www.goodreads.com/book/show/24933888-ejercicios-espirituales" rel="nofollow noopener">Ejercicios espirituales</a> y <a href="https://www.goodreads.com/book/show/18968737-return-of-the-prodigal-son" rel="nofollow noopener">El retorno del hijo pródigo</a>. <br /><br />Estamos continuamente recomenzando cosas, por eso este libro te puede resultar muy útil.]]>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/2304450830]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/2304450830]]></link>
+    <owned>0</owned>
+</review>
+
+
+</GoodreadsResponse>

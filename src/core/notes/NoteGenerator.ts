@@ -11,10 +11,6 @@ export class NoteGenerator {
     this.app = app;
   }
 
-  getHelloWorld() {
-    return 'Hello, World!';
-  }
-
   async createNote(fileName: string, content: string, path: string) {
     this.content = content;
     this.path = path;

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GoodreadsResponse>
+  <Request>
+    <authentication>true</authentication>
+      <key><![CDATA[DkLO3yfzNSM1JLOIJFXL3A]]></key>
+    <method><![CDATA[review_show]]></method>
+  </Request>
+      <review>
+  <id>6585220665</id>
+    
+  <user>
+    <id>40291334</id>
+    <uri>kca://profile:goodreads/A3EWY4COMXEFUP</uri>
+    <name>Jesús</name>
+    <display_name>Jesús</display_name>
+
+    <location></location>
+
+    <link><![CDATA[https://www.goodreads.com/user/show/40291334-jes-s-erro]]></link>
+
+    <image_url><![CDATA[https://images.gr-assets.com/users/1658206211p3/40291334.jpg]]></image_url>
+    <small_image_url><![CDATA[https://images.gr-assets.com/users/1658206211p2/40291334.jpg]]></small_image_url>
+    <has_image>true</has_image>
+
+  </user>
+
+      <book>
+  <id type="integer">13352401</id>
+  <isbn>8430116583</isbn>
+  <isbn13>9788430116584</isbn13>
+  <text_reviews_count type="integer">1</text_reviews_count>
+  <uri>kca://book/amzn1.gr.book.v1.cLXd4dOH-Jp_xwv5dzCgoQ</uri>
+  <title>El diario de la felicidad</title>
+  <title_without_series>El diario de la felicidad</title_without_series>
+  <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1325428906l/13352401._SX98_.jpg</image_url>
+  <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1325428906l/13352401._SY75_.jpg</small_image_url>
+  <large_image_url/>
+  <link>https://www.goodreads.com/book/show/13352401-el-diario-de-la-felicidad</link>
+  <num_pages>634</num_pages>
+  <format>Hardcover</format>
+  <edition_information>1</edition_information>
+  <publisher>Ediciones Sígueme</publisher>
+  <publication_day/>
+  <publication_year>2007</publication_year>
+  <publication_month/>
+  <average_rating>4.50</average_rating>
+  <ratings_count>2221</ratings_count>
+  <description>Nicolae Steinhardt forma parte de la generación de entreguerras que ha dado a la literatura rumana nombres de talla internacional, como Eliade, Ionesco, Cioran o Ciorãnescu; en su caso, sin embargo, el reconocimiento le llegaría tras su muerte, con la publicación de El diario de la felicidad (1991), uno de los libros más leídos en Rumanía.&lt;br /&gt;Este judío agnóstico y amante de la literatura había nacido en 1912 en Bucarest. Su vida cambió radicalmente cuando en 1960 fue condenado a doce años de cárcel por participar en distintos cenáculos literarios. A pesar de la tortura, el hambre y el aislamiento sufridos en la prisión, Steinhardt inicia un proceso interior que le lleva a convertirse al cristianismo ortodoxo. Tras la amnistía general de 1964, y hasta el final de su vida, será un opositor incómodo para el régimen comunista. En 1980 ingresa como monje en el monasterio de Rohia, donde muere en 1989, poco antes de la caída del muro de Berlín y la revolución en Rumanía.</description>
+<authors>
+<author>
+<id>1441938</id>
+<name>Nicolae Steinhardt</name>
+<role></role>
+<image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1330801262p5/1441938.jpg]]>
+</image_url>
+<small_image_url nophoto='false'>
+<![CDATA[https://images.gr-assets.com/authors/1330801262p2/1441938.jpg]]>
+</small_image_url>
+<link><![CDATA[https://www.goodreads.com/author/show/1441938.Nicolae_Steinhardt]]></link>
+<average_rating>4.46</average_rating>
+<ratings_count>2774</ratings_count>
+<text_reviews_count>166</text_reviews_count>
+</author>
+</authors>
+  <published>2007</published>
+<work>  <id>764475</id>
+  <uri>kca://work/amzn1.gr.work.v1.E04gf5STirB5I-ZnJsbuYw</uri>
+</work></book>
+
+
+    <read_statuses>
+        <read_status>
+          <id type="integer">8039568893</id>
+          <old_status></old_status>
+          <status>to-read</status>
+          <updated_at type="datetime">Thu Jun 13 22:56:54 -0700 2024</updated_at>
+          <ratings_count>0</ratings_count>
+          <comments_count>0</comments_count>
+        </read_status>
+    </read_statuses>
+  <rating>0</rating>
+  <votes>0</votes>
+  <spoiler_flag>false</spoiler_flag>
+  <spoilers_state>none</spoilers_state>
+  
+
+<shelves>
+
+    <shelf exclusive='true' id='131199901' name='to-read' review_shelf_id='6244424746' sortable='true'></shelf>
+
+    <shelf exclusive='false' id='589805689' name='rumanía' review_shelf_id='6244426802' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='316584610' name='cristianismo' review_shelf_id='6244425159' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259319933' name='testimonios' review_shelf_id='6244425415' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='346368484' name='noficción' review_shelf_id='6244426125' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='350188560' name='conversiones' review_shelf_id='6244425299' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='259235530' name='biografía' review_shelf_id='6244425598' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='350020366' name='memoria' review_shelf_id='6244425752' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='310446046' name='clásicos' review_shelf_id='6244425874' sortable='false'></shelf>
+
+    <shelf exclusive='false' id='589805659' name='eslavos' review_shelf_id='6244426367' sortable='false'></shelf>
+
+</shelves>
+
+  <started_at></started_at>
+  <read_at></read_at>
+  <date_added>Thu Jun 13 22:56:54 -0700 2024</date_added>
+  <date_updated>Thu Jun 13 22:56:54 -0700 2024</date_updated>
+  <read_count>0</read_count>
+  <body>
+  </body>
+
+  
+
+  <comments_count>0</comments_count>
+    <url><![CDATA[https://www.goodreads.com/review/show/6585220665]]></url>
+  <link><![CDATA[https://www.goodreads.com/review/show/6585220665]]></link>
+    <owned>0</owned>
+</review>
+
+
+</GoodreadsResponse>
