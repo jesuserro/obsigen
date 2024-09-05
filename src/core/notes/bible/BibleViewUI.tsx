@@ -72,7 +72,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                                             className="related-icon"
                                                                         >
                                                                             <div className="arrow-icon">
-                                                                                {CalendarIcon.getIcon('arrow_right', 18)}
+                                                                                {CalendarIcon.getIcon('arrow_right', 15)}
                                                                             </div>
                                                                         </a>
                                                                     ))}

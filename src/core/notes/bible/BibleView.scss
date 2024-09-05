@@ -61,6 +61,7 @@ h4 {
     height: 150px;
 }
 
+/* Barra de eventos (abajo) */
 .events-container {
     position: absolute;
     bottom: 0;
@@ -74,40 +75,46 @@ h4 {
     border-radius: 5px;
 }
 
-.note-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
+/* Ocultar la barra inferior si no tiene iconos */
+.events-container:empty {
+    display: none;
 }
 
-/* Barra vertical con flechas */
+/* Ajuste de la barra de flechas (ahora horizontal) */
 .related-passages-container {
     position: absolute;
-    right: 0;
     top: 0;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
+    left: 0;
+    width: 100%;
+    display: flex; /* Hacer que las flechas se apilen horizontalmente */
     justify-content: center;
-    padding-right: 5px;
+    align-items: center;
+    padding: 5px;
     background-color: rgba(0, 0, 0, 0.5);
-    border-left: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
+    z-index: 10;
 }
 
+/* Ocultar la barra superior si no tiene iconos */
+.related-passages-container:empty {
+    display: none;
+}
+
+/* Ajustar el tamaño de las flechas */
 .related-icon {
-    margin: 5px 0;
+    margin: 5px;
     cursor: pointer;
 }
 
 .arrow-icon {
     background-color: #282c34;
     color: #f7c600;
-    padding: 8px;
+    padding: 4px; /* Reducir el tamaño del padding */
     border-radius: 50%;
-    display: flex;
+    display: inline-flex; /* Mantener las flechas en línea */
     align-items: center;
     justify-content: center;
+    font-size: 12px; /* Tamaño igual que los iconos de la barra inferior */
     transition: transform 0.2s ease;
 }
 
