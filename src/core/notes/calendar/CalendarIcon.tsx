@@ -10,7 +10,7 @@ import { FcAndroidOs, FcCalendar, FcDataBackup, FcGoogle, FcPodiumWithSpeaker, F
 import { FiSmartphone } from 'react-icons/fi';
 import { GiAncientRuins, GiAngelWings, GiBank, GiBigDiamondRing, GiBowlOfRice, GiCakeSlice, GiChampions, GiChurch, GiCommercialAirplane, GiCook, GiCrownCoin, GiDeathSkull, GiDevilMask, GiEclipse, GiFarmer, GiFemaleLegs, GiFriedEggs, GiFruitBowl, GiGardeningShears, GiGluttony, GiHammerSickle, GiHealthDecrease, GiHealthIncrease, GiHealthNormal, GiKneeling, GiMiracleMedecine, GiMoneyStack, GiNoodles, GiPalmTree, GiPeaceDove, GiPerspectiveDiceThree, GiPlantSeed, GiPlantWatering, GiPrayerBeads, GiPumpkinMask, GiSandsOfTime, GiSoccerBall, GiSparkSpirit, GiSpikyExplosion, GiStrong, GiTheaterCurtains, GiThermometerCold, GiThreeFriends, GiTomato, GiVillage, GiWheat } from 'react-icons/gi';
 import { HiReceiptTax } from 'react-icons/hi';
-import { ImSad2, ImWoman } from 'react-icons/im';
+import { ImArrowRight, ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoIosRose, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdFlower, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
 import { IoFootsteps, IoHardwareChip, IoRestaurant, IoThunderstorm } from 'react-icons/io5';
 import { LuPartyPopper, LuSalad } from 'react-icons/lu';
@@ -318,6 +318,7 @@ export const iconData: IconData = {
     Others: {
         add: ({ size }: IconProps) => <MdOutlineAddCircle size={size} className="green" />,
         archeology: ({ size }: IconProps) => <GiAncientRuins size={size} className="grey" />,
+        arrow_right: ({ size }: IconProps) => <ImArrowRight size={size} className="yellow" />,
         battery: ({ size }: IconProps) => <IoMdBatteryCharging size={size} className="red" />,
         book: ({ size }: IconProps) => <FaBook size={size} className="blue sky" />,
         bookmark: ({ size }: IconProps) => <CiBookmark size={size} className="blue sky" />,
