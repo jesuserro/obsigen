@@ -64,7 +64,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                         <div className="related-passages-container">
                                                             {notesForPericope.map((note, noteIndex) => (
                                                                 <div key={noteIndex} className="related-passages">
-                                                                    {getExternalBiblePassages(note).map((passage, passageIndex) => (
+                                                                    {getExternalBiblePassages(note).map((passage: any, passageIndex: number) => (
                                                                         <a
                                                                             key={passageIndex}
                                                                             href={`obsidian://open?file=${encodeURIComponent(passage.book)}#${passage.chapter}`}
