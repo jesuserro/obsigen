@@ -1,6 +1,7 @@
 import { App, MetadataCache, TFile } from 'obsidian';
 import React from 'react';
-import { getChapterNotes, handleNoteClick, useBibleViewLogic } from './BibleView';
+import { CalendarIcon } from './../calendar/CalendarIcon';
+import { getChapterNotes, getExternalBiblePassages, handleNoteClick, useBibleViewLogic } from './BibleView';
 import { BibleImage } from './BibleViewStructure';
 
 interface Props {
@@ -16,41 +17,12 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
         if (!images || images.length === 0) return {};
 
         const imageUrls = images.map((image: BibleImage) => `url(${image.path})`);
-        switch (images.length) {
-            case 1:
-                return {
-                    backgroundImage: imageUrls[0],
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    filter: 'brightness(0.5)', // Aplica el efecto "mate"
-                };
-            case 2:
-                return {
-                    backgroundImage: `${imageUrls[0]}, ${imageUrls[1]}`,
-                    backgroundSize: '100% 50%',
-                    backgroundPosition: 'top, bottom',
-                    backgroundRepeat: 'no-repeat',
-                    filter: 'brightness(0.5)', // Aplica el efecto "mate"
-                };
-            case 3:
-                return {
-                    backgroundImage: `${imageUrls[0]}, ${imageUrls[1]}, ${imageUrls[2]}`,
-                    backgroundSize: '100% 50%, 50% 50%',
-                    backgroundPosition: 'top, left bottom, right bottom',
-                    backgroundRepeat: 'no-repeat',
-                    filter: 'brightness(0.5)', // Aplica el efecto "mate"
-                };
-            case 4:
-                return {
-                    backgroundImage: `${imageUrls[0]}, ${imageUrls[1]}, ${imageUrls[2]}, ${imageUrls[3]}`,
-                    backgroundSize: '50% 50%',
-                    backgroundPosition: 'top left, top right, bottom left, bottom right',
-                    backgroundRepeat: 'no-repeat',
-                    filter: 'brightness(0.5)', // Aplica el efecto "mate"
-                };
-            default:
-                return {};
-        }
+        return {
+            backgroundImage: imageUrls[0],
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'brightness(0.5)',
+        };
     };
 
     return (
@@ -72,24 +44,35 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                 <div key={index} className="pericope-wrapper">
                                                     <h4>{pericope.title} ({pericope.verseRange[0]}-{pericope.verseRange[1]})</h4>
                                                     <div className="pericope-container" style={getBackgroundStyle(pericope.images)}>
-                                                        {notesForPericope.length > 0 && (
-                                                            <div className="events-container">
-                                                                {notesForPericope.map((note, noteIndex) => (
-                                                                    <a
-                                                                        key={noteIndex}
-                                                                        href={`obsidian://open?file=${encodeURIComponent(note.path)}`}
-                                                                        title={note.title}
-                                                                    >
-                                                                        <div
-                                                                            className="event-icon"
-                                                                            onClick={() => handleNoteClick(app, note.path)} // Usar la lógica importada
+                                                        <div className="events-container">
+                                                            {notesForPericope.length > 0 ? (
+                                                                notesForPericope.map((note, noteIndex) => (
+                                                                    <div key={noteIndex} className="note-wrapper">
+                                                                        <a
+                                                                            href={`obsidian://open?file=${encodeURIComponent(note.path)}`}
+                                                                            title={note.title}
                                                                         >
-                                                                            {note.icon} {/* Mostrar el icono en lugar del punto azul */}
+                                                                            <div className="event-icon" onClick={() => handleNoteClick(app, note.path)}>
+                                                                                {note.icon}
+                                                                            </div>
+                                                                        </a>
+                                                                        <div className="related-passages">
+                                                                            {getExternalBiblePassages(note).map((passage, passageIndex) => (
+                                                                                <a
+                                                                                    key={passageIndex}
+                                                                                    href={`obsidian://open?file=${encodeURIComponent(passage.book)}#${passage.chapter}`}
+                                                                                    className="related-icon"
+                                                                                >
+                                                                                    <div className="arrow-icon">
+                                                                                        {CalendarIcon.getIcon('arrow_right', 18)}
+                                                                                    </div>
+                                                                                </a>
+                                                                            ))}
                                                                         </div>
-                                                                    </a>
-                                                                ))}
-                                                            </div>
-                                                        )}
+                                                                    </div>
+                                                                ))
+                                                            ) : null}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             );
