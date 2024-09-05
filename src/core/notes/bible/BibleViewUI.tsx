@@ -40,6 +40,8 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                             const notesForPericope = getChapterNotes(app, metadataCache, files, "San Juan", parseInt(chapterNumber))
                                                 .filter(note => note && note.verseStart !== undefined && note.verseStart !== null && note.verseStart >= pericope.verseRange[0] && note.verseStart <= pericope.verseRange[1]);
 
+                                            const hasRelatedPassages = notesForPericope.some(note => getExternalBiblePassages(note).length > 0);
+
                                             return (
                                                 <div key={index} className="pericope-wrapper">
                                                     <h4>{pericope.title} ({pericope.verseRange[0]}-{pericope.verseRange[1]})</h4>
@@ -60,25 +62,27 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                                 ))
                                                             ) : null}
                                                         </div>
-                                                        {/* Barra vertical con flechas */}
-                                                        <div className="related-passages-container">
-                                                            {notesForPericope.map((note, noteIndex) => (
-                                                                <div key={noteIndex} className="related-passages">
-                                                                    {getExternalBiblePassages(note).map((passage: any, passageIndex: number) => (
-                                                                        <a
-                                                                            key={passageIndex}
-                                                                            href={`obsidian://open?file=${encodeURIComponent(passage.book)}#${passage.chapter}`}
-                                                                            title={`Ver ${passage.book} ${passage.chapter}`} // Tooltip gestionado por Obsidian
-                                                                            className="related-icon"
-                                                                        >
-                                                                            <div className="arrow-icon">
-                                                                                {CalendarIcon.getIcon('arrow_right', 15)}
-                                                                            </div>
-                                                                        </a>
-                                                                    ))}
-                                                                </div>
-                                                            ))}
-                                                        </div>
+                                                        {/* Barra vertical con flechas: solo se muestra si hay pasajes relacionados */}
+                                                        {hasRelatedPassages && (
+                                                            <div className="related-passages-container">
+                                                                {notesForPericope.map((note, noteIndex) => (
+                                                                    <div key={noteIndex} className="related-passages">
+                                                                        {getExternalBiblePassages(note).map((passage: any, passageIndex: number) => (
+                                                                            <a
+                                                                                key={passageIndex}
+                                                                                href={`obsidian://open?file=${encodeURIComponent(passage.book)}#${passage.chapter}`}
+                                                                                title={`Ver ${passage.book} ${passage.chapter}`} // Tooltip gestionado por Obsidian
+                                                                                className="related-icon"
+                                                                            >
+                                                                                <div className="arrow-icon">
+                                                                                    {CalendarIcon.getIcon('arrow_right', 15)}
+                                                                                </div>
+                                                                            </a>
+                                                                        ))}
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        )}
                                                     </div>
                                                 </div>
                                             );
