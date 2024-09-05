@@ -80,26 +80,35 @@ h4 {
     align-items: center;
 }
 
-.related-passages {
+/* Nueva barra vertical a la derecha del contenedor de la perícopa */
+.related-passages-container {
     position: absolute;
-    right: -30px;
+    right: 0; /* Barra a la derecha del contenedor */
     top: 0;
+    bottom: 0;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    justify-content: center;
+    padding-right: 5px;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparencia similar a la barra inferior */
+    border-left: 2px solid rgba(255, 255, 255, 0.2); /* Línea de separación con el contenedor */
+    border-radius: 5px;
 }
 
 .related-icon {
-    cursor: pointer;
+    margin: 5px 0; /* Espaciado entre cada flecha */
 }
 
 .arrow-icon {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo casi opaco */
     padding: 5px;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: transform 0.2s ease;
 }
 
 .arrow-icon:hover {
-    transform: scale(1.2);
+    transform: scale(1.2); /* Efecto al pasar el ratón sobre la flecha */
 }

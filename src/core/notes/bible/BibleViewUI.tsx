@@ -56,22 +56,27 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                                                 {note.icon}
                                                                             </div>
                                                                         </a>
-                                                                        <div className="related-passages">
-                                                                            {getExternalBiblePassages(note).map((passage, passageIndex) => (
-                                                                                <a
-                                                                                    key={passageIndex}
-                                                                                    href={`obsidian://open?file=${encodeURIComponent(passage.book)}#${passage.chapter}`}
-                                                                                    className="related-icon"
-                                                                                >
-                                                                                    <div className="arrow-icon">
-                                                                                        {CalendarIcon.getIcon('arrow_right', 18)}
-                                                                                    </div>
-                                                                                </a>
-                                                                            ))}
-                                                                        </div>
                                                                     </div>
                                                                 ))
                                                             ) : null}
+                                                        </div>
+                                                        {/* Nueva barra vertical de flechas a la derecha del thumbnail */}
+                                                        <div className="related-passages-container">
+                                                            {notesForPericope.map((note, noteIndex) => (
+                                                                <div key={noteIndex} className="related-passages">
+                                                                    {getExternalBiblePassages(note).map((passage, passageIndex) => (
+                                                                        <a
+                                                                            key={passageIndex}
+                                                                            href={`obsidian://open?file=${encodeURIComponent(passage.book)}#${passage.chapter}`}
+                                                                            className="related-icon"
+                                                                        >
+                                                                            <div className="arrow-icon">
+                                                                                {CalendarIcon.getIcon('arrow_right', 18)}
+                                                                            </div>
+                                                                        </a>
+                                                                    ))}
+                                                                </div>
+                                                            ))}
                                                         </div>
                                                     </div>
                                                 </div>
