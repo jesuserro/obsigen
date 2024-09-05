@@ -50,7 +50,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                                     <div key={noteIndex} className="note-wrapper">
                                                                         <a
                                                                             href={`obsidian://open?file=${encodeURIComponent(note.path)}`}
-                                                                            title={note.title}
+                                                                            title={note.title} // Tooltip por defecto de Obsidian
                                                                         >
                                                                             <div className="event-icon" onClick={() => handleNoteClick(app, note.path)}>
                                                                                 {note.icon}
@@ -60,7 +60,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                                 ))
                                                             ) : null}
                                                         </div>
-                                                        {/* Barra vertical con flechas y tooltips */}
+                                                        {/* Barra vertical con flechas */}
                                                         <div className="related-passages-container">
                                                             {notesForPericope.map((note, noteIndex) => (
                                                                 <div key={noteIndex} className="related-passages">
@@ -68,7 +68,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                                         <a
                                                                             key={passageIndex}
                                                                             href={`obsidian://open?file=${encodeURIComponent(passage.book)}#${passage.chapter}`}
-                                                                            title={`Ver ${passage.book} ${passage.chapter}`}  // Tooltip con el nombre de la nota
+                                                                            title={`Ver ${passage.book} ${passage.chapter}`} // Tooltip gestionado por Obsidian
                                                                             className="related-icon"
                                                                         >
                                                                             <div className="arrow-icon">
