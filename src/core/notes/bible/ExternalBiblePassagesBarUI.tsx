@@ -1,4 +1,5 @@
 import React from 'react';
+import { CalendarIcon } from './../calendar/CalendarIcon';
 import { BiblePassage, generatePassageLink } from './ExternalBiblePassagesBar';
 
 interface Props {
@@ -20,8 +21,7 @@ const ExternalBiblePassagesBar: React.FC<Props> = ({ externalPassages }) => {
                     className="related-icon"
                 >
                     <div className="arrow-icon">
-                        {/* Aquí va el icono de la flecha */}
-                        🡆
+                        {CalendarIcon.getIcon('arrow_right', 15)}
                     </div>
                 </a>
             ))}
