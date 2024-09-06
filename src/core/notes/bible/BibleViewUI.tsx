@@ -1,8 +1,9 @@
 import { App, MetadataCache, TFile } from 'obsidian';
 import React from 'react';
 import { CalendarIcon } from './../calendar/CalendarIcon';
-import { getChapterNotes, getExternalBiblePassages, handleNoteClick, useBibleViewLogic } from './BibleView';
+import { getChapterNotes, getExternalBiblePassages, useBibleViewLogic } from './BibleView';
 import { BibleImage } from './BibleViewStructure';
+import CalendarEventsBar from './CalendarEventsBarUI'; // Importar el componente de la barra de eventos
 
 interface Props {
     app: App;
@@ -46,28 +47,27 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                 <div key={index} className="pericope-wrapper">
                                                     <h4>{pericope.title} ({pericope.verseRange[0]}-{pericope.verseRange[1]})</h4>
                                                     <div className="pericope-container" style={getBackgroundStyle(pericope.images)}>
-                                                        <div className="events-container">
-                                                            {notesForPericope.length > 0 ? (
-                                                                notesForPericope.map((note, noteIndex) => (
-                                                                    <div key={noteIndex} className="note-wrapper">
-                                                                        <a
-                                                                            href={`obsidian://open?file=${encodeURIComponent(note.path)}`}
-                                                                            title={note.title} // Tooltip por defecto de Obsidian
-                                                                        >
-                                                                            <div className="event-icon" onClick={() => handleNoteClick(app, note.path)}>
-                                                                                {note.icon}
-                                                                            </div>
-                                                                        </a>
-                                                                    </div>
-                                                                ))
-                                                            ) : null}
-                                                        </div>
+                                                        {/* Barra de eventos: Se usa solo si hay notas */}
+                                                        <CalendarEventsBar
+                                                            events={notesForPericope.map(note => ({
+                                                                title: note.title,
+                                                                path: note.path,
+                                                                icon: note.icon
+                                                            }))}
+                                                            onEventClick={(path) => {
+                                                                const file = app.vault.getAbstractFileByPath(path);
+                                                                if (file instanceof TFile) {
+                                                                    app.workspace.getLeaf().openFile(file);
+                                                                }
+                                                            }}
+                                                        />
+
                                                         {/* Barra vertical con flechas: solo se muestra si hay pasajes relacionados */}
                                                         {hasRelatedPassages && (
                                                             <div className="related-passages-container">
                                                                 {notesForPericope.map((note, noteIndex) => (
                                                                     <div key={noteIndex} className="related-passages">
-                                                                        {getExternalBiblePassages(note).map((passage: any, passageIndex: number) => (
+                                                                        {getExternalBiblePassages(note).map((passage, passageIndex) => (
                                                                             <a
                                                                                 key={passageIndex}
                                                                                 href={`obsidian://open?file=${encodeURIComponent(passage.book)}#${passage.chapter}`}

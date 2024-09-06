@@ -1,8 +1,8 @@
 import { ItemView, WorkspaceLeaf } from 'obsidian';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import BibleView from '../bible/BibleViewUI';
-import { AppContext } from './../../shared/appContext';
+import BibleView from '../bible/BibleViewUI'; // Importar la vista de la Biblia
+import { AppContext } from './../../shared/appContext'; // Contexto compartido
 import { CalendarEvent, FormValues } from './CalendarEvent';
 import CalendarHeader from './CalendarHeader';
 import CalendarYear from './CalendarYear';
@@ -52,6 +52,12 @@ export class CalendarView extends ItemView {
     // Obtener metadataCache y files
     const metadataCache = this.app.metadataCache;
     const files = this.app.vault.getMarkdownFiles(); // Obtener archivos de markdown del vault
+
+    // Verificar que files y metadataCache estén correctamente inicializados
+    if (!files || files.length === 0 || !metadataCache) {
+      console.error("Archivos o metadataCache no disponibles");
+      return;
+    }
 
     this.reactComponent = React.createElement(
       AppContext.Provider,

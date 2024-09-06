@@ -1,0 +1,28 @@
+/* Barra de eventos (abajo) */
+.events-container {
+    position: absolute;
+    bottom: 0; /* Mantenerla en la parte inferior */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+/* Ocultar la barra inferior si no tiene iconos */
+.events-container:empty {
+    display: none;
+}
+
+/* Ajuste del tamaño y efecto hover para los iconos de eventos en la barra inferior */
+.event-icon {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.event-icon:hover {
+    transform: scale(1.2);
+}
