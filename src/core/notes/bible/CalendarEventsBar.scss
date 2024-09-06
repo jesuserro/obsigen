@@ -12,12 +12,23 @@
     border-radius: 5px;
 }
 
-/* Ocultar la barra inferior si no tiene iconos */
-.events-container:empty {
-    display: none;
+.event-icon-wrapper {
+    position: relative; /* Posicionar relativo para mostrar el badge */
 }
 
-/* Ajuste del tamaño y efecto hover para los iconos de eventos en la barra inferior */
+/* Notificación de pasajes externos */
+.event-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff4757;
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
 .event-icon {
     cursor: pointer;
     transition: transform 0.2s ease;

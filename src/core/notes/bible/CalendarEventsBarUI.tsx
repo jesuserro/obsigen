@@ -2,7 +2,7 @@ import React from 'react';
 import { CalendarIcon } from './../calendar/CalendarIcon';
 
 interface CalendarEventsBarProps {
-  events: Array<{ title: string; path: string; icon?: React.ReactNode }>;
+  events: Array<{ title: string; path: string; icon?: React.ReactNode; externalPassagesCount: number }>;
   onEventClick: (path: string) => void;
 }
 
@@ -19,11 +19,11 @@ const CalendarEventsBar: React.FC<CalendarEventsBarProps> = ({ events, onEventCl
             href={`obsidian://open?file=${encodeURIComponent(event.path)}`}
             title={event.title} // Tooltip gestionado por Obsidian
           >
-            <div
-              className="event-icon"
-              onClick={() => onEventClick(event.path)}
-            >
+            <div className="event-icon" onClick={() => onEventClick(event.path)}>
               {event.icon || CalendarIcon.getIcon('calendar', 12)}
+              {event.externalPassagesCount > 0 && (
+                <span className="event-badge">{event.externalPassagesCount}</span> // Mostrar el número de pasajes externos
+              )}
             </div>
           </a>
         </div>

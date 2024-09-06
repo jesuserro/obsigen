@@ -1,10 +1,12 @@
 import { App, TFile } from 'obsidian';
 import { CalendarIcon } from './../calendar/CalendarIcon';
+import { getExternalBiblePassages } from './ExternalBiblePassagesBar'; // Importar función para obtener los pasajes externos
 
 interface EventNote {
     title: string;
     path: string;
     icon?: React.ReactNode;
+    externalPassagesCount: number;
 }
 
 export function getCalendarEvents(files: TFile[]): EventNote[] {
@@ -13,10 +15,14 @@ export function getCalendarEvents(files: TFile[]): EventNote[] {
         const cssClasses = ['bible', 'event']; // Ejemplo de cómo asignar una clase de evento
         const icon = CalendarIcon.getIconByNote(cssClasses, file, 18); // Obtener el icono del evento
 
+        // Obtener los pasajes externos
+        const externalPassagesCount = getExternalBiblePassages({ path: file.path, title: fileName }).length;
+
         return {
             title: fileName,
             path: file.path,
             icon,
+            externalPassagesCount,
         };
     });
 }

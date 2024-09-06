@@ -4,7 +4,7 @@ import { getChapterNotes, useBibleViewLogic } from './BibleView';
 import { BibleImage } from './BibleViewStructure';
 import CalendarEventsBar from './CalendarEventsBarUI';
 import { getExternalBiblePassages } from './ExternalBiblePassagesBar';
-import ExternalBiblePassagesBar from './ExternalBiblePassagesBarUI'; // Importar la nueva barra de pasajes externos
+import ExternalBiblePassagesBar from './ExternalBiblePassagesBarUI';
 
 interface Props {
     app: App;
@@ -42,8 +42,6 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                             const notesForPericope = getChapterNotes(app, metadataCache, files, "San Juan", parseInt(chapterNumber))
                                                 .filter(note => note && note.verseStart !== undefined && note.verseStart !== null && note.verseStart >= pericope.verseRange[0] && note.verseStart <= pericope.verseRange[1]);
 
-                                            const externalPassages = notesForPericope.flatMap(note => getExternalBiblePassages(note));
-
                                             return (
                                                 <div key={index} className="pericope-wrapper">
                                                     <h4>{pericope.title} ({pericope.verseRange[0]}-{pericope.verseRange[1]})</h4>
@@ -52,7 +50,8 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                             events={notesForPericope.map(note => ({
                                                                 title: note.title,
                                                                 path: note.path,
-                                                                icon: note.icon
+                                                                icon: note.icon,
+                                                                externalPassagesCount: getExternalBiblePassages(note).length, // Añadimos el número de pasajes externos
                                                             }))}
                                                             onEventClick={(path) => {
                                                                 const file = app.vault.getAbstractFileByPath(path);
@@ -61,9 +60,9 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                                 }
                                                             }}
                                                         />
-
-                                                        {/* Nueva barra de pasajes externos */}
-                                                        <ExternalBiblePassagesBar externalPassages={externalPassages} />
+                                                        <ExternalBiblePassagesBar
+                                                            externalPassages={notesForPericope.flatMap(note => getExternalBiblePassages(note))}
+                                                        />
                                                     </div>
                                                 </div>
                                             );
