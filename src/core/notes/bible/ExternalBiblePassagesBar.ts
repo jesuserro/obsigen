@@ -11,14 +11,15 @@ export function getExternalBiblePassages(note: any): BiblePassage[] {
 }
 
 export function generatePassageLink(passage: BiblePassage): string {
-    const fileName = `${passage.book} ${passage.chapter}`; // Generar nombre del archivo basado en libro y capítulo
+    const vaultName = "vault"; // Nombre de tu bóveda
+    const fileName = `${passage.book} ${passage.chapter}.md`; // Nombre del archivo basado en libro y capítulo (incluye la extensión .md)
     const verseStart = passage.verse_range[0]; // Versículo de inicio
 
-    // Crear el hash con el formato que apunte directamente al número del versículo
-    const hash = verseStart ? `#${verseStart}` : ''; // Simplemente apunta al número del versículo
+    // Si se especifica un versículo, usamos el número del versículo como heading. Si no, usamos el capítulo.
+    const heading = verseStart ? `${verseStart}` : `${passage.book} ${passage.chapter}`;
 
-    // Generar el enlace completo
-    const link = `obsidian://open?file=${encodeURIComponent(fileName)}${hash}`;
+    // Generar el enlace completo usando filepath (ruta simple basada en el archivo) y heading
+    const link = `obsidian://adv-uri?vault=${encodeURIComponent(vaultName)}&filepath=${encodeURIComponent(fileName)}&heading=${encodeURIComponent(heading)}`;
 
     return link;
 }
