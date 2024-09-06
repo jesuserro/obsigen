@@ -1,9 +1,10 @@
 import { App, MetadataCache, TFile } from 'obsidian';
 import React from 'react';
-import { CalendarIcon } from './../calendar/CalendarIcon';
-import { getChapterNotes, getExternalBiblePassages, useBibleViewLogic } from './BibleView';
+import { getChapterNotes, useBibleViewLogic } from './BibleView';
 import { BibleImage } from './BibleViewStructure';
-import CalendarEventsBar from './CalendarEventsBarUI'; // Importar el componente de la barra de eventos
+import CalendarEventsBar from './CalendarEventsBarUI';
+import { getExternalBiblePassages } from './ExternalBiblePassagesBar';
+import ExternalBiblePassagesBar from './ExternalBiblePassagesBarUI'; // Importar la nueva barra de pasajes externos
 
 interface Props {
     app: App;
@@ -41,13 +42,12 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                             const notesForPericope = getChapterNotes(app, metadataCache, files, "San Juan", parseInt(chapterNumber))
                                                 .filter(note => note && note.verseStart !== undefined && note.verseStart !== null && note.verseStart >= pericope.verseRange[0] && note.verseStart <= pericope.verseRange[1]);
 
-                                            const hasRelatedPassages = notesForPericope.some(note => getExternalBiblePassages(note).length > 0);
+                                            const externalPassages = notesForPericope.flatMap(note => getExternalBiblePassages(note));
 
                                             return (
                                                 <div key={index} className="pericope-wrapper">
                                                     <h4>{pericope.title} ({pericope.verseRange[0]}-{pericope.verseRange[1]})</h4>
                                                     <div className="pericope-container" style={getBackgroundStyle(pericope.images)}>
-                                                        {/* Barra de eventos: Se usa solo si hay notas */}
                                                         <CalendarEventsBar
                                                             events={notesForPericope.map(note => ({
                                                                 title: note.title,
@@ -62,27 +62,8 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                             }}
                                                         />
 
-                                                        {/* Barra vertical con flechas: solo se muestra si hay pasajes relacionados */}
-                                                        {hasRelatedPassages && (
-                                                            <div className="related-passages-container">
-                                                                {notesForPericope.map((note, noteIndex) => (
-                                                                    <div key={noteIndex} className="related-passages">
-                                                                        {getExternalBiblePassages(note).map((passage, passageIndex) => (
-                                                                            <a
-                                                                                key={passageIndex}
-                                                                                href={`obsidian://open?file=${encodeURIComponent(passage.book)}#${passage.chapter}`}
-                                                                                title={`Ver ${passage.book} ${passage.chapter}`} // Tooltip gestionado por Obsidian
-                                                                                className="related-icon"
-                                                                            >
-                                                                                <div className="arrow-icon">
-                                                                                    {CalendarIcon.getIcon('arrow_right', 15)}
-                                                                                </div>
-                                                                            </a>
-                                                                        ))}
-                                                                    </div>
-                                                                ))}
-                                                            </div>
-                                                        )}
+                                                        {/* Nueva barra de pasajes externos */}
+                                                        <ExternalBiblePassagesBar externalPassages={externalPassages} />
                                                     </div>
                                                 </div>
                                             );
