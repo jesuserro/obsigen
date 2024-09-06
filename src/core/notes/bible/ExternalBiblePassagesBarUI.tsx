@@ -1,13 +1,8 @@
 import React from 'react';
-import { BiblePassage } from './ExternalBiblePassagesBar';
+import { BiblePassage, generatePassageLink } from './ExternalBiblePassagesBar';
 
 interface Props {
     externalPassages: BiblePassage[];
-}
-
-export function generatePassageLink(passage: BiblePassage): string {
-    const fileName = `${passage.book} ${passage.chapter}`; // Crear el nombre del archivo de capítulo, como 'Ezequiel 37'
-    return `obsidian://open?file=${encodeURIComponent(fileName)}`; // Generar el enlace directo al archivo del capítulo
 }
 
 const ExternalBiblePassagesBar: React.FC<Props> = ({ externalPassages }) => {
