@@ -11,6 +11,14 @@ export function getExternalBiblePassages(note: any): BiblePassage[] {
 }
 
 export function generatePassageLink(passage: BiblePassage): string {
-    const fileName = `${passage.book} ${passage.chapter}`; // Crear el nombre del archivo de capítulo, como 'Ezequiel 37'
-    return `obsidian://open?file=${encodeURIComponent(fileName)}`; // Generar el enlace directo al archivo del capítulo
+    const fileName = `${passage.book} ${passage.chapter}`; // Generar nombre del archivo basado en libro y capítulo
+    const verseStart = passage.verse_range[0]; // Versículo de inicio
+
+    // Crear el hash con el formato que apunte directamente al número del versículo
+    const hash = verseStart ? `#${verseStart}` : ''; // Simplemente apunta al número del versículo
+
+    // Generar el enlace completo
+    const link = `obsidian://open?file=${encodeURIComponent(fileName)}${hash}`;
+
+    return link;
 }
