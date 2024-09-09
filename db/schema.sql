@@ -1,8 +1,6 @@
+
 -- Eliminar tablas existentes si ya existen
-DROP TABLE IF EXISTS book_images;
-DROP TABLE IF EXISTS pericope_images;
-DROP TABLE IF EXISTS verse_images;
-DROP TABLE IF EXISTS author_images;
+DROP TABLE IF EXISTS images;
 DROP TABLE IF EXISTS book_authors;
 DROP TABLE IF EXISTS authors;
 DROP TABLE IF EXISTS verses;
@@ -71,42 +69,18 @@ CREATE TABLE IF NOT EXISTS book_authors (
     FOREIGN KEY (author_id) REFERENCES authors(id) ON DELETE CASCADE -- Clave foránea para autores
 );
 
--- Crear tabla de imágenes relacionadas con libros (book_images)
-CREATE TABLE IF NOT EXISTS book_images (
+-- Crear tabla unificada de imágenes (images)
+CREATE TABLE IF NOT EXISTS images (
     id INTEGER PRIMARY KEY AUTOINCREMENT,  -- Identificador único de la imagen
-    book_id INTEGER NOT NULL,              -- ID del libro (relacionado con la tabla books)
+    context_id INTEGER NOT NULL,           -- ID del libro, pericopa, versículo o autor
+    context_type TEXT NOT NULL CHECK(context_type IN ('book', 'pericope', 'verse', 'author')),  -- Tipo de entidad a la que se asocia
     type TEXT NOT NULL CHECK(type IN ('local', 'url')),  -- Tipo de imagen (local o url)
     path TEXT NOT NULL,                    -- Ruta del archivo o URL de la imagen
     alt_text TEXT,                         -- Texto alternativo (opcional)
-    FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE  -- Clave foránea para libros
+    FOREIGN KEY (context_id) REFERENCES books(id) ON DELETE CASCADE  -- La clave foránea se ajustará a la entidad
 );
 
--- Crear tabla de imágenes relacionadas con perícopas (pericope_images)
-CREATE TABLE IF NOT EXISTS pericope_images (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,  -- Identificador único de la imagen
-    pericope_id INTEGER NOT NULL,          -- ID de la perícopa (relacionado con la tabla pericopes)
-    type TEXT NOT NULL CHECK(type IN ('local', 'url')),  -- Tipo de imagen (local o url)
-    path TEXT NOT NULL,                    -- Ruta del archivo o URL de la imagen
-    alt_text TEXT,                         -- Texto alternativo (opcional)
-    FOREIGN KEY (pericope_id) REFERENCES pericopes(id) ON DELETE CASCADE  -- Clave foránea para perícopas
-);
-
--- Crear tabla de imágenes relacionadas con versículos (verse_images)
-CREATE TABLE IF NOT EXISTS verse_images (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,  -- Identificador único de la imagen
-    verse_id INTEGER NOT NULL,             -- ID del versículo (relacionado con la tabla verses)
-    type TEXT NOT NULL CHECK(type IN ('local', 'url')),  -- Tipo de imagen (local o url)
-    path TEXT NOT NULL,                    -- Ruta del archivo o URL de la imagen
-    alt_text TEXT,                         -- Texto alternativo (opcional)
-    FOREIGN KEY (verse_id) REFERENCES verses(id) ON DELETE CASCADE  -- Clave foránea para versículos
-);
-
--- Crear tabla de imágenes relacionadas con autores (author_images)
-CREATE TABLE IF NOT EXISTS author_images (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,  -- Identificador único de la imagen
-    author_id INTEGER NOT NULL,            -- ID del autor (relacionado con la tabla authors)
-    type TEXT NOT NULL CHECK(type IN ('local', 'url')),  -- Tipo de imagen (local o url)
-    path TEXT NOT NULL,                    -- Ruta del archivo o URL de la imagen
-    alt_text TEXT,                         -- Texto alternativo (opcional)
-    FOREIGN KEY (author_id) REFERENCES authors(id) ON DELETE CASCADE  -- Clave foránea para autores
-);
+-- Crear índices para mejorar el rendimiento en consultas
+CREATE INDEX idx_pericopes_chapter ON pericopes(chapter_id);
+CREATE INDEX idx_verses_chapter ON verses(chapter_id);
+CREATE INDEX idx_images_context ON images(context_id, context_type);
