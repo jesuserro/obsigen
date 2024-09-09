@@ -1,4 +1,3 @@
-
 -- Eliminar tablas existentes si ya existen
 DROP TABLE IF EXISTS images;
 DROP TABLE IF EXISTS book_authors;
@@ -23,6 +22,8 @@ CREATE TABLE IF NOT EXISTS books (
     name TEXT NOT NULL,                    -- Nombre del libro (Ej: Génesis, Éxodo)
     abbreviation TEXT,                     -- Abreviatura del libro (Ej: Gn, Ex)
     chapter_count INTEGER,                 -- Número de capítulos del libro
+    description_of_jesus TEXT,             -- Nueva columna: Descripción de Jesús en el libro
+    commentary TEXT,                       -- Nueva columna: Comentario adicional
     FOREIGN KEY (section_id) REFERENCES sections(id) ON DELETE SET NULL  -- Clave foránea para sections
 );
 
@@ -72,7 +73,7 @@ CREATE TABLE IF NOT EXISTS book_authors (
 -- Crear tabla unificada de imágenes (images)
 CREATE TABLE IF NOT EXISTS images (
     id INTEGER PRIMARY KEY AUTOINCREMENT,  -- Identificador único de la imagen
-    context_id INTEGER NOT NULL,           -- ID del libro, pericopa, versículo o autor
+    context_id INTEGER NOT NULL,           -- ID del libro, pericope, versículo o autor
     context_type TEXT NOT NULL CHECK(context_type IN ('book', 'pericope', 'verse', 'author')),  -- Tipo de entidad a la que se asocia
     type TEXT NOT NULL CHECK(type IN ('local', 'url')),  -- Tipo de imagen (local o url)
     path TEXT NOT NULL,                    -- Ruta del archivo o URL de la imagen
