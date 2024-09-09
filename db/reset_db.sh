@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Nombre del archivo de la base de datos real
-REAL_DB_PATH="/mnt/c/Users/jesus/db/Biblia"
+REAL_DB_PATH="/mnt/c/Users/jesus/db/Biblia.db"
 
 # Nombre del enlace simbólico en el proyecto
-SYMLINK_DB="Biblia"
+SYMLINK_DB="Biblia.db"
 
 # Directorio donde se encuentran los scripts SQL
 SQL_DIR="."
