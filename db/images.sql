@@ -1,5 +1,9 @@
 
--- Inserts para la tabla unificada de imágenes (contexto: perícopas)
+-- Reset the images table and the auto-increment counter
+DELETE FROM images;
+DELETE FROM sqlite_sequence WHERE name='images';
+
+-- Re-insert fresh data into the images table, starting with ID 1
 INSERT INTO images (context_id, context_type, type, path, alt_text) VALUES
 (1, 'pericope', 'url', 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Carl_Heinrich_Bloch_-_The_Annunciation.jpg', 'La Anunciación de Carl Heinrich Bloch representando el Prólogo'),
 (5, 'pericope', 'url', 'https://achristianpilgrim.wordpress.com/wp-content/uploads/2010/08/filipus-mengajak-nataniel-untuk-bertemu-dengan-yesus.jpg', 'Jesús llama a Felipe y a Natanael'),

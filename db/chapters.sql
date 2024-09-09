@@ -1,3 +1,7 @@
+-- Reset the chapters table and the auto-increment counter
+DELETE FROM chapters;
+DELETE FROM sqlite_sequence WHERE name='chapters';
+
 -- Inserts para la tabla chapters (San Juan)
 INSERT INTO chapters (book_id, chapter_number, title) VALUES
 (50, 1, 'El Verbo se hizo carne'),

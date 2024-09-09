@@ -1,3 +1,7 @@
+-- Reset the pericopes table and the auto-increment counter
+DELETE FROM pericopes;
+DELETE FROM sqlite_sequence WHERE name='pericopes';
+
 -- Inserts para la tabla pericopes
 INSERT INTO pericopes (chapter_id, title, verse_range_start, verse_range_end) VALUES
 (1, 'Prólogo', 1, 18),

@@ -1,5 +1,8 @@
--- Inserts para la tabla books
+-- Reset the images table and the auto-increment counter
+DELETE FROM books;
+DELETE FROM sqlite_sequence WHERE name='books';
 
+-- Inserts para la tabla books
 -- Pentateuco (section_id = 1)
 INSERT INTO books (section_id, name, abbreviation, chapter_count) VALUES
 (1, 'Génesis', 'Gn', 50),

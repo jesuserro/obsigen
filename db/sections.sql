@@ -1,3 +1,7 @@
+-- Reset the images table and the auto-increment counter
+DELETE FROM sections;
+DELETE FROM sqlite_sequence WHERE name='sections';
+
 -- Inserts para la tabla sections
 INSERT INTO sections (name, description) VALUES
 ('Pentateuco', 'Los cinco primeros libros de la Biblia, también conocidos como la Ley de Moisés'),
