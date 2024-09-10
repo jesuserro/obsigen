@@ -6,8 +6,9 @@ REAL_DB_PATH="/mnt/c/Users/jesus/db/Biblia.db"
 # Nombre del enlace simbólico en el proyecto
 SYMLINK_DB="Biblia.db"
 
-# Directorio donde se encuentran los scripts SQL
-SQL_DIR="."
+# Directorios donde se encuentran los scripts SQL
+STRUCTURE_DIR="./structure"
+QUERIES_DIR="./queries"
 
 # Eliminar el enlace simbólico si ya existe
 if [ -L "$SYMLINK_DB" ]; then
@@ -26,16 +27,21 @@ fi
 
 # Crear una nueva base de datos
 echo "Creando nueva base de datos: $SYMLINK_DB"
-sqlite3 "$SYMLINK_DB" < "$SQL_DIR/schema.sql"
+sqlite3 "$SYMLINK_DB" < "$STRUCTURE_DIR/schema.sql"
 
-# Ejecutar los scripts SQL en el orden adecuado
-echo "Ejecutando scripts SQL..."
-sqlite3 "$SYMLINK_DB" < "$SQL_DIR/collections.sql"
-sqlite3 "$SYMLINK_DB" < "$SQL_DIR/books.sql"
-sqlite3 "$SYMLINK_DB" < "$SQL_DIR/parts.sql"
-sqlite3 "$SYMLINK_DB" < "$SQL_DIR/sections.sql"
-sqlite3 "$SYMLINK_DB" < "$SQL_DIR/chapters.sql"
-sqlite3 "$SYMLINK_DB" < "$SQL_DIR/pericopes.sql"
-sqlite3 "$SYMLINK_DB" < "$SQL_DIR/images.sql"
+# Ejecutar los scripts SQL en el orden adecuado para la estructura y relleno
+echo "Ejecutando scripts SQL para estructura y datos..."
+sqlite3 "$SYMLINK_DB" < "$STRUCTURE_DIR/collections.sql"
+sqlite3 "$SYMLINK_DB" < "$STRUCTURE_DIR/books.sql"
+sqlite3 "$SYMLINK_DB" < "$STRUCTURE_DIR/parts.sql"
+sqlite3 "$SYMLINK_DB" < "$STRUCTURE_DIR/sections.sql"
+sqlite3 "$SYMLINK_DB" < "$STRUCTURE_DIR/chapters.sql"
+sqlite3 "$SYMLINK_DB" < "$STRUCTURE_DIR/pericopes.sql"
+sqlite3 "$SYMLINK_DB" < "$STRUCTURE_DIR/images.sql"
 
 echo "Base de datos recreada con éxito."
+
+# Opcional: Ejecutar consultas de ejemplo desde queries
+# echo "Ejecutando consultas de ejemplo..."
+# sqlite3 "$SYMLINK_DB" < "$QUERIES_DIR/evangelio_san_juan_index.sql"
+# echo "Consultas ejecutadas con éxito."
