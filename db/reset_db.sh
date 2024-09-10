@@ -21,8 +21,7 @@ ln -s "$REAL_DB_PATH" "$SYMLINK_DB"
 
 # Eliminar la base de datos real si existe
 if [ -f "$REAL_DB_PATH" ]; then
-  echo "Eliminando la base de datos real existente: $REAL_DB_PATH"
-  rm "$REAL_DB_PATH"
+  echo "No se pudo eliminar la base de datos real existente: $REAL_DB_PATH. Asegúrate de tener permisos."
 fi
 
 # Crear una nueva base de datos
@@ -31,8 +30,10 @@ sqlite3 "$SYMLINK_DB" < "$SQL_DIR/schema.sql"
 
 # Ejecutar los scripts SQL en el orden adecuado
 echo "Ejecutando scripts SQL..."
-sqlite3 "$SYMLINK_DB" < "$SQL_DIR/sections.sql"
+sqlite3 "$SYMLINK_DB" < "$SQL_DIR/collections.sql"
 sqlite3 "$SYMLINK_DB" < "$SQL_DIR/books.sql"
+sqlite3 "$SYMLINK_DB" < "$SQL_DIR/parts.sql"
+sqlite3 "$SYMLINK_DB" < "$SQL_DIR/sections.sql"
 sqlite3 "$SYMLINK_DB" < "$SQL_DIR/chapters.sql"
 sqlite3 "$SYMLINK_DB" < "$SQL_DIR/pericopes.sql"
 sqlite3 "$SYMLINK_DB" < "$SQL_DIR/images.sql"
