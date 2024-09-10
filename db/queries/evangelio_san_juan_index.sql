@@ -1,12 +1,12 @@
 -- Consulta para generar el índice completo del Evangelio según San Juan
 SELECT 
-    p.name AS part_name,
-    s.name AS section_name,
-    ch.chapter_number AS chapter_number,
-    ch.title AS chapter_title,
     pe.title AS pericope_title,
     pe.verse_range_start AS verse_start,
-    pe.verse_range_end AS verse_end
+    pe.verse_range_end AS verse_end,
+    ch.title AS chapter_title,
+    ch.chapter_number AS chapter_number,
+    s.name AS section_name,
+    p.name AS part_name  
 FROM 
     books b 
     INNER JOIN parts p ON b.id = p.book_id
