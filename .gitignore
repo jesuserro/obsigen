@@ -27,3 +27,9 @@ src/assets/icons/dataurls.ts
 src/assets/icons/*.png
 
 .env
+
+# Exclude files at db folder
+db/*.sqlite
+db/*.sqlite-shm
+db/*.sqlite-wal
+db/*.db

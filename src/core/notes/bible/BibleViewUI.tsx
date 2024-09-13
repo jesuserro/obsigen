@@ -1,7 +1,10 @@
 import { App, MetadataCache, TFile } from 'obsidian';
 import React from 'react';
-import { getChapterNotes, handleNoteClick, useBibleViewLogic } from './BibleView';
+import { getChapterNotes, useBibleViewLogic } from './BibleView';
 import { BibleImage } from './BibleViewStructure';
+import CalendarEventsBar from './CalendarEventsBarUI';
+import { getExternalBiblePassages } from './ExternalBiblePassagesBar';
+import ExternalBiblePassagesBar from './ExternalBiblePassagesBarUI';
 
 interface Props {
     app: App;
@@ -16,41 +19,12 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
         if (!images || images.length === 0) return {};
 
         const imageUrls = images.map((image: BibleImage) => `url(${image.path})`);
-        switch (images.length) {
-            case 1:
-                return {
-                    backgroundImage: imageUrls[0],
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    filter: 'brightness(0.5)', // Aplica el efecto "mate"
-                };
-            case 2:
-                return {
-                    backgroundImage: `${imageUrls[0]}, ${imageUrls[1]}`,
-                    backgroundSize: '100% 50%',
-                    backgroundPosition: 'top, bottom',
-                    backgroundRepeat: 'no-repeat',
-                    filter: 'brightness(0.5)', // Aplica el efecto "mate"
-                };
-            case 3:
-                return {
-                    backgroundImage: `${imageUrls[0]}, ${imageUrls[1]}, ${imageUrls[2]}`,
-                    backgroundSize: '100% 50%, 50% 50%',
-                    backgroundPosition: 'top, left bottom, right bottom',
-                    backgroundRepeat: 'no-repeat',
-                    filter: 'brightness(0.5)', // Aplica el efecto "mate"
-                };
-            case 4:
-                return {
-                    backgroundImage: `${imageUrls[0]}, ${imageUrls[1]}, ${imageUrls[2]}, ${imageUrls[3]}`,
-                    backgroundSize: '50% 50%',
-                    backgroundPosition: 'top left, top right, bottom left, bottom right',
-                    backgroundRepeat: 'no-repeat',
-                    filter: 'brightness(0.5)', // Aplica el efecto "mate"
-                };
-            default:
-                return {};
-        }
+        return {
+            backgroundImage: imageUrls[0],
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'brightness(0.5)',
+        };
     };
 
     return (
@@ -72,24 +46,23 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                 <div key={index} className="pericope-wrapper">
                                                     <h4>{pericope.title} ({pericope.verseRange[0]}-{pericope.verseRange[1]})</h4>
                                                     <div className="pericope-container" style={getBackgroundStyle(pericope.images)}>
-                                                        {notesForPericope.length > 0 && (
-                                                            <div className="events-container">
-                                                                {notesForPericope.map((note, noteIndex) => (
-                                                                    <a
-                                                                        key={noteIndex}
-                                                                        href={`obsidian://open?file=${encodeURIComponent(note.path)}`}
-                                                                        title={note.title}
-                                                                    >
-                                                                        <div
-                                                                            className="event-icon"
-                                                                            onClick={() => handleNoteClick(app, note.path)} // Usar la lógica importada
-                                                                        >
-                                                                            {note.icon} {/* Mostrar el icono en lugar del punto azul */}
-                                                                        </div>
-                                                                    </a>
-                                                                ))}
-                                                            </div>
-                                                        )}
+                                                        <CalendarEventsBar
+                                                            events={notesForPericope.map(note => ({
+                                                                title: note.title,
+                                                                path: note.path,
+                                                                icon: note.icon,
+                                                                externalPassagesCount: getExternalBiblePassages(note).length, // Añadimos el número de pasajes externos
+                                                            }))}
+                                                            onEventClick={(path) => {
+                                                                const file = app.vault.getAbstractFileByPath(path);
+                                                                if (file instanceof TFile) {
+                                                                    app.workspace.getLeaf().openFile(file);
+                                                                }
+                                                            }}
+                                                        />
+                                                        <ExternalBiblePassagesBar
+                                                            externalPassages={notesForPericope.flatMap(note => getExternalBiblePassages(note))}
+                                                        />
                                                     </div>
                                                 </div>
                                             );

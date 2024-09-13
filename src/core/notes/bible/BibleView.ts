@@ -10,12 +10,24 @@ interface Note {
     verseStart?: number;
     verseEnd?: number;
     icon?: React.ReactNode;
+    bible_passages?: BiblePassage[];
 }
 
-export function getChapterNotes(app: App, metadataCache: MetadataCache, files: TFile[] | undefined, book: string, chapterNumber: number): Note[] {
-    if (!files || files.length === 0) {
-        return [];
-    }
+interface BiblePassage {
+    book: string;
+    chapter: number;
+    verse_range: [number, number];
+}
+
+// Obtener notas del capítulo específico y libro.
+export function getChapterNotes(
+    app: App, 
+    metadataCache: MetadataCache, 
+    files: TFile[] | undefined, 
+    book: string, 
+    chapterNumber: number
+): Note[] {
+    if (!files || files.length === 0) return [];
 
     const bibleNotes = files.map(file => {
         const fileName = file.name.replace(/\.md$/, '');
@@ -23,7 +35,6 @@ export function getChapterNotes(app: App, metadataCache: MetadataCache, files: T
         const cssClasses = cache?.frontmatter?.cssclasses || [];
         const icon = CalendarIcon.getIconByNote(cssClasses, file, 18);
 
-        // Filtrar correctamente según el libro y el capítulo
         const { bible_passages } = cache?.frontmatter || {};
         if (Array.isArray(bible_passages)) {
             return bible_passages.map(passage => {
@@ -42,6 +53,7 @@ export function getChapterNotes(app: App, metadataCache: MetadataCache, files: T
                         verseStart,
                         verseEnd,
                         icon,
+                        bible_passages,
                     };
                 }
                 return null;
@@ -49,11 +61,18 @@ export function getChapterNotes(app: App, metadataCache: MetadataCache, files: T
         }
 
         return null;
-    }).filter(note => note !== null).flat() as Note[]; // Filtrar las notas nulas y aplanar el array
+    }).filter(note => note !== null).flat() as Note[];
 
     return bibleNotes;
 }
 
+// Filtrar los pasajes que no pertenecen al libro actual.
+export function getExternalBiblePassages(note: Note): BiblePassage[] {
+    const passages = note?.bible_passages || [];
+    return passages.filter(passage => passage.book !== 'San Juan');
+}
+
+// Abrir la nota correspondiente al hacer clic.
 export function handleNoteClick(app: App, notePath: string) {
     const file = app.vault.getAbstractFileByPath(notePath);
 
@@ -64,7 +83,7 @@ export function handleNoteClick(app: App, notePath: string) {
     }
 }
 
-// Función que encapsula la lógica de la vista de la Biblia
+// Lógica principal del calendario bíblico.
 export function useBibleViewLogic(app: App, metadataCache: MetadataCache, files: TFile[]) {
     const [bibleNotes, setBibleNotes] = useState(bibleStructure);
 
@@ -77,7 +96,7 @@ export function useBibleViewLogic(app: App, metadataCache: MetadataCache, files:
             const notes = getChapterNotes(app, metadataCache, files, "San Juan", parseInt(chapterNumber));
             // Asignar notas a perícopas si es necesario
         });
-        
+
         setBibleNotes(updatedBibleStructure);
     }, [app, metadataCache, files]);
 

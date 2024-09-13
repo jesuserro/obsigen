@@ -29,7 +29,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Prólogo",
                         verseRange: [1, 18],
                         images: [
-                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Carl_Heinrich_Bloch_-_The_Annunciation.jpg', altText: 'Descripción de la imagen 2' }
+                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Carl_Heinrich_Bloch_-_The_Annunciation.jpg', altText: 'La Anunciación de Carl Heinrich Bloch representando el Prólogo' }
                         ]
                     },
                     {
@@ -48,7 +48,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús llama a Felipe y a Natanael",
                         verseRange: [43, 51],
                         images: [
-                            { type: 'url', path: 'https://achristianpilgrim.wordpress.com/wp-content/uploads/2010/08/filipus-mengajak-nataniel-untuk-bertemu-dengan-yesus.jpg', altText: 'Descripción de la imagen 2' }
+                            { type: 'url', path: 'https://achristianpilgrim.wordpress.com/wp-content/uploads/2010/08/filipus-mengajak-nataniel-untuk-bertemu-dengan-yesus.jpg', altText: 'Jesús llama a Felipe y a Natanael' }
                         ]
                     }
                 ]
@@ -60,14 +60,14 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "El primer milagro de Jesús en Caná",
                         verseRange: [1, 12],
                         images: [
-                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/CarlBloch_weddingatCana.jpg/640px-CarlBloch_weddingatCana.jpg', altText: 'Descripción de la imagen 2' }
+                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/CarlBloch_weddingatCana.jpg/640px-CarlBloch_weddingatCana.jpg', altText: 'Las bodas de Caná por Carl Heinrich Bloch' }
                         ]
                     },
                     {
                         title: "Jesús purifica el templo",
                         verseRange: [13, 22],
                         images: [
-                            { type: 'url', path: 'https://m.media-amazon.com/images/I/71V4-AFAivL._AC_UF894,1000_QL80_.jpg', altText: 'Descripción de la imagen 2' }
+                            { type: 'url', path: 'https://m.media-amazon.com/images/I/71V4-AFAivL._AC_UF894,1000_QL80_.jpg', altText: 'Jesús purifica el templo' }
                         ]
                     },
                     {
@@ -96,7 +96,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús y la mujer samaritana",
                         verseRange: [1, 26],
                         images: [
-                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Carl_Heinrich_Bloch_-_Woman_at_the_Well.jpg/800px-Carl_Heinrich_Bloch_-_Woman_at_the_Well.jpg'}
+                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Carl_Heinrich_Bloch_-_Woman_at_the_Well.jpg/800px-Carl_Heinrich_Bloch_-_Woman_at_the_Well.jpg', altText: 'Jesús y la mujer samaritana' }
                         ]
                     },
                     {
@@ -179,7 +179,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús y la mujer adúltera",
                         verseRange: [1, 11],
                         images: [
-                            { type: 'url', path: 'https://i.redd.it/kwbz58h5k9rb1.jpg', altText: 'Descripción de la imagen 2' }
+                            { type: 'url', path: 'https://i.redd.it/kwbz58h5k9rb1.jpg', altText: 'Jesús y la mujer adúltera' }
                         ]
                     },
                     {
@@ -207,7 +207,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús sana a un ciego de nacimiento",
                         verseRange: [1, 12],
                         images: [
-                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Healing_of_the_Blind_Man_by_Jesus_Christ.jpg', altText: 'Descripción de la imagen 2' }
+                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Healing_of_the_Blind_Man_by_Jesus_Christ.jpg', altText: 'Jesús sana a un ciego de nacimiento' }
                         ]
                     },
                     {
@@ -252,7 +252,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús resucita a Lázaro",
                         verseRange: [38, 44],
                         images: [
-                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/RaisingofLazarusBloch.jpg', altText: 'Descripción de la imagen 2' }
+                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/RaisingofLazarusBloch.jpg', altText: 'Jesús resucita a Lázaro' }
                         ]
                     },
                     {
@@ -297,7 +297,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Predicción de la traición de Judas",
                         verseRange: [18, 30],
                         images: [
-                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/The-Last-Supper-large.jpg/390px-The-Last-Supper-large.jpg', altText: 'Descripción de la imagen 2' }
+                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/The-Last-Supper-large.jpg/390px-The-Last-Supper-large.jpg', altText: 'La última cena, traición de Judas' }
                         ]
                     },
                     {
@@ -369,7 +369,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "Jesús es arrestado",
                         verseRange: [1, 11],
                         images: [
-                            { type: 'url', path: 'https://api.brushwiz.com/images/paintings/t/The_Guards_Falling_Backwards_by_James_Jacques_Joseph_Tissot_F62.jpg', altText: 'James J. Tissot, The guards falling backwards (1884-1896), gouache on grey wove paper, 7-13/16 x 10-3/8 in, brooklyn museum, new york.' }
+                            { type: 'url', path: 'https://api.brushwiz.com/images/paintings/t/The_Guards_Falling_Backwards_by_James_Jacques_Joseph_Tissot_F62.jpg', altText: 'Jesús es arrestado, obra de James J. Tissot' }
                         ]
                     },
                     {
@@ -397,14 +397,14 @@ export const bibleStructure: { [book: string]: BookStructure } = {
                         title: "La muerte de Jesús",
                         verseRange: [31, 37],
                         images: [
-                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg/197px-Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg', altText: 'Descripción de la imagen 2' }
+                            { type: 'url', path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg/197px-Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg', altText: 'Cristo muere en la cruz' }
                         ]
                     },
                     {
                         title: "El entierro de Jesús",
                         verseRange: [38, 42],
                         images: [
-                            { type: 'url', path: 'https://w0.peakpx.com/wallpaper/151/716/HD-wallpaper-the-burial-of-christ-art-bloch-old-master-beautiful-illustration-artwork-jesus-christ-painting-wide-screen-portrait-carl-heinrich-bloch-burial.jpg', altText: 'Descripción de la imagen 2' }
+                            { type: 'url', path: 'https://w0.peakpx.com/wallpaper/151/716/HD-wallpaper-the-burial-of-christ-art-bloch-old-master-beautiful-illustration-artwork-jesus-christ-painting-wide-screen-portrait-carl-heinrich-bloch-burial.jpg', altText: 'El entierro de Cristo por Carl Heinrich Bloch' }
                         ]
                     }
                 ]

@@ -34,14 +34,8 @@ h3 {
     font-size: 16px;
 }
 
-h3 sub {
-    font-size: 12px;
-    vertical-align: text-top;
-    margin-left: 5px;
-}
-
 h4 {
-    font-size: 15px; /* Ajuste del tamaño de letra para que sea más pequeño que h3 */
+    font-size: 15px;
     margin: 0;
 }
 
@@ -63,38 +57,78 @@ h4 {
     background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
-    filter: brightness(0.5); /* Efecto mate */
-    height: 150px; /* Altura fija estilo thumbnail */
+    filter: brightness(0.5);
+    height: 150px;
 }
 
+/* Barra de eventos (abajo) */
 .events-container {
     position: absolute;
-    bottom: 0; /* Alinea los elementos en la parte inferior */
+    bottom: 0; /* Mantenerla en la parte inferior */
     left: 0;
     width: 100%;
     display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan en nuevas filas */
-    justify-content: center; /* Centra los iconos horizontalmente */
-    align-items: center; /* Centra verticalmente dentro de la línea */
-    z-index: 1;
-    pointer-events: auto;
-    padding: 5px; /* Espacio alrededor de los iconos */
-    box-sizing: border-box; /* Asegura que el padding no expanda el tamaño del contenedor */
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo más opaco y oscuro para garantizar el contraste */
-    border-radius: 5px; /* Redondea las esquinas para una apariencia más suave */
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
 
+/* Ocultar la barra inferior si no tiene iconos */
+.events-container:empty {
+    display: none;
+}
+
+/* Ajuste de la barra de flechas (ahora justo encima de la barra de eventos) */
+.related-passages-container {
+    position: absolute;
+    bottom: 35px; /* Moverla justo encima de la barra de eventos */
+    left: 0;
+    width: 100%;
+    display: flex; /* Alinear las flechas horizontalmente */
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    z-index: 10;
+}
+
+/* Ocultar la barra superior si no tiene iconos */
+.related-passages-container:empty {
+    display: none;
+}
+
+/* Ajustar el tamaño de las flechas */
+.related-icon {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.arrow-icon {
+    background-color: #282c34;
+    color: #f7c600;
+    padding: 4px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: transform 0.2s ease;
+}
+
+/* Efecto hover para agrandar el icono de las flechas */
+.arrow-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Ajuste del tamaño y efecto hover para los iconos de eventos en la barra inferior */
 .event-icon {
-    cursor: pointer; /* Cambiar el cursor a una mano al pasar sobre el icono */
-    z-index: 2;
-    pointer-events: auto;
-    transition: transform 0.2s ease; /* Añadir una transición suave */
-}
-
-.events-container a {
-    cursor: pointer; /* Asegura que el cursor cambie a mano en el enlace */
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
 .event-icon:hover {
-    transform: scale(1.2); /* Ampliar un poco el icono al hacer hover */
+    transform: scale(1.2);
 }
