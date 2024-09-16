@@ -40,7 +40,7 @@ const DayUI = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes, ap
                         </div>
                     )}
                 </>
-            ) : hasNote && dayNotes ? (
+            ) : hasNote && notesOfTheDay ? (
                 <>
                     <div className="day-header">
                         {anniversaryNote && (
