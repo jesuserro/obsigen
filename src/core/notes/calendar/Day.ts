@@ -32,6 +32,13 @@ export function getCalendarEvent(
 ) {
     const mykey = `${year}-${month}-${dayCounter}-${index}`;
     const frontmatter = metadataCache.getFileCache(note)?.frontmatter;
+
+    // Extraemos la hora del evento del frontmatter YAML
+    let eventTime: Date | null = null;
+    if (frontmatter?.date) {
+        eventTime = new Date(frontmatter.date);
+    }
+
     const cssClasses = frontmatter?.cssclasses || [];
     const icon = CalendarIcon.getIconByNote(cssClasses, note, 18);
     const isHoliday = cssClasses.includes("holiday");
@@ -44,8 +51,10 @@ export function getCalendarEvent(
         icon,
         fileName,
         path: note.path,
+        eventTime,  // Añadimos el tiempo del evento para ordenarlo más tarde
     };
 }
+
 
 export async function handleEventForm(app: App, year: number, month: number, dayCounter: number): Promise<void> {
     const date = new Date(year, month - 1, dayCounter, 0, 0, 0, 0);
@@ -63,7 +72,17 @@ export function getCalendarDayProps({
 }: CalendarDayProps) {
     const notePath = hasNote ? `obsidian://open?file=${encodeURIComponent(hasNote)}` : '';
     const anniversary = anniversaryNote ? getCalendarEvent(year, month, dayCounter, generateEventIndex(anniversaryNote), anniversaryNote, app.metadataCache) : null;
-    const notesOfTheDay = dayNotes ? dayNotes.map((note) => getCalendarEvent(year, month, dayCounter, generateEventIndex(note), note, app.metadataCache)) : null;
+
+    let notesOfTheDay = dayNotes ? dayNotes.map((note) => getCalendarEvent(year, month, dayCounter, generateEventIndex(note), note, app.metadataCache)) : null;
+
+    // Ordenar los eventos por la hora (eventTime)
+    if (notesOfTheDay) {
+        notesOfTheDay = notesOfTheDay.sort((a, b) => {
+            const timeA = a.eventTime ? a.eventTime.getTime() : 0;
+            const timeB = b.eventTime ? b.eventTime.getTime() : 0;
+            return timeA - timeB;  // Orden ascendente por hora
+        });
+    }
 
     return {
         notePath,
@@ -71,3 +90,4 @@ export function getCalendarDayProps({
         notesOfTheDay,
     };
 }
+

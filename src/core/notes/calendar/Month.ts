@@ -93,15 +93,15 @@ export function getDayNotes(app: App, metadataCache: MetadataCache, files: TFile
     return dayNotes;
 }
 
-export function createDaysGrid({ 
-    app, 
-    metadataCache, 
-    files, 
-    numRows, 
-    numDaysInMonth, 
-    dayOffset, 
-    year, 
-    month 
+export function createDaysGrid({
+    app,
+    metadataCache,
+    files,
+    numRows,
+    numDaysInMonth,
+    dayOffset,
+    year,
+    month
 }: {
     app: App;
     metadataCache: MetadataCache;
@@ -113,26 +113,41 @@ export function createDaysGrid({
     month: number;
 }): MonthGridProps['daysGrid'] {
     const daysGrid: MonthGridProps['daysGrid'] = [];
+    let currentDay = 1; // Día actual dentro del mes
+    let nextMonthDay = 1; // Día inicial del próximo mes
+    let prevMonthLastDay = getLastDayOfMonth(year, month - 1).getDate(); // Último día del mes anterior
 
     for (let row = 0; row < numRows; row++) {
         const cells: MonthGridProps['daysGrid'][0] = [];
 
         for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
-            const dayIndex = row * 7 + dayOfWeek + 1 - dayOffset;
-            const isWithinMonth = dayIndex >= 1 && dayIndex <= numDaysInMonth;
+            const cellDay = row * 7 + dayOfWeek - dayOffset + 1;
+            let dayIndex: number;
+            let isWithinMonth: boolean;
 
-            const hasNote = getDailyNote(dayIndex, files, year, month);
-            const anniversaryNote = getAnniversaryNote(dayIndex, files, month);
-            const dayNotes = getDayNotes(app, metadataCache, files, dayIndex, year, month);
+            if (cellDay < 1) {
+                // Días del mes anterior
+                dayIndex = prevMonthLastDay + cellDay;
+                isWithinMonth = false;
+            } else if (currentDay > numDaysInMonth) {
+                // Días del mes siguiente
+                dayIndex = nextMonthDay++;
+                isWithinMonth = false;
+            } else {
+                // Días del mes actual
+                dayIndex = currentDay++;
+                isWithinMonth = true;
+            }
 
+            // Solo aseguramos que los días del mes actual tengan isWithinMonth como true
             cells.push({
                 year,
                 month,
                 dayIndex,
                 isWithinMonth,
-                hasNote,
-                anniversaryNote,
-                dayNotes,
+                hasNote: getDailyNote(dayIndex, files, year, month),
+                anniversaryNote: getAnniversaryNote(dayIndex, files, month),
+                dayNotes: getDayNotes(app, metadataCache, files, dayIndex, year, month),
                 className: isWithinMonth ? 'within-month' : 'outside-month',
                 app
             });
@@ -176,13 +191,16 @@ export function useMonthLogic(app: App | undefined, year: number, month: number)
         return (typeof eventDate === 'string' && eventDate.includes(dateStr)) || file.path.includes(anniversaryPath);
     });
 
-    const firstDayOfMonth = getFirstDayOfMonth(year, month - 1);
-    const lastDayOfMonth = getLastDayOfMonth(year, month);
-    const numDaysInMonth = lastDayOfMonth.getDate();
-    const firstDayOfWeek = firstDayOfMonth.getDay();
-    const dayOffset = getDayOffset(firstDayOfWeek);
+    const firstDayOfMonth = getFirstDayOfMonth(year, month - 1);  // Ajustamos para que el mes esté en el rango correcto
+    const lastDayOfMonth = getLastDayOfMonth(year, month - 1);    // Este método se ajusta aquí también para obtener el último día
+    const numDaysInMonth = lastDayOfMonth.getDate();  // Obtenemos el número de días del mes actual correctamente
+    const firstDayOfWeek = firstDayOfMonth.getDay();  // Día de la semana en el que comienza el mes
+    const dayOffset = getDayOffset(firstDayOfWeek);   // Ajustamos el offset correctamente
+
+    // Calculamos el número de filas necesarias para el calendario, basándonos en el número de días del mes y el desplazamiento
     const numRows = calculateNumRows(numDaysInMonth, dayOffset);
 
+    // Creamos la cuadrícula de días correctamente, asegurándonos de que no haya días que excedan los límites del mes actual
     const daysGrid = createDaysGrid({ 
         app: app as App, 
         metadataCache: metadataCache as MetadataCache, 
@@ -220,3 +238,4 @@ export function useMonthLogic(app: App | undefined, year: number, month: number)
         daysGrid,
     };
 }
+
