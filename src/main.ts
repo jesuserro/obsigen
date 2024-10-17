@@ -122,26 +122,26 @@ export default class MyPlugin extends Plugin {
 	}
 
 	async activateView() {
-		this.app.workspace.detachLeavesOfType(CALENDAR_VIEW_TYPE);
-
-		const rightLeaf = this.app.workspace.getRightLeaf(false);
-
-		if (rightLeaf === null) {
-			console.error("Unable to get right leaf.");
-			return;
-		}
-
-		await rightLeaf.setViewState({
-			type: CALENDAR_VIEW_TYPE,
-			active: true,
-		});
-
-		const leaf = this.app.workspace.getLeavesOfType(CALENDAR_VIEW_TYPE).first();
-		if (leaf && leaf.view instanceof CalendarView) {
-			await this.app.workspace.revealLeaf(leaf);
-		} else {
-			console.error("Unable to get calendar view leaf.");
-			return;
-		}
-	}
+        // Primero, eliminamos cualquier leaf existente del tipo CALENDAR_VIEW_TYPE.
+        this.app.workspace.detachLeavesOfType(CALENDAR_VIEW_TYPE);
+    
+        // Obtenemos el leaf del panel derecho, sin crear uno nuevo.
+        const rightLeaf = this.app.workspace.getRightLeaf(false);
+    
+        // Si no se pudo obtener el leaf, se muestra un error.
+        if (rightLeaf === null) {
+            console.error("Unable to get right leaf.");
+            return;
+        }
+    
+        // Establecemos el estado del leaf con el tipo de vista y aseguramos que esté activo.
+        await rightLeaf.setViewState({
+            type: CALENDAR_VIEW_TYPE,
+            active: true,  // Marcamos la vista como activa para garantizar su visibilidad.
+        });
+    
+        // Utilizamos revealLeaf para asegurarnos de que la vista se muestre al usuario.
+        await this.app.workspace.revealLeaf(rightLeaf);
+    }
+    
 }
