@@ -113,8 +113,12 @@ export default class MyPlugin extends Plugin {
 
 		rightLeaf.setViewState({
 			type: CALENDAR_VIEW_TYPE,
+            active: true,  // Marcamos la vista como activa.
 		});
-		this.view = rightLeaf.view as CalendarView;
+
+		// Aseguramos que el leaf se revele para el usuario.
+        this.app.workspace.revealLeaf(rightLeaf);
+        this.view = rightLeaf.view as CalendarView;
 	}
 
 	async activateView() {
