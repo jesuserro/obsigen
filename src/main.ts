@@ -141,7 +141,7 @@ export default class MyPlugin extends Plugin {
         });
     
         // Utilizamos revealLeaf para asegurarnos de que la vista se muestre al usuario.
-        await this.app.workspace.revealLeaf(rightLeaf);
+        this.app.workspace.revealLeaf(rightLeaf);
     }
     
 }
