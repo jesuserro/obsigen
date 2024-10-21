@@ -1,7 +1,7 @@
 import { TFile } from 'obsidian';
 import React from 'react';
 import Flag from 'react-flagkit';
-import { BiLogoGmail } from 'react-icons/bi';
+import { BiLogoGmail, BiSolidTrafficBarrier } from 'react-icons/bi';
 import { BsBookmarkStar, BsChatLeftQuoteFill, BsClockFill, BsCloudHaze2, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsPersonCircle, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiBookmark, CiCalendar, CiHeadphones, CiPill } from 'react-icons/ci';
 import { FaAmazon, FaAngry, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader, FaBuilding, FaBus, FaCarSide, FaChalkboardTeacher, FaCheck, FaChess, FaCode, FaCross, FaDatabase, FaDog, FaEnvelope, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHandshake, FaHeadSideCough, FaHiking, FaHome, FaHotel, FaHouseDamage, FaInstagram, FaKey, FaKissWinkHeart, FaLaptop, FaLinkedin, FaMapMarkedAlt, FaMapMarkerAlt, FaPhone, FaPiggyBank, FaPizzaSlice, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRegSadCry, FaRss, FaRunning, FaScroll, FaShip, FaSkype, FaSmile, FaSms, FaStar, FaSurprise, FaSwimmingPool, FaTabletAlt, FaTaxi, FaTelegram, FaTired, FaTractor, FaTrain, FaTree, FaVenus, FaVoteYea, FaWalking, FaWpforms, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
@@ -287,6 +287,7 @@ export const iconData: IconData = {
         plane: ({ size }: IconProps) => <GiCommercialAirplane size={size} className='blue kindle' />,
         ship: ({ size }: IconProps) => <FaShip size={size} className="blue kindle" />,
         taxi: ({ size }: IconProps) => <FaTaxi size={size} className="yellow emoji"/>,
+        tráfico: ({ size }: IconProps) => <BiSolidTrafficBarrier size={size} className="red"/>,
         train: ({ size }: IconProps) => <FaTrain size={size} className="brown" />,
         travel: ({ size }: IconProps) => <MdCardTravel size={size} className="brown" />
     },
