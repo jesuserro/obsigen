@@ -15,7 +15,7 @@ import { ImArrowRight, ImSad2, ImWoman } from 'react-icons/im';
 import { IoIosBeer, IoIosRose, IoMdBasket, IoMdBatteryCharging, IoMdCafe, IoMdFlower, IoMdMusicalNotes, IoMdSunny } from 'react-icons/io';
 import { IoFootsteps, IoHardwareChip, IoRestaurant, IoThunderstorm } from 'react-icons/io5';
 import { LuPartyPopper, LuSalad } from 'react-icons/lu';
-import { MdBackup, MdBuild, MdCancel, MdCardTravel, MdCastle, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdOutlineSportsTennis, MdPeople, MdPiano, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
+import { MdBackup, MdBuild, MdCancel, MdCardTravel, MdCastle, MdElderly, MdElderlyWoman, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdOutlineSportsTennis, MdPeople, MdPiano, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiButterflyFill, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiPlant, PiThermometerCold, PiThermometerHot } from 'react-icons/pi';
 import { RiEarthquakeFill, RiFridgeFill, RiMentalHealthFill } from "react-icons/ri";
 import { SiTinder as IconoTinder, SiDell, SiGimp, SiGooglemeet, SiInsomnia, SiLenovo, SiObsidian, SiOpenai, SiPlex, SiSamsung, SiSpotify, SiSynology, SiTwitter, SiWhatsapp } from 'react-icons/si';
@@ -37,6 +37,8 @@ interface IconData {
 
 export const iconData: IconData = {
     Emojis: {
+        anciano: ({ size }: IconProps) => <MdElderly size={size} className="grey" />,
+        anciana: ({ size }: IconProps) => <MdElderlyWoman size={size} className="grey" />,
         angry: ({ size }: IconProps) => <FaAngry size={size} className="red" />,
         baby: ({ size }: IconProps) => <FaBaby size={size} className="blue ui" />,
         birthday: ({ size }: IconProps) => <FaBirthdayCake size={size} className="blue ui" />,
