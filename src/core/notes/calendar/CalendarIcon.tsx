@@ -146,6 +146,7 @@ export const iconData: IconData = {
         github: ({ size }: IconProps) => <FaGithub size={size} style={{ color: '#fff' }} />,
         googlemeet: ({ size }: IconProps) => <SiGooglemeet size={size} className="yellow intense" />,
         goodreads: ({ size }: IconProps) => <FaGoodreads size={size} className="brown goodreads" />,
+        infojobs: ({ size }: IconProps) => <CustomIcon size={size} className="blue linkedin" iconName="Infojobs" />,
         instagram: ({ size }: IconProps) => <FaInstagram size={size} className="pink instagram" />,
         linkedin: ({ size }: IconProps) => <FaLinkedin size={size} className="blue linkedin" />,
         meeting: ({ size }: IconProps) => <FaPeopleGroup size={size} className="orange" />,
