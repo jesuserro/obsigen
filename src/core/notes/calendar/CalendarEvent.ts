@@ -323,6 +323,9 @@ export class CalendarEvent extends Modal {
         const date = this.getDateFromFields(this.yearField, this.eraField, this.monthDropdown, this.dayDropdown, this.hourDropdown, this.minuteDropdown);
         const endDate = this.getDateFromFields(this.endYearField, this.endEraField, this.endMonthDropdown, this.endDayDropdown, this.endHourDropdown, this.endMinuteDropdown);
 
+        const tags = this.tagsField.getValue().trim();
+        const updatedTags = this.getUpdatedTags(tags, this.selectedIcon);
+
         return {
             title: this.titleField.getValue().trim(),
             urls: this.urlField.getValue().trim(),
@@ -332,8 +335,13 @@ export class CalendarEvent extends Modal {
             selectedIcon: this.selectedIcon,
             locations: this.selectedLocation ? `[[${this.selectedLocation}]]` : "",
             type: this.typeField.getValue().trim(),
-            tags: this.tagsField.getValue().trim(),
+            tags: updatedTags,
         };
+    }
+
+    private getUpdatedTags(tags: string, selectedIcon: string): string {
+        const selectedIconTag = `iconos/${selectedIcon}`;
+        return tags ? `${tags},${selectedIconTag}` : selectedIconTag;
     }
 
     private validateForm(values: FormValues): string | null {
