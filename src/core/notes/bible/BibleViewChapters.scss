@@ -1,48 +1,71 @@
 .bible-view-chapters {
+    padding: 20px;
+    background-color: #121212; /* Fondo general oscuro */
+    color: #e0e0e0; /* Texto claro */
+  
     .books-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
-
+  
     .book-container {
-        flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
-
+  
     .chapters-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Diseño fluido */
+      gap: 12px;
     }
-
+  
     .chapter-container {
-        width: 200px;
-        height: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        border: 1px solid #ccc;
-        background-color: #f9f9f9;
-        border-radius: 8px;
-        overflow: hidden;
-        position: relative;
-        color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border: 1px solid #333; /* Bordes oscuros */
+      border-radius: 8px;
+      background-color: #1e1e1e; /* Fondo oscuro */
+      padding: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Sombra ligera */
+      transition: transform 0.2s ease-in-out, background-color 0.3s ease;
+  
+      &:hover {
+        transform: scale(1.02); /* Efecto de zoom al pasar el mouse */
+        background-color: #292929; /* Fondo ligeramente más claro */
+      }
     }
-
+  
     .chapter-container h3 {
-        position: relative;
-        z-index: 1;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 8px; /* Espaciado entre título e imagen */
+      color: #ffffff; /* Color del título */
     }
-
-    .chapter-container::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 0;
+  
+    .chapter-container img {
+      width: 120px; /* Tamaño reducido para thumbnails */
+      height: auto;
+      border-radius: 4px;
+      object-fit: cover;
+      margin-top: 8px;
     }
-}
+  
+    /* Estilo responsivo para pantallas pequeñas */
+    @media (max-width: 768px) {
+      .chapters-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajuste dinámico */
+      }
+    }
+  
+    @media (max-width: 480px) {
+      .chapters-grid {
+        grid-template-columns: 1fr; /* Una columna en pantallas muy pequeñas */
+      }
+    }
+  }
+  

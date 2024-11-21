@@ -12,21 +12,13 @@ const BibleChaptersView: React.FC = () => {
             <div className="chapters-grid">
               {Object.entries(data.chapters).map(([chapterNumber, chapterInfo]) => {
                 const image = getChapterImage(chapterInfo);
-                const style = image
-                  ? {
-                      backgroundImage: `url(${image.path})`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                    }
-                  : {};
 
                 return (
-                  <div
-                    key={chapterNumber}
-                    className="chapter-container"
-                    style={style}
-                  >
-                    <h3>{chapterNumber} {chapterInfo.title}</h3>
+                  <div key={chapterNumber} className="chapter-container">
+                    <h3>
+                      {chapterNumber} {chapterInfo.title}
+                    </h3>
+                    {image && <img src={image.path} alt={image.altText || `Imagen del capítulo ${chapterNumber}`} />}
                   </div>
                 );
               })}
