@@ -1,0 +1,48 @@
+.bible-view-chapters {
+    .books-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .book-container {
+        flex: 1;
+    }
+
+    .chapters-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .chapter-container {
+        width: 200px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        color: #fff;
+    }
+
+    .chapter-container h3 {
+        position: relative;
+        z-index: 1;
+    }
+
+    .chapter-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 0;
+    }
+}
