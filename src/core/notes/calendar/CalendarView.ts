@@ -1,7 +1,7 @@
 import { ItemView, WorkspaceLeaf } from 'obsidian';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import BibleView from '../bible/BibleViewUI'; // Importar la vista de la Biblia
+import BibleChaptersView from '../bible/BibleViewChaptersUI'; // Importar la nueva vista
 import { AppContext } from './../../shared/appContext'; // Contexto compartido
 import { CalendarEvent, FormValues } from './CalendarEvent';
 import CalendarHeader from './CalendarHeader';
@@ -55,7 +55,7 @@ export class CalendarView extends ItemView {
 
     // Verificar que files y metadataCache estén correctamente inicializados
     if (!files || files.length === 0 || !metadataCache) {
-      console.error("Archivos o metadataCache no disponibles");
+      console.error('Archivos o metadataCache no disponibles');
       return;
     }
 
@@ -70,11 +70,7 @@ export class CalendarView extends ItemView {
         isBibleView: this.isBibleView, // Pasar el estado actual de la vista
       }),
       this.isBibleView
-        ? React.createElement(BibleView, {
-            app: this.app,
-            metadataCache: metadataCache,
-            files: files,
-          })
+        ? React.createElement(BibleChaptersView) // Renderizar la nueva vista
         : React.createElement(CalendarYear, { key: this.currentYear, year: this.currentYear })
     );
     this.root.render(this.reactComponent);
