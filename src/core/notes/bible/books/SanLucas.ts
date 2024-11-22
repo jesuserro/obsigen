@@ -24,7 +24,19 @@ const SanLucas: BookStructure = {
         },
         6: {
             title: "El Sermón del Llano: amor y misericordia",
-            pericopes: [],
+            pericopes: [
+				{
+					title: "Las Bienaventuranzas",
+					verseRange: [20, 26],
+					images: [
+						{
+							type: "url",
+							path: "https://upload.wikimedia.org/wikipedia/commons/9/96/Bloch-SermonOnTheMount.jpg",
+							altText: "Las Bienaventuranzas, pintura de Carl Bloch",
+						},
+					],
+				},
+			],
         },
         7: {
             title: "Milagros y la fe del centurión",
@@ -36,7 +48,19 @@ const SanLucas: BookStructure = {
         },
         9: {
             title: "La confesión de Pedro y la Transfiguración",
-            pericopes: [],
+            pericopes: [
+				{
+					title: "La Transfiguración",
+					verseRange: [28, 36],
+					images: [
+						{
+							type: "url",
+							path: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Transfiguration_bloch.jpg",
+							altText: "La Transfiguración de Jesús, pintura de Carl Bloch",
+						},
+					],
+				},
+			],
         },
         10: {
             title: "La misión de los setenta y la parábola del buen samaritano",

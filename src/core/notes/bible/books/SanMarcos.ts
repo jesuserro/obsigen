@@ -380,7 +380,19 @@ const SanMarcos: BookStructure = {
         },
         9: {
             title: "Transfiguración, exorcismo y enseñanzas sobre el Reino de Dios",
-            pericopes: [],
+            pericopes: [
+				{
+					title: "La Transfiguración",
+					verseRange: [2, 13],
+					images: [
+						{
+							type: "url",
+							path: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Transfiguration_bloch.jpg",
+							altText: "La Transfiguración de Jesús, pintura de Carl Bloch",
+						},
+					],
+				},
+			],
         },
         10: {
             title: "Enseñanzas sobre el divorcio, el joven rico y la petición de los hijos de Zebedeo",
