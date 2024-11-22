@@ -132,9 +132,16 @@ const SanJuan: BookStructure = {
             title: "Jesús alimenta a los cinco mil",
             pericopes: [
                 {
-                    title: "Jesús alimenta a los cinco mil",
-                    verseRange: [1, 15],
-                },
+					title: "Milagro de la multiplicación de los panes y los peces",
+					verseRange: [1, 15],
+					images: [
+						{
+							type: "url",
+							path: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGRFb7RUd6IE7m5HLgFhoX_oYan0K-ekzMQRMaAarNq7Y-A_LPKue4eBnXU63qdDZWxERbLuJ_SADcUVZoQO05-GmCAstM6d6z_O1_XgdwBgMdddZUG1d3NnkP-NLEr5LKWIPZuj74llWa/s1600/images.jpg",
+							altText: "Milagro de la multiplicación de los panes y los peces",
+						},
+					],
+				},
                 {
                     title: "Jesús camina sobre el agua",
                     verseRange: [16, 21],

@@ -276,7 +276,7 @@ const SanMarcos: BookStructure = {
                     images: [
                         {
                             type: "url",
-                            path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Rejection_of_Jesus_at_Nazareth.jpg",
+                            path: "",
                             altText: "Jesús es rechazado en Nazaret",
                         },
                     ],
@@ -287,7 +287,7 @@ const SanMarcos: BookStructure = {
                     images: [
                         {
                             type: "url",
-                            path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Sending_of_the_Twelve_Apostles.jpg",
+                            path: "",
                             altText: "Jesús envía a los doce",
                         },
                     ],
@@ -298,29 +298,29 @@ const SanMarcos: BookStructure = {
                     images: [
                         {
                             type: "url",
-                            path: "https://upload.wikimedia.org/wikipedia/commons/",
+                            path: "",
                             altText: "La muerte de Juan el Bautista",
                         },
                     ],
-                },
+                },    
                 {
-                    title: "Jesús alimenta a cinco mil",
+                    title: "Milagro de la multiplicación de los panes y los peces",
                     verseRange: [30, 44],
                     images: [
                         {
                             type: "url",
-                            path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Feeding_of_the_5000.jpg",
-                            altText: "Jesús alimenta a cinco mil",
+                            path: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGRFb7RUd6IE7m5HLgFhoX_oYan0K-ekzMQRMaAarNq7Y-A_LPKue4eBnXU63qdDZWxERbLuJ_SADcUVZoQO05-GmCAstM6d6z_O1_XgdwBgMdddZUG1d3NnkP-NLEr5LKWIPZuj74llWa/s1600/images.jpg",
+                            altText: "Milagro de la multiplicación de los panes y los peces",
                         },
                     ],
-                },
+                }, 
                 {
                     title: "Jesús camina sobre el agua",
                     verseRange: [45, 52],
                     images: [
                         {
                             type: "url",
-                            path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Walking_on_Water.jpg",
+                            path: "",
                             altText: "Jesús camina sobre el agua",
                         },
                     ],
@@ -331,7 +331,7 @@ const SanMarcos: BookStructure = {
                     images: [
                         {
                             type: "url",
-                            path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Healing_the_Sick.jpg",
+                            path: "",
                             altText:
                                 "Jesús sana a los enfermos en Genesaret",
                         },

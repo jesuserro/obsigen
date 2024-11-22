@@ -49,7 +49,18 @@ const SanLucas: BookStructure = {
         9: {
             title: "La confesión de Pedro y la Transfiguración",
             pericopes: [
-				{
+                {
+                    title: "Milagro de la multiplicación de los panes y los peces",
+                    verseRange: [10, 17],
+                    images: [
+                        {
+                            type: "url",
+                            path: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGRFb7RUd6IE7m5HLgFhoX_oYan0K-ekzMQRMaAarNq7Y-A_LPKue4eBnXU63qdDZWxERbLuJ_SADcUVZoQO05-GmCAstM6d6z_O1_XgdwBgMdddZUG1d3NnkP-NLEr5LKWIPZuj74llWa/s1600/images.jpg",
+                            altText: "Milagro de la multiplicación de los panes y los peces",
+                        },
+                    ],
+                },
+                {
 					title: "La Transfiguración",
 					verseRange: [28, 36],
 					images: [
