@@ -87,6 +87,13 @@ const SanJuan: BookStructure = {
 				{
 					title: "Jesús enseña a Nicodemo",
 					verseRange: [1, 21],
+                    images: [
+                        {
+                            type: "local",
+                            path: "190907010000_John_La_Farge_-_Visit_of_Nicodemus_to_Christ-Smithsonian_American_Art_Museum.webp",
+                            altText: "Jesús enseña a Nicodemo",
+                        },
+                    ],
 				},
 				{
 					title: "El testimonio de Juan el Bautista",
