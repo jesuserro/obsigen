@@ -12,7 +12,19 @@ const SanMateo: BookStructure = {
 		},
 		3: {
 			title: "El ministerio de Juan el Bautista y el bautismo de Jesús",
-			pericopes: [],
+			pericopes: [
+				{
+					title: "El Bautismo de Jesús",
+					verseRange: [13, 17],
+					images: [
+						{
+							type: "url",
+							path: "https://scontent-mad1-1.xx.fbcdn.net/v/t39.30808-6/325781922_912384050122561_5433882682789612871_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=bTyMh6P7NXEQ7kNvgFZ8CZw&_nc_zt=23&_nc_ht=scontent-mad1-1.xx&_nc_gid=AGGdRSsj-73UMeFgywtvy57&oh=00_AYD-sWpYB2X0wakycWawjJMa_s2V7dGH_v8bKdyvDvXn3g&oe=67468E3C",
+							altText: "El Bautismo de Jesús",
+						},
+					],
+				},
+			],
 		},
 		4: {
 			title: "Jesús es tentado y comienza su ministerio en Galilea",
@@ -28,7 +40,8 @@ const SanMateo: BookStructure = {
 						{
 							type: "url",
 							path: "https://upload.wikimedia.org/wikipedia/commons/9/96/Bloch-SermonOnTheMount.jpg",
-							altText: "Las Bienaventuranzas, pintura de Carl Bloch",
+							altText:
+								"Las Bienaventuranzas, pintura de Carl Bloch",
 						},
 					],
 				},
@@ -68,7 +81,7 @@ const SanMateo: BookStructure = {
 		},
 		14: {
 			title: "Decapitación de Juan el Bautista y Jesús alimenta a los cinco mil",
-            pericopes: [
+			pericopes: [
 				{
 					title: "Milagro de la multiplicación de los panes y los peces",
 					verseRange: [13, 21],
@@ -76,7 +89,8 @@ const SanMateo: BookStructure = {
 						{
 							type: "url",
 							path: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGRFb7RUd6IE7m5HLgFhoX_oYan0K-ekzMQRMaAarNq7Y-A_LPKue4eBnXU63qdDZWxERbLuJ_SADcUVZoQO05-GmCAstM6d6z_O1_XgdwBgMdddZUG1d3NnkP-NLEr5LKWIPZuj74llWa/s1600/images.jpg",
-							altText: "Milagro de la multiplicación de los panes y los peces",
+							altText:
+								"Milagro de la multiplicación de los panes y los peces",
 						},
 					],
 				},
@@ -100,7 +114,8 @@ const SanMateo: BookStructure = {
 						{
 							type: "url",
 							path: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Transfiguration_bloch.jpg",
-							altText: "La Transfiguración de Jesús, pintura de Carl Bloch",
+							altText:
+								"La Transfiguración de Jesús, pintura de Carl Bloch",
 						},
 					],
 				},
@@ -119,8 +134,8 @@ const SanMateo: BookStructure = {
 			pericopes: [],
 		},
 		21: {
-			title: "Entrada triunfal en Jerusalén y purificación del templo",     
-            pericopes: [
+			title: "Entrada triunfal en Jerusalén y purificación del templo",
+			pericopes: [
 				{
 					title: "Entrada triunfal en Jerusalén",
 					verseRange: [1, 11],
@@ -152,17 +167,19 @@ const SanMateo: BookStructure = {
 		},
 		26: {
 			title: "La Pasión: Última Cena y arresto de Jesús",
-			pericopes: [{
-                title: "Jesús ungido en Betania",
-                verseRange: [6, 13],
-                images: [
-                    {
-                        type: "url",
-                        path: "https://orthodoxpebbles.com/wp-content/uploads/2021/04/ea042-92817118_536607550591392_3522464827349925888_n.jpg",
-                        altText: "Jesús ungido en Betania",
-                    },
-                ],
-            }, ],
+			pericopes: [
+				{
+					title: "Jesús ungido en Betania",
+					verseRange: [6, 13],
+					images: [
+						{
+							type: "url",
+							path: "https://orthodoxpebbles.com/wp-content/uploads/2021/04/ea042-92817118_536607550591392_3522464827349925888_n.jpg",
+							altText: "Jesús ungido en Betania",
+						},
+					],
+				},
+			],
 		},
 		27: {
 			title: "Juicio, crucifixión y muerte de Jesús",
