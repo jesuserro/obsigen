@@ -478,9 +478,16 @@ const SanJuan: BookStructure = {
 					verseRange: [1, 10],
 				},
 				{
-					title: "Jesús se aparece a María Magdalena",
-					verseRange: [11, 18],
-				},
+                    title: "Jesús se aparece a María Magdalena",
+                    verseRange: [11, 18],
+                    images: [
+                        {
+                            type: "url",
+                            path: "https://upload.wikimedia.org/wikipedia/commons/8/87/Carl_Heinrich_Bloch_-_The_Resurrection.jpg",
+                            altText: "La Resurrección de Jesús",
+                        },
+                    ],
+                },
 				{
 					title: "Jesús se aparece a sus discípulos",
 					verseRange: [19, 23],

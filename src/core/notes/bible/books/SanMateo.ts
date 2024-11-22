@@ -197,7 +197,17 @@ const SanMateo: BookStructure = {
 		},
 		28: {
 			title: "La resurrección y la gran comisión",
-			pericopes: [],
+			pericopes: [{
+                title: "La Resurrección de Jesús",
+                verseRange: [1, 10],
+                images: [
+                    {
+                        type: "url",
+                        path: "https://upload.wikimedia.org/wikipedia/commons/8/87/Carl_Heinrich_Bloch_-_The_Resurrection.jpg",
+                        altText: "La Resurrección de Jesús",
+                    },
+                ],
+            }],
 		},
 	},
 };

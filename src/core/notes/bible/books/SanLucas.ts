@@ -167,8 +167,18 @@ const SanLucas: BookStructure = {
             },],
 		},
 		24: {
-			title: "La resurrección y la aparición a los discípulos en el camino a Emaús",
-			pericopes: [],
+			title: "La Resurrección y la aparición a los discípulos en el camino a Emaús",
+			pericopes: [{
+                title: "La Resurrección de Jesús",
+                verseRange: [1, 10],
+                images: [
+                    {
+                        type: "url",
+                        path: "https://upload.wikimedia.org/wikipedia/commons/8/87/Carl_Heinrich_Bloch_-_The_Resurrection.jpg",
+                        altText: "La Resurrección de Jesús",
+                    },
+                ],
+            },],
 		},
 	},
 };
