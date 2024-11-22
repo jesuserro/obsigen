@@ -482,8 +482,8 @@ const SanJuan: BookStructure = {
                     verseRange: [11, 18],
                     images: [
                         {
-                            type: "local", // Cambiar a local
-                            path: "Noli_me_tangere-Angelico.jpg", // Solo el nombre del archivo
+                            type: "local", 
+                            path: "202411221915_Noli_me_tangere-Angelico.webp", 
                             altText: "Jesús se aparece a María Magdalena",
                         },
                     ],
