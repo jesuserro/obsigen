@@ -183,7 +183,17 @@ const SanMateo: BookStructure = {
 		},
 		27: {
 			title: "Juicio, crucifixión y muerte de Jesús",
-			pericopes: [],
+			pericopes: [{
+                title: "La muerte de Jesús",
+                verseRange: [32, 56],
+                images: [
+                    {
+                        type: "url",
+                        path: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg/197px-Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg",
+                        altText: "Cristo muere en la cruz",
+                    },
+                ],
+            },],
 		},
 		28: {
 			title: "La resurrección y la gran comisión",

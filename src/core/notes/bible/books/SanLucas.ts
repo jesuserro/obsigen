@@ -154,7 +154,17 @@ const SanLucas: BookStructure = {
 		},
 		23: {
 			title: "La crucifixión, muerte y sepultura de Jesús",
-			pericopes: [],
+			pericopes: [{
+                title: "La muerte de Jesús",
+                verseRange: [26, 49],
+                images: [
+                    {
+                        type: "url",
+                        path: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg/197px-Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg",
+                        altText: "Cristo muere en la cruz",
+                    },
+                ],
+            },],
 		},
 		24: {
 			title: "La resurrección y la aparición a los discípulos en el camino a Emaús",

@@ -439,7 +439,17 @@ const SanMarcos: BookStructure = {
 		},
 		15: {
 			title: "Juicio de Jesús ante Pilato, crucifixión y sepultura",
-			pericopes: [],
+			pericopes: [{
+                title: "La muerte de Jesús",
+                verseRange: [21, 41],
+                images: [
+                    {
+                        type: "url",
+                        path: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg/197px-Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg",
+                        altText: "Cristo muere en la cruz",
+                    },
+                ],
+            },],
 		},
 		16: {
 			title: "Resurrección de Jesús y misión de los discípulos",
