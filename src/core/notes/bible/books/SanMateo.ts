@@ -119,8 +119,20 @@ const SanMateo: BookStructure = {
 			pericopes: [],
 		},
 		21: {
-			title: "Entrada triunfal en Jerusalén y purificación del templo",
-			pericopes: [],
+			title: "Entrada triunfal en Jerusalén y purificación del templo",     
+            pericopes: [
+				{
+					title: "Entrada triunfal en Jerusalén",
+					verseRange: [1, 11],
+					images: [
+						{
+							type: "url",
+							path: "https://www.hojadellunes.com/wp-content/uploads/2021/04/intocht-Jeruzalem-op-Palm-zondag.jpg",
+							altText: "Entrada triunfal en Jerusalén",
+						},
+					],
+				},
+			],
 		},
 		22: {
 			title: "Parábolas y controversias con los líderes religiosos",

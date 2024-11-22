@@ -400,7 +400,19 @@ const SanMarcos: BookStructure = {
         },
         11: {
             title: "Entrada triunfal en Jerusalén, purificación del templo y la higuera estéril",
-            pericopes: [],
+            pericopes: [
+				{
+					title: "Entrada triunfal en Jerusalén",
+					verseRange: [1, 11],
+					images: [
+						{
+							type: "url",
+							path: "https://www.hojadellunes.com/wp-content/uploads/2021/04/intocht-Jeruzalem-op-Palm-zondag.jpg",
+							altText: "Entrada triunfal en Jerusalén",
+						},
+					],
+				},
+			],
         },
         12: {
             title: "Parábola de los viñadores malvados, preguntas de los fariseos y el gran mandamiento",

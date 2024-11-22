@@ -111,7 +111,19 @@ const SanLucas: BookStructure = {
         },
         19: {
             title: "Entrada triunfal en Jerusalén y la parábola de las minas",
-            pericopes: [],
+            pericopes: [
+				{
+					title: "Entrada triunfal en Jerusalén",
+					verseRange: [28, 44],
+					images: [
+						{
+							type: "url",
+							path: "https://www.hojadellunes.com/wp-content/uploads/2021/04/intocht-Jeruzalem-op-Palm-zondag.jpg",
+							altText: "Entrada triunfal en Jerusalén",
+						},
+					],
+				},
+			],
         },
         20: {
             title: "Conflictos con los líderes religiosos",

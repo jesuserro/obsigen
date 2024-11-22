@@ -288,11 +288,18 @@ const SanJuan: BookStructure = {
                 {
                     title: "Jesús ungido en Betania",
                     verseRange: [1, 11],
-                },
+                }, 
                 {
-                    title: "La entrada triunfal en Jerusalén",
+                    title: "Entrada triunfal en Jerusalén",
                     verseRange: [12, 19],
-                },
+                    images: [
+                        {
+                            type: "url",
+                            path: "https://www.hojadellunes.com/wp-content/uploads/2021/04/intocht-Jeruzalem-op-Palm-zondag.jpg",
+                            altText: "Entrada triunfal en Jerusalén",
+                        },
+                    ],
+                },   
                 {
                     title: "Jesús predice su muerte",
                     verseRange: [20, 36],
