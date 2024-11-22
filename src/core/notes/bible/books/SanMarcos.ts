@@ -424,7 +424,17 @@ const SanMarcos: BookStructure = {
         },
         14: {
             title: "La Pasión: Última Cena, oración en Getsemaní y arresto de Jesús",
-            pericopes: [],
+            pericopes: [{
+                title: "Jesús ungido en Betania",
+                verseRange: [3, 9],
+                images: [
+                    {
+                        type: "url",
+                        path: "https://orthodoxpebbles.com/wp-content/uploads/2021/04/ea042-92817118_536607550591392_3522464827349925888_n.jpg",
+                        altText: "Jesús ungido en Betania",
+                    },
+                ],
+            }, ],
         },
         15: {
             title: "Juicio de Jesús ante Pilato, crucifixión y sepultura",

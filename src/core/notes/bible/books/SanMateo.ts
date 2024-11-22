@@ -152,7 +152,17 @@ const SanMateo: BookStructure = {
 		},
 		26: {
 			title: "La Pasión: Última Cena y arresto de Jesús",
-			pericopes: [],
+			pericopes: [{
+                title: "Jesús ungido en Betania",
+                verseRange: [6, 13],
+                images: [
+                    {
+                        type: "url",
+                        path: "https://orthodoxpebbles.com/wp-content/uploads/2021/04/ea042-92817118_536607550591392_3522464827349925888_n.jpg",
+                        altText: "Jesús ungido en Betania",
+                    },
+                ],
+            }, ],
 		},
 		27: {
 			title: "Juicio, crucifixión y muerte de Jesús",
