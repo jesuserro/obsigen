@@ -1,8 +1,13 @@
+import { App } from 'obsidian'; // Importar el tipo App
 import React from 'react';
 import { getChapterImages } from './BibleViewChapters';
 import { bibleStructure } from './BibleViewStructure';
 
-const BibleChaptersView: React.FC = () => {
+interface Props {
+  app: App; // Objeto de la aplicación
+}
+
+const BibleChaptersView: React.FC<Props> = ({ app }) => {
   return (
     <div className="bible-view-chapters">
       <div className="books-grid">
@@ -11,7 +16,7 @@ const BibleChaptersView: React.FC = () => {
             <h2>{book}</h2>
             <div className="chapters-grid">
               {Object.entries(data.chapters).map(([chapterNumber, chapterInfo]) => {
-                const images = getChapterImages(chapterInfo);
+                const images = getChapterImages(chapterInfo, app);
 
                 return (
                   <div key={chapterNumber} className="chapter-container">

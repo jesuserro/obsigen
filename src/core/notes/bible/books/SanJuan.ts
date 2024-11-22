@@ -482,9 +482,9 @@ const SanJuan: BookStructure = {
                     verseRange: [11, 18],
                     images: [
                         {
-                            type: "url",
-                            path: "https://upload.wikimedia.org/wikipedia/commons/8/87/Carl_Heinrich_Bloch_-_The_Resurrection.jpg",
-                            altText: "La Resurrección de Jesús",
+                            type: "local", // Cambiar a local
+                            path: "Noli_me_tangere-Angelico.jpg", // Solo el nombre del archivo
+                            altText: "Jesús se aparece a María Magdalena",
                         },
                     ],
                 },

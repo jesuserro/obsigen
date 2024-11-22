@@ -70,7 +70,7 @@ export class CalendarView extends ItemView {
         isBibleView: this.isBibleView, // Pasar el estado actual de la vista
       }),
       this.isBibleView
-        ? React.createElement(BibleChaptersView) // Renderizar la nueva vista
+        ? React.createElement(BibleChaptersView, { app: this.app }) // Pasar el objeto app a la nueva vista
         : React.createElement(CalendarYear, { key: this.currentYear, year: this.currentYear })
     );
     this.root.render(this.reactComponent);
