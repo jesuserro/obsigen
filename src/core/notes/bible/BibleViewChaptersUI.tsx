@@ -1,5 +1,5 @@
 import React from 'react';
-import { getChapterImage } from './BibleViewChapters';
+import { getChapterImages } from './BibleViewChapters';
 import { bibleStructure } from './BibleViewStructure';
 
 const BibleChaptersView: React.FC = () => {
@@ -11,14 +11,25 @@ const BibleChaptersView: React.FC = () => {
             <h2>{book}</h2>
             <div className="chapters-grid">
               {Object.entries(data.chapters).map(([chapterNumber, chapterInfo]) => {
-                const image = getChapterImage(chapterInfo);
+                const images = getChapterImages(chapterInfo);
 
                 return (
                   <div key={chapterNumber} className="chapter-container">
                     <h3>
                       {chapterNumber} {chapterInfo.title}
                     </h3>
-                    {image && <img src={image.path} alt={image.altText || `Imagen del capítulo ${chapterNumber}`} />}
+                    {images.length > 0 && (
+                      <div className="image-gallery">
+                        {images.map((image, index) => (
+                          <img
+                            key={index}
+                            src={image.path}
+                            alt={image.altText || `Imagen del capítulo ${chapterNumber}`}
+                            className="thumbnail"
+                          />
+                        ))}
+                      </div>
+                    )}
                   </div>
                 );
               })}

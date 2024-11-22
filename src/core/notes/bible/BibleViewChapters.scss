@@ -1,7 +1,7 @@
 .bible-view-chapters {
     padding: 20px;
-    background-color: #121212; /* Fondo general oscuro */
-    color: #e0e0e0; /* Texto claro */
+    background-color: #121212;
+    color: #e0e0e0;
   
     .books-grid {
       display: flex;
@@ -17,7 +17,7 @@
   
     .chapters-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Diseño fluido */
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 12px;
     }
   
@@ -26,45 +26,57 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      border: 1px solid #333; /* Bordes oscuros */
+      border: 1px solid #333;
       border-radius: 8px;
-      background-color: #1e1e1e; /* Fondo oscuro */
+      background-color: #1e1e1e;
       padding: 12px;
       overflow: hidden;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Sombra ligera */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
       transition: transform 0.2s ease-in-out, background-color 0.3s ease;
   
       &:hover {
-        transform: scale(1.02); /* Efecto de zoom al pasar el mouse */
-        background-color: #292929; /* Fondo ligeramente más claro */
+        transform: scale(1.02);
+        background-color: #292929;
       }
     }
   
     .chapter-container h3 {
       font-size: 1rem;
       font-weight: bold;
-      margin-bottom: 8px; /* Espaciado entre título e imagen */
-      color: #ff9800; 
+      margin-bottom: 8px;
+      color: #ff9800;
     }
   
-    .chapter-container img {
-      width: 120px; /* Tamaño reducido para thumbnails */
-      height: auto;
-      border-radius: 4px;
+    .image-gallery {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Fluido y dinámico */
+      width: 100%;
+    }
+  
+    .thumbnail {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      margin-top: 8px;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+      transition: transform 0.2s ease-in-out;
+  
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   
-    /* Estilo responsivo para pantallas pequeñas */
+    /* Responsividad */
     @media (max-width: 768px) {
       .chapters-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajuste dinámico */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       }
     }
   
     @media (max-width: 480px) {
       .chapters-grid {
-        grid-template-columns: 1fr; /* Una columna en pantallas muy pequeñas */
+        grid-template-columns: 1fr;
       }
     }
   }
