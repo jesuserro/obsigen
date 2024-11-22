@@ -483,7 +483,7 @@ const SanJuan: BookStructure = {
                     images: [
                         {
                             type: "local", 
-                            path: "202411221915_Noli_me_tangere-Angelico.webp", 
+                            path: "145006010000_Noli_me_tangere-Fra_Angelico.webp", 
                             altText: "Jesús se aparece a María Magdalena",
                         },
                     ],
