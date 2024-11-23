@@ -74,10 +74,17 @@
       }
     }
   
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .books-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+      }
+    }
+  
     @media (max-width: 480px) {
       .chapters-grid {
         grid-template-columns: 1fr;
       }
     }
   }
-  
