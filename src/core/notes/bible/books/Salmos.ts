@@ -216,7 +216,18 @@ const Salmos: BookStructure = {
         },
         54: {
             title: "Oración pidiendo ayuda contra enemigos",
-            pericopes: []
+            pericopes: [{
+                title: "Súplica de salvación frente al enemigo que persigue a muerte",
+                verseRange: [1, 9],
+                images: [
+                    {
+                        type: "url",
+                        path: "https://upload.wikimedia.org/wikipedia/commons/a/ab/Carl_Heinrich_Bloch_-_The_Annunciation.jpg",
+                        altText:
+                            "La Anunciación de Carl Heinrich Bloch representando el Prólogo",
+                    },
+                ],
+            },]
         },
         55: {
             title: "Oración por liberación de los enemigos",

@@ -34,15 +34,16 @@ export function getChapterImages(chapterInfo: any, app: App): ChapterImage[] {
 }
 
 export function openNote(app: App, book: string, chapterNumber: string, verseRange: [number, number]) {
-  const folderPath = `333 Biblia/${book}/${chapterNumber}`;
-  const files = app.vault.getFiles().filter(file => file.path.startsWith(folderPath));
-
-  const verseRangeString = `${verseRange[0]}-${verseRange[1]}`;
-  const noteFile = files.find(file => file.basename.includes(verseRangeString));
-
-  if (noteFile) {
-    app.workspace.openLinkText(noteFile.path, '', true);
-  } else {
-    console.log(`No se encontró ninguna nota con el rango de versículos ${verseRangeString} en ${folderPath}`);
+    // Ajustar la ruta de la carpeta para el caso especial de "Salmos"
+    const folderPath = book === 'Salmos' ? `333 Biblia/${book}` : `333 Biblia/${book}/${chapterNumber}`;
+    const files = app.vault.getFiles().filter(file => file.path.startsWith(folderPath));
+  
+    const verseRangeString = `${verseRange[0]}-${verseRange[1]}`;
+    const noteFile = files.find(file => file.basename.includes(verseRangeString));
+  
+    if (noteFile) {
+      app.workspace.openLinkText(noteFile.path, '', true);
+    } else {
+      console.log(`No se encontró ninguna nota con el rango de versículos ${verseRangeString} en ${folderPath}`);
+    }
   }
-}
