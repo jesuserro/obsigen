@@ -221,10 +221,9 @@ const Salmos: BookStructure = {
                 verseRange: [1, 9],
                 images: [
                     {
-                        type: "url",
-                        path: "https://upload.wikimedia.org/wikipedia/commons/a/ab/Carl_Heinrich_Bloch_-_The_Annunciation.jpg",
-                        altText:
-                            "La Anunciación de Carl Heinrich Bloch representando el Prólogo",
+                        type: "local",
+                        path: "202409211900 Salmos 54 - Súplica de salvación frente al enemigo que persigue a muerte.webp",
+                        altText: "DALL·E 2024-11-23 17.47.51 - A dramatic biblical scene illustrating Psalm 54, showing King David praying in a rugged, mountainous landscape, surrounded by a tense atmosphere.",
                     },
                 ],
             },]
@@ -371,7 +370,17 @@ const Salmos: BookStructure = {
         },
         90: {
             title: "La eternidad de Dios y la brevedad de la vida",
-            pericopes: []
+            pericopes: [{
+                title: "Súplica al Señor, santo y eterno, ante la brevedad de la vida humana y sus penalidades",
+                verseRange: [1, 17],
+                images: [
+                    {
+                        type: "local",
+                        path: "202210151235 Salmos 90 - Ante la brevedad de la vida y sus penalidades.webp",
+                        altText: "DALL·E 2024-11-23 18.07.26 - A spiritual and serene scene illustrating Psalm 90. The image features an ancient mountain range under a vast, eternal sky filled with soft golden light.",
+                    },
+                ],
+            },]
         },
         91: {
             title: "La protección del Altísimo",
