@@ -20,6 +20,13 @@ const SanJuan: BookStructure = {
 				{
 					title: "Testimonio de Juan el Bautista",
 					verseRange: [19, 28],
+                    images: [
+                        {
+                            type: "local",
+                            path: "167006010000 Niños de la Concha - Murillo.webp",
+                            altText: "Los Niños de la Concha por Bartolomé Esteban Murillo",
+                        },
+                    ],
 				},
 				{
 					title: "Bautismo de Jesús: Cordero de Dios",
