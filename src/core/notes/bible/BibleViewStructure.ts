@@ -5,9 +5,9 @@ import SanMarcos from "./books/SanMarcos";
 import SanMateo from "./books/SanMateo";
 import Santiago from "./books/Santiago";
 export interface BibleImage {
-	type: "local" | "url"; // 'local' para imágenes guardadas en el vault, 'url' para imágenes online
-	path: string; // Ruta del archivo en el vault o URL de la imagen
-	altText?: string; // Texto alternativo para la imagen, útil para accesibilidad
+	path: string;
+	altText?: string;
+    type?: "local" | "url"; // Asegúrate de que esta propiedad exista  
 }
 
 interface Pericope {
@@ -26,10 +26,10 @@ export interface BookStructure {
 }
 
 export const bibleStructure: { [book: string]: BookStructure } = {
-	"Sabiduria": Sabiduria,
+	Sabiduria: Sabiduria,
 	"San Mateo": SanMateo,
 	"San Marcos": SanMarcos,
 	"San Lucas": SanLucas,
 	"San Juan": SanJuan,
-	"Santiago": Santiago,
+	Santiago: Santiago,
 };
