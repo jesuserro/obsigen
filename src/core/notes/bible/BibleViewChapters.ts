@@ -5,6 +5,7 @@ const IMAGE_FOLDER = '050 Anexos';
 
 interface ChapterImage extends BibleImage {
   verseRange: [number, number];
+  pericopeTitle: string; // Añadir el título de la perícopa
 }
 
 export function getChapterImages(chapterInfo: any, app: App): ChapterImage[] {
@@ -19,10 +20,10 @@ export function getChapterImages(chapterInfo: any, app: App): ChapterImage[] {
             const fullPath = `${IMAGE_FOLDER}/${image.path}`;
             const file = app.vault.getAbstractFileByPath(fullPath);
             if (file) {
-              return { ...image, path: app.vault.adapter.getResourcePath(fullPath), verseRange: pericope.verseRange };
+              return { ...image, path: app.vault.adapter.getResourcePath(fullPath), verseRange: pericope.verseRange, pericopeTitle: pericope.title };
             }
           }
-          return { ...image, verseRange: pericope.verseRange }; // Mantener imágenes externas sin cambios
+          return { ...image, verseRange: pericope.verseRange, pericopeTitle: pericope.title }; // Mantener imágenes externas sin cambios
         })
         .filter((image: ChapterImage) => image.path); // Filtrar imágenes locales no encontradas
 

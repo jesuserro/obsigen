@@ -9,6 +9,7 @@ interface Props {
 
 interface ChapterImage extends BibleImage {
     verseRange: [number, number];
+    pericopeTitle: string; // Añadir el título de la perícopa
 }
 
 const BibleChaptersView: React.FC<Props> = ({ app }) => {
@@ -33,6 +34,7 @@ const BibleChaptersView: React.FC<Props> = ({ app }) => {
                                                     <a
                                                         key={index}
                                                         href="#"
+                                                        title={image.pericopeTitle} // Añadir el título de la perícopa como tooltip
                                                         onClick={(e) => {
                                                             e.preventDefault();
                                                             openNote(app, book, chapterNumber, image.verseRange);
