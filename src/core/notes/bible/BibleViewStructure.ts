@@ -1,4 +1,5 @@
 import Sabiduria from "./books/Sabiduría";
+import Salmos from "./books/Salmos";
 import SanJuan from "./books/SanJuan";
 import SanLucas from "./books/SanLucas";
 import SanMarcos from "./books/SanMarcos";
@@ -26,7 +27,8 @@ export interface BookStructure {
 }
 
 export const bibleStructure: { [book: string]: BookStructure } = {
-	Sabiduria: Sabiduria,
+	Salmos: Salmos,
+    Sabiduria: Sabiduria,
 	"San Mateo": SanMateo,
 	"San Marcos": SanMarcos,
 	"San Lucas": SanLucas,
