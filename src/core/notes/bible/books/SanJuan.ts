@@ -213,6 +213,13 @@ const SanJuan: BookStructure = {
 				{
 					title: "Jesús, la luz del mundo",
 					verseRange: [12, 20],
+                    images: [
+						{
+							type: "local",
+							path: "202411231224_Jesus-Luz-del-Mundo.webp",
+							altText: "Jesús, la luz del mundo",
+						},
+					],
 				},
 				{
 					title: "Jesús predice su partida",
