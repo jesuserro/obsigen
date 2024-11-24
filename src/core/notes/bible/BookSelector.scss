@@ -1,0 +1,25 @@
+.book-selector {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #1e1e1e;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+
+    select {
+        background-color: #ff9800;
+        color: #121212;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #e68900;
+        }
+    }
+}

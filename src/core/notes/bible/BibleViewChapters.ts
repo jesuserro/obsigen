@@ -46,4 +46,4 @@ export function openNote(app: App, book: string, chapterNumber: string, verseRan
     } else {
       console.log(`No se encontró ninguna nota con el rango de versículos ${verseRangeString} en ${folderPath}`);
     }
-  }
+}
