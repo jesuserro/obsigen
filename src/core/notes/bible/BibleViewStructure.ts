@@ -1,3 +1,7 @@
+import PrimeraCorintios from "./books/1Corintios";
+import Apocalipsis from "./books/Apocalipsis";
+import Daniel from "./books/Daniel";
+import HechosDeLosApostoles from "./books/HechosDeLosApostoles";
 import Sabiduria from "./books/Sabiduría";
 import Salmos from "./books/Salmos";
 import SanJuan from "./books/SanJuan";
@@ -29,9 +33,13 @@ export interface BookStructure {
 export const bibleStructure: { [book: string]: BookStructure } = {
 	Salmos: Salmos,
     Sabiduria: Sabiduria,
+    Daniel: Daniel,
 	"San Mateo": SanMateo,
 	"San Marcos": SanMarcos,
 	"San Lucas": SanLucas,
 	"San Juan": SanJuan,
+    Hechos: HechosDeLosApostoles,
+    "1 Corintios": PrimeraCorintios,
 	Santiago: Santiago,
+    Apocalipsis: Apocalipsis,
 };
