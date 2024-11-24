@@ -1,11 +1,11 @@
 import { App } from 'obsidian'; // Importar el tipo App
-import React, { useRef } from 'react';
+import React from 'react';
 import { getChapterImages, openNote } from './BibleViewChapters';
 import { BibleImage, bibleStructure } from './BibleViewStructure'; // Importar BibleImage desde BibleViewStructure
-import BookSelector from './BookSelectorUI'; // Importar el nuevo componente
 
 interface Props {
     app: App; // Objeto de la aplicación
+    bookRefs: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
 }
 
 interface ChapterImage extends BibleImage {
@@ -13,12 +13,9 @@ interface ChapterImage extends BibleImage {
     pericopeTitle: string; // Añadir el título de la perícopa
 }
 
-const BibleChaptersView: React.FC<Props> = ({ app }) => {
-    const bookRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
-
+const BibleChaptersView: React.FC<Props> = ({ app, bookRefs }) => {
     return (
         <div className="bible-view-chapters">
-            <BookSelector bookRefs={bookRefs} />
             <div className="books-grid">
                 {Object.entries(bibleStructure).map(([book, data]) => (
                     <div key={book} className="book-container" ref={(el) => (bookRefs.current[book] = el)}>

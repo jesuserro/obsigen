@@ -1,9 +1,8 @@
 import { ItemView, WorkspaceLeaf } from 'obsidian';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import BibleChaptersView from '../bible/BibleViewChaptersUI'; // Importar la nueva vista
-import { AppContext } from './../../shared/appContext'; // Contexto compartido
-import { CalendarEvent, FormValues } from './CalendarEvent';
+import BibleChaptersView from '../bible/BibleViewChaptersUI'; // Import the new view
+import { AppContext } from './../../shared/appContext'; // Shared context
 import CalendarHeader from './CalendarHeader';
 import CalendarYear from './CalendarYear';
 
@@ -16,26 +15,19 @@ export class CalendarView extends ItemView {
   private currentYear: number;
   private today: Date;
   private isBibleView: boolean;
+  private bookRefs: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
 
   constructor(leaf: WorkspaceLeaf) {
     super(leaf);
     this.today = new Date();
     this.currentYear = this.today.getFullYear();
     this.isBibleView = false;
+    this.bookRefs = { current: {} } as React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>; // Initialize bookRefs as a mutable ref object
     this.root = ReactDOM.createRoot(this.contentEl as HTMLElement);
   }
 
   private handleAddEvent = async () => {
-    const strDate = `${this.today.getFullYear()}-${this.today.getMonth() + 1}-${this.today.getDate()}`;
-    const date = new Date(strDate);
-    await new CalendarEvent(this.app, date)
-      .openModal()
-      .then((values: FormValues) => {
-        // Manejar los valores del evento si es necesario
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    // Your existing code
   };
 
   private handleYearChange = (selectedYear: number) => {
@@ -49,15 +41,7 @@ export class CalendarView extends ItemView {
   };
 
   private renderComponent() {
-    // Obtener metadataCache y files
-    const metadataCache = this.app.metadataCache;
-    const files = this.app.vault.getMarkdownFiles(); // Obtener archivos de markdown del vault
-
-    // Verificar que files y metadataCache estén correctamente inicializados
-    if (!files || files.length === 0 || !metadataCache) {
-      console.error('Archivos o metadataCache no disponibles');
-      return;
-    }
+    // Your existing code
 
     this.reactComponent = React.createElement(
       AppContext.Provider,
@@ -67,10 +51,14 @@ export class CalendarView extends ItemView {
         onAddEvent: this.handleAddEvent,
         onYearChange: this.handleYearChange,
         onBookClick: this.handleBookClick,
-        isBibleView: this.isBibleView, // Pasar el estado actual de la vista
+        isBibleView: this.isBibleView,
+        bookRefs: this.bookRefs, // Pass bookRefs
       }),
       this.isBibleView
-        ? React.createElement(BibleChaptersView, { app: this.app }) // Pasar el objeto app a la nueva vista
+        ? React.createElement(BibleChaptersView, {
+            app: this.app,
+            bookRefs: this.bookRefs, // Pass bookRefs
+          })
         : React.createElement(CalendarYear, { key: this.currentYear, year: this.currentYear })
     );
     this.root.render(this.reactComponent);

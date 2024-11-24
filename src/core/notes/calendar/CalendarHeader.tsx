@@ -1,4 +1,5 @@
 import React from 'react';
+import BookSelector from './../bible/BookSelectorUI';
 import CalendarYearSelect from './CalendarYearSelect';
 
 interface CalendarHeaderProps {
@@ -7,6 +8,7 @@ interface CalendarHeaderProps {
   onYearChange: (selectedYear: number) => void;
   onBookClick: () => void;
   isBibleView: boolean;
+  bookRefs: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
 }
 
 const CalendarHeader: React.FC<CalendarHeaderProps> = ({
@@ -15,6 +17,7 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
   onYearChange,
   onBookClick,
   isBibleView,
+  bookRefs,
 }) => {
   return (
     <div className="header-container">
@@ -46,12 +49,14 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
         )}
       </button>
 
-      {!isBibleView && (
+      {isBibleView ? (
+        <BookSelector bookRefs={bookRefs} />
+      ) : (
         <div className="year-selector-container">
-          <CalendarYearSelect 
-            currentYear={currentYear} 
-            onChange={onYearChange} 
-            onAddEvent={onAddEvent}  // Pasar la prop onAddEvent
+          <CalendarYearSelect
+            currentYear={currentYear}
+            onChange={onYearChange}
+            onAddEvent={onAddEvent}
           />
         </div>
       )}
