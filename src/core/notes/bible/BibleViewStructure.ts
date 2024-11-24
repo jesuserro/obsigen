@@ -1,4 +1,5 @@
 import PrimeraCorintios from "./books/1Corintios";
+import PrimeraReyes from "./books/1Reyes";
 import Apocalipsis from "./books/Apocalipsis";
 import Cantares from "./books/CantarDeLosCantares";
 import Daniel from "./books/Daniel";
@@ -7,7 +8,12 @@ import Ezequiel from "./books/Ezequiel";
 import Genesis from "./books/Genesis";
 import HechosDeLosApostoles from "./books/HechosDeLosApostoles";
 import Isaias from "./books/Isaias";
+import Jeremias from "./books/Jeremias";
 import Job from "./books/Job";
+import Jonas from "./books/Jonas";
+import Levitico from "./books/Levitico";
+import Numeros from "./books/Numeros";
+import Ruth from "./books/Ruth";
 import Sabiduria from "./books/Sabiduría";
 import Salmos from "./books/Salmos";
 import SanJuan from "./books/SanJuan";
@@ -15,6 +21,8 @@ import SanLucas from "./books/SanLucas";
 import SanMarcos from "./books/SanMarcos";
 import SanMateo from "./books/SanMateo";
 import Santiago from "./books/Santiago";
+import Siracida from "./books/Siracida";
+import Tobias from "./books/Tobias";
 
 export interface BibleImage {
 	path: string;
@@ -40,13 +48,21 @@ export interface BookStructure {
 export const bibleStructure: { [book: string]: BookStructure } = {
     Génesis: Genesis,
     Éxodo: Exodo,
+    Levítico: Levitico,
+    Números: Numeros,
     Job: Job,
+    Ruth: Ruth,
+    "1 Reyes": PrimeraReyes,
+    Tobías: Tobias,
 	Salmos: Salmos,
     "Cantar de los Cantares": Cantares,
     Sabiduria: Sabiduria,
+    Sirácida: Siracida,
     "Isaías": Isaias,
+    Jeremías: Jeremias,
     Ezequiel: Ezequiel,
     Daniel: Daniel,
+    Jonás: Jonas,
 	"San Mateo": SanMateo,
 	"San Marcos": SanMarcos,
 	"San Lucas": SanLucas,
