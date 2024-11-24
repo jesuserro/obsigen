@@ -38,7 +38,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
 	"San Marcos": SanMarcos,
 	"San Lucas": SanLucas,
 	"San Juan": SanJuan,
-    Hechos: HechosDeLosApostoles,
+    "Hechos de los Apóstoles": HechosDeLosApostoles,
     "1 Corintios": PrimeraCorintios,
 	Santiago: Santiago,
     Apocalipsis: Apocalipsis,
