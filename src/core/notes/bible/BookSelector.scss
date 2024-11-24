@@ -8,16 +8,22 @@
     margin-bottom: 20px; // Añadir margen inferior
 
     select {
-        background-color: #ff9800;
-        color: #121212;
-        border: none;
+        background-color: #333; // Fondo oscuro
+        color: #e0e0e0; // Texto claro
+        border: 1px solid #444; // Borde oscuro
         padding: 8px 12px;
         border-radius: 4px;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
 
         &:hover {
-            background-color: #e68900;
+            background-color: #444; // Fondo un poco más claro al pasar el ratón
+            border-color: #555; // Borde un poco más claro al pasar el ratón
+        }
+
+        &:focus {
+            outline: none;
+            border-color: #666; // Borde más claro al enfocar
         }
     }
 }
