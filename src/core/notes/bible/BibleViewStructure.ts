@@ -1,18 +1,27 @@
 import PrimeraCorintios from "./books/1Corintios";
+import PrimeraJuan from "./books/1Juan";
 import PrimeraReyes from "./books/1Reyes";
 import Apocalipsis from "./books/Apocalipsis";
 import Cantares from "./books/CantarDeLosCantares";
+import Colosenses from "./books/Colosenses";
 import Daniel from "./books/Daniel";
+import Deuteronomio from "./books/Deuteronomio";
+import Efesios from "./books/Efesios";
+import Ester from "./books/Ester";
 import Exodo from "./books/Exodo";
 import Ezequiel from "./books/Ezequiel";
+import Filipenses from "./books/Filipenses";
+import Galatas from "./books/Galatas";
 import Genesis from "./books/Genesis";
 import HechosDeLosApostoles from "./books/HechosDeLosApostoles";
 import Isaias from "./books/Isaias";
 import Jeremias from "./books/Jeremias";
 import Job from "./books/Job";
 import Jonas from "./books/Jonas";
+import Judit from "./books/Judit";
 import Levitico from "./books/Levitico";
 import Numeros from "./books/Numeros";
+import Romanos from "./books/Romanos";
 import Ruth from "./books/Ruth";
 import Sabiduria from "./books/Sabiduría";
 import Salmos from "./books/Salmos";
@@ -23,6 +32,7 @@ import SanMateo from "./books/SanMateo";
 import Santiago from "./books/Santiago";
 import Siracida from "./books/Siracida";
 import Tobias from "./books/Tobias";
+
 
 export interface BibleImage {
 	path: string;
@@ -50,10 +60,13 @@ export const bibleStructure: { [book: string]: BookStructure } = {
     Éxodo: Exodo,
     Levítico: Levitico,
     Números: Numeros,
+    Deuteronomio: Deuteronomio,
     Job: Job,
-    Ruth: Ruth,
+    Rut: Ruth,
     "1 Reyes": PrimeraReyes,
     Tobías: Tobias,
+    Ester: Ester,
+    Judit: Judit,
 	Salmos: Salmos,
     "Cantar de los Cantares": Cantares,
     Sabiduria: Sabiduria,
@@ -68,7 +81,13 @@ export const bibleStructure: { [book: string]: BookStructure } = {
 	"San Lucas": SanLucas,
 	"San Juan": SanJuan,
     "Hechos de los Apóstoles": HechosDeLosApostoles,
+    Romanos: Romanos,
+    Gálatas: Galatas,
+    Filipenses: Filipenses,
+    Colosenses: Colosenses,
+    Efesios: Efesios,
     "1 Corintios": PrimeraCorintios,
 	Santiago: Santiago,
+    "1 Juan": PrimeraJuan,
     Apocalipsis: Apocalipsis,
 };
