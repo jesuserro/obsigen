@@ -1,6 +1,10 @@
 import PrimeraCorintios from "./books/1Corintios";
 import PrimeraJuan from "./books/1Juan";
+import PrimeraPedro from "./books/1Pedro";
 import PrimeraReyes from "./books/1Reyes";
+import PrimeraSamuel from "./books/1Samuel";
+import PrimeraTesalonicenses from "./books/1Tesalonicenses";
+import PrimeraTimoteo from "./books/1Timoteo";
 import Apocalipsis from "./books/Apocalipsis";
 import Cantares from "./books/CantarDeLosCantares";
 import Colosenses from "./books/Colosenses";
@@ -13,12 +17,15 @@ import Ezequiel from "./books/Ezequiel";
 import Filipenses from "./books/Filipenses";
 import Galatas from "./books/Galatas";
 import Genesis from "./books/Genesis";
+import Hebreos from "./books/Hebreos";
 import HechosDeLosApostoles from "./books/HechosDeLosApostoles";
 import Isaias from "./books/Isaias";
 import Jeremias from "./books/Jeremias";
 import Job from "./books/Job";
 import Jonas from "./books/Jonas";
+import Josue from "./books/Josue";
 import Judit from "./books/Judit";
+import Jueces from "./books/Jueces";
 import Levitico from "./books/Levitico";
 import Numeros from "./books/Numeros";
 import Romanos from "./books/Romanos";
@@ -32,7 +39,6 @@ import SanMateo from "./books/SanMateo";
 import Santiago from "./books/Santiago";
 import Siracida from "./books/Siracida";
 import Tobias from "./books/Tobias";
-
 
 export interface BibleImage {
 	path: string;
@@ -61,8 +67,11 @@ export const bibleStructure: { [book: string]: BookStructure } = {
     Levítico: Levitico,
     Números: Numeros,
     Deuteronomio: Deuteronomio,
+    Josué: Josue,
+    Jueces: Jueces,
     Job: Job,
     Rut: Ruth,
+    "1 Samuel": PrimeraSamuel,
     "1 Reyes": PrimeraReyes,
     Tobías: Tobias,
     Ester: Ester,
@@ -85,9 +94,13 @@ export const bibleStructure: { [book: string]: BookStructure } = {
     Gálatas: Galatas,
     Filipenses: Filipenses,
     Colosenses: Colosenses,
+    "1 Tesalonicenses": PrimeraTesalonicenses,
+    "1 Timoteo": PrimeraTimoteo,
     Efesios: Efesios,
     "1 Corintios": PrimeraCorintios,
+    Hebreos: Hebreos,
 	Santiago: Santiago,
+    "1 Pedro": PrimeraPedro,
     "1 Juan": PrimeraJuan,
     Apocalipsis: Apocalipsis,
 };
