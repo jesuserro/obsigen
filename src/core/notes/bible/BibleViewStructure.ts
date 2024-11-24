@@ -1,7 +1,13 @@
 import PrimeraCorintios from "./books/1Corintios";
 import Apocalipsis from "./books/Apocalipsis";
+import Cantares from "./books/CantarDeLosCantares";
 import Daniel from "./books/Daniel";
+import Exodo from "./books/Exodo";
+import Ezequiel from "./books/Ezequiel";
+import Genesis from "./books/Genesis";
 import HechosDeLosApostoles from "./books/HechosDeLosApostoles";
+import Isaias from "./books/Isaias";
+import Job from "./books/Job";
 import Sabiduria from "./books/Sabiduría";
 import Salmos from "./books/Salmos";
 import SanJuan from "./books/SanJuan";
@@ -9,6 +15,7 @@ import SanLucas from "./books/SanLucas";
 import SanMarcos from "./books/SanMarcos";
 import SanMateo from "./books/SanMateo";
 import Santiago from "./books/Santiago";
+
 export interface BibleImage {
 	path: string;
 	altText?: string;
@@ -31,8 +38,14 @@ export interface BookStructure {
 }
 
 export const bibleStructure: { [book: string]: BookStructure } = {
+    Génesis: Genesis,
+    Éxodo: Exodo,
+    Job: Job,
 	Salmos: Salmos,
+    "Cantar de los Cantares": Cantares,
     Sabiduria: Sabiduria,
+    "Isaías": Isaias,
+    Ezequiel: Ezequiel,
     Daniel: Daniel,
 	"San Mateo": SanMateo,
 	"San Marcos": SanMarcos,
