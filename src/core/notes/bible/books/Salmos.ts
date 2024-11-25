@@ -402,7 +402,17 @@ const Salmos: BookStructure = {
         },
         93: {
             title: "La majestad de Dios en su reino",
-            pericopes: []
+            pericopes: [{
+                title: "El reinado eterno de Dios se refleja en la creación y en la ley",
+                verseRange: [1, 5],
+                images: [
+                    {
+                        type: "local",
+                        path: "202411231900 Salmo 93 - Reinado eterno de Dios - Cristo Rey del Universo.webp",
+                        altText: "El reinado eterno de Dios se refleja en la creación y en la ley",
+                    },
+                ],
+            }]
         },
         94: {
             title: "Oración clamando justicia",

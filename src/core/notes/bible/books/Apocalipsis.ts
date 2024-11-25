@@ -3,8 +3,18 @@ import { BookStructure } from "../BibleViewStructure";
 const Apocalipsis: BookStructure = {
 	chapters: {
 		1: {
-			title: "Introducción y visión de Cristo glorificado",
-			pericopes: []
+			title: "Saludo a las 7 Iglesias en nombre de Cristo Rey",
+			pericopes: [{
+                title: "Saludo a las 7 Iglesias en nombre de Cristo Rey",
+                verseRange: [4, 8],
+                images: [
+                    {
+                        type: "local",
+                        path: "202411231900 Apocalipsis 1 - Saludo a las 7 Iglesias en nombre de Cristo Rey.webp",
+                        altText: "Saludo a las 7 Iglesias en nombre de Cristo Rey",
+                    },
+                ],
+            },]
 		},
 		2: {
 			title: "Mensajes a las iglesias de Éfeso, Esmirna, Pérgamo y Tiatira",
