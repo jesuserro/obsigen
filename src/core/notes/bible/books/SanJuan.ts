@@ -450,8 +450,16 @@ const SanJuan: BookStructure = {
 					verseRange: [12, 27],
 				},
 				{
-					title: "Jesús ante Pilato",
+					title: "Juicio ante Pilato: Jesús Rey",
 					verseRange: [28, 40],
+                    images: [
+						{
+							type: "local",
+							path: "187106010000 Ecce homo by Antonio Ciseri.webp",
+							altText:
+								"Juicio ante Pilato: Jesús Rey",
+						},
+					],
 				},
 			],
 		},
