@@ -88,7 +88,17 @@ const Salmos: BookStructure = {
         },
         22: {
             title: "Clamor y alabanza en medio del sufrimiento",
-            pericopes: []
+            pericopes: [{
+                title: "Oración confiada de un justo, enfermo y acosado por sus enemigos, que espera y proclama la salvación de Dios",
+                verseRange: [1, 31],
+                images: [
+                    {
+                        type: "url",
+                        path: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg/197px-Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg",
+                        altText: "Oración confiada de un justo, enfermo y acosado por sus enemigos, que espera y proclama la salvación de Dios",
+                    },
+                ],
+            }]
         },
         23: {
             title: "El Señor es mi pastor",
