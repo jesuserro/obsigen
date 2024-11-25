@@ -498,7 +498,17 @@ const Salmos: BookStructure = {
         },
         107: {
             title: "La bondad de Dios hacia los redimidos",
-            pericopes: []
+            pericopes: [{
+                title: "Gracias a Dios que puede cambiar la situación del pueblo",
+                verseRange: [1, 43],
+                images: [
+                    {
+                        type: "local",
+                        path: "1633 Rembrandt_Christ_in_the_Storm_on_the_Lake_of_Galilee.webp",
+                        altText: "Gracias a Dios que puede cambiar la situación del pueblo",
+                    },
+                ],
+            }]
         },
         108: {
             title: "Oración de victoria",
