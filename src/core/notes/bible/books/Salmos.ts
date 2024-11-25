@@ -203,8 +203,18 @@ const Salmos: BookStructure = {
             pericopes: []
         },
         51: {
-            title: "Oración de arrepentimiento de David",
-            pericopes: []
+            title: "Arrepentimiento de David - Súplica de purificación del pecado y renovación del corazón",
+            pericopes: [{
+                title: "Arrepentimiento de David - Súplica de purificación del pecado y renovación del corazón",
+                verseRange: [1, 21],
+                images: [
+                    {
+                        type: "local",
+                        path: "202209190919 Salmo 51 Arrepentimiento de David - Súplica de purificación del pecado y renovación del corazón - Favorito Kote.webp",
+                        altText: "Salmo 51 Arrepentimiento de David - Súplica de purificación del pecado y renovación del corazón",
+                    },
+                ],
+            }]
         },
         52: {
             title: "El destino de los malvados",
