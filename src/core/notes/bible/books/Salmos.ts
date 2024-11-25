@@ -92,7 +92,17 @@ const Salmos: BookStructure = {
         },
         23: {
             title: "El Señor es mi pastor",
-            pericopes: []
+            pericopes: [{
+                title: "El Señor es mi pastor",
+                verseRange: [1, 6],
+                images: [
+                    {
+                        type: "local",
+                        path: "202411251850 Salmo 23 - El Señor es mi Pastor nada me falta.webp",
+                        altText: "Salmo 23 El Señor es mi pastor",
+                    },
+                ],
+            }]
         },
         24: {
             title: "El Rey de gloria",

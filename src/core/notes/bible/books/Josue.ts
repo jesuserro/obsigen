@@ -40,7 +40,17 @@ const Josue: BookStructure = {
 		},
 		10: {
 			title: "La victoria en Gabaón y el sol detenido",
-			pericopes: []
+			pericopes: [{
+                title: "El Sol y la luna se detienen en Gabaón",
+                verseRange: [9, 15],
+                images: [
+                    {
+                        type: "local",
+                        path: "181606010000 John Martin - Joshua Commanding the Sun to Stand Still by John Martin.webp",
+                        altText: "Joshua Commanding the Sun to Stand Still upon Gibeon",
+                    },
+                ],
+            }]
 		},
 		11: {
 			title: "La conquista de las ciudades del norte",
