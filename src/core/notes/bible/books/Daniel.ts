@@ -28,7 +28,17 @@ const Daniel: BookStructure = {
 		},
 		7: {
 			title: "La visión de los cuatro bestias",
-			pericopes: []
+			pericopes: [{
+                title: "La visión de los cuatro bestias y del Hijo del Hombre",
+                verseRange: [1, 14],
+                images: [
+                    {
+                        type: "local",
+                        path: "202411231900 Daniel 7 - Visión de las 4 bestias y del Hijo del Hombre.webp",
+                        altText: "La visión de los cuatro bestias y del Hijo del Hombre",
+                    },
+                ],
+            },]
 		},
 		8: {
 			title: "La visión del carnero y el macho cabrío",
