@@ -22,7 +22,17 @@ const Apocalipsis: BookStructure = {
 		},
 		3: {
 			title: "Mensajes a las iglesias de Sardis, Filadelfia y Laodicea",
-			pericopes: []
+			pericopes: [{
+                title: "Carta a la Iglesia de Laodicea - Estoy a la Puerta y Llamo",
+                verseRange: [14, 22],
+                images: [
+                    {
+                        type: "local",
+                        path: "201804221500 Dibujo infantil del Retiro de Emaús.webp",
+                        altText: "Carta a la Iglesia de Laodicea - Estoy a la Puerta y Llamo",
+                    },
+                ],
+            }]
 		},
 		4: {
 			title: "La visión del trono en el cielo",
