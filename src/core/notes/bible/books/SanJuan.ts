@@ -92,13 +92,24 @@ const SanJuan: BookStructure = {
 			title: "Jesús y Nicodemo",
 			pericopes: [
 				{
-					title: "Jesús enseña a Nicodemo",
-					verseRange: [1, 21],
+					title: "Revelación a Nicodemo",
+					verseRange: [1, 15],
                     images: [
                         {
                             type: "local",
                             path: "190907010000_John_La_Farge_-_Visit_of_Nicodemus_to_Christ-Smithsonian_American_Art_Museum.webp",
                             altText: "Jesús enseña a Nicodemo",
+                        },
+                    ],
+				},
+				{
+					title: "De tal manera amó Dios al mundo",
+					verseRange: [16, 21],
+                    images: [
+                        {
+                            type: "local",
+                            path: "",
+                            altText: "De tal manera amó Dios al mundo",
                         },
                     ],
 				},
