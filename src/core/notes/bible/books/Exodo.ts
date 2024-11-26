@@ -12,7 +12,17 @@ const Exodo: BookStructure = {
 		},
 		3: {
 			title: "El llamado de Moisés en la zarza ardiente",
-			pericopes: []
+			pericopes: [{
+                title: "Manifestación de Dios en la zarza ardiente",
+                verseRange: [1, 10],
+                images: [
+                    {
+                        type: "local",
+                        path: "1660 Burning_bush by Sébastien Bourdon.jpg",
+                        altText: "Burning_bush by Sébastien Bourdon (1616-1671)",
+                    },
+                ],
+            }]
 		},
 		4: {
 			title: "Moisés recibe señales y regresa a Egipto",
