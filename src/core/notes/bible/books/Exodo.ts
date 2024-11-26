@@ -120,7 +120,17 @@ const Exodo: BookStructure = {
 		},
 		20: {
 			title: "Los Diez Mandamientos",
-			pericopes: []
+			pericopes: [{
+                title: "Los Diez Mandamientos",
+                verseRange: [1, 21],
+                images: [
+                    {
+                        type: "local",
+                        path: "202411261800 Moses receiving 2 stone tablets of Ten Commandments on Mount Sinai (Exodus 20_1-21).webp",
+                        altText: "DALL·E 2024-11-26 17.58.33 - Moses receiving the two stone tablets of the Ten Commandments on Mount Sinai, as described in Exodus 20_1-21.",
+                    },
+                ],
+            }]
 		},
 		21: {
 			title: "Leyes sobre los esclavos y la violencia",
