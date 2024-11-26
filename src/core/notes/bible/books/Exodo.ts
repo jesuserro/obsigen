@@ -98,7 +98,17 @@ const Exodo: BookStructure = {
 		},
 		17: {
 			title: "Agua de la roca y la victoria sobre Amalec",
-			pericopes: []
+			pericopes: [{
+                title: "El agua de la roca",
+                verseRange: [1, 7],
+                images: [
+                    {
+                        type: "local",
+                        path: "split-rock-horeb-arabia-saudi.webp",
+                        altText: "El agua de la roca",
+                    },
+                ],
+            }]
 		},
 		18: {
 			title: "Jetro aconseja a Moisés",
