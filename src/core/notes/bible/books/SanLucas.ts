@@ -90,7 +90,17 @@ const SanLucas: BookStructure = {
 		},
 		10: {
 			title: "La misión de los setenta y la parábola del buen samaritano",
-			pericopes: [],
+			pericopes: [{
+                title: "Marta y a María acogen a Jesús",
+                verseRange: [38, 42],
+                images: [
+                    {
+                        type: "local",
+                        path: "1655 Christ_in_the_House_of_Martha_and_Mary - Johannes_(Jan)_Vermeer.jpg",
+                        altText: "Marta y a María acogen a Jesús",
+                    },
+                ],
+            }],
 		},
 		11: {
 			title: "La oración y los conflictos con los fariseos",
