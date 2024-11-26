@@ -158,7 +158,17 @@ const Genesis: BookStructure = {
 		},
 		32: {
 			title: "Jacob lucha con Dios",
-			pericopes: []
+			pericopes: [{
+                title: "Jacob lucha con el ángel del Señor",
+                verseRange: [22, 33],
+                images: [
+                    {
+                        type: "local",
+                        path: "1861 Eugène Delacroix in Église Saint-Sulpice (Paris).jpg",
+                        altText: "Jacob Wrestling with the Angel by Gustave Doré",
+                    },
+                ],
+            }]
 		},
 		33: {
 			title: "El encuentro de Jacob con Esaú",
