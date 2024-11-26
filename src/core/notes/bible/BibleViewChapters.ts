@@ -61,11 +61,15 @@ export function openNote(app: App, book: string, chapterNumber: string, verseRan
         return;
     }
 
-    const openFiles = app.workspace.getLeavesOfType("markdown").map(leaf => leaf.view instanceof FileView ? leaf.view.file?.path : null).filter(path => path !== null);
+    const openLeaves = app.workspace.getLeavesOfType("markdown");
+    const openFilePaths = openLeaves.map(leaf => leaf.view instanceof FileView ? leaf.view.file?.path : null).filter(path => path !== null);
   
-    if (openFiles.includes(noteFile.path)) {
-        return;
-    } 
-
-    app.workspace.openLinkText(noteFile.path, '', true);
+    if (openFilePaths.includes(noteFile.path)) {
+        const leaf = openLeaves.find(leaf => leaf.view instanceof FileView && leaf.view.file?.path === noteFile.path);
+        if (leaf) {
+            app.workspace.setActiveLeaf(leaf);
+        }
+    } else {
+        app.workspace.openLinkText(noteFile.path, '', true);
+    }
 }
