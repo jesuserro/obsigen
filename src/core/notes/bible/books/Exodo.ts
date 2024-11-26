@@ -76,7 +76,17 @@ const Exodo: BookStructure = {
 		},
 		14: {
 			title: "El paso por el Mar Rojo",
-			pericopes: []
+			pericopes: [{
+                title: "El paso por el Mar Rojo",
+                verseRange: [15, 31],
+                images: [
+                    {
+                        type: "local",
+                        path: "1956 Exodus 14 - Ten-commandments-Charlton-Heston-Red-Sea.jpg",
+                        altText: "El paso por el Mar Rojo",
+                    },
+                ],
+            }]
 		},
 		15: {
 			title: "El cántico de Moisés y el agua amarga en Mara",
