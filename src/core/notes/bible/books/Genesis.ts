@@ -72,7 +72,27 @@ const Genesis: BookStructure = {
 		},
 		18: {
 			title: "La visita de los tres hombres a Abraham",
-			pericopes: []
+			pericopes: [{
+                title: "Manifestación de Dios en Manbré",
+                verseRange: [1, 8],
+                images: [
+                    {
+                        type: "local",
+                        path: "20241011173500_Angelsatmamre-trinity-rublev-1410.jpg",
+                        altText: "Santísima Trinidad por Andrei Rublev.",
+                    },
+                ],
+            },{
+                title: "Promesa del nacimiento de Isaac",
+                verseRange: [9, 15],
+                images: [
+                    {
+                        type: "local",
+                        path: "1896-1901_Sarah_Hears_and_Laughs,_c._by_James_Tissot_(French,_1836-1902).jpg",
+                        altText: "Promesa del nacimiento de Isaac",
+                    },
+                ],
+            },]
 		},
 		19: {
 			title: "La destrucción de Sodoma y Gomorra",
