@@ -22,6 +22,16 @@ const Exodo: BookStructure = {
                         altText: "Burning_bush by Sébastien Bourdon (1616-1671)",
                     },
                 ],
+            }, {
+                title: "Revelación del Nombre del Señor",
+                verseRange: [11, 15],
+                images: [
+                    {
+                        type: "local",
+                        path: "202411261622 Yo Soy - Zarza Ardiente.webp",
+                        altText: "DALL·E 2024-11-26 16.21.57 - A powerful and spiritual depiction of the biblical scene from Exodus 3_11-15, where Moses encounters the burning bush.",
+                    },
+                ],
             }]
 		},
 		4: {
