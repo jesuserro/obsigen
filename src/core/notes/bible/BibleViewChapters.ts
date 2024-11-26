@@ -39,7 +39,8 @@ export function openNote(app: App, book: string, chapterNumber: string, verseRan
     const files = app.vault.getFiles().filter(file => file.path.startsWith(folderPath));
   
     const verseRangeString = `${verseRange[0]}-${verseRange[1]}`;
-    const noteFile = files.find(file => file.basename.includes(verseRangeString));
+    const chapterString = `${chapterNumber}`;
+    const noteFile = files.find(file => file.basename.includes(verseRangeString) && file.basename.includes(chapterString));
   
     if (noteFile) {
       app.workspace.openLinkText(noteFile.path, '', true);
