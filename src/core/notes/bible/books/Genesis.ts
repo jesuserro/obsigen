@@ -132,7 +132,17 @@ const Genesis: BookStructure = {
 		},
 		28: {
 			title: "El sueño de Jacob en Betel",
-			pericopes: []
+			pericopes: [{
+                title: "Aparición de Dios a Jacob en el Sueño de la Escalera de Betel",
+                verseRange: [10, 22],
+                images: [
+                    {
+                        type: "local",
+                        path: "1728 _Jacobs_Ladder by Gerard Hoet.jpg",
+                        altText: "Jacob's Ladder by Gerard Hoet",
+                    },
+                ],
+            }]
 		},
 		29: {
 			title: "Jacob se casa con Lea y Raquel",
