@@ -11,6 +11,8 @@ interface Props {
 interface ChapterImage extends BibleImage {
     verseRange: [number, number];
     pericopeTitle: string; // Añadir el título de la perícopa
+    title: string; // Añadir el título con referencia bíblica
+    alt: string; // Añadir el alt con referencia bíblica
 }
 
 const BibleChaptersView: React.FC<Props> = ({ app, bookRefs }) => {
@@ -22,7 +24,7 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs }) => {
                         <h2>{book}</h2>
                         <div className="chapters-grid">
                             {Object.entries(data.chapters).map(([chapterNumber, chapterInfo]) => {
-                                const images = getChapterImages(chapterInfo, app);
+                                const images = getChapterImages(chapterInfo, app, book, chapterNumber);
 
                                 return (
                                     <div key={chapterNumber} className="chapter-container">
@@ -35,7 +37,7 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs }) => {
                                                     <a
                                                         key={index}
                                                         href="#"
-                                                        title={image.pericopeTitle} // Añadir el título de la perícopa como tooltip
+                                                        title={image.title} // Añadir el título con referencia bíblica como tooltip
                                                         onClick={(e) => {
                                                             e.preventDefault();
                                                             openNote(app, book, chapterNumber, image.verseRange);
@@ -43,7 +45,7 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs }) => {
                                                     >
                                                         <img
                                                             src={image.path}
-                                                            alt={image.altText || `Imagen del capítulo ${chapterNumber}`}
+                                                            alt={image.alt} // Añadir el alt con referencia bíblica
                                                             className="thumbnail"
                                                         />
                                                     </a>
