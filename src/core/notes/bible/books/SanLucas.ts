@@ -188,7 +188,18 @@ const SanLucas: BookStructure = {
                         altText: "La Resurrección de Jesús",
                     },
                 ],
-            },],
+            },
+            {
+                title: "La aparición a los discípulos en el camino a Emaús",
+                verseRange: [13, 35],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-27 13.06.02 - Emaús - Luke 24_13-35.webp",
+                        altText: "La Resurrección de Jesús",
+                    },
+                ],
+            }],
 		},
 	},
 };
