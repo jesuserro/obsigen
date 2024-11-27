@@ -184,7 +184,7 @@ const SanLucas: BookStructure = {
                 images: [
                     {
                         type: "url",
-                        path: "https://upload.wikimedia.org/wikipedia/commons/8/87/Carl_Heinrich_Bloch_-_The_Resurrection.jpg",
+                        path: "",
                         altText: "La Resurrección de Jesús",
                     },
                 ],
