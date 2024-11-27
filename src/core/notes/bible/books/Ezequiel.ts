@@ -148,7 +148,17 @@ const Ezequiel: BookStructure = {
 		},
 		37: {
 			title: "El valle de los huesos secos y la reunificación de Israel",
-			pericopes: []
+			pericopes: [{
+                title: "El valle de los huesos secos",
+                verseRange: [1, 14],
+                images: [
+                    {
+                        type: "local",
+                        path: "202411271239 DALL·E 2024-11-27 12.29.15 - A dramatic biblical scene depicting the Valley of Dry Bones from Ezekiel 37_1-14.webp",
+                        altText: "Jesús resucita a Lázaro",
+                    },
+                ],
+            }]
 		},
 		38: {
 			title: "La profecía contra Gog",
