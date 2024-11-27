@@ -195,7 +195,7 @@ const SanLucas: BookStructure = {
                 images: [
                     {
                         type: "local",
-                        path: "DALL·E 2024-11-27 13.06.02 - Emaús - Luke 24_13-35.webp",
+                        path: "1877 Gang_nach_Emmaus by Robert Zünd.jpg",
                         altText: "La Resurrección de Jesús",
                     },
                 ],
