@@ -96,7 +96,7 @@ const SanLucas: BookStructure = {
                 images: [
                     {
                         type: "local",
-                        path: "DALL·E 2024-11-27 18.39.16 - A biblical scene illustrating the Parable of the Good Samaritan from Luke 10_25-37.webp",
+                        path: "1670 Parable of the Good Samaritan by Jan Wijnants.jpg",
                         altText: "Parábola del buen samaritano",
                     },
                 ],
@@ -130,7 +130,27 @@ const SanLucas: BookStructure = {
 		},
 		15: {
 			title: "Parábolas de la oveja perdida, la moneda perdida y el hijo pródigo",
-			pericopes: [],
+			pericopes: [{
+                title: "Parábola de la oveja perdida",
+                verseRange: [3, 7],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-27 19.11.16 - Parable of the Lost Sheep from Luke 15_3-7.webp",
+                        altText: "Parábola de la oveja perdida",
+                    },
+                ],
+            },{
+                title: "Parábola del Hijo Pródigo",
+                verseRange: [11, 32],
+                images: [
+                    {
+                        type: "local",
+                        path: "1668 Rembrandt-Return_of_the_Prodigal_Son.jpg",
+                        altText: "Parábola del buen samaritano",
+                    },
+                ],
+            }],
 		},
 		16: {
 			title: "Parábola del administrador astuto y del rico y Lázaro",
