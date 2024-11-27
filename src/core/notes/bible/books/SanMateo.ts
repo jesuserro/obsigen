@@ -94,6 +94,17 @@ const SanMateo: BookStructure = {
 						},
 					],
 				},
+				{
+					title: "Jesús camina sobre el agua",
+					verseRange: [22, 33],
+					images: [
+						{
+							type: "local",
+							path: "DALL·E 2024-11-27 17.21.37 - Mt 14 22-33 - A divine scene depicting Jesus Christ walking on water during the night.webp",
+							altText:"Jesús camina sobre el agua",
+						},
+					],
+				},
 			],
 		},
 		15: {
