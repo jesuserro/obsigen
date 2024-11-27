@@ -125,9 +125,9 @@ const SanMarcos: BookStructure = {
 					verseRange: [1, 12],
 					images: [
 						{
-							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/2/25/Healing_of_the_Paralytic.jpg",
-							altText: "Jesús sana a un paralítico",
+							type: "local",
+							path: "202411271143 Mc 2 - Curación del paralítico en Cafarnaún.webp",
+							altText: "DALL·E 2024-11-27 11.42.50 - A biblical scene illustrating the healing of the paralytic as described in Mark 2_1-12.",
 						},
 					],
 				},
@@ -137,7 +137,7 @@ const SanMarcos: BookStructure = {
 					images: [
 						{
 							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Calling_of_Levi.jpg",
+							path: "",
 							altText: "Jesús llama a Leví",
 						},
 					],
@@ -161,7 +161,7 @@ const SanMarcos: BookStructure = {
 					images: [
 						{
 							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Healing",
+							path: "",
 							altText: "Jesús sana a un hombre con una mano seca",
 						},
 					],
@@ -172,7 +172,7 @@ const SanMarcos: BookStructure = {
 					images: [
 						{
 							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Healing_the_Sick.jpg",
+							path: "",
 							altText: "Jesús sana a muchos enfermos",
 						},
 					],
@@ -183,7 +183,7 @@ const SanMarcos: BookStructure = {
 					images: [
 						{
 							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Calling_of_the_Twelve_Apostles.jpg",
+							path: "",
 							altText: "Jesús elige a los doce apóstoles",
 						},
 					],
@@ -207,7 +207,7 @@ const SanMarcos: BookStructure = {
 					images: [
 						{
 							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Parable_of_the_Sower.jpg",
+							path: "",
 							altText: "Parábola del sembrador",
 						},
 					],
@@ -230,7 +230,7 @@ const SanMarcos: BookStructure = {
 					images: [
 						{
 							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Calm_of_the_Storm.jpg",
+							path: "",
 							altText: "Jesús calma la tormenta",
 						},
 					],
@@ -246,7 +246,7 @@ const SanMarcos: BookStructure = {
 					images: [
 						{
 							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Exorcism_of_the_Gerasene_demoniac.jpg",
+							path: "",
 							altText: "Jesús sana a un endemoniado",
 						},
 					],
@@ -257,7 +257,7 @@ const SanMarcos: BookStructure = {
 					images: [
 						{
 							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Healing",
+							path: "",
 							altText:
 								"Jesús sana a una mujer y resucita a una niña",
 						},
@@ -354,7 +354,7 @@ const SanMarcos: BookStructure = {
 					images: [
 						{
 							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Syro-Ph",
+							path: "",
 							altText: "La fe de la mujer sirofenicia",
 						},
 					],
@@ -365,7 +365,7 @@ const SanMarcos: BookStructure = {
 					images: [
 						{
 							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Healing_the_Deaf_and_Dumb.jpg",
+							path: "",
 							altText: "Jesús sana a un sordo y mudo",
 						},
 					],
