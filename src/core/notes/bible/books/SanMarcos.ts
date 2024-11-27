@@ -318,8 +318,8 @@ const SanMarcos: BookStructure = {
 					verseRange: [45, 52],
 					images: [
 						{
-							type: "url",
-							path: "",
+							type: "local",
+							path: "DALL·E 2024-11-27 17.59.43 - Mc 6 45-52 - A serene and dramatic scene of Jesus walking on the water of a stormy sea at night.webp",
 							altText: "Jesús camina sobre el agua",
 						},
 					],

@@ -354,8 +354,8 @@ const Salmos: BookStructure = {
                 images: [
                     {
                         type: "local",
-                        path: "202411241405 Salmo 77 - Cristo Sobre las Aguas.webp",
-                        altText: "DALL·E 2024-11-24 14.07.53 - A dramatic nighttime depiction of Christ walking on the water towards a boat of struggling disciples.",
+                        path: "DALL·E 2024-11-27 17.59.43 - Mc 6 45-52 - A serene and dramatic scene of Jesus walking on the water of a stormy sea at night.webp",
+                        altText: "DALL·E 2024-11-27 17.59.43 - Mc 6 45-52 - A serene and dramatic scene of Jesus walking on the water of a stormy sea at night.",
                     },
                 ],
             },]
