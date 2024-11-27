@@ -481,8 +481,18 @@ const Salmos: BookStructure = {
             pericopes: []
         },
         103: {
-            title: "Alabanza por la misericordia de Dios",
-            pericopes: []
+            title: "Dios sana enfermedades y perdona los pecados",
+            pericopes: [{
+                title: "Dios sana enfermedades y perdona los pecados",
+                verseRange: [1, 43],
+                images: [
+                    {
+                        type: "local",
+                        path: "202411271143 Mc 2 - Curación del paralítico en Cafarnaún.webp",
+                        altText: "Dios sana enfermedades y perdona los pecados",
+                    },
+                ],
+            }]
         },
         104: {
             title: "La grandeza de Dios en la creación",
