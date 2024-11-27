@@ -229,8 +229,8 @@ const SanMarcos: BookStructure = {
 					verseRange: [35, 41],
 					images: [
 						{
-							type: "url",
-							path: "",
+							type: "local",
+							path: "1633 Rembrandt_Christ_in_the_Storm_on_the_Lake_of_Galilee.webp",
 							altText: "Jesús calma la tormenta",
 						},
 					],
