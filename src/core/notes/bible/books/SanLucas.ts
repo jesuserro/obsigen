@@ -91,6 +91,16 @@ const SanLucas: BookStructure = {
 		10: {
 			title: "La misión de los setenta y la parábola del buen samaritano",
 			pericopes: [{
+                title: "Parábola del buen samaritano",
+                verseRange: [25, 37],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-27 18.39.16 - A biblical scene illustrating the Parable of the Good Samaritan from Luke 10_25-37.webp",
+                        altText: "Parábola del buen samaritano",
+                    },
+                ],
+            }, {
                 title: "Marta y a María acogen a Jesús",
                 verseRange: [38, 42],
                 images: [
