@@ -241,13 +241,13 @@ const SanMarcos: BookStructure = {
 			title: "Milagros: el endemoniado gadareno, la hija de Jairo y la mujer con flujo de sangre",
 			pericopes: [
 				{
-					title: "Jesús sana a un endemoniado",
+					title: "La curación del endemoniado de Gerasa",
 					verseRange: [1, 20],
 					images: [
 						{
-							type: "url",
-							path: "",
-							altText: "Jesús sana a un endemoniado",
+							type: "local",
+							path: "DALL·E 2024-11-27 17.04.32 - A dramatic biblical scene depicting the healing of the demon-possessed man in the story of Mark 5_1-20.webp",
+							altText: "La curación del endemoniado de Gerasa",
 						},
 					],
 				},
