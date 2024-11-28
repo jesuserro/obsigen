@@ -68,7 +68,37 @@ const PrimeraReyes: BookStructure = {
 		},
 		17: {
 			title: "Elías es alimentado por los cuervos y la viuda",
-			pericopes: []
+			pericopes: [{
+                title: "Anuncio de la sequía",
+                verseRange: [1, 4],
+                images: [
+                    {
+                        type: "local",
+                        path: "",
+                        altText: "",
+                    },
+                ],
+            }, {
+                title: "Elías es alimentado por los cuervos",
+                verseRange: [5, 7],
+                images: [
+                    {
+                        type: "local",
+                        path: "",
+                        altText: "",
+                    },
+                ],
+            }, {
+                title: "Multiplicación de la harina y el aceite de la viuda de Sarepta",
+                verseRange: [8, 16],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-28 12.57.38 - 1 Reyes 17 8-16 - Multiplicación harina y aceite.webp",
+                        altText: "Multiplicación de la harina y el aceite de la viuda de Sarepta",
+                    },
+                ],
+            }]
 		},
 		18: {
 			title: "Elías y los profetas de Baal en el Carmelo",
