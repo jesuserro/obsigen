@@ -152,7 +152,17 @@ const Job: BookStructure = {
 		},
 		38: {
 			title: "Dios responde desde el torbellino",
-			pericopes: []
+			pericopes: [{
+                title: "Las maravillas de la creación",
+                verseRange: [4, 38],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-28 16.20.31 - Job 38_4-38 - Dónde estabas tú.webp",
+                        altText: "DALL·E 2024-11-28 16.20.31 - Job 38_4-38 - Dónde estabas tú",
+                    },
+                ],
+            }]
 		},
 		39: {
 			title: "La sabiduría de Dios en la creación",
@@ -160,7 +170,17 @@ const Job: BookStructure = {
 		},
 		40: {
 			title: "Dios desafía a Job y describe a Behemot",
-			pericopes: []
+			pericopes: [{
+                title: "La fuerza de Behemot",
+                verseRange: [15, 24],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-28 16.35.03 - Behemoth - Job 40_15-24.webp",
+                        altText: "DALL·E 2024-11-28 16.35.03 - Behemoth - Job 40_15-24",
+                    },
+                ],
+            }]
 		},
 		41: {
 			title: "Dios describe a Leviatán",
