@@ -84,7 +84,7 @@ const PrimeraReyes: BookStructure = {
                 images: [
                     {
                         type: "local",
-                        path: "",
+                        path: "DALL·E 2024-11-28 15.52.12 - 1 Kings 17_5-7 Elías alimentado por cuervos.webp",
                         altText: "",
                     },
                 ],
