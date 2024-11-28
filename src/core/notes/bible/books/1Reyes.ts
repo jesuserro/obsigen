@@ -76,7 +76,37 @@ const PrimeraReyes: BookStructure = {
 		},
 		19: {
 			title: "Elías huye al monte Horeb",
-			pericopes: []
+			pericopes: [{
+                title: "Elías huye al monte Horeb",
+                verseRange: [1, 8],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-28 12.25.30 - 1 Reyes 19 1-8 _Prophet Elijah and an angel.webp",
+                        altText: "Elías huye al monte Horeb",
+                    },
+                ],
+            },{
+                title: "Encuentro de Elías con El Señor en el monte Horeb",
+                verseRange: [9, 18],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-28 12.31.28 - 1Reyes 19 9-18 - Prophet Elijah finds God.webp",
+                        altText: "DALL·E 2024-11-28 12.31.28 - 1Reyes 19 9-18 - Prophet Elijah finds God",
+                    },
+                ],
+            },{
+                title: "Vocación de Eliseo",
+                verseRange: [19, 21],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-28 12.42.28 - Calling of Elisha by Elijah 1 Kings 19_19-21.webp",
+                        altText: "DALL·E 2024-11-28 12.42.28 - Calling of Elisha by Elijah 1 Kings 19_19-21",
+                    },
+                ],
+            },]
 		},
 		20: {
 			title: "La victoria de Acab sobre Siria",
