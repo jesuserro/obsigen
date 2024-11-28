@@ -24,7 +24,17 @@ const SegundaSamuel: BookStructure = {
 		},
 		6: {
 			title: "El arca de Dios es llevada a Jerusalén",
-			pericopes: []
+			pericopes: [{
+                title: "David lleva el Arca a Jerusalén alegre y bailando",
+                verseRange: [1, 5],
+                images: [
+                    {
+                        type: "local",
+                        path: "David lleva Arca a Jerusalén alegre bailando (2 Samuel 6, 1-5).webp",
+                        altText: "David lleva el Arca a Jerusalén alegre y bailando",
+                    },
+                ],
+            }]
 		},
 		7: {
 			title: "El pacto de Dios con David",
