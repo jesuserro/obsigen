@@ -8,7 +8,17 @@ const Sabiduria: BookStructure = {
         },
         2: {
             title: "El pensamiento de los impíos y el destino de los justos",
-            pericopes: []
+            pericopes: [{
+                title: "Insidias contra los justos",
+                verseRange: [10, 20],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-28 16.04.54 - Insidias Contra el Justo (Wisdom 2_10-20).webp",
+                        altText: "Insidias contra los justos",
+                    },
+                ],
+            }]
         },
         3: {
             title: "La recompensa de los justos y el castigo de los impíos",
