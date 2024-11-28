@@ -124,7 +124,17 @@ const Jeremias: BookStructure = {
 		},
 		31: {
 			title: "El nuevo pacto",
-			pericopes: []
+			pericopes: [{
+                title: "Nueva alianza - Pacto nº6 en Cristo",
+                verseRange: [31, 34],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-28 20.00.30 - New Covenant 6 - Jeremiah 31_31-34.webp",
+                        altText: "",
+                    },
+                ],
+            }]
 		},
 		32: {
 			title: "La compra de un campo como señal de esperanza",
