@@ -36,7 +36,17 @@ const Genesis: BookStructure = {
 		},
 		9: {
 			title: "El pacto de Dios con Noé",
-			pericopes: []
+			pericopes: [{
+                title: "Alianza de Dios con Noé - Pacto nº2 Noáico",
+                verseRange: [1, 17],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-28 18.09.31 - God's covenant number 2 - with Noah Genesis 9_1-17.webp",
+                        altText: "DALL·E 2024-11-28 18.09.31 - God's covenant number 2 - with Noah Genesis 9_1-17",
+                    },
+                ],
+            }]
 		},
 		10: {
 			title: "Las naciones descendientes de Noé",
@@ -71,13 +81,13 @@ const Genesis: BookStructure = {
 		15: {
 			title: "El pacto de Dios con Abram",
 			pericopes: [{
-                title: "Alianza de Dios con Abrahám - Pacto nº4 Abrámico",
+                title: "Alianza de Dios con Abrahám - Pacto nº3 Abrámico",
                 verseRange: [1, 21],
                 images: [
                     {
                         type: "local",
-                        path: "DALL·E 2024-11-28 17.56.14 - God's covenant number 4 - with Abraham Genesis 15_1-21.webp",
-                        altText: "DALL·E 2024-11-28 17.56.14 - God's covenant number 4 - with Abraham Genesis 15_1-21",
+                        path: "DALL·E 2024-11-28 17.56.14 - God's covenant number 3 - with Abraham Genesis 15_1-21.webp",
+                        altText: "DALL·E 2024-11-28 17.56.14 - God's covenant number 3 - with Abraham Genesis 15_1-21",
                     },
                 ],
             }]
