@@ -32,7 +32,17 @@ const Hebreos: BookStructure = {
 		},
 		8: {
 			title: "El nuevo pacto",
-			pericopes: []
+			pericopes: [{
+                title: "Cristo es Sumo Sacerdote de una Nueva Alianza que sustituye a la Antigua (Hb 8, 1-13)",
+                verseRange: [1, 13],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-28 20.15.04 - Hb 8 1-13 - Jesus Christ as the High Priest of a New Covenant.webp",
+                        altText: "Cristo es Sumo Sacerdote de una Nueva Alianza que sustituye a la Antigua (Hb 8, 1-13)",
+                    },
+                ],
+            }]
 		},
 		9: {
 			title: "El tabernáculo y el sacrificio de Cristo",
