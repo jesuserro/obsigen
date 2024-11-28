@@ -190,7 +190,17 @@ const SanLucas: BookStructure = {
 		},
 		22: {
 			title: "Última Cena, arresto y juicio de Jesús",
-			pericopes: [],
+			pericopes: [{
+                title: "Nuevo Pacto en Cristo nº6 - Institución Sagrada Eucaristía",
+                verseRange: [14, 20],
+                images: [
+                    {
+                        type: "local",
+                        path: "1495 The_Last_Supper_-_Leonardo_Da_Vinci.webp",
+                        altText: "1495 The Last Supper - Leonardo Da Vinci",
+                    },
+                ],
+            }],
 		},
 		23: {
 			title: "La crucifixión, muerte y sepultura de Jesús",
