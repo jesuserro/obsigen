@@ -70,7 +70,17 @@ const Genesis: BookStructure = {
 		},
 		15: {
 			title: "El pacto de Dios con Abram",
-			pericopes: []
+			pericopes: [{
+                title: "Alianza de Dios con Abrahám - Pacto nº4 Abrámico",
+                verseRange: [1, 21],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-28 17.56.14 - God's covenant number 4 - with Abraham Genesis 15_1-21.webp",
+                        altText: "DALL·E 2024-11-28 17.56.14 - God's covenant number 4 - with Abraham Genesis 15_1-21",
+                    },
+                ],
+            }]
 		},
 		16: {
 			title: "El nacimiento de Ismael",
