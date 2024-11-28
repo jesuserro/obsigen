@@ -56,7 +56,17 @@ const Genesis: BookStructure = {
 		},
 		14: {
 			title: "Abram rescata a Lot",
-			pericopes: []
+			pericopes: [{
+                title: "Bendición de Melquisedec a Abraham",
+                verseRange: [17, 24],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-28 17.14.20 - Blessing of Melchizedek to Abraham Genesis 14_17-24.webp",
+                        altText: "DALL·E 2024-11-28 17.14.20 - Blessing of Melchizedek to Abraham Genesis 14_17-24",
+                    },
+                ],
+            },]
 		},
 		15: {
 			title: "El pacto de Dios con Abram",
