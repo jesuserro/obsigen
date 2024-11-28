@@ -116,7 +116,17 @@ const Exodo: BookStructure = {
 		},
 		19: {
 			title: "Dios hace un pacto con Israel en el Sinaí",
-			pericopes: []
+			pericopes: [{
+                title: "Alianza con Moisés en el monte Sinaí - Pacto nº4 Sinaítico",
+                verseRange: [3, 9],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-28 18.37.39 - Sinai Covenant number 4 - with Moses Gn 19 3-9.webp",
+                        altText: "DALL·E 2024-11-28 18.37.39 - Sinai Covenant number 4 - with Moses Gn 19 3-9",
+                    },
+                ],
+            }]
 		},
 		20: {
 			title: "Los Diez Mandamientos",
