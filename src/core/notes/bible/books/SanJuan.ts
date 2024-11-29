@@ -124,11 +124,11 @@ const SanJuan: BookStructure = {
 			pericopes: [
 				{
 					title: "Jesús y la mujer samaritana",
-					verseRange: [1, 26],
+					verseRange: [1, 42],
 					images: [
 						{
-							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Carl_Heinrich_Bloch_-_Woman_at_the_Well.jpg/800px-Carl_Heinrich_Bloch_-_Woman_at_the_Well.jpg",
+							type: "local",
+							path: "Jn 4 1-42 Samaritana de Sicar.webp",
 							altText: "Jesús y la mujer samaritana",
 						},
 					],
