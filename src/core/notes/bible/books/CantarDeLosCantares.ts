@@ -32,7 +32,17 @@ const Cantares: BookStructure = {
 		},
 		8: {
 			title: "El poder del amor",
-			pericopes: []
+			pericopes: [{
+                title: "Epílogo",	
+                verseRange: [6, 7],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-29 17.51.16 - Epilogue of the Song of Songs (Ct 8_6-7) Perpetuity of love.webp",
+                        altText: "",
+                    },
+                ],
+            }]
 		},
 	},
 };
