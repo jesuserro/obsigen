@@ -4,7 +4,17 @@ const Jeremias: BookStructure = {
 	chapters: {
 		1: {
 			title: "El llamado de Jeremías",
-			pericopes: []
+			pericopes: [{
+                title: "La vocación de Jeremías",
+                verseRange: [4, 10],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-29 15.36.44 - Jeremiah's calling as described in Jr 1 4-10.webp",
+                        altText: "",
+                    },
+                ],
+            }]
 		},
 		2: {
 			title: "La infidelidad de Israel",
