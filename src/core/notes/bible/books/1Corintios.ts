@@ -52,7 +52,17 @@ const PrimeraCorintios: BookStructure = {
 		},
 		13: {
 			title: "El himno al amor",
-			pericopes: []
+			pericopes: [{
+                title: "El himno al amor",
+                verseRange: [1, 13],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-29 16.01.21 - Himno al amor 1 Corintios 13 1-13.webp",
+                        altText: "DALL·E 2024-11-29 16.01.21 - Himno al amor 1 Corintios 13 1-13",
+                    },
+                ],
+            }]
 		},
 		14: {
 			title: "El orden en el uso de los dones espirituales",

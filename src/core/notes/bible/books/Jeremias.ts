@@ -11,7 +11,7 @@ const Jeremias: BookStructure = {
                     {
                         type: "local",
                         path: "DALL·E 2024-11-29 15.36.44 - Jeremiah's calling as described in Jr 1 4-10.webp",
-                        altText: "",
+                        altText: "DALL·E 2024-11-29 15.36.44 - Jeremiah's calling as described in Jr 1 4-10",
                     },
                 ],
             }]
