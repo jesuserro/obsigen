@@ -32,7 +32,17 @@ const Tobias: BookStructure = {
 		},
 		8: {
 			title: "La noche de bodas y la oración de Tobías y Sara",
-			pericopes: []
+			pericopes: [{
+                title: "La noche de bodas y de Tobías y Sara",
+                verseRange: [1, 9],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-29 16.57.18 - Tobias and Sarah on their wedding night (Tb 8_1-9).webp",
+                        altText: "Tobias and Sarah on their wedding night",
+                    },
+                ],
+            }]
 		},
 		9: {
 			title: "Rafael recupera la dote de Sara",
