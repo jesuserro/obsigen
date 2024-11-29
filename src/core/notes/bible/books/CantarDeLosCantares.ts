@@ -8,7 +8,17 @@ const Cantares: BookStructure = {
 		},
 		2: {
 			title: "El amado y la amada disfrutan del amor",
-			pericopes: []
+			pericopes: [{
+                title: "Canto Segundo - Celebración del amor - La Primavera",	
+                verseRange: [8, 17],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-29 18.54.10 - Spring landscape inspired by the Song of Songs 2_8-17.webp",
+                        altText: "DALL·E 2024-11-29 18.54.10 - Spring landscape inspired by the Song of Songs 2_8-17",
+                    },
+                ],
+            }]
 		},
 		3: {
 			title: "La búsqueda del amado y su llegada",
