@@ -4,7 +4,17 @@ const Cantares: BookStructure = {
 	chapters: {
 		1: {
 			title: "El anhelo de amor",
-			pericopes: []
+			pericopes: [{
+                title: "Canto Primero - Las Encuentro - Las Promesas",	
+                verseRange: [5, 17],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-29 19.21.21 - Song of Solomon 1_5-17.webp",
+                        altText: "DALL·E 2024-11-29 19.21.21 - Song of Solomon 1_5-17",
+                    },
+                ],
+            }]
 		},
 		2: {
 			title: "El amado y la amada disfrutan del amor",
@@ -30,7 +40,17 @@ const Cantares: BookStructure = {
 		},
 		5: {
 			title: "El sueño de la esposa y su búsqueda del amado",
-			pericopes: []
+			pericopes: [{
+                title: "Canto Séptimo: Excelencias del amado y posesión mutua",	
+                verseRange: [9, 16],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-29 19.36.12 - Song of Songs - Chapter 5 verses 9-16.webp",
+                        altText: "",
+                    },
+                ],
+            }]
 		},
 		6: {
 			title: "El amado y la belleza de la esposa",
