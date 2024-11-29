@@ -530,7 +530,17 @@ const Salmos: BookStructure = {
         },
         110: {
             title: "El reinado del Mesías",
-            pericopes: []
+            pericopes: [{
+                title: "El Señor otorga al rey dignidad divina y sacerdotal según el orden de Melquisedec",
+                verseRange: [1, 7],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-29 21.38.46 - Psal 110 - Divine king emphasizing his priestly role.webp",
+                        altText: "DALL·E 2024-11-29 21.38.46 - Psal 110 - Divine king emphasizing his priestly role",
+                    },
+                ],
+            }]
         },
         111: {
             title: "Alabanza por las obras de Dios",
