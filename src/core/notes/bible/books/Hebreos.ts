@@ -19,8 +19,18 @@ const Hebreos: BookStructure = {
 			pericopes: []
 		},
 		5: {
-			title: "Jesús, el gran sumo sacerdote",
-			pericopes: []
+			title: "Jesús, el gran sumo sacerdote eterno",
+			pericopes: [{
+                title: "Cristo ha sido constituido Sumo Sacerdote eterno por Dios Padre según el orden de Melquisedec",
+                verseRange: [1, 10],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-29 21.49.49 - Jesus Christ as the eternal High Priest as Melquisedec.webp",
+                        altText: "",
+                    },
+                ],
+            }]
 		},
 		6: {
 			title: "La perseverancia en la fe",
