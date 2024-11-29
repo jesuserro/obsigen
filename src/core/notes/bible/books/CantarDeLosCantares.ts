@@ -36,7 +36,17 @@ const Cantares: BookStructure = {
 		},
 		4: {
 			title: "El amor del esposo por su esposa",
-			pericopes: []
+			pericopes: [{
+                title: "Canto quinto: belleza de la esposa - Discurso de un esposo fiel",	
+                verseRange: [1, 15],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-29 20.08.49 - Song of Songs 4_8 and 4_12.webp",
+                        altText: "DALL·E 2024-11-29 20.08.49 - Song of Songs 4_8 and 4_12",
+                    },
+                ],
+            }]
 		},
 		5: {
 			title: "El sueño de la esposa y su búsqueda del amado",
