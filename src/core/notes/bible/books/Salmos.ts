@@ -562,7 +562,17 @@ const Salmos: BookStructure = {
         },
         118: {
             title: "La fidelidad de Dios y su salvación",
-            pericopes: []
+            pericopes: [{
+                title: "Bendito el que viene en nombre del Señor - Puerta - Piedra Angular - Dad gracias al Señor porque es bueno",
+                verseRange: [1, 29],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-29 21.10.33 - Psalm 118 - Gate of the Lord - Rejected Stone.webp",
+                        altText: "",
+                    },
+                ],
+            }]
         },
         119: {
             title: "El amor por la ley de Dios",
