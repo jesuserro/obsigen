@@ -152,7 +152,17 @@ const Jeremias: BookStructure = {
 		},
 		33: {
 			title: "Promesas de restauración",
-			pericopes: []
+			pericopes: [{
+                title: "Profecía sobre la restauración de la prosperidad de Jerusalén",
+                verseRange: [4, 10],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-30 11.04.34 - Jr 33 1-26 - Righteous branch with the Nativity of Jesus.webp",
+                        altText: "DALL·E 2024-11-30 11.04.34 - Jr 33 1-26 - Righteous branch with the Nativity of Jesus",
+                    },
+                ],
+            }]
 		},
 		34: {
 			title: "La liberación de los esclavos",
