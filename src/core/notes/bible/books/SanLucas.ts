@@ -169,12 +169,23 @@ const SanLucas: BookStructure = {
 			pericopes: [
 				{
 					title: "Entrada triunfal en Jerusalén",
-					verseRange: [28, 44],
+					verseRange: [28, 40],
 					images: [
 						{
 							type: "url",
 							path: "https://www.hojadellunes.com/wp-content/uploads/2021/04/intocht-Jeruzalem-op-Palm-zondag.jpg",
 							altText: "Entrada triunfal en Jerusalén",
+						},
+					],
+				},
+				{
+					title: "Llanto de Jesús sobre Jerusalén",
+					verseRange: [41, 44],
+					images: [
+						{
+							type: "local",
+							path: "DALL·E 2024-11-30 12.34.28 - Christ sitting on Dominus Flevit - Lc 19 41-44.webp",
+							altText: "DALL·E 2024-11-30 12.34.28 - Christ sitting on Dominus Flevit - Lc 19 41-44",
 						},
 					],
 				},
