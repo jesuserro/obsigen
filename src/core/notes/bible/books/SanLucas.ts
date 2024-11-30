@@ -186,7 +186,17 @@ const SanLucas: BookStructure = {
 		},
 		21: {
 			title: "Discurso escatológico sobre la destrucción del templo y el fin",
-			pericopes: [],
+			pericopes: [{
+                title: "La venida del Hijo del Hombre",
+                verseRange: [25, 28],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-30 11.44.39 - Luke 21_25-27 - La segunda venida del Hijo del Hombre.webp",
+                        altText: "DALL·E 2024-11-30 11.44.39 - Luke 21_25-27 - La segunda venida del Hijo del Hombre",
+                    },
+                ],
+            }],
 		},
 		22: {
 			title: "Última Cena, arresto y juicio de Jesús",
