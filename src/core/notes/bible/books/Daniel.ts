@@ -46,7 +46,17 @@ const Daniel: BookStructure = {
 		},
 		9: {
 			title: "La oración de Daniel y la profecía de las setenta semanas",
-			pericopes: []
+			pericopes: [{
+                title: "La visión profética de las setenta semanas",
+                verseRange: [20, 27],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-30 10.32.42 - Prophecy of Daniel and the 70 weeks.webp",
+                        altText: "",
+                    },
+                ],
+            }]
 		},
 		10: {
 			title: "La visión del hombre vestido de lino",
