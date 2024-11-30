@@ -120,7 +120,17 @@ const Salmos: BookStructure = {
         },
         25: {
             title: "Oración de confianza en Dios",
-            pericopes: []
+            pericopes: [{
+                title: "Muéstrame tus rectos caminos",
+                verseRange: [1, 22],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-11-30 11.22.20 - Psalm 25 - Show us your righteous paths.webp",
+                        altText: "DALL·E 2024-11-30 11.22.20 - Psalm 25 - Show us your righteous paths",
+                    },
+                ],
+            }]
         },
         26: {
             title: "Oración pidiendo vindicación",
