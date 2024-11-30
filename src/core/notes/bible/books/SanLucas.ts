@@ -167,6 +167,17 @@ const SanLucas: BookStructure = {
 		19: {
 			title: "Entrada triunfal en Jerusalén y la parábola de las minas",
 			pericopes: [
+                {
+					title: "La conversión de Zaqueo",
+					verseRange: [1, 10],
+					images: [
+						{
+							type: "local",
+							path: "DALL·E 2024-11-30 12.47.27 - Zacchaeus climbing a sycamore tree to see Jesus - Lc 19 1-10.webp",
+							altText: "DALL·E 2024-11-30 12.47.27 - Zacchaeus climbing a sycamore tree to see Jesus - Lc 19 1-10",
+						},
+					],
+				},
 				{
 					title: "Entrada triunfal en Jerusalén",
 					verseRange: [28, 40],
