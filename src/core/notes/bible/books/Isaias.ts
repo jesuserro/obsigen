@@ -212,7 +212,17 @@ const Isaias: BookStructure = {
 		},
 		53: {
 			title: "El siervo sufriente",
-			pericopes: []
+			pericopes: [{
+                title: "Cuarto Canto del Siervo Sufriente del Señor",
+                verseRange: [1, 12],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-01 12.59.31 - Cuarto Canto del Siervo Sufriente del Señor (Is 53 1-12).webp",
+                        altText: "DALL·E 2024-12-01 12.59.31 - Cuarto Canto del Siervo Sufriente del Señor (Is 53 1-12)",
+                    },
+                ],
+            }]
 		},
 		54: {
 			title: "La restauración de Israel",
