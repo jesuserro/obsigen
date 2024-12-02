@@ -192,7 +192,17 @@ const Isaias: BookStructure = {
 		},
 		48: {
 			title: "Exhortación a obedecer al Señor",
-			pericopes: []
+			pericopes: [{
+                title: "Exhortación a escuchar al Señor - Santísima Trinidad",
+                verseRange: [1, 12],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-02 12.43.13 - Holy Trinity at Isaiah 48 1-16.webp",
+                        altText: "DALL·E 2024-12-02 12.43.13 - Holy Trinity at Isaiah 48 1-16",
+                    },
+                ],
+            }]
 		},
 		49: {
 			title: "La misión del siervo del Señor",
