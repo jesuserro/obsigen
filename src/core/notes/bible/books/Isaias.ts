@@ -272,7 +272,17 @@ const Isaias: BookStructure = {
 		},
 		63: {
 			title: "El día de venganza y la misericordia de Dios",
-			pericopes: []
+			pericopes: [{
+                title: "Victoria escatológica de la Santísima Trinidad",
+                verseRange: [1, 19],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-02 13.00.56 - Holy Trinity represented at Isaiah 63 8-10.webp",
+                        altText: "DALL·E 2024-12-02 13.00.56 - Holy Trinity represented at Isaiah 63 8-10",
+                    },
+                ],
+            }]
 		},
 		64: {
 			title: "Oración pidiendo misericordia",
