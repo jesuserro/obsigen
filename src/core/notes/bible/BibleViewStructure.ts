@@ -40,6 +40,7 @@ import SanMateo from "./books/SanMateo";
 import Santiago from "./books/Santiago";
 import Siracida from "./books/Siracida";
 import Tobias from "./books/Tobias";
+import Zacarias from "./books/Zacarias";
 
 export interface BibleImage {
 	path: string;
@@ -87,6 +88,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
     Ezequiel: Ezequiel,
     Daniel: Daniel,
     Jonás: Jonas,
+    "Zacarías": Zacarias,
 	"San Mateo": SanMateo,
 	"San Marcos": SanMarcos,
 	"San Lucas": SanLucas,
