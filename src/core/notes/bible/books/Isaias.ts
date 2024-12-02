@@ -176,7 +176,17 @@ const Isaias: BookStructure = {
 		},
 		44: {
 			title: "La locura de la idolatría",
-			pericopes: []
+			pericopes: [{
+                title: "El Dios único - Rechazo de ídolos",
+                verseRange: [1, 19],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-02 13.18.42 - Isaiah 44_6-8 - One true God.webp",
+                        altText: "",
+                    },
+                ],
+            }]
 		},
 		45: {
 			title: "El Señor usa a Ciro para su gloria",
