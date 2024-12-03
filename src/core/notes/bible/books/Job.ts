@@ -36,7 +36,17 @@ const Job: BookStructure = {
 		},
 		9: {
 			title: "Job proclama la justicia y el poder de Dios",
-			pericopes: []
+			pericopes: [{
+                title: "Respuesta de Job - El hombre nada puede ante Dios - Pasará delante de mí y no lo veré",
+                verseRange: [1, 35],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-03 11.26.20 -Job 9_8-11 - Pasará delante de mí y no lo veré.webp",
+                        altText: "DALL·E 2024-12-03 11.26.20 -Job 9_8-11 - Pasará delante de mí y no lo veré",
+                    },
+                ],
+            }]
 		},
 		10: {
 			title: "Job se queja a Dios",
