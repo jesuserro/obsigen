@@ -280,8 +280,8 @@ const Isaias: BookStructure = {
                 images: [
                     {
                         type: "local",
-                        path: "DALL·E 2024-12-03 12.10.16 - Luke 4_18-19 Christ reading a scroll in the synagogue of Capernaum by Is 61.webp",
-                        altText: "DALL·E 2024-12-03 12.10.16 - Luke 4_18-19 Christ reading a scroll in the synagogue of Capernaum by Is 61",
+                        path: "DALL·E 2024-12-03 12.10.16 - Luke 4_18-19 Christ reading a scroll in the synagogue of Nazaret by Is 61.webp",
+                        altText: "DALL·E 2024-12-03 12.10.16 - Luke 4_18-19 Christ reading a scroll in the synagogue of Nazaret by Is 61",
                     },
                 ],
             }]

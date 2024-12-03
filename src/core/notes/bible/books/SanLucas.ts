@@ -28,7 +28,17 @@ const SanLucas: BookStructure = {
 		},
 		4: {
 			title: "La tentación de Jesús y el comienzo de su ministerio",
-			pericopes: [],
+			pericopes: [{
+                title: "Predicación en Nazaret - El Espíritu de Dios está sobre mí",
+                verseRange: [16, 30],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-03 12.32.22 - Lc 4 16-30 - Cristo en Sinagoga Nazaret - El espíritu sobre mí.webp",
+                        altText: "DALL·E 2024-12-03 12.32.22 - Lc 4 16-30 - Cristo en Sinagoga Nazaret - El espíritu sobre mí",
+                    },
+                ],
+            }],
 		},
 		5: {
 			title: "El llamamiento de los primeros discípulos y milagros",
