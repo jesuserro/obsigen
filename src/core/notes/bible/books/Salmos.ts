@@ -334,7 +334,17 @@ const Salmos: BookStructure = {
         },
         71: {
             title: "Oración pidiendo protección en la vejez",
-            pericopes: []
+            pericopes: [{
+                title: "Oración confiada pidiendo a Dios socorro en la vejez",
+                verseRange: [1, 24],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-03 19.21.23 - Salmo 71 - Socorro en la vejez.webp",
+                        altText: "DALL·E 2024-12-03 19.21.23 - Salmo 71 - Socorro en la vejez",
+                    },
+                ],
+            }]
         },
         72: {
             title: "Oración por el rey justo",
