@@ -4,7 +4,17 @@ const Santiago: BookStructure = {
     chapters: {
         1: {
             title: "Pruebas, sabiduría y fe verdadera",
-            pericopes: []
+            pericopes: [{
+                title: "Valor del sufrimiento",
+                verseRange: [2, 12],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-03 17.06.39 - James 1_2-8 - Valor del sufrimiento.webp",
+                        altText:"DALL·E 2024-12-03 17.06.39 - James 1_2-8 - Valor del sufrimiento",
+                    },
+                ],
+            }]
         },
         2: {
             title: "Fe y obras, y el trato sin favoritismos",
