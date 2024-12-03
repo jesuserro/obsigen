@@ -15,8 +15,18 @@ const PrimeraJuan: BookStructure = {
 			pericopes: []
 		},
 		4: {
-			title: "El amor de Dios y el discernimiento espiritual",
-			pericopes: []
+			title: "Dios es amor y la caridad fraterna",
+			pericopes: [{
+                title: "Dios es amor - Dios nos amó primero por nuestros pecados",
+                verseRange: [7, 21],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-03 13.52.15 - 1 John 4_10 - God's love and the crucifixion of Christ.webp",
+                        altText: "DALL·E 2024-12-03 13.52.15 - 1 John 4_10 - God's love and the crucifixion of Christ",
+                    },
+                ],
+            }]
 		},
 		5: {
 			title: "La fe en el Hijo de Dios",
