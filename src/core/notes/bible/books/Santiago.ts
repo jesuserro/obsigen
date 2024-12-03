@@ -8,7 +8,17 @@ const Santiago: BookStructure = {
         },
         2: {
             title: "Fe y obras, y el trato sin favoritismos",
-            pericopes: []
+            pericopes: [{
+                title: "La fe sin obras está muerta",
+                verseRange: [14, 19],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-03 16.50.30 - James 2_14-19 - Fe y obras.webp",
+                        altText:"DALL·E 2024-12-03 16.50.30 - James 2_14-19 - Fe y obras",
+                    },
+                ],
+            }]
         },
         3: {
             title: "El poder de la lengua y la sabiduría divina",
