@@ -4,7 +4,17 @@ const Galatas: BookStructure = {
 	chapters: {
 		1: {
 			title: "No hay otro evangelio",
-			pericopes: []
+			pericopes: [{
+                title: "",
+                verseRange: [1, 11],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-03 13.21.26 - Gálatas 1 6-10 - Un único evangelio o anatema.webp",
+                        altText: "DALL·E 2024-12-03 13.21.26 - Gálatas 1 6-10 - Un único evangelio o anatema",
+                    },
+                ],
+            }]
 		},
 		2: {
 			title: "Pablo confronta a Pedro",
