@@ -274,7 +274,17 @@ const Isaias: BookStructure = {
 		},
 		61: {
 			title: "El año del favor del Señor",
-			pericopes: []
+			pericopes: [{
+                title: "El heraldo de la buena nueva - El Espíritu del Señor Dios está sobre mí",
+                verseRange: [1, 11],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-03 12.10.16 - Luke 4_18-19 Christ reading a scroll in the synagogue of Capernaum by Is 61.webp",
+                        altText: "DALL·E 2024-12-03 12.10.16 - Luke 4_18-19 Christ reading a scroll in the synagogue of Capernaum by Is 61",
+                    },
+                ],
+            }]
 		},
 		62: {
 			title: "La vindicación de Sión",
