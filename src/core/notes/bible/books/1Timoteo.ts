@@ -20,7 +20,17 @@ const PrimeraTimoteo: BookStructure = {
 		},
 		5: {
 			title: "Instrucciones sobre viudas, ancianos y esclavos",
-			pericopes: []
+			pericopes: [{
+                title: "Comportamiento con los fieles",
+                verseRange: [1, 2],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-03 19.42.00 - 1 Timothy 5_1-2 - Charla dulce de Timoteo.webp",
+                        altText: "DALL·E 2024-12-03 19.42.00 - 1 Timothy 5:1-2 - Charla dulce de Timoteo",
+                    },
+                ],
+            }]
 		},
 		6: {
 			title: "La verdadera piedad y advertencias a los ricos",
