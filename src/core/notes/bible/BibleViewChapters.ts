@@ -21,7 +21,7 @@ async function getNoteRating(app: App, book: string, chapterNumber: string, vers
     const noteFile = files.find(file => file.basename.includes(verseRangeString) && file.basename.includes(chapterString));
   
     if (!noteFile) {
-        console.log(`No se encontró ninguna nota con el rango de versículos ${verseRangeString} en ${folderPath}`);
+        // console.log(`No se encontró ninguna nota con el rango de versículos ${verseRangeString} en ${folderPath}`);
         return null;
     }
 
@@ -89,7 +89,7 @@ export function openNote(app: App, book: string, chapterNumber: string, verseRan
     const noteFile = files.find(file => file.basename.includes(verseRangeString) && file.basename.includes(chapterString));
   
     if (!noteFile) {
-        console.log(`No se encontró ninguna nota con el rango de versículos ${verseRangeString} en ${folderPath}`);
+        // console.log(`No se encontró ninguna nota con el rango de versículos ${verseRangeString} en ${folderPath}`);
         return;
     }
 

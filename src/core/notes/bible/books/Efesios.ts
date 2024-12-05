@@ -24,7 +24,17 @@ const Efesios: BookStructure = {
 		},
 		6: {
 			title: "La armadura de Dios",
-			pericopes: []
+			pericopes: [{
+                title: "La Armadura Divina Contra las Tinieblas más Allá de lo Humano",
+                verseRange: [10, 20],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-05 17.59.50 - Ephesians 6_10-20 - Armadura espiritual.webp",
+                        altText: "DALL·E 2024-12-05 17.59.50 - Ephesians 6:10-20 - Armadura espiritual",
+                    },
+                ],
+            },]
 		},
 	},
 };
