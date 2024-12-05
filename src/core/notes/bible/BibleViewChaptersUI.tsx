@@ -91,6 +91,9 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs }) => {
                                                                 {image.rating}
                                                             </div>
                                                         )}
+                                                        <div className="verse-range-overlay">
+                                                            {image.verseRange[0]}-{image.verseRange[1]}
+                                                        </div>
                                                     </a>
                                                 ))}
                                             </div>
