@@ -9,6 +9,8 @@ interface CalendarHeaderProps {
   onBookClick: () => void;
   isBibleView: boolean;
   bookRefs: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
+  selectedBook: string;
+  setSelectedBook: (book: string) => void;
 }
 
 const CalendarHeader: React.FC<CalendarHeaderProps> = ({
@@ -18,6 +20,8 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
   onBookClick,
   isBibleView,
   bookRefs,
+  selectedBook,
+  setSelectedBook,
 }) => {
   return (
     <div className="header-container">
@@ -50,7 +54,7 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
       </button>
 
       {isBibleView ? (
-        <BookSelector bookRefs={bookRefs} />
+        <BookSelector bookRefs={bookRefs} selectedBook={selectedBook} setSelectedBook={setSelectedBook} />
       ) : (
         <div className="year-selector-container">
           <CalendarYearSelect

@@ -2,10 +2,12 @@ import { App, TFile } from 'obsidian';
 import React, { useEffect, useState } from 'react';
 import { getChapterImages, openNote, subscribeToMetadataChanges } from './BibleViewChapters';
 import { BibleImage, bibleStructure } from './BibleViewStructure';
+import { scrollToBook } from './BookSelector'; // Importa la función scrollToBook
 
 interface Props {
     app: App;
     bookRefs: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
+    selectedBook: string; // Añade selectedBook a las props
 }
 
 interface ChapterImage extends BibleImage {
@@ -26,7 +28,7 @@ const getRatingClass = (rating: number) => {
     return '';
 };
 
-const BibleChaptersView: React.FC<Props> = ({ app, bookRefs }) => {
+const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook }) => {
     const [chapterImages, setChapterImages] = useState<{ [key: string]: ChapterImage[] }>({});
 
     const fetchImages = async () => {
@@ -52,6 +54,10 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs }) => {
             app.metadataCache.off("changed", handleMetadataChange);
         };
     }, [app]);
+
+    useEffect(() => {
+        scrollToBook(selectedBook, bookRefs.current); // Desplaza automáticamente al libro seleccionado
+    }, [selectedBook, bookRefs]);
 
     return (
         <div className="bible-view-chapters">

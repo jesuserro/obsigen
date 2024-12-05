@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import BibleChaptersView from '../bible/BibleViewChaptersUI';
 import { AppContext } from './../../shared/appContext';
+import { bibleStructure } from './../bible/BibleViewStructure';
 import CalendarHeader from './CalendarHeader';
 import CalendarYear from './CalendarYear';
 
@@ -16,6 +17,7 @@ export class CalendarView extends ItemView {
   private today: Date;
   private isBibleView: boolean;
   private bookRefs: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
+  private selectedBook: string;
 
   constructor(leaf: WorkspaceLeaf) {
     super(leaf);
@@ -23,6 +25,7 @@ export class CalendarView extends ItemView {
     this.currentYear = this.today.getFullYear();
     this.isBibleView = false;
     this.bookRefs = { current: {} } as React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
+    this.selectedBook = Object.keys(bibleStructure)[0]; // Default to the first book
     this.root = ReactDOM.createRoot(this.contentEl as HTMLElement);
   }
 
@@ -40,6 +43,11 @@ export class CalendarView extends ItemView {
     this.renderComponent();
   };
 
+  private setSelectedBook = (book: string) => {
+    this.selectedBook = book;
+    this.renderComponent();
+  };
+
   private renderComponent() {
     this.reactComponent = React.createElement(
       AppContext.Provider,
@@ -51,11 +59,14 @@ export class CalendarView extends ItemView {
         onBookClick: this.handleBookClick,
         isBibleView: this.isBibleView,
         bookRefs: this.bookRefs,
+        selectedBook: this.selectedBook,
+        setSelectedBook: this.setSelectedBook,
       }),
       this.isBibleView
         ? React.createElement(BibleChaptersView, {
             app: this.app,
             bookRefs: this.bookRefs,
+            selectedBook: this.selectedBook, // Pasa selectedBook como prop
           })
         : React.createElement(CalendarYear, { key: this.currentYear, year: this.currentYear })
     );
