@@ -1,4 +1,4 @@
-import { App, FileView } from "obsidian"; // Asegúrate de que tienes acceso al objeto `App`
+import { App, FileView, TFile } from "obsidian"; // Asegúrate de que tienes acceso al objeto `App`
 import { BibleImage } from "./BibleViewStructure";
 
 const IMAGE_FOLDER = "050 Anexos";
@@ -104,4 +104,10 @@ export function openNote(app: App, book: string, chapterNumber: string, verseRan
     } else {
         app.workspace.openLinkText(noteFile.path, '', true);
     }
+}
+
+export function subscribeToMetadataChanges(app: App, callback: (file: TFile) => void) {
+    app.metadataCache.on("changed", (file) => {
+        callback(file);
+    });
 }

@@ -1,6 +1,6 @@
-import { App } from 'obsidian';
+import { App, TFile } from 'obsidian';
 import React, { useEffect, useState } from 'react';
-import { getChapterImages, openNote } from './BibleViewChapters';
+import { getChapterImages, openNote, subscribeToMetadataChanges } from './BibleViewChapters';
 import { BibleImage, bibleStructure } from './BibleViewStructure';
 
 interface Props {
@@ -29,17 +29,28 @@ const getRatingClass = (rating: number) => {
 const BibleChaptersView: React.FC<Props> = ({ app, bookRefs }) => {
     const [chapterImages, setChapterImages] = useState<{ [key: string]: ChapterImage[] }>({});
 
-    useEffect(() => {
-        const fetchImages = async () => {
-            const images: { [key: string]: ChapterImage[] } = {};
-            for (const [book, data] of Object.entries(bibleStructure)) {
-                for (const [chapterNumber, chapterInfo] of Object.entries(data.chapters)) {
-                    images[`${book}-${chapterNumber}`] = await getChapterImages(chapterInfo, app, book, chapterNumber);
-                }
+    const fetchImages = async () => {
+        const images: { [key: string]: ChapterImage[] } = {};
+        for (const [book, data] of Object.entries(bibleStructure)) {
+            for (const [chapterNumber, chapterInfo] of Object.entries(data.chapters)) {
+                images[`${book}-${chapterNumber}`] = await getChapterImages(chapterInfo, app, book, chapterNumber);
             }
-            setChapterImages(images);
-        };
+        }
+        setChapterImages(images);
+    };
+
+    useEffect(() => {
         fetchImages();
+
+        const handleMetadataChange = (file: TFile) => {
+            fetchImages();
+        };
+
+        subscribeToMetadataChanges(app, handleMetadataChange);
+
+        return () => {
+            app.metadataCache.off("changed", handleMetadataChange);
+        };
     }, [app]);
 
     return (
