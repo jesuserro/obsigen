@@ -16,11 +16,31 @@ const Efesios: BookStructure = {
 		},
 		4: {
 			title: "La unidad en el cuerpo de Cristo",
-			pericopes: []
+			pericopes: [{
+                title: "Fundamentos de la unidad - La vocación cristiana",
+                verseRange: [1, 10],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-05 18.35.16 - Ephesians 4_7-10 - Unidad y vocación cristiana.webp",
+                        altText: "DALL·E 2024-12-05 18.35.16 - Ephesians 4:7-10 - Unidad y vocación cristiana",
+                    },
+                ],
+            },]
 		},
 		5: {
 			title: "El llamado a una vida de amor",
-			pericopes: []
+			pericopes: [{
+                title: "El matrimonio: Sacramento de la unión entre Cristo y la Iglesia",
+                verseRange: [21, 33],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-05 19.03.51 - Marriage as described in Ephesians 5_21-33.webp",
+                        altText: "DALE 2024-12-05 19.03.51 - Marriage as described in Ephesians 5:21-33",
+                    },
+                ],
+            }]
 		},
 		6: {
 			title: "La armadura de Dios",
