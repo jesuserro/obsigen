@@ -16,6 +16,13 @@ interface ChapterImage extends BibleImage {
     rating?: number;
 }
 
+const getRatingClass = (rating: number) => {
+    if (rating >= 9) return 'rating-hot';
+    if (rating >= 8) return 'rating-warm';
+    if (rating >= 6) return 'rating-cool';
+    return 'rating-cold';
+};
+
 const BibleChaptersView: React.FC<Props> = ({ app, bookRefs }) => {
     const [chapterImages, setChapterImages] = useState<{ [key: string]: ChapterImage[] }>({});
 
@@ -66,7 +73,7 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs }) => {
                                                             className="thumbnail"
                                                         />
                                                         {image.rating !== undefined && (
-                                                            <div className="rating-overlay">
+                                                            <div className={`rating-overlay ${getRatingClass(image.rating)}`}>
                                                                 {image.rating}
                                                             </div>
                                                         )}
