@@ -75,7 +75,7 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs }) => {
                                                             alt={image.alt}
                                                             className="thumbnail"
                                                         />
-                                                        {image.rating !== undefined && (
+                                                        {image.rating !== undefined && image.rating !== null && (
                                                             <div className={`rating-overlay ${getRatingClass(image.rating)}`}>
                                                                 {image.rating}
                                                             </div>
