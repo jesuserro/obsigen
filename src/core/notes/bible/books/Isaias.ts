@@ -168,7 +168,37 @@ const Isaias: BookStructure = {
 		},
 		42: {
 			title: "El siervo del Señor",
-			pericopes: []
+			pericopes: [{
+                title: "Primer Canto del Siervo del Señor",
+                verseRange: [1, 9],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-05 20.17.31 - Is 42 7 - Opening the eyes of the blind.webp",
+                        altText: "DALL·E 2024-12-05 20.17.31 - Is 42 7 - Opening the eyes of the blind",
+                    },
+                ],
+            }, {
+                title: "Un Cántico Nuevo",
+                verseRange: [10, 12],
+                images: [
+                    {
+                        type: "local",
+                        path: "",
+                        altText: "",
+                    },
+                ],
+            }, {
+                title: "Promesa de salvación y amonestación",
+                verseRange: [13, 25],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-05 20.11.04 - Isaiah 42_16 - Rompiendo zona de confort.webp",
+                        altText: "DALL·E 2024-12-05 20.11.04 - Isaiah 42_16 - Rompiendo zona de confort",
+                    },
+                ],
+            }]
 		},
 		43: {
 			title: "La redención de Israel",
