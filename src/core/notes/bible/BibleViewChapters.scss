@@ -26,23 +26,33 @@
         border: 2px solid currentColor; // Usa currentColor para que el borde tenga el mismo color que el texto
     }
 
-    .rating-hot {
-        background-color: red;
+    .rating-5 {
+        background-color: #ffbf00; /* Ámbar */
+        color: black;
+    }
+
+    .rating-6 {
+        background-color: #00ff00; /* Verde */
+        color: black;
+    }
+
+    .rating-7 {
+        background-color: #ffff00; /* Amarillo */
+        color: black;
+    }
+
+    .rating-8 {
+        background-color: #ff8000; /* Anaranjado */
+        color: black;
+    }
+
+    .rating-9 {
+        background-color: #ff6666; /* Rojo claro */
         color: white;
     }
 
-    .rating-warm {
-        background-color: #ffbf00; /* Color ámbar */
-        color: black;
-    }
-
-    .rating-cool {
-        background-color: lightblue;
-        color: black;
-    }
-
-    .rating-cold {
-        background-color: rgb(21, 133, 245);
+    .rating-10 {
+        background-color: #ff0000; /* Rojo fuerte */
         color: white;
     }
 

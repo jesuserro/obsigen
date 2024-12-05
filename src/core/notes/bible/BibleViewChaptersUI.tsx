@@ -17,10 +17,13 @@ interface ChapterImage extends BibleImage {
 }
 
 const getRatingClass = (rating: number) => {
-    if (rating >= 9) return 'rating-hot';
-    if (rating >= 8) return 'rating-warm';
-    if (rating >= 6) return 'rating-cool';
-    return 'rating-cold';
+    if (rating === 10) return 'rating-10';
+    if (rating === 9) return 'rating-9';
+    if (rating === 8) return 'rating-8';
+    if (rating === 7) return 'rating-7';
+    if (rating === 6) return 'rating-6';
+    if (rating === 5) return 'rating-5';
+    return '';
 };
 
 const BibleChaptersView: React.FC<Props> = ({ app, bookRefs }) => {
