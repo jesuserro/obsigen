@@ -1,21 +1,37 @@
-import { App } from 'obsidian'; // Importar el tipo App
-import React from 'react';
+import { App } from 'obsidian';
+import React, { useEffect, useState } from 'react';
 import { getChapterImages, openNote } from './BibleViewChapters';
-import { BibleImage, bibleStructure } from './BibleViewStructure'; // Importar BibleImage desde BibleViewStructure
+import { BibleImage, bibleStructure } from './BibleViewStructure';
 
 interface Props {
-    app: App; // Objeto de la aplicación
+    app: App;
     bookRefs: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
 }
 
 interface ChapterImage extends BibleImage {
     verseRange: [number, number];
-    pericopeTitle: string; // Añadir el título de la perícopa
-    title: string; // Añadir el título con referencia bíblica
-    alt: string; // Añadir el alt con referencia bíblica
+    pericopeTitle: string;
+    title: string;
+    alt: string;
+    rating?: number;
 }
 
 const BibleChaptersView: React.FC<Props> = ({ app, bookRefs }) => {
+    const [chapterImages, setChapterImages] = useState<{ [key: string]: ChapterImage[] }>({});
+
+    useEffect(() => {
+        const fetchImages = async () => {
+            const images: { [key: string]: ChapterImage[] } = {};
+            for (const [book, data] of Object.entries(bibleStructure)) {
+                for (const [chapterNumber, chapterInfo] of Object.entries(data.chapters)) {
+                    images[`${book}-${chapterNumber}`] = await getChapterImages(chapterInfo, app, book, chapterNumber);
+                }
+            }
+            setChapterImages(images);
+        };
+        fetchImages();
+    }, [app]);
+
     return (
         <div className="bible-view-chapters">
             <div className="books-grid">
@@ -24,7 +40,7 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs }) => {
                         <h2>{book}</h2>
                         <div className="chapters-grid">
                             {Object.entries(data.chapters).map(([chapterNumber, chapterInfo]) => {
-                                const images = getChapterImages(chapterInfo, app, book, chapterNumber);
+                                const images = chapterImages[`${book}-${chapterNumber}`] || [];
 
                                 return (
                                     <div key={chapterNumber} className="chapter-container">
@@ -37,17 +53,23 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs }) => {
                                                     <a
                                                         key={index}
                                                         href="#"
-                                                        title={image.title} // Añadir el título con referencia bíblica como tooltip
+                                                        title={image.title}
                                                         onClick={(e) => {
                                                             e.preventDefault();
                                                             openNote(app, book, chapterNumber, image.verseRange);
                                                         }}
+                                                        className="image-container"
                                                     >
                                                         <img
                                                             src={image.path}
-                                                            alt={image.alt} // Añadir el alt con referencia bíblica
+                                                            alt={image.alt}
                                                             className="thumbnail"
                                                         />
+                                                        {image.rating !== undefined && (
+                                                            <div className="rating-overlay">
+                                                                {image.rating}
+                                                            </div>
+                                                        )}
                                                     </a>
                                                 ))}
                                             </div>

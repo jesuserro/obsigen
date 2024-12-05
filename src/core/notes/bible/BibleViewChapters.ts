@@ -5,51 +5,73 @@ const IMAGE_FOLDER = "050 Anexos";
 
 interface ChapterImage extends BibleImage {
     verseRange: [number, number];
-    pericopeTitle: string; // Añadir el título de la perícopa
-    title: string; // Añadir el título con referencia bíblica
-    alt: string; // Añadir el alt con referencia bíblica
+    pericopeTitle: string;
+    title: string;
+    alt: string;
+    rating?: number; // Añadir el rating
 }
 
-export function getChapterImages(chapterInfo: any, app: App, book: string, chapterNumber: string): ChapterImage[] {
+async function getNoteRating(app: App, book: string, chapterNumber: string, verseRange: [number, number]): Promise<number | null> {
+    // Ajustar la ruta de la carpeta para el caso especial de "Salmos"
+    const folderPath = book === 'Salmos' ? `333 Biblia/${book}` : `333 Biblia/${book}/${chapterNumber}`;
+    const files = app.vault.getFiles().filter(file => file.path.startsWith(folderPath));
+  
+    const verseRangeString = `${verseRange[0]}-${verseRange[1]}`;
+    const chapterString = `${chapterNumber}`;
+    const noteFile = files.find(file => file.basename.includes(verseRangeString) && file.basename.includes(chapterString));
+  
+    if (!noteFile) {
+        console.log(`No se encontró ninguna nota con el rango de versículos ${verseRangeString} en ${folderPath}`);
+        return null;
+    }
+
+    const content = await app.vault.read(noteFile);
+    const yaml = app.metadataCache.getFileCache(noteFile)?.frontmatter;
+    return yaml?.rating || null;
+}
+
+export async function getChapterImages(chapterInfo: any, app: App, book: string, chapterNumber: string): Promise<ChapterImage[]> {
     const images: ChapterImage[] = [];
     for (const pericope of chapterInfo.pericopes) {
         if (pericope.images && pericope.images.length > 0) {
-            const validImages = pericope.images
-                .filter(
-                    (image: BibleImage) =>
-                        image.path && image.path.trim() !== ""
-                )
-                .map((image: BibleImage) => {
+            const validImages = await Promise.all(pericope.images
+                .filter((image: BibleImage) => image.path && image.path.trim() !== "")
+                .map(async (image: BibleImage) => {
                     const reference = `${book} ${chapterNumber}:${pericope.verseRange[0]}-${pericope.verseRange[1]}`;
                     const title = `${pericope.title} (${reference})`;
                     const alt = `${image.altText} (${reference})`;
 
+                    let rating = null;
                     if (image.type === "local") {
-                        // Construir la ruta completa para imágenes locales
                         const fullPath = `${IMAGE_FOLDER}/${image.path}`;
                         const file = app.vault.getAbstractFileByPath(fullPath);
                         if (file) {
+                            rating = await getNoteRating(app, book, chapterNumber, pericope.verseRange);
                             return {
                                 ...image,
-                                path: app.vault.adapter.getResourcePath(
-                                    fullPath
-                                ),
+                                path: app.vault.adapter.getResourcePath(fullPath),
                                 verseRange: pericope.verseRange,
                                 pericopeTitle: pericope.title,
                                 title,
                                 alt,
+                                rating,
                             };
                         }
+                    } else {
+                        rating = await getNoteRating(app, book, chapterNumber, pericope.verseRange);
+                        return {
+                            ...image,
+                            verseRange: pericope.verseRange,
+                            pericopeTitle: pericope.title,
+                            title,
+                            alt,
+                            rating,
+                        };
                     }
-                    return {
-                        ...image,
-                        verseRange: pericope.verseRange,
-                        pericopeTitle: pericope.title,
-                        title,
-                        alt,
-                    }; // Mantener imágenes externas sin cambios
+                    return null;
                 })
-                .filter((image: ChapterImage) => image.path); // Filtrar imágenes locales no encontradas
+                .filter((image: ChapterImage | null): image is ChapterImage => image !== null)
+            );
 
             images.push(...validImages);
         }

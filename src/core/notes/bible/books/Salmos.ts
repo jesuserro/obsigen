@@ -504,7 +504,7 @@ const Salmos: BookStructure = {
             title: "Dios sana enfermedades y perdona los pecados",
             pericopes: [{
                 title: "Dios sana enfermedades y perdona los pecados",
-                verseRange: [1, 43],
+                verseRange: [1, 22],
                 images: [
                     {
                         type: "local",

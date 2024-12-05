@@ -1,8 +1,8 @@
 import { ItemView, WorkspaceLeaf } from 'obsidian';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import BibleChaptersView from '../bible/BibleViewChaptersUI'; // Import the new view
-import { AppContext } from './../../shared/appContext'; // Shared context
+import BibleChaptersView from '../bible/BibleViewChaptersUI';
+import { AppContext } from './../../shared/appContext';
 import CalendarHeader from './CalendarHeader';
 import CalendarYear from './CalendarYear';
 
@@ -22,7 +22,7 @@ export class CalendarView extends ItemView {
     this.today = new Date();
     this.currentYear = this.today.getFullYear();
     this.isBibleView = false;
-    this.bookRefs = { current: {} } as React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>; // Initialize bookRefs as a mutable ref object
+    this.bookRefs = { current: {} } as React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
     this.root = ReactDOM.createRoot(this.contentEl as HTMLElement);
   }
 
@@ -41,8 +41,6 @@ export class CalendarView extends ItemView {
   };
 
   private renderComponent() {
-    // Your existing code
-
     this.reactComponent = React.createElement(
       AppContext.Provider,
       { value: this.app },
@@ -52,12 +50,12 @@ export class CalendarView extends ItemView {
         onYearChange: this.handleYearChange,
         onBookClick: this.handleBookClick,
         isBibleView: this.isBibleView,
-        bookRefs: this.bookRefs, // Pass bookRefs
+        bookRefs: this.bookRefs,
       }),
       this.isBibleView
         ? React.createElement(BibleChaptersView, {
             app: this.app,
-            bookRefs: this.bookRefs, // Pass bookRefs
+            bookRefs: this.bookRefs,
           })
         : React.createElement(CalendarYear, { key: this.currentYear, year: this.currentYear })
     );
