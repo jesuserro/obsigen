@@ -66,7 +66,7 @@ export class CalendarView extends ItemView {
         ? React.createElement(BibleChaptersView, {
             app: this.app,
             bookRefs: this.bookRefs,
-            selectedBook: this.selectedBook, // Pasa selectedBook como prop
+            selectedBook: this.selectedBook,
           })
         : React.createElement(CalendarYear, { key: this.currentYear, year: this.currentYear })
     );

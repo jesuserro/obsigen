@@ -6,7 +6,7 @@
     .image-container {
         position: relative;
         display: inline-block;
-        z-index: 1; // Asegúrate de que las imágenes estén por debajo del BookSelector y la barra superior
+        z-index: 1;
     }
     
     .rating-overlay {
@@ -17,14 +17,14 @@
         padding: 5px;
         border-radius: 50%;
         font-size: 12px;
-        z-index: 5; // Asegúrate de que la capa esté por encima de la imagen pero por debajo del BookSelector y la barra superior
+        z-index: 5;
         display: flex;
         align-items: center;
         justify-content: center;
         width: 30px;
         height: 30px;
         text-align: center;
-        border: 2px solid currentColor; // Usa currentColor para que el borde tenga el mismo color que el texto
+        border: 2px solid currentColor;
     }
 
     .verse-range-overlay {
@@ -36,36 +36,36 @@
         padding: 2px 5px;
         border-radius: 3px;
         font-size: 12px;
-        z-index: 5; // Asegúrate de que la capa esté por encima de la imagen pero por debajo del BookSelector y la barra superior
+        z-index: 5;
     }
 
     .rating-5 {
-        background-color: #ffbf00; /* Ámbar */
+        background-color: #ffbf00;
         color: black;
     }
 
     .rating-6 {
-        background-color: #00ff00; /* Verde */
+        background-color: #00ff00;
         color: black;
     }
 
     .rating-7 {
-        background-color: #ffff00; /* Amarillo */
+        background-color: #ffff00;
         color: black;
     }
 
     .rating-8 {
-        background-color: #ff8000; /* Anaranjado */
+        background-color: #ff8000;
         color: black;
     }
 
     .rating-9 {
-        background-color: #ff6666; /* Rojo claro */
+        background-color: #ff6666;
         color: white;
     }
 
     .rating-10 {
-        background-color: #ff0000; /* Rojo fuerte */
+        background-color: #ff0000;
         color: white;
     }
 
@@ -73,7 +73,7 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
-        margin-top: 20px; // Ajustar margen superior
+        margin-top: 20px;
     }
 
     .book-container {
@@ -117,7 +117,7 @@
     .image-gallery {
         display: grid;
         gap: 8px;
-        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Fluido y dinámico */
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
         width: 100%;
     }
 
@@ -134,7 +134,6 @@
         }
     }
 
-    /* Responsividad */
     @media (max-width: 768px) {
         .chapters-grid {
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
