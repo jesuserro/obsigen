@@ -2,7 +2,6 @@ import { App, TFile } from 'obsidian';
 import React, { useEffect, useRef, useState } from 'react';
 import { getChapterImages, openNote, subscribeToMetadataChanges } from './BibleViewChapters';
 import { BibleImage, bibleStructure } from './BibleViewStructure';
-import { observeBookInView } from './BookSelector';
 
 interface Props {
     app: App;
@@ -63,11 +62,6 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
             selectedBookRef.scrollIntoView({ behavior: 'auto', block: 'start' });
         }
     }, [selectedBook, bookRefs, chapterImages]);
-
-    useEffect(() => {
-        const disconnectObserver = observeBookInView(bookRefs.current, setSelectedBook);
-        return () => disconnectObserver();
-    }, [bookRefs, setSelectedBook]);
 
     return (
         <div className="bible-view-chapters" ref={containerRef}>
