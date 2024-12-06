@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { bibleStructure } from './BibleViewStructure';
-import { scrollToBook } from './BookSelector';
+import { observeBookInView, scrollToBook } from './BookSelector';
 
 interface Props {
     bookRefs: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
@@ -14,6 +14,11 @@ const BookSelector: React.FC<Props> = ({ bookRefs, selectedBook, setSelectedBook
         setSelectedBook(selectedBook);
         scrollToBook(selectedBook, bookRefs.current);
     };
+
+    useEffect(() => {
+        const disconnectObserver = observeBookInView(bookRefs.current, setSelectedBook);
+        return () => disconnectObserver();
+    }, [bookRefs, setSelectedBook]);
 
     return (
         <div className="book-selector">
