@@ -1,4 +1,4 @@
-import { App, FileView, TFile } from "obsidian"; // Asegúrate de que tienes acceso al objeto `App`
+import { App, FileView } from "obsidian";
 import { BibleImage } from "./BibleViewStructure";
 
 const IMAGE_FOLDER = "050 Anexos";
@@ -8,11 +8,10 @@ interface ChapterImage extends BibleImage {
     pericopeTitle: string;
     title: string;
     alt: string;
-    rating?: number; // Añadir el rating
+    rating?: number;
 }
 
 async function getNoteRating(app: App, book: string, chapterNumber: string, verseRange: [number, number]): Promise<number | null> {
-    // Ajustar la ruta de la carpeta para el caso especial de "Salmos"
     const folderPath = book === 'Salmos' ? `333 Biblia/${book}` : `333 Biblia/${book}/${chapterNumber}`;
     const files = app.vault.getFiles().filter(file => file.path.startsWith(folderPath));
   
@@ -79,7 +78,6 @@ export async function getChapterImages(chapterInfo: any, app: App, book: string,
 }
 
 export function openNote(app: App, book: string, chapterNumber: string, verseRange: [number, number]) {
-    // Ajustar la ruta de la carpeta para el caso especial de "Salmos"
     const folderPath = book === 'Salmos' ? `333 Biblia/${book}` : `333 Biblia/${book}/${chapterNumber}`;
     const files = app.vault.getFiles().filter(file => file.path.startsWith(folderPath));
   
@@ -103,10 +101,4 @@ export function openNote(app: App, book: string, chapterNumber: string, verseRan
     } else {
         app.workspace.openLinkText(noteFile.path, '', true);
     }
-}
-
-export function subscribeToMetadataChanges(app: App, callback: (file: TFile) => void) {
-    app.metadataCache.on("changed", (file) => {
-        callback(file);
-    });
 }

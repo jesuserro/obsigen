@@ -1,6 +1,6 @@
-import { App, TFile } from 'obsidian';
+import { App } from 'obsidian';
 import React, { useEffect, useRef, useState } from 'react';
-import { getChapterImages, openNote, subscribeToMetadataChanges } from './BibleViewChapters';
+import { getChapterImages, openNote } from './BibleViewChapters';
 import { BibleImage, bibleStructure } from './BibleViewStructure';
 
 interface Props {
@@ -44,16 +44,6 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
 
     useEffect(() => {
         fetchImages();
-
-        const handleMetadataChange = (file: TFile) => {
-            fetchImages();
-        };
-
-        subscribeToMetadataChanges(app, handleMetadataChange);
-
-        return () => {
-            app.metadataCache.off("changed", handleMetadataChange);
-        };
     }, [app]);
 
     useEffect(() => {
