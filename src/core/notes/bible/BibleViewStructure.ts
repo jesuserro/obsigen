@@ -81,7 +81,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
     Judit: Judit,
 	Salmos: Salmos,
     "Cantar de los Cantares": Cantares,
-    Sabiduria: Sabiduria,
+    "Sabiduría": Sabiduria,
     Sirácida: Siracida,
     "Isaías": Isaias,
     Jeremías: Jeremias,
