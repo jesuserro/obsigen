@@ -3,13 +3,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { getChapterImages, openNote, subscribeToMetadataChanges } from './BibleViewChapters';
 import { BibleImage, bibleStructure } from './BibleViewStructure';
 import { observeBookInView } from './BookSelector';
-import BookSelector from './BookSelectorUI';
 
 interface Props {
     app: App;
     bookRefs: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
     selectedBook: string;
-    setSelectedBook: (book: string) => void; // Añadir setSelectedBook a las props
+    setSelectedBook: (book: string) => void;
 }
 
 interface ChapterImage extends BibleImage {
@@ -30,7 +29,7 @@ const getRatingClass = (rating: number) => {
     return '';
 };
 
-const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSelectedBook }) => { // Añadir setSelectedBook aquí
+const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSelectedBook }) => {
     const [chapterImages, setChapterImages] = useState<{ [key: string]: ChapterImage[] }>({});
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -72,7 +71,6 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
 
     return (
         <div className="bible-view-chapters" ref={containerRef}>
-            <BookSelector bookRefs={bookRefs} selectedBook={selectedBook} setSelectedBook={setSelectedBook} />
             <div className="books-grid">
                 {Object.entries(bibleStructure).map(([book, data]) => (
                     <div key={book} className="book-container" ref={(el) => (bookRefs.current[book] = el)} data-book={book}>
