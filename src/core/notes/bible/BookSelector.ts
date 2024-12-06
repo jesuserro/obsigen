@@ -17,7 +17,7 @@ export function observeBookInView(bookRefs: { [key: string]: HTMLDivElement | nu
                 }
             });
         },
-        { rootMargin: '0px 0px -90% 0px', threshold: 0 }
+        { rootMargin: '0px 0px -50% 0px', threshold: 0.1 } // Ajustar rootMargin y threshold
     );
 
     Object.values(bookRefs).forEach((bookElement) => {
