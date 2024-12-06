@@ -58,7 +58,7 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook }) => 
     useEffect(() => {
         const selectedBookRef = bookRefs.current[selectedBook];
         if (selectedBookRef) {
-            selectedBookRef.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            selectedBookRef.scrollIntoView({ behavior: 'auto', block: 'start' });
         }
     }, [selectedBook, bookRefs, chapterImages]);
 
