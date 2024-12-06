@@ -25,7 +25,6 @@ async function getNoteRating(app: App, book: string, chapterNumber: string, vers
         return null;
     }
 
-    const content = await app.vault.read(noteFile);
     const yaml = app.metadataCache.getFileCache(noteFile)?.frontmatter;
     return yaml?.rating || null;
 }
