@@ -22,7 +22,7 @@ const SanMarcos: BookStructure = {
 					images: [
 						{
 							type: "url",
-							path: "https://scontent-mad1-1.xx.fbcdn.net/v/t39.30808-6/325781922_912384050122561_5433882682789612871_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=bTyMh6P7NXEQ7kNvgFZ8CZw&_nc_zt=23&_nc_ht=scontent-mad1-1.xx&_nc_gid=AGGdRSsj-73UMeFgywtvy57&oh=00_AYD-sWpYB2X0wakycWawjJMa_s2V7dGH_v8bKdyvDvXn3g&oe=67468E3C",
+							path: "",
 							altText: "El Bautismo de Jesús",
 						},
 					],

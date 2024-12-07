@@ -153,8 +153,18 @@ const Salmos: BookStructure = {
             pericopes: []
         },
         31: {
-            title: "Oración pidiendo refugio y alabanza por la bondad de Dios",
-            pericopes: []
+            title: "Confianza, súplica y agradecimiento de un hombre abandonado de todos y auxiliado por Dios",
+            pericopes: [{
+                title: "En tus manos encomiendo mi Espíritu",
+                verseRange: [1, 25],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-07 12.02.40 - Psalm 31_1-25 to the Passion of Jesus Christ.webp",
+                        altText: "DALL·E 2024-12-07 12.02.40 - Psalm 31_1-25 to the Passion of Jesus Christ",
+                    },
+                ],
+            }]
         },
         32: {
             title: "La alegría del perdón",
