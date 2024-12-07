@@ -696,7 +696,17 @@ const Salmos: BookStructure = {
         },
         139: {
             title: "La omnisciencia y omnipresencia de Dios",
-            pericopes: []
+            pericopes: [{
+                title: "Dios me creó de la nada, guía mi corazón y está en todas partes",
+                verseRange: [1, 24],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-07 12.44.41 - Psalm 139 - The omnipresence and guidance of God.webp",
+                        altText: "DALL·E 2024-12-07 12.44.41 - Psalm 139 - The omnipresence and guidance of God",
+                    },
+                ],
+            }]
         },
         140: {
             title: "Oración pidiendo protección contra enemigos",
