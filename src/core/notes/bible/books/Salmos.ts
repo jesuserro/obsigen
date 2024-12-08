@@ -517,8 +517,18 @@ const Salmos: BookStructure = {
             pericopes: []
         },
         102: {
-            title: "Oración en tiempo de aflicción",
-            pericopes: []
+            title: "Súplica de un enfermo a punto de morir que contempla la eternidad de Dios",
+            pericopes: [{
+                title: "Cielo y tierra pasarán mas tu palabra no pasará",
+                verseRange: [1, 29],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-08 11.22.43 - Psalm 102_8 - Cielo y tierra pasarán mas tu palabra no pasará.webp",
+                        altText: "DALL·E 2024-12-08 11.22.43 - Psalm 102_8 - Cielo y tierra pasarán mas tu palabra no pasará",
+                    },
+                ],
+            }]
         },
         103: {
             title: "Dios sana enfermedades y perdona los pecados",
