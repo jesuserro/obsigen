@@ -12,7 +12,17 @@ const Genesis: BookStructure = {
 		},
 		3: {
 			title: "La caída del hombre",
-			pericopes: []
+			pericopes: [{
+                title: "Pacto 2: Adámico - Protoevangelio - Consecuencias del pecado",
+                verseRange: [14, 20],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-08 11.48.08 - Genesis 3_15 - Protoevangelio - Nueva Eva - Enemiga del pecado.webp",
+                        altText: "DALL·E 2024-12-08 11.48.08 - Genesis 3_15 - Protoevangelio - Nueva Eva - Enemiga del pecado",
+                    },
+                ],
+            }]
 		},
 		4: {
 			title: "Caín y Abel",
