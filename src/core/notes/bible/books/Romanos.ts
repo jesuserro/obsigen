@@ -20,7 +20,17 @@ const Romanos: BookStructure = {
 		},
 		5: {
 			title: "La justificación por la fe y el pecado de Adán",
-			pericopes: []
+			pericopes: [{
+                title: "El pecado original",
+                verseRange: [12, 21],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-08 13.54.55 - Adam and Christ in Romans 5_12-21 - Eva and Mary.webp",
+                        altText: "DALL·E 2024-12-08 13.54.55 - Adam and Christ in Romans 5_12-21 - Eva and Mary",
+                    },
+                ],
+            }]
 		},
 		6: {
 			title: "La libertad del pecado por medio de Cristo",
