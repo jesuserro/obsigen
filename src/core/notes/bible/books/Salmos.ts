@@ -336,7 +336,17 @@ const Salmos: BookStructure = {
         },
         69: {
             title: "Clamor por salvación en medio del sufrimiento",
-            pericopes: []
+            pericopes: [{
+                title: "Tengo sed",
+                verseRange: [1, 37],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-08 10.18.47 - Salmo 69 22 - Tengo sed.webp",
+                        altText: "DALL·E 2024-12-08 10.18.47 - Salmo 69 22 - Tengo sed",
+                    },
+                ],
+            }]
         },
         70: {
             title: "Oración pidiendo ayuda inmediata",
