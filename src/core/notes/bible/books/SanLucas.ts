@@ -24,6 +24,16 @@ const SanLucas: BookStructure = {
                         altText: "DALL·E 2024-12-08 13.27.53 -Lc 1 39-45 - Visitation of Mary to her cousin Elizabeth",
                     },
                 ],
+            },{
+                title: "El Cántico de María: Magníficat",
+                verseRange: [46, 56],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-08 13.37.42 - Magnificat (Luke 1_46-55).webp",
+                        altText: "DALL·E 2024-12-08 13.37.42 - Magnificat (Luke 1_46-55)",
+                    },
+                ],
             }],
 		},
 		2: {
