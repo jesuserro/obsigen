@@ -4,7 +4,17 @@ const SanLucas: BookStructure = {
 	chapters: {
 		1: {
 			title: "El anuncio del nacimiento de Juan el Bautista y de Jesús",
-			pericopes: [],
+			pericopes: [{
+                title: "La Anunciación y Encarnación del Hijo de Dios",
+                verseRange: [26, 38],
+                images: [
+                    {
+                        type: "local",
+                        path: "1425 - La_Anunciación,_de_Fra_Angelico.webp",
+                        altText: "La Anunciación y Encarnación del Hijo de Dios por Fran Angelico en 1425",
+                    },
+                ],
+            }],
 		},
 		2: {
 			title: "El nacimiento de Jesús y su presentación en el templo",
