@@ -68,7 +68,17 @@ const Apocalipsis: BookStructure = {
 		},
 		12: {
 			title: "La mujer, el dragón y el hijo varón",
-			pericopes: []
+			pericopes: [{
+                title: "La Mujer vestida de sol perseguida por la serpiente",
+                verseRange: [1, 18],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-08 12.47.59 - Revelation 12_1-18.webp",
+                        altText: "DALL·E 2024-12-08 12.47.59 - Revelation 12_1-18",
+                    },
+                ],
+            }]
 		},
 		13: {
 			title: "Las dos bestias: del mar y de la tierra",
