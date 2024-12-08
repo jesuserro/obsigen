@@ -1,3 +1,4 @@
+// FILE: BibleViewChaptersUI.tsx
 import { App } from 'obsidian';
 import React, { useEffect, useRef, useState } from 'react';
 import { getChapterImages, openNote } from './BibleViewChapters';
@@ -71,15 +72,13 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
                                         {images.length > 0 && (
                                             <div className="image-gallery">
                                                 {images.map((image: ChapterImage, index) => (
-                                                    <a
+                                                    <div
                                                         key={index}
-                                                        href="#"
-                                                        title={image.title}
+                                                        className="image-container"
                                                         onClick={(e) => {
                                                             e.preventDefault();
                                                             openNote(app, book, chapterNumber, image.verseRange);
                                                         }}
-                                                        className="image-container"
                                                     >
                                                         <img
                                                             src={image.path}
@@ -94,7 +93,10 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
                                                         <div className="verse-range-overlay">
                                                             {image.verseRange[0]}-{image.verseRange[1]}
                                                         </div>
-                                                    </a>
+                                                        <div className="map-overlay" onClick={(e) => e.stopPropagation()}>
+                                                            <a href="obsidian://mapview?do=open&centerLat=31.248198284958146&centerLng=35.166091863065965&chosenMapSource=0&linkColor=red&mapZoom=10&name=Default&query=&showLinks=false" target="_blank">Map</a>
+                                                        </div>
+                                                    </div>
                                                 ))}
                                             </div>
                                         )}

@@ -1,3 +1,4 @@
+// FILE: BibleViewChapters.scss
 .bible-view-chapters {
     padding: 20px;
     background-color: #121212;
@@ -37,6 +38,27 @@
         border-radius: 3px;
         font-size: 12px;
         z-index: 5;
+    }
+
+    .map-overlay {
+        position: absolute;
+        bottom: 5px;
+        left: 5px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-size: 12px;
+        z-index: 10; // Aseguramos que el z-index sea mayor que el de .image-container
+
+        a {
+            color: white;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 
     .rating-5 {
