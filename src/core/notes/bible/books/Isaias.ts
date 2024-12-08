@@ -28,7 +28,17 @@ const Isaias: BookStructure = {
 		},
 		7: {
 			title: "La señal de Emanuel",
-			pericopes: []
+			pericopes: [{
+                title: "La señal de Emanuel",
+                verseRange: [1, 17],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-08 12.31.06 - Is 7 14 - La Señal de Emmanuel.webp",
+                        altText: "DALL·E 2024-12-08 12.31.06 - Is 7 14 - La Señal de Emmanuel",
+                    },
+                ],
+            }]
 		},
 		8: {
 			title: "Advertencias contra confiar en los hombres",
