@@ -57,8 +57,18 @@ const Romanos: BookStructure = {
 			pericopes: []
 		},
 		12: {
-			title: "La vida cristiana como sacrificio vivo",
-			pericopes: []
+			title: "La conducta cristiana como sacrificio vivo",
+			pericopes: [{
+                title: "La unidad del Cuerpo Místico - Renovación de la mente",
+                verseRange: [1, 8],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-08 17.33.32 - Rm 12 2 - Renovación de la mente en un Cuerpo Místico.webp",
+                        altText: "DALL·E 2024-12-08 17.33.32 - Rm 12 2 - Renovación de la mente en un Cuerpo Místico",
+                    },
+                ],
+            }]
 		},
 		13: {
 			title: "La obediencia a las autoridades",
