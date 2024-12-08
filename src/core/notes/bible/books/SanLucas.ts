@@ -14,6 +14,16 @@ const SanLucas: BookStructure = {
                         altText: "La Anunciación y Encarnación del Hijo de Dios por Fran Angelico en 1425",
                     },
                 ],
+            }, {
+                title: "Visitación de María a su prima Santa Isabel",
+                verseRange: [39, 45],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-08 13.27.53 -Lc 1 39-45 - Visitation of Mary to her cousin Elizabeth.webp",
+                        altText: "DALL·E 2024-12-08 13.27.53 -Lc 1 39-45 - Visitation of Mary to her cousin Elizabeth",
+                    },
+                ],
             }],
 		},
 		2: {
