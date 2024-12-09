@@ -204,7 +204,17 @@ const SanMateo: BookStructure = {
 		},
 		25: {
 			title: "Parábolas sobre el juicio final",
-			pericopes: [],
+			pericopes: [{
+                title: "El Juicio Final - Porque tuve hambre y me disteis de comer",
+                verseRange: [31, 46],
+                images: [
+                    {
+                        type: "local",
+                        path: "Mt 25, 31-46 Juicio Final - Porque tuve hambre y me disteis de comer.webp",
+                        altText: "Mt 25, 31-46 Juicio Final - Porque tuve hambre y me disteis de comer.",
+                    },
+                ],
+            }],
 		},
 		26: {
 			title: "La Pasión: Última Cena y arresto de Jesús",
