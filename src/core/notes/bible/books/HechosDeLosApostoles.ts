@@ -14,6 +14,16 @@ const HechosDeLosApostoles: BookStructure = {
                         altText: "DALL·E 2024-12-09 12.47.10 - Ascension of Jesus Christ, blending elements from Acts 1_6-11",
                     },
                 ],
+            }, {
+                title: "La elección de Matías",
+                verseRange: [15, 26],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-09 13.02.46 - Acts 1_24-26 - Elección de Matías.webp",
+                        altText: "DALL·E 2024-12-09 13.02.46 - Acts 1_24-26 - Elección de Matías",
+                    },
+                ],
             }]
 		},
 		2: {
