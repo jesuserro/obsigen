@@ -68,6 +68,16 @@ const HechosDeLosApostoles: BookStructure = {
                         altText: "DA 2024-12-09 14.57.38 - Hch 7, 1-51 - Discurso de San Esteban ante el Sanedrín",
                     },
                 ],
+            }, {
+                title: "Martirio de San Esteban",
+                verseRange: [54, 60],
+                images: [
+                    {
+                        type: "local",
+                        path: "20241209153359-Hch 7, 54-60 - Martirio de San Esteban.webp",
+                        altText: "DALL·E 2024-12-09 15.33.41 - Martirio de San Esteban según Hechos 7_54-60",
+                    },
+                ],
             }]
 		},
 		8: {
