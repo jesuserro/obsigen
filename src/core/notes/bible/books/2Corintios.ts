@@ -16,7 +16,17 @@ const SegundaCorintios: BookStructure = {
 		},
 		4: {
 			title: "La luz del evangelio en medio de la adversidad",
-			pericopes: []
+			pericopes: [{
+                title: "Sostenido por la esperanza del Cielo - Ver lo Invisible - Morada eterna en Cielo",
+                verseRange: [13, 18],
+                images: [
+                    {
+                        type: "local",
+                        path: "2 Co 4, 13-18 Sostenido por la esperanza del Cielo - Ver lo Invisible - Morada eterna en Cielo.webp",
+                        altText: "2 Co 4, 13-18 Sostenido por la esperanza del Cielo - Ver lo Invisible - Morada eterna en Cielo.",
+                    },
+                ],
+            }]
 		},
 		5: {
 			title: "La reconciliación con Dios por medio de Cristo",
