@@ -30,7 +30,17 @@ const Genesis: BookStructure = {
 		},
 		5: {
 			title: "La genealogía desde Adán hasta Noé",
-			pericopes: []
+			pericopes: [{
+                title: "Pacto 2: Adámico - Protoevangelio - Consecuencias del pecado",
+                verseRange: [14, 20],
+                images: [
+                    {
+                        type: "local",
+                        path: "Gn 5, 1-32 - Multiplicación de la humanidad - Arrebatamiento de Henoc.webp",
+                        altText: "Gn 5, 1-32 - Multiplicación de la humanidad - Arrebatamiento de Henoc.",
+                    },
+                ],
+            }]
 		},
 		6: {
 			title: "La corrupción de la humanidad y el llamado de Noé",
