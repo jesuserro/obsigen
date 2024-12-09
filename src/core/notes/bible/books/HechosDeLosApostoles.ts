@@ -92,7 +92,7 @@ const HechosDeLosApostoles: BookStructure = {
                 images: [
                     {
                         type: "local",
-                        path: "DALL·E 2024-12-09 15.46.36 - Conversion of Saint Paul, based on Acts 9_1-9.webp",
+                        path: "Hch 9, 1-9 - La conversión de San Pablo.webp",
                         altText: "DALL·E 2024-12-09 15.46.36 - Conversion of Saint Paul, based on Acts 9_1-9",
                     },
                 ],
