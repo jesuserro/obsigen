@@ -50,7 +50,17 @@ const SegundaCorintios: BookStructure = {
 		},
 		10: {
 			title: "La defensa de Pablo de su ministerio",
-			pericopes: []
+			pericopes: [{
+                title: "Decidido a usar su autoridad apostólica",
+                verseRange: [1, 11],
+                images: [
+                    {
+                        type: "local",
+                        path: "2 Co 10, 1-11 Decidido a usar su autoridad apostólica.webp",
+                        altText: "2 Co 10, 1-11 Decidido a usar su autoridad apostólica.",
+                    },
+                ],
+            }]
 		},
 		11: {
 			title: "Las luchas de Pablo y su celo por los corintios",
