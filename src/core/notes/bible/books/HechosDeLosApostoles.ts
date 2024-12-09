@@ -4,7 +4,17 @@ const HechosDeLosApostoles: BookStructure = {
 	chapters: {
 		1: {
 			title: "La ascensión de Jesús y la elección de Matías",
-			pericopes: []
+			pericopes: [{
+                title: "La ascensión de Jesús",
+                verseRange: [6, 11],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-09 12.47.10 - Ascension of Jesus Christ, blending elements from Acts 1_6-11.webp",
+                        altText: "DALL·E 2024-12-09 12.47.10 - Ascension of Jesus Christ, blending elements from Acts 1_6-11",
+                    },
+                ],
+            }]
 		},
 		2: {
 			title: "El día de Pentecostés",
