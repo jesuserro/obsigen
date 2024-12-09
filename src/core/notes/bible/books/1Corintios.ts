@@ -4,7 +4,17 @@ const PrimeraCorintios: BookStructure = {
 	chapters: {
 		1: {
 			title: "Saludo, acción de gracias y divisiones en la iglesia",
-			pericopes: []
+			pericopes: [{
+                title: "Sabiduría de la Cruz",
+                verseRange: [18, 31],
+                images: [
+                    {
+                        type: "local",
+                        path: "1 Co 1, 18-31 Sabiduría de la Cruz.webp",
+                        altText: "1 Co 1, 18-31 Sabiduría de la Cruz.",
+                    },
+                ],
+            }]
 		},
 		2: {
 			title: "La sabiduría de Dios revelada por el Espíritu",
@@ -70,7 +80,17 @@ const PrimeraCorintios: BookStructure = {
 		},
 		15: {
 			title: "La resurrección de Cristo y de los creyentes",
-			pericopes: []
+			pericopes: [{
+                title: "Resurrección y apariciones de Cristo",
+                verseRange: [1, 11],
+                images: [
+                    {
+                        type: "local",
+                        path: "1 Co 15, 1-11 Resurrección y Apariciones de Cristo.webp",
+                        altText: "1 Co 15, 1-11 Resurrección y Apariciones de Cristo.",
+                    },
+                ],
+            }]
 		},
 		16: {
 			title: "Instrucciones finales y saludos",
