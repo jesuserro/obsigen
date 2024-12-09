@@ -5,6 +5,7 @@ import PrimeraReyes from "./books/1Reyes";
 import PrimeraSamuel from "./books/1Samuel";
 import PrimeraTesalonicenses from "./books/1Tesalonicenses";
 import PrimeraTimoteo from "./books/1Timoteo";
+import SegundaCorintios from "./books/2Corintios";
 import SegundaReyes from "./books/2Reyes";
 import SegundaSamuel from "./books/2Samuel";
 import Apocalipsis from "./books/Apocalipsis";
@@ -96,7 +97,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
 	"San Marcos": SanMarcos,
 	"San Lucas": SanLucas,
 	"San Juan": SanJuan,
-    "Hechos de los Apóstoles": HechosDeLosApostoles,
+    Hechos: HechosDeLosApostoles,
     Romanos: Romanos,
     Gálatas: Galatas,
     Filipenses: Filipenses,
@@ -105,6 +106,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
     "1 Timoteo": PrimeraTimoteo,
     Efesios: Efesios,
     "1 Corintios": PrimeraCorintios,
+    "2 Corintios": SegundaCorintios,
     Hebreos: Hebreos,
 	Santiago: Santiago,
     "1 Pedro": PrimeraPedro,
