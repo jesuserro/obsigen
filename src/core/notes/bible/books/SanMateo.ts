@@ -170,7 +170,17 @@ const SanMateo: BookStructure = {
 		},
 		24: {
 			title: "Jesús profetiza sobre el fin de los tiempos",
-			pericopes: [],
+			pericopes: [{
+                title: "Tiempos de la segunda venida de Cristo",
+                verseRange: [36, 44],
+                images: [
+                    {
+                        type: "local",
+                        path: "Mt 24, 36-44 Tiempos de la segunda venida de Cristo.webp",
+                        altText:"Mt 24, 36-44 Tiempos de la segunda venida de Cristo.",
+                    },
+                ],
+            }],
 		},
 		25: {
 			title: "Parábolas sobre el juicio final",
