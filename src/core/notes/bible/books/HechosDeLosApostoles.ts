@@ -8,7 +8,17 @@ const HechosDeLosApostoles: BookStructure = {
 		},
 		2: {
 			title: "El día de Pentecostés",
-			pericopes: []
+			pericopes: [{
+                title: "La venida del Espíritu Santo en Pentecostés",
+                verseRange: [1, 13],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-09 12.32.44 - Hch 2 1-13 - The twelve apostles and the Virgin Mary gathered in an upper room in Jerusalem.webp",
+                        altText: "DALL·E 2024-12-09 12.32.44 - Hch 2 1-13 - The twelve apostles and the Virgin Mary gathered in an upper room in Jerusalem",
+                    },
+                ],
+            }]
 		},
 		3: {
 			title: "Pedro sana a un cojo y predica en el templo",
