@@ -58,7 +58,17 @@ const HechosDeLosApostoles: BookStructure = {
 		},
 		7: {
 			title: "El discurso de Esteban y su martirio",
-			pericopes: []
+			pericopes: [{
+                title: "El discurso de Esteban",
+                verseRange: [1, 51],
+                images: [
+                    {
+                        type: "local",
+                        path: "20241209145738-Hch 7, 1-51 - Discurso de San Esteban ante el Sanedrín.webp",
+                        altText: "DA 2024-12-09 14.57.38 - Hch 7, 1-51 - Discurso de San Esteban ante el Sanedrín",
+                    },
+                ],
+            }]
 		},
 		8: {
 			title: "La expansión del evangelio: Felipe en Samaria y el etíope",
