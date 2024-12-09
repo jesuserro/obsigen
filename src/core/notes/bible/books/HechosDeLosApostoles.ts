@@ -86,7 +86,17 @@ const HechosDeLosApostoles: BookStructure = {
 		},
 		9: {
 			title: "La conversión de Saulo y los milagros de Pedro",
-			pericopes: []
+			pericopes: [{
+                title: "La conversión de Saulo",
+                verseRange: [1, 9],
+                images: [
+                    {
+                        type: "local",
+                        path: "DALL·E 2024-12-09 15.46.36 - Conversion of Saint Paul, based on Acts 9_1-9.webp",
+                        altText: "DALL·E 2024-12-09 15.46.36 - Conversion of Saint Paul, based on Acts 9_1-9",
+                    },
+                ],
+            }]
 		},
 		10: {
 			title: "Pedro y Cornelio: la salvación llega a los gentiles",
