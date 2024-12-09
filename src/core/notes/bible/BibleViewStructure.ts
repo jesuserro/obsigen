@@ -5,6 +5,7 @@ import PrimeraReyes from "./books/1Reyes";
 import PrimeraSamuel from "./books/1Samuel";
 import PrimeraTesalonicenses from "./books/1Tesalonicenses";
 import PrimeraTimoteo from "./books/1Timoteo";
+import SegundaReyes from "./books/2Reyes";
 import SegundaSamuel from "./books/2Samuel";
 import Apocalipsis from "./books/Apocalipsis";
 import Cantares from "./books/CantarDeLosCantares";
@@ -77,6 +78,7 @@ export const bibleStructure: { [book: string]: BookStructure } = {
     "1 Samuel": PrimeraSamuel,
     "2 Samuel": SegundaSamuel,
     "1 Reyes": PrimeraReyes,
+    "2 Reyes": SegundaReyes,
     Tobías: Tobias,
     Ester: Ester,
     Judit: Judit,
