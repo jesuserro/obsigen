@@ -82,7 +82,17 @@ const HechosDeLosApostoles: BookStructure = {
 		},
 		8: {
 			title: "La expansión del evangelio: Felipe en Samaria y el etíope",
-			pericopes: []
+			pericopes: [{
+                title: "Bautismo del eunuco etíope",
+                verseRange: [26, 40],
+                images: [
+                    {
+                        type: "local",
+                        path: "Hch 8, 26-40 - Bautismo del eunuco etíope.webp",
+                        altText: "Hch 8, 26-40 - Bautismo del eunuco etíope.",
+                    },
+                ],
+            }]
 		},
 		9: {
 			title: "La conversión de Saulo y los milagros de Pedro",
