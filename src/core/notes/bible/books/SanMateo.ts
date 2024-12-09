@@ -171,6 +171,26 @@ const SanMateo: BookStructure = {
 		24: {
 			title: "Jesús profetiza sobre el fin de los tiempos",
 			pericopes: [{
+                title: "Comienzo de las Tribulaciones y Persecuciones a causa del Evangelio",
+                verseRange: [3, 14],
+                images: [
+                    {
+                        type: "local",
+                        path: "Mt 24, 3-14 - Comienzo de las Tribulaciones y Persecuciones a causa del Evangelio.webp",
+                        altText:"Mt 24, 3-14 Comienzo de las Tribulaciones y Persecuciones a causa del Evangelio.",
+                    },
+                ],
+            },{
+                title: "La Gran Tribulación y la Venida del Hijo del Hombre",
+                verseRange: [15, 35],
+                images: [
+                    {
+                        type: "local",
+                        path: "Mt 24, 15-35 - La Gran Tribulación y la Venida del Hijo del Hombre.webp",
+                        altText:"Mt 24, 15-35 La Gran Tribulación y la Venida del Hijo del Hombre.",
+                    },
+                ],
+            }, {
                 title: "Tiempos de la segunda venida de Cristo",
                 verseRange: [36, 44],
                 images: [
