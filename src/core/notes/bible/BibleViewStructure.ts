@@ -25,6 +25,7 @@ import Jeremias from "./books/Jeremias";
 import Job from "./books/Job";
 import Jonas from "./books/Jonas";
 import Josue from "./books/Josue";
+import Judas from "./books/Judas";
 import Judit from "./books/Judit";
 import Jueces from "./books/Jueces";
 import Levitico from "./books/Levitico";
@@ -106,5 +107,6 @@ export const bibleStructure: { [book: string]: BookStructure } = {
 	Santiago: Santiago,
     "1 Pedro": PrimeraPedro,
     "1 Juan": PrimeraJuan,
+    Judas: Judas,
     Apocalipsis: Apocalipsis,
 };
