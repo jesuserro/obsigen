@@ -49,14 +49,7 @@ const SanJuan: BookStructure = {
 			pericopes: [
 				{
 					title: "Revelación a Nicodemo",
-					verseRange: [1, 15],
-                    images: [
-                        {
-                            type: "local",
-                            path: "190907010000_John_La_Farge_-_Visit_of_Nicodemus_to_Christ-Smithsonian_American_Art_Museum.webp",
-                            altText: "Jesús enseña a Nicodemo",
-                        },
-                    ],
+					verseRange: [1, 15]
 				},
 				{
 					title: "De tal manera amó Dios al mundo",
@@ -80,14 +73,7 @@ const SanJuan: BookStructure = {
 			pericopes: [
 				{
 					title: "Jesús y la mujer samaritana",
-					verseRange: [1, 42],
-					images: [
-						{
-							type: "local",
-							path: "Jn 4 1-42 Samaritana de Sicar.webp",
-							altText: "Jesús y la mujer samaritana",
-						},
-					],
+					verseRange: [1, 42]
 				},
 				{
 					title: "La conversión de los samaritanos",
@@ -192,14 +178,7 @@ const SanJuan: BookStructure = {
 			pericopes: [
 				{
 					title: "Jesús sana a un ciego de nacimiento",
-					verseRange: [1, 12],
-					images: [
-						{
-							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/2/25/Healing_of_the_Blind_Man_by_Jesus_Christ.jpg",
-							altText: "Jesús sana a un ciego de nacimiento",
-						},
-					],
+					verseRange: [1, 12]
 				},
 				{
 					title: "El ciego es interrogado por los fariseos",
@@ -241,14 +220,7 @@ const SanJuan: BookStructure = {
 				},
 				{
 					title: "Jesús resucita a Lázaro",
-					verseRange: [38, 44],
-					images: [
-						{
-							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/6/6d/RaisingofLazarusBloch.jpg",
-							altText: "Jesús resucita a Lázaro",
-						},
-					],
+					verseRange: [38, 44]
 				},
 				{
 					title: "La conspiración para matar a Jesús",
@@ -261,25 +233,11 @@ const SanJuan: BookStructure = {
 			pericopes: [
 				{
 					title: "Jesús ungido en Betania",
-					verseRange: [1, 8],
-					images: [
-						{
-							type: "url",
-							path: "https://orthodoxpebbles.com/wp-content/uploads/2021/04/ea042-92817118_536607550591392_3522464827349925888_n.jpg",
-							altText: "Jesús ungido en Betania",
-						},
-					],
+					verseRange: [1, 8]
 				},
 				{
 					title: "Entrada triunfal en Jerusalén",
-					verseRange: [12, 19],
-					images: [
-						{
-							type: "url",
-							path: "https://www.hojadellunes.com/wp-content/uploads/2021/04/intocht-Jeruzalem-op-Palm-zondag.jpg",
-							altText: "Entrada triunfal en Jerusalén",
-						},
-					],
+					verseRange: [12, 19]
 				},
 				{
 					title: "Jesús predice su muerte",
@@ -304,14 +262,7 @@ const SanJuan: BookStructure = {
 				},
 				{
 					title: "Predicción de la traición de Judas",
-					verseRange: [18, 30],
-					images: [
-						{
-							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/The-Last-Supper-large.jpg/390px-The-Last-Supper-large.jpg",
-							altText: "La última cena, traición de Judas",
-						},
-					],
+					verseRange: [18, 30]
 				},
 				{
 					title: "El nuevo mandamiento",
