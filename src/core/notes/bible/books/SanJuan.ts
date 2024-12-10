@@ -422,14 +422,7 @@ const SanJuan: BookStructure = {
 				},
 				{
                     title: "Jesús se aparece a María Magdalena",
-                    verseRange: [11, 18],
-                    images: [
-                        {
-                            type: "local", 
-                            path: "145006010000_Noli_me_tangere-Fra_Angelico.webp", 
-                            altText: "Jesús se aparece a María Magdalena",
-                        },
-                    ],
+                    verseRange: [11, 18]
                 },
 				{
 					title: "Jesús se aparece a sus discípulos",
