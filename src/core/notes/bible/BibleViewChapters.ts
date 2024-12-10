@@ -9,9 +9,12 @@ interface ChapterImage extends BibleImage {
     title: string;
     alt: string;
     rating?: number;
+    verseTitle?: string;
+    versePassage?: string;
+    locations?: string[];
 }
 
-async function getNoteRating(app: App, book: string, chapterNumber: string, verseRange: [number, number]): Promise<number | null> {
+async function getNoteData(app: App, book: string, chapterNumber: string, verseRange: [number, number]): Promise<Partial<ChapterImage>> {
     const folderPath = book === 'Salmos' ? `333 Biblia/${book}` : `333 Biblia/${book}/${chapterNumber}`;
     const files = app.vault.getFiles().filter(file => file.path.startsWith(folderPath));
   
@@ -20,58 +23,41 @@ async function getNoteRating(app: App, book: string, chapterNumber: string, vers
     const noteFile = files.find(file => file.basename.includes(verseRangeString) && file.basename.includes(chapterString));
   
     if (!noteFile) {
-        console.log(`getNoteRating: No se encontró ninguna nota con el rango de versículos ${verseRangeString} en ${folderPath}`);
-        return null;
+        console.log(`getNoteData: No se encontró ninguna nota con el rango de versículos ${verseRangeString} en ${folderPath}`);
+        return {};
     }
 
     const yaml = app.metadataCache.getFileCache(noteFile)?.frontmatter;
-    return yaml?.rating || null;
+    if (!yaml) {
+        return {};
+    }
+
+    return {
+        rating: yaml.rating || null,
+        verseTitle: yaml.verse_title || "",
+        versePassage: yaml.verse_passage || "",
+        locations: yaml.locations || [],
+        path: yaml.cover ? app.vault.adapter.getResourcePath(yaml.cover) : "",
+        alt: yaml.cover ? yaml.cover : "",
+    };
 }
 
 export async function getChapterImages(chapterInfo: any, app: App, book: string, chapterNumber: string): Promise<ChapterImage[]> {
     const images: ChapterImage[] = [];
     for (const pericope of chapterInfo.pericopes) {
-        if (pericope.images && pericope.images.length > 0) {
-            const validImages = await Promise.all(pericope.images
-                .filter((image: BibleImage) => image.path && image.path.trim() !== "")
-                .map(async (image: BibleImage) => {
-                    const reference = `${book} ${chapterNumber}:${pericope.verseRange[0]}-${pericope.verseRange[1]}`;
-                    const title = `${pericope.title} (${reference})`;
-                    const alt = `${image.altText} (${reference})`;
+        const noteData = await getNoteData(app, book, chapterNumber, pericope.verseRange);
+        if (noteData.path) {
+            const reference = `${book} ${chapterNumber}:${pericope.verseRange[0]}-${pericope.verseRange[1]}`;
+            const title = `${pericope.title} (${reference})`;
+            const alt = `${noteData.alt} (${reference})`;
 
-                    let rating = null;
-                    if (image.type === "local") {
-                        const fullPath = `${IMAGE_FOLDER}/${image.path}`;
-                        const file = app.vault.getAbstractFileByPath(fullPath);
-                        if (file) {
-                            rating = await getNoteRating(app, book, chapterNumber, pericope.verseRange);
-                            return {
-                                ...image,
-                                path: app.vault.adapter.getResourcePath(fullPath),
-                                verseRange: pericope.verseRange,
-                                pericopeTitle: pericope.title,
-                                title,
-                                alt,
-                                rating,
-                            };
-                        }
-                    } else {
-                        rating = await getNoteRating(app, book, chapterNumber, pericope.verseRange);
-                        return {
-                            ...image,
-                            verseRange: pericope.verseRange,
-                            pericopeTitle: pericope.title,
-                            title,
-                            alt,
-                            rating,
-                        };
-                    }
-                    return null;
-                })
-                .filter((image: ChapterImage | null): image is ChapterImage => image !== null)
-            );
-
-            images.push(...validImages);
+            images.push({
+                ...noteData,
+                verseRange: pericope.verseRange,
+                pericopeTitle: pericope.title,
+                title,
+                alt,
+            } as ChapterImage);
         }
     }
     return images;
@@ -101,4 +87,21 @@ export function openNote(app: App, book: string, chapterNumber: string, verseRan
     } else {
         app.workspace.openLinkText(noteFile.path, '', true);
     }
+}
+
+async function getNoteRating(app: App, book: string, chapterNumber: string, verseRange: [number, number]): Promise<number | null> {
+    const folderPath = book === 'Salmos' ? `333 Biblia/${book}` : `333 Biblia/${book}/${chapterNumber}`;
+    const files = app.vault.getFiles().filter(file => file.path.startsWith(folderPath));
+  
+    const verseRangeString = `${verseRange[0]}-${verseRange[1]}`;
+    const chapterString = `${chapterNumber}`;
+    const noteFile = files.find(file => file.basename.includes(verseRangeString) && file.basename.includes(chapterString));
+  
+    if (!noteFile) {
+        console.log(`getNoteRating: No se encontró ninguna nota con el rango de versículos ${verseRangeString} en ${folderPath}`);
+        return null;
+    }
+
+    const yaml = app.metadataCache.getFileCache(noteFile)?.frontmatter;
+    return yaml?.rating || null;
 }
