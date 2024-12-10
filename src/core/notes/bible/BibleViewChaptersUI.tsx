@@ -1,6 +1,6 @@
 import { App } from 'obsidian';
 import React, { useEffect, useRef, useState } from 'react';
-import { getChapterImages, openNote } from './BibleViewChapters';
+import { getChapterImages, openLocationNote, openNote } from './BibleViewChapters';
 import { BibleImage, bibleStructure } from './BibleViewStructure';
 
 interface Props {
@@ -107,7 +107,18 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
                                                         )}
                                                         {image.locations && image.locations.length > 0 && (
                                                             <div className="locations-overlay">
-                                                                {image.locations.join(', ')}
+                                                                {image.locations.map((location, locIndex) => (
+                                                                    <a
+                                                                        key={locIndex}
+                                                                        className="location-link"
+                                                                        onClick={(e) => {
+                                                                            e.stopPropagation();
+                                                                            openLocationNote(app, location);
+                                                                        }}
+                                                                    >
+                                                                        {location}
+                                                                    </a>
+                                                                ))}
                                                             </div>
                                                         )}
                                                         <div className="map-overlay" onClick={(e) => e.stopPropagation()}>

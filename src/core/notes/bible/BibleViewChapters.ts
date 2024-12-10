@@ -88,3 +88,29 @@ export function openNote(app: App, book: string, chapterNumber: string, verseRan
         app.workspace.openLinkText(noteFile.path, '', true);
     }
 }
+
+export function openLocationNote(app: App, location: string) {
+    // Eliminar caracteres especiales de la localización
+    const sanitizedLocation = location.replace(/\[\[|\]\]/g, '');
+
+    // Filtrar archivos que contengan el nombre de la localización
+    const files = app.vault.getFiles().filter(file => file.basename.includes(sanitizedLocation));
+  
+    if (files.length === 0) {
+        console.log(`openLocationNote: No se encontró ninguna nota con el nombre ${sanitizedLocation}`);
+        return;
+    }
+
+    const noteFile = files[0];
+    const openLeaves = app.workspace.getLeavesOfType("markdown");
+    const openFilePaths = openLeaves.map(leaf => leaf.view instanceof FileView ? leaf.view.file?.path : null).filter(path => path !== null);
+  
+    if (openFilePaths.includes(noteFile.path)) {
+        const leaf = openLeaves.find(leaf => leaf.view instanceof FileView && leaf.view.file?.path === noteFile.path);
+        if (leaf) {
+            app.workspace.setActiveLeaf(leaf);
+        }
+    } else {
+        app.workspace.openLinkText(noteFile.path, '', true);
+    }
+}
