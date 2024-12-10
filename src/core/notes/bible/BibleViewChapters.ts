@@ -12,6 +12,7 @@ interface ChapterImage extends BibleImage {
     verseTitle?: string;
     versePassage?: string;
     locations?: string[];
+    coordinates?: [number, number];
 }
 
 async function getNoteData(app: App, book: string, chapterNumber: string, verseRange: [number, number]): Promise<Partial<ChapterImage>> {
@@ -42,6 +43,28 @@ async function getNoteData(app: App, book: string, chapterNumber: string, verseR
     };
 }
 
+async function getLocationCoordinates(app: App, location: string): Promise<[number, number] | null> {
+    const sanitizedLocation = location.replace(/\[\[|\]\]/g, '');
+    const [mainLocation, alias] = sanitizedLocation.split('|');
+
+    const files = app.vault.getFiles().filter(file => 
+        file.basename.includes(mainLocation) || (alias && file.basename.includes(alias))
+    );
+
+    if (files.length === 0) {
+        console.log(`getLocationCoordinates: No se encontró ninguna nota con el nombre ${sanitizedLocation}`);
+        return null;
+    }
+
+    const noteFile = files[0];
+    const yaml = app.metadataCache.getFileCache(noteFile)?.frontmatter;
+    if (!yaml || !yaml.location) {
+        return null;
+    }
+
+    return yaml.location;
+}
+
 export async function getChapterImages(chapterInfo: any, app: App, book: string, chapterNumber: string): Promise<ChapterImage[]> {
     const images: ChapterImage[] = [];
     for (const pericope of chapterInfo.pericopes) {
@@ -51,12 +74,17 @@ export async function getChapterImages(chapterInfo: any, app: App, book: string,
             const title = `${pericope.title} (${reference})`;
             const alt = `${noteData.alt} (${reference})`;
 
+            const coordinates = noteData.locations && noteData.locations.length > 0
+                ? await getLocationCoordinates(app, noteData.locations[0])
+                : null;
+
             images.push({
                 ...noteData,
                 verseRange: pericope.verseRange,
                 pericopeTitle: pericope.title,
                 title,
                 alt,
+                coordinates,
             } as ChapterImage);
         }
     }
@@ -90,11 +118,9 @@ export function openNote(app: App, book: string, chapterNumber: string, verseRan
 }
 
 export function openLocationNote(app: App, location: string) {
-    // Eliminar caracteres especiales de la localización y manejar alias
     const sanitizedLocation = location.replace(/\[\[|\]\]/g, '');
     const [mainLocation, alias] = sanitizedLocation.split('|');
 
-    // Filtrar archivos que contengan el nombre de la localización o su alias
     const files = app.vault.getFiles().filter(file => 
         file.basename.includes(mainLocation) || (alias && file.basename.includes(alias))
     );

@@ -19,6 +19,7 @@ interface ChapterImage extends BibleImage {
     verseTitle?: string;
     versePassage?: string;
     locations?: string[];
+    coordinates?: [number, number];
 }
 
 const getRatingClass = (rating: number) => {
@@ -108,9 +109,11 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
                                                                 })}
                                                             </div>
                                                         )}
-                                                        <div className="map-overlay" onClick={(e) => e.stopPropagation()}>
-                                                            <a href="obsidian://mapview?do=open&centerLat=31.248198284958146&centerLng=35.166091863065965&chosenMapSource=0&linkColor=red&mapZoom=10&name=Default&query=&showLinks=false" target="_blank">Map</a>
-                                                        </div>
+                                                        {image.coordinates && (
+                                                            <div className="map-overlay" onClick={(e) => e.stopPropagation()}>
+                                                                <a href={`obsidian://mapview?do=open&centerLat=${image.coordinates[0]}&centerLng=${image.coordinates[1]}&chosenMapSource=0&linkColor=red&mapZoom=10&name=Default&query=&showLinks=false`} target="_blank">Map</a>
+                                                            </div>
+                                                        )}
                                                     </div>
                                                 ))}
                                             </div>
