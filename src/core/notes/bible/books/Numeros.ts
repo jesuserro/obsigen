@@ -116,7 +116,17 @@ const Numeros: BookStructure = {
 		},
 		24: {
 			title: "Las profecías finales de Balaam",
-			pericopes: []
+			pericopes: [{
+                title: "Cuarto oráculo de Balaam - Profecía de la Estrella de Belén",
+                verseRange: [10, 25],
+                images: [
+                    {
+                        type: "local",
+                        path: "Nm 24, 10-25 - Cuarto oráculo de Balaam - Profecía de la Estrella de Belén.webp",
+                        altText: "Nm 24, 10-25 - Cuarto oráculo de Balaam - Profecía de la Estrella de Belén.",
+                    },
+                ],
+            }]
 		},
 		25: {
 			title: "La apostasía en Baal-peor",
