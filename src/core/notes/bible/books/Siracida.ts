@@ -114,14 +114,7 @@ const Siracida: BookStructure = {
 			title: "Perdón de las ofensas - El pecado de la lengua",
 			pericopes: [{
                 title: "Perdón de las ofensas",
-                verseRange: [1, 13],
-                images: [
-                    {
-                        type: "local",
-                        path: "201708080830 Bibliomancia - Krizevak - Sirácida 28 6-7.webp",
-                        altText: "Perdón de las ofensas",
-                    },
-                ],
+                verseRange: [1, 13]
             }]
 		},
 		29: {
