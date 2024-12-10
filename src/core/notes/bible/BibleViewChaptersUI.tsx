@@ -1,7 +1,7 @@
 import { App } from 'obsidian';
 import React, { useEffect, useRef, useState } from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa'; // Importamos el icono de marcador
-import { fetchChapterImages, openLocationNote, openNote } from './BibleViewChapters';
+import { fetchChapterImages, openNote } from './BibleViewChapters';
 import { BibleImage, bibleStructure } from './BibleViewStructure';
 
 interface Props {
@@ -91,28 +91,9 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
                                                         <div className="verse-range-overlay">
                                                             {image.verseRange[0]}-{image.verseRange[1]}
                                                         </div>
-                                                        {image.locations && image.locations.length > 0 && (
-                                                            <div className="locations-overlay">
-                                                                {image.locations.map((location, locIndex) => {
-                                                                    const sanitizedLocation = location.replace(/\[\[|\]\]/g, '');
-                                                                    return (
-                                                                        <a
-                                                                            key={locIndex}
-                                                                            className="location-link"
-                                                                            onClick={(e) => {
-                                                                                e.stopPropagation();
-                                                                                openLocationNote(app, location); // Pasar la localización completa con corchetes
-                                                                            }}
-                                                                        >
-                                                                            {sanitizedLocation}
-                                                                        </a>
-                                                                    );
-                                                                })}
-                                                            </div>
-                                                        )}
                                                         {image.coordinates && (
                                                             <div className="map-overlay" onClick={(e) => e.stopPropagation()}>
-                                                                <a href={`obsidian://mapview?do=open&centerLat=${image.coordinates[0]}&centerLng=${image.coordinates[1]}&chosenMapSource=0&linkColor=red&mapZoom=10&name=Default&query=&showLinks=false`} target="_blank">
+                                                                <a href={`obsidian://mapview?do=open&centerLat=${image.coordinates[0]}&centerLng=${image.coordinates[1]}&chosenMapSource=0&linkColor=red&mapZoom=10&name=Default&query=&showLinks=false`} target="_blank" title={image.locations ? image.locations[0].replace(/\[\[|\]\]/g, '') : ''}>
                                                                     <FaMapMarkerAlt /> {/* Usamos el icono de marcador */}
                                                                 </a>
                                                             </div>

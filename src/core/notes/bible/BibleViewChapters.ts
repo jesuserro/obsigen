@@ -85,6 +85,7 @@ export async function getChapterImages(chapterInfo: any, app: App, book: string,
                 title,
                 alt,
                 coordinates,
+                locations: noteData.locations?.map(location => location.replace(/\[\[|\]\]/g, '')) || []
             } as ChapterImage);
         }
     }
