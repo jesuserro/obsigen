@@ -88,20 +88,3 @@ export function openNote(app: App, book: string, chapterNumber: string, verseRan
         app.workspace.openLinkText(noteFile.path, '', true);
     }
 }
-
-async function getNoteRating(app: App, book: string, chapterNumber: string, verseRange: [number, number]): Promise<number | null> {
-    const folderPath = book === 'Salmos' ? `333 Biblia/${book}` : `333 Biblia/${book}/${chapterNumber}`;
-    const files = app.vault.getFiles().filter(file => file.path.startsWith(folderPath));
-  
-    const verseRangeString = `${verseRange[0]}-${verseRange[1]}`;
-    const chapterString = `${chapterNumber}`;
-    const noteFile = files.find(file => file.basename.includes(verseRangeString) && file.basename.includes(chapterString));
-  
-    if (!noteFile) {
-        console.log(`getNoteRating: No se encontró ninguna nota con el rango de versículos ${verseRangeString} en ${folderPath}`);
-        return null;
-    }
-
-    const yaml = app.metadataCache.getFileCache(noteFile)?.frontmatter;
-    return yaml?.rating || null;
-}
