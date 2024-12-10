@@ -54,13 +54,6 @@ const SanJuan: BookStructure = {
 				{
 					title: "De tal manera amó Dios al mundo",
 					verseRange: [16, 21],
-                    images: [
-                        {
-                            type: "local",
-                            path: "",
-                            altText: "De tal manera amó Dios al mundo",
-                        },
-                    ],
 				},
 				{
 					title: "El testimonio de Juan el Bautista",
