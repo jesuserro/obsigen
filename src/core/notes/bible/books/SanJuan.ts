@@ -7,37 +7,15 @@ const SanJuan: BookStructure = {
 			pericopes: [
 				{
 					title: "Prólogo",
-					verseRange: [1, 18],
-					images: [
-						{
-							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/a/ab/Carl_Heinrich_Bloch_-_The_Annunciation.jpg",
-							altText:
-								"La Anunciación de Carl Heinrich Bloch representando el Prólogo",
-						},
-					],
+					verseRange: [1, 18]
 				},
 				{
 					title: "Testimonio de Juan el Bautista",
-					verseRange: [19, 28],
-                    images: [
-                        {
-                            type: "local",
-                            path: "167006010000 Niños de la Concha - Murillo.webp",
-                            altText: "Los Niños de la Concha por Bartolomé Esteban Murillo",
-                        },
-                    ],
+					verseRange: [19, 28]
 				},
 				{
 					title: "Bautismo de Jesús: Cordero de Dios",
 					verseRange: [29, 34],
-					images: [
-						{
-							type: "url",
-							path: "",
-							altText: "El Bautismo de Jesús",
-						},
-					],
 				},
 				{
 					title: "Los primeros discípulos",
@@ -45,14 +23,7 @@ const SanJuan: BookStructure = {
 				},
 				{
 					title: "Jesús llama a Felipe y a Natanael",
-					verseRange: [43, 51],
-					images: [
-						{
-							type: "url",
-							path: "https://achristianpilgrim.wordpress.com/wp-content/uploads/2010/08/filipus-mengajak-nataniel-untuk-bertemu-dengan-yesus.jpg",
-							altText: "Jesús llama a Felipe y a Natanael",
-						},
-					],
+					verseRange: [43, 51]
 				},
 			],
 		},
