@@ -32,26 +32,11 @@ const SanJuan: BookStructure = {
 			pericopes: [
 				{
 					title: "El primer milagro de Jesús en Caná",
-					verseRange: [1, 12],
-					images: [
-						{
-							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/CarlBloch_weddingatCana.jpg/640px-CarlBloch_weddingatCana.jpg",
-							altText:
-								"Las bodas de Caná por Carl Heinrich Bloch",
-						},
-					],
+					verseRange: [1, 12]
 				},
 				{
 					title: "Jesús purifica el templo",
-					verseRange: [13, 22],
-					images: [
-						{
-							type: "url",
-							path: "https://m.media-amazon.com/images/I/71V4-AFAivL._AC_UF894,1000_QL80_.jpg",
-							altText: "Jesús purifica el templo",
-						},
-					],
+					verseRange: [13, 22]
 				},
 				{
 					title: "Jesús conoce a todos los hombres",
@@ -136,15 +121,7 @@ const SanJuan: BookStructure = {
 			pericopes: [
 				{
 					title: "Milagro de la multiplicación de los panes y los peces",
-					verseRange: [1, 15],
-					images: [
-						{
-							type: "url",
-							path: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGRFb7RUd6IE7m5HLgFhoX_oYan0K-ekzMQRMaAarNq7Y-A_LPKue4eBnXU63qdDZWxERbLuJ_SADcUVZoQO05-GmCAstM6d6z_O1_XgdwBgMdddZUG1d3NnkP-NLEr5LKWIPZuj74llWa/s1600/images.jpg",
-							altText:
-								"Milagro de la multiplicación de los panes y los peces",
-						},
-					],
+					verseRange: [1, 15]
 				},
 				{
 					title: "Jesús camina sobre el agua",
@@ -190,25 +167,11 @@ const SanJuan: BookStructure = {
 			pericopes: [
 				{
 					title: "Jesús y la mujer adúltera",
-					verseRange: [1, 11],
-					images: [
-						{
-							type: "url",
-							path: "https://i.redd.it/kwbz58h5k9rb1.jpg",
-							altText: "Jesús y la mujer adúltera",
-						},
-					],
+					verseRange: [1, 11]
 				},
 				{
 					title: "Jesús, la luz del mundo",
-					verseRange: [12, 20],
-                    images: [
-						{
-							type: "local",
-							path: "202411231224_Jesus-Luz-del-Mundo.webp",
-							altText: "Jesús, la luz del mundo",
-						},
-					],
+					verseRange: [12, 20]
 				},
 				{
 					title: "Jesús predice su partida",
@@ -417,15 +380,7 @@ const SanJuan: BookStructure = {
 			pericopes: [
 				{
 					title: "Jesús es arrestado",
-					verseRange: [1, 11],
-					images: [
-						{
-							type: "url",
-							path: "https://api.brushwiz.com/images/paintings/t/The_Guards_Falling_Backwards_by_James_Jacques_Joseph_Tissot_F62.jpg",
-							altText:
-								"Jesús es arrestado, obra de James J. Tissot",
-						},
-					],
+					verseRange: [1, 11]
 				},
 				{
 					title: "Jesús ante el sumo sacerdote",
@@ -433,15 +388,7 @@ const SanJuan: BookStructure = {
 				},
 				{
 					title: "Juicio ante Pilato: Jesús Rey",
-					verseRange: [28, 40],
-                    images: [
-						{
-							type: "local",
-							path: "187106010000 Ecce homo by Antonio Ciseri.webp",
-							altText:
-								"Juicio ante Pilato: Jesús Rey",
-						},
-					],
+					verseRange: [28, 40]
 				},
 			],
 		},
