@@ -1,5 +1,6 @@
 import { App } from 'obsidian';
 import React, { useEffect, useRef, useState } from 'react';
+import { FaMapMarkerAlt } from 'react-icons/fa'; // Importamos el icono de marcador
 import { fetchChapterImages, openLocationNote, openNote } from './BibleViewChapters';
 import { BibleImage, bibleStructure } from './BibleViewStructure';
 
@@ -111,7 +112,9 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
                                                         )}
                                                         {image.coordinates && (
                                                             <div className="map-overlay" onClick={(e) => e.stopPropagation()}>
-                                                                <a href={`obsidian://mapview?do=open&centerLat=${image.coordinates[0]}&centerLng=${image.coordinates[1]}&chosenMapSource=0&linkColor=red&mapZoom=10&name=Default&query=&showLinks=false`} target="_blank">Map</a>
+                                                                <a href={`obsidian://mapview?do=open&centerLat=${image.coordinates[0]}&centerLng=${image.coordinates[1]}&chosenMapSource=0&linkColor=red&mapZoom=10&name=Default&query=&showLinks=false`} target="_blank">
+                                                                    <FaMapMarkerAlt /> {/* Usamos el icono de marcador */}
+                                                                </a>
                                                             </div>
                                                         )}
                                                     </div>
