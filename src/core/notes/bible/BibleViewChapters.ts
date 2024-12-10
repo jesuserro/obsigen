@@ -90,11 +90,14 @@ export function openNote(app: App, book: string, chapterNumber: string, verseRan
 }
 
 export function openLocationNote(app: App, location: string) {
-    // Eliminar caracteres especiales de la localización
+    // Eliminar caracteres especiales de la localización y manejar alias
     const sanitizedLocation = location.replace(/\[\[|\]\]/g, '');
+    const [mainLocation, alias] = sanitizedLocation.split('|');
 
-    // Filtrar archivos que contengan el nombre de la localización
-    const files = app.vault.getFiles().filter(file => file.basename.includes(sanitizedLocation));
+    // Filtrar archivos que contengan el nombre de la localización o su alias
+    const files = app.vault.getFiles().filter(file => 
+        file.basename.includes(mainLocation) || (alias && file.basename.includes(alias))
+    );
   
     if (files.length === 0) {
         console.log(`openLocationNote: No se encontró ninguna nota con el nombre ${sanitizedLocation}`);

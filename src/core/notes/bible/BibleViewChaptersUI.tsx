@@ -107,18 +107,21 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
                                                         )}
                                                         {image.locations && image.locations.length > 0 && (
                                                             <div className="locations-overlay">
-                                                                {image.locations.map((location, locIndex) => (
-                                                                    <a
-                                                                        key={locIndex}
-                                                                        className="location-link"
-                                                                        onClick={(e) => {
-                                                                            e.stopPropagation();
-                                                                            openLocationNote(app, location);
-                                                                        }}
-                                                                    >
-                                                                        {location}
-                                                                    </a>
-                                                                ))}
+                                                                {image.locations.map((location, locIndex) => {
+                                                                    const sanitizedLocation = location.replace(/\[\[|\]\]/g, '');
+                                                                    return (
+                                                                        <a
+                                                                            key={locIndex}
+                                                                            className="location-link"
+                                                                            onClick={(e) => {
+                                                                                e.stopPropagation();
+                                                                                openLocationNote(app, location); // Pasar la localización completa con corchetes
+                                                                            }}
+                                                                        >
+                                                                            {sanitizedLocation}
+                                                                        </a>
+                                                                    );
+                                                                })}
                                                             </div>
                                                         )}
                                                         <div className="map-overlay" onClick={(e) => e.stopPropagation()}>
