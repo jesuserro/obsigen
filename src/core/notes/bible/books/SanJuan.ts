@@ -405,26 +405,11 @@ const SanJuan: BookStructure = {
 				},
 				{
 					title: "La muerte de Jesús",
-					verseRange: [31, 37],
-					images: [
-						{
-							type: "url",
-							path: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg/197px-Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg",
-							altText: "Cristo muere en la cruz",
-						},
-					],
+					verseRange: [31, 37]
 				},
 				{
 					title: "El entierro de Jesús",
-					verseRange: [38, 42],
-					images: [
-						{
-							type: "url",
-							path: "https://w0.peakpx.com/wallpaper/151/716/HD-wallpaper-the-burial-of-christ-art-bloch-old-master-beautiful-illustration-artwork-jesus-christ-painting-wide-screen-portrait-carl-heinrich-bloch-burial.jpg",
-							altText:
-								"El entierro de Cristo por Carl Heinrich Bloch",
-						},
-					],
+					verseRange: [38, 42]
 				},
 			],
 		},
