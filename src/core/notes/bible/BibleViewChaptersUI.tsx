@@ -1,6 +1,6 @@
 import { App } from 'obsidian';
 import React, { useEffect, useRef, useState } from 'react';
-import { getChapterImages, openLocationNote, openNote } from './BibleViewChapters';
+import { fetchChapterImages, openLocationNote, openNote } from './BibleViewChapters';
 import { BibleImage, bibleStructure } from './BibleViewStructure';
 
 interface Props {
@@ -35,17 +35,11 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
     const [chapterImages, setChapterImages] = useState<{ [key: string]: ChapterImage[] }>({});
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const fetchImages = async () => {
-        const images: { [key: string]: ChapterImage[] } = {};
-        for (const [book, data] of Object.entries(bibleStructure)) {
-            for (const [chapterNumber, chapterInfo] of Object.entries(data.chapters)) {
-                images[`${book}-${chapterNumber}`] = await getChapterImages(chapterInfo, app, book, chapterNumber);
-            }
-        }
-        setChapterImages(images);
-    };
-
     useEffect(() => {
+        const fetchImages = async () => {
+            const images = await fetchChapterImages(app);
+            setChapterImages(images);
+        };
         fetchImages();
     }, [app]);
 

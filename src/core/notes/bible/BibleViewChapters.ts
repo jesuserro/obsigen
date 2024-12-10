@@ -1,5 +1,5 @@
 import { App, FileView } from "obsidian";
-import { BibleImage } from "./BibleViewStructure";
+import { BibleImage, bibleStructure } from "./BibleViewStructure";
 
 const IMAGE_FOLDER = "050 Anexos";
 
@@ -116,4 +116,14 @@ export function openLocationNote(app: App, location: string) {
     } else {
         app.workspace.openLinkText(noteFile.path, '', true);
     }
+}
+
+export async function fetchChapterImages(app: App): Promise<{ [key: string]: ChapterImage[] }> {
+    const images: { [key: string]: ChapterImage[] } = {};
+    for (const [book, data] of Object.entries(bibleStructure)) {
+        for (const [chapterNumber, chapterInfo] of Object.entries(data.chapters)) {
+            images[`${book}-${chapterNumber}`] = await getChapterImages(chapterInfo, app, book, chapterNumber);
+        }
+    }
+    return images;
 }
