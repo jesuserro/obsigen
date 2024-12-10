@@ -89,16 +89,6 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
                                                         <div className="verse-range-overlay">
                                                             {image.verseRange[0]}-{image.verseRange[1]}
                                                         </div>
-                                                        {image.verseTitle && (
-                                                            <div className="verse-title-overlay">
-                                                                {image.verseTitle}
-                                                            </div>
-                                                        )}
-                                                        {image.versePassage && (
-                                                            <div className="verse-passage-overlay">
-                                                                {image.versePassage}
-                                                            </div>
-                                                        )}
                                                         {image.locations && image.locations.length > 0 && (
                                                             <div className="locations-overlay">
                                                                 {image.locations.map((location, locIndex) => {
