@@ -59,6 +59,14 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
         }
     }, [containerRef.current]);
 
+    // Añadir este efecto para ajustar el scroll al libro seleccionado cada vez que se renderiza la vista
+    useEffect(() => {
+        const selectedBookRef = bookRefs.current[selectedBook];
+        if (selectedBookRef) {
+            selectedBookRef.scrollIntoView({ behavior: 'auto', block: 'start' });
+        }
+    }, [bookRefs, selectedBook]);
+
     return (
         <div className="bible-view-chapters" ref={containerRef}>
             <div className="books-grid">
