@@ -2,6 +2,7 @@
     padding: 20px;
     background-color: #121212;
     color: #e0e0e0;
+    overflow-y: auto; // Añadir esta línea para permitir el scroll vertical
 
     .image-container {
         position: relative;
