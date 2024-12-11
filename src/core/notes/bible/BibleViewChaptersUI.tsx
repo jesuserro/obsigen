@@ -52,6 +52,13 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
         }
     }, [selectedBook, bookRefs, chapterImages]);
 
+    // Añadir este efecto para forzar la actualización del componente
+    useEffect(() => {
+        if (containerRef.current) {
+            containerRef.current.scrollTop = containerRef.current.scrollTop;
+        }
+    }, [containerRef.current]);
+
     return (
         <div className="bible-view-chapters" ref={containerRef}>
             <div className="books-grid">

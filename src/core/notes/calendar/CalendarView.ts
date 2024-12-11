@@ -21,6 +21,7 @@ export class CalendarView extends ItemView {
 	}>;
 	private selectedBook: string;
 	private scrollPosition: number = 0;
+	private forceUpdate: boolean = false; // Añadir esta línea
 
 	constructor(leaf: WorkspaceLeaf) {
 		super(leaf);
@@ -110,6 +111,7 @@ export class CalendarView extends ItemView {
 	}
 
 	async onOpen() {
+		this.forceUpdate = true; // Añadir esta línea
 		this.renderComponent();
 	}
 
