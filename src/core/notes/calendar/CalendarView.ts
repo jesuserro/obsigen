@@ -20,7 +20,7 @@ export class CalendarView extends ItemView {
 		[key: string]: HTMLDivElement | null;
 	}>;
 	private selectedBook: string;
-	private scrollPosition: number = 0; // Añadir esta línea
+	private scrollPosition: number = 0;
 
 	constructor(leaf: WorkspaceLeaf) {
 		super(leaf);
@@ -86,7 +86,7 @@ export class CalendarView extends ItemView {
 						app: this.app,
 						bookRefs: this.bookRefs,
 						selectedBook: this.selectedBook,
-						setSelectedBook: this.setSelectedBook, // Añadir setSelectedBook aquí
+						setSelectedBook: this.setSelectedBook,
 				  })
 				: React.createElement(CalendarYear, {
 						key: this.currentYear,
