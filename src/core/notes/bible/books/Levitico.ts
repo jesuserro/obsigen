@@ -72,7 +72,10 @@ const Levitico: BookStructure = {
 		},
 		18: {
 			title: "Leyes sobre la conducta sexual",
-			pericopes: []
+			pericopes: [{
+                title: "Disposiciones sobre matrimonio y castidad",
+                verseRange: [1, 30],
+            }]
 		},
 		19: {
 			title: "Leyes de santidad y justicia",
@@ -80,7 +83,10 @@ const Levitico: BookStructure = {
 		},
 		20: {
 			title: "Leyes sobre penas para delitos graves",
-			pericopes: []
+			pericopes: [{
+                title: "Castigos contra las faltas religiosas",
+                verseRange: [1, 8],
+            }]
 		},
 		21: {
 			title: "Leyes sobre la santidad de los sacerdotes",

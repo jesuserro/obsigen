@@ -26,14 +26,7 @@ const Numeros: BookStructure = {
 			title: "El voto del nazareo y la bendición sacerdotal",
 			pericopes: [{
                 title: "Bendición sacerdotal",
-                verseRange: [22, 27],
-                images: [
-                    {
-                        type: "local",
-                        path: "202411261828 Priestly Blessing from Numbers 6_22-27.webp",
-                        altText: "DALL·E 2024-11-26 18.28.13 - A serene and sacred scene depicting the Priestly Blessing from Numbers 6_22-27.",
-                    },
-                ],
+                verseRange: [22, 27]
             }]
 		},
 		7: {
@@ -97,13 +90,6 @@ const Numeros: BookStructure = {
 			pericopes: [{
                 title: "La serpiente de bronce",
                 verseRange: [4, 9],
-                images: [
-                    {
-                        type: "local",
-                        path: "202411261810 La Serpiente de Bronce - Nm 21.webp",
-                        altText: "DALL·E 2024-11-26 18.10.50 - A biblical scene depicting Moses in the desert following the instructions from the Lord.",
-                    },
-                ],
             }]
 		},
 		22: {
@@ -119,13 +105,6 @@ const Numeros: BookStructure = {
 			pericopes: [{
                 title: "Cuarto oráculo de Balaam - Profecía de la Estrella de Belén",
                 verseRange: [10, 25],
-                images: [
-                    {
-                        type: "local",
-                        path: "Nm 24, 10-25 - Cuarto oráculo de Balaam - Profecía de la Estrella de Belén.webp",
-                        altText: "Nm 24, 10-25 - Cuarto oráculo de Balaam - Profecía de la Estrella de Belén.",
-                    },
-                ],
             }]
 		},
 		25: {

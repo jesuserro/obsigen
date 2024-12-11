@@ -27,13 +27,6 @@ const Deuteronomio: BookStructure = {
 			pericopes: [{
                 title: "Exhortación a la fidelidad al Señor",
                 verseRange: [10, 25],
-                images: [
-                    {
-                        type: "local",
-                        path: "202411261909 Tentación 2 - Caida Pináculo Jerusalén - Dt 6 - Mt 4.webp",
-                        altText: "DALL·E 2024-11-26 19.08.22 - A detailed depiction of the second temptation from the Gospel of Matthew, Chapter 4:7, emphasizing the enormous height and danger of the temple pinnacle",
-                    },
-                ],
             }]
 		},
 		7: {
@@ -44,14 +37,7 @@ const Deuteronomio: BookStructure = {
 			title: "La provisión de Dios en el desierto",
 			pericopes: [{
                 title: "Forja del temple de Israel en el desierto",
-                verseRange: [1, 6],
-                images: [
-                    {
-                        type: "local",
-                        path: "202411261850 Tentación 1 - Convierte Piedras en Pan - Dt 8 - Mt 4.webp",
-                        altText: "DALL·E 2024-11-26 18.47.56 - A vivid depiction of the biblical scene from the Gospel of Matthew, Chapter 4:4",
-                    },
-                ],
+                verseRange: [1, 6]
             }]
 		},
 		9: {
@@ -68,7 +54,10 @@ const Deuteronomio: BookStructure = {
 		},
 		12: {
 			title: "Leyes sobre el lugar de culto",
-			pericopes: []
+			pericopes: [{
+                title: "Prevención contra los cananeos por el sacrificio infantil",
+                verseRange: [29, 31]
+            }]
 		},
 		13: {
 			title: "Advertencias contra los falsos profetas",
