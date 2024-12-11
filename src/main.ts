@@ -72,13 +72,9 @@ export default class MyPlugin extends Plugin {
 
 		this.addSettingTab(new SampleSettingTab(this.app, this));
 
-		this.registerDomEvent(document, "click", (evt: MouseEvent) => {
-			console.log("click", evt);
-		});
+		// this.registerDomEvent(document, "click", (evt: MouseEvent) => { console.log("click", evt);});
 
-		this.registerInterval(
-			window.setInterval(() => console.log("setInterval"), 5 * 60 * 1000)
-		);
+		// this.registerInterval(window.setInterval(() => console.log("setInterval"), 5 * 60 * 1000));
 
 		this.app.workspace.onLayoutReady(this.onLayoutReady.bind(this));
 	}

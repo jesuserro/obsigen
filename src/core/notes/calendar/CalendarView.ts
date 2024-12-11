@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import BibleChaptersView from "../bible/BibleViewChaptersUI";
 import { AppContext } from "./../../shared/appContext";
 import { bibleStructure } from "./../bible/BibleViewStructure";
-import CalendarHeader from "./CalendarHeader";
+import ViewSwitcher from "./../ViewSwitcher"; // Updated import path
 import CalendarYear from "./CalendarYear";
 
 export const CALENDAR_VIEW_TYPE = "obsigen-calendar-view";
@@ -68,11 +68,12 @@ export class CalendarView extends ItemView {
 		}
 	};
 
+	// Reemplaza CalendarHeader con ViewSwitcher en el método renderComponent
 	private renderComponent() {
 		this.reactComponent = React.createElement(
 			AppContext.Provider,
 			{ value: this.app },
-			React.createElement(CalendarHeader, {
+			React.createElement(ViewSwitcher, {
 				currentYear: this.currentYear,
 				onAddEvent: this.handleAddEvent,
 				onYearChange: this.handleYearChange,
@@ -95,7 +96,7 @@ export class CalendarView extends ItemView {
 				  })
 		);
 		this.root.render(this.reactComponent);
-		this.restoreScrollPosition(); // Restaurar la posición del scroll después de renderizar
+		this.restoreScrollPosition();
 	}
 
 	getViewType(): string {

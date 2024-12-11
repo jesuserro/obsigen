@@ -1,0 +1,45 @@
+.view-switcher-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1e1e1e;
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 200;
+    position: fixed; /* Make the bar fixed */
+    top: 0; /* Position it at the top */
+    width: 100%; /* Full width */
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+}
+
+.switcher-button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px; /* Increase padding for better icon visibility */
+    cursor: pointer;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    font-size: 20px; /* Increase icon size */
+
+    &.active {
+        background-color: #0056b3;
+    }
+
+    &:hover {
+        background-color: #0056b3;
+    }
+}

@@ -1,49 +1,48 @@
 .calendar-year-select {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
-  .calendar-year-select input[type="text"] {
-    padding: 5px;
-    font-size: 14px;
-    width: 60px;
-    margin-left: 10px;
-    background-color: #2e2e2e;
-    color: #ffffff;
-    border: 1px solid #555;
-    border-radius: 5px;
-  }
-  
-  .calendar-year-select button {
-    padding: 5px;
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-left: 10px;
-  }
-  
-  .calendar-year-select button.add-event-button {
-    margin-left: 0; /* Sin margen a la izquierda para el primer botón */
-  }
-  
-  .calendar-year-select button:disabled {
-    background-color: #aaaaaa;
-    cursor: not-allowed;
-  }
-  
-  .calendar-year-select button:hover:not(:disabled) {
-    background-color: #0056b3;
-  }
-  
-  .calendar-year-select button.clear-button {
-    background-color: #ff0000;
-  }
-  
-  .calendar-year-select button.clear-button:hover {
-    background-color: #cc0000;
-  }
-  
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.calendar-year-select input[type="text"] {
+	padding: 5px;
+	font-size: 14px;
+	width: 60px;
+	margin-left: 10px;
+	background-color: #2e2e2e;
+	color: #ffffff;
+	border: 1px solid #555;
+	border-radius: 5px;
+}
+
+.calendar-year-select button {
+	padding: 5px;
+	background-color: #007bff;
+	color: #ffffff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
+	margin-left: 10px;
+}
+
+.calendar-year-select button.add-event-button {
+	margin-left: 0; /* Sin margen a la izquierda para el primer botón */
+}
+
+.calendar-year-select button:disabled {
+	background-color: #aaaaaa;
+	cursor: not-allowed;
+}
+
+.calendar-year-select button:hover:not(:disabled) {
+	background-color: #0056b3;
+}
+
+.calendar-year-select button.clear-button {
+	background-color: #ff0000;
+}
+
+.calendar-year-select button.clear-button:hover {
+	background-color: #cc0000;
+}
