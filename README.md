@@ -8,12 +8,13 @@
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/jesuserro/obsigen?style=for-the-badge&sort=semver)](https://github.com/jesuserro/obsigen/releases/)
 [![GitHub issues](https://img.shields.io/github/issues/jesuserro/obsigen?style=for-the-badge)](https://github.com/jesuserro/obsigen/issues/)
 
-Displaying your Obsidian notes in a year calendar view through icons. 
+Displaying your Obsidian notes in a year calendar view through icons.
 Use the yaml frontmatter to add the date and icon to your notes. The plugin will read the yaml and display the notes in the calendar view. The icon is defined on "tag" property.
 
 ## Folder Structure
 
 Following the DDD principles, the project is divided into three layers: core, adapters and shared.
+
 ```
 📦obsigen
  ┣📦src
@@ -152,6 +153,7 @@ echo "// Placeholder for data URLs" > src/assets/icons/dataurls.ts
 ```
 
 ### Step 5: Configure the environment variables
+
 Create a .env file in the root of your project by copying the provided .env.example:
 
 ```bash
