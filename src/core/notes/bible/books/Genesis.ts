@@ -14,14 +14,7 @@ const Genesis: BookStructure = {
 			title: "La caída del hombre",
 			pericopes: [{
                 title: "Pacto 2: Adámico - Protoevangelio - Consecuencias del pecado",
-                verseRange: [14, 20],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-12-08 11.48.08 - Genesis 3_15 - Protoevangelio - Nueva Eva - Enemiga del pecado.webp",
-                        altText: "DALL·E 2024-12-08 11.48.08 - Genesis 3_15 - Protoevangelio - Nueva Eva - Enemiga del pecado",
-                    },
-                ],
+                verseRange: [14, 20]
             }]
 		},
 		4: {
@@ -32,14 +25,7 @@ const Genesis: BookStructure = {
 			title: "La genealogía desde Adán hasta Noé",
 			pericopes: [{
                 title: "Pacto 2: Adámico - Protoevangelio - Consecuencias del pecado",
-                verseRange: [14, 20],
-                images: [
-                    {
-                        type: "local",
-                        path: "Gn 5, 1-32 - Multiplicación de la humanidad - Arrebatamiento de Henoc.webp",
-                        altText: "Gn 5, 1-32 - Multiplicación de la humanidad - Arrebatamiento de Henoc.",
-                    },
-                ],
+                verseRange: [14, 20]
             }]
 		},
 		6: {
@@ -58,14 +44,7 @@ const Genesis: BookStructure = {
 			title: "El pacto de Dios con Noé",
 			pericopes: [{
                 title: "Alianza de Dios con Noé - Pacto nº2 Noáico",
-                verseRange: [1, 17],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-11-28 18.09.31 - God's covenant number 2 - with Noah Genesis 9_1-17.webp",
-                        altText: "DALL·E 2024-11-28 18.09.31 - God's covenant number 2 - with Noah Genesis 9_1-17",
-                    },
-                ],
+                verseRange: [1, 17]
             }]
 		},
 		10: {
@@ -88,28 +67,14 @@ const Genesis: BookStructure = {
 			title: "Abram rescata a Lot",
 			pericopes: [{
                 title: "Bendición de Melquisedec a Abraham",
-                verseRange: [17, 24],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-11-28 17.14.20 - Blessing of Melchizedek to Abraham Genesis 14_17-24.webp",
-                        altText: "DALL·E 2024-11-28 17.14.20 - Blessing of Melchizedek to Abraham Genesis 14_17-24",
-                    },
-                ],
+                verseRange: [17, 24]
             },]
 		},
 		15: {
 			title: "El pacto de Dios con Abram",
 			pericopes: [{
                 title: "Alianza de Dios con Abrahám - Pacto nº3 Abrámico",
-                verseRange: [1, 21],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-11-28 17.56.14 - God's covenant number 3 - with Abraham Genesis 15_1-21.webp",
-                        altText: "DALL·E 2024-11-28 17.56.14 - God's covenant number 3 - with Abraham Genesis 15_1-21",
-                    },
-                ],
+                verseRange: [1, 21]
             }]
 		},
 		16: {
@@ -124,24 +89,10 @@ const Genesis: BookStructure = {
 			title: "La visita de los tres hombres a Abraham",
 			pericopes: [{
                 title: "Manifestación de Dios en Manbré",
-                verseRange: [1, 8],
-                images: [
-                    {
-                        type: "local",
-                        path: "20241011173500_Angelsatmamre-trinity-rublev-1410.jpg",
-                        altText: "Santísima Trinidad por Andrei Rublev.",
-                    },
-                ],
+                verseRange: [1, 8]
             },{
                 title: "Promesa del nacimiento de Isaac",
-                verseRange: [9, 15],
-                images: [
-                    {
-                        type: "local",
-                        path: "1896-1901_Sarah_Hears_and_Laughs,_c._by_James_Tissot_(French,_1836-1902).jpg",
-                        altText: "Promesa del nacimiento de Isaac",
-                    },
-                ],
+                verseRange: [9, 15]
             },]
 		},
 		19: {
@@ -185,13 +136,6 @@ const Genesis: BookStructure = {
 			pericopes: [{
                 title: "Aparición de Dios a Jacob en el Sueño de la Escalera de Betel",
                 verseRange: [10, 22],
-                images: [
-                    {
-                        type: "local",
-                        path: "1728 _Jacobs_Ladder by Gerard Hoet.jpg",
-                        altText: "Jacob's Ladder by Gerard Hoet",
-                    },
-                ],
             }]
 		},
 		29: {
@@ -211,13 +155,6 @@ const Genesis: BookStructure = {
 			pericopes: [{
                 title: "Jacob lucha con el ángel del Señor",
                 verseRange: [22, 33],
-                images: [
-                    {
-                        type: "local",
-                        path: "1861 Eugène Delacroix in Église Saint-Sulpice (Paris).jpg",
-                        altText: "Jacob Wrestling with the Angel by Gustave Doré",
-                    },
-                ],
             }]
 		},
 		33: {

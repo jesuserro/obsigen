@@ -41,7 +41,7 @@ async function getNoteData(app: App, book: string, chapterNumber: string, verseR
         locations: yaml.locations || [],
         path: yaml.cover ? app.vault.adapter.getResourcePath(yaml.cover) : "",
         alt: yaml.cover ? yaml.cover : "",
-        date: yaml.date || "", // Añadir esta línea
+        date: yaml.date || "", 
     };
 }
 

@@ -2,7 +2,6 @@ import { App } from 'obsidian';
 import React, { useEffect, useState } from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import 'react-vertical-timeline-component/style.min.css';
 import { ChapterImage, fetchChapterImages } from './Timeline';
 
 interface Props {
