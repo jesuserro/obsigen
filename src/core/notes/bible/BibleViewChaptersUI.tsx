@@ -1,6 +1,6 @@
 import { App } from 'obsidian';
 import React, { useEffect, useRef, useState } from 'react';
-import { FaMapMarkerAlt } from 'react-icons/fa'; // Importamos el icono de marcador
+import { FaMapMarkerAlt } from 'react-icons/fa';
 import { fetchChapterImages, openNote } from './BibleViewChapters';
 import { BibleImage, bibleStructure } from './BibleViewStructure';
 

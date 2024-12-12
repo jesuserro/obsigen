@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import BibleChaptersView from "../bible/BibleViewChaptersUI";
 import { AppContext } from "./../../shared/appContext";
 import { bibleStructure } from "./../bible/BibleViewStructure";
-import ViewSwitcher from "./../ViewSwitcher"; // Updated import path
+import ViewSwitcher from "./../ViewSwitcher";
 import CalendarYear from "./CalendarYear";
 
 export const CALENDAR_VIEW_TYPE = "obsigen-calendar-view";
