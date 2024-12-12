@@ -2,7 +2,6 @@ import React from 'react';
 import { FaBookOpen, FaCalendarAlt } from 'react-icons/fa';
 import BookSelector from './bible/BookSelectorUI';
 import CalendarYearSelect from './calendar/CalendarYearSelect';
-import './ViewSwitcher.scss';
 
 interface Props {
     currentYear: number;
