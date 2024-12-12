@@ -1,6 +1,6 @@
 // Importa los estilos de cada componente o conjunto de estilos
-@import 'ui/common';
-@import 'core/notes/calendar/calendar';
-@import 'core/notes/bible/bible';
-@import 'core/notes/timeline/Timeline';
-@import 'core/notes/ViewSwitcher';
+@use 'ui/common';
+@use 'core/notes/calendar/calendar';
+@use 'core/notes/bible/bible';
+@use 'core/notes/timeline/Timeline';
+@use 'core/notes/ViewSwitcher';

@@ -4,6 +4,11 @@
     color: #e0e0e0;
     overflow-y: auto;
 
+    .vertical-timeline::before {
+        background: #fff; // Línea blanca vertical
+        left: 20px; // Ajusta la posición de la línea
+    }
+
     .vertical-timeline-element-content {
         background-color: #1e1e1e;
         color: #e0e0e0;
@@ -11,6 +16,7 @@
         padding: 20px;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s ease-in-out;
+        margin-left: 60px; // Ajusta la posición del contenido
 
         &:hover {
             transform: scale(1.05);
@@ -19,16 +25,28 @@
 
     .timeline-element-content {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        text-align: center;
+        text-align: left;
+    }
+
+    .timeline-image-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .timeline-image {
         width: 100%;
         height: auto;
-        border-radius: 8px;
+        border-radius: 50%; // Hacer las imágenes circulares
         margin-bottom: 10px;
+    }
+
+    .timeline-text-container {
+        flex: 2;
+        padding-left: 20px;
     }
 
     .vertical-timeline-element-title {
