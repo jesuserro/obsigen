@@ -4,7 +4,7 @@ import Flag from 'react-flagkit';
 import { BiLogoGmail, BiSolidTrafficBarrier } from 'react-icons/bi';
 import { BsBookmarkStar, BsChatLeftQuoteFill, BsClockFill, BsCloudHaze2, BsFillCloudRainHeavyFill, BsFillHeartbreakFill, BsPersonCircle, BsSnow3, BsWordpress, BsFilm as IconoCinema, BsGraphUpArrow as IconoPrice } from 'react-icons/bs';
 import { CiBookmark, CiCalendar, CiHeadphones, CiPill } from 'react-icons/ci';
-import { FaAmazon, FaAngry, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader, FaBuilding, FaBus, FaCarSide, FaChalkboardTeacher, FaCheck, FaChess, FaCode, FaCross, FaDatabase, FaDog, FaEnvelope, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHandshake, FaHeadSideCough, FaHiking, FaHome, FaHotel, FaHouseDamage, FaInstagram, FaKey, FaKissWinkHeart, FaLaptop, FaLinkedin, FaMapMarkedAlt, FaMapMarkerAlt, FaPhone, FaPiggyBank, FaPizzaSlice, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRegSadCry, FaRss, FaRunning, FaScroll, FaShip, FaSkype, FaSmile, FaSms, FaStar, FaSurprise, FaSwimmingPool, FaTabletAlt, FaTaxi, FaTelegram, FaTired, FaTractor, FaTrain, FaTree, FaVenus, FaVoteYea, FaWalking, FaWpforms, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
+import { FaAmazon, FaAngry, FaAws, FaBaby, FaBirthdayCake, FaBook, FaBookReader, FaBuilding, FaBus, FaCarSide, FaChalkboardTeacher, FaCheck, FaChess, FaCode, FaCross, FaDatabase, FaDog, FaEnvelope, FaEuroSign, FaFileInvoiceDollar, FaGitSquare, FaGithub, FaGoodreads, FaGrinTongueWink, FaHandshake, FaHeadSideCough, FaHiking, FaHome, FaHotel, FaHouseDamage, FaInstagram, FaKey, FaKissWinkHeart, FaLaptop, FaLinkedin, FaMapMarkedAlt, FaMapMarkerAlt, FaPhone, FaPiggyBank, FaPizzaSlice, FaPodcast, FaPrayingHands, FaQuestionCircle, FaQuoteLeft, FaRegSadCry, FaRss, FaRunning, FaScroll, FaShip, FaSkype, FaSmile, FaSms, FaStar, FaSurprise, FaSwimmingPool, FaTabletAlt, FaTaxi, FaTelegram, FaTired, FaTractor, FaTrain, FaTree, FaTwitter, FaVenus, FaVoteYea, FaWalking, FaWpforms, FaYoutube, FaBible as IconoBible, FaEuroSign as IconoPayroll } from 'react-icons/fa';
 import { FaBasketball, FaCamera, FaGift, FaHillRockslide, FaPeopleGroup, FaScissors, FaUserDoctor, FaVirusCovid } from 'react-icons/fa6';
 import { FcAndroidOs, FcCalendar, FcDataBackup, FcGoogle, FcPodiumWithSpeaker, FcSportsMode } from 'react-icons/fc';
 import { FiSmartphone } from 'react-icons/fi';
@@ -18,7 +18,7 @@ import { LuPartyPopper, LuSalad } from 'react-icons/lu';
 import { MdBackup, MdBuild, MdCancel, MdCardTravel, MdCastle, MdElderly, MdElderlyWoman, MdFavorite, MdGroup, MdOutlineAddCircle, MdOutlineSportsGymnastics, MdOutlineSportsTennis, MdPeople, MdPiano, MdPsychology, MdRestaurant, MdSick } from 'react-icons/md';
 import { PiFishSimpleBold as IconoPlentyoffish, PiButterflyFill, PiNotePencilBold, PiNumberCircleEightBold, PiNumberCircleNineBold, PiNumberCircleSevenBold, PiNumberCircleSixBold, PiNumberCircleThreeBold, PiNumberCircleZeroBold, PiPackageBold, PiPlant, PiThermometerCold, PiThermometerHot } from 'react-icons/pi';
 import { RiEarthquakeFill, RiFridgeFill, RiMentalHealthFill } from "react-icons/ri";
-import { SiTinder as IconoTinder, SiDell, SiGimp, SiGooglemeet, SiInsomnia, SiLenovo, SiObsidian, SiOpenai, SiPlex, SiSamsung, SiSpotify, SiSynology, SiTwitter, SiWhatsapp } from 'react-icons/si';
+import { SiTinder as IconoTinder, SiDell, SiGimp, SiGooglemeet, SiInsomnia, SiLenovo, SiObsidian, SiOpenai, SiPlex, SiSamsung, SiSpotify, SiSynology, SiWhatsapp } from 'react-icons/si';
 import { SlPicture } from "react-icons/sl";
 import { TbAppsFilled, TbBulbFilled, TbFishChristianity, TbMeat, TbPillOff, TbPills, TbZoomMoney, TbZzz } from 'react-icons/tb';
 import CustomIcon from '../../../ui/CustomIcon';
@@ -162,7 +162,7 @@ export const iconData: IconData = {
         spotify: ({ size }: IconProps) => <SiSpotify size={size} className="green spotify" />,
         telegram: ({ size }: IconProps) => <FaTelegram size={size} className="blue telegram" />,
         tinder: ({ size }: IconProps) => <IconoTinder size={size} style={{ color: '#FE3C72' }} />,
-        twitter: ({ size }: IconProps) => <SiTwitter size={size} className="blue twitter" />,
+        twitter: ({ size }: IconProps) => <FaTwitter size={size} className="blue twitter" />,
         whatsapp: ({ size }: IconProps) => <SiWhatsapp size={size} className="green whatsapp" />,
         writing: ({ size }: IconProps) => <PiNotePencilBold size={size} style={{ color: '#fcaa62' }} />,
         youtube: ({ size }: IconProps) => <FaYoutube size={size} className="red youtube" />
