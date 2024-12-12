@@ -2,8 +2,7 @@ import { App } from 'obsidian';
 import React, { useEffect, useState } from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import { fetchChapterImages } from '../bible/BibleViewChapters';
-import { ChapterImage } from './Timeline';
+import { ChapterImage, fetchChapterImages } from './Timeline';
 
 interface Props {
     app: App;
@@ -30,13 +29,23 @@ const TimelineView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSelecte
                     images.map((image, index) => (
                         <VerticalTimelineElement
                             key={index}
-                            date={`${image.date}]}`}
+                            date={image.date ? new Date(image.date).toLocaleDateString() : 'Unknown date'}
                             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
                             icon={<FaMapMarkerAlt />}
                         >
-                            <h3 className="vertical-timeline-element-title">{image.title}</h3>
-                            <h4 className="vertical-timeline-element-subtitle">{image.pericopeTitle}</h4>
-                            <p>{image.versePassage}</p>
+                            <div className="timeline-element-content">
+                                <img src={image.path} alt={image.alt} className="timeline-image" />
+                                <h3 className="vertical-timeline-element-title">{image.title}</h3>
+                                <h4 className="vertical-timeline-element-subtitle">{image.pericopeTitle}</h4>
+                                <p>{image.versePassage}</p>
+                                {image.locations && image.locations.length > 0 && image.coordinates && (
+                                    <div className="map-overlay">
+                                        <a href={`obsidian://mapview?do=open&centerLat=${image.coordinates[0]}&centerLng=${image.coordinates[1]}&chosenMapSource=0&linkColor=red&mapZoom=13&name=Default&query=&showLinks=true&fitBounds=true&showName=true&showPins=true&pinColor=red`} target="_blank" title={image.locations[0].replace(/\[\[|\]\]/g, '')}>
+                                            <FaMapMarkerAlt /> {image.locations[0].replace(/\[\[|\]\]/g, '')}
+                                        </a>
+                                    </div>
+                                )}
+                            </div>
                         </VerticalTimelineElement>
                     ))
                 ))}

@@ -4,11 +4,60 @@
     color: #e0e0e0;
     overflow-y: auto;
 
+    .vertical-timeline-element-content {
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+    .timeline-element-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .timeline-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
     .vertical-timeline-element-title {
         color: #ff9800;
+        font-size: 1.2rem;
+        margin-bottom: 5px;
     }
 
     .vertical-timeline-element-subtitle {
         color: #e0e0e0;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .map-overlay {
+        margin-top: 10px;
+        a {
+            color: #ff9800;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            svg {
+                margin-right: 5px;
+            }
+        }
     }
 }
