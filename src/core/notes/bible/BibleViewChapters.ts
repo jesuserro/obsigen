@@ -13,6 +13,7 @@ interface ChapterImage extends BibleImage {
     versePassage?: string;
     locations?: string[];
     coordinates?: [number, number];
+    date?: string; // Añadir esta línea
 }
 
 async function getNoteData(app: App, book: string, chapterNumber: string, verseRange: [number, number]): Promise<Partial<ChapterImage>> {
@@ -40,6 +41,7 @@ async function getNoteData(app: App, book: string, chapterNumber: string, verseR
         locations: yaml.locations || [],
         path: yaml.cover ? app.vault.adapter.getResourcePath(yaml.cover) : "",
         alt: yaml.cover ? yaml.cover : "",
+        date: yaml.date || "", // Añadir esta línea
     };
 }
 
@@ -85,7 +87,8 @@ export async function getChapterImages(chapterInfo: any, app: App, book: string,
                 title,
                 alt,
                 coordinates,
-                locations: noteData.locations?.map(location => location.replace(/\[\[|\]\]/g, '')) || []
+                locations: noteData.locations?.map(location => location.replace(/\[\[|\]\]/g, '')) || [],
+                date: noteData.date, 
             } as ChapterImage);
         }
     }

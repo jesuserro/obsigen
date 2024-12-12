@@ -1,0 +1,14 @@
+.timeline-view {
+    padding: 20px;
+    background-color: #121212;
+    color: #e0e0e0;
+    overflow-y: auto;
+
+    .vertical-timeline-element-title {
+        color: #ff9800;
+    }
+
+    .vertical-timeline-element-subtitle {
+        color: #e0e0e0;
+    }
+}
