@@ -1,12 +1,13 @@
 import React from 'react';
-import { FaBookOpen, FaCalendarAlt } from 'react-icons/fa'; // Import icons
+import { FaBookOpen, FaCalendarAlt } from 'react-icons/fa';
 import BookSelector from './bible/BookSelectorUI';
 import CalendarYearSelect from './calendar/CalendarYearSelect';
+import './ViewSwitcher.scss';
 
-interface ViewSwitcherProps {
+interface Props {
     currentYear: number;
     onAddEvent: () => void;
-    onYearChange: (selectedYear: number) => void;
+    onYearChange: (year: number) => void;
     onBookClick: () => void;
     isBibleView: boolean;
     bookRefs: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
@@ -14,7 +15,7 @@ interface ViewSwitcherProps {
     setSelectedBook: (book: string) => void;
 }
 
-const ViewSwitcher: React.FC<ViewSwitcherProps> = ({
+const ViewSwitcher: React.FC<Props> = ({
     currentYear,
     onAddEvent,
     onYearChange,
@@ -22,20 +23,22 @@ const ViewSwitcher: React.FC<ViewSwitcherProps> = ({
     isBibleView,
     bookRefs,
     selectedBook,
-    setSelectedBook,
+    setSelectedBook
 }) => {
     return (
         <div className="view-switcher-container">
             <div className="left-section">
                 <button
-                    onClick={() => !isBibleView && onBookClick()}
                     className={`switcher-button ${!isBibleView ? 'active' : ''}`}
+                    onClick={onBookClick}
+                    title="Calendar View"
                 >
                     <FaCalendarAlt />
                 </button>
                 <button
-                    onClick={() => isBibleView && onBookClick()}
                     className={`switcher-button ${isBibleView ? 'active' : ''}`}
+                    onClick={onBookClick}
+                    title="Bible View"
                 >
                     <FaBookOpen />
                 </button>
