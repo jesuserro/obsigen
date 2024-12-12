@@ -1,29 +1,30 @@
-.months-container {
-  
-}
-
 .button-container {
-  position: sticky;
-  top: 0;
-  background-color: rgba(128, 128, 128, 0.4); /* Fondo gris oscuro con opacidad */
-  z-index: 1; /* Asegura que el botón esté por encima del contenido desplazable */
-  display: flex;
-  justify-content: flex-end; /* Sitúa el botón a la derecha */
-  align-items: center; /* Centra verticalmente el contenido */
-  padding: 8px;
+	position: sticky;
+	top: 0;
+	background-color: rgba(
+		128,
+		128,
+		128,
+		0.4
+	); /* Fondo gris oscuro con opacidad */
+	z-index: 1; /* Asegura que el botón esté por encima del contenido desplazable */
+	display: flex;
+	justify-content: flex-end; /* Sitúa el botón a la derecha */
+	align-items: center; /* Centra verticalmente el contenido */
+	padding: 8px;
 }
 
 .button-container button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
 }
 
 .icon-cross {
-  font-family: 'Lucide'; /* Asegura que la fuente Lucide está disponible */
-  font-size: 20px;
-  margin-left: 8px; /* Espacio entre el texto y el icono */
-  color: green; /* Color verde para el icono de la cruz */
+	font-family: "Lucide"; /* Asegura que la fuente Lucide está disponible */
+	font-size: 20px;
+	margin-left: 8px; /* Espacio entre el texto y el icono */
+	color: green; /* Color verde para el icono de la cruz */
 }

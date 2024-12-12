@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface CalendarYearSelectProps {
   currentYear: number;
@@ -10,6 +10,10 @@ function CalendarYearSelect({ currentYear, onChange, onAddEvent }: CalendarYearS
   const [year, setYear] = useState<number | string>(currentYear);
   const [yearHistory, setYearHistory] = useState<(number | string)[]>([currentYear]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  useEffect(() => {
+    setYear(currentYear);
+  }, [currentYear]);
 
   const handleYearChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setYear(e.target.value);

@@ -1,0 +1,30 @@
+.book-selector {
+	background-color: #1e1e1e;
+	padding: 10px;
+	display: flex;
+	align-items: center; // Ensure vertical alignment
+	justify-content: center;
+	z-index: 150; // Ensure the BookSelector is above images and internal layers, but below the top bar
+	margin-bottom: 20px; // Add bottom margin
+
+	select {
+		background-color: #333; // Dark background
+		color: #e0e0e0; // Light text
+		border: 1px solid #444; // Dark border
+		padding: 8px 12px;
+		border-radius: 4px;
+		cursor: pointer;
+		transition: background-color 0.3s ease, border-color 0.3s ease;
+		z-index: 151; // Ensure the select is above images
+
+		&:hover {
+			background-color: #444; // Slightly lighter background on hover
+			border-color: #555; // Slightly lighter border on hover
+		}
+
+		&:focus {
+			outline: none;
+			border-color: #666; // Lighter border on focus
+		}
+	}
+}
