@@ -72,18 +72,18 @@
         position: relative; // Asegura que los elementos hijos se posicionen correctamente
     }
 
+    .timeline-icon-container {
+        display: flex;
+        align-items: center;
+        z-index: 2; // Asegura que el contenedor esté por encima del eje
+        position: relative; // Asegura que el z-index funcione correctamente
+    }
+
     .timeline-image-icon {
         width: 50px; // Ajusta el tamaño del icono de la imagen
         height: 50px;
         border-radius: 50%; // Hacer las imágenes circulares
         object-fit: cover;
-        z-index: 2; // Asegura que las imágenes estén por encima del eje
-        position: relative; // Asegura que el z-index funcione correctamente
-    }
-
-    .timeline-text-container {
-        flex: 2;
-        padding-left: 20px;
     }
 
     .timeline-date {
@@ -93,7 +93,11 @@
         padding: 5px 10px;
         border-radius: 4px;
         font-size: 0.9rem;
-        z-index: 1;
+    }
+
+    .timeline-text-container {
+        flex: 2;
+        padding-left: 20px;
     }
 
     .vertical-timeline-element-title {

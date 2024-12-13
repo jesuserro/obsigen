@@ -28,9 +28,17 @@ const TimelineView: React.FC<TimelineViewProps> = ({ app, bookRefs, selectedBook
             <VerticalTimeline layout="1-column-left">
                 {Object.entries(chapterImages).map(([key, images]) => (
                     images.map((image, index) => (
+                        // ...existing code...
                         <VerticalTimelineElement
                             key={index}
-                            icon={<img src={image.path} alt={image.alt} className="timeline-image-icon" />}
+                            icon={
+                                <div className="timeline-icon-container">
+                                    <img src={image.path} alt={image.alt} className="timeline-image-icon" />
+                                    <span className="timeline-date">
+                                        {image.date ? new Date(image.date).toLocaleDateString() : 'Unknown date'}
+                                    </span>
+                                </div>
+                            }
                             contentStyle={{ background: '#1e1e1e', color: '#e0e0e0' }}
                             contentArrowStyle={{ borderRight: '7px solid  #1e1e1e' }}
                         >
@@ -52,10 +60,8 @@ const TimelineView: React.FC<TimelineViewProps> = ({ app, bookRefs, selectedBook
                                     )}
                                 </div>
                             </div>
-                            <span className="timeline-date">
-                                {image.date ? new Date(image.date).toLocaleDateString() : 'Unknown date'}
-                            </span>
                         </VerticalTimelineElement>
+                        // ...existing code...
                     ))
                 ))}
             </VerticalTimeline>
