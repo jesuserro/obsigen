@@ -79,47 +79,66 @@ async function getNoteData(app: App, filePath: string): Promise<Partial<Note>> {
 	};
 }
 
+function parseDate(dateString: string): number {
+	const date = new Date(dateString);
+	if (dateString.startsWith("-")) {
+		const year = parseInt(dateString.split("-")[1], 10);
+		return -year * 10000 + date.getMonth() * 100 + date.getDate();
+	}
+	return date.getTime();
+}
+
+export function formatDate(dateString: string): string {
+	if (dateString.startsWith("-")) {
+		const [year, month, day] = dateString.slice(1).split("-");
+		return `${day.padStart(2, "0")}/${month.padStart(2, "0")}/${year} AC`;
+	} else {
+		const date = new Date(dateString);
+		return date.toLocaleDateString();
+	}
+}
+
 export async function fetchChapterImages(
-    app: App
+	app: App
 ): Promise<{ [key: string]: Note[] }> {
-    const images: { [key: string]: Note[] } = {};
-    const files = app.vault
-        .getFiles()
-        .filter((file) => file.path.startsWith("333 Biblia"));
+	const images: { [key: string]: Note[] } = {};
+	const files = app.vault
+		.getFiles()
+		.filter((file) => file.path.startsWith("333 Biblia"));
 
-    for (const file of files) {
-        const noteData = await getNoteData(app, file.path);
-        if (noteData.path) {
-            const key = file.path.split("/").slice(0, -1).join("/");
-            if (!images[key]) {
-                images[key] = [];
-            }
-            const coordinates =
-                noteData.locations && noteData.locations.length > 0
-                    ? await getLocationCoordinates(app, noteData.locations[0])
-                    : null;
+	for (const file of files) {
+		const noteData = await getNoteData(app, file.path);
+		if (noteData.path) {
+			const key = file.path.split("/").slice(0, -1).join("/");
+			if (!images[key]) {
+				images[key] = [];
+			}
+			const coordinates =
+				noteData.locations && noteData.locations.length > 0
+					? await getLocationCoordinates(app, noteData.locations[0])
+					: null;
 
-            images[key].push({
-                ...noteData,
-                coordinates,
-                locations:
-                    noteData.locations?.map((location) =>
-                        location.replace(/\[\[|\]\]/g, "")
-                    ) || [],
-            } as Note);
-        }
-    }
+			images[key].push({
+				...noteData,
+				coordinates,
+				locations:
+					noteData.locations?.map((location) =>
+						location.replace(/\[\[|\]\]/g, "")
+					) || [],
+			} as Note);
+		}
+	}
 
-    // Ordenar las notas por fecha
-    Object.keys(images).forEach(key => {
-        images[key].sort((a, b) => {
-            const dateA = new Date(a.date || 0).getTime();
-            const dateB = new Date(b.date || 0).getTime();
-            return dateA - dateB;
-        });
-    });
+	// Ordenar las notas por fecha
+	Object.keys(images).forEach((key) => {
+		images[key].sort((a, b) => {
+			const dateA = parseDate(a.date || "0");
+			const dateB = parseDate(b.date || "0");
+			return dateA - dateB;
+		});
+	});
 
-    return images;
+	return images;
 }
 
 export function openNote(app: App, filePath: string) {

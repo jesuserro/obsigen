@@ -2,7 +2,7 @@ import { App } from 'obsidian';
 import React, { useEffect, useState } from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import { Note, fetchChapterImages, openNoteByPath } from './Timeline';
+import { Note, fetchChapterImages, formatDate, openNoteByPath } from './Timeline';
 
 interface TimelineViewProps {
     app: App;
@@ -34,7 +34,7 @@ const TimelineView: React.FC<TimelineViewProps> = ({ app, bookRefs, selectedBook
                                 <div className="timeline-icon-container">
                                     <img src={image.path} alt={image.alt} className="timeline-image-icon" />
                                     <span className="timeline-date">
-                                        {image.date ? new Date(image.date).toLocaleDateString() : 'Unknown date'}
+                                        {image.date ? formatDate(image.date) : 'Unknown date'}
                                     </span>
                                 </div>
                             }
