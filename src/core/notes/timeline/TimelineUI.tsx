@@ -28,7 +28,6 @@ const TimelineView: React.FC<TimelineViewProps> = ({ app, bookRefs, selectedBook
             <VerticalTimeline layout="1-column-left">
                 {Object.entries(chapterImages).map(([key, images]) => (
                     images.map((image, index) => (
-                        // ...existing code...
                         <VerticalTimelineElement
                             key={index}
                             icon={
@@ -64,7 +63,6 @@ const TimelineView: React.FC<TimelineViewProps> = ({ app, bookRefs, selectedBook
                                 </div>
                             </div>
                         </VerticalTimelineElement>
-                        // ...existing code...
                     ))
                 ))}
             </VerticalTimeline>
