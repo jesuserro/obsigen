@@ -98,6 +98,14 @@ export function formatDate(dateString: string): string {
 	}
 }
 
+function sortNotesByDate(notes: Note[]): Note[] {
+	return notes.sort((a, b) => {
+		const dateA = parseDate(a.date || "0");
+		const dateB = parseDate(b.date || "0");
+		return dateA - dateB;
+	});
+}
+
 export async function fetchChapterImages(
 	app: App
 ): Promise<{ [key: string]: Note[] }> {
@@ -131,11 +139,7 @@ export async function fetchChapterImages(
 
 	// Ordenar las notas por fecha
 	Object.keys(images).forEach((key) => {
-		images[key].sort((a, b) => {
-			const dateA = parseDate(a.date || "0");
-			const dateB = parseDate(b.date || "0");
-			return dateA - dateB;
-		});
+		images[key] = sortNotesByDate(images[key]);
 	});
 
 	return images;
