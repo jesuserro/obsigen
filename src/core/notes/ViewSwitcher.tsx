@@ -9,11 +9,12 @@ interface Props {
     onYearChange: (year: number) => void;
     onBookClick: () => void;
     isBibleView: boolean;
-    isTimelineView: boolean; // Agregamos la propiedad isTimelineView
+    isTimelineView: boolean;
     bookRefs: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
     selectedBook: string;
     setSelectedBook: (book: string) => void;
-    onTimelineClick: () => void; // Agregamos la propiedad onTimelineClick
+    onTimelineClick: () => void;
+    onCalendarClick: () => void; // Añadimos esta función
 }
 
 const ViewSwitcher: React.FC<Props> = ({
@@ -22,32 +23,39 @@ const ViewSwitcher: React.FC<Props> = ({
     onYearChange,
     onBookClick,
     isBibleView,
-    isTimelineView, // Agregamos la propiedad isTimelineView
+    isTimelineView,
     bookRefs,
     selectedBook,
     setSelectedBook,
-    onTimelineClick // Agregamos la propiedad onTimelineClick
+    onTimelineClick,
+    onCalendarClick // Añadimos esta función
 }) => {
     return (
         <div className="view-switcher-container">
             <div className="left-section">
                 <button
                     className={`switcher-button ${!isBibleView && !isTimelineView ? 'active' : ''}`}
-                    onClick={onBookClick}
+                    onClick={() => {
+                        onCalendarClick();
+                    }}
                     title="Calendar View"
                 >
                     <FaCalendarAlt />
                 </button>
                 <button
                     className={`switcher-button ${isBibleView ? 'active' : ''}`}
-                    onClick={onBookClick}
+                    onClick={() => {
+                        onBookClick();
+                    }}
                     title="Bible View"
                 >
                     <FaBookOpen />
                 </button>
                 <button
                     className={`switcher-button ${isTimelineView ? 'active' : ''}`}
-                    onClick={onTimelineClick} 
+                    onClick={() => {
+                        onTimelineClick();
+                    }}
                     title="Timeline View"
                 >
                     <FaClock />

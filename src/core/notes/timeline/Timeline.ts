@@ -1,9 +1,8 @@
-import { App, FileView } from "obsidian";
-import { BibleImage, bibleStructure } from "../bible/BibleViewStructure";
+import { App, FileView, TFile } from "obsidian";
 
 const IMAGE_FOLDER = "050 Anexos";
 
-export interface ChapterImage extends BibleImage {
+export interface ChapterImage {
     verseRange: [number, number];
     pericopeTitle: string;
     title: string;
@@ -14,18 +13,13 @@ export interface ChapterImage extends BibleImage {
     locations?: string[];
     coordinates?: [number, number];
     date?: string;
+    path: string;
 }
 
-async function getNoteData(app: App, book: string, chapterNumber: string, verseRange: [number, number]): Promise<Partial<ChapterImage>> {
-    const folderPath = book === 'Salmos' ? `333 Biblia/${book}` : `333 Biblia/${book}/${chapterNumber}`;
-    const files = app.vault.getFiles().filter(file => file.path.startsWith(folderPath));
-  
-    const verseRangeString = `${verseRange[0]}-${verseRange[1]}`;
-    const chapterString = `${chapterNumber}`;
-    const noteFile = files.find(file => file.basename.includes(verseRangeString) && file.basename.includes(chapterString));
-  
-    if (!noteFile) {
-        console.log(`getNoteData: No se encontró ninguna nota con el rango de versículos ${verseRangeString} en ${folderPath}`);
+async function getNoteData(app: App, filePath: string): Promise<Partial<ChapterImage>> {
+    const noteFile = app.vault.getAbstractFileByPath(filePath);
+    if (!(noteFile instanceof TFile)) {
+        console.log(`getNoteData: No se encontró ninguna nota en ${filePath}`);
         return {};
     }
 
@@ -41,7 +35,10 @@ async function getNoteData(app: App, book: string, chapterNumber: string, verseR
         locations: yaml.locations || [],
         path: yaml.cover ? app.vault.adapter.getResourcePath(yaml.cover) : "",
         alt: yaml.cover ? yaml.cover : "",
-        date: yaml.date || "", 
+        date: yaml.date || "",
+        title: yaml.title || "",
+        pericopeTitle: yaml.pericope_title || "",
+        verseRange: yaml.verse_range || [0, 0],
     };
 }
 
@@ -59,6 +56,10 @@ async function getLocationCoordinates(app: App, location: string): Promise<[numb
     }
 
     const noteFile = files[0];
+    if (!(noteFile instanceof TFile)) {
+        return null;
+    }
+
     const yaml = app.metadataCache.getFileCache(noteFile)?.frontmatter;
     if (!yaml || !yaml.location) {
         return null;
@@ -67,50 +68,41 @@ async function getLocationCoordinates(app: App, location: string): Promise<[numb
     return yaml.location;
 }
 
-export async function getChapterImages(chapterInfo: any, app: App, book: string, chapterNumber: string): Promise<ChapterImage[]> {
-    const images: ChapterImage[] = [];
-    for (const pericope of chapterInfo.pericopes) {
-        const noteData = await getNoteData(app, book, chapterNumber, pericope.verseRange);
-        if (noteData.path) {
-            const reference = `${book} ${chapterNumber}:${pericope.verseRange[0]}-${pericope.verseRange[1]}`;
-            const title = `${pericope.title} (${reference})`;
-            const alt = `${noteData.alt} (${reference})`;
+export async function fetchChapterImages(app: App): Promise<{ [key: string]: ChapterImage[] }> {
+    const images: { [key: string]: ChapterImage[] } = {};
+    const files = app.vault.getFiles().filter(file => file.path.startsWith("333 Biblia"));
 
+    for (const file of files) {
+        const noteData = await getNoteData(app, file.path);
+        if (noteData.path) {
+            const key = file.path.split('/').slice(0, -1).join('/');
+            if (!images[key]) {
+                images[key] = [];
+            }
             const coordinates = noteData.locations && noteData.locations.length > 0
                 ? await getLocationCoordinates(app, noteData.locations[0])
                 : null;
 
-            images.push({
+            images[key].push({
                 ...noteData,
-                verseRange: pericope.verseRange,
-                pericopeTitle: pericope.title,
-                title,
-                alt,
                 coordinates,
                 locations: noteData.locations?.map(location => location.replace(/\[\[|\]\]/g, '')) || [],
-                date: noteData.date, 
             } as ChapterImage);
         }
     }
     return images;
 }
 
-export function openNote(app: App, book: string, chapterNumber: string, verseRange: [number, number]) {
-    const folderPath = book === 'Salmos' ? `333 Biblia/${book}` : `333 Biblia/${book}/${chapterNumber}`;
-    const files = app.vault.getFiles().filter(file => file.path.startsWith(folderPath));
-  
-    const verseRangeString = `${verseRange[0]}-${verseRange[1]}`;
-    const chapterString = `${chapterNumber}`;
-    const noteFile = files.find(file => file.basename.includes(verseRangeString) && file.basename.includes(chapterString));
-  
-    if (!noteFile) {
-        console.log(`openNote: No se encontró ninguna nota con el rango de versículos ${verseRangeString} en ${folderPath}`);
+export function openNote(app: App, filePath: string) {
+    const noteFile = app.vault.getAbstractFileByPath(filePath);
+    if (!(noteFile instanceof TFile)) {
+        console.log(`openNote: No se encontró ninguna nota en ${filePath}`);
         return;
     }
 
     const openLeaves = app.workspace.getLeavesOfType("markdown");
     const openFilePaths = openLeaves.map(leaf => leaf.view instanceof FileView ? leaf.view.file?.path : null).filter(path => path !== null);
-  
+
     if (openFilePaths.includes(noteFile.path)) {
         const leaf = openLeaves.find(leaf => leaf.view instanceof FileView && leaf.view.file?.path === noteFile.path);
         if (leaf) {
@@ -128,16 +120,20 @@ export function openLocationNote(app: App, location: string) {
     const files = app.vault.getFiles().filter(file => 
         file.basename.includes(mainLocation) || (alias && file.basename.includes(alias))
     );
-  
+
     if (files.length === 0) {
         console.log(`openLocationNote: No se encontró ninguna nota con el nombre ${sanitizedLocation}`);
         return;
     }
 
     const noteFile = files[0];
+    if (!(noteFile instanceof TFile)) {
+        return;
+    }
+
     const openLeaves = app.workspace.getLeavesOfType("markdown");
     const openFilePaths = openLeaves.map(leaf => leaf.view instanceof FileView ? leaf.view.file?.path : null).filter(path => path !== null);
-  
+
     if (openFilePaths.includes(noteFile.path)) {
         const leaf = openLeaves.find(leaf => leaf.view instanceof FileView && leaf.view.file?.path === noteFile.path);
         if (leaf) {
@@ -146,14 +142,4 @@ export function openLocationNote(app: App, location: string) {
     } else {
         app.workspace.openLinkText(noteFile.path, '', true);
     }
-}
-
-export async function fetchChapterImages(app: App): Promise<{ [key: string]: ChapterImage[] }> {
-    const images: { [key: string]: ChapterImage[] } = {};
-    for (const [book, data] of Object.entries(bibleStructure)) {
-        for (const [chapterNumber, chapterInfo] of Object.entries(data.chapters)) {
-            images[`${book}-${chapterNumber}`] = await getChapterImages(chapterInfo, app, book, chapterNumber);
-        }
-    }
-    return images;
 }
