@@ -6,9 +6,12 @@ import { Note, fetchChapterImages, openNoteByPath } from './Timeline';
 
 interface TimelineViewProps {
     app: App;
+    bookRefs: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
+    selectedBook: string;
+    setSelectedBook: (book: string) => void;
 }
 
-const TimelineView: React.FC<TimelineViewProps> = ({ app }) => {
+const TimelineView: React.FC<TimelineViewProps> = ({ app, bookRefs, selectedBook }) => {
     const [chapterImages, setChapterImages] = useState<{ [key: string]: Note[] }>({});
 
     useEffect(() => {
