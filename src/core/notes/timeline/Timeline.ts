@@ -80,12 +80,18 @@ async function getNoteData(app: App, filePath: string): Promise<Partial<Note>> {
 }
 
 function parseDate(dateString: string): number {
-	const date = new Date(dateString);
-	if (dateString.startsWith("-")) {
-		const year = parseInt(dateString.split("-")[1], 10);
-		return -year * 10000 + date.getMonth() * 100 + date.getDate();
+	if (!dateString) {
+		return Date.now(); // Considerar la fecha actual si no hay fecha
 	}
-	return date.getTime();
+	if (dateString.startsWith("-")) {
+		const [year, month, day] = dateString.slice(1).split("-");
+		return (
+			-parseInt(year, 10) * 10000 +
+			parseInt(month, 10) * 100 +
+			parseInt(day, 10)
+		);
+	}
+	return new Date(dateString).getTime();
 }
 
 export function formatDate(dateString: string): string {
@@ -100,8 +106,8 @@ export function formatDate(dateString: string): string {
 
 function sortNotesByDate(notes: Note[]): Note[] {
 	return notes.sort((a, b) => {
-		const dateA = parseDate(a.date || "0");
-		const dateB = parseDate(b.date || "0");
+		const dateA = parseDate(a.date || "");
+		const dateB = parseDate(b.date || "");
 		return dateA - dateB;
 	});
 }
