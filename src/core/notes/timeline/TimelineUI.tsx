@@ -2,17 +2,14 @@ import { App } from 'obsidian';
 import React, { useEffect, useState } from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import { ChapterImage, fetchChapterImages } from './Timeline';
+import { Note, fetchChapterImages, openNoteByPath } from './Timeline';
 
-interface Props {
+interface TimelineViewProps {
     app: App;
-    bookRefs: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
-    selectedBook: string;
-    setSelectedBook: (book: string) => void;
 }
 
-const TimelineView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSelectedBook }) => {
-    const [chapterImages, setChapterImages] = useState<{ [key: string]: ChapterImage[] }>({});
+const TimelineView: React.FC<TimelineViewProps> = ({ app }) => {
+    const [chapterImages, setChapterImages] = useState<{ [key: string]: Note[] }>({});
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -40,7 +37,11 @@ const TimelineView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSelecte
                                     <img src={image.path} alt={image.alt} className="timeline-image" />
                                 </div>
                                 <div className="timeline-text-container">
-                                    <h3 className="vertical-timeline-element-title">{image.title}</h3>
+                                    <h3 className="vertical-timeline-element-title">
+                                        <a href="#" onClick={(e) => { e.preventDefault(); openNoteByPath(app, image.notePath); }}>
+                                            {image.title}
+                                        </a>
+                                    </h3>
                                     <h4 className="vertical-timeline-element-subtitle">{image.pericopeTitle}</h4>
                                     <p>{image.versePassage}</p>
                                     {image.locations && image.locations.length > 0 && image.coordinates && (
