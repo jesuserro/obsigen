@@ -80,36 +80,46 @@ async function getNoteData(app: App, filePath: string): Promise<Partial<Note>> {
 }
 
 export async function fetchChapterImages(
-	app: App
+    app: App
 ): Promise<{ [key: string]: Note[] }> {
-	const images: { [key: string]: Note[] } = {};
-	const files = app.vault
-		.getFiles()
-		.filter((file) => file.path.startsWith("333 Biblia"));
+    const images: { [key: string]: Note[] } = {};
+    const files = app.vault
+        .getFiles()
+        .filter((file) => file.path.startsWith("333 Biblia"));
 
-	for (const file of files) {
-		const noteData = await getNoteData(app, file.path);
-		if (noteData.path) {
-			const key = file.path.split("/").slice(0, -1).join("/");
-			if (!images[key]) {
-				images[key] = [];
-			}
-			const coordinates =
-				noteData.locations && noteData.locations.length > 0
-					? await getLocationCoordinates(app, noteData.locations[0])
-					: null;
+    for (const file of files) {
+        const noteData = await getNoteData(app, file.path);
+        if (noteData.path) {
+            const key = file.path.split("/").slice(0, -1).join("/");
+            if (!images[key]) {
+                images[key] = [];
+            }
+            const coordinates =
+                noteData.locations && noteData.locations.length > 0
+                    ? await getLocationCoordinates(app, noteData.locations[0])
+                    : null;
 
-			images[key].push({
-				...noteData,
-				coordinates,
-				locations:
-					noteData.locations?.map((location) =>
-						location.replace(/\[\[|\]\]/g, "")
-					) || [],
-			} as Note);
-		}
-	}
-	return images;
+            images[key].push({
+                ...noteData,
+                coordinates,
+                locations:
+                    noteData.locations?.map((location) =>
+                        location.replace(/\[\[|\]\]/g, "")
+                    ) || [],
+            } as Note);
+        }
+    }
+
+    // Ordenar las notas por fecha
+    Object.keys(images).forEach(key => {
+        images[key].sort((a, b) => {
+            const dateA = new Date(a.date || 0).getTime();
+            const dateB = new Date(b.date || 0).getTime();
+            return dateA - dateB;
+        });
+    });
+
+    return images;
 }
 
 export function openNote(app: App, filePath: string) {
