@@ -70,18 +70,11 @@
         text-align: left;
     }
 
-    .timeline-image-container {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .timeline-image {
-        width: 100%;
-        height: auto;
+    .timeline-image-icon {
+        width: 50px; // Ajusta el tamaño del icono de la imagen
+        height: 50px;
         border-radius: 50%; // Hacer las imágenes circulares
-        margin-bottom: 10px;
+        object-fit: cover;
     }
 
     .timeline-text-container {

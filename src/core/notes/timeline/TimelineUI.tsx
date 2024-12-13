@@ -27,15 +27,11 @@ const TimelineView: React.FC<TimelineViewProps> = ({ app }) => {
                         <VerticalTimelineElement
                             key={index}
                             date={image.date ? new Date(image.date).toLocaleDateString() : 'Unknown date'}
-                            iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                            icon={<FaMapMarkerAlt />}
+                            icon={<img src={image.path} alt={image.alt} className="timeline-image-icon" />}
                             contentStyle={{ background: '#1e1e1e', color: '#e0e0e0' }}
                             contentArrowStyle={{ borderRight: '7px solid  #1e1e1e' }}
                         >
                             <div className="timeline-element-content">
-                                <div className="timeline-image-container">
-                                    <img src={image.path} alt={image.alt} className="timeline-image" />
-                                </div>
                                 <div className="timeline-text-container">
                                     <h3 className="vertical-timeline-element-title">
                                         <a href="#" onClick={(e) => { e.preventDefault(); openNoteByPath(app, image.notePath); }}>
