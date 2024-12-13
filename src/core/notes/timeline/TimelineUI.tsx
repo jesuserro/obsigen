@@ -46,8 +46,8 @@ const TimelineView: React.FC<TimelineViewProps> = ({ app }) => {
                                     <p>{image.versePassage}</p>
                                     {image.locations && image.locations.length > 0 && image.coordinates && (
                                         <div className="map-overlay">
-                                            <a href={`obsidian://mapview?do=open&centerLat=${image.coordinates[0]}&centerLng=${image.coordinates[1]}&chosenMapSource=0&linkColor=red&mapZoom=13&name=Default&query`}>
-                                                <FaMapMarkerAlt /> View on Map
+                                            <a href={`obsidian://mapview?do=open&centerLat=${image.coordinates[0]}&centerLng=${image.coordinates[1]}&chosenMapSource=0&linkColor=red&mapZoom=13&name=Default&query=&showLinks=true&fitBounds=true&showName=true&showPins=true&pinColor=red`} target="_blank" title={image.locations ? image.locations[0].replace(/\[\[|\]\]/g, '') : ''}>
+                                                <FaMapMarkerAlt /> {/* Usamos el icono de marcador */}
                                             </a>
                                         </div>
                                     )}
