@@ -82,7 +82,7 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
                                                         }}
                                                     >
                                                         <img
-                                                            src={image.path}
+                                                            src={image.cover}
                                                             alt={image.alt}
                                                             className="thumbnail"
                                                         />

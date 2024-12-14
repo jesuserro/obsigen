@@ -14,6 +14,7 @@ export interface ChapterImage extends BibleImage {
     locations?: string[];
     coordinates?: [number, number];
     date?: string; 
+    cover: string;
 }
 
 async function getNoteData(app: App, book: string, chapterNumber: string, verseRange: [number, number]): Promise<Partial<ChapterImage>> {
@@ -39,9 +40,10 @@ async function getNoteData(app: App, book: string, chapterNumber: string, verseR
         verseTitle: yaml.verse_title || "",
         versePassage: yaml.verse_passage || "",
         locations: yaml.locations || [],
-        path: yaml.cover ? app.vault.adapter.getResourcePath(yaml.cover) : "",
+        path: noteFile.path,
         alt: yaml.cover ? yaml.cover : "",
-        date: yaml.date || "", // Añadir esta línea
+        date: yaml.date || "",
+        cover: yaml.cover ? app.vault.adapter.getResourcePath(yaml.cover) : "",
     };
 }
 
