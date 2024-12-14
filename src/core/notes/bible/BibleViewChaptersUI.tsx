@@ -22,13 +22,13 @@ const getRatingClass = (rating: number) => {
 };
 
 const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSelectedBook }) => {
-    const [chapterImages, setChapterImages] = useState<{ [key: string]: Note[] }>({});
+    const [chapterNotes, setChapterNotes] = useState<{ [key: string]: Note[] }>({});
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const fetchImages = async () => {
             const notes = await fetchChapterNotes(app);
-            setChapterImages(notes);
+            setChapterNotes(notes);
         };
         fetchImages();
     }, [app]);
@@ -38,7 +38,7 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
         if (selectedBookRef) {
             selectedBookRef.scrollIntoView({ behavior: 'auto', block: 'start' });
         }
-    }, [selectedBook, bookRefs, chapterImages]);
+    }, [selectedBook, bookRefs, chapterNotes]);
 
     // Añadir este efecto para forzar la actualización del componente
     useEffect(() => {
@@ -63,7 +63,7 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
                         <h2>{book}</h2>
                         <div className="chapters-grid">
                             {Object.entries(data.chapters).map(([chapterNumber, chapterInfo]) => {
-                                const notes = chapterImages[`${book}-${chapterNumber}`] || [];
+                                const notes = chapterNotes[`${book}-${chapterNumber}`] || [];
 
                                 return (
                                     <div key={chapterNumber} className="chapter-container">

@@ -152,11 +152,11 @@ export function openLocationNote(app: App, location: string) {
 }
 
 export async function fetchChapterNotes(app: App): Promise<{ [key: string]: Note[] }> {
-    const images: { [key: string]: Note[] } = {};
+    const notes: { [key: string]: Note[] } = {};
     for (const [book, data] of Object.entries(bibleStructure)) {
         for (const [chapterNumber, chapterInfo] of Object.entries(data.chapters)) {
-            images[`${book}-${chapterNumber}`] = await getChapterNotes(chapterInfo, app, book, chapterNumber);
+            notes[`${book}-${chapterNumber}`] = await getChapterNotes(chapterInfo, app, book, chapterNumber);
         }
     }
-    return images;
+    return notes;
 }
