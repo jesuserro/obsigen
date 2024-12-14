@@ -26,11 +26,11 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const fetchImages = async () => {
+        const fetchNotes = async () => {
             const notes = await fetchChapterNotes(app);
             setChapterNotes(notes);
         };
-        fetchImages();
+        fetchNotes();
     }, [app]);
 
     useEffect(() => {
