@@ -64,7 +64,10 @@ const PrimeraSamuel: BookStructure = {
 		},
 		16: {
 			title: "David es ungido como rey",
-			pericopes: []
+			pericopes: [{
+                title: "David al servicio de Saúl",
+                verseRange: [14, 23],
+            }]
 		},
 		17: {
 			title: "David derrota a Goliat",
