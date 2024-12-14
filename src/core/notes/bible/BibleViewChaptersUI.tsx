@@ -1,7 +1,7 @@
 import { App } from 'obsidian';
 import React, { useEffect, useRef, useState } from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import { ChapterImage, fetchChapterImages, openNote } from './BibleViewChapters';
+import { Note, fetchChapterNotes, openNote } from './BibleViewChapters';
 import { bibleStructure } from './BibleViewStructure';
 
 interface Props {
@@ -22,13 +22,13 @@ const getRatingClass = (rating: number) => {
 };
 
 const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSelectedBook }) => {
-    const [chapterImages, setChapterImages] = useState<{ [key: string]: ChapterImage[] }>({});
+    const [chapterImages, setChapterImages] = useState<{ [key: string]: Note[] }>({});
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const fetchImages = async () => {
-            const images = await fetchChapterImages(app);
-            setChapterImages(images);
+            const notes = await fetchChapterNotes(app);
+            setChapterImages(notes);
         };
         fetchImages();
     }, [app]);
@@ -63,40 +63,40 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
                         <h2>{book}</h2>
                         <div className="chapters-grid">
                             {Object.entries(data.chapters).map(([chapterNumber, chapterInfo]) => {
-                                const images = chapterImages[`${book}-${chapterNumber}`] || [];
+                                const notes = chapterImages[`${book}-${chapterNumber}`] || [];
 
                                 return (
                                     <div key={chapterNumber} className="chapter-container">
                                         <h3>
                                             {chapterNumber} {chapterInfo.title}
                                         </h3>
-                                        {images.length > 0 && (
+                                        {notes.length > 0 && (
                                             <div className="image-gallery">
-                                                {images.map((image: ChapterImage, index) => (
+                                                {notes.map((note: Note, index) => (
                                                     <div
                                                         key={index}
                                                         className="image-container"
                                                         onClick={(e) => {
                                                             e.preventDefault();
-                                                            openNote(app, book, chapterNumber, image.verseRange);
+                                                            openNote(app, book, chapterNumber, note.verseRange);
                                                         }}
                                                     >
                                                         <img
-                                                            src={image.cover}
-                                                            alt={image.alt}
+                                                            src={note.cover}
+                                                            alt={note.alt}
                                                             className="thumbnail"
                                                         />
-                                                        {image.rating !== undefined && image.rating !== null && (
-                                                            <div className={`rating-overlay ${getRatingClass(image.rating)}`}>
-                                                                {image.rating}
+                                                        {note.rating !== undefined && note.rating !== null && (
+                                                            <div className={`rating-overlay ${getRatingClass(note.rating)}`}>
+                                                                {note.rating}
                                                             </div>
                                                         )}
                                                         <div className="verse-range-overlay">
-                                                            {image.verseRange[0]}-{image.verseRange[1]}
+                                                            {note.verseRange[0]}-{note.verseRange[1]}
                                                         </div>
-                                                        {image.coordinates && (
+                                                        {note.coordinates && (
                                                             <div className="map-overlay" onClick={(e) => e.stopPropagation()}>
-                                                                <a href={`obsidian://mapview?do=open&centerLat=${image.coordinates[0]}&centerLng=${image.coordinates[1]}&chosenMapSource=0&linkColor=red&mapZoom=13&name=Default&query=&showLinks=true&fitBounds=true&showName=true&showPins=true&pinColor=red`} target="_blank" title={image.locations ? image.locations[0].replace(/\[\[|\]\]/g, '') : ''}>
+                                                                <a href={`obsidian://mapview?do=open&centerLat=${note.coordinates[0]}&centerLng=${note.coordinates[1]}&chosenMapSource=0&linkColor=red&mapZoom=13&name=Default&query=&showLinks=true&fitBounds=true&showName=true&showPins=true&pinColor=red`} target="_blank" title={note.locations ? note.locations[0].replace(/\[\[|\]\]/g, '') : ''}>
                                                                     <FaMapMarkerAlt /> {/* Usamos el icono de marcador */}
                                                                 </a>
                                                             </div>

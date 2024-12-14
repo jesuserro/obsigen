@@ -3,21 +3,22 @@ import { BibleImage, bibleStructure } from "./BibleViewStructure";
 
 const IMAGE_FOLDER = "050 Anexos";
 
-export interface ChapterImage extends BibleImage {
+export interface Note extends BibleImage {
     verseRange: [number, number];
     pericopeTitle: string;
     title: string;
+    date?: string; 
+    path: string;
     alt: string;
     rating?: number;
     verseTitle?: string;
     versePassage?: string;
     locations?: string[];
     coordinates?: [number, number];
-    date?: string; 
     cover: string;
 }
 
-async function getNoteData(app: App, book: string, chapterNumber: string, verseRange: [number, number]): Promise<Partial<ChapterImage>> {
+async function getNoteData(app: App, book: string, chapterNumber: string, verseRange: [number, number]): Promise<Partial<Note>> {
     const folderPath = book === 'Salmos' ? `333 Biblia/${book}` : `333 Biblia/${book}/${chapterNumber}`;
     const files = app.vault.getFiles().filter(file => file.path.startsWith(folderPath));
   
@@ -69,8 +70,8 @@ async function getLocationCoordinates(app: App, location: string): Promise<[numb
     return yaml.location;
 }
 
-export async function getChapterImages(chapterInfo: any, app: App, book: string, chapterNumber: string): Promise<ChapterImage[]> {
-    const images: ChapterImage[] = [];
+export async function getChapterNotes(chapterInfo: any, app: App, book: string, chapterNumber: string): Promise<Note[]> {
+    const notes: Note[] = [];
     for (const pericope of chapterInfo.pericopes) {
         const noteData = await getNoteData(app, book, chapterNumber, pericope.verseRange);
         if (noteData.path) {
@@ -82,7 +83,7 @@ export async function getChapterImages(chapterInfo: any, app: App, book: string,
                 ? await getLocationCoordinates(app, noteData.locations[0])
                 : null;
 
-            images.push({
+            notes.push({
                 ...noteData,
                 verseRange: pericope.verseRange,
                 pericopeTitle: pericope.title,
@@ -91,10 +92,10 @@ export async function getChapterImages(chapterInfo: any, app: App, book: string,
                 coordinates,
                 locations: noteData.locations?.map(location => location.replace(/\[\[|\]\]/g, '')) || [],
                 date: noteData.date, 
-            } as ChapterImage);
+            } as Note);
         }
     }
-    return images;
+    return notes;
 }
 
 export function openNote(app: App, book: string, chapterNumber: string, verseRange: [number, number]) {
@@ -150,11 +151,11 @@ export function openLocationNote(app: App, location: string) {
     }
 }
 
-export async function fetchChapterImages(app: App): Promise<{ [key: string]: ChapterImage[] }> {
-    const images: { [key: string]: ChapterImage[] } = {};
+export async function fetchChapterNotes(app: App): Promise<{ [key: string]: Note[] }> {
+    const images: { [key: string]: Note[] } = {};
     for (const [book, data] of Object.entries(bibleStructure)) {
         for (const [chapterNumber, chapterInfo] of Object.entries(data.chapters)) {
-            images[`${book}-${chapterNumber}`] = await getChapterImages(chapterInfo, app, book, chapterNumber);
+            images[`${book}-${chapterNumber}`] = await getChapterNotes(chapterInfo, app, book, chapterNumber);
         }
     }
     return images;
