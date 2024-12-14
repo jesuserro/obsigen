@@ -180,34 +180,13 @@ const Isaias: BookStructure = {
 			title: "El siervo del Señor",
 			pericopes: [{
                 title: "Primer Canto del Siervo del Señor",
-                verseRange: [1, 9],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-12-05 20.17.31 - Is 42 7 - Opening the eyes of the blind.webp",
-                        altText: "DALL·E 2024-12-05 20.17.31 - Is 42 7 - Opening the eyes of the blind",
-                    },
-                ],
+                verseRange: [1, 9]
             }, {
                 title: "Un Cántico Nuevo",
                 verseRange: [10, 12],
-                images: [
-                    {
-                        type: "local",
-                        path: "",
-                        altText: "",
-                    },
-                ],
             }, {
                 title: "Promesa de salvación y amonestación",
                 verseRange: [13, 25],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-12-05 20.11.04 - Isaiah 42_16 - Rompiendo zona de confort.webp",
-                        altText: "DALL·E 2024-12-05 20.11.04 - Isaiah 42_16 - Rompiendo zona de confort",
-                    },
-                ],
             }]
 		},
 		43: {
@@ -218,14 +197,7 @@ const Isaias: BookStructure = {
 			title: "La locura de la idolatría",
 			pericopes: [{
                 title: "El Dios único - Rechazo de ídolos",
-                verseRange: [1, 19],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-12-02 13.18.42 - Isaiah 44_6-8 - One true God.webp",
-                        altText: "",
-                    },
-                ],
+                verseRange: [6, 23],
             }]
 		},
 		45: {
@@ -244,14 +216,7 @@ const Isaias: BookStructure = {
 			title: "Exhortación a obedecer al Señor",
 			pericopes: [{
                 title: "Exhortación a escuchar al Señor - Santísima Trinidad",
-                verseRange: [1, 12],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-12-02 12.43.13 - Holy Trinity at Isaiah 48 1-16.webp",
-                        altText: "DALL·E 2024-12-02 12.43.13 - Holy Trinity at Isaiah 48 1-16",
-                    },
-                ],
+                verseRange: [1, 16]
             }]
 		},
 		49: {
@@ -275,13 +240,6 @@ const Isaias: BookStructure = {
 			pericopes: [{
                 title: "Cuarto Canto del Siervo Sufriente del Señor",
                 verseRange: [1, 12],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-12-01 12.59.31 - Cuarto Canto del Siervo Sufriente del Señor (Is 53 1-12).webp",
-                        altText: "DALL·E 2024-12-01 12.59.31 - Cuarto Canto del Siervo Sufriente del Señor (Is 53 1-12)",
-                    },
-                ],
             }]
 		},
 		54: {
@@ -317,13 +275,6 @@ const Isaias: BookStructure = {
 			pericopes: [{
                 title: "El heraldo de la buena nueva - El Espíritu del Señor Dios está sobre mí",
                 verseRange: [1, 11],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-12-03 12.10.16 - Luke 4_18-19 Christ reading a scroll in the synagogue of Nazaret by Is 61.webp",
-                        altText: "DALL·E 2024-12-03 12.10.16 - Luke 4_18-19 Christ reading a scroll in the synagogue of Nazaret by Is 61",
-                    },
-                ],
             }]
 		},
 		62: {
@@ -335,13 +286,6 @@ const Isaias: BookStructure = {
 			pericopes: [{
                 title: "Victoria escatológica de la Santísima Trinidad",
                 verseRange: [1, 19],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-12-02 13.00.56 - Holy Trinity represented at Isaiah 63 8-10.webp",
-                        altText: "DALL·E 2024-12-02 13.00.56 - Holy Trinity represented at Isaiah 63 8-10",
-                    },
-                ],
             }]
 		},
 		64: {
