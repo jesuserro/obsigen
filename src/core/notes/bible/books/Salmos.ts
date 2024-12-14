@@ -91,13 +91,6 @@ const Salmos: BookStructure = {
             pericopes: [{
                 title: "Oración confiada de un justo, enfermo y acosado por sus enemigos, que espera y proclama la salvación de Dios",
                 verseRange: [1, 31],
-                images: [
-                    {
-                        type: "url",
-                        path: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg/197px-Christ_at_the_Cross_-_Cristo_en_la_Cruz.jpg",
-                        altText: "Oración confiada de un justo, enfermo y acosado por sus enemigos, que espera y proclama la salvación de Dios",
-                    },
-                ],
             }]
         },
         23: {
@@ -105,13 +98,6 @@ const Salmos: BookStructure = {
             pericopes: [{
                 title: "El Señor es mi pastor",
                 verseRange: [1, 6],
-                images: [
-                    {
-                        type: "local",
-                        path: "202411251850 Salmo 23 - El Señor es mi Pastor nada me falta.webp",
-                        altText: "Salmo 23 El Señor es mi pastor",
-                    },
-                ],
             }]
         },
         24: {
@@ -123,13 +109,6 @@ const Salmos: BookStructure = {
             pericopes: [{
                 title: "Muéstrame tus rectos caminos",
                 verseRange: [1, 22],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-11-30 11.22.20 - Psalm 25 - Show us your righteous paths.webp",
-                        altText: "DALL·E 2024-11-30 11.22.20 - Psalm 25 - Show us your righteous paths",
-                    },
-                ],
             }]
         },
         26: {
@@ -157,13 +136,6 @@ const Salmos: BookStructure = {
             pericopes: [{
                 title: "En tus manos encomiendo mi Espíritu",
                 verseRange: [1, 25],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-12-07 12.02.40 - Psalm 31_1-25 to the Passion of Jesus Christ.webp",
-                        altText: "DALL·E 2024-12-07 12.02.40 - Psalm 31_1-25 to the Passion of Jesus Christ",
-                    },
-                ],
             }]
         },
         32: {
@@ -247,13 +219,6 @@ const Salmos: BookStructure = {
             pericopes: [{
                 title: "Arrepentimiento de David - Súplica de purificación del pecado y renovación del corazón",
                 verseRange: [1, 21],
-                images: [
-                    {
-                        type: "local",
-                        path: "202209190919 Salmo 51 Arrepentimiento de David - Súplica de purificación del pecado y renovación del corazón - Favorito Kote.webp",
-                        altText: "Salmo 51 Arrepentimiento de David - Súplica de purificación del pecado y renovación del corazón",
-                    },
-                ],
             }]
         },
         52: {
@@ -269,13 +234,6 @@ const Salmos: BookStructure = {
             pericopes: [{
                 title: "Súplica de salvación frente al enemigo que persigue a muerte",
                 verseRange: [1, 9],
-                images: [
-                    {
-                        type: "local",
-                        path: "202409211900 Salmos 54 - Súplica de salvación frente al enemigo que persigue a muerte.webp",
-                        altText: "DALL·E 2024-11-23 17.47.51 - A dramatic biblical scene illustrating Psalm 54, showing King David praying in a rugged, mountainous landscape, surrounded by a tense atmosphere.",
-                    },
-                ],
             },]
         },
         55: {
@@ -339,13 +297,6 @@ const Salmos: BookStructure = {
             pericopes: [{
                 title: "Tengo sed",
                 verseRange: [1, 37],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-12-08 10.18.47 - Salmo 69 22 - Tengo sed.webp",
-                        altText: "DALL·E 2024-12-08 10.18.47 - Salmo 69 22 - Tengo sed",
-                    },
-                ],
             }]
         },
         70: {
@@ -357,13 +308,6 @@ const Salmos: BookStructure = {
             pericopes: [{
                 title: "Oración confiada pidiendo a Dios socorro en la vejez",
                 verseRange: [1, 24],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-12-03 19.21.23 - Salmo 71 - Socorro en la vejez.webp",
-                        altText: "DALL·E 2024-12-03 19.21.23 - Salmo 71 - Socorro en la vejez",
-                    },
-                ],
             }]
         },
         72: {
@@ -391,13 +335,6 @@ const Salmos: BookStructure = {
             pericopes: [{
                 title: "Dios se hace el encontradizo en medio de las adversidades",
                 verseRange: [1, 21],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-11-27 17.59.43 - Mc 6 45-52 - A serene and dramatic scene of Jesus walking on the water of a stormy sea at night.webp",
-                        altText: "DALL·E 2024-11-27 17.59.43 - Mc 6 45-52 - A serene and dramatic scene of Jesus walking on the water of a stormy sea at night.",
-                    },
-                ],
             },]
         },
         78: {
@@ -453,13 +390,6 @@ const Salmos: BookStructure = {
             pericopes: [{
                 title: "Súplica al Señor, santo y eterno, ante la brevedad de la vida humana y sus penalidades",
                 verseRange: [1, 17],
-                images: [
-                    {
-                        type: "local",
-                        path: "202210151235 Salmos 90 - Ante la brevedad de la vida y sus penalidades.webp",
-                        altText: "DALL·E 2024-11-23 18.07.26 - A spiritual and serene scene illustrating Psalm 90. The image features an ancient mountain range under a vast, eternal sky filled with soft golden light.",
-                    },
-                ],
             },]
         },
         91: {
@@ -475,13 +405,6 @@ const Salmos: BookStructure = {
             pericopes: [{
                 title: "El reinado eterno de Dios se refleja en la creación y en la ley",
                 verseRange: [1, 5],
-                images: [
-                    {
-                        type: "local",
-                        path: "202411231900 Salmo 93 - Reinado eterno de Dios - Cristo Rey del Universo.webp",
-                        altText: "El reinado eterno de Dios se refleja en la creación y en la ley",
-                    },
-                ],
             }]
         },
         94: {
@@ -521,27 +444,13 @@ const Salmos: BookStructure = {
             pericopes: [{
                 title: "Cielo y tierra pasarán mas tu palabra no pasará",
                 verseRange: [1, 29],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-12-08 11.22.43 - Psalm 102_8 - Cielo y tierra pasarán mas tu palabra no pasará.webp",
-                        altText: "DALL·E 2024-12-08 11.22.43 - Psalm 102_8 - Cielo y tierra pasarán mas tu palabra no pasará",
-                    },
-                ],
             }]
         },
         103: {
             title: "Dios sana enfermedades y perdona los pecados",
             pericopes: [{
                 title: "Dios sana enfermedades y perdona los pecados",
-                verseRange: [1, 22],
-                images: [
-                    {
-                        type: "local",
-                        path: "202411271143 Mc 2 - Curación del paralítico en Cafarnaún.webp",
-                        altText: "Dios sana enfermedades y perdona los pecados",
-                    },
-                ],
+                verseRange: [1, 22]
             }]
         },
         104: {
@@ -560,14 +469,7 @@ const Salmos: BookStructure = {
             title: "La bondad de Dios hacia los redimidos",
             pericopes: [{
                 title: "Gracias a Dios que puede cambiar la situación del pueblo",
-                verseRange: [1, 43],
-                images: [
-                    {
-                        type: "local",
-                        path: "1633 Rembrandt_Christ_in_the_Storm_on_the_Lake_of_Galilee.webp",
-                        altText: "Gracias a Dios que puede cambiar la situación del pueblo",
-                    },
-                ],
+                verseRange: [1, 43]
             }]
         },
         108: {
@@ -582,14 +484,7 @@ const Salmos: BookStructure = {
             title: "El reinado del Mesías",
             pericopes: [{
                 title: "El Señor otorga al rey dignidad divina y sacerdotal según el orden de Melquisedec",
-                verseRange: [1, 7],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-11-29 21.38.46 - Psal 110 - Divine king emphasizing his priestly role.webp",
-                        altText: "DALL·E 2024-11-29 21.38.46 - Psal 110 - Divine king emphasizing his priestly role",
-                    },
-                ],
+                verseRange: [1, 7]
             }]
         },
         111: {
@@ -673,7 +568,10 @@ const Salmos: BookStructure = {
         },
         130: {
             title: "Oración clamando perdón",
-            pericopes: []
+            pericopes: [{
+                title: "Grito de confianza en el Señor que perdona las culpas",
+                verseRange: [1, 8]
+            }]
         },
         131: {
             title: "Confianza humilde en Dios",
@@ -711,14 +609,7 @@ const Salmos: BookStructure = {
             title: "La omnisciencia y omnipresencia de Dios",
             pericopes: [{
                 title: "Dios me creó de la nada, guía mi corazón y está en todas partes",
-                verseRange: [1, 24],
-                images: [
-                    {
-                        type: "local",
-                        path: "DALL·E 2024-12-07 12.44.41 - Psalm 139 - The omnipresence and guidance of God.webp",
-                        altText: "DALL·E 2024-12-07 12.44.41 - Psalm 139 - The omnipresence and guidance of God",
-                    },
-                ],
+                verseRange: [1, 24]
             }]
         },
         140: {
