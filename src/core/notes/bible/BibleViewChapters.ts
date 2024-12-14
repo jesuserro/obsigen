@@ -3,7 +3,7 @@ import { BibleImage, bibleStructure } from "./BibleViewStructure";
 
 const IMAGE_FOLDER = "050 Anexos";
 
-interface ChapterImage extends BibleImage {
+export interface ChapterImage extends BibleImage {
     verseRange: [number, number];
     pericopeTitle: string;
     title: string;
@@ -13,7 +13,7 @@ interface ChapterImage extends BibleImage {
     versePassage?: string;
     locations?: string[];
     coordinates?: [number, number];
-    date?: string; // Añadir esta línea
+    date?: string; 
 }
 
 async function getNoteData(app: App, book: string, chapterNumber: string, verseRange: [number, number]): Promise<Partial<ChapterImage>> {

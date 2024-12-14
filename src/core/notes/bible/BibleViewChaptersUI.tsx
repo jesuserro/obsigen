@@ -1,27 +1,14 @@
 import { App } from 'obsidian';
 import React, { useEffect, useRef, useState } from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import { fetchChapterImages, openNote } from './BibleViewChapters';
-import { BibleImage, bibleStructure } from './BibleViewStructure';
+import { ChapterImage, fetchChapterImages, openNote } from './BibleViewChapters';
+import { bibleStructure } from './BibleViewStructure';
 
 interface Props {
     app: App;
     bookRefs: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
     selectedBook: string;
     setSelectedBook: (book: string) => void;
-}
-
-interface ChapterImage extends BibleImage {
-    verseRange: [number, number];
-    pericopeTitle: string;
-    title: string;
-    alt: string;
-    rating?: number;
-    verseTitle?: string;
-    versePassage?: string;
-    locations?: string[];
-    coordinates?: [number, number];
-    date?: string; // Añadir esta línea
 }
 
 const getRatingClass = (rating: number) => {
