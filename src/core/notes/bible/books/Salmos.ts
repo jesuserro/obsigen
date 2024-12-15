@@ -151,7 +151,10 @@ const Salmos: BookStructure = {
         },
         34: {
             title: "Alabanza por la liberación de Dios",
-            pericopes: []
+            pericopes: [{
+                title: "El Señor está cerca de los quebrantados de corazón - rescata espíritus destrozados.",
+                verseRange: [1, 23],
+            }]
         },
         35: {
             title: "Oración pidiendo ayuda contra los enemigos",
