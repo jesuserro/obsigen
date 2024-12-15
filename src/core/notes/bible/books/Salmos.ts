@@ -117,7 +117,10 @@ const Salmos: BookStructure = {
         },
         27: {
             title: "El Señor es mi luz y mi salvación",
-            pericopes: []
+            pericopes: [{
+                title: "El Señor es mi luz y mi salvación",
+                verseRange: [1, 14],
+            }]
         },
         28: {
             title: "Oración pidiendo ayuda y alabanza por la respuesta de Dios",
