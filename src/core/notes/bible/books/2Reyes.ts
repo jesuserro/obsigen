@@ -10,14 +10,7 @@ const SegundaReyes: BookStructure = {
 			title: "Elías es llevado al cielo y Eliseo comienza su ministerio",
 			pericopes: [{
                 title: "Elías arrebatado al cielo",
-                verseRange: [1, 18],
-                images: [
-                    {
-                        type: "local",
-                        path: "2 R 2, 1-12 - Elías arrebatado al cielo.webp",
-                        altText: "2 R 2, 1-12 - Elías arrebatado al cielo",
-                    },
-                ],
+                verseRange: [1, 12],
             }]
 		},
 		3: {

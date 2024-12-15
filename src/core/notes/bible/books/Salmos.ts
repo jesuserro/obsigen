@@ -394,7 +394,10 @@ const Salmos: BookStructure = {
         },
         91: {
             title: "La protección del Altísimo",
-            pericopes: []
+            pericopes: [{
+                title: "Dios y Ángeles a tu lado ante covid",
+                verseRange: [1, 16],
+            }]
         },
         92: {
             title: "Alabanza por la bondad de Dios",
