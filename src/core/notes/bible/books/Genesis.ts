@@ -12,10 +12,6 @@ const Genesis: BookStructure = {
 		},
 		3: {
 			title: "La caída del hombre",
-			pericopes: [{
-                title: "Pacto 2: Adámico - Protoevangelio - Consecuencias del pecado",
-                verseRange: [14, 20]
-            }]
 		},
 		4: {
 			title: "Caín y Abel",
@@ -23,10 +19,6 @@ const Genesis: BookStructure = {
 		},
 		5: {
 			title: "La genealogía desde Adán hasta Noé",
-			pericopes: [{
-                title: "Pacto 2: Adámico - Protoevangelio - Consecuencias del pecado",
-                verseRange: [14, 20]
-            }]
 		},
 		6: {
 			title: "La corrupción de la humanidad y el llamado de Noé",
@@ -42,10 +34,6 @@ const Genesis: BookStructure = {
 		},
 		9: {
 			title: "El pacto de Dios con Noé",
-			pericopes: [{
-                title: "Alianza de Dios con Noé - Pacto nº2 Noáico",
-                verseRange: [1, 17]
-            }]
 		},
 		10: {
 			title: "Las naciones descendientes de Noé",
@@ -65,17 +53,9 @@ const Genesis: BookStructure = {
 		},
 		14: {
 			title: "Abram rescata a Lot",
-			pericopes: [{
-                title: "Bendición de Melquisedec a Abraham",
-                verseRange: [17, 24]
-            },]
 		},
 		15: {
 			title: "El pacto de Dios con Abram",
-			pericopes: [{
-                title: "Alianza de Dios con Abrahám - Pacto nº3 Abrámico",
-                verseRange: [1, 21]
-            }]
 		},
 		16: {
 			title: "El nacimiento de Ismael",
@@ -87,13 +67,6 @@ const Genesis: BookStructure = {
 		},
 		18: {
 			title: "La visita de los tres hombres a Abraham",
-			pericopes: [{
-                title: "Manifestación de Dios en Manbré",
-                verseRange: [1, 8]
-            },{
-                title: "Promesa del nacimiento de Isaac",
-                verseRange: [9, 15]
-            },]
 		},
 		19: {
 			title: "La destrucción de Sodoma y Gomorra",
@@ -133,10 +106,6 @@ const Genesis: BookStructure = {
 		},
 		28: {
 			title: "El sueño de Jacob en Betel",
-			pericopes: [{
-                title: "Aparición de Dios a Jacob en el Sueño de la Escalera de Betel",
-                verseRange: [10, 22],
-            }]
 		},
 		29: {
 			title: "Jacob se casa con Lea y Raquel",
@@ -152,10 +121,6 @@ const Genesis: BookStructure = {
 		},
 		32: {
 			title: "Jacob lucha con Dios",
-			pericopes: [{
-                title: "Jacob lucha con el ángel del Señor",
-                verseRange: [22, 33],
-            }]
 		},
 		33: {
 			title: "El encuentro de Jacob con Esaú",
