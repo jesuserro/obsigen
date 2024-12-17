@@ -146,6 +146,10 @@ export async function getChapterNotes(
 			}
 		}
 	}
+
+	// Ordenar las notas por el primer versículo de verseRange
+	notes.sort((a, b) => a.verseRange[0] - b.verseRange[0]);
+
 	return notes;
 }
 
