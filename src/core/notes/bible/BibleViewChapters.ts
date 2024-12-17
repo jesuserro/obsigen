@@ -39,6 +39,14 @@ async function getNoteData(app: App, filePath: string): Promise<Partial<Note>> {
 		}
 	}
 
+    // If verseRange is not found or is "0-0", try to extract it from the file name for example "Sal 1,1-18.md" (for Book "Salmos") or "St 1, 2-12 Valor del sufrimiento.md" (for the rest of the books)
+    if (verseRange[0] === 0 && verseRange[1] === 0) {
+        const verseRangeMatch = noteFile.basename.match(/(\d+),\s?(\d+)-(\d+)/);
+        if (verseRangeMatch) {
+            verseRange = [parseInt(verseRangeMatch[2], 10), parseInt(verseRangeMatch[3], 10)];
+        }
+    }
+
 	return {
 		rating: yaml.rating || null,
 		verse_title: yaml.verse_title || "",
