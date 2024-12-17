@@ -59,7 +59,7 @@ interface Pericope {
 
 interface ChapterInfo {
 	title: string;
-	pericopes?: Pericope[];
+	pericopes?: Pericope[] | [];
 }
 
 export interface BookStructure {

@@ -70,6 +70,15 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
                                         <h3>
                                             {chapterNumber} {chapterInfo.title}
                                         </h3>
+                                        {chapterInfo.pericopes?.map((pericope, index) => (
+                                            <div key={index} className="pericope-container">
+                                                <h4>{pericope.title}</h4>
+                                                <p>Verses: {pericope.verseRange[0]} - {pericope.verseRange[1]}</p>
+                                                {pericope.images && pericope.images.map((image, imgIndex) => (
+                                                    <img key={imgIndex} src={image.path} alt={image.altText} />
+                                                ))}
+                                            </div>
+                                        ))}
                                         {notes.length > 0 && (
                                             <div className="image-gallery">
                                                 {notes.map((note: Note, index) => (

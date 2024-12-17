@@ -38,7 +38,7 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                 <div key={chapterNumber} className="chapter-container">
                                     <h3>{chapterNumber} {chapterInfo.title}</h3>
                                     <div className="pericopes-container">
-                                        {chapterInfo.pericopes.map((pericope, index) => {
+                                        {chapterInfo.pericopes?.map((pericope, index) => {
                                             const notesForPericope = getChapterNotes(app, metadataCache, files, "San Juan", parseInt(chapterNumber))
                                                 .filter(note => note && note.verseStart !== undefined && note.verseStart !== null && note.verseStart >= pericope.verseRange[0] && note.verseStart <= pericope.verseRange[1]);
 
