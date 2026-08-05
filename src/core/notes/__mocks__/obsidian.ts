@@ -1,9 +1,13 @@
 // src/core/notes/__mocks__/obsidian.ts
 
-export const App = {
-  // Provide dummy implementations or values for the App module methods/properties used in your code
-};
+export const App = {};
 
-export const Notice = {
-  // Provide dummy implementations or values for the Notice module methods/properties used in your code
-};
+export class Notice {}
+
+export class TFile {
+  path: string;
+
+  constructor(path = '') {
+    this.path = path;
+  }
+}

@@ -87,7 +87,7 @@ const BibleChaptersView: React.FC<Props> = ({ app, bookRefs, selectedBook, setSe
                                                         className="image-container"
                                                         onClick={(e) => {
                                                             e.preventDefault();
-                                                            openNote(app, book, chapterNumber, note.verseRange);
+                                                            void openNote(app, book, chapterNumber, note.verseRange);
                                                         }}
                                                     >
                                                         <img

@@ -1,3 +1,4 @@
+import { TFile } from 'obsidian';
 import { Aniversario } from './Aniversario';
 
 describe('Aniversario', () => {
@@ -7,12 +8,16 @@ describe('Aniversario', () => {
 
   beforeEach(() => {
     // Prepare test data
-    mockCreate = jest.fn().mockResolvedValue({ path: '/mnt/c/Users/Jesús/Documents/vault/testFile.md' });
-    mockOpenLinkText = jest.fn();
+    const createdFile = Object.create(TFile.prototype) as TFile;
+    Object.assign(createdFile, { path: '/mnt/c/Users/Jesús/Documents/vault/testFile.md' });
+    mockCreate = jest.fn().mockResolvedValue(createdFile);
+    mockOpenLinkText = jest.fn().mockResolvedValue(undefined);
 
     const app = {
       vault: {
         create: mockCreate,
+        createFolder: jest.fn().mockResolvedValue(undefined),
+        getAbstractFileByPath: jest.fn().mockReturnValue(null),
       },
       workspace: {
         openLinkText: mockOpenLinkText,
@@ -39,7 +44,12 @@ describe('Aniversario', () => {
     expect(mockCreate).toHaveBeenCalledWith(expect.stringContaining(expectedTitle), expect.any(String));
 
     expect(mockOpenLinkText).toHaveBeenCalledTimes(1);
-    expect(mockOpenLinkText).toHaveBeenCalledWith('/mnt/c/Users/Jesús/Documents/vault/testFile.md', '', false);
+    expect(mockOpenLinkText).toHaveBeenCalledWith(
+      '/mnt/c/Users/Jesús/Documents/vault/testFile.md',
+      '',
+      false,
+      { active: true },
+    );
   });
 
 });

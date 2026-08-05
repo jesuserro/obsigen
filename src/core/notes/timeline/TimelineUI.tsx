@@ -44,7 +44,7 @@ const TimelineView: React.FC<TimelineViewProps> = ({ app, bookRefs, selectedBook
                             <div className="timeline-element-content">
                                 <div className="timeline-text-container">
                                     <h3 className="vertical-timeline-element-title">
-                                        <a href="#" onClick={(e) => { e.preventDefault(); openNoteByPath(app, image.notePath); }}>
+                                        <a href="#" onClick={(e) => { e.preventDefault(); void openNoteByPath(app, image.notePath); }}>
                                             {image.title}
                                         </a>
                                     </h3>
