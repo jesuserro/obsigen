@@ -1,4 +1,5 @@
-import { App, FileView, TFile } from "obsidian";
+import { App, TFile } from "obsidian";
+import { openVaultNote } from "../../../adapters/Obsidian/openVaultNote";
 
 const IMAGE_FOLDER = "050 Anexos";
 
@@ -151,35 +152,15 @@ export async function fetchChapterImages(
 	return images;
 }
 
-export function openNote(app: App, filePath: string) {
+export async function openNote(app: App, filePath: string): Promise<void> {
 	const noteFile = app.vault.getAbstractFileByPath(filePath);
-	if (!(noteFile instanceof TFile)) {
-		console.log(`openNote: No se encontró ninguna nota en ${filePath}`);
-		return;
-	}
-
-	const openLeaves = app.workspace.getLeavesOfType("markdown");
-	const openFilePaths = openLeaves
-		.map((leaf) =>
-			leaf.view instanceof FileView ? leaf.view.file?.path : null
-		)
-		.filter((path) => path !== null);
-
-	if (openFilePaths.includes(noteFile.path)) {
-		const leaf = openLeaves.find(
-			(leaf) =>
-				leaf.view instanceof FileView &&
-				leaf.view.file?.path === noteFile.path
-		);
-		if (leaf) {
-			app.workspace.setActiveLeaf(leaf);
-		}
-	} else {
-		app.workspace.openLinkText(noteFile.path, "", true);
-	}
+	await openVaultNote(app, noteFile, "", filePath);
 }
 
-export function openLocationNote(app: App, location: string) {
+export async function openLocationNote(
+	app: App,
+	location: string
+): Promise<void> {
 	const sanitizedLocation = location.replace(/\[\[|\]\]/g, "");
 	const [mainLocation, alias] = sanitizedLocation.split("|");
 
@@ -192,64 +173,18 @@ export function openLocationNote(app: App, location: string) {
 		);
 
 	if (files.length === 0) {
-		console.log(
-			`openLocationNote: No se encontró ninguna nota con el nombre ${sanitizedLocation}`
-		);
+		await openVaultNote(app, null, "", sanitizedLocation);
 		return;
 	}
 
 	const noteFile = files[0];
-	if (!(noteFile instanceof TFile)) {
-		return;
-	}
-
-	const openLeaves = app.workspace.getLeavesOfType("markdown");
-	const openFilePaths = openLeaves
-		.map((leaf) =>
-			leaf.view instanceof FileView ? leaf.view.file?.path : null
-		)
-		.filter((path) => path !== null);
-
-	if (openFilePaths.includes(noteFile.path)) {
-		const leaf = openLeaves.find(
-			(leaf) =>
-				leaf.view instanceof FileView &&
-				leaf.view.file?.path === noteFile.path
-		);
-		if (leaf) {
-			app.workspace.setActiveLeaf(leaf);
-		}
-	} else {
-		app.workspace.openLinkText(noteFile.path, "", true);
-	}
+	await openVaultNote(app, noteFile, "", sanitizedLocation);
 }
 
-export function openNoteByPath(app: App, filePath: string) {
+export async function openNoteByPath(
+	app: App,
+	filePath: string
+): Promise<void> {
 	const noteFile = app.vault.getAbstractFileByPath(filePath);
-	if (!(noteFile instanceof TFile)) {
-		console.log(
-			`openNoteByPath: No se encontró ninguna nota en ${filePath}`
-		);
-		return;
-	}
-
-	const openLeaves = app.workspace.getLeavesOfType("markdown");
-	const openFilePaths = openLeaves
-		.map((leaf) =>
-			leaf.view instanceof FileView ? leaf.view.file?.path : null
-		)
-		.filter((path) => path !== null);
-
-	if (openFilePaths.includes(noteFile.path)) {
-		const leaf = openLeaves.find(
-			(leaf) =>
-				leaf.view instanceof FileView &&
-				leaf.view.file?.path === noteFile.path
-		);
-		if (leaf) {
-			app.workspace.setActiveLeaf(leaf);
-		}
-	} else {
-		app.workspace.openLinkText(noteFile.path, "", true);
-	}
+	await openVaultNote(app, noteFile, "", filePath);
 }

@@ -70,7 +70,7 @@ export function getCalendarDayProps({
     dayNotes,
     app
 }: CalendarDayProps) {
-    const notePath = hasNote ? `obsidian://open?file=${encodeURIComponent(hasNote)}` : '';
+    const notePath = hasNote || '';
     const anniversary = anniversaryNote ? getCalendarEvent(year, month, dayCounter, generateEventIndex(anniversaryNote), anniversaryNote, app.metadataCache) : null;
 
     let notesOfTheDay = dayNotes ? dayNotes.map((note) => getCalendarEvent(year, month, dayCounter, generateEventIndex(note), note, app.metadataCache)) : null;
@@ -90,4 +90,3 @@ export function getCalendarDayProps({
         notesOfTheDay,
     };
 }
-

@@ -1,4 +1,5 @@
 import { App, Notice } from 'obsidian';
+import { openVaultNote } from '../../adapters/Obsidian/openVaultNote';
 
 export class NoteGenerator {
   app: App;
@@ -39,7 +40,7 @@ export class NoteGenerator {
     }
 
     new Notice(msg);
-    this.app.workspace.openLinkText(fileRef.path, '', false);
+    await openVaultNote(this.app, fileRef, '', pathToFile);
 
     // Reload the Calendar View leaf
     // const leaf = this.app.workspace.getRightLeaf(true);

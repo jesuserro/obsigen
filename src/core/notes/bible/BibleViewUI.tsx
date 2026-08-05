@@ -47,18 +47,13 @@ const BibleView: React.FC<Props> = ({ app, metadataCache, files }) => {
                                                     <h4>{pericope.title} ({pericope.verseRange[0]}-{pericope.verseRange[1]})</h4>
                                                     <div className="pericope-container" style={getBackgroundStyle(pericope.images)}>
                                                         <CalendarEventsBar
+                                                            app={app}
                                                             events={notesForPericope.map(note => ({
                                                                 title: note.title,
                                                                 path: note.path,
                                                                 icon: note.icon,
                                                                 externalPassagesCount: getExternalBiblePassages(note).length, // Añadimos el número de pasajes externos
                                                             }))}
-                                                            onEventClick={(path) => {
-                                                                const file = app.vault.getAbstractFileByPath(path);
-                                                                if (file instanceof TFile) {
-                                                                    app.workspace.getLeaf().openFile(file);
-                                                                }
-                                                            }}
                                                         />
                                                         <ExternalBiblePassagesBar
                                                             externalPassages={notesForPericope.flatMap(note => getExternalBiblePassages(note))}

@@ -1,4 +1,6 @@
 // src/core/notes/calendar/DayUI.tsx
+import React from 'react';
+import { openVaultNote } from '../../../adapters/Obsidian/openVaultNote';
 import { CalendarIcon } from './CalendarIcon';
 import { CalendarDayProps, getCalendarDayProps, getFileName, handleEventForm } from './Day';
 
@@ -13,8 +15,17 @@ const DayUI = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes, ap
         app,
     });
 
+    const handleOpenNote = (
+        event: React.MouseEvent<HTMLAnchorElement>,
+        filePath: string,
+    ): void => {
+        event.preventDefault();
+        const file = app.vault.getAbstractFileByPath(filePath);
+        void openVaultNote(app, file, '', filePath);
+    };
+
     const btn = (
-        <div onClick={() => handleEventForm(app, year, month, dayCounter)}>
+        <div onClick={() => void handleEventForm(app, year, month, dayCounter)}>
             {CalendarIcon.getIcon("add", 18)}
         </div>
     );
@@ -23,7 +34,7 @@ const DayUI = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes, ap
         <div className="day-container">
             {hasNote && !dayNotes ? (
                 <>
-                    <a href={notePath} title={getFileName(hasNote)}>
+                    <a href="#" onClick={(event) => handleOpenNote(event, notePath)} title={getFileName(hasNote)}>
                         <div className="day-number">{dayCounter}</div>
                     </a>
                     {btn}
@@ -31,7 +42,7 @@ const DayUI = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes, ap
                         <div className="anniversary-note">
                             {anniversary && (
                                 <div key={anniversary.mykey} className={anniversary.dayContainerClasses}>
-                                    <a href={`obsidian://open?file=${encodeURIComponent(anniversary.path)}`} title={anniversary.fileName}>
+                                    <a href="#" onClick={(event) => handleOpenNote(event, anniversary.path)} title={anniversary.fileName}>
                                         {anniversary.icon}
                                         <span className="icon-description">{anniversary.fileName}</span>
                                     </a>
@@ -47,7 +58,7 @@ const DayUI = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes, ap
                             <div className="anniversary-note">
                                 {anniversary && (
                                     <div key={anniversary.mykey} className={anniversary.dayContainerClasses}>
-                                        <a href={`obsidian://open?file=${encodeURIComponent(anniversary.path)}`} title={anniversary.fileName}>
+                                        <a href="#" onClick={(event) => handleOpenNote(event, anniversary.path)} title={anniversary.fileName}>
                                             {anniversary.icon}
                                             <span className="icon-description">{anniversary.fileName}</span>
                                         </a>
@@ -55,7 +66,7 @@ const DayUI = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes, ap
                                 )}
                             </div>
                         )}
-                        <a href={notePath} title={getFileName(hasNote)}>
+                        <a href="#" onClick={(event) => handleOpenNote(event, notePath)} title={getFileName(hasNote)}>
                             <div className="day-number">{dayCounter}</div>
                         </a>
                         {btn}
@@ -63,7 +74,7 @@ const DayUI = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes, ap
                     <div className="calendar-icons">
                         {notesOfTheDay?.map(note => (
                             <div key={note.mykey} className={note.dayContainerClasses}>
-                                <a href={`obsidian://open?file=${encodeURIComponent(note.path)}`} title={note.fileName}>
+                                <a href="#" onClick={(event) => handleOpenNote(event, note.path)} title={note.fileName}>
                                     {note.icon}
                                     <span className="icon-description">{note.fileName}</span>
                                 </a>
@@ -78,7 +89,7 @@ const DayUI = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes, ap
                             <div className="anniversary-note">
                                 {anniversary && (
                                     <div key={anniversary.mykey} className={anniversary.dayContainerClasses}>
-                                        <a href={`obsidian://open?file=${encodeURIComponent(anniversary.path)}`} title={anniversary.fileName}>
+                                        <a href="#" onClick={(event) => handleOpenNote(event, anniversary.path)} title={anniversary.fileName}>
                                             {anniversary.icon}
                                             <span className="icon-description">{anniversary.fileName}</span>
                                         </a>
@@ -92,7 +103,7 @@ const DayUI = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes, ap
                     <div className="calendar-icons">
                         {notesOfTheDay?.map(note => (
                             <div key={note.mykey} className={note.dayContainerClasses}>
-                                <a href={`obsidian://open?file=${encodeURIComponent(note.path)}`} title={note.fileName}>
+                                <a href="#" onClick={(event) => handleOpenNote(event, note.path)} title={note.fileName}>
                                     {note.icon}
                                     <span className="icon-description">{note.fileName}</span>
                                 </a>
@@ -107,7 +118,7 @@ const DayUI = ({ year, month, dayCounter, hasNote, anniversaryNote, dayNotes, ap
                         <div className="anniversary-note">
                             {anniversary && (
                                 <div key={anniversary.mykey} className={anniversary.dayContainerClasses}>
-                                    <a href={`obsidian://open?file=${encodeURIComponent(anniversary.path)}`} title={anniversary.fileName}>
+                                    <a href="#" onClick={(event) => handleOpenNote(event, anniversary.path)} title={anniversary.fileName}>
                                         {anniversary.icon}
                                         <span className="icon-description">{anniversary.fileName}</span>
                                     </a>

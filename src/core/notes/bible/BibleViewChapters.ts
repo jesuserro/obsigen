@@ -1,4 +1,5 @@
-import { App, FileView, TFile } from "obsidian";
+import { App, TFile } from "obsidian";
+import { openVaultNote } from "../../../adapters/Obsidian/openVaultNote";
 import { BibleImage, bibleStructure } from "./BibleViewStructure";
 
 const IMAGE_FOLDER = "050 Anexos";
@@ -161,12 +162,12 @@ export async function getChapterNotes(
 	return notes;
 }
 
-export function openNote(
+export async function openNote(
 	app: App,
 	book: string,
 	chapterNumber: string,
 	verseRange: [number, number]
-) {
+): Promise<void> {
 	const folderPath =
 		book === "Salmos"
 			? `333 Biblia/${book}/`
@@ -184,34 +185,22 @@ export function openNote(
 	);
 
 	if (!noteFile) {
-		console.log(
-			`openNote: No se encontró ninguna nota con el rango de versículos ${verseRangeString} en ${folderPath}`
+		await openVaultNote(
+			app,
+			null,
+			"",
+			`${folderPath} (verses ${verseRangeString})`
 		);
 		return;
 	}
 
-	const openLeaves = app.workspace.getLeavesOfType("markdown");
-	const openFilePaths = openLeaves
-		.map((leaf) =>
-			leaf.view instanceof FileView ? leaf.view.file?.path : null
-		)
-		.filter((path) => path !== null);
-
-	if (openFilePaths.includes(noteFile.path)) {
-		const leaf = openLeaves.find(
-			(leaf) =>
-				leaf.view instanceof FileView &&
-				leaf.view.file?.path === noteFile.path
-		);
-		if (leaf) {
-			app.workspace.setActiveLeaf(leaf);
-		}
-	} else {
-		app.workspace.openLinkText(noteFile.path, "", true);
-	}
+	await openVaultNote(app, noteFile);
 }
 
-export function openLocationNote(app: App, location: string) {
+export async function openLocationNote(
+	app: App,
+	location: string
+): Promise<void> {
 	const sanitizedLocation = location.replace(/\[\[|\]\]/g, "");
 	const [mainLocation, alias] = sanitizedLocation.split("|");
 
@@ -224,32 +213,12 @@ export function openLocationNote(app: App, location: string) {
 		);
 
 	if (files.length === 0) {
-		console.log(
-			`openLocationNote: No se encontró ninguna nota con el nombre ${sanitizedLocation}`
-		);
+		await openVaultNote(app, null, "", sanitizedLocation);
 		return;
 	}
 
 	const noteFile = files[0];
-	const openLeaves = app.workspace.getLeavesOfType("markdown");
-	const openFilePaths = openLeaves
-		.map((leaf) =>
-			leaf.view instanceof FileView ? leaf.view.file?.path : null
-		)
-		.filter((path) => path !== null);
-
-	if (openFilePaths.includes(noteFile.path)) {
-		const leaf = openLeaves.find(
-			(leaf) =>
-				leaf.view instanceof FileView &&
-				leaf.view.file?.path === noteFile.path
-		);
-		if (leaf) {
-			app.workspace.setActiveLeaf(leaf);
-		}
-	} else {
-		app.workspace.openLinkText(noteFile.path, "", true);
-	}
+	await openVaultNote(app, noteFile);
 }
 
 export async function fetchChapterNotes(

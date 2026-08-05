@@ -1,5 +1,6 @@
 import { App, MetadataCache, TFile } from 'obsidian';
 import { useEffect, useState } from 'react';
+import { openVaultNote } from '../../../adapters/Obsidian/openVaultNote';
 import { CalendarIcon } from './../calendar/CalendarIcon';
 import { bibleStructure } from './BibleViewStructure';
 
@@ -73,14 +74,10 @@ export function getExternalBiblePassages(note: Note): BiblePassage[] {
 }
 
 // Abrir la nota correspondiente al hacer clic.
-export function handleNoteClick(app: App, notePath: string) {
+export async function handleNoteClick(app: App, notePath: string): Promise<void> {
     const file = app.vault.getAbstractFileByPath(notePath);
 
-    if (file instanceof TFile) {
-        app.workspace.getLeaf().openFile(file);
-    } else {
-        console.error(`File not found: ${notePath}`);
-    }
+    await openVaultNote(app, file, '', notePath);
 }
 
 // Lógica principal del calendario bíblico.

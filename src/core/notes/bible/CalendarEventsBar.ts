@@ -1,4 +1,5 @@
 import { App, TFile } from 'obsidian';
+import { openVaultNote } from '../../../adapters/Obsidian/openVaultNote';
 import { CalendarIcon } from './../calendar/CalendarIcon';
 import { getExternalBiblePassages } from './ExternalBiblePassagesBar'; // Importar función para obtener los pasajes externos
 
@@ -27,12 +28,8 @@ export function getCalendarEvents(files: TFile[]): EventNote[] {
     });
 }
 
-export function handleNoteClick(app: App, notePath: string) {
+export async function handleNoteClick(app: App, notePath: string): Promise<void> {
     const file = app.vault.getAbstractFileByPath(notePath);
 
-    if (file instanceof TFile) {
-        app.workspace.getLeaf().openFile(file);
-    } else {
-        console.error(`File not found: ${notePath}`);
-    }
+    await openVaultNote(app, file, '', notePath);
 }
