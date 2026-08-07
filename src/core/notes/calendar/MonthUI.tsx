@@ -1,14 +1,19 @@
-import { useApp } from './../../hooks/useApp';
+import { useEffect, useRef } from 'react';
 import DayUI from './DayUI';
-import { CalendarMonthProps, useMonthLogic } from './Month';
+import { CalendarMonthViewModel } from './Month';
 
-function MonthUI({ year, month }: CalendarMonthProps): JSX.Element {
-    const {
-        monthRef,
-        cssCurrentMonth,
-        monthNameAndYear,
-        daysGrid,
-    } = useMonthLogic(useApp(), year, month);
+function MonthUI({
+    cssCurrentMonth,
+    daysGrid,
+    monthNameAndYear,
+}: CalendarMonthViewModel): JSX.Element {
+    const monthRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        if (cssCurrentMonth === 'obs-current-month' && monthRef.current) {
+            monthRef.current.scrollIntoView();
+        }
+    }, [cssCurrentMonth]);
 
     return (
         <div ref={monthRef} className={`obs-month ${cssCurrentMonth}`}>

@@ -1,5 +1,5 @@
 import { App, MetadataCache, TFile } from 'obsidian';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export interface CalendarMonthProps {
     year: number;
@@ -20,6 +20,30 @@ export interface MonthGridProps {
     }[][];
 }
 
+export interface CalendarYearIndex {
+    dailyNoteByDate: Map<string, string>;
+    anniversaryByMonthDay: Map<string, TFile>;
+    eventsByDate: Map<string, TFile[]>;
+}
+
+export interface CalendarMonthViewModel extends CalendarMonthProps {
+    cssCurrentMonth: string;
+    monthNameAndYear: string;
+    daysGrid: MonthGridProps['daysGrid'];
+}
+
+function pad2(value: number): string {
+    return String(value).padStart(2, '0');
+}
+
+function calendarDateKey(year: number, month: number, day: number): string {
+    return `${year}-${pad2(month)}-${pad2(day)}`;
+}
+
+function monthDayKey(month: number, day: number): string {
+    return `${pad2(month)}-${pad2(day)}`;
+}
+
 export function getFirstDayOfMonth(year: number, month: number): Date {
     return new Date(year, month, 1);
 }
@@ -36,12 +60,13 @@ export function calculateNumRows(numDaysInMonth: number, dayOffset: number): num
     return Math.ceil((numDaysInMonth + dayOffset) / 7);
 }
 
-// Nueva función para obtener la nota de aniversario
+// Reference helper retained to protect the historical lookup semantics.
 export function getAnniversaryNote(dayIndex: number, files: TFile[], month: number): TFile | undefined {
     const anniversaryPath = `/Aniversaries/${String(month).padStart(2, '0')}/${String(month).padStart(2, '0')}${String(dayIndex).padStart(2, '0')}.md`;
     return files.find(file => file.path.includes(anniversaryPath));
 }
 
+// Reference helper retained to protect the historical lookup semantics.
 export function getDailyNote(dayIndex: number, files: TFile[], year: number, month: number): string | false {
     const dayPadded = String(dayIndex).padStart(2, '0');
     const monthPadded = String(month).padStart(2, '0');
@@ -57,6 +82,7 @@ export function getDailyNote(dayIndex: number, files: TFile[], year: number, mon
     return false;
 }
 
+// Reference helper retained to protect the historical lookup semantics.
 export function getDayNotes(app: App, metadataCache: MetadataCache, files: TFile[], dayIndex: number, year: number, month: number): TFile[] {
     const dayPadded = String(dayIndex).padStart(2, '0');
     const monthPadded = String(month).padStart(2, '0');
@@ -64,13 +90,11 @@ export function getDayNotes(app: App, metadataCache: MetadataCache, files: TFile
 
     const dayNotes = files.filter((file) => {
         const path = file.path;
-
-        // Excluir archivos que sigan el patrón YYYYMMDD.md
-        const fileName = path.split('/').pop(); // Obtén el nombre del archivo
-        const regex = /^\d{8}\.md$/; // Expresión regular para YYYYMMDD.md
+        const fileName = path.split('/').pop();
+        const regex = /^\d{8}\.md$/;
 
         if (regex.test(fileName!)) {
-            return false; // Excluir archivos que coincidan con el patrón
+            return false;
         }
 
         if (path === dailyPath || path.includes('/Aniversaries/')) {
@@ -93,6 +117,7 @@ export function getDayNotes(app: App, metadataCache: MetadataCache, files: TFile
     return dayNotes;
 }
 
+// Reference grid retained for equivalence and performance regression tests.
 export function createDaysGrid({
     app,
     metadataCache,
@@ -113,9 +138,9 @@ export function createDaysGrid({
     month: number;
 }): MonthGridProps['daysGrid'] {
     const daysGrid: MonthGridProps['daysGrid'] = [];
-    let currentDay = 1; // Día actual dentro del mes
-    let nextMonthDay = 1; // Día inicial del próximo mes
-    let prevMonthLastDay = getLastDayOfMonth(year, month - 1).getDate(); // Último día del mes anterior
+    let currentDay = 1;
+    let nextMonthDay = 1;
+    const prevMonthLastDay = getLastDayOfMonth(year, month - 1).getDate();
 
     for (let row = 0; row < numRows; row++) {
         const cells: MonthGridProps['daysGrid'][0] = [];
@@ -126,20 +151,16 @@ export function createDaysGrid({
             let isWithinMonth: boolean;
 
             if (cellDay < 1) {
-                // Días del mes anterior
                 dayIndex = prevMonthLastDay + cellDay;
                 isWithinMonth = false;
             } else if (currentDay > numDaysInMonth) {
-                // Días del mes siguiente
                 dayIndex = nextMonthDay++;
                 isWithinMonth = false;
             } else {
-                // Días del mes actual
                 dayIndex = currentDay++;
                 isWithinMonth = true;
             }
 
-            // Solo aseguramos que los días del mes actual tengan isWithinMonth como true
             cells.push({
                 year,
                 month,
@@ -159,8 +180,206 @@ export function createDaysGrid({
     return daysGrid;
 }
 
-export function useMonthLogic(app: App | undefined, year: number, month: number) {
-    const [files, setFiles] = useState<TFile[]>(app?.vault.getMarkdownFiles() || []);
+export function buildCalendarYearIndex(
+    files: TFile[],
+    metadataCache: MetadataCache,
+    year: number
+): CalendarYearIndex {
+    const dailyNoteByDate = new Map<string, string>();
+    const anniversaryByMonthDay = new Map<string, TFile>();
+    const eventsByDate = new Map<string, TFile[]>();
+
+    for (const file of files) {
+        const path = file.path;
+        const eventDate = metadataCache.getFileCache(file)?.frontmatter?.date;
+
+        const dailyMatch = path.match(
+            /^100 Calendar\/(\d{4})\/(\d{2})\/(\d{4})(\d{2})(\d{2})\.md$/
+        );
+        if (dailyMatch) {
+            const folderYear = parseInt(dailyMatch[1]);
+            const folderMonth = parseInt(dailyMatch[2]);
+            const fileYear = parseInt(dailyMatch[3]);
+            const fileMonth = parseInt(dailyMatch[4]);
+            const fileDay = parseInt(dailyMatch[5]);
+            const survivesMonthlyFilter =
+                typeof eventDate === 'string' &&
+                eventDate.includes(`${year}-${pad2(folderMonth)}`);
+
+            if (
+                folderYear === year &&
+                fileYear === year &&
+                folderMonth === fileMonth &&
+                survivesMonthlyFilter
+            ) {
+                const key = calendarDateKey(year, fileMonth, fileDay);
+                if (!dailyNoteByDate.has(key)) {
+                    dailyNoteByDate.set(key, path);
+                }
+            }
+        }
+
+        const anniversaryMatch = path.match(
+            /\/Aniversaries\/(\d{2})\/(\d{2})(\d{2})\.md/
+        );
+        if (anniversaryMatch) {
+            const folderMonth = parseInt(anniversaryMatch[1]);
+            const fileMonth = parseInt(anniversaryMatch[2]);
+            const day = parseInt(anniversaryMatch[3]);
+            if (folderMonth === fileMonth) {
+                const key = monthDayKey(folderMonth, day);
+                if (!anniversaryByMonthDay.has(key)) {
+                    anniversaryByMonthDay.set(key, file);
+                }
+            }
+        }
+
+        const fileName = path.split('/').pop();
+        if (
+            /^\d{8}\.md$/.test(fileName!) ||
+            path.includes('/Aniversaries/') ||
+            typeof eventDate !== 'string'
+        ) {
+            continue;
+        }
+
+        const eventYear = parseInt(eventDate.substring(0, 4));
+        const eventMonth = parseInt(eventDate.substring(5, 7));
+        const eventDay = parseInt(eventDate.substring(8, 10));
+        const dailyPath = `100 Calendar/${year}/${pad2(eventMonth)}/${pad2(eventDay)}.md`;
+        const survivesMonthlyFilter = eventDate.includes(
+            `${year}-${pad2(eventMonth)}`
+        );
+
+        if (
+            eventYear !== year ||
+            !survivesMonthlyFilter ||
+            path === dailyPath
+        ) {
+            continue;
+        }
+
+        const key = calendarDateKey(eventYear, eventMonth, eventDay);
+        const events = eventsByDate.get(key);
+        if (events) {
+            events.push(file);
+        } else {
+            eventsByDate.set(key, [file]);
+        }
+    }
+
+    return {
+        dailyNoteByDate,
+        anniversaryByMonthDay,
+        eventsByDate,
+    };
+}
+
+export function createDaysGridFromIndex({
+    app,
+    index,
+    numRows,
+    numDaysInMonth,
+    dayOffset,
+    year,
+    month
+}: {
+    app: App;
+    index: CalendarYearIndex;
+    numRows: number;
+    numDaysInMonth: number;
+    dayOffset: number;
+    year: number;
+    month: number;
+}): MonthGridProps['daysGrid'] {
+    const daysGrid: MonthGridProps['daysGrid'] = [];
+    let currentDay = 1;
+    let nextMonthDay = 1;
+    const prevMonthLastDay = getLastDayOfMonth(year, month - 1).getDate();
+
+    for (let row = 0; row < numRows; row++) {
+        const cells: MonthGridProps['daysGrid'][0] = [];
+
+        for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
+            const cellDay = row * 7 + dayOfWeek - dayOffset + 1;
+            let dayIndex: number;
+            let isWithinMonth: boolean;
+
+            if (cellDay < 1) {
+                dayIndex = prevMonthLastDay + cellDay;
+                isWithinMonth = false;
+            } else if (currentDay > numDaysInMonth) {
+                dayIndex = nextMonthDay++;
+                isWithinMonth = false;
+            } else {
+                dayIndex = currentDay++;
+                isWithinMonth = true;
+            }
+
+            const dateKey = calendarDateKey(year, month, dayIndex);
+            const events = index.eventsByDate.get(dateKey);
+            cells.push({
+                year,
+                month,
+                dayIndex,
+                isWithinMonth,
+                hasNote: index.dailyNoteByDate.get(dateKey) || false,
+                anniversaryNote: index.anniversaryByMonthDay.get(
+                    monthDayKey(month, dayIndex)
+                ),
+                dayNotes: events ? [...events] : [],
+                className: isWithinMonth ? 'within-month' : 'outside-month',
+                app
+            });
+        }
+
+        daysGrid.push(cells);
+    }
+
+    return daysGrid;
+}
+
+export function createCalendarYearMonths(
+    app: App,
+    index: CalendarYearIndex,
+    year: number
+): CalendarMonthViewModel[] {
+    return Array.from({ length: 12 }, (_, monthIndex) => {
+        const month = monthIndex + 1;
+        const firstDayOfMonth = getFirstDayOfMonth(year, month - 1);
+        const lastDayOfMonth = getLastDayOfMonth(year, month - 1);
+        const numDaysInMonth = lastDayOfMonth.getDate();
+        const dayOffset = getDayOffset(firstDayOfMonth.getDay());
+        const numRows = calculateNumRows(numDaysInMonth, dayOffset);
+        const daysGrid = createDaysGridFromIndex({
+            app,
+            index,
+            numRows,
+            numDaysInMonth,
+            dayOffset,
+            year,
+            month,
+        });
+        const monthName = `${firstDayOfMonth.toLocaleString('default', { month: 'long' })}`;
+        const monthNameFirstCase = monthName.charAt(0).toUpperCase() + monthName.slice(1);
+        const monthNameAndYear = `${monthNameFirstCase} ${year}`;
+        const currentMonth = new Date().getMonth() + 1;
+        const cssCurrentMonth = currentMonth === month ? 'obs-current-month' : '';
+
+        return {
+            year,
+            month,
+            monthNameAndYear,
+            cssCurrentMonth,
+            daysGrid,
+        };
+    });
+}
+
+export function useCalendarYearLogic(app: App | undefined, year: number) {
+    const [files, setFiles] = useState<TFile[]>(
+        () => app?.vault.getMarkdownFiles() || []
+    );
 
     useEffect(() => {
         if (!app) return;
@@ -180,62 +399,12 @@ export function useMonthLogic(app: App | undefined, year: number, month: number)
         };
     }, [app]);
 
-    const metadataCache = app?.metadataCache;
-    const monthStr = month < 10 ? '0' + month : month.toString();
-    const dateStr = `${year}-${monthStr}`;
-
-    const filteredFiles = files.filter((file) => {
-        const eventDate = metadataCache?.getFileCache(file)?.frontmatter?.date;
-        const anniversaryPath = `/Aniversaries/${String(month).padStart(2, '0')}`;
-
-        return (typeof eventDate === 'string' && eventDate.includes(dateStr)) || file.path.includes(anniversaryPath);
-    });
-
-    const firstDayOfMonth = getFirstDayOfMonth(year, month - 1);  // Ajustamos para que el mes esté en el rango correcto
-    const lastDayOfMonth = getLastDayOfMonth(year, month - 1);    // Este método se ajusta aquí también para obtener el último día
-    const numDaysInMonth = lastDayOfMonth.getDate();  // Obtenemos el número de días del mes actual correctamente
-    const firstDayOfWeek = firstDayOfMonth.getDay();  // Día de la semana en el que comienza el mes
-    const dayOffset = getDayOffset(firstDayOfWeek);   // Ajustamos el offset correctamente
-
-    // Calculamos el número de filas necesarias para el calendario, basándonos en el número de días del mes y el desplazamiento
-    const numRows = calculateNumRows(numDaysInMonth, dayOffset);
-
-    // Creamos la cuadrícula de días correctamente, asegurándonos de que no haya días que excedan los límites del mes actual
-    const daysGrid = createDaysGrid({ 
-        app: app as App, 
-        metadataCache: metadataCache as MetadataCache, 
-        files: filteredFiles, 
-        numRows, 
-        numDaysInMonth, 
-        dayOffset, 
-        year, 
-        month 
-    });
-
-    const monthName = `${firstDayOfMonth.toLocaleString('default', { month: 'long' })}`;
-    const monthNameFirstCase = monthName.charAt(0).toUpperCase() + monthName.slice(1);
-    const monthNameAndYear = `${monthNameFirstCase} ${year}`;
-
-    const today = new Date();
-    const currentMonth = today.getMonth() + 1;
-    let cssCurrentMonth = '';
-    if (currentMonth === month) {
-        cssCurrentMonth = 'obs-current-month';
+    if (!app) {
+        return { months: [] as CalendarMonthViewModel[] };
     }
 
-    const monthRef = useRef<HTMLDivElement | null>(null);
+    const index = buildCalendarYearIndex(files, app.metadataCache, year);
+    const months = createCalendarYearMonths(app, index, year);
 
-    useEffect(() => {
-        if (cssCurrentMonth === 'obs-current-month' && monthRef.current) {
-            monthRef.current.scrollIntoView();
-        }
-    }, [cssCurrentMonth]);
-
-    return {
-        monthRef,
-        cssCurrentMonth,
-        monthNameAndYear,
-        daysGrid,
-    };
+    return { months };
 }
-
