@@ -1,3 +1,5 @@
+import { useApp } from './../../hooks/useApp';
+import { useCalendarYearLogic } from './Month';
 import MonthUI from './MonthUI';
 
 interface CalendarYearProps {
@@ -5,14 +7,12 @@ interface CalendarYearProps {
 }
 
 function CalendarYear({ year }: CalendarYearProps): JSX.Element {
-  
-  const monthsGrid = Array.from({ length: 12 }, (_, month) => {
-    month = month + 1;
-    const monthKey = `${year}-${(month).toString().padStart(2, '0')}`;
-    
-    return (
-      <MonthUI key={monthKey} year={year} month={month} /> 
-    );
+  const app = useApp();
+  const { months } = useCalendarYearLogic(app, year);
+  const monthsGrid = months.map((monthData) => {
+    const monthKey = `${year}-${monthData.month.toString().padStart(2, '0')}`;
+
+    return <MonthUI key={monthKey} {...monthData} />;
   });
 
   return (
@@ -20,7 +20,6 @@ function CalendarYear({ year }: CalendarYearProps): JSX.Element {
       <div className='months-container'>{monthsGrid}</div>
     </>
   );
-
 }
 
 export default CalendarYear;
