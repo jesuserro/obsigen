@@ -28,8 +28,8 @@ export interface FormValues {
 }
 
 export class CalendarEvent extends Modal {
-    private resolve!: (value: FormValues) => void;
-    private reject!: (reason?: TemplaterError) => void;
+    private resolve!: (value: FormValues | null) => void;
+    private reject!: (reason?: unknown) => void;
     private submitted = false;
 
     private yearField!: TextComponent;
@@ -72,6 +72,7 @@ export class CalendarEvent extends Modal {
     onClose(): void {
         if (!this.submitted) {
             new Notice("Cancelled prompt");
+            this.resolve(null);
         }
     }
 
@@ -259,12 +260,24 @@ export class CalendarEvent extends Modal {
         const minute = parseInt(minuteDropdown.getValue().padStart(2, "0"));
     
         // Aseguramos que los valores son válidos antes de crear la fecha
-        if (isNaN(yearValue) || isNaN(month) || isNaN(day) || isNaN(hour) || isNaN(minute)) {
+        if (isNaN(yearValue) || isNaN(month) || isNaN(day) || isNaN(hour) || isNaN(minute) || yearValue === 0) {
             throw new Error("Invalid date component values");
         }
     
         // Crear la fecha usando la hora y la zona horaria tal como se selecciona en el formulario
-        const date = new Date(yearValue, month, day, hour, minute, 0);
+        const date = new Date(0);
+        date.setFullYear(yearValue, month, day);
+        date.setHours(hour, minute, 0, 0);
+
+        if (
+            date.getFullYear() !== yearValue ||
+            date.getMonth() !== month ||
+            date.getDate() !== day ||
+            date.getHours() !== hour ||
+            date.getMinutes() !== minute
+        ) {
+            throw new Error("Invalid date component values");
+        }
     
         return date;
     }
@@ -281,19 +294,27 @@ export class CalendarEvent extends Modal {
         return year.toString().padStart(4, "0");
     }
 
-    openModal(): Promise<FormValues> {
-        return new Promise<FormValues>((resolve, reject) => {
+    openModal(): Promise<FormValues | null> {
+        return new Promise<FormValues | null>((resolve, reject) => {
             this.resolve = resolve;
             this.reject = reject;
             this.open();
         });
     }
 
-    private onSubmit(evt: Event) {
+    private async onSubmit(evt: Event): Promise<void> {
         evt.preventDefault();
-        this.submitted = true;
 
-        const formValues = this.getFormValues();
+        let formValues: FormValues;
+        try {
+            formValues = this.getFormValues();
+        } catch (error) {
+            new Notice(error instanceof Error ? error.message : String(error));
+            this.submitted = false;
+            this.close();
+            return;
+        }
+
         const validationError = this.validateForm(formValues);
         if (validationError) {
             new Notice(validationError);
@@ -302,21 +323,27 @@ export class CalendarEvent extends Modal {
             return;
         }
 
-        this.resolve(formValues);
+        this.submitted = true;
 
-        new Momento(formValues.date, formValues.endDate).createNote(
-            formValues.type,
-            this.app,
-            formValues.title,
-            formValues.description,
-            formValues.selectedIcon,
-            "description",
-            formValues.locations,
-            formValues.urls,
-            formValues.tags
-        );
+        try {
+            await new Momento(formValues.date, formValues.endDate).createNote(
+                formValues.type,
+                this.app,
+                formValues.title,
+                formValues.description,
+                formValues.selectedIcon,
+                "description",
+                formValues.locations,
+                formValues.urls,
+                formValues.tags
+            );
 
-        this.close();
+            this.resolve(formValues);
+        } catch (error) {
+            this.reject(error);
+        } finally {
+            this.close();
+        }
     }
 
     private getFormValues(): FormValues {
@@ -352,8 +379,15 @@ export class CalendarEvent extends Modal {
     }
 
     private syncEndDate() {
-        const startDate = this.getDateFromFields(this.yearField, this.eraField, this.monthDropdown, this.dayDropdown, this.hourDropdown, this.minuteDropdown);
-        const endDate = this.getDateFromFields(this.endYearField, this.endEraField, this.endMonthDropdown, this.endDayDropdown, this.endHourDropdown, this.endMinuteDropdown);
+        let startDate: Date;
+        let endDate: Date;
+
+        try {
+            startDate = this.getDateFromFields(this.yearField, this.eraField, this.monthDropdown, this.dayDropdown, this.hourDropdown, this.minuteDropdown);
+            endDate = this.getDateFromFields(this.endYearField, this.endEraField, this.endMonthDropdown, this.endDayDropdown, this.endHourDropdown, this.endMinuteDropdown);
+        } catch {
+            return;
+        }
     
         // Si la fecha final es anterior a la fecha inicial, ajustar la fecha final para que coincida con la fecha inicial
         if (endDate < startDate) {
@@ -365,12 +399,4 @@ export class CalendarEvent extends Modal {
             this.endMinuteDropdown.setValue(this.minuteDropdown.getValue());
         }
     }    
-}
-
-class TemplaterError extends Error {
-    constructor(msg: string, public console_msg?: string) {
-        super(msg);
-        this.name = this.constructor.name;
-        Error.captureStackTrace(this, this.constructor);
-    }
 }
