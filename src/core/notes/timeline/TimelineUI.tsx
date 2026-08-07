@@ -34,7 +34,7 @@ const TimelineView: React.FC<TimelineViewProps> = ({ app, bookRefs, selectedBook
                                 <div className="timeline-icon-container">
                                     <img src={image.path} alt={image.alt} className="timeline-image-icon" />
                                     <span className="timeline-date">
-                                        {image.date ? formatDate(image.date) : 'Unknown date'}
+                                        {image.historicalDate ? formatDate(image.historicalDate) : 'Unknown date'}
                                     </span>
                                 </div>
                             }

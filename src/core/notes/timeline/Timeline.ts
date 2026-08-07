@@ -13,7 +13,7 @@ export interface Note {
 	versePassage?: string;
 	locations?: string[];
 	coordinates?: [number, number];
-	date?: string;
+	historicalDate?: string;
 	path: string; // Path de la imagen
 	notePath: string; // Path de la nota
 }
@@ -72,7 +72,12 @@ async function getNoteData(app: App, filePath: string): Promise<Partial<Note>> {
 		locations: yaml.locations || [],
 		path: yaml.cover ? app.vault.adapter.getResourcePath(yaml.cover) : "",
 		alt: yaml.cover ? yaml.cover : "",
-		date: yaml.date || "",
+		historicalDate:
+			typeof yaml.historical_date === "string"
+				? yaml.historical_date
+				: yaml.historical_date == null || yaml.historical_date === ""
+				? ""
+				: "invalid-historical-date",
 		title: yaml.title || "",
 		pericopeTitle: yaml.pericope_title || "",
 		verseRange: yaml.verse_range || [0, 0],
@@ -80,36 +85,84 @@ async function getNoteData(app: App, filePath: string): Promise<Partial<Note>> {
 	};
 }
 
-function parseDate(dateString: string): number {
+type ParsedTimelineDate =
+	| {
+			kind: "valid";
+			signedYear: number;
+			year: number;
+			month: number;
+			day: number;
+			era: "AC" | "DC";
+	  }
+	| { kind: "missing" }
+	| { kind: "invalid" };
+
+const TIMELINE_DATE_PATTERN = /^(-?)(\d{4,})-(\d{2})-(\d{2})$/;
+
+function parseTimelineDate(dateString: string): ParsedTimelineDate {
 	if (!dateString) {
-		return Date.now(); // Considerar la fecha actual si no hay fecha
+		return { kind: "missing" };
 	}
-	if (dateString.startsWith("-")) {
-		const [year, month, day] = dateString.slice(1).split("-");
-		return (
-			-parseInt(year, 10) * 10000 +
-			parseInt(month, 10) * 100 +
-			parseInt(day, 10)
-		);
+
+	const match = TIMELINE_DATE_PATTERN.exec(dateString);
+	if (!match) {
+		return { kind: "invalid" };
 	}
-	return new Date(dateString).getTime();
+
+	const [, sign, yearPart, monthPart, dayPart] = match;
+	const year = Number(yearPart);
+	const month = Number(monthPart);
+	const day = Number(dayPart);
+
+	if (year === 0 || month < 1 || month > 12 || day < 1 || day > 31) {
+		return { kind: "invalid" };
+	}
+
+	const era = sign === "-" ? "AC" : "DC";
+	return {
+		kind: "valid",
+		signedYear: era === "AC" ? -year : year,
+		year,
+		month,
+		day,
+		era,
+	};
 }
 
 export function formatDate(dateString: string): string {
-	if (dateString.startsWith("-")) {
-		const [year, month, day] = dateString.slice(1).split("-");
-		return `${day.padStart(2, "0")}/${month.padStart(2, "0")}/${year} AC`;
-	} else {
-		const date = new Date(dateString);
-		return date.toLocaleDateString();
+	const date = parseTimelineDate(dateString);
+	if (date.kind === "missing") {
+		return "Unknown date";
 	}
+	if (date.kind === "invalid") {
+		return "Invalid date";
+	}
+
+	return `${String(date.day).padStart(2, "0")}/${String(date.month).padStart(
+		2,
+		"0"
+	)}/${date.year} ${date.era}`;
 }
 
 function sortNotesByDate(notes: Note[]): Note[] {
 	return notes.sort((a, b) => {
-		const dateA = parseDate(a.date || "");
-		const dateB = parseDate(b.date || "");
-		return dateA - dateB;
+		const dateA = parseTimelineDate(a.historicalDate || "");
+		const dateB = parseTimelineDate(b.historicalDate || "");
+
+		if (dateA.kind === "valid" && dateB.kind === "valid") {
+			return (
+				dateA.signedYear - dateB.signedYear ||
+				dateA.month - dateB.month ||
+				dateA.day - dateB.day
+			);
+		}
+		if (dateA.kind === "valid") {
+			return -1;
+		}
+		if (dateB.kind === "valid") {
+			return 1;
+		}
+		return 0;
 	});
 }
 
