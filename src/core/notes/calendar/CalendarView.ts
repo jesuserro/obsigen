@@ -12,7 +12,7 @@ export const CONTAINER_ID = "obsigen-calendar-container";
 
 export class CalendarView extends ItemView {
     private reactComponent: React.ReactElement;
-    private root: ReactDOM.Root;
+    private root: ReactDOM.Root | null = null;
     private currentYear: number;
     private today: Date;
     private isBibleView: boolean;
@@ -34,7 +34,6 @@ export class CalendarView extends ItemView {
             [key: string]: HTMLDivElement | null;
         }>;
         this.selectedBook = ""; // Default to an empty string
-        this.root = ReactDOM.createRoot(this.contentEl as HTMLElement);
     }
 
     private handleAddEvent = async () => {
@@ -84,6 +83,10 @@ export class CalendarView extends ItemView {
     };
 
     private renderComponent() {
+        if (this.root === null) {
+            return;
+        }
+
         this.reactComponent = React.createElement(
             AppContext.Provider,
             { value: this.app },
@@ -137,10 +140,16 @@ export class CalendarView extends ItemView {
 
     async onOpen() {
         this.forceUpdate = true;
+        if (this.root === null) {
+            this.root = ReactDOM.createRoot(this.contentEl as HTMLElement);
+        }
+
         this.renderComponent();
     }
 
     async onClose() {
         this.saveScrollPosition();
+        this.root?.unmount();
+        this.root = null;
     }
 }
