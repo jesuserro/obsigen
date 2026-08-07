@@ -131,8 +131,9 @@ export class MenuPrincipal extends Menu {
     this.addMenuItem({
       title: "Refresh",
       icon: "calendar-check-2",
-      onClick: () => {
-        new Calendar(this.app); 
+      onClick: async () => {
+        const calendar = new Calendar(this.app);
+        await calendar.addCalendarView();
       }
     });
     

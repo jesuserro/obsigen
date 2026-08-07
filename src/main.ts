@@ -16,7 +16,6 @@ const DEFAULT_SETTINGS: MyPluginSettings = {
 
 export default class MyPlugin extends Plugin {
 	settings: MyPluginSettings;
-	private view: CalendarView;
 
 	async onload() {
 		console.log("Loading Obsigen plugin");
@@ -95,7 +94,7 @@ export default class MyPlugin extends Plugin {
 		await this.saveData(this.settings);
 	}
 
-	onLayoutReady(): void {
+	async onLayoutReady(): Promise<void> {
 		if (this.app.workspace.getLeavesOfType(CALENDAR_VIEW_TYPE).length > 0) {
 			return;
 		}
@@ -107,14 +106,13 @@ export default class MyPlugin extends Plugin {
 			return;
 		}
 
-		rightLeaf.setViewState({
+		await rightLeaf.setViewState({
 			type: CALENDAR_VIEW_TYPE,
 			active: true, // Marcamos la vista como activa.
 		});
 
 		// Aseguramos que el leaf se revele para el usuario.
-		this.app.workspace.revealLeaf(rightLeaf);
-		this.view = rightLeaf.view as CalendarView;
+		await this.app.workspace.revealLeaf(rightLeaf);
 	}
 
 	async activateView() {
@@ -137,6 +135,6 @@ export default class MyPlugin extends Plugin {
 		});
 
 		// Utilizamos revealLeaf para asegurarnos de que la vista se muestre al usuario.
-		this.app.workspace.revealLeaf(rightLeaf);
+		await this.app.workspace.revealLeaf(rightLeaf);
 	}
 }

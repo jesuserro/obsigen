@@ -7,11 +7,9 @@ export class Calendar {
     constructor(app: App) {
 
         this.app = app;
-
-        this.addCalendarView();
     }
 
-    addCalendarView() {
+    async addCalendarView(): Promise<void> {
         this.app.workspace.detachLeavesOfType(CALENDAR_VIEW_TYPE);
     
         const leaf = this.app.workspace.getRightLeaf(false);
@@ -23,12 +21,12 @@ export class Calendar {
         }
     
         // Caso normal cuando 'leaf' no es null
-        leaf.setViewState({
+        await leaf.setViewState({
             type: CALENDAR_VIEW_TYPE,
             active: true,   
         });
     
-        this.app.workspace.revealLeaf(leaf);
+        await this.app.workspace.revealLeaf(leaf);
     }
     
 }
