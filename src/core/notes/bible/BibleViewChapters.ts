@@ -92,6 +92,164 @@ async function getLocationCoordinates(
 	return yaml.location;
 }
 
+interface PendingLocation {
+	location: string;
+	note: Note;
+}
+
+async function buildChapterNotes(
+	app: App,
+	chapterFiles: TFile[],
+	pendingLocations?: PendingLocation[]
+): Promise<Note[]> {
+	const notes: Note[] = [];
+
+	for (const file of chapterFiles) {
+		const noteData = await getNoteData(app, file.path);
+		if (!noteData.path) {
+			continue;
+		}
+
+		const location = noteData.locations?.[0];
+		const coordinates =
+			location && !pendingLocations
+				? await getLocationCoordinates(app, location)
+				: null;
+		const note = {
+			...noteData,
+			verseRange: noteData.verseRange || [0, 0],
+			pericopeTitle: noteData.verse_title,
+			title: noteData.verse_title,
+			alt: noteData.alt,
+			coordinates,
+		} as Note;
+
+		notes.push(note);
+		if (location && pendingLocations) {
+			pendingLocations.push({ location, note });
+		}
+	}
+
+	notes.sort((a, b) => a.verseRange[0] - b.verseRange[0]);
+	return notes;
+}
+
+function buildBibleIndex(files: TFile[]): Map<string, TFile[]> {
+	const index = new Map<string, TFile[]>();
+	const validChapters = new Map<string, Set<string>>(
+		Object.entries(bibleStructure).map(([book, data]) => [
+			book,
+			new Set(Object.keys(data.chapters)),
+		])
+	);
+
+	for (const file of files) {
+		const [rootFolder, book, chapterFolder] = file.path.split("/");
+		const bookChapters = validChapters.get(book);
+		if (rootFolder !== "333 Biblia" || !bookChapters) {
+			continue;
+		}
+
+		if (book === "Salmos") {
+			const psalmMatch = file.basename.match(/Sal (\d+),/);
+			const chapterNumber = psalmMatch?.[1];
+			if (!chapterNumber || !bookChapters.has(chapterNumber)) {
+				continue;
+			}
+
+			const key = `${book}-${chapterNumber}`;
+			if (!index.has(key)) {
+				index.set(key, [file]);
+			}
+			continue;
+		}
+
+		if (!chapterFolder || !bookChapters.has(chapterFolder)) {
+			continue;
+		}
+
+		const key = `${book}-${chapterFolder}`;
+		const chapterFiles = index.get(key);
+		if (chapterFiles) {
+			chapterFiles.push(file);
+		} else {
+			index.set(key, [file]);
+		}
+	}
+
+	return index;
+}
+
+function parseLocation(location: string): {
+	mainLocation: string;
+	alias?: string;
+} {
+	const sanitizedLocation = location.replace(/\[\[|\]\]/g, "");
+	const [mainLocation, alias] = sanitizedLocation.split("|");
+	return { mainLocation, alias };
+}
+
+async function resolveLocationsInBatch(
+	app: App,
+	files: TFile[],
+	pendingLocations: PendingLocation[]
+): Promise<void> {
+	if (pendingLocations.length === 0) {
+		return;
+	}
+
+	const unresolved = new Map(
+		pendingLocations.map(({ location }) => [location, parseLocation(location)])
+	);
+	const matches = new Map<string, TFile>();
+
+	for (const file of files) {
+		for (const [location, query] of unresolved) {
+			if (
+				file.basename.includes(query.mainLocation) ||
+				(query.alias && file.basename.includes(query.alias))
+			) {
+				matches.set(location, file);
+				unresolved.delete(location);
+			}
+		}
+
+		if (unresolved.size === 0) {
+			break;
+		}
+	}
+
+	const coordinatesByLocation = new Map<
+		string,
+		[number, number] | null
+	>();
+	for (const location of new Set(
+		pendingLocations.map((pending) => pending.location)
+	)) {
+		const noteFile = matches.get(location);
+		if (!noteFile) {
+			console.log(
+				`getLocationCoordinates: No se encontró ninguna nota con el nombre ${location.replace(
+					/\[\[|\]\]/g,
+					""
+				)}`
+			);
+			coordinatesByLocation.set(location, null);
+			continue;
+		}
+
+		const yaml = app.metadataCache.getFileCache(noteFile)?.frontmatter;
+		coordinatesByLocation.set(location, yaml?.location || null);
+	}
+
+	for (const pending of pendingLocations) {
+		const coordinates = coordinatesByLocation.get(pending.location);
+		if (coordinates) {
+			pending.note.coordinates = coordinates;
+		}
+	}
+}
+
 export async function getChapterNotes(
 	app: App,
 	book: string,
@@ -104,62 +262,16 @@ export async function getChapterNotes(
 	const files = app.vault
 		.getFiles()
 		.filter((file) => file.path.startsWith(folderPath));
-	const notes: Note[] = [];
 
 	if (book === "Salmos") {
 		// Filtrar el archivo correspondiente al capítulo especificado
 		const chapterFile = files.find((file) =>
 			file.basename.includes(`Sal ${chapterNumber},`)
 		);
-		if (chapterFile) {
-			const noteData = await getNoteData(app, chapterFile.path);
-			if (noteData.path) {
-				const coordinates =
-					noteData.locations && noteData.locations.length > 0
-						? await getLocationCoordinates(
-								app,
-								noteData.locations[0]
-						  )
-						: null;
-
-				notes.push({
-					...noteData,
-					verseRange: noteData.verseRange || [0, 0], // Usar el verseRange calculado
-					pericopeTitle: noteData.verse_title,
-					title: noteData.verse_title,
-					alt: noteData.alt,
-					coordinates,
-				} as Note);
-			}
-		}
-	} else {
-		for (const file of files) {
-			const noteData = await getNoteData(app, file.path);
-			if (noteData.path) {
-				const coordinates =
-					noteData.locations && noteData.locations.length > 0
-						? await getLocationCoordinates(
-								app,
-								noteData.locations[0]
-						  )
-						: null;
-
-				notes.push({
-					...noteData,
-					verseRange: noteData.verseRange || [0, 0], // Usar el verseRange calculado
-					pericopeTitle: noteData.verse_title,
-					title: noteData.verse_title,
-					alt: noteData.alt,
-					coordinates,
-				} as Note);
-			}
-		}
+		return buildChapterNotes(app, chapterFile ? [chapterFile] : []);
 	}
 
-	// Ordenar las notas por el primer versículo de verseRange
-	notes.sort((a, b) => a.verseRange[0] - b.verseRange[0]);
-
-	return notes;
+	return buildChapterNotes(app, files);
 }
 
 export async function openNote(
@@ -224,15 +336,21 @@ export async function openLocationNote(
 export async function fetchChapterNotes(
 	app: App
 ): Promise<{ [key: string]: Note[] }> {
+	const files = app.vault.getFiles();
+	const bibleIndex = buildBibleIndex(files);
+	const pendingLocations: PendingLocation[] = [];
 	const notes: { [key: string]: Note[] } = {};
 	for (const [book, data] of Object.entries(bibleStructure)) {
 		for (const chapterNumber of Object.keys(data.chapters)) {
-			notes[`${book}-${chapterNumber}`] = await getChapterNotes(
+			const key = `${book}-${chapterNumber}`;
+			notes[key] = await buildChapterNotes(
 				app,
-				book,
-				chapterNumber
+				bibleIndex.get(key) || [],
+				pendingLocations
 			);
 		}
 	}
+
+	await resolveLocationsInBatch(app, files, pendingLocations);
 	return notes;
 }
