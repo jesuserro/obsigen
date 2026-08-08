@@ -2,7 +2,7 @@
 	"id": "obsigen",
 	"name": "Obsigen",
 	"version": "0.0.3",
-	"minAppVersion": "0.15.0",
+	"minAppVersion": "1.7.2",
 	"description": "View your notes in Calendar.",
 	"author": "Jesús Erro",
 	"authorUrl": "https://buymeacoffee.com/jesuserro",
