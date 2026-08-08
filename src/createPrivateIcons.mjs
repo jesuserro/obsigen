@@ -1,12 +1,15 @@
 import fs from 'fs';
 
 const dataUrls = {};
+const iconsDir = 'src/assets/icons';
+
+fs.mkdirSync(iconsDir, { recursive: true });
 
 // Lee y convierte los archivos PNG en URLs de datos
-const pngFiles = fs.readdirSync('src/assets/icons');
+const pngFiles = fs.readdirSync(iconsDir).sort();
 pngFiles.forEach((file) => {
   if (file.endsWith('.png')) {
-    const data = fs.readFileSync(`src/assets/icons/${file}`, 'base64');
+    const data = fs.readFileSync(`${iconsDir}/${file}`, 'base64');
     const dataUrl = `data:image/png;base64,${data}`;
     // Elimina la extensión .png de la clave en el objeto dataUrls
     const key = file.replace('.png', '');
@@ -20,4 +23,4 @@ const tsCode = `const dataUrls: Record<string, string> = ${JSON.stringify(dataUr
 export default dataUrls;
 `;
 
-fs.writeFileSync('src/assets/icons/dataurls.ts', tsCode);
+fs.writeFileSync(`${iconsDir}/dataurls.ts`, tsCode);
