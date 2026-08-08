@@ -1,19 +1,17 @@
-import { App } from 'obsidian';
-import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 import { Book as BookInterface } from 'src/core/shared/interface/iYaml';
-import { GoodreadsApiBase } from './GoodreadsApiBase';
+import { GoodreadsApiBase, GoodreadsCredentials } from './GoodreadsApiBase';
 
 export class GoodreadsBookApi extends GoodreadsApiBase {
     
     // https://www.goodreads.com/book/show?format=xml&key=API_KEY&id=24331152
     private static readonly BOOK_URL_TEMPLATE = 'book/show?format=xml&key=$apikey&id=$bookId';
 
-    constructor(app: App) {
-        super(app);
+    constructor(credentials: GoodreadsCredentials) {
+        super(credentials);
     }
 
     private async fetchBookById(bookId: string): Promise<string | null> {
-        const { goodreads_apikey }: MyPluginSettings = this.getGoodreadsSettings();
+        const { goodreads_apikey } = this.credentials;
         const url = `${GoodreadsApiBase.BASE_URL}/${GoodreadsBookApi.BOOK_URL_TEMPLATE}`
             .replace('$apikey', goodreads_apikey)
             .replace('$bookId', bookId);

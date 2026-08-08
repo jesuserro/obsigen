@@ -1,9 +1,15 @@
-import { App, requestUrl } from 'obsidian';
+import { requestUrl } from 'obsidian';
 import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
 import TurndownService from 'turndown';
 
+export type GoodreadsCredentials = Pick<
+    MyPluginSettings,
+    'goodreads_user' | 'goodreads_apikey'
+>;
+
 export class GoodreadsApiBase {
-    protected app: App;
+    protected readonly credentials: GoodreadsCredentials;
+    private readonly legacyContext: object;
     protected turndownService: TurndownService;
     protected parser: DOMParser;
 
@@ -11,14 +17,16 @@ export class GoodreadsApiBase {
     protected static readonly BASE_TAG = 'Goodreads';
     protected static readonly GLOBAL_TAG = 'GOODREADS-SYNC';
 
-    constructor(app: App) {
-        this.app = app;
+    // The object branch preserves out-of-scope note models that still extend this class with App.
+    constructor(credentials: GoodreadsCredentials | object) {
+        this.credentials = credentials as GoodreadsCredentials;
+        this.legacyContext = credentials;
         this.turndownService = new TurndownService();
         this.parser = new DOMParser();
     }
 
-    protected getGoodreadsSettings(): MyPluginSettings {
-        return (this.app as any).setting.pluginTabs.find((tab: any) => tab.id === 'obsigen')?.plugin?.settings ?? {};
+    protected get app(): never {
+        return this.legacyContext as never;
     }
 
     protected async fetchXml(url: string): Promise<string | null> {
@@ -26,7 +34,7 @@ export class GoodreadsApiBase {
             const response = await requestUrl(url);
             return response.text;
         } catch (error) {
-            console.error(`Network error fetching data: ${error}`);
+            console.error('Goodreads request failed.');
             return null;
         }
     }

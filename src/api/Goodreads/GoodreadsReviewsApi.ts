@@ -1,6 +1,5 @@
 import { App } from 'obsidian';
-import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
-import { GoodreadsApiBase } from './GoodreadsApiBase';
+import { GoodreadsApiBase, GoodreadsCredentials } from './GoodreadsApiBase';
 import { GoodreadsAuthorApi } from './GoodreadsAuthorApi';
 import { GoodreadsBookApi } from './GoodreadsBookApi';
 import { Review } from './Review';
@@ -10,12 +9,12 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
     private static readonly REVIEWS_URL_TEMPLATE = 'review/list/$userId.xml?key=$apikey&v=2';
     private static readonly REVIEW_SHOW_URL_TEMPLATE = 'review/show/$reviewId.xml?key=$apikey';
 
-    constructor(app: App) {
-        super(app);
+    constructor(private readonly reviewApp: App, credentials: GoodreadsCredentials) {
+        super(credentials);
     }
 
     private async fetchToReadShelfBooks(): Promise<string | null> {
-        const { goodreads_user, goodreads_apikey }: MyPluginSettings = this.getGoodreadsSettings();
+        const { goodreads_user, goodreads_apikey } = this.credentials;
         const url = `${GoodreadsApiBase.BASE_URL}/${GoodreadsReviewsApi.REVIEWS_URL_TEMPLATE}`
             .replace('$userId', goodreads_user)
             .replace('$apikey', goodreads_apikey);
@@ -68,15 +67,14 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
 
         const review = reviews[0];
         console.log(`Review: ${JSON.stringify(review)}`);
-        new Review(this.app, review).createNote();
+        new Review(this.reviewApp, review).createNote();
         return review;
     }
 
     private async fetchBookDetails(review: any): Promise<any> {
-        const goodreadsBookApi = new GoodreadsBookApi(this.app);
+        const goodreadsBookApi = new GoodreadsBookApi(this.credentials);
         const book = await goodreadsBookApi.getBookById(review.book_id);
 
-        console.log(`Book: ${JSON.stringify(book)}`);
         if (!book) {
             console.error(`Failed to fetch book details for book_id: ${review.book_id}`);
             return null;
@@ -85,15 +83,13 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
     }
 
     private async fetchPrimaryAuthor(book: any): Promise<any> {
-        const goodreadsAuthorApi = new GoodreadsAuthorApi(this.app);
+        const goodreadsAuthorApi = new GoodreadsAuthorApi(this.credentials);
         for (const authorId of book.authors_id) {
             const author = await goodreadsAuthorApi.getAuthorById(authorId);
             if (!author) {
                 console.error(`Failed to fetch author details for author_id: ${authorId}`);
                 continue;
             }
-            console.log(`Author: ${JSON.stringify(author)}`);
-
             return author;
         }
     }
@@ -114,7 +110,7 @@ export class GoodreadsReviewsApi extends GoodreadsApiBase {
 
     // Nuevo método para obtener una review por su ID
     public async getReviewById(reviewId: string): Promise<any> {
-        const { goodreads_apikey }: MyPluginSettings = this.getGoodreadsSettings();
+        const { goodreads_apikey } = this.credentials;
         const url = `${GoodreadsApiBase.BASE_URL}/${GoodreadsReviewsApi.REVIEW_SHOW_URL_TEMPLATE}`
             .replace('$reviewId', reviewId)
             .replace('$apikey', goodreads_apikey);

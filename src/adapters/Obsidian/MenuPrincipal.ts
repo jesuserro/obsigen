@@ -1,4 +1,5 @@
 import { App, Menu } from 'obsidian';
+import { GoodreadsCredentials } from 'src/api/Goodreads/GoodreadsApiBase';
 import { GoodreadsReviewsApi } from 'src/api/Goodreads/GoodreadsReviewsApi';
 import { GoodreadsRssItemApi } from 'src/api/Goodreads/GoodreadsRssItemApi';
 import { Yearly } from 'src/core/notes/yearly/Yearly';
@@ -19,7 +20,7 @@ export class MenuPrincipal extends Menu {
   app: App;
   menuItems: MenuItem[];
 
-  constructor(app: App) {
+  constructor(app: App, goodreadsCredentials: GoodreadsCredentials) {
     super();
     this.app = app;
     this.menuItems = [];
@@ -42,7 +43,7 @@ export class MenuPrincipal extends Menu {
         title: "Goodreads - Get To Read Shelf",
         icon: "book-open",
         onClick: async () => {
-            const goodreadsRssShelf = new GoodreadsRssItemApi(app as App);
+            const goodreadsRssShelf = new GoodreadsRssItemApi(goodreadsCredentials);
             await goodreadsRssShelf.getShelfList('to-read', 22);
             // await goodreadsRssShelf.countPagesInShelf('to-read');
         }
@@ -53,9 +54,8 @@ export class MenuPrincipal extends Menu {
         title: "Goodreads - Get Review By Id",
         icon: "book-open",
         onClick: async () => {
-            const goodreadsReviews = new GoodreadsReviewsApi(app as App);
-            const review = await goodreadsReviews.getReviewById('2304450830'); 
-            console.log(review);
+            const goodreadsReviews = new GoodreadsReviewsApi(app, goodreadsCredentials);
+            await goodreadsReviews.getReviewById('2304450830');
         }
     });
 
@@ -63,9 +63,8 @@ export class MenuPrincipal extends Menu {
         title: "Goodreads - Get ReviewRSS By Id",
         icon: "book-open",
         onClick: async () => {
-            const goodreadsRssShelf = new GoodreadsRssItemApi(app as App);
-            const review = await goodreadsRssShelf.getReviewRssItemByReviewId('2304450830'); 
-            console.log(review);
+            const goodreadsRssShelf = new GoodreadsRssItemApi(goodreadsCredentials);
+            await goodreadsRssShelf.getReviewRssItemByReviewId('2304450830');
         }
     });
 
@@ -74,7 +73,7 @@ export class MenuPrincipal extends Menu {
         title: "Goodreads - Get Last Review",
         icon: "book-open",
         onClick: async () => {
-            const goodreadsReviews = new GoodreadsReviewsApi(app as App);
+            const goodreadsReviews = new GoodreadsReviewsApi(app, goodreadsCredentials);
             await goodreadsReviews.getLastBookFromToReadShelf();
             // await goodreadsReviews.getReviewById('6585220665'); // El diario de la felicidad
             // await goodreadsReviews.getReviewById('2322591776'); // El Hombre Eterno

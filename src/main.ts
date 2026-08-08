@@ -28,7 +28,7 @@ export default class MyPlugin extends Plugin {
 			"church",
 			"Obsigen",
 			(evt: MouseEvent) => {
-				const menu = new MenuPrincipal(this.app);
+				const menu = new MenuPrincipal(this.app, this.settings);
 				menu.showAtMouseEvent(evt);
 			}
 		);
