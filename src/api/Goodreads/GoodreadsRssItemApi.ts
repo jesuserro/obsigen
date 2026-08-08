@@ -1,17 +1,15 @@
-import { App } from 'obsidian';
-import { MyPluginSettings } from 'src/core/shared/interface/MyPluginSettings';
-import { GoodreadsApiBase } from './GoodreadsApiBase';
+import { GoodreadsApiBase, GoodreadsCredentials } from './GoodreadsApiBase';
 
 export class GoodreadsRssItemApi extends GoodreadsApiBase {
     
     private static readonly REVIEWS_RSS = 'review/list_rss/$userId?key=$apikey&shelf=$shelf&page=$page&per_page=$perPage';
 
-    constructor(app: App) {
-        super(app);
+    constructor(credentials: GoodreadsCredentials) {
+        super(credentials);
     }
 
     private async fetchShelfRss(shelf: string, page: number): Promise<string | null> {
-        const { goodreads_user, goodreads_apikey }: MyPluginSettings = this.getGoodreadsSettings();
+        const { goodreads_user, goodreads_apikey } = this.credentials;
         const url = `${GoodreadsApiBase.BASE_URL}/${GoodreadsRssItemApi.REVIEWS_RSS}`
             .replace('$userId', goodreads_user)
             .replace('$apikey', goodreads_apikey)
