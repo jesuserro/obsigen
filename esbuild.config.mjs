@@ -1,7 +1,6 @@
-import builtins from "builtin-modules";
+import { builtinModules } from "node:module";
 import esbuild from "esbuild";
 import { copy } from 'esbuild-plugin-copy';
-import { sassPlugin } from 'esbuild-sass-plugin';
 import process from "process";
 import dotenv from 'dotenv';
 
@@ -12,7 +11,7 @@ if you want to view the source, please visit the GitHub repository of this plugi
 */
 `;
 
-const prod = (process.argv[2] === "production");
+const prod = process.argv[2] === "production";
 
 // Load environment variables from .env file (outputDir)
 dotenv.config();
@@ -45,13 +44,14 @@ const context = await esbuild.context({
     // 'src/assets/icons/dataurls.json', // Excluye el archivo dataurls.json
     './src/assets/icons/*.png', // Excluye archivos .png
     // 'src/createPrivateIcons.mjs',   // Excluye el archivo
-    ...builtins
+    ...builtinModules
   ],
   format: "cjs",
-  target: "es2018",
+  target: "es2021",
   logLevel: "info",
   sourcemap: prod ? false : "inline",
   treeShaking: true,
+  minify: prod,
   outfile: `${outputDir}/main.js`,
   // outdir: `${outputDir}`,
   plugins: [
@@ -60,8 +60,7 @@ const context = await esbuild.context({
         { from: 'manifest.json', to: `${outputDir}/manifest.json` }, // Copiamos manifest.json a la carpeta de salida
         { from: 'src/styles.css', to: `${outputDir}/styles.css` }, // Copiamos styles.css a la carpeta de salida
       ],
-    }),
-    sassPlugin()
+    })
   ],
   loader: {
     '.svg': 'file',
