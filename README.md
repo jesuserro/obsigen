@@ -37,7 +37,13 @@ The plugin menu also exposes focused utilities for daily and yearly notes, anniv
 Month view with daily notes, anniversaries and event markers.
 
 <p>
-  <img src="docs/images/calendar-july-2026.jpg" alt="Obsigen Calendar view showing July 2026 with daily notes and event markers" width="786">
+  <a href="docs/images/calendar-july-2026.jpg">
+    <img
+      src="docs/images/calendar-july-2026.jpg"
+      alt="Obsigen Calendar view showing July 2026 with daily notes and event markers"
+      width="393"
+    >
+  </a>
 </p>
 
 ### Bible — Genesis
@@ -45,7 +51,13 @@ Month view with daily notes, anniversaries and event markers.
 Chapter grid with illustrated entries and note navigation.
 
 <p>
-  <img src="docs/images/bible-genesis.jpg" alt="Obsigen Bible view showing the Genesis chapter grid with illustrated entries" width="680">
+  <a href="docs/images/bible-genesis.jpg">
+    <img
+      src="docs/images/bible-genesis.jpg"
+      alt="Obsigen Bible view showing the Genesis chapter grid with illustrated entries"
+      width="340"
+    >
+  </a>
 </p>
 
 ### Timeline — historical notes
@@ -53,7 +65,13 @@ Chapter grid with illustrated entries and note navigation.
 Historical timeline view with chronological labels and note cards.
 
 <p>
-  <img src="docs/images/timeline-mambre.jpg" alt="Obsigen Timeline view showing chronological labels and historical note cards" width="650">
+  <a href="docs/images/timeline-mambre.jpg">
+    <img
+      src="docs/images/timeline-mambre.jpg"
+      alt="Obsigen Timeline view showing chronological labels and historical note cards"
+      width="325"
+    >
+  </a>
 </p>
 
 ## Status
