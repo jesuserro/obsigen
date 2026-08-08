@@ -1,47 +1,51 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Nombre del archivo de la base de datos real
-REAL_DB_PATH="/mnt/c/Users/jesus/db/Biblia.db"
+set -euo pipefail
 
-# Nombre del enlace simbólico en el proyecto
-SYMLINK_DB="Biblia.db"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd -- "$SCRIPT_DIR/.." && pwd)"
+STRUCTURE_DIR="$SCRIPT_DIR/structure"
+DB_PATH="${DB_PATH:-${TMPDIR:-/tmp}/obsigen-Biblia.db}"
 
-# Directorios donde se encuentran los scripts SQL
-STRUCTURE_DIR="./structure"
-QUERIES_DIR="./queries"
-
-# Eliminar el enlace simbólico si ya existe
-if [ -L "$SYMLINK_DB" ]; then
-  echo "Eliminando el enlace simbólico existente: $SYMLINK_DB"
-  rm "$SYMLINK_DB"
+if [[ -z "$DB_PATH" || "$DB_PATH" == "/" || "$DB_PATH" == "$REPO_ROOT" ]]; then
+  echo "Refusing unsafe database path: ${DB_PATH:-<empty>}" >&2
+  exit 1
 fi
 
-# Crear un nuevo enlace simbólico hacia el archivo de base de datos real
-echo "Creando un nuevo enlace simbólico: $SYMLINK_DB -> $REAL_DB_PATH"
-ln -s "$REAL_DB_PATH" "$SYMLINK_DB"
-
-# Eliminar la base de datos real si existe
-if [ -f "$REAL_DB_PATH" ]; then
-  echo "No se pudo eliminar la base de datos real existente: $REAL_DB_PATH. Asegúrate de tener permisos."
+if [[ -d "$DB_PATH" ]]; then
+  echo "Database path must not be a directory: $DB_PATH" >&2
+  exit 1
 fi
 
-# Crear una nueva base de datos
-echo "Creando nueva base de datos: $SYMLINK_DB"
-sqlite3 "$SYMLINK_DB" < "$STRUCTURE_DIR/schema.sql"
+DB_PARENT="$(cd -- "$(dirname -- "$DB_PATH")" && pwd)"
+DB_PATH="$DB_PARENT/$(basename -- "$DB_PATH")"
 
-# Ejecutar los scripts SQL en el orden adecuado para la estructura y relleno
-echo "Ejecutando scripts SQL para estructura y datos..."
-sqlite3 "$SYMLINK_DB" < "$STRUCTURE_DIR/collections.sql"
-sqlite3 "$SYMLINK_DB" < "$STRUCTURE_DIR/books.sql"
-sqlite3 "$SYMLINK_DB" < "$STRUCTURE_DIR/50_San_Juan/parts.sql"
-sqlite3 "$SYMLINK_DB" < "$STRUCTURE_DIR/50_San_Juan/sections.sql"
-sqlite3 "$SYMLINK_DB" < "$STRUCTURE_DIR/50_San_Juan/chapters.sql"
-sqlite3 "$SYMLINK_DB" < "$STRUCTURE_DIR/50_San_Juan/pericopes.sql"
-sqlite3 "$SYMLINK_DB" < "$STRUCTURE_DIR/50_San_Juan/images.sql"
+if [[ "$DB_PATH" == "/" || "$DB_PATH" == "$REPO_ROOT" ]]; then
+  echo "Refusing unsafe database path: $DB_PATH" >&2
+  exit 1
+fi
 
-echo "Base de datos recreada con éxito."
+if ! command -v sqlite3 >/dev/null 2>&1; then
+  echo "sqlite3 is required to reset the Bible database." >&2
+  exit 1
+fi
 
-# Opcional: Ejecutar consultas de ejemplo desde queries
-# echo "Ejecutando consultas de ejemplo..."
-# sqlite3 "$SYMLINK_DB" < "$QUERIES_DIR/evangelio_san_juan_index.sql"
-# echo "Consultas ejecutadas con éxito."
+SQL_FILES=(
+  "$STRUCTURE_DIR/schema.sql"
+  "$STRUCTURE_DIR/collections.sql"
+  "$STRUCTURE_DIR/books.sql"
+  "$STRUCTURE_DIR/50_San_Juan/parts.sql"
+  "$STRUCTURE_DIR/50_San_Juan/sections.sql"
+  "$STRUCTURE_DIR/50_San_Juan/chapters.sql"
+  "$STRUCTURE_DIR/50_San_Juan/pericopes.sql"
+  "$STRUCTURE_DIR/50_San_Juan/images.sql"
+)
+
+echo "Recreating disposable Bible database: $DB_PATH"
+rm -f -- "$DB_PATH"
+
+for sql_file in "${SQL_FILES[@]}"; do
+  sqlite3 "$DB_PATH" < "$sql_file"
+done
+
+echo "Bible database recreated successfully."
