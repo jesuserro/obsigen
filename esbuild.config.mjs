@@ -1,8 +1,6 @@
 import { builtinModules } from "node:module";
 import esbuild from "esbuild";
-import { copy } from 'esbuild-plugin-copy';
 import process from "process";
-import dotenv from 'dotenv';
 
 const banner =
   `/*
@@ -12,14 +10,6 @@ if you want to view the source, please visit the GitHub repository of this plugi
 `;
 
 const prod = process.argv[2] === "production";
-
-// Load environment variables from .env file (outputDir)
-dotenv.config();
-const outputDir = process.env.OUTPUT_DIR;
-
-// scss compilados ya desde package.json, lo sacamos de esbuild
-// const entryPoints = glob.sync("src/**/*.*").filter((file) => file !== "src/styles.scss");
-// const entryPoints = glob.sync("src/assets/icons/dataurls.ts");
 
 const context = await esbuild.context({
   banner: {
@@ -41,9 +31,7 @@ const context = await esbuild.context({
     "@lezer/common",
     "@lezer/highlight",
     "@lezer/lr",
-    // 'src/assets/icons/dataurls.json', // Excluye el archivo dataurls.json
-    './src/assets/icons/*.png', // Excluye archivos .png
-    // 'src/createPrivateIcons.mjs',   // Excluye el archivo
+    "./src/assets/icons/*.png",
     ...builtinModules
   ],
   format: "cjs",
@@ -52,21 +40,9 @@ const context = await esbuild.context({
   sourcemap: prod ? false : "inline",
   treeShaking: true,
   minify: prod,
-  outfile: `${outputDir}/main.js`,
-  // outdir: `${outputDir}`,
-  plugins: [
-    copy({
-      assets: [
-        { from: 'manifest.json', to: `${outputDir}/manifest.json` }, // Copiamos manifest.json a la carpeta de salida
-        { from: 'src/styles.css', to: `${outputDir}/styles.css` }, // Copiamos styles.css a la carpeta de salida
-      ],
-    })
-  ],
+  outfile: "main.js",
   loader: {
-    '.svg': 'file',
-    // '.png': 'dataurl',
-    // '.json': 'file', // Agrega esta línea para excluir archivos .json de la compilación
-    // '.scss': sass()
+    ".svg": "file",
   },
 });
 

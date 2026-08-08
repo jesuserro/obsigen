@@ -15,7 +15,8 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strictNullChecks": true,
-    "lib": ["ES2021", "DOM"]
+    "lib": ["ES2021", "DOM"],
+    "types": ["node", "jest"]
   },
   "include": ["src"]
 }
