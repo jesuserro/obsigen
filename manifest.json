@@ -1,7 +1,7 @@
 {
 	"id": "obsigen",
 	"name": "Obsigen",
-	"version": "0.0.3",
+	"version": "0.1.0",
 	"minAppVersion": "1.7.2",
 	"description": "Calendar, Bible and historical timeline views for personal Obsidian notes.",
 	"author": "Jesús Erro",
