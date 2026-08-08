@@ -30,6 +30,32 @@ Unsigned years represent AD dates. A leading minus sign represents BC dates.
 
 The plugin menu also exposes focused utilities for daily and yearly notes, anniversaries, favorites, and event creation.
 
+## Screenshots
+
+### Calendar — July 2026
+
+Month view with daily notes, anniversaries and event markers.
+
+<p>
+  <img src="docs/images/calendar-july-2026.jpg" alt="Obsigen Calendar view showing July 2026 with daily notes and event markers" width="786">
+</p>
+
+### Bible — Genesis
+
+Chapter grid with illustrated entries and note navigation.
+
+<p>
+  <img src="docs/images/bible-genesis.jpg" alt="Obsigen Bible view showing the Genesis chapter grid with illustrated entries" width="680">
+</p>
+
+### Timeline — historical notes
+
+Historical timeline view with chronological labels and note cards.
+
+<p>
+  <img src="docs/images/timeline-mambre.jpg" alt="Obsigen Timeline view showing chronological labels and historical note cards" width="650">
+</p>
+
 ## Status
 
 Obsigen is primarily a personal Obsidian plugin and an experimental project. The repository is kept buildable and usable, but several data and folder conventions are tailored to the author's vault.
