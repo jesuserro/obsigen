@@ -1,7 +1,7 @@
 {
 	"name": "obsigen",
 	"version": "0.0.3",
-	"description": "Just another customized digital garden.",
+	"description": "Personal Obsidian plugin for calendar, Bible and historical timeline note navigation.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "concurrently \"npm run dev:js\" \"npm run dev:css\"",
@@ -17,7 +17,7 @@
 		"iconos": "node src/createPrivateIcons.mjs"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "Jesús Erro",
 	"license": "MIT",
 	"devDependencies": {
 		"@types/jest": "^29.5.2",
